@@ -1,0 +1,46 @@
+/*
+ * RGP_DIARIAS: UC014 - Minha Conta Bancária
+ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
+ * permite ao usuário registrar liquidações de diárias.
+ */
+systemName "RGP-Diarias"
+
+usecase "UC014 - Minha Conta Bancária" {
+	version "0.1" type "Creation" user "Daniel Medeiros" date "13/04/2020"
+	actor usuario "Chefe"
+	
+	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	
+	basic {
+	  	step 1 usuario "Acessa a funcionalidade Minha Conta Bancária (menu)" 
+	  	step 2 system "Exibe a tela principal do sistema para o usuário;
+					Recupera a partir do SRH as informações da conta bancária que o usuário utiliza para receber diárias;
+					Exibe as informações da referida conta bancária para o usuário."
+		step 3 usuario "Visualiza os dados da referida conta bancária." af[1]
+		step 4 system "Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias." 
+	}
+	
+	alternative 1 "O usuário altera os dados da conta bancária" {
+	  	step 1 usuario "Altera os dados de sua conta bancária em tela (banco/agência/conta corrente)."
+	  	step 2 system "Apresenta os campos (banco/agência/conta corrente) alterados"
+	  	step 3 usuario "Salva as alterações."
+	  	step 4 system "Exibe mensagem de confirmação (MSG106 - Confirma a alteração dos dados bancários para recebimento de diárias?)."
+	  	step 5 usuario "Confirma."
+	  	step 6 system "Atualiza os dados bancários do beneficiário na base do RH (SRH);
+					Exibe mensagem de sucesso para o usuário." ef[1,2]
+	}
+	
+	exception 1 "Falha na atualização dos dados" {
+	  	step 1 system "Identifica que ocorreu uma falha durante a tentativa de atualização dos dados bancários;
+					Mantém os dados consistentes, interrompe a operação;
+					Exibe mensagem de erro (MSG213 - Não foi possível concluir a operação. Falha na comunicação com o sistema de Recursos Humanos) para o usuário."
+	}
+	
+	exception 2 "Dados obrigatórios não informados" {
+	  	step 1 system "Identifica que há dados obrigatórios não informados;
+					Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário."
+	}
+	
+	postCondition "O caso de uso encerra."
+	
+}
