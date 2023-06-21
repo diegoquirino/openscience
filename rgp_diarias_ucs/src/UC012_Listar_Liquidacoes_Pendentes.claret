@@ -14,8 +14,8 @@ usecase "UC012 - Listar Liquidações Pendentes" {
 	basic {
 		step 1 usuario "Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA)."
 		step 2 system "Recupera e exibe para o usuário a lista de diárias aptas para pagamento."
-	  	step 5 usuario "Visualiza a lista de diárias (solicitações) aptas para pagamento." af[1,2,3]
-		step 6 system "Exibe a lista de diárias (solicitações) aptas para pagamento." 
+	  	step 3 usuario "Visualiza a lista de diárias (solicitações) aptas para pagamento." af[1,2,3]
+		step 4 system "Exibe a lista de diárias (solicitações) aptas para pagamento." 
 	}
 	alternative 1 "Detalhar diária (solicitação)" {
 	  	step 1 usuario "Clica para detalhar a solicitação de diária."
