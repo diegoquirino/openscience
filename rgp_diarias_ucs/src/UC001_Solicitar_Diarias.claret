@@ -6,7 +6,7 @@
 systemName "RGP-Diarias"
 
 usecase "UC001 - Solicitar diarias" {
-	version "0.1" type "Creation" user "Daniel Medeiros" date "13/04/2020"
+	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuario acessa o caso de uso atraves do menu.", 
@@ -39,7 +39,9 @@ usecase "UC001 - Solicitar diarias" {
 		step 24 system "Confirma a existencia de conta para recebimento de diarias do servidor." ef[2]
 		step 25 usuario "Clica em confirmar." af [4]
 		step 26 system "Calcula o valor da(s) diaria(s) com as informacoes do formulario." ef[3,4]
-		step 27 usuario "Verifica os valores presentes na tela."
+		step 27 usuario "Verifica os valores presentes na tela:
+						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF.
+						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado."
 		step 28 system "Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas"
 	}
 	
