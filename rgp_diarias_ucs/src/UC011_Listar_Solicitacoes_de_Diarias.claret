@@ -14,7 +14,7 @@ usecase "UC011 - Listar Solicitações de Diárias" {
 	basic {
 		step 1 usuario "Clica para listar todas as solicitações de diárias relacionadas à sua competência."
 		step 2 system "Recupera os registros de solicitações e os exibe (em ordem decrescente pelo número da diária) em tela para o usuário."
-		step 4 usuario "Visualiza os registros de solicitações de diária." af[1,2,3]
+		step 4 usuario "Visualiza os registros de solicitações de diária." af[1,2,3,4]
 		step 5 system "Exibe os registros de solicitações de diária."
 	}
 	
@@ -34,6 +34,10 @@ usecase "UC011 - Listar Solicitações de Diárias" {
 					Informa o nome do beneficiário;
 					Filtra a listagem de solicitações."
 		step 4 system "Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário."
+	}
+	alternative 4 "Ordenar pelo nome do servidor" {
+		step 1 usuario "Clica para ordenar pelo nome do servidor."
+		step 2 system "Visualiza os registros de solicitações de diária ordenado pelo nome do servidor."
 	}
 	
 	postCondition "O caso de uso encerra."
