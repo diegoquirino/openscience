@@ -6,7 +6,7 @@
 systemName "RGP-Diarias"
 
 usecase "UC001 - Solicitar diarias" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/11/2020"
+	version "1.0" type "Creation" user "Daniel Medeiros" date "05/05/2021"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuario acessa o caso de uso atraves do menu.", 
@@ -33,8 +33,8 @@ usecase "UC001 - Solicitar diarias" {
 		step 18 system "Exibe a opcao escolhida: justificativa."
 		step 19 usuario "Detalha a justificativa."
 		step 20 system "Exibe o texto informado: detalhe da justificativa."
-		step 21 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
-		step 22 system "Exibe os beneficiarios selecionados."
+		step 21 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)." 
+		step 22 system "Exibe os beneficiarios selecionados." ef[5]
 		step 23 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
 		step 24 system "Confirma a existencia de conta para recebimento de diarias do servidor." ef[2]
 		step 25 usuario "Clica em confirmar." af [4]
@@ -79,6 +79,10 @@ usecase "UC001 - Solicitar diarias" {
 	}
 	exception 4 "Conflito de datas para solicitação de diárias" {
 		step 1 system "Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias."
+	}
+	exception 5 "Conta para recebimento de diárias não cadastrada" {
+		step 1 system "Não confirma a existencia de conta para recebimento de diarias do servidor.
+					Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
 	}
 	
 	postCondition "O sistema salva os dados"
