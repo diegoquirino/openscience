@@ -6,7 +6,7 @@
 systemName "RGP-Diarias"
 
 usecase "UC012 - Listar Liquidações Pendentes" {
-	version "1.0.1" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.0.1" type "Creation" user "Julio Paiva" date "04/05/2023"
 	actor usuario "Chefe"
 	
 	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
@@ -15,7 +15,8 @@ usecase "UC012 - Listar Liquidações Pendentes" {
 		step 1 usuario "Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA)."
 		step 2 system "Recupera e exibe para o usuário a lista de diárias aptas para pagamento."
 	  	step 3 usuario "Visualiza a lista de diárias (solicitações) aptas para pagamento." af[1,2,3]
-		step 4 system "Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente." 
+		step 4 system "Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente.
+					Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho)."
 	}
 	alternative 1 "Detalhar diária (solicitação)" {
 	  	step 1 usuario "Clica para detalhar a solicitação de diária."
