@@ -6,7 +6,7 @@
 systemName "RGP-Diarias"
 
 usecase "UC001 - Solicitar diarias" {
-	version "1.0" type "Creation" user "Daniel Medeiros" date "05/05/2021"
+	version "1.0" type "Creation" user "Robson Diego" date "17/03/2022"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuario acessa o caso de uso atraves do menu.", 
@@ -33,7 +33,7 @@ usecase "UC001 - Solicitar diarias" {
 		step 18 system "Exibe a opcao escolhida: justificativa."
 		step 19 usuario "Detalha a justificativa."
 		step 20 system "Exibe o texto informado: detalhe da justificativa."
-		step 21 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)." 
+		step 21 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)." af[5]
 		step 22 system "Exibe os beneficiarios selecionados." ef[5]
 		step 23 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
 		step 24 system "Confirma a existencia de conta para recebimento de diarias do servidor." ef[2]
@@ -66,6 +66,11 @@ usecase "UC001 - Solicitar diarias" {
 	alternative 4 "Limpar Campos" {
 		step 1 usuario "Clica em limpar campos."
 		step 2 system "Apaga todas as seleções do usuário." 
+	}
+	alternative 5 "Informar nome social" {
+		step 1 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
+		step 2 system "Exibe os beneficiarios selecionados e o campo para preenchimento do nome social"
+		step 3 usuario "Informa o nome social do beneficiario da(s) diaria(s)" bs 24
 	}
 	
 	exception 1 "DNE Indisponivel" {
