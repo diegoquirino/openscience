@@ -1,0 +1,53 @@
+---
+title: 'Projeto Final: Replicação'
+author: "Carlos Diego Quirino Lima (diegoquirino@copin.ufcg.edu.br)"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r include=FALSE, warning=FALSE}
+library(GGally)
+library(pscl)
+library(tidyverse)
+library(tidymodels)
+library(modelr) 
+library(vcd)
+
+rgp_diarias <- read_csv("../data/rgp_diarias_final.csv")
+
+glimpse(rgp_diarias)
+```
+
+```{r}
+rgp_diarias %>%
+    mutate(edit_classification_human = case_when(.$edit_classification_human == 1 ~ "High",
+                                                       .$edit_classification_human == 0 ~ "Low"),
+           edit_classification_levenshtein = case_when(.$edit_classification_levenshtein == 1 ~ "High",
+                                                       .$edit_classification_levenshtein == 0 ~ "Low")
+           ) %>% 
+    select(Manual = edit_classification_human, Levenshtein = edit_classification_levenshtein) %>%
+    gather() %>%
+    ggplot(aes(x = key, fill = value)) +
+    geom_bar(width = .35, position = position_dodge(width = .5)) +
+    labs(x = "Classification", y = "Total of Edits", fill = "Impact")
+
+```
+
+```{r}
+rgp_diarias %>% 
+    mutate(edit_classification_levenshtein = case_when(.$edit_classification_levenshtein == 1 ~ "High Impact",
+                           .$edit_classification_levenshtein == 0 ~ "Low Impact")
+    ) %>% 
+    select(normalized_levenshtein, edit_classification_levenshtein) %>%
+    ggplot(aes(x=edit_classification_levenshtein, y=normalized_levenshtein)) +
+        geom_boxplot(width = .35) +
+        geom_point(color = "blue", alpha = .5) +
+        coord_flip() +
+        labs(title = "Levenshtein Classification", x="", y = "Normalized Distance Between Edits")
+
+```
+
+
+
+

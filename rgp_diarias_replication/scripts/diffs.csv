@@ -1,0 +1,1009 @@
+filename,base_tag,head_tag,base_tag_patch,head_tag_patch
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,6]
+","+		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-		step 17 usuario ""Informa que acompanha autoridade"" af[4]
+-		step 18 system ""Exibe a opcao escolhida: acompanha autoridade."" ef[5]
+-		step 19 usuario ""Seleciona a justificativa.""
+-		step 20 system ""Exibe a opcao escolhida: justificativa.""
+-		step 21 usuario ""Detalha a justificativa.""
+-		step 22 system ""Exibe o texto informado: detalhe da justificativa.""
+","+		step 17 usuario ""Seleciona a justificativa.""
++		step 18 system ""Exibe a opcao escolhida: justificativa.""
++		step 19 usuario ""Detalha a justificativa.""
++		step 20 system ""Exibe o texto informado: detalhe da justificativa.""
++		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 22 system ""Exibe os beneficiarios selecionados.""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-		step 24 system ""Exibe os beneficiarios selecionados.""
+-		step 25 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 26 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
+-		step 27 usuario ""Clica em confirmar."" af [5]
+-		step 28 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
+-		step 29 usuario ""Verifica os valores presentes na tela.""
+-		step 30 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
+","+		step 24 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
++		step 25 usuario ""Clica em confirmar."" af [4]
++		step 26 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
++		step 27 usuario ""Verifica os valores presentes na tela.""
++		step 28 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-	alternative 4 ""Usuário informa que NÃO acompanha autoridade"" {
+-		step 1 usuario ""Informa que acompanha autoridade""
+-		step 2 system ""Exibe a opcao escolhida: NÃO acompanha autoridade.""
+-		step 3 usuario ""Seleciona a justificativa."" bs 20
+-	}
+-	alternative 5 ""Limpar Campos"" {
+","+	alternative 4 ""Limpar Campos"" {
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-	alternative 6 ""Período com dias alternados"" {
+","+	alternative 5 ""Período com dias alternados"" {
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-	exception 5 ""Servidor não pode estar em companhia de autoridade"" {
+-		step 1 system ""Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades.""
+-	}
+",
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,"-	  	step 5 usuario ""Visualiza a lista de diárias (solicitações) aptas para pagamento."" af[1,2,3]
+-		step 6 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
+","+	  	step 3 usuario ""Visualiza a lista de diárias (solicitações) aptas para pagamento."" af[1,2,3]
++		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
+"
+rgp_diarias_ucs/src/UC014_Minha_Conta_Bancaria.claret,rp01_rgpdiarias_v0.1,rp01_rgpdiarias_v0.2,,"+/*
++ * RGP_DIARIAS: UC014 - Minha Conta Bancária
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário registrar liquidações de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC014 - Minha Conta Bancária"" {
++	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++	  	step 1 usuario ""Acessa a funcionalidade Minha Conta Bancária (menu)"" 
++	  	step 2 system ""Exibe a tela principal do sistema para o usuário;
++					Recupera a partir do SRH as informações da conta bancária que o usuário utiliza para receber diárias;
++					Exibe as informações da referida conta bancária para o usuário.""
++		step 3 usuario ""Visualiza os dados da referida conta bancária."" af[1]
++		step 4 system ""Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias."" 
++	}
++	
++	alternative 1 ""O usuário altera os dados da conta bancária"" {
++	  	step 1 usuario ""Altera os dados de sua conta bancária em tela (banco/agência/conta corrente).""
++	  	step 2 system ""Apresenta os campos (banco/agência/conta corrente) alterados""
++	  	step 3 usuario ""Salva as alterações.""
++	  	step 4 system ""Exibe mensagem de confirmação (MSG106 - Confirma a alteração dos dados bancários para recebimento de diárias?).""
++	  	step 5 usuario ""Confirma.""
++	  	step 6 system ""Atualiza os dados bancários do beneficiário na base do RH (SRH);
++					Exibe mensagem de sucesso para o usuário."" ef[1,2]
++	}
++	
++	exception 1 ""Falha na atualização dos dados"" {
++	  	step 1 system ""Identifica que ocorreu uma falha durante a tentativa de atualização dos dados bancários;
++					Mantém os dados consistentes, interrompe a operação;
++					Exibe mensagem de erro (MSG213 - Não foi possível concluir a operação. Falha na comunicação com o sistema de Recursos Humanos) para o usuário.""
++	}
++	
++	exception 2 ""Dados obrigatórios não informados"" {
++	  	step 1 system ""Identifica que há dados obrigatórios não informados;
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+README.md,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,"-* *E-mails:* diego.quirino@tjpb.jus.br or diego.quirino@copin.ufcg.edu.br
+",
+README.md,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+* *E-mails:* diego.quirino@tjpb.jus.br or diego.quirino@copin.ufcg.edu.br
+"
+rgp_diarias_ucs/.project,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+<?xml version=""1.0"" encoding=""UTF-8""?>
++<projectDescription>
++	<name>rgp-diarias-claret-use-cases</name>
++	<comment></comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
++	</natures>
++</projectDescription>
+"
+rgp_diarias_ucs/.settings/br.edu.ufcg.splab.claret.Claret.prefs,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+br.edu.ufcg.splab.claret.Claret.useProjectSettings=true
++eclipse.preferences.version=1
+"
+rgp_diarias_ucs/.settings/org.eclipse.core.resources.prefs,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+eclipse.preferences.version=1
++encoding/<project>=UTF-8
+"
+rgp_diarias_ucs/.settings/org.eclipse.core.runtime.prefs,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+eclipse.preferences.version=1
++line.separator=\r\n
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC001 - Solicitar diarias
++ * Este caso de uso tem como objetivo principal, 
++ * permitir que usuarios possam solicitar diarias atraves do sistema. 
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC001 - Solicitar diarias"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe/Beneficiário""
++	
++	preCondition ""O usuario acessa o caso de uso atraves do menu."", 
++		""O sistema exibe a tela de solicitacao de diarias.""
++	
++	basic {
++		step 1 usuario ""Escolhe o tipo de viagem nacional - fora do estado (interestadual)."" af[1,2]
++		step 2 system ""Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual)."" 
++		step 3 usuario ""Escolhe o estado.""
++		step 4 system ""Exibe a opcao escolhida: estado."" ef[1]
++		step 5 usuario ""Escolhe a(s) cidade(s).""
++		step 6 system ""Exibe a opcao escolhida: cidade(s).""
++		step 7 usuario ""Escolhe o tipo de deslocamento.""
++		step 8 system ""Exibe a opcao escolhida: tipo de deslocamento.""
++		step 9 usuario ""Escolhe o tipo de hospedagem.""
++		step 10 system ""Exibe a opcao escolhida: hospedagem.""
++		step 11 usuario ""Escolhe o tipo de periodo de afastamento.""
++		step 12 system ""Exibe a opcao escolhida: periodo de afastamento.""
++		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
++		step 14 system ""Exibe as datas escolhidas: datas de afastamento.""
++		step 15 usuario ""Informa se tem pernoite.""
++		step 16 system ""Exibe a opcao escolhida: pernoite.""
++		step 17 usuario ""Seleciona a justificativa.""
++		step 18 system ""Exibe a opcao escolhida: justificativa.""
++		step 19 usuario ""Detalha a justificativa.""
++		step 20 system ""Exibe o texto informado: detalhe da justificativa.""
++		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 22 system ""Exibe os beneficiarios selecionados.""
++		step 23 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 24 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
++		step 25 usuario ""Clica em confirmar."" af [4]
++		step 26 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
++		step 27 usuario ""Verifica os valores presentes na tela:
++						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF.
++						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.""
++		step 28 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
++	}
++	
++	alternative 1 ""Usuário seleciona tipo de viagem nacional - dentro do estado."" {
++		step 1 usuario ""Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal)."" 
++		step 2 system ""Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)""
++		step 3 usuario ""NÃO Escolhe o estado.""
++		step 4 system ""O sistema seleciona o estado como PB, automaticamente.""
++		step 5 usuario ""Escolhe a(s) cidade(s)."" bs 6
++	}
++	alternative 2 ""Usuário seleciona tipo de viagem internacional."" {
++		step 1 usuario ""Seleciona o tipo de viagem internacional."" 
++		step 2 system ""Exibe a lista de países para seleção, no lugar de estado/cidade.""
++		step 3 usuario ""Seleciona o país da viagem.""
++		step 4 system ""Exibe a opcao escolhida: país da viagem""
++		step 5 usuario ""Escolhe o tipo de deslocamento."" bs 8
++	}
++	alternative 3 ""Pedido de Diaria apos realizacao da viagem."" {
++		step 1 usuario ""Informa as datas de afastamento, apos o ultimo dia de viagem."" bs 14 
++	}
++	alternative 4 ""Limpar Campos"" {
++		step 1 usuario ""Clica em limpar campos.""
++		step 2 system ""Apaga todas as seleções do usuário."" 
++	}
++	alternative 5 ""Período com dias alternados"" {
++		step 1 usuario ""Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem."" bs 14
++	}
++	
++	exception 1 ""DNE Indisponivel"" {
++		step 1 system ""Exibe a mensagem de erro MSG201 - DNE indisponível.""
++	}
++	exception 2 ""O serviço de integração RGP Core encontra-se indisponível"" {
++		step 1 system ""Exibe a mensagem de erro MSG202 - RGP Core indisponível.""
++	}
++	exception 3 ""Dados obrigatórios não informados"" {
++		step 1 system ""Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).""
++	}
++	exception 4 ""Conflito de datas para solicitação de diárias"" {
++		step 1 system ""Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.""
++	}
++	
++	postCondition ""O sistema salva os dados""
++}
+"
+rgp_diarias_ucs/src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC002 - Gerenciar Diárias do Beneficiário (Minhas Diárias)
++ * Este caso de uso tem o objetivo de especificar a funcionalidade 
++ * que permite a um beneficiário, listar (e gerenciar) suas diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC002 - Gerenciar Diárias do Beneficiário (Minhas Diárias)"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Beneficiário""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++		
++	basic { 
++		step 1 usuario ""O usuario acessa o caso de uso atraves do menu."" af[1,2,3,4]
++		step 2 system ""Apresenta a tela com a lista de diárias daquele beneficiário.""
++	}
++	
++	alternative 1 ""Filtrar resultados"" {
++		step 1 usuario ""Informa os filtros desejados.""
++		step 2 system ""Atualiza a lista de diárias conforme os filtros.""
++	}
++	alternative 2 ""Detalhar diária"" {
++		step 1 usuario ""Clica em detalhar diária.""
++		step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 3 ""Prestar contas"" {
++		step 1 usuario ""Clica em analisar prestação de contas.""
++		step 2 system ""Apresenta a tela de Analisar Prestação de Contas""
++	}
++	alternative 4 ""Cancelar diária"" {
++		step 1 usuario ""Clica em cancelar diária.""
++		step 2 system ""Apresenta a tela de Cancelar Solicitação de Diária""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC003_Cancelar_Solicitacao_Diaria.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC003 - Cancelar Solicitação de Diária
++ * Este caso de uso tem o objetivo de especificar a funcionalidade 
++ * que permite ao chefe, cancelar solicitações de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC003 - Cancelar Solicitação de Diária"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial de cancelar diárias""
++		
++	basic {
++		step 1 usuario ""Informa o motivo do cancelamento."" af[1]
++		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)"" ef[1]
++		step 3 usuario ""Clica em confirmar.""
++		step 4 system ""Altera o status da diária para CANCELADA."" ef[2]
++	}
++	exception 1 ""Não é possível cancelar a solicitação de diária"" {
++		step 1 system ""Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'. 
++					Impede o cancelamento e exibe mensagem de erro (MSG205 - Solcitação de diária não pode ser cancelada) para o usuário.""
++	}
++	alternative 1 ""Justificativa não informada pelo usuário"" {
++		step 1 usuario ""Não informa o motivo do cancelamento.""
++		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)"" 
++		step 3 usuario ""Clica em confirmar."" bs 4
++	}
++	exception 2 ""Não é possível cancelar a solicitação de diária sem justificativa"" {
++		step 1 system ""Identifica que o usuário não informou uma justificativa para o cancelamento.
++					Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações	) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC004 - Detalhar Diárias
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, visualizar os detalhes sobre determinadas diárias (solicitações).
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC004 - Detalhar Diárias"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe/Beneficiário""
++	
++	preCondition ""O usuario devidamente autenticado e na tela de listagem de diárias""
++		
++	basic {
++		step 1 usuario ""Solicita o detalhamento de uma diária."" af[1,2]
++		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).""
++	}
++	
++	alternative 1 ""Detalhar empenho"" {
++		step 1 usuario ""Clica em detalhar empenho.""
++		step 2 system ""Monta a URL do pagamento da diária; e
++					Direciona o usuário para a aba de empenho através da URL.""
++	}
++	alternative 2 ""Detalhar pagamento"" {
++		step 1 usuario ""Clica em detalhar pagamento.""
++		step 2 system ""Monta a URL do pagamento da diária; e
++					Acessa a URL do pagamento.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC005 - Listar Empenhos Pendentes
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, listar diárias aguardando empenho.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC005 - Listar Empenhos Pendentes"" {
++	version ""0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""13/04/2020""
++	actor usuario ""Chefe/Beneficiário""
++	
++	preCondition ""O usuario devidamente autenticado e na tela de listagem de empenhos""
++		
++	basic {
++		step 1 usuario ""Clica para exibir a lista de solicitações aguardando empenho."" af[1,2,3,4]
++		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas.""
++	}
++	alternative 1 ""Usuário exibe detalhes da solicitação"" {
++		step 1 usuario ""Clica para que o sistema exiba detalhes da solicitação da diária.""
++		step 2 system ""Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e
++					Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 2 ""Usuário adiciona número do credor ao beneficiário"" {
++		step 1 usuario ""filtra a listagem por registros cujos beneficiários não possuem número do credor""
++		step 2 system ""Identifica que a partir da listagem, registros cujos beneficiários não possuem número do credor; e
++		 			Habilita a opção (por meio de item de tela) para que o usuário possa informar (individualmente) um número de credor para um beneficiário.""
++		step 3 usuario ""Informa o número do credor para o beneficiário; e
++					Confirma a operação.""
++		step 4 system ""Realiza a persistência do número do credor, para o beneficiário indicado, na base do RH;
++					Atualiza a listagem de solicitações aguardando empenho, já com o número do credor recém informado; e
++					Exibe mensagem de sucesso."" ef[1,2]
++	}
++	alternative 3 ""Atribuir responsabilidade do empenho a si próprio"" {
++		step 1 usuario ""Clica para atribuir/desatribuir o registro a si mesmo.""
++		step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pelo empenho), no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
++	}
++	alternative 4 ""Realizar empenho"" {
++		step 1 usuario ""Clica para realizar o empenho de uma diária.""
++		step 2 system ""Apresenta a tela de Registrar Empenho""
++	}
++	
++	exception 1 ""Erro inesperado ao atualizar o número do credor"" {
++		step 1 system ""Identifica que houve um erro inesperado, quando da tentativa de inserção do número do credor; e
++					Exibe mensagem de erro (MSG207 - Não foi possível atualizar o número do credor) para o usuário.""
++	}
++	exception 2 ""Número do credor já existe"" {
++		step 1 system ""Identifica que o número de credor informado pelo usuário já existe (duplicidade); e
++					Exibe mensagem de erro (MSG208 - Número do credor já existe) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC006_Registrar_Empenho.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC006 - Registrar Empenho
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário registrar empenhos para diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC006 - Registrar Empenho"" {
++	version ""1.0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O sistema identifica a solicitação a ser empenhada (recebida por parâmetro)"",
++		""O Sistema exibe os dados da solicitação para o usuário.""
++		
++	basic {
++		step 1 usuario ""Informa o número do empenho e do exercício.""
++		step 2 system ""Exibe o número de empenho no campo.""
++		step 3 usuario ""Confirma a operação.""
++		step 4 system ""Persiste o número do empenho e o ano de exercício conforme informados;
++					Altera a situação da diária (solicitação) para EMPENHADA; e
++					Exibe mensagem de sucesso para o usuário."" ef[1,2]
++	}
++	
++	exception 1 ""Campos obrigatórios não preenchidos"" {
++		step 1 system ""Identifica que campos obrigatórios não foram preenchidos; e
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios / MSG216 - É obrigatório informar o número do empenho) para o usuário.""
++	}
++	exception 2 ""Número do empenho já existe"" {
++		step 1 system ""Verifica que já existe um número de empenho (considerando também o mesmo exercício) registrado na base de dados; e
++					Exibe mensagem de erro (MSG209 - Número do empenho já existe.) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC007 - Listar Autorizações de Pagamento Pendentes
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que permite 
++ * ao usuário, listar diárias (solicitações) aptas/pendentes de autorização de pagamento.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC007 - Listar Autorizações de Pagamento Pendentes"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++		
++	basic {
++		step 1 usuario ""Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO LIQUIDADA).""
++		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
++		step 3 usuario ""Seleciona uma diária apta para pagamento"" af[1,2,3,4]
++		step 4 system ""Destaca a diária selecionada""
++	}
++	
++	alternative 1 ""Detalhar diária (solicitação)"" {
++		step 1 usuario ""Clica para detalhar a solicitação de diária.""
++		step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 2 ""Atribuir/Desatribuir responsabilidade de autorização de pagamento para si"" {
++		step 1 usuario ""Dado um registro selecionado (solicitação aguardando autorização de pagamento - AP), o usuário pode atribuir/desatribuir a responsabilidade da AP a si próprio; e
++					Clica para atribuir/desatribuir o registro a si mesmo.""
++		step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
++	}
++	alternative 3 ""Realizar autorização de pagamento"" {
++		step 1 usuario ""Clica para realizar a autorização de pagamento.""
++		step 2 system ""Apresenta a tela de Registrar Autorizações de Pagamento""
++	}
++	alternative 4 ""Filtrar autorizações de pagamento pendentes por usuário atribuído"" {
++		step 1 usuario ""Seleciona um usuário para filtrar as autorizações de pagamento associadas a ele; e
++					Submete a busca ao sistema.""
++		step 2 system ""Filtra os registros (autorizações de pagamento pendentes) e exibe apenas aqueles atribuídos ao usuário selecionado.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC008_Registrar_Autorizacao_de_Pagamento.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC008 - Registrar Autorização de Pagamento
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário,registrar autorizações de pagamento (AP) de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC008 - Registrar Autorização de Pagamento"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O sistema identifica a solicitação a ter a AP registrada (recebida por parâmetro)."",
++			""O sistema exibe os dados da solicitação para o usuário.""
++		
++	basic {
++		step 3 usuario ""Informa o número de Autorização de Pagamento e do Exercício.""
++		step 2 system ""Exibe o número de Autorização de Pagamento e do Exercício nos campos.""
++		step 4 usuario ""Confirma a operação.""
++		step 5 system ""Persiste o número da AP e o ano de exercício conforme informados;
++					Altera a situação da diária (solicitação) para PAGAMENTO AUTORIZADO; e
++					Exibe mensagem de sucesso para o usuário."" ef[1,2]
++	}
++	exception 1 ""Campos obrigatórios não informados"" {
++		step 1 system ""Identifica que campos obrigatórios não foram preenchidos; e
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios / MSG215 - É obrigatório informar o número da autorização de pagamento) para o usuário.""
++	}
++	exception 2 ""Número da AP já existe"" {
++		step 1 system ""Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e
++					Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe.) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC009 - Prestar Contas
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, realizar a prestação de contas de uma viagem.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC009 - Prestar Contas"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++		
++	basic {
++		step 1 usuario ""Clica para realizar a prestação de contas.""
++		step 2 system ""Exibe a lista de solicitações de diárias (histórico) em ordem decrescente DO NÚMERO DA DIÁRIA (da maior para a de menor número)."" ef[4]
++		step 3 usuario ""Indica uma solicitação de diárias a fim de realizar a prestação de contas.""
++		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
++					Exibe o histórico da tramitação da prestação de contas."" ef[2,3]
++		step 5 usuario ""Visualiza o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
++		step 6 system ""Exibe o histórico da tramitação da prestação de contas."" 
++	}
++	
++	alternative 1 ""Inserir comprovantes"" {
++		step 1 usuario ""Clica em inserir;
++					Seleciona um tipo de comprovante;
++					Seleciona um arquivo.""
++		step 2 system ""Realiza o upload do arquivo indicado pelo usuário.""
++	}
++	alternative 2 ""Visualizar comprovante"" {
++		step 1 usuario ""Clica em visualizar comprovante.""
++		step 2 system ""Exibe modal com o comprovante.""
++	}
++	alternative 3 ""Excluir documento"" {
++		step 1 usuario ""Clica em excluir comprovante.""
++		step 2 system ""Exclui o comprovante.""
++	}
++	alternative 4 ""Enviar prestação de contas"" {
++		step 1 usuario ""Clica em confirmar (enviar prestação de contas).""
++		step 2 system ""Exibe a mensagem de confirmação (MSG104 - Confirmar a prestação de contas) para o usuário."" ef[1]
++		step 3 usuario ""Confirma as mensagens, concordando com o prosseguimento da prestação de contas.""
++		step 4 system ""Altera o status da diária para PRESTAÇÃO DE CONTAS REALIZADA e salva os dados da solicitação;
++					Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico;
++					Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário.""
++	}
++	exception 1 ""Prestação de contas sem todos os documentos anexados"" {
++		step 1 system ""Identifica que pelo menos um dos documentos solicitados para prestação de contas não foi anexado pelo usuário;
++					Exibe mensagem de alerta (MSG001 - Documentos não informados na prestação de contas) para o usuário.""
++	}
++	exception 2 ""Prestação de contas já realizada."" {
++		step 1 system ""Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA;
++					Permite não permite um novo envio ou alterações na prestação (exclusão de documentos).""
++	}
++	exception 3 ""Prestação de contas ainda não pode ser realizada."" {
++		step 1 system ""Identifica que a solicitação indicada pelo usuário ainda não pode ter sua prestação de contas realizada;
++					Exibe mensagem de erro (MSG212 - Prestação de contas ainda não pode ser realizada) para o usuário, impedindo que ele preste contas (anexa arquivos e etc).""
++	}
++	alternative 5 ""Detalhar solicitação de diária."" {
++		step 1 usuario ""Clica para detalhar a solicitação de diária.""
++		step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	exception 4 ""Listagem de diárias para o perfil OPERADOR"" {
++		step 1 system ""Identifica que se trata de um usuário com perfil OPERADOR;
++					Exibe tanto as solicitações do próprio usuário quanto as solicitações dos demais servidores lotados na mesma unidade administrativa dele (OPERADOR).""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC010 - Analisar Prestação de Contas
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, analisar prestações de contas de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC010 - Analisar Prestação de Contas"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++		step 1 usuario ""Acessa a funcionalidade de prestação de contas.""
++		step 2 system ""Apresenta a lista de prestações de contas relacionadas à sua competência (em ordem decrescente DO NÚMERO DA DIÁRIA, da maior para a de menor número).""
++		step 3 usuario ""Indica uma prestação de contas para analisar.""
++		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos);
++					Exibe o histórico da tramitação da prestação de contas."" ef[2]
++		step 6 usuario ""Clica para analisar a prestação de contas.""
++		step 7 system ""Exibe a tela para prestação de contas""
++		step 8 usuario ""Informa o parecer da prestação de contas.""
++		step 9 system ""Exibe mensagem de confirmação (MSG105 - Confirmar parecer da prestação de contas) para o usuário.""
++		step 10 usuario ""Confirma o parecer dado (confirma operação)."" af[1,2]
++		step 11 system ""Persiste as informações, alterando o status da prestação de contas conforme informada pelo usuário;
++					Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico;
++					Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário."" ef[1]
++	}
++	
++	alternative 1 ""Visualizar documento/comprovante de prestação de contas"" {
++		step 1 usuario ""Clica no documento a exibir.""
++		step 2 system ""Exibe o documento em tela para o usuário.""
++	}
++	
++	alternative 2 ""Detalhar solicitação de diárias"" {
++		step 1 usuario ""Clica para detalhar a solicitação relacionada a uma determinada prestação de contas.""
++		step 2 system ""Exibe a tela de Detalhar Diárias""
++	}
++	
++	exception 1 ""Campos obrigatório não preenchidos"" {
++		step 1 system ""Identifica que campos obrigatórios do parecer/análise não foram devidamente preenchidos
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário.""
++	}
++	exception 2""Prestação de contas em situação diferente de REALIZADA"" {
++		step 1 system ""Identifica que a prestação de contas escolhida é diferente de REALIZADA;
++					Não permite que seja feita análise por parte do usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC011 - Listar Solicitações de Diárias
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, realizar uma listagem geral de solicitações de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC011 - Listar Solicitações de Diárias"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++		step 1 usuario ""Clica para listar todas as solicitações de diárias relacionadas à sua competência.""
++		step 2 system ""Recupera os registros de solicitações e os exibe (em ordem decrescente pelo número da diária) em tela para o usuário.""
++		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3]
++		step 5 system ""Exibe os registros de solicitações de diária.""
++	}
++	
++	alternative 1 ""Detalhar solicitação de diária"" {
++		step 1 usuario ""Clica para detalhar a solicitação de diária.""
++		step 2 system ""Exibe o detalhamento em modal para o usuário;
++					Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 2 ""Cancelar diária"" {
++		step 1 usuario ""Clica para realizar o cancelamento de uma diária.""
++		step 2 system ""Verifica que a solicitação está em situação SOLICITADA;
++					Exibe mensagem de confirmação (MSG987 - Cancelar solicitação de diária) para o usuário (que deve confirmar);
++					Cancela a diária, mudando sua situação para CANCELADA (ver diagrama de estados da diária).""
++	}
++	alternative 3 ""Filtrar diárias"" {
++		step 1 usuario ""Indica alguns parâmetros específicos para a busca;
++					Informa o nome do beneficiário;
++					Filtra a listagem de solicitações.""
++		step 4 system ""Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC012 - Listar Liquidações Pendentes
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que permite
++ * ao usuário, listar diárias (solicitações) aptas/pendentes de liquidação.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC012 - Listar Liquidações Pendentes"" {
++	version ""1.0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++		step 1 usuario ""Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA).""
++		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
++	  	step 3 usuario ""Visualiza a lista de diárias (solicitações) aptas para pagamento."" af[1,2,3]
++		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
++	}
++	alternative 1 ""Detalhar diária (solicitação)"" {
++	  	step 1 usuario ""Clica para detalhar a solicitação de diária.""
++	  	step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 2 ""Atribuir/Desatribuir responsabilidade de liquidação para si"" {
++	  	step 1 usuario ""Clica para atribuir/desatribuir o registro a si mesmo.""
++	  	step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
++	}
++	alternative 3 ""Realizar liquidação"" {
++	  	step 1 usuario ""Clica para realizar a liquidação.""
++	  	step 2 system ""Apresenta a tela de Registrar Liquidações""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC013_Registrar_Liquidacao.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC013 - Registrar Liquidação
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário registrar liquidações de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC013 - Registrar Liquidação"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O Sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro)"",
++			""Exibe os dados da solicitação para o usuário.""
++	
++	basic {
++	  	step 1 usuario ""Informa o número da liquidação e do exercício.""
++	  	step 2 system ""Apresenta os campos número de liquidação e exercício preenchidos.""
++	  	step 3 usuario ""Confirma a operação.""
++	  	step 4 system ""Persiste o número da liquidação e o ano de exercício conforme informados;
++					Altera a situação da diária (solicitação) para LIQUIDADA;
++					Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário."" ef[1,2]
++	}
++	exception 1 ""Campos obrigatórios não informados"" {
++	  	step 1 system ""Identifica que campos obrigatórios não foram preenchidos;
++					Exibe mensagem adequada de erro (MSG203 - Campos obrigatórios / MSG218 - É obrigatório informar o número da liquidação) para o usuário.""
++	}
++	exception 2 ""Número da liquidação já existe"" {
++	  	step 1 system ""Verifica que já existe um número de liquidação (considerando também o mesmo exercício) registrado na base de dados;
++					Interrompe a operação e exibe mensagem de erro (MSG211 - Número da liquidação já existe.) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC014_Minha_Conta_Bancaria.claret,rp01_rgpdiarias_v0.2,rp01_rgpdiarias_v1.0.1,,"+/*
++ * RGP_DIARIAS: UC014 - Minha Conta Bancária
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário registrar liquidações de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC014 - Minha Conta Bancária"" {
++	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++	  	step 1 usuario ""Acessa a funcionalidade Minha Conta Bancária (menu)"" 
++	  	step 2 system ""Exibe a tela principal do sistema para o usuário;
++					Recupera a partir do SRH as informações da conta bancária que o usuário utiliza para receber diárias;
++					Exibe as informações da referida conta bancária para o usuário.""
++		step 3 usuario ""Visualiza os dados da referida conta bancária."" af[1]
++		step 4 system ""Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias."" 
++	}
++	
++	alternative 1 ""O usuário altera os dados da conta bancária"" {
++	  	step 1 usuario ""Altera os dados de sua conta bancária em tela (banco/agência/conta corrente).""
++	  	step 2 system ""Apresenta os campos (banco/agência/conta corrente) alterados""
++	  	step 3 usuario ""Salva as alterações.""
++	  	step 4 system ""Exibe mensagem de confirmação (MSG106 - Confirma a alteração dos dados bancários para recebimento de diárias?).""
++	  	step 5 usuario ""Confirma.""
++	  	step 6 system ""Atualiza os dados bancários do beneficiário na base do RH (SRH);
++					Exibe mensagem de sucesso para o usuário."" ef[1,2]
++	}
++	
++	exception 1 ""Falha na atualização dos dados"" {
++	  	step 1 system ""Identifica que ocorreu uma falha durante a tentativa de atualização dos dados bancários;
++					Mantém os dados consistentes, interrompe a operação;
++					Exibe mensagem de erro (MSG213 - Não foi possível concluir a operação. Falha na comunicação com o sistema de Recursos Humanos) para o usuário.""
++	}
++	
++	exception 2 ""Dados obrigatórios não informados"" {
++	  	step 1 system ""Identifica que há dados obrigatórios não informados;
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-		step 27 usuario ""Verifica os valores presentes na tela.""
+","+		step 27 usuario ""Verifica os valores presentes na tela:
++						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF.
++						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.""
+"
+rgp_diarias_ucs/src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC003_Cancelar_Solicitacao_Diaria.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""11/08/2020""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).""
+","+		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).
++					Apresenta o numero do empenho e a autorização de pagamento como links.""
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""13/04/2020""
+"
+rgp_diarias_ucs/src/UC006_Registrar_Empenho.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC008_Registrar_Autorizacao_de_Pagamento.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC013_Registrar_Liquidacao.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC014_Minha_Conta_Bancaria.claret,rp01_rgpdiarias_v1.0.1,rp01_rgpdiarias_v1.0.2,"-	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.2,rp01_rgpdiarias_v1.0.3,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""21/09/2020""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.2,rp01_rgpdiarias_v1.0.3,"-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
+","+		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.2,rp01_rgpdiarias_v1.0.3,"-	alternative 5 ""Período com dias alternados"" {
+-		step 1 usuario ""Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem."" bs 14
+-	}
+",
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.2,rp01_rgpdiarias_v1.0.3,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""11/08/2020""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.2,rp01_rgpdiarias_v1.0.3,"-		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).""
+","+		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).
++					Apresenta o numero do empenho e a autorização de pagamento como links.""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""21/09/2020""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
+","+		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-	alternative 5 ""Período com dias alternados"" {
+-		step 1 usuario ""Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem."" bs 14
+-	}
+",
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""11/08/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""27/08/2020""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-					Apresenta o numero do empenho e a autorização de pagamento como links.""
+","+					Apresenta o numero do empenho e a autorização de pagamento como links.
++					Apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe.""
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
+","+		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-		step 5 usuario ""Visualiza o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+","+		step 5 usuario ""Verifica o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos);
+","+		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (nome do beneficiário, dados básicos da solicitação e documentos anexos);
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v1.0.3,rp01_rgpdiarias_v1.1,"-		step 6 usuario ""Clica para analisar a prestação de contas.""
+","+		step 6 usuario ""Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas.""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""21/09/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/11/2020""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.""
+","+						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.
++						3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária.""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""11/08/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""27/08/2020""
+"
+rgp_diarias_ucs/src/UC004_Detalhar_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-					Apresenta o numero do empenho e a autorização de pagamento como links.""
+","+					Apresenta o numero do empenho e a autorização de pagamento como links.
++					Apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe.""
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
+","+		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
+"
+rgp_diarias_ucs/src/UC009_Prestar_Contas.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-		step 5 usuario ""Visualiza o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+","+		step 5 usuario ""Verifica o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos);
+","+		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (nome do beneficiário, dados básicos da solicitação e documentos anexos);
+"
+rgp_diarias_ucs/src/UC010_Analisar_Prestacao_de_Contas.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-		step 6 usuario ""Clica para analisar a prestação de contas.""
+","+		step 6 usuario ""Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas.""
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/11/2020""
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,"-		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3]
+","+		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3,4]
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1,rp01_rgpdiarias_v1.1.1,,"+	alternative 4 ""Ordenar pelo nome do servidor"" {
++		step 1 usuario ""Clica para ordenar pelo nome do servidor.""
++		step 2 system ""Visualiza os registros de solicitações de diária ordenado pelo nome do servidor.""
++	}
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""21/09/2020""
+","+	version ""1.0"" type ""Creation"" user ""Daniel Medeiros"" date ""05/05/2021""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 22 system ""Exibe os beneficiarios selecionados.""
+","+		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" 
++		step 22 system ""Exibe os beneficiarios selecionados."" ef[5]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,"-						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.""
+","+						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.
++						3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária.""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,,"+	exception 5 ""Conta para recebimento de diárias não cadastrada"" {
++		step 1 system ""Não confirma a existencia de conta para recebimento de diarias do servidor.
++					Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada.""
++	}
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/11/2020""
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,"-		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3]
+","+		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3,4]
+"
+rgp_diarias_ucs/src/UC011_Listar_Solicitacoes_de_Diarias.claret,rp01_rgpdiarias_v1.1.1,rp01_rgpdiarias_v1.2,,"+	alternative 4 ""Ordenar pelo nome do servidor"" {
++		step 1 usuario ""Clica para ordenar pelo nome do servidor.""
++		step 2 system ""Visualiza os registros de solicitações de diária ordenado pelo nome do servidor.""
++	}
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2,rp01_rgpdiarias_v1.2.1,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/11/2020""
+","+	version ""1.0"" type ""Creation"" user ""Robson Diego"" date ""17/03/2022""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2,rp01_rgpdiarias_v1.2.1,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 22 system ""Exibe os beneficiarios selecionados.""
+","+		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" af[5]
++		step 22 system ""Exibe os beneficiarios selecionados."" ef[5]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2,rp01_rgpdiarias_v1.2.1,,"+	alternative 5 ""Informar nome social"" {
++		step 1 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 2 system ""Exibe os beneficiarios selecionados e o campo para preenchimento do nome social""
++		step 3 usuario ""Informa o nome social do beneficiario da(s) diaria(s)"" bs 24
++	}
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2,rp01_rgpdiarias_v1.2.1,,"+	exception 5 ""Conta para recebimento de diárias não cadastrada"" {
++		step 1 system ""Não confirma a existencia de conta para recebimento de diarias do servidor.
++					Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada.""
++	}
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-	version ""1.0"" type ""Creation"" user ""Daniel Medeiros"" date ""05/05/2021""
+","+	version ""1.0"" type ""Creation"" user ""Robson Diego"" date ""17/03/2022""
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" 
+","+		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" af[5]
+"
+rgp_diarias_ucs/src/UC001_Solicitar_Diarias.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,,"+	alternative 5 ""Informar nome social"" {
++		step 1 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 2 system ""Exibe os beneficiarios selecionados e o campo para preenchimento do nome social""
++		step 3 usuario ""Informa o nome social do beneficiario da(s) diaria(s)"" bs 24
++	}
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-	version ""0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""13/04/2020""
+","+	version ""0.1"" type ""Creation"" user ""Julio Paiva"" date ""17/02/2023""
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-		
+","+	
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas.""
+","+		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.""
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Julio Paiva"" date ""17/02/2023""
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
+","+		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente.""
+"
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v1.2.1,rp01_rgpdiarias_v1.2.3,"-		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
+","+		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente."" 
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-	version ""0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""13/04/2020""
+","+	version ""0.1"" type ""Creation"" user ""Julio Paiva"" date ""17/02/2023""
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-		
+","+	
+"
+rgp_diarias_ucs/src/UC005_Listar_Empenhos_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas.""
+","+		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.""
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-	version ""1.0"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0"" type ""Creation"" user ""Julio Paiva"" date ""04/05/2023""
+"
+rgp_diarias_ucs/src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
+","+		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente.
++					Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de autorização (após registrar o empenho).""
+"
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-	version ""1.0.1"" type ""Creation"" user ""Fabrício Araújo"" date ""09/07/2020""
+","+	version ""1.0.1"" type ""Creation"" user ""Julio Paiva"" date ""04/05/2023""
+"
+rgp_diarias_ucs/src/UC012_Listar_Liquidacoes_Pendentes.claret,rp01_rgpdiarias_v1.2.3,rp01_rgpdiarias_v1.2.4,"-		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
+","+		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente.
++					Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho).""
+"
