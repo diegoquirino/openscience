@@ -8,7 +8,7 @@ def process_csv(input_file, output_file, search_column, fetch_data_function):
     # Para cada DOI, obtenha os dados e adicione ao dataframe
     for index, row in df.iterrows():
         try:
-            search_text = row[search_column].split(";")[0].split("[")[0].strip()
+            search_text = get_first_part_of(row[search_column], [";", "["])
             data = fetch_data_function(search_text)
             df.at[index, 'Keywords'] = data['Keywords']
             df.at[index, 'Pages'] = data['PageLength']
@@ -45,3 +45,9 @@ def error(message):
 def load_api_key(filename="apikey"):
     with open(filename, 'r') as file:
         return file.readline().strip()
+
+
+def get_first_part_of(text, chars):
+    for char in chars:
+        text = text.split(char)[0]
+    return text

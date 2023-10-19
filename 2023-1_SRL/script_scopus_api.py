@@ -24,6 +24,11 @@ def get_data_from_scopus(title="Model-Based Testing of Smart Home Systems Using 
             }
     else:
         error(f"Erro ao obter os dados do artigo '{title}' :: erro {response.status_code} - {response.reason}")
+        return {
+            'Abstract': '',
+            'PageLength': '',
+            'Keywords': ''
+        }
 
 
 # Exemplo de uso
