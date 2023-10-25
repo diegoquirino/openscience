@@ -1,8 +1,8 @@
 from utils import diferenca_primeiros_numeros
 import pandas as pd
 
-input_file = '2023_ICST_SRL_102023 - UNIFICADO.csv'
-output_file = '2023_ICST_SRL_102023-UNIFICADO_out.csv'
+input_file = '2023_ICST_SRL_102023 - UNIFICADO - compendex.csv'
+output_file = '2023_ICST_SRL_102023-UNIFICADO-COMPEDEX_out.csv'
 
 
 df = pd.read_csv(input_file)
