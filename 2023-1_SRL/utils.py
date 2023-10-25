@@ -5,7 +5,7 @@ import re
 
 def process_csv(input_file, output_file, search_column, fetch_data_function):
     df = pd.read_csv(input_file)
-    # Para cada DOI, obtenha os dados e adicione ao dataframe
+    # Para cada item, obtenha os dados e adicione ao dataframe
     for index, row in df.iterrows():
         try:
             search_text = get_first_part_of(row[search_column], [";", "["])
@@ -23,17 +23,20 @@ def process_csv(input_file, output_file, search_column, fetch_data_function):
 
 
 def diferenca_primeiros_numeros(s):
-    # Extrai todos os números da string
-    numeros = re.findall(r'(\d+)', s)
-    # Se apenas um número foi encontrado, retorna o próprio número
-    if len(numeros) == 1:
-        return int(numeros[0])
-    # Se pelo menos dois números foram encontrados, retorna a diferença +1
-    elif len(numeros) >= 2:
-        return abs(int(numeros[0]) - int(numeros[1])) + 1
-    # Se nenhum número foi encontrado, retorna 0
-    else:
-        return 0
+    try:
+        # Extrai todos os números da string
+        numeros = re.findall(r'(\d+)', s)
+        # Se apenas um número foi encontrado, retorna o próprio número
+        if len(numeros) == 1:
+            return int(numeros[0])
+        # Se pelo menos dois números foram encontrados, retorna a diferença +1
+        elif len(numeros) >= 2:
+            return abs(int(numeros[0]) - int(numeros[1])) + 1
+        # Se nenhum número foi encontrado, retorna 0
+        else:
+            return 0
+    except:
+        return ""
 
 
 def error(message):
