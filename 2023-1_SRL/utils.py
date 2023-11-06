@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 import time
 import re
 
@@ -42,10 +43,15 @@ def diferenca_primeiros_numeros(s):
 def error(message):
     print(message)
     with open("error.log", "a") as log_file:
-        log_file.write(f"{message}\n")
+        log_file.write(f"({datetime.now().strftime('%d %b %Y, %Hh%M')}) {message}\n")
 
 
 def load_api_key(filename="apikey"):
+    with open(filename, 'r') as file:
+        return file.readline().strip()
+
+
+def load_inst_token(filename="insttoken"):
     with open(filename, 'r') as file:
         return file.readline().strip()
 

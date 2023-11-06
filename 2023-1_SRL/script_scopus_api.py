@@ -1,16 +1,19 @@
-from utils import load_api_key, error, process_csv, diferenca_primeiros_numeros
+from utils import load_api_key, error, process_csv, load_inst_token, diferenca_primeiros_numeros
 import requests
 
 
 def get_data_from_scopus(title="Model-Based Testing of Smart Home Systems Using EFSM and CEFSM"):
     url = f"https://api.elsevier.com/content/search/scopus"
+    headers = {
+        "X-ELS-APIKey": load_api_key(),
+        "X-ELS-InstToken": load_inst_token()
+    }
     params = {
         "query": f"TITLE({title})",
         "field": "title,description,authkeywords,pageRange",
-        "view": "COMPLETE",
-        "apiKey": load_api_key()
+        "view": "COMPLETE"
     }
-    response = requests.get(url, params=params)
+    response = requests.get(url, headers=headers, params=params)
     if response.status_code == 200:
         data = response.json()
         for entry in data['search-results']['entry']:
