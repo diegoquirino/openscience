@@ -1,6 +1,6 @@
-# Reproduction Work, Number#01
+# SRL - Systematic Review of Literature (2023.2) 
 
-Reproduction of paper [**Reducing the Discard of MBT Test Cases using Distance Functions**](https://doi.org/10.1145/3350768.3350790) in the context of system ***RGP-Diarias from Court of Justice of the State of Paraiba-TJPB, Brazil.***
+Literature review, using various databases with scientific articles (e.g., IEEE, ACM, Scopus, etc.), on the topic of TCM (Test Case Management) in MBT (Model Based Tests).
 
 ## Contact
 
