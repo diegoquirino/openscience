@@ -1,0 +1,72 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+#
+1 2 [c] Líder de Pessoas está autenticado no sistema e  tem permissão para gerenciar perfis de competências.
+2 3 [s] Líder de Pessoas acessa a funcionalidade de gestão de perfis de competências a partir do menu inicial
+3 4 [e] system exibe a listagem dos perfis de competências cadastrados com opções de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 5 [s] Líder de Pessoas clica na opção 'Novo' para criar um novo perfil
+5 6 [e] system apresenta o formulário para cadastro e alteração de perfil de competências
+6 7 [s] Líder de Pessoas preenche o campo 'Período Avaliativo' com o ano correspondente
+7 8 [e] system apresenta o campo 'Período Avaliativo' preenchido corretamente
+8 9 [s] Líder de Pessoas preenche o campo 'Líder' selecionando um líder da lista
+9 10 [e] system apresenta o campo 'Líder' preenchido corretamente
+10 11 [s] Líder de Pessoas preenche o campo 'Unidade' com a unidade organizacional correspondente
+11 12 [e] system apresenta o campo 'Unidade' preenchido corretamente
+12 13 [s] Líder de Pessoas preenche o campo 'Nome de Perfil' com o nome do perfil correspondente
+13 14 [e] system apresenta o campo 'Nome de Perfil' preenchido corretamente
+14 15 [s] Líder de Pessoas seleciona as 'Competências Comportamentais' correspondentes
+15 16 [e] system apresenta as 'Competências Comportamentais' selecionadas
+16 17 [s] Líder de Pessoas seleciona as 'Competências Técnicas' correspondentes
+17 18 [e] system apresenta as 'Competências Técnicas' selecionadas
+18 19 [s] Líder de Pessoas clica na opção 'Salvar'
+19 20 [e] system realiza a ação conforme a opção selecionada pelo usuário e     retorna feedback correspondente
+20 21 [c] A gestão de perfis de competências é realizada com sucesso.
+4 22 [s] Líder de Pessoas seleciona um perfil de competências da listagem
+22 23 [e] system destaca o perfil de competências selecionado na listagem
+23 5 [s] Líder de Pessoas clica na opção 'Editar' para modificar o perfil de competências selecionado
+4 24 [s] Líder de Pessoas seleciona um perfil de competências da listagem
+24 25 [e] system destaca o perfil de competências selecionado na listagem
+25 26 [s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado
+26 27 [e] system solicita confirmação de exclusão mostrando o nome do perfil
+27 28 [s] Líder de Pessoas confirma a exclusão do perfil
+28 21 [e] system exibe a listagem dos perfis de competências sem o perfil de competências excluído
+4 29 [s] Líder de Pessoas seleciona um perfil de competências da listagem
+29 30 [e] system destaca o perfil de competências selecionado na listagem
+30 31 [s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado
+31 32 [e] system solicita confirmação de exclusão mostrando o nome do perfil
+32 33 [s] Líder de Pessoas não confirma a exclusão do perfil
+33 21 [e] system exibe a listagem dos perfis de competências com o perfil de competências excluído
+19 21 [e] system exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validação que falhou
+19 21 [e] system exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validação que falhou
+19 21 [e] system exibe uma mensagem de erro ao tentar excluir o perfil
