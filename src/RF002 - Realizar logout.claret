@@ -1,0 +1,12 @@
+systemName "RGP-Competências"
+
+usecase "RF002 - Realizar Logout" {
+  version "0.1" type "Criação" user "Aislan Fernandes" date "17/07/2020"
+  actor sysUser "Usuário do Sistema"
+  preCondition "Usuário autenticado no sistema (em qualquer tela)"
+  basic {
+    step 1 sysUser "clica na opção de logout através da opção disponível no canto superior direito"
+    step 2 system "exibe uma mensagem de sucesso e apresenta a tela inicial do sistema"
+  }
+  postCondition "Usuário deslogado com sucesso"
+}
