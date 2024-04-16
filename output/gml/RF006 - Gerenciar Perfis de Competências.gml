@@ -165,6 +165,11 @@ node
   id 33
   label "33"
 ]
+node
+[
+  id 34
+  label "34"
+]
 edge
 [
   source 1
@@ -287,91 +292,103 @@ edge
 ]
 edge
 [
-  source 4
+  source 2
   target 22
-  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
+  label "[s] Usuario Não-Autenticado acessa a funcionalidade de gestão de perfis de competências a partir do menu inicial"
 ]
 edge
 [
   source 22
+  target 21
+  label "[e] system exibe a listagem dos perfis de competências cadastrados apenas para visualização com a opção 'Ajuda'"
+]
+edge
+[
+  source 4
   target 23
-  label "[e] system destaca o perfil de competências selecionado na listagem"
+  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
 ]
 edge
 [
   source 23
+  target 24
+  label "[e] system destaca o perfil de competências selecionado na listagem"
+]
+edge
+[
+  source 24
   target 5
   label "[s] Líder de Pessoas clica na opção 'Editar' para modificar o perfil de competências selecionado"
 ]
 edge
 [
   source 4
-  target 24
-  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
-]
-edge
-[
-  source 24
   target 25
-  label "[e] system destaca o perfil de competências selecionado na listagem"
+  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
 ]
 edge
 [
   source 25
   target 26
-  label "[s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado"
+  label "[e] system destaca o perfil de competências selecionado na listagem"
 ]
 edge
 [
   source 26
   target 27
-  label "[e] system solicita confirmação de exclusão mostrando o nome do perfil"
+  label "[s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado"
 ]
 edge
 [
   source 27
   target 28
-  label "[s] Líder de Pessoas confirma a exclusão do perfil"
+  label "[e] system solicita confirmação de exclusão mostrando o nome do perfil"
 ]
 edge
 [
   source 28
+  target 29
+  label "[s] Líder de Pessoas confirma a exclusão do perfil"
+]
+edge
+[
+  source 29
   target 21
   label "[e] system exibe a listagem dos perfis de competências sem o perfil de competências excluído"
 ]
 edge
 [
   source 4
-  target 29
-  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
-]
-edge
-[
-  source 29
   target 30
-  label "[e] system destaca o perfil de competências selecionado na listagem"
+  label "[s] Líder de Pessoas seleciona um perfil de competências da listagem"
 ]
 edge
 [
   source 30
   target 31
-  label "[s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado"
+  label "[e] system destaca o perfil de competências selecionado na listagem"
 ]
 edge
 [
   source 31
   target 32
-  label "[e] system solicita confirmação de exclusão mostrando o nome do perfil"
+  label "[s] Líder de Pessoas clica na opção 'Excluir' para excluir o perfil de competências selecionado"
 ]
 edge
 [
   source 32
   target 33
-  label "[s] Líder de Pessoas não confirma a exclusão do perfil"
+  label "[e] system solicita confirmação de exclusão mostrando o nome do perfil"
 ]
 edge
 [
   source 33
+  target 34
+  label "[s] Líder de Pessoas não confirma a exclusão do perfil"
+]
+edge
+[
+  source 34
   target 21
   label "[e] system exibe a listagem dos perfis de competências com o perfil de competências excluído"
 ]

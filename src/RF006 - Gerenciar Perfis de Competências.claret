@@ -3,11 +3,12 @@ systemName "GTI-Competências"
 usecase "RF006 - Gerenciar Perfis de Competências" {
   version "0.1" type "Criação" user "Aislan Fernandes" date "20/07/2020"
   actor lider "Líder de Pessoas"
+  actor usuarioNA "Usuario Não-Autenticado"
   preCondition "Líder de Pessoas está autenticado no sistema e 
 				tem permissão para gerenciar perfis de competências."
 
   basic {
-    step 1 lider "acessa a funcionalidade de gestão de perfis de competências a partir do menu inicial"
+    step 1 lider "acessa a funcionalidade de gestão de perfis de competências a partir do menu inicial" af[4]
     step 2 system "exibe a listagem dos perfis de competências cadastrados com opções de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
     step 3 lider "clica na opção 'Novo' para criar um novo perfil" af[1,2,3]
     step 4 system "apresenta o formulário para cadastro e alteração de perfil de competências"
@@ -50,6 +51,11 @@ usecase "RF006 - Gerenciar Perfis de Competências" {
     step 4 system "solicita confirmação de exclusão mostrando o nome do perfil"
     step 5 lider "não confirma a exclusão do perfil"
     step 6 system "exibe a listagem dos perfis de competências com o perfil de competências excluído"
+  }
+  
+  alternative 4 "Modo de visualização para usuários não-autenticados" {
+  	step 1 usuarioNA "acessa a funcionalidade de gestão de perfis de competências a partir do menu inicial"
+  	step 2 system "exibe a listagem dos perfis de competências cadastrados apenas para visualização com a opção 'Ajuda'"
   }
 
   exception 1 "Falha ao Salvar o Novo Perfil" {
