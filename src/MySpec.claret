@@ -1,0 +1,22 @@
+/*
+ * This is an example claret specification
+ */
+systemName "SYSTEM_NAME"
+
+usecase "Your First Use Case" {
+	version "0.1" type "set_type" user "set_user" date "set_date"
+	actor person "system actor"
+	
+	preCondition "first_condition", "second_condition"
+	
+	basic {
+		step 1 person "does something"
+		step 2 system "responds to actor"
+	}
+	
+	// Alternatives scenarios here...
+	
+	// Exceptions scenarios here...
+	
+	postCondition "final condition", "other condition"
+}
