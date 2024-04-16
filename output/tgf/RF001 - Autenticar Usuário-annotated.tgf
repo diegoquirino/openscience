@@ -1,0 +1,38 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+#
+1 8 conditions
+8 2 Usuário se encontra na tela inicial do sistema Usuário está visualizando uma mensagem de erro informando que o acesso à página não é permitido para usuários sem autenticação
+2 9 steps
+9 3 Usuário do Sistema inicia a tela de login através da opção de login no canto superior direito
+3 10 expected_results
+10 4 system apresenta um formulário com campos de nome de usuário e senha e um botão entrar
+4 11 steps
+11 5 Usuário do Sistema preenche os campos e clica no botão entrar
+5 12 expected_results
+12 6 system exibe uma mensagem de sucesso
+6 13 conditions
+13 7 Usuário logado com sucesso
+4 14 steps
+14 5 Usuário do Sistema seleciona um nome de usuário sugerido, digita a senha e clica no botão entrar
+5 15 expected_results
+15 4 system alerta que o TJSeg (sistema que fornece as permissões de acesso e escrita) está fora do ar
+5 16 expected_results
+16 4 system alerta que o CAS (sistema de autorização login-senha) está fora do ar
+5 17 expected_results
+17 4 system alerta que o nome de usuário e/ou senha estão incorretos

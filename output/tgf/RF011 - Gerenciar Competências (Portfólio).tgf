@@ -1,0 +1,77 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+#
+1 2 [c] Líder de Pessoas está autenticado no sistema e  tem permissão para gerenciar competências (portfólio).
+2 3 [s] Líder de Pessoas acessa a funcionalidade de gestão de competências (portfólio) a partir do menu inicial
+3 4 [e] system exibe a listagem dos competências (portfólio) cadastrados com opções de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 5 [s] Líder de Pessoas clica na opção 'Novo' para criar um nova Competência (portfólio)
+5 6 [e] system apresenta o formulário para cadastro e alteração de competêcias (portfólio)
+6 7 [s] Líder de Pessoas seleciona no campo 'Tipo de Competência' a opção comportamental
+7 8 [e] system apresenta o campo 'Tipo de Competência' preenchido corretamente
+8 9 [s] Líder de Pessoas preenche o campo 'Nome' com o nome da competência
+9 10 [e] system apresenta o campo 'Nome' preenchido corretamente
+10 11 [s] Líder de Pessoas preenche o campo 'Descrição' com a descrição da competência
+11 12 [e] system apresenta o campo 'Descrição' preenchido corretamente
+12 13 [s] Líder de Pessoas indica Não no campo 'Níveis estão modificados para esta competência'
+13 14 [e] system apresenta o campo 'Níveis estão modificados para esta competência' preenchido corretamente
+14 15 [s] Líder de Pessoas clica na opção 'Salvar'
+15 16 [e] system realiza a ação conforme a opção selecionada pelo usuário e     retorna feedback correspondente
+16 17 [c] A gestão de competências (portfólio) é realizada com sucesso.
+2 18 [s] Usuario Não-Autenticado acessa a funcionalidade de gestão de competências (portfólio) a partir do menu inicial
+18 17 [e] system exibe a listagem dos competências (portfólio) cadastrados apenas para visualização com a opção 'Ajuda'
+4 19 [s] Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+19 20 [e] system destaca o competêcias (portfólio) selecionado na listagem
+20 5 [s] Líder de Pessoas clica na opção 'Editar' para modificar o competêcias (portfólio) selecionado
+4 21 [s] Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+21 22 [e] system destaca o competêcias (portfólio) selecionado na listagem
+22 23 [s] Líder de Pessoas clica na opção 'Excluir' para excluir o competêcias (portfólio) selecionado
+23 24 [e] system solicita confirmação de exclusão mostrando o nome da Competência (portfólio)
+24 25 [s] Líder de Pessoas confirma a exclusão da Competência (portfólio)
+25 17 [e] system exibe a listagem dos competências (portfólio) sem o competêcias (portfólio) excluído
+4 26 [s] Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+26 27 [e] system destaca o competêcias (portfólio) selecionado na listagem
+27 28 [s] Líder de Pessoas clica na opção 'Excluir' para excluir o competêcias (portfólio) selecionado
+28 29 [e] system solicita confirmação de exclusão mostrando o nome da Competência (portfólio)
+29 30 [s] Líder de Pessoas não confirma a exclusão da Competência (portfólio)
+30 17 [e] system exibe a listagem dos competências (portfólio) com o competêcias (portfólio) excluído
+6 7 [s] Líder de Pessoas seleciona no campo 'Tipo de Competência' a opção técnica
+12 31 [s] Líder de Pessoas indica Sim no campo 'Níveis estão modificados para esta competência'
+31 32 [e] system apresenta o campo 'Níveis estão modificados para esta competência' preenchido corretamente
+32 33 [s] Líder de Pessoas preenche os dados na tabela do campo 'Níveis da Competência' com os novos nome, valor e descrição dos níveis de competência
+33 34 [e] system apresenta a tabela no campo 'Níveis da Competência' preenchida corretamente
+34 15 [s] Líder de Pessoas clica na opção 'Salvar'
+15 17 [e] system exibe uma mensagem de erro ao tentar salvar a nova Competência (portfólio), informando o campo ou a validação que falhou
+15 17 [e] system exibe uma mensagem de erro ao tentar editar a Competência (portfólio), informando o campo ou a validação que falhou
+15 17 [e] system exibe uma mensagem de erro ao tentar excluir a Competência (portfólio)

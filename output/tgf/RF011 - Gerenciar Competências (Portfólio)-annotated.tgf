@@ -1,0 +1,161 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+63 63
+64 64
+65 65
+66 66
+67 67
+68 68
+69 69
+70 70
+71 71
+72 72
+73 73
+74 74
+75 75
+76 76
+#
+1 35 conditions
+35 2 Líder de Pessoas está autenticado no sistema e  tem permissão para gerenciar competências (portfólio).
+2 36 steps
+36 3 Líder de Pessoas acessa a funcionalidade de gestão de competências (portfólio) a partir do menu inicial
+3 37 expected_results
+37 4 system exibe a listagem dos competências (portfólio) cadastrados com opções de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 38 steps
+38 5 Líder de Pessoas clica na opção 'Novo' para criar um nova Competência (portfólio)
+5 39 expected_results
+39 6 system apresenta o formulário para cadastro e alteração de competêcias (portfólio)
+6 40 steps
+40 7 Líder de Pessoas seleciona no campo 'Tipo de Competência' a opção comportamental
+7 41 expected_results
+41 8 system apresenta o campo 'Tipo de Competência' preenchido corretamente
+8 42 steps
+42 9 Líder de Pessoas preenche o campo 'Nome' com o nome da competência
+9 43 expected_results
+43 10 system apresenta o campo 'Nome' preenchido corretamente
+10 44 steps
+44 11 Líder de Pessoas preenche o campo 'Descrição' com a descrição da competência
+11 45 expected_results
+45 12 system apresenta o campo 'Descrição' preenchido corretamente
+12 46 steps
+46 13 Líder de Pessoas indica Não no campo 'Níveis estão modificados para esta competência'
+13 47 expected_results
+47 14 system apresenta o campo 'Níveis estão modificados para esta competência' preenchido corretamente
+14 48 steps
+48 15 Líder de Pessoas clica na opção 'Salvar'
+15 49 expected_results
+49 16 system realiza a ação conforme a opção selecionada pelo usuário e     retorna feedback correspondente
+16 50 conditions
+50 17 A gestão de competências (portfólio) é realizada com sucesso.
+2 51 steps
+51 18 Usuario Não-Autenticado acessa a funcionalidade de gestão de competências (portfólio) a partir do menu inicial
+18 52 expected_results
+52 17 system exibe a listagem dos competências (portfólio) cadastrados apenas para visualização com a opção 'Ajuda'
+4 53 steps
+53 19 Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+19 54 expected_results
+54 20 system destaca o competêcias (portfólio) selecionado na listagem
+20 55 steps
+55 5 Líder de Pessoas clica na opção 'Editar' para modificar o competêcias (portfólio) selecionado
+4 56 steps
+56 21 Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+21 57 expected_results
+57 22 system destaca o competêcias (portfólio) selecionado na listagem
+22 58 steps
+58 23 Líder de Pessoas clica na opção 'Excluir' para excluir o competêcias (portfólio) selecionado
+23 59 expected_results
+59 24 system solicita confirmação de exclusão mostrando o nome da Competência (portfólio)
+24 60 steps
+60 25 Líder de Pessoas confirma a exclusão da Competência (portfólio)
+25 61 expected_results
+61 17 system exibe a listagem dos competências (portfólio) sem o competêcias (portfólio) excluído
+4 62 steps
+62 26 Líder de Pessoas seleciona um competêcias (portfólio) da listagem
+26 63 expected_results
+63 27 system destaca o competêcias (portfólio) selecionado na listagem
+27 64 steps
+64 28 Líder de Pessoas clica na opção 'Excluir' para excluir o competêcias (portfólio) selecionado
+28 65 expected_results
+65 29 system solicita confirmação de exclusão mostrando o nome da Competência (portfólio)
+29 66 steps
+66 30 Líder de Pessoas não confirma a exclusão da Competência (portfólio)
+30 67 expected_results
+67 17 system exibe a listagem dos competências (portfólio) com o competêcias (portfólio) excluído
+6 68 steps
+68 7 Líder de Pessoas seleciona no campo 'Tipo de Competência' a opção técnica
+12 69 steps
+69 31 Líder de Pessoas indica Sim no campo 'Níveis estão modificados para esta competência'
+31 70 expected_results
+70 32 system apresenta o campo 'Níveis estão modificados para esta competência' preenchido corretamente
+32 71 steps
+71 33 Líder de Pessoas preenche os dados na tabela do campo 'Níveis da Competência' com os novos nome, valor e descrição dos níveis de competência
+33 72 expected_results
+72 34 system apresenta a tabela no campo 'Níveis da Competência' preenchida corretamente
+34 73 steps
+73 15 Líder de Pessoas clica na opção 'Salvar'
+15 74 expected_results
+74 17 system exibe uma mensagem de erro ao tentar salvar a nova Competência (portfólio), informando o campo ou a validação que falhou
+15 75 expected_results
+75 17 system exibe uma mensagem de erro ao tentar editar a Competência (portfólio), informando o campo ou a validação que falhou
+15 76 expected_results
+76 17 system exibe uma mensagem de erro ao tentar excluir a Competência (portfólio)
