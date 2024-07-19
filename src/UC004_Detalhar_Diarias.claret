@@ -6,14 +6,15 @@
 systemName "RGP-Diarias"
 
 usecase "UC004 - Detalhar Diárias" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.0" type "Creation" user "Fabrício Araújo" date "11/08/2020"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuario devidamente autenticado e na tela de listagem de diárias"
 		
 	basic {
 		step 1 usuario "Solicita o detalhamento de uma diária." af[1,2]
-		step 2 system "Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes)."
+		step 2 system "Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).
+					Apresenta o numero do empenho e a autorização de pagamento como links."
 	}
 	
 	alternative 1 "Detalhar empenho" {

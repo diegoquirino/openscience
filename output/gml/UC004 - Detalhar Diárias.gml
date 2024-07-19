@@ -51,7 +51,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes)."
+  label "[e] system Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes). Apresenta o numero do empenho e a autorização de pagamento como links."
 ]
 edge
 [
