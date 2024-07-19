@@ -50,6 +50,11 @@ node
   id 10
   label "10"
 ]
+node
+[
+  id 11
+  label "11"
+]
 edge
 [
   source 1
@@ -121,5 +126,17 @@ edge
   source 10
   target 7
   label "[e] system Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário."
+]
+edge
+[
+  source 4
+  target 11
+  label "[s] Chefe Clica para ordenar pelo nome do servidor."
+]
+edge
+[
+  source 11
+  target 7
+  label "[e] system Visualiza os registros de solicitações de diária ordenado pelo nome do servidor."
 ]
 ]

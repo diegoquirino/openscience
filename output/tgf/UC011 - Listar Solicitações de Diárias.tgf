@@ -8,6 +8,7 @@
 8 8
 9 9
 10 10
+11 11
 #
 1 2 [c] O usuario devidamente autenticado e na tela inicial do sistema
 2 3 [s] Chefe Clica para listar todas as solicitações de diárias relacionadas à sua competência.
@@ -21,3 +22,5 @@
 9 7 [e] system Verifica que a solicitação está em situação SOLICITADA; Exibe mensagem de confirmação (MSG987 - Cancelar solicitação de diária) para o usuário (que deve confirmar); Cancela a diária, mudando sua situação para CANCELADA (ver diagrama de estados da diária).
 4 10 [s] Chefe Indica alguns parâmetros específicos para a busca; Informa o nome do beneficiário; Filtra a listagem de solicitações.
 10 7 [e] system Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário.
+4 11 [s] Chefe Clica para ordenar pelo nome do servidor.
+11 7 [e] system Visualiza os registros de solicitações de diária ordenado pelo nome do servidor.
