@@ -108,13 +108,13 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e Exibe o histórico da tramitação da prestação de contas."
+  label "[e] system Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e Exibe o histórico da tramitação da prestação de contas."
 ]
 edge
 [
   source 6
   target 7
-  label "[s] Chefe Visualiza o histório da tramitação da prestação de contas."
+  label "[s] Chefe Verifica o histório da tramitação da prestação de contas."
 ]
 edge
 [

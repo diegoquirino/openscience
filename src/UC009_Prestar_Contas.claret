@@ -15,9 +15,9 @@ usecase "UC009 - Prestar Contas" {
 		step 1 usuario "Clica para realizar a prestação de contas."
 		step 2 system "Exibe a lista de solicitações de diárias (histórico) em ordem decrescente DO NÚMERO DA DIÁRIA (da maior para a de menor número)." ef[4]
 		step 3 usuario "Indica uma solicitação de diárias a fim de realizar a prestação de contas."
-		step 4 system "Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
+		step 4 system "Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
 					Exibe o histórico da tramitação da prestação de contas." ef[2,3]
-		step 5 usuario "Visualiza o histório da tramitação da prestação de contas." af[1,2,3,4,5]
+		step 5 usuario "Verifica o histório da tramitação da prestação de contas." af[1,2,3,4,5]
 		step 6 system "Exibe o histórico da tramitação da prestação de contas." 
 	}
 	

@@ -103,13 +103,13 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos); Exibe o histórico da tramitação da prestação de contas."
+  label "[e] system Exibe os detalhes relativos àquela prestação de contas (nome do beneficiário, dados básicos da solicitação e documentos anexos); Exibe o histórico da tramitação da prestação de contas."
 ]
 edge
 [
   source 6
   target 7
-  label "[s] Chefe Clica para analisar a prestação de contas."
+  label "[s] Chefe Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas."
 ]
 edge
 [
