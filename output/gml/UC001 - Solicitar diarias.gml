@@ -454,6 +454,12 @@ edge
 ]
 edge
 [
+  source 23
+  target 31
+  label "[e] system Não confirma a existencia de conta para recebimento de diarias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
+]
+edge
+[
   source 25
   target 31
   label "[e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível."
