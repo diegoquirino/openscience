@@ -200,6 +200,16 @@ node
   id 40
   label "40"
 ]
+node
+[
+  id 41
+  label "41"
+]
+node
+[
+  id 42
+  label "42"
+]
 edge
 [
   source 1
@@ -454,6 +464,24 @@ edge
 ]
 edge
 [
+  source 22
+  target 40
+  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
+]
+edge
+[
+  source 40
+  target 41
+  label "[e] system Exibe os beneficiarios selecionados e o campo para preenchimento do nome social"
+]
+edge
+[
+  source 41
+  target 25
+  label "[s] Chefe/Beneficiário Informa o nome social do beneficiario da(s) diaria(s)"
+]
+edge
+[
   source 23
   target 31
   label "[e] system Não confirma a existencia de conta para recebimento de diarias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
@@ -467,12 +495,12 @@ edge
 edge
 [
   source 26
-  target 40
+  target 42
   label "[s] Chefe/Beneficiário Clica em limpar campos."
 ]
 edge
 [
-  source 40
+  source 42
   target 31
   label "[e] system Apaga todas as seleções do usuário."
 ]
