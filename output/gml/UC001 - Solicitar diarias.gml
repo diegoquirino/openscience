@@ -366,7 +366,7 @@ edge
 [
   source 28
   target 29
-  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela."
+  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela: 1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF. 2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado."
 ]
 edge
 [
