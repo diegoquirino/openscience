@@ -454,12 +454,6 @@ edge
 ]
 edge
 [
-  source 14
-  target 15
-  label "[s] Chefe/Beneficiário Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem."
-]
-edge
-[
   source 25
   target 31
   label "[e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível."

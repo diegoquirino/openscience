@@ -85,7 +85,6 @@
 85 85
 86 86
 87 87
-88 88
 #
 1 41 conditions
 41 2 O usuario acessa o caso de uso atraves do menu.. O sistema exibe a tela de solicitacao de diarias.
@@ -171,15 +170,13 @@
 81 31 system Exibe a mensagem de erro MSG201 - DNE indisponível.
 14 82 steps
 82 15 Chefe/Beneficiário Informa as datas de afastamento, apos o ultimo dia de viagem.
-14 83 steps
-83 15 Chefe/Beneficiário Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem.
-25 84 expected_results
-84 31 system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
-26 85 steps
-85 40 Chefe/Beneficiário Clica em limpar campos.
-40 86 expected_results
-86 31 system Apaga todas as seleções do usuário.
+25 83 expected_results
+83 31 system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
+26 84 steps
+84 40 Chefe/Beneficiário Clica em limpar campos.
+40 85 expected_results
+85 31 system Apaga todas as seleções do usuário.
+27 86 expected_results
+86 31 system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
 27 87 expected_results
-87 31 system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
-27 88 expected_results
-88 31 system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
+87 31 system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
