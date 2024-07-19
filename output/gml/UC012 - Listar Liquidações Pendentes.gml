@@ -78,7 +78,7 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente."
+  label "[e] system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente. Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho)."
 ]
 edge
 [
