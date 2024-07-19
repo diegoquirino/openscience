@@ -1,0 +1,32 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+#
+1 8 conditions
+8 2 O usuario devidamente autenticado e na tela de listagem de diárias
+2 9 steps
+9 3 Chefe/Beneficiário Solicita o detalhamento de uma diária.
+3 10 expected_results
+10 4 system Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).
+4 11 conditions
+11 5 O caso de uso encerra.
+2 12 steps
+12 6 Chefe/Beneficiário Clica em detalhar empenho.
+6 13 expected_results
+13 5 system Monta a URL do pagamento da diária; e Direciona o usuário para a aba de empenho através da URL.
+2 14 steps
+14 7 Chefe/Beneficiário Clica em detalhar pagamento.
+7 15 expected_results
+15 5 system Monta a URL do pagamento da diária; e Acessa a URL do pagamento.

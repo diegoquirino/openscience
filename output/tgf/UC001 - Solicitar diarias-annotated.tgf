@@ -1,0 +1,207 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+63 63
+64 64
+65 65
+66 66
+67 67
+68 68
+69 69
+70 70
+71 71
+72 72
+73 73
+74 74
+75 75
+76 76
+77 77
+78 78
+79 79
+80 80
+81 81
+82 82
+83 83
+84 84
+85 85
+86 86
+87 87
+88 88
+89 89
+90 90
+91 91
+92 92
+93 93
+94 94
+95 95
+96 96
+97 97
+98 98
+#
+1 45 conditions
+45 2 O usuario acessa o caso de uso atraves do menu.. O sistema exibe a tela de solicitacao de diarias.
+2 46 steps
+46 3 Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
+3 47 expected_results
+47 4 system Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual).
+4 48 steps
+48 5 Chefe/Beneficiário Escolhe o estado.
+5 49 expected_results
+49 6 system Exibe a opcao escolhida: estado.
+6 50 steps
+50 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
+7 51 expected_results
+51 8 system Exibe a opcao escolhida: cidade(s).
+8 52 steps
+52 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
+9 53 expected_results
+53 10 system Exibe a opcao escolhida: tipo de deslocamento.
+10 54 steps
+54 11 Chefe/Beneficiário Escolhe o tipo de hospedagem.
+11 55 expected_results
+55 12 system Exibe a opcao escolhida: hospedagem.
+12 56 steps
+56 13 Chefe/Beneficiário Escolhe o tipo de periodo de afastamento.
+13 57 expected_results
+57 14 system Exibe a opcao escolhida: periodo de afastamento.
+14 58 steps
+58 15 Chefe/Beneficiário Informa as datas de afastamento, antes do ultimo dia de viagem.
+15 59 expected_results
+59 16 system Exibe as datas escolhidas: datas de afastamento.
+16 60 steps
+60 17 Chefe/Beneficiário Informa se tem pernoite.
+17 61 expected_results
+61 18 system Exibe a opcao escolhida: pernoite.
+18 62 steps
+62 19 Chefe/Beneficiário Informa que acompanha autoridade
+19 63 expected_results
+63 20 system Exibe a opcao escolhida: acompanha autoridade.
+20 64 steps
+64 21 Chefe/Beneficiário Seleciona a justificativa.
+21 65 expected_results
+65 22 system Exibe a opcao escolhida: justificativa.
+22 66 steps
+66 23 Chefe/Beneficiário Detalha a justificativa.
+23 67 expected_results
+67 24 system Exibe o texto informado: detalhe da justificativa.
+24 68 steps
+68 25 Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
+25 69 expected_results
+69 26 system Exibe os beneficiarios selecionados.
+26 70 steps
+70 27 Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
+27 71 expected_results
+71 28 system Confirma a existencia de conta para recebimento de diarias do servidor.
+28 72 steps
+72 29 Chefe/Beneficiário Clica em confirmar.
+29 73 expected_results
+73 30 system Calcula o valor da(s) diaria(s) com as informacoes do formulario.
+30 74 steps
+74 31 Chefe/Beneficiário Verifica os valores presentes na tela.
+31 75 expected_results
+75 32 system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas
+32 76 conditions
+76 33 O sistema salva os dados
+2 77 steps
+77 34 Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
+34 78 expected_results
+78 35 system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)
+35 79 steps
+79 36 Chefe/Beneficiário NÃO Escolhe o estado.
+36 80 expected_results
+80 37 system O sistema seleciona o estado como PB, automaticamente.
+37 81 steps
+81 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
+2 82 steps
+82 38 Chefe/Beneficiário Seleciona o tipo de viagem internacional.
+38 83 expected_results
+83 39 system Exibe a lista de países para seleção, no lugar de estado/cidade.
+39 84 steps
+84 40 Chefe/Beneficiário Seleciona o país da viagem.
+40 85 expected_results
+85 41 system Exibe a opcao escolhida: país da viagem
+41 86 steps
+86 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
+5 87 expected_results
+87 33 system Exibe a mensagem de erro MSG201 - DNE indisponível.
+14 88 steps
+88 15 Chefe/Beneficiário Informa as datas de afastamento, apos o ultimo dia de viagem.
+14 89 steps
+89 15 Chefe/Beneficiário Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem.
+18 90 steps
+90 42 Chefe/Beneficiário Informa que acompanha autoridade
+42 91 expected_results
+91 43 system Exibe a opcao escolhida: NÃO acompanha autoridade.
+43 92 steps
+92 21 Chefe/Beneficiário Seleciona a justificativa.
+19 93 expected_results
+93 33 system Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades.
+27 94 expected_results
+94 33 system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
+28 95 steps
+95 44 Chefe/Beneficiário Clica em limpar campos.
+44 96 expected_results
+96 33 system Apaga todas as seleções do usuário.
+29 97 expected_results
+97 33 system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
+29 98 expected_results
+98 33 system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.

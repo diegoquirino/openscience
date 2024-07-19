@@ -1,0 +1,47 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+#
+1 11 conditions
+11 2 O usuario devidamente autenticado e na tela inicial do sistema
+2 12 steps
+12 3 Chefe Clica para listar todas as solicitações de diárias relacionadas à sua competência.
+3 13 expected_results
+13 4 system Recupera os registros de solicitações e os exibe (em ordem decrescente pelo número da diária) em tela para o usuário.
+4 14 steps
+14 5 Chefe Visualiza os registros de solicitações de diária.
+5 15 expected_results
+15 6 system Exibe os registros de solicitações de diária.
+6 16 conditions
+16 7 O caso de uso encerra.
+4 17 steps
+17 8 Chefe Clica para detalhar a solicitação de diária.
+8 18 expected_results
+18 7 system Exibe o detalhamento em modal para o usuário; Apresenta a tela de Detalhar Diárias
+4 19 steps
+19 9 Chefe Clica para realizar o cancelamento de uma diária.
+9 20 expected_results
+20 7 system Verifica que a solicitação está em situação SOLICITADA; Exibe mensagem de confirmação (MSG987 - Cancelar solicitação de diária) para o usuário (que deve confirmar); Cancela a diária, mudando sua situação para CANCELADA (ver diagrama de estados da diária).
+4 21 steps
+21 10 Chefe Indica alguns parâmetros específicos para a busca; Informa o nome do beneficiário; Filtra a listagem de solicitações.
+10 22 expected_results
+22 7 system Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário.

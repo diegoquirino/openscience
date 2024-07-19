@@ -1,0 +1,22 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+#
+1 2 [c] O usuario devidamente autenticado e na tela inicial do sistema
+2 3 [s] Beneficiário O usuario acessa o caso de uso atraves do menu.
+3 4 [e] system Apresenta a tela com a lista de diárias daquele beneficiário.
+4 5 [c] O caso de uso encerra.
+2 6 [s] Beneficiário Informa os filtros desejados.
+6 5 [e] system Atualiza a lista de diárias conforme os filtros.
+2 7 [s] Beneficiário Clica em detalhar diária.
+7 5 [e] system Apresenta a tela de Detalhar Diárias
+2 8 [s] Beneficiário Clica em analisar prestação de contas.
+8 5 [e] system Apresenta a tela de Analisar Prestação de Contas
+2 9 [s] Beneficiário Clica em cancelar diária.
+9 5 [e] system Apresenta a tela de Cancelar Solicitação de Diária

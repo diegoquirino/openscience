@@ -1,0 +1,21 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+#
+1 2 [c] O usuario devidamente autenticado e na tela inicial de cancelar diárias
+2 3 [s] Chefe Informa o motivo do cancelamento.
+3 4 [e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)
+4 5 [s] Chefe Clica em confirmar.
+5 6 [e] system Altera o status da diária para CANCELADA.
+6 7 [c] O caso de uso encerra.
+2 8 [s] Chefe Não informa o motivo do cancelamento.
+8 9 [e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)
+9 5 [s] Chefe Clica em confirmar.
+3 7 [e] system Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'.  Impede o cancelamento e exibe mensagem de erro (MSG205 - Solcitação de diária não pode ser cancelada) para o usuário.
+5 7 [e] system Identifica que o usuário não informou uma justificativa para o cancelamento. Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações	) para o usuário.

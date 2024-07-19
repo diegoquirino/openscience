@@ -1,0 +1,99 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+#
+1 2 [c] O usuario acessa o caso de uso atraves do menu.. O sistema exibe a tela de solicitacao de diarias.
+2 3 [s] Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
+3 4 [e] system Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual).
+4 5 [s] Chefe/Beneficiário Escolhe o estado.
+5 6 [e] system Exibe a opcao escolhida: estado.
+6 7 [s] Chefe/Beneficiário Escolhe a(s) cidade(s).
+7 8 [e] system Exibe a opcao escolhida: cidade(s).
+8 9 [s] Chefe/Beneficiário Escolhe o tipo de deslocamento.
+9 10 [e] system Exibe a opcao escolhida: tipo de deslocamento.
+10 11 [s] Chefe/Beneficiário Escolhe o tipo de hospedagem.
+11 12 [e] system Exibe a opcao escolhida: hospedagem.
+12 13 [s] Chefe/Beneficiário Escolhe o tipo de periodo de afastamento.
+13 14 [e] system Exibe a opcao escolhida: periodo de afastamento.
+14 15 [s] Chefe/Beneficiário Informa as datas de afastamento, antes do ultimo dia de viagem.
+15 16 [e] system Exibe as datas escolhidas: datas de afastamento.
+16 17 [s] Chefe/Beneficiário Informa se tem pernoite.
+17 18 [e] system Exibe a opcao escolhida: pernoite.
+18 19 [s] Chefe/Beneficiário Informa que acompanha autoridade
+19 20 [e] system Exibe a opcao escolhida: acompanha autoridade.
+20 21 [s] Chefe/Beneficiário Seleciona a justificativa.
+21 22 [e] system Exibe a opcao escolhida: justificativa.
+22 23 [s] Chefe/Beneficiário Detalha a justificativa.
+23 24 [e] system Exibe o texto informado: detalhe da justificativa.
+24 25 [s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
+25 26 [e] system Exibe os beneficiarios selecionados.
+26 27 [s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
+27 28 [e] system Confirma a existencia de conta para recebimento de diarias do servidor.
+28 29 [s] Chefe/Beneficiário Clica em confirmar.
+29 30 [e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario.
+30 31 [s] Chefe/Beneficiário Verifica os valores presentes na tela.
+31 32 [e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas
+32 33 [c] O sistema salva os dados
+2 34 [s] Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
+34 35 [e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)
+35 36 [s] Chefe/Beneficiário NÃO Escolhe o estado.
+36 37 [e] system O sistema seleciona o estado como PB, automaticamente.
+37 7 [s] Chefe/Beneficiário Escolhe a(s) cidade(s).
+2 38 [s] Chefe/Beneficiário Seleciona o tipo de viagem internacional.
+38 39 [e] system Exibe a lista de países para seleção, no lugar de estado/cidade.
+39 40 [s] Chefe/Beneficiário Seleciona o país da viagem.
+40 41 [e] system Exibe a opcao escolhida: país da viagem
+41 9 [s] Chefe/Beneficiário Escolhe o tipo de deslocamento.
+5 33 [e] system Exibe a mensagem de erro MSG201 - DNE indisponível.
+14 15 [s] Chefe/Beneficiário Informa as datas de afastamento, apos o ultimo dia de viagem.
+14 15 [s] Chefe/Beneficiário Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem.
+18 42 [s] Chefe/Beneficiário Informa que acompanha autoridade
+42 43 [e] system Exibe a opcao escolhida: NÃO acompanha autoridade.
+43 21 [s] Chefe/Beneficiário Seleciona a justificativa.
+19 33 [e] system Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades.
+27 33 [e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
+28 44 [s] Chefe/Beneficiário Clica em limpar campos.
+44 33 [e] system Apaga todas as seleções do usuário.
+29 33 [e] system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
+29 33 [e] system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
