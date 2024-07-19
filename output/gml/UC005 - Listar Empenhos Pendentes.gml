@@ -71,7 +71,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Exibe a lista de solicitações aguardando serem empenhadas."
+  label "[e] system Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente."
 ]
 edge
 [

@@ -71,7 +71,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Recupera e exibe para o usuário a lista de diárias aptas para pagamento."
+  label "[e] system Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente."
 ]
 edge
 [

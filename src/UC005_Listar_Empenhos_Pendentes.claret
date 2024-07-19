@@ -6,14 +6,14 @@
 systemName "RGP-Diarias"
 
 usecase "UC005 - Listar Empenhos Pendentes" {
-	version "0.1" type "Creation" user "Fabrício Araújo" date "13/04/2020"
+	version "0.1" type "Creation" user "Julio Paiva" date "17/02/2023"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuario devidamente autenticado e na tela de listagem de empenhos"
-		
+	
 	basic {
 		step 1 usuario "Clica para exibir a lista de solicitações aguardando empenho." af[1,2,3,4]
-		step 2 system "Exibe a lista de solicitações aguardando serem empenhadas."
+		step 2 system "Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente."
 	}
 	alternative 1 "Usuário exibe detalhes da solicitação" {
 		step 1 usuario "Clica para que o sistema exiba detalhes da solicitação da diária."
