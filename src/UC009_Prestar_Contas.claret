@@ -6,10 +6,10 @@
 systemName "RGP-Diarias"
 
 usecase "UC009 - Prestar Contas" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe"
 	
-	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	preCondition "O usuário devidamente autenticado e na tela inicial do sistema."
 		
 	basic {
 		step 1 usuario "Clica para realizar a prestação de contas."
@@ -17,8 +17,8 @@ usecase "UC009 - Prestar Contas" {
 		step 3 usuario "Indica uma solicitação de diárias a fim de realizar a prestação de contas."
 		step 4 system "Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
 					Exibe o histórico da tramitação da prestação de contas." ef[2,3]
-		step 5 usuario "Verifica o histório da tramitação da prestação de contas." af[1,2,3,4,5]
-		step 6 system "Exibe o histórico da tramitação da prestação de contas." 
+		step 5 usuario "Verifica o histórico da tramitação da prestação de contas." af[1,2,3,4,5]
+		step 6 system "Exibe o histórico da tramitação da prestação de contas."
 	}
 	
 	alternative 1 "Inserir comprovantes" {
@@ -49,7 +49,7 @@ usecase "UC009 - Prestar Contas" {
 	}
 	exception 2 "Prestação de contas já realizada." {
 		step 1 system "Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA;
-					Permite não permite um novo envio ou alterações na prestação (exclusão de documentos)."
+					Não permite um novo envio ou alterações na prestação (exclusão de documentos)."
 	}
 	exception 3 "Prestação de contas ainda não pode ser realizada." {
 		step 1 system "Identifica que a solicitação indicada pelo usuário ainda não pode ter sua prestação de contas realizada;
@@ -57,7 +57,7 @@ usecase "UC009 - Prestar Contas" {
 	}
 	alternative 5 "Detalhar solicitação de diária." {
 		step 1 usuario "Clica para detalhar a solicitação de diária."
-		step 2 system "Apresenta a tela de Detalhar Diárias"
+		step 2 system "Apresenta a tela de Detalhar Diárias."
 	}
 	exception 4 "Listagem de diárias para o perfil OPERADOR" {
 		step 1 system "Identifica que se trata de um usuário com perfil OPERADOR;
@@ -65,5 +65,4 @@ usecase "UC009 - Prestar Contas" {
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

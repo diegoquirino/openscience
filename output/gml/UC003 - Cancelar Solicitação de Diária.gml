@@ -49,7 +49,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial de cancelar diárias"
+  label "[c] O usuário devidamente autenticado e na tela inicial de cancelar diárias."
 ]
 edge
 [
@@ -61,7 +61,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)"
+  label "[e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)."
 ]
 edge
 [
@@ -91,7 +91,7 @@ edge
 [
   source 8
   target 9
-  label "[e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)"
+  label "[e] system Exibe a mensagem (MSG102 - Confirmar cancelamento)."
 ]
 edge
 [
@@ -103,12 +103,12 @@ edge
 [
   source 3
   target 7
-  label "[e] system Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'.  Impede o cancelamento e exibe mensagem de erro (MSG205 - Solcitação de diária não pode ser cancelada) para o usuário."
+  label "[e] system Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'.  Impede o cancelamento e exibe mensagem de erro (MSG205 - Solicitação de diária não pode ser cancelada) para o usuário."
 ]
 edge
 [
   source 5
   target 7
-  label "[e] system Identifica que o usuário não informou uma justificativa para o cancelamento. Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações	) para o usuário."
+  label "[e] system Identifica que o usuário não informou uma justificativa para o cancelamento. Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações) para o usuário."
 ]
 ]

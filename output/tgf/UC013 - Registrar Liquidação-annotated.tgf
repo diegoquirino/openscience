@@ -15,7 +15,7 @@
 15 15
 #
 1 8 conditions
-8 2 O Sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro). Exibe os dados da solicitação para o usuário.
+8 2 O sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro). Exibe os dados da solicitação para o usuário.
 2 9 steps
 9 3 Chefe Informa o número da liquidação e do exercício.
 3 10 expected_results
@@ -29,4 +29,4 @@
 5 14 expected_results
 14 7 system Identifica que campos obrigatórios não foram preenchidos; Exibe mensagem adequada de erro (MSG203 - Campos obrigatórios / MSG218 - É obrigatório informar o número da liquidação) para o usuário.
 5 15 expected_results
-15 7 system Verifica que já existe um número de liquidação (considerando também o mesmo exercício) registrado na base de dados; Interrompe a operação e exibe mensagem de erro (MSG211 - Número da liquidação já existe.) para o usuário.
+15 7 system Verifica que já existe um número de liquidação (considerando também o mesmo exercício) registrado na base de dados; Interrompe a operação e exibe mensagem de erro (MSG211 - Número da liquidação já existe) para o usuário.

@@ -49,13 +49,13 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
   source 2
   target 3
-  label "[s] Beneficiário O usuario acessa o caso de uso atraves do menu."
+  label "[s] Beneficiário Acessa o caso de uso através do menu."
 ]
 edge
 [
@@ -91,7 +91,7 @@ edge
 [
   source 7
   target 5
-  label "[e] system Apresenta a tela de Detalhar Diárias"
+  label "[e] system Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [
@@ -103,7 +103,7 @@ edge
 [
   source 8
   target 5
-  label "[e] system Apresenta a tela de Analisar Prestação de Contas"
+  label "[e] system Apresenta a tela de Analisar Prestação de Contas."
 ]
 edge
 [
@@ -115,6 +115,6 @@ edge
 [
   source 9
   target 5
-  label "[e] system Apresenta a tela de Cancelar Solicitação de Diária"
+  label "[e] system Apresenta a tela de Cancelar Solicitação de Diária."
 ]
 ]

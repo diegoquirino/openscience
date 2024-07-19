@@ -6,22 +6,22 @@
 systemName "RGP-Diarias"
 
 usecase "UC005 - Listar Empenhos Pendentes" {
-	version "0.1" type "Creation" user "Julio Paiva" date "17/02/2023"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe/Beneficiário"
 	
-	preCondition "O usuario devidamente autenticado e na tela de listagem de empenhos"
+	preCondition "O usuário devidamente autenticado e na tela de listagem de empenhos."
 	
 	basic {
 		step 1 usuario "Clica para exibir a lista de solicitações aguardando empenho." af[1,2,3,4]
-		step 2 system "Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente."
+		step 2 system "Exibe a lista de solicitações aguardando serem empenhadas, de todos os servidores, ordenado pelo número da diária em ordem crescente."
 	}
 	alternative 1 "Usuário exibe detalhes da solicitação" {
 		step 1 usuario "Clica para que o sistema exiba detalhes da solicitação da diária."
 		step 2 system "Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e
-					Apresenta a tela de Detalhar Diárias"
+					Apresenta a tela de Detalhar Diárias."
 	}
 	alternative 2 "Usuário adiciona número do credor ao beneficiário" {
-		step 1 usuario "filtra a listagem por registros cujos beneficiários não possuem número do credor"
+		step 1 usuario "Filtra a listagem por registros cujos beneficiários não possuem número do credor."
 		step 2 system "Identifica que a partir da listagem, registros cujos beneficiários não possuem número do credor; e
 		 			Habilita a opção (por meio de item de tela) para que o usuário possa informar (individualmente) um número de credor para um beneficiário."
 		step 3 usuario "Informa o número do credor para o beneficiário; e
@@ -36,7 +36,7 @@ usecase "UC005 - Listar Empenhos Pendentes" {
 	}
 	alternative 4 "Realizar empenho" {
 		step 1 usuario "Clica para realizar o empenho de uma diária."
-		step 2 system "Apresenta a tela de Registrar Empenho"
+		step 2 system "Apresenta a tela de Registrar Empenho."
 	}
 	
 	exception 1 "Erro inesperado ao atualizar o número do credor" {
@@ -49,5 +49,4 @@ usecase "UC005 - Listar Empenhos Pendentes" {
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

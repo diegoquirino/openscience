@@ -6,17 +6,17 @@
 systemName "RGP-Diarias"
 
 usecase "UC008 - Registrar Autorização de Pagamento" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe"
 	
 	preCondition "O sistema identifica a solicitação a ter a AP registrada (recebida por parâmetro).",
 			"O sistema exibe os dados da solicitação para o usuário."
 		
 	basic {
-		step 3 usuario "Informa o número de Autorização de Pagamento e do Exercício."
+		step 1 usuario "Informa o número de Autorização de Pagamento e do Exercício."
 		step 2 system "Exibe o número de Autorização de Pagamento e do Exercício nos campos."
-		step 4 usuario "Confirma a operação."
-		step 5 system "Persiste o número da AP e o ano de exercício conforme informados;
+		step 3 usuario "Confirma a operação."
+		step 4 system "Persiste o número da AP e o ano de exercício conforme informados;
 					Altera a situação da diária (solicitação) para PAGAMENTO AUTORIZADO; e
 					Exibe mensagem de sucesso para o usuário." ef[1,2]
 	}
@@ -26,9 +26,8 @@ usecase "UC008 - Registrar Autorização de Pagamento" {
 	}
 	exception 2 "Número da AP já existe" {
 		step 1 system "Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e
-					Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe.) para o usuário."
+					Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe) para o usuário."
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

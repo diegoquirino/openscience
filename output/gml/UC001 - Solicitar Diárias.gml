@@ -214,7 +214,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario acessa o caso de uso atraves do menu.. O sistema exibe a tela de solicitacao de diarias."
+  label "[c] O usuário acessa o caso de uso através do menu.. O sistema exibe a tela de solicitação de diárias."
 ]
 edge
 [
@@ -226,7 +226,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual)."
+  label "[e] system Exibe a opção escolhida: viagem nacional - fora do estado (interestadual)."
 ]
 edge
 [
@@ -238,7 +238,7 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe a opcao escolhida: estado."
+  label "[e] system Exibe a opção escolhida: estado."
 ]
 edge
 [
@@ -250,7 +250,7 @@ edge
 [
   source 7
   target 8
-  label "[e] system Exibe a opcao escolhida: cidade(s)."
+  label "[e] system Exibe a opção escolhida: cidade(s)."
 ]
 edge
 [
@@ -262,7 +262,7 @@ edge
 [
   source 9
   target 10
-  label "[e] system Exibe a opcao escolhida: tipo de deslocamento."
+  label "[e] system Exibe a opção escolhida: tipo de deslocamento."
 ]
 edge
 [
@@ -274,25 +274,25 @@ edge
 [
   source 11
   target 12
-  label "[e] system Exibe a opcao escolhida: hospedagem."
+  label "[e] system Exibe a opção escolhida: hospedagem."
 ]
 edge
 [
   source 12
   target 13
-  label "[s] Chefe/Beneficiário Escolhe o tipo de periodo de afastamento."
+  label "[s] Chefe/Beneficiário Escolhe o tipo de período de afastamento."
 ]
 edge
 [
   source 13
   target 14
-  label "[e] system Exibe a opcao escolhida: periodo de afastamento."
+  label "[e] system Exibe a opção escolhida: período de afastamento."
 ]
 edge
 [
   source 14
   target 15
-  label "[s] Chefe/Beneficiário Informa as datas de afastamento, antes do ultimo dia de viagem."
+  label "[s] Chefe/Beneficiário Informa as datas de afastamento, antes do último dia de viagem."
 ]
 edge
 [
@@ -310,7 +310,7 @@ edge
 [
   source 17
   target 18
-  label "[e] system Exibe a opcao escolhida: pernoite."
+  label "[e] system Exibe a opção escolhida: pernoite."
 ]
 edge
 [
@@ -322,7 +322,7 @@ edge
 [
   source 19
   target 20
-  label "[e] system Exibe a opcao escolhida: justificativa."
+  label "[e] system Exibe a opção escolhida: justificativa."
 ]
 edge
 [
@@ -340,25 +340,25 @@ edge
 [
   source 22
   target 23
-  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
+  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s)."
 ]
 edge
 [
   source 23
   target 24
-  label "[e] system Exibe os beneficiarios selecionados."
+  label "[e] system Exibe os beneficiário(s) selecionado(s)."
 ]
 edge
 [
   source 24
   target 25
-  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
+  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s)."
 ]
 edge
 [
   source 25
   target 26
-  label "[e] system Confirma a existencia de conta para recebimento de diarias do servidor."
+  label "[e] system Confirma a existência de conta para recebimento de diárias do servidor."
 ]
 edge
 [
@@ -370,25 +370,25 @@ edge
 [
   source 27
   target 28
-  label "[e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario."
+  label "[e] system Calcula o valor da(s) diária(s) com as informações do formulário."
 ]
 edge
 [
   source 28
   target 29
-  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela: 1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF. 2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado. 3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária."
+  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela: 1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de uma diária de um ministro do STF. 2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado. 3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária."
 ]
 edge
 [
   source 29
   target 30
-  label "[e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas"
+  label "[e] system Altera o status da diária para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas."
 ]
 edge
 [
   source 30
   target 31
-  label "[c] O sistema salva os dados"
+  label "[c] O sistema salva os dados."
 ]
 edge
 [
@@ -400,7 +400,7 @@ edge
 [
   source 32
   target 33
-  label "[e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)"
+  label "[e] system Exibe a opção escolhida: viagem nacional - dentro do estado (intermunicipal)."
 ]
 edge
 [
@@ -442,7 +442,7 @@ edge
 [
   source 38
   target 39
-  label "[e] system Exibe a opcao escolhida: país da viagem"
+  label "[e] system Exibe a opção escolhida: país da viagem."
 ]
 edge
 [
@@ -460,31 +460,31 @@ edge
 [
   source 14
   target 15
-  label "[s] Chefe/Beneficiário Informa as datas de afastamento, apos o ultimo dia de viagem."
+  label "[s] Chefe/Beneficiário Informa as datas de afastamento, após o último dia de viagem."
 ]
 edge
 [
   source 22
   target 40
-  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
+  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s)."
 ]
 edge
 [
   source 40
   target 41
-  label "[e] system Exibe os beneficiarios selecionados e o campo para preenchimento do nome social"
+  label "[e] system Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social."
 ]
 edge
 [
   source 41
   target 25
-  label "[s] Chefe/Beneficiário Informa o nome social do beneficiario da(s) diaria(s)"
+  label "[s] Chefe/Beneficiário Informa o nome social do beneficiário da(s) diária(s)."
 ]
 edge
 [
   source 23
   target 31
-  label "[e] system Não confirma a existencia de conta para recebimento de diarias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
+  label "[e] system Não confirma a existência de conta para recebimento de diárias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
 ]
 edge
 [

@@ -39,7 +39,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O sistema identifica a solicitação a ser empenhada (recebida por parâmetro). O Sistema exibe os dados da solicitação para o usuário."
+  label "[c] O sistema identifica a solicitação a ser empenhada (recebida por parâmetro). O sistema exibe os dados da solicitação para o usuário."
 ]
 edge
 [
@@ -81,6 +81,6 @@ edge
 [
   source 5
   target 7
-  label "[e] system Verifica que já existe um número de empenho (considerando também o mesmo exercício) registrado na base de dados; e Exibe mensagem de erro (MSG209 - Número do empenho já existe.) para o usuário."
+  label "[e] system Verifica que já existe um número de empenho (considerando também o mesmo exercício) registrado na base de dados; e Exibe mensagem de erro (MSG209 - Número do empenho já existe) para o usuário."
 ]
 ]

@@ -39,7 +39,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela de listagem de diárias"
+  label "[c] O usuário devidamente autenticado e na tela de listagem de diárias."
 ]
 edge
 [
@@ -51,7 +51,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes). Apresenta o numero do empenho e a autorização de pagamento como links. Apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe."
+  label "[e] system Apresenta a tela com as informações da diária do servidor (dados gerais da diária, estratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes). Apresenta o número do empenho e a autorização de pagamento como links. Apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe."
 ]
 edge
 [

@@ -64,13 +64,13 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
   source 2
   target 3
-  label "[s] Chefe Acessa a funcionalidade Minha Conta Bancária (menu)"
+  label "[s] Chefe Acessa a funcionalidade Minha Conta Bancária (menu)."
 ]
 edge
 [
@@ -88,7 +88,7 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias."
+  label "[e] system Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancária (dados bancários)) para o usuário sobre a manutenção de informações bancárias."
 ]
 edge
 [
@@ -106,7 +106,7 @@ edge
 [
   source 8
   target 9
-  label "[e] system Apresenta os campos (banco/agência/conta corrente) alterados"
+  label "[e] system Apresenta os campos (banco/agência/conta corrente) alterados."
 ]
 edge
 [

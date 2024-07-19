@@ -20,11 +20,11 @@
 20 20
 #
 1 10 conditions
-10 2 O usuario devidamente autenticado e na tela inicial de cancelar diárias
+10 2 O usuário devidamente autenticado e na tela inicial de cancelar diárias.
 2 11 steps
 11 3 Chefe Informa o motivo do cancelamento.
 3 12 expected_results
-12 4 system Exibe a mensagem (MSG102 - Confirmar cancelamento)
+12 4 system Exibe a mensagem (MSG102 - Confirmar cancelamento).
 4 13 steps
 13 5 Chefe Clica em confirmar.
 5 14 expected_results
@@ -34,10 +34,10 @@
 2 16 steps
 16 8 Chefe Não informa o motivo do cancelamento.
 8 17 expected_results
-17 9 system Exibe a mensagem (MSG102 - Confirmar cancelamento)
+17 9 system Exibe a mensagem (MSG102 - Confirmar cancelamento).
 9 18 steps
 18 5 Chefe Clica em confirmar.
 3 19 expected_results
-19 7 system Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'.  Impede o cancelamento e exibe mensagem de erro (MSG205 - Solcitação de diária não pode ser cancelada) para o usuário.
+19 7 system Identifica que a solicitação de diária está em situação diferente de 'SOLICITADA PARA EMPENHO' ou 'SOLICITADA PARA PRESTAÇÃO DE CONTAS'.  Impede o cancelamento e exibe mensagem de erro (MSG205 - Solicitação de diária não pode ser cancelada) para o usuário.
 5 20 expected_results
-20 7 system Identifica que o usuário não informou uma justificativa para o cancelamento. Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações	) para o usuário.
+20 7 system Identifica que o usuário não informou uma justificativa para o cancelamento. Não efetiva o cancelamento e exibe mensagem de erro (MSG217 - Necessário informar uma justificativa para o cancelamento de solicitações) para o usuário.

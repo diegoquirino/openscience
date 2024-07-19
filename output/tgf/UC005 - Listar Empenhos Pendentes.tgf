@@ -10,19 +10,19 @@
 10 10
 11 11
 #
-1 2 [c] O usuario devidamente autenticado e na tela de listagem de empenhos
+1 2 [c] O usuário devidamente autenticado e na tela de listagem de empenhos.
 2 3 [s] Chefe/Beneficiário Clica para exibir a lista de solicitações aguardando empenho.
-3 4 [e] system Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.
+3 4 [e] system Exibe a lista de solicitações aguardando serem empenhadas, de todos os servidores, ordenado pelo número da diária em ordem crescente.
 4 5 [c] O caso de uso encerra.
 2 6 [s] Chefe/Beneficiário Clica para que o sistema exiba detalhes da solicitação da diária.
-6 5 [e] system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias
-2 7 [s] Chefe/Beneficiário filtra a listagem por registros cujos beneficiários não possuem número do credor
+6 5 [e] system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias.
+2 7 [s] Chefe/Beneficiário Filtra a listagem por registros cujos beneficiários não possuem número do credor.
 7 8 [e] system Identifica que a partir da listagem, registros cujos beneficiários não possuem número do credor; e  			Habilita a opção (por meio de item de tela) para que o usuário possa informar (individualmente) um número de credor para um beneficiário.
 8 9 [s] Chefe/Beneficiário Informa o número do credor para o beneficiário; e Confirma a operação.
 9 5 [e] system Realiza a persistência do número do credor, para o beneficiário indicado, na base do RH; Atualiza a listagem de solicitações aguardando empenho, já com o número do credor recém informado; e Exibe mensagem de sucesso.
 2 10 [s] Chefe/Beneficiário Clica para atribuir/desatribuir o registro a si mesmo.
 10 5 [e] system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pelo empenho), no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).
 2 11 [s] Chefe/Beneficiário Clica para realizar o empenho de uma diária.
-11 5 [e] system Apresenta a tela de Registrar Empenho
+11 5 [e] system Apresenta a tela de Registrar Empenho.
 9 5 [e] system Identifica que houve um erro inesperado, quando da tentativa de inserção do número do credor; e Exibe mensagem de erro (MSG207 - Não foi possível atualizar o número do credor) para o usuário.
 9 5 [e] system Identifica que o número de credor informado pelo usuário já existe (duplicidade); e Exibe mensagem de erro (MSG208 - Número do credor já existe) para o usuário.

@@ -59,7 +59,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela de listagem de empenhos"
+  label "[c] O usuário devidamente autenticado e na tela de listagem de empenhos."
 ]
 edge
 [
@@ -71,7 +71,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente."
+  label "[e] system Exibe a lista de solicitações aguardando serem empenhadas, de todos os servidores, ordenado pelo número da diária em ordem crescente."
 ]
 edge
 [
@@ -89,13 +89,13 @@ edge
 [
   source 6
   target 5
-  label "[e] system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias"
+  label "[e] system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [
   source 2
   target 7
-  label "[s] Chefe/Beneficiário filtra a listagem por registros cujos beneficiários não possuem número do credor"
+  label "[s] Chefe/Beneficiário Filtra a listagem por registros cujos beneficiários não possuem número do credor."
 ]
 edge
 [
@@ -137,7 +137,7 @@ edge
 [
   source 11
   target 5
-  label "[e] system Apresenta a tela de Registrar Empenho"
+  label "[e] system Apresenta a tela de Registrar Empenho."
 ]
 edge
 [

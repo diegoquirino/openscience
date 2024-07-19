@@ -81,6 +81,6 @@ edge
 [
   source 5
   target 7
-  label "[e] system Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe.) para o usuário."
+  label "[e] system Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe) para o usuário."
 ]
 ]

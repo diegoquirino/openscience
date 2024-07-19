@@ -5,50 +5,50 @@
  */
 systemName "RGP-Diarias"
 
-usecase "UC001 - Solicitar diarias" {
-	version "1.0" type "Creation" user "Robson Diego" date "17/03/2022"
+usecase "UC001 - Solicitar Diárias" {
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe/Beneficiário"
 	
-	preCondition "O usuario acessa o caso de uso atraves do menu.", 
-		"O sistema exibe a tela de solicitacao de diarias."
+	preCondition "O usuário acessa o caso de uso através do menu.", 
+		"O sistema exibe a tela de solicitação de diárias."
 	
 	basic {
 		step 1 usuario "Escolhe o tipo de viagem nacional - fora do estado (interestadual)." af[1,2]
-		step 2 system "Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual)." 
+		step 2 system "Exibe a opção escolhida: viagem nacional - fora do estado (interestadual)." 
 		step 3 usuario "Escolhe o estado."
-		step 4 system "Exibe a opcao escolhida: estado." ef[1]
+		step 4 system "Exibe a opção escolhida: estado." ef[1]
 		step 5 usuario "Escolhe a(s) cidade(s)."
-		step 6 system "Exibe a opcao escolhida: cidade(s)."
+		step 6 system "Exibe a opção escolhida: cidade(s)."
 		step 7 usuario "Escolhe o tipo de deslocamento."
-		step 8 system "Exibe a opcao escolhida: tipo de deslocamento."
+		step 8 system "Exibe a opção escolhida: tipo de deslocamento."
 		step 9 usuario "Escolhe o tipo de hospedagem."
-		step 10 system "Exibe a opcao escolhida: hospedagem."
-		step 11 usuario "Escolhe o tipo de periodo de afastamento."
-		step 12 system "Exibe a opcao escolhida: periodo de afastamento."
-		step 13 usuario "Informa as datas de afastamento, antes do ultimo dia de viagem." af[3]
+		step 10 system "Exibe a opção escolhida: hospedagem."
+		step 11 usuario "Escolhe o tipo de período de afastamento."
+		step 12 system "Exibe a opção escolhida: período de afastamento."
+		step 13 usuario "Informa as datas de afastamento, antes do último dia de viagem." af[3]
 		step 14 system "Exibe as datas escolhidas: datas de afastamento."
 		step 15 usuario "Informa se tem pernoite."
-		step 16 system "Exibe a opcao escolhida: pernoite."
+		step 16 system "Exibe a opção escolhida: pernoite."
 		step 17 usuario "Seleciona a justificativa."
-		step 18 system "Exibe a opcao escolhida: justificativa."
+		step 18 system "Exibe a opção escolhida: justificativa."
 		step 19 usuario "Detalha a justificativa."
 		step 20 system "Exibe o texto informado: detalhe da justificativa."
-		step 21 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)." af[5]
-		step 22 system "Exibe os beneficiarios selecionados." ef[5]
-		step 23 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
-		step 24 system "Confirma a existencia de conta para recebimento de diarias do servidor." ef[2]
-		step 25 usuario "Clica em confirmar." af [4]
-		step 26 system "Calcula o valor da(s) diaria(s) com as informacoes do formulario." ef[3,4]
+		step 21 usuario "Seleciona o(s) beneficiário(s) da(s) diária(s)." af[5]
+		step 22 system "Exibe os beneficiário(s) selecionado(s)." ef[5]
+		step 23 usuario "Seleciona o(s) beneficiário(s) da(s) diária(s)."
+		step 24 system "Confirma a existência de conta para recebimento de diárias do servidor." ef[2]
+		step 25 usuario "Clica em confirmar." af[4]
+		step 26 system "Calcula o valor da(s) diária(s) com as informações do formulário." ef[3,4]
 		step 27 usuario "Verifica os valores presentes na tela:
-						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF.
+						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de uma diária de um ministro do STF.
 						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.
 						3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária."
-		step 28 system "Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas"
+		step 28 system "Altera o status da diária para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas."
 	}
 	
 	alternative 1 "Usuário seleciona tipo de viagem nacional - dentro do estado." {
 		step 1 usuario "Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal)." 
-		step 2 system "Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)"
+		step 2 system "Exibe a opção escolhida: viagem nacional - dentro do estado (intermunicipal)."
 		step 3 usuario "NÃO Escolhe o estado."
 		step 4 system "O sistema seleciona o estado como PB, automaticamente."
 		step 5 usuario "Escolhe a(s) cidade(s)." bs 6
@@ -57,38 +57,38 @@ usecase "UC001 - Solicitar diarias" {
 		step 1 usuario "Seleciona o tipo de viagem internacional." 
 		step 2 system "Exibe a lista de países para seleção, no lugar de estado/cidade."
 		step 3 usuario "Seleciona o país da viagem."
-		step 4 system "Exibe a opcao escolhida: país da viagem"
+		step 4 system "Exibe a opção escolhida: país da viagem."
 		step 5 usuario "Escolhe o tipo de deslocamento." bs 8
 	}
-	alternative 3 "Pedido de Diaria apos realizacao da viagem." {
-		step 1 usuario "Informa as datas de afastamento, apos o ultimo dia de viagem." bs 14 
+	alternative 3 "Pedido de diária após realização da viagem." {
+		step 1 usuario "Informa as datas de afastamento, após o último dia de viagem." bs 14 
 	}
 	alternative 4 "Limpar Campos" {
 		step 1 usuario "Clica em limpar campos."
 		step 2 system "Apaga todas as seleções do usuário." 
 	}
 	alternative 5 "Informar nome social" {
-		step 1 usuario "Seleciona o(s) beneficiarios da(s) diaria(s)."
-		step 2 system "Exibe os beneficiarios selecionados e o campo para preenchimento do nome social"
-		step 3 usuario "Informa o nome social do beneficiario da(s) diaria(s)" bs 24
+		step 1 usuario "Seleciona o(s) beneficiário(s) da(s) diária(s)."
+		step 2 system "Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social."
+		step 3 usuario "Informa o nome social do beneficiário da(s) diária(s)." bs 24
 	}
 	
-	exception 1 "DNE Indisponivel" {
+	exception 1 "DNE Indisponível" {
 		step 1 system "Exibe a mensagem de erro MSG201 - DNE indisponível."
 	}
-	exception 2 "O serviço de integração RGP Core encontra-se indisponível" {
+	exception 2 "O serviço de integração RGP Core encontra-se indisponível." {
 		step 1 system "Exibe a mensagem de erro MSG202 - RGP Core indisponível."
 	}
-	exception 3 "Dados obrigatórios não informados" {
+	exception 3 "Dados obrigatórios não informados." {
 		step 1 system "Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados)."
 	}
-	exception 4 "Conflito de datas para solicitação de diárias" {
+	exception 4 "Conflito de datas para solicitação de diárias." {
 		step 1 system "Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias."
 	}
-	exception 5 "Conta para recebimento de diárias não cadastrada" {
-		step 1 system "Não confirma a existencia de conta para recebimento de diarias do servidor.
+	exception 5 "Conta para recebimento de diárias não cadastrada." {
+		step 1 system "Não confirma a existência de conta para recebimento de diárias do servidor.
 					Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada."
 	}
 	
-	postCondition "O sistema salva os dados"
+	postCondition "O sistema salva os dados."
 }

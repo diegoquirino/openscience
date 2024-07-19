@@ -54,7 +54,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
@@ -78,7 +78,7 @@ edge
 [
   source 5
   target 6
-  label "[e] system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente. Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho)."
+  label "[e] system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo número da diária em ordem crescente. Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho)."
 ]
 edge
 [
@@ -96,7 +96,7 @@ edge
 [
   source 8
   target 7
-  label "[e] system Apresenta a tela de Detalhar Diárias"
+  label "[e] system Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [
@@ -108,7 +108,7 @@ edge
 [
   source 9
   target 7
-  label "[e] system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido)."
+  label "[e] system Atualiza a lista de registros de solicitações, onde deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido)."
 ]
 edge
 [
@@ -120,6 +120,6 @@ edge
 [
   source 10
   target 7
-  label "[e] system Apresenta a tela de Registrar Liquidações"
+  label "[e] system Apresenta a tela de Registrar Liquidações."
 ]
 ]

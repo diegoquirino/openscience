@@ -15,7 +15,7 @@
 15 15
 #
 1 8 conditions
-8 2 O sistema identifica a solicitação a ser empenhada (recebida por parâmetro). O Sistema exibe os dados da solicitação para o usuário.
+8 2 O sistema identifica a solicitação a ser empenhada (recebida por parâmetro). O sistema exibe os dados da solicitação para o usuário.
 2 9 steps
 9 3 Chefe Informa o número do empenho e do exercício.
 3 10 expected_results
@@ -29,4 +29,4 @@
 5 14 expected_results
 14 7 system Identifica que campos obrigatórios não foram preenchidos; e Exibe mensagem de erro (MSG203 - Campos obrigatórios / MSG216 - É obrigatório informar o número do empenho) para o usuário.
 5 15 expected_results
-15 7 system Verifica que já existe um número de empenho (considerando também o mesmo exercício) registrado na base de dados; e Exibe mensagem de erro (MSG209 - Número do empenho já existe.) para o usuário.
+15 7 system Verifica que já existe um número de empenho (considerando também o mesmo exercício) registrado na base de dados; e Exibe mensagem de erro (MSG209 - Número do empenho já existe) para o usuário.

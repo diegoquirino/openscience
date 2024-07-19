@@ -84,7 +84,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
@@ -114,7 +114,7 @@ edge
 [
   source 6
   target 7
-  label "[s] Chefe Verifica o histório da tramitação da prestação de contas."
+  label "[s] Chefe Verifica o histórico da tramitação da prestação de contas."
 ]
 edge
 [
@@ -138,7 +138,7 @@ edge
 [
   source 5
   target 9
-  label "[e] system Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA; Permite não permite um novo envio ou alterações na prestação (exclusão de documentos)."
+  label "[e] system Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA; Não permite um novo envio ou alterações na prestação (exclusão de documentos)."
 ]
 edge
 [
@@ -216,7 +216,7 @@ edge
 [
   source 16
   target 9
-  label "[e] system Apresenta a tela de Detalhar Diárias"
+  label "[e] system Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [

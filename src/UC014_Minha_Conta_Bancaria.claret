@@ -6,23 +6,23 @@
 systemName "RGP-Diarias"
 
 usecase "UC014 - Minha Conta Bancária" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe"
 	
-	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	preCondition "O usuário devidamente autenticado e na tela inicial do sistema."
 	
 	basic {
-	  	step 1 usuario "Acessa a funcionalidade Minha Conta Bancária (menu)" 
+	  	step 1 usuario "Acessa a funcionalidade Minha Conta Bancária (menu)." 
 	  	step 2 system "Exibe a tela principal do sistema para o usuário;
 					Recupera a partir do SRH as informações da conta bancária que o usuário utiliza para receber diárias;
 					Exibe as informações da referida conta bancária para o usuário."
 		step 3 usuario "Visualiza os dados da referida conta bancária." af[1]
-		step 4 system "Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias." 
+		step 4 system "Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancária (dados bancários)) para o usuário sobre a manutenção de informações bancárias." 
 	}
 	
 	alternative 1 "O usuário altera os dados da conta bancária" {
 	  	step 1 usuario "Altera os dados de sua conta bancária em tela (banco/agência/conta corrente)."
-	  	step 2 system "Apresenta os campos (banco/agência/conta corrente) alterados"
+	  	step 2 system "Apresenta os campos (banco/agência/conta corrente) alterados."
 	  	step 3 usuario "Salva as alterações."
 	  	step 4 system "Exibe mensagem de confirmação (MSG106 - Confirma a alteração dos dados bancários para recebimento de diárias?)."
 	  	step 5 usuario "Confirma."
@@ -42,5 +42,4 @@ usecase "UC014 - Minha Conta Bancária" {
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

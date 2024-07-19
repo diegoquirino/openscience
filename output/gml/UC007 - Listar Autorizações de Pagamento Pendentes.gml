@@ -59,7 +59,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
@@ -71,19 +71,19 @@ edge
 [
   source 3
   target 4
-  label "[e] system Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente. Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de autorização (após registrar o empenho)."
+  label "[e] system Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo número de diárias em ordem crescente. Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de autorização (após registrar o empenho)."
 ]
 edge
 [
   source 4
   target 5
-  label "[s] Chefe Seleciona uma diária apta para pagamento"
+  label "[s] Chefe Seleciona uma diária apta para pagamento."
 ]
 edge
 [
   source 5
   target 6
-  label "[e] system Destaca a diária selecionada"
+  label "[e] system Destaca a diária selecionada."
 ]
 edge
 [
@@ -101,7 +101,7 @@ edge
 [
   source 8
   target 7
-  label "[e] system Apresenta a tela de Detalhar Diárias"
+  label "[e] system Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [
@@ -113,7 +113,7 @@ edge
 [
   source 9
   target 7
-  label "[e] system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido)."
+  label "[e] system Atualiza a lista de registros de solicitações, onde deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido)."
 ]
 edge
 [
@@ -125,7 +125,7 @@ edge
 [
   source 10
   target 7
-  label "[e] system Apresenta a tela de Registrar Autorizações de Pagamento"
+  label "[e] system Apresenta a tela de Registrar Autorizações de Pagamento."
 ]
 edge
 [

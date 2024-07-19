@@ -6,22 +6,22 @@
 systemName "RGP-Diarias"
 
 usecase "UC011 - Listar Solicitações de Diárias" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/11/2020"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Chefe"
 	
-	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	preCondition "O usuário devidamente autenticado e na tela inicial do sistema."
 	
 	basic {
 		step 1 usuario "Clica para listar todas as solicitações de diárias relacionadas à sua competência."
 		step 2 system "Recupera os registros de solicitações e os exibe (em ordem decrescente pelo número da diária) em tela para o usuário."
-		step 4 usuario "Visualiza os registros de solicitações de diária." af[1,2,3,4]
-		step 5 system "Exibe os registros de solicitações de diária."
+		step 3 usuario "Visualiza os registros de solicitações de diária." af[1,2,3,4]
+		step 4 system "Exibe os registros de solicitações de diária."
 	}
 	
 	alternative 1 "Detalhar solicitação de diária" {
 		step 1 usuario "Clica para detalhar a solicitação de diária."
 		step 2 system "Exibe o detalhamento em modal para o usuário;
-					Apresenta a tela de Detalhar Diárias"
+					Apresenta a tela de Detalhar Diárias."
 	}
 	alternative 2 "Cancelar diária" {
 		step 1 usuario "Clica para realizar o cancelamento de uma diária."
@@ -33,7 +33,7 @@ usecase "UC011 - Listar Solicitações de Diárias" {
 		step 1 usuario "Indica alguns parâmetros específicos para a busca;
 					Informa o nome do beneficiário;
 					Filtra a listagem de solicitações."
-		step 4 system "Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário."
+		step 2 system "Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário."
 	}
 	alternative 4 "Ordenar pelo nome do servidor" {
 		step 1 usuario "Clica para ordenar pelo nome do servidor."
@@ -41,5 +41,4 @@ usecase "UC011 - Listar Solicitações de Diárias" {
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

@@ -27,19 +27,19 @@
 27 27
 #
 1 12 conditions
-12 2 O usuario devidamente autenticado e na tela de listagem de empenhos
+12 2 O usuário devidamente autenticado e na tela de listagem de empenhos.
 2 13 steps
 13 3 Chefe/Beneficiário Clica para exibir a lista de solicitações aguardando empenho.
 3 14 expected_results
-14 4 system Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.
+14 4 system Exibe a lista de solicitações aguardando serem empenhadas, de todos os servidores, ordenado pelo número da diária em ordem crescente.
 4 15 conditions
 15 5 O caso de uso encerra.
 2 16 steps
 16 6 Chefe/Beneficiário Clica para que o sistema exiba detalhes da solicitação da diária.
 6 17 expected_results
-17 5 system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias
+17 5 system Recupera e exibe todos os detalhes (dados) da solicitação para o usuário; e Apresenta a tela de Detalhar Diárias.
 2 18 steps
-18 7 Chefe/Beneficiário filtra a listagem por registros cujos beneficiários não possuem número do credor
+18 7 Chefe/Beneficiário Filtra a listagem por registros cujos beneficiários não possuem número do credor.
 7 19 expected_results
 19 8 system Identifica que a partir da listagem, registros cujos beneficiários não possuem número do credor; e  			Habilita a opção (por meio de item de tela) para que o usuário possa informar (individualmente) um número de credor para um beneficiário.
 8 20 steps
@@ -53,7 +53,7 @@
 2 24 steps
 24 11 Chefe/Beneficiário Clica para realizar o empenho de uma diária.
 11 25 expected_results
-25 5 system Apresenta a tela de Registrar Empenho
+25 5 system Apresenta a tela de Registrar Empenho.
 9 26 expected_results
 26 5 system Identifica que houve um erro inesperado, quando da tentativa de inserção do número do credor; e Exibe mensagem de erro (MSG207 - Não foi possível atualizar o número do credor) para o usuário.
 9 27 expected_results

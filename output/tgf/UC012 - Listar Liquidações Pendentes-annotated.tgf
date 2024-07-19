@@ -22,7 +22,7 @@
 22 22
 #
 1 11 conditions
-11 2 O usuario devidamente autenticado e na tela inicial do sistema
+11 2 O usuário devidamente autenticado e na tela inicial do sistema.
 2 12 steps
 12 3 Chefe Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA).
 3 13 expected_results
@@ -30,18 +30,18 @@
 4 14 steps
 14 5 Chefe Visualiza a lista de diárias (solicitações) aptas para pagamento.
 5 15 expected_results
-15 6 system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente. Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho).
+15 6 system Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo número da diária em ordem crescente. Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho).
 6 16 conditions
 16 7 O caso de uso encerra.
 4 17 steps
 17 8 Chefe Clica para detalhar a solicitação de diária.
 8 18 expected_results
-18 7 system Apresenta a tela de Detalhar Diárias
+18 7 system Apresenta a tela de Detalhar Diárias.
 4 19 steps
 19 9 Chefe Clica para atribuir/desatribuir o registro a si mesmo.
 9 20 expected_results
-20 7 system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).
+20 7 system Atualiza a lista de registros de solicitações, onde deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).
 4 21 steps
 21 10 Chefe Clica para realizar a liquidação.
 10 22 expected_results
-22 7 system Apresenta a tela de Registrar Liquidações
+22 7 system Apresenta a tela de Registrar Liquidações.

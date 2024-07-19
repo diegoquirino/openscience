@@ -6,13 +6,13 @@
 systemName "RGP-Diarias"
 
 usecase "UC002 - Gerenciar Diárias do Beneficiário (Minhas Diárias)" {
-	version "1.0" type "Creation" user "Fabrício Araújo" date "09/07/2020"
+	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
 	actor usuario "Beneficiário"
 	
-	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	preCondition "O usuário devidamente autenticado e na tela inicial do sistema."
 		
 	basic { 
-		step 1 usuario "O usuario acessa o caso de uso atraves do menu." af[1,2,3,4]
+		step 1 usuario "Acessa o caso de uso através do menu." af[1,2,3,4]
 		step 2 system "Apresenta a tela com a lista de diárias daquele beneficiário."
 	}
 	
@@ -22,17 +22,16 @@ usecase "UC002 - Gerenciar Diárias do Beneficiário (Minhas Diárias)" {
 	}
 	alternative 2 "Detalhar diária" {
 		step 1 usuario "Clica em detalhar diária."
-		step 2 system "Apresenta a tela de Detalhar Diárias"
+		step 2 system "Apresenta a tela de Detalhar Diárias."
 	}
 	alternative 3 "Prestar contas" {
 		step 1 usuario "Clica em analisar prestação de contas."
-		step 2 system "Apresenta a tela de Analisar Prestação de Contas"
+		step 2 system "Apresenta a tela de Analisar Prestação de Contas."
 	}
 	alternative 4 "Cancelar diária" {
 		step 1 usuario "Clica em cancelar diária."
-		step 2 system "Apresenta a tela de Cancelar Solicitação de Diária"
+		step 2 system "Apresenta a tela de Cancelar Solicitação de Diária."
 	}
 	
 	postCondition "O caso de uso encerra."
-	
 }

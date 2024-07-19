@@ -40,7 +40,7 @@
 40 40
 #
 1 17 conditions
-17 2 O usuario devidamente autenticado e na tela inicial do sistema
+17 2 O usuário devidamente autenticado e na tela inicial do sistema.
 2 18 steps
 18 3 Chefe Clica para realizar a prestação de contas.
 3 19 expected_results
@@ -50,7 +50,7 @@
 5 21 expected_results
 21 6 system Exibe os detalhes referentes à solicitação selecionada, dados do beneficiário, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e Exibe o histórico da tramitação da prestação de contas.
 6 22 steps
-22 7 Chefe Verifica o histório da tramitação da prestação de contas.
+22 7 Chefe Verifica o histórico da tramitação da prestação de contas.
 7 23 expected_results
 23 8 system Exibe o histórico da tramitação da prestação de contas.
 8 24 conditions
@@ -58,7 +58,7 @@
 3 25 expected_results
 25 9 system Identifica que se trata de um usuário com perfil OPERADOR; Exibe tanto as solicitações do próprio usuário quanto as solicitações dos demais servidores lotados na mesma unidade administrativa dele (OPERADOR).
 5 26 expected_results
-26 9 system Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA; Permite não permite um novo envio ou alterações na prestação (exclusão de documentos).
+26 9 system Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA; Não permite um novo envio ou alterações na prestação (exclusão de documentos).
 5 27 expected_results
 27 9 system Identifica que a solicitação indicada pelo usuário ainda não pode ter sua prestação de contas realizada; Exibe mensagem de erro (MSG212 - Prestação de contas ainda não pode ser realizada) para o usuário, impedindo que ele preste contas (anexa arquivos e etc).
 6 28 steps
@@ -84,6 +84,6 @@
 6 38 steps
 38 16 Chefe Clica para detalhar a solicitação de diária.
 16 39 expected_results
-39 9 system Apresenta a tela de Detalhar Diárias
+39 9 system Apresenta a tela de Detalhar Diárias.
 13 40 expected_results
 40 9 system Identifica que pelo menos um dos documentos solicitados para prestação de contas não foi anexado pelo usuário; Exibe mensagem de alerta (MSG001 - Documentos não informados na prestação de contas) para o usuário.

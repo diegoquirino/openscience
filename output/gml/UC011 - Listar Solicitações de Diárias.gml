@@ -59,7 +59,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
@@ -101,7 +101,7 @@ edge
 [
   source 8
   target 7
-  label "[e] system Exibe o detalhamento em modal para o usuário; Apresenta a tela de Detalhar Diárias"
+  label "[e] system Exibe o detalhamento em modal para o usuário; Apresenta a tela de Detalhar Diárias."
 ]
 edge
 [

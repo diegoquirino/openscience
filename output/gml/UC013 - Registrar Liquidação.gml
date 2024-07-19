@@ -39,7 +39,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O Sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro). Exibe os dados da solicitação para o usuário."
+  label "[c] O sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro). Exibe os dados da solicitação para o usuário."
 ]
 edge
 [
@@ -81,6 +81,6 @@ edge
 [
   source 5
   target 7
-  label "[e] system Verifica que já existe um número de liquidação (considerando também o mesmo exercício) registrado na base de dados; Interrompe a operação e exibe mensagem de erro (MSG211 - Número da liquidação já existe.) para o usuário."
+  label "[e] system Verifica que já existe um número de liquidação (considerando também o mesmo exercício) registrado na base de dados; Interrompe a operação e exibe mensagem de erro (MSG211 - Número da liquidação já existe) para o usuário."
 ]
 ]

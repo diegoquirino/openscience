@@ -79,7 +79,7 @@ edge
 [
   source 1
   target 2
-  label "[c] O usuario devidamente autenticado e na tela inicial do sistema"
+  label "[c] O usuário devidamente autenticado e na tela inicial do sistema."
 ]
 edge
 [
@@ -109,13 +109,13 @@ edge
 [
   source 6
   target 7
-  label "[s] Chefe Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas."
+  label "[s] Chefe Verifica o histórico da tramitação da prestação de contas e clica para analisar a prestação de contas."
 ]
 edge
 [
   source 7
   target 8
-  label "[e] system Exibe a tela para prestação de contas"
+  label "[e] system Exibe a tela para prestação de contas."
 ]
 edge
 [
@@ -175,12 +175,12 @@ edge
 [
   source 15
   target 13
-  label "[e] system Exibe a tela de Detalhar Diárias"
+  label "[e] system Exibe a tela de Detalhar Diárias."
 ]
 edge
 [
   source 11
   target 13
-  label "[e] system Identifica que campos obrigatórios do parecer/análise não foram devidamente preenchidos Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário."
+  label "[e] system Identifica que campos obrigatórios do parecer/análise não foram devidamente preenchidos; Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário."
 ]
 ]
