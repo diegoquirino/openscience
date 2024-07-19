@@ -1,0 +1,54 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+#
+1 12 conditions
+12 2 O usuario devidamente autenticado e na tela inicial do sistema
+2 13 steps
+13 3 Chefe Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO LIQUIDADA).
+3 14 expected_results
+14 4 system Recupera e exibe para o usuário a lista de diárias aptas para pagamento.
+4 15 steps
+15 5 Chefe Seleciona uma diária apta para pagamento
+5 16 expected_results
+16 6 system Destaca a diária selecionada
+6 17 conditions
+17 7 O caso de uso encerra.
+4 18 steps
+18 8 Chefe Clica para detalhar a solicitação de diária.
+8 19 expected_results
+19 7 system Apresenta a tela de Detalhar Diárias
+4 20 steps
+20 9 Chefe Dado um registro selecionado (solicitação aguardando autorização de pagamento - AP), o usuário pode atribuir/desatribuir a responsabilidade da AP a si próprio; e Clica para atribuir/desatribuir o registro a si mesmo.
+9 21 expected_results
+21 7 system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).
+4 22 steps
+22 10 Chefe Clica para realizar a autorização de pagamento.
+10 23 expected_results
+23 7 system Apresenta a tela de Registrar Autorizações de Pagamento
+4 24 steps
+24 11 Chefe Seleciona um usuário para filtrar as autorizações de pagamento associadas a ele; e Submete a busca ao sistema.
+11 25 expected_results
+25 7 system Filtra os registros (autorizações de pagamento pendentes) e exibe apenas aqueles atribuídos ao usuário selecionado.

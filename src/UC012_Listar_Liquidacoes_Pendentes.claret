@@ -1,0 +1,35 @@
+/*
+ * RGP_DIARIAS: UC012 - Listar Liquidações Pendentes
+ * Este caso de uso tem o objetivo de especificar a funcionalidade que permite
+ * ao usuário, listar diárias (solicitações) aptas/pendentes de liquidação.
+ */
+systemName "RGP-Diarias"
+
+usecase "UC012 - Listar Liquidações Pendentes" {
+	version "0.1" type "Creation" user "Daniel Medeiros" date "13/04/2020"
+	actor usuario "Chefe"
+	
+	preCondition "O usuario devidamente autenticado e na tela inicial do sistema"
+	
+	basic {
+		step 1 usuario "Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA)."
+		step 2 system "Recupera e exibe para o usuário a lista de diárias aptas para pagamento."
+	  	step 3 usuario "Visualiza a lista de diárias (solicitações) aptas para pagamento." af[1,2,3]
+		step 4 system "Exibe a lista de diárias (solicitações) aptas para pagamento." 
+	}
+	alternative 1 "Detalhar diária (solicitação)" {
+	  	step 1 usuario "Clica para detalhar a solicitação de diária."
+	  	step 2 system "Apresenta a tela de Detalhar Diárias"
+	}
+	alternative 2 "Atribuir/Desatribuir responsabilidade de liquidação para si" {
+	  	step 1 usuario "Clica para atribuir/desatribuir o registro a si mesmo."
+	  	step 2 system "Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido)."
+	}
+	alternative 3 "Realizar liquidação" {
+	  	step 1 usuario "Clica para realizar a liquidação."
+	  	step 2 system "Apresenta a tela de Registrar Liquidações"
+	}
+	
+	postCondition "O caso de uso encerra."
+	
+}

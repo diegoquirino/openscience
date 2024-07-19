@@ -1,0 +1,34 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+#
+1 2 [c] O usuario devidamente autenticado e na tela inicial do sistema
+2 3 [s] Chefe Acessa a funcionalidade de prestação de contas.
+3 4 [e] system Apresenta a lista de prestações de contas relacionadas à sua competência (em ordem decrescente DO NÚMERO DA DIÁRIA, da maior para a de menor número).
+4 5 [s] Chefe Indica uma prestação de contas para analisar.
+5 6 [e] system Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos); Exibe o histórico da tramitação da prestação de contas.
+6 7 [s] Chefe Clica para analisar a prestação de contas.
+7 8 [e] system Exibe a tela para prestação de contas
+8 9 [s] Chefe Informa o parecer da prestação de contas.
+9 10 [e] system Exibe mensagem de confirmação (MSG105 - Confirmar parecer da prestação de contas) para o usuário.
+10 11 [s] Chefe Confirma o parecer dado (confirma operação).
+11 12 [e] system Persiste as informações, alterando o status da prestação de contas conforme informada pelo usuário; Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico; Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário.
+12 13 [c] O caso de uso encerra.
+5 13 [e] system Identifica que a prestação de contas escolhida é diferente de REALIZADA; Não permite que seja feita análise por parte do usuário.
+10 14 [s] Chefe Clica no documento a exibir.
+14 13 [e] system Exibe o documento em tela para o usuário.
+10 15 [s] Chefe Clica para detalhar a solicitação relacionada a uma determinada prestação de contas.
+15 13 [e] system Exibe a tela de Detalhar Diárias
+11 13 [e] system Identifica que campos obrigatórios do parecer/análise não foram devidamente preenchidos Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário.

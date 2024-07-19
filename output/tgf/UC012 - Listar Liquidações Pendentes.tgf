@@ -1,0 +1,23 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+#
+1 2 [c] O usuario devidamente autenticado e na tela inicial do sistema
+2 3 [s] Chefe Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO EMPENHADA).
+3 4 [e] system Recupera e exibe para o usuário a lista de diárias aptas para pagamento.
+4 5 [s] Chefe Visualiza a lista de diárias (solicitações) aptas para pagamento.
+5 6 [e] system Exibe a lista de diárias (solicitações) aptas para pagamento.
+6 7 [c] O caso de uso encerra.
+4 8 [s] Chefe Clica para detalhar a solicitação de diária.
+8 7 [e] system Apresenta a tela de Detalhar Diárias
+4 9 [s] Chefe Clica para atribuir/desatribuir o registro a si mesmo.
+9 7 [e] system Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).
+4 10 [s] Chefe Clica para realizar a liquidação.
+10 7 [e] system Apresenta a tela de Registrar Liquidações

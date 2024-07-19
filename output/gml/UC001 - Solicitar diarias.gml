@@ -200,26 +200,6 @@ node
   id 40
   label "40"
 ]
-node
-[
-  id 41
-  label "41"
-]
-node
-[
-  id 42
-  label "42"
-]
-node
-[
-  id 43
-  label "43"
-]
-node
-[
-  id 44
-  label "44"
-]
 edge
 [
   source 1
@@ -326,37 +306,37 @@ edge
 [
   source 18
   target 19
-  label "[s] Chefe/Beneficiário Informa que acompanha autoridade"
+  label "[s] Chefe/Beneficiário Seleciona a justificativa."
 ]
 edge
 [
   source 19
   target 20
-  label "[e] system Exibe a opcao escolhida: acompanha autoridade."
+  label "[e] system Exibe a opcao escolhida: justificativa."
 ]
 edge
 [
   source 20
   target 21
-  label "[s] Chefe/Beneficiário Seleciona a justificativa."
+  label "[s] Chefe/Beneficiário Detalha a justificativa."
 ]
 edge
 [
   source 21
   target 22
-  label "[e] system Exibe a opcao escolhida: justificativa."
+  label "[e] system Exibe o texto informado: detalhe da justificativa."
 ]
 edge
 [
   source 22
   target 23
-  label "[s] Chefe/Beneficiário Detalha a justificativa."
+  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
 ]
 edge
 [
   source 23
   target 24
-  label "[e] system Exibe o texto informado: detalhe da justificativa."
+  label "[e] system Exibe os beneficiarios selecionados."
 ]
 edge
 [
@@ -368,114 +348,102 @@ edge
 [
   source 25
   target 26
-  label "[e] system Exibe os beneficiarios selecionados."
+  label "[e] system Confirma a existencia de conta para recebimento de diarias do servidor."
 ]
 edge
 [
   source 26
   target 27
-  label "[s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s)."
+  label "[s] Chefe/Beneficiário Clica em confirmar."
 ]
 edge
 [
   source 27
   target 28
-  label "[e] system Confirma a existencia de conta para recebimento de diarias do servidor."
+  label "[e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario."
 ]
 edge
 [
   source 28
   target 29
-  label "[s] Chefe/Beneficiário Clica em confirmar."
+  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela."
 ]
 edge
 [
   source 29
   target 30
-  label "[e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario."
+  label "[e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas"
 ]
 edge
 [
   source 30
   target 31
-  label "[s] Chefe/Beneficiário Verifica os valores presentes na tela."
-]
-edge
-[
-  source 31
-  target 32
-  label "[e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas"
-]
-edge
-[
-  source 32
-  target 33
   label "[c] O sistema salva os dados"
 ]
 edge
 [
   source 2
-  target 34
+  target 32
   label "[s] Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal)."
+]
+edge
+[
+  source 32
+  target 33
+  label "[e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)"
+]
+edge
+[
+  source 33
+  target 34
+  label "[s] Chefe/Beneficiário NÃO Escolhe o estado."
 ]
 edge
 [
   source 34
   target 35
-  label "[e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)"
-]
-edge
-[
-  source 35
-  target 36
-  label "[s] Chefe/Beneficiário NÃO Escolhe o estado."
-]
-edge
-[
-  source 36
-  target 37
   label "[e] system O sistema seleciona o estado como PB, automaticamente."
 ]
 edge
 [
-  source 37
+  source 35
   target 7
   label "[s] Chefe/Beneficiário Escolhe a(s) cidade(s)."
 ]
 edge
 [
   source 2
-  target 38
+  target 36
   label "[s] Chefe/Beneficiário Seleciona o tipo de viagem internacional."
+]
+edge
+[
+  source 36
+  target 37
+  label "[e] system Exibe a lista de países para seleção, no lugar de estado/cidade."
+]
+edge
+[
+  source 37
+  target 38
+  label "[s] Chefe/Beneficiário Seleciona o país da viagem."
 ]
 edge
 [
   source 38
   target 39
-  label "[e] system Exibe a lista de países para seleção, no lugar de estado/cidade."
-]
-edge
-[
-  source 39
-  target 40
-  label "[s] Chefe/Beneficiário Seleciona o país da viagem."
-]
-edge
-[
-  source 40
-  target 41
   label "[e] system Exibe a opcao escolhida: país da viagem"
 ]
 edge
 [
-  source 41
+  source 39
   target 9
   label "[s] Chefe/Beneficiário Escolhe o tipo de deslocamento."
 ]
 edge
 [
   source 5
-  target 33
+  target 31
   label "[e] system Exibe a mensagem de erro MSG201 - DNE indisponível."
 ]
 edge
@@ -492,56 +460,32 @@ edge
 ]
 edge
 [
-  source 18
-  target 42
-  label "[s] Chefe/Beneficiário Informa que acompanha autoridade"
-]
-edge
-[
-  source 42
-  target 43
-  label "[e] system Exibe a opcao escolhida: NÃO acompanha autoridade."
-]
-edge
-[
-  source 43
-  target 21
-  label "[s] Chefe/Beneficiário Seleciona a justificativa."
-]
-edge
-[
-  source 19
-  target 33
-  label "[e] system Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades."
-]
-edge
-[
-  source 27
-  target 33
+  source 25
+  target 31
   label "[e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível."
 ]
 edge
 [
-  source 28
-  target 44
+  source 26
+  target 40
   label "[s] Chefe/Beneficiário Clica em limpar campos."
 ]
 edge
 [
-  source 44
-  target 33
+  source 40
+  target 31
   label "[e] system Apaga todas as seleções do usuário."
 ]
 edge
 [
-  source 29
-  target 33
+  source 27
+  target 31
   label "[e] system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados)."
 ]
 edge
 [
-  source 29
-  target 33
+  source 27
+  target 31
   label "[e] system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias."
 ]
 ]

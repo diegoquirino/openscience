@@ -1,0 +1,89 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+#
+1 17 conditions
+17 2 O usuario devidamente autenticado e na tela inicial do sistema
+2 18 steps
+18 3 Chefe Clica para realizar a prestação de contas.
+3 19 expected_results
+19 4 system Exibe a lista de solicitações de diárias (histórico) em ordem decrescente DO NÚMERO DA DIÁRIA (da maior para a de menor número).
+4 20 steps
+20 5 Chefe Indica uma solicitação de diárias a fim de realizar a prestação de contas.
+5 21 expected_results
+21 6 system Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e Exibe o histórico da tramitação da prestação de contas.
+6 22 steps
+22 7 Chefe Visualiza o histório da tramitação da prestação de contas.
+7 23 expected_results
+23 8 system Exibe o histórico da tramitação da prestação de contas.
+8 24 conditions
+24 9 O caso de uso encerra.
+3 25 expected_results
+25 9 system Identifica que se trata de um usuário com perfil OPERADOR; Exibe tanto as solicitações do próprio usuário quanto as solicitações dos demais servidores lotados na mesma unidade administrativa dele (OPERADOR).
+5 26 expected_results
+26 9 system Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA; Permite não permite um novo envio ou alterações na prestação (exclusão de documentos).
+5 27 expected_results
+27 9 system Identifica que a solicitação indicada pelo usuário ainda não pode ter sua prestação de contas realizada; Exibe mensagem de erro (MSG212 - Prestação de contas ainda não pode ser realizada) para o usuário, impedindo que ele preste contas (anexa arquivos e etc).
+6 28 steps
+28 10 Chefe Clica em inserir; Seleciona um tipo de comprovante; Seleciona um arquivo.
+10 29 expected_results
+29 9 system Realiza o upload do arquivo indicado pelo usuário.
+6 30 steps
+30 11 Chefe Clica em visualizar comprovante.
+11 31 expected_results
+31 9 system Exibe modal com o comprovante.
+6 32 steps
+32 12 Chefe Clica em excluir comprovante.
+12 33 expected_results
+33 9 system Exclui o comprovante.
+6 34 steps
+34 13 Chefe Clica em confirmar (enviar prestação de contas).
+13 35 expected_results
+35 14 system Exibe a mensagem de confirmação (MSG104 - Confirmar a prestação de contas) para o usuário.
+14 36 steps
+36 15 Chefe Confirma as mensagens, concordando com o prosseguimento da prestação de contas.
+15 37 expected_results
+37 9 system Altera o status da diária para PRESTAÇÃO DE CONTAS REALIZADA e salva os dados da solicitação; Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico; Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário.
+6 38 steps
+38 16 Chefe Clica para detalhar a solicitação de diária.
+16 39 expected_results
+39 9 system Apresenta a tela de Detalhar Diárias
+13 40 expected_results
+40 9 system Identifica que pelo menos um dos documentos solicitados para prestação de contas não foi anexado pelo usuário; Exibe mensagem de alerta (MSG001 - Documentos não informados na prestação de contas) para o usuário.

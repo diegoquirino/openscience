@@ -38,10 +38,6 @@
 38 38
 39 39
 40 40
-41 41
-42 42
-43 43
-44 44
 #
 1 2 [c] O usuario acessa o caso de uso atraves do menu.. O sistema exibe a tela de solicitacao de diarias.
 2 3 [s] Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
@@ -60,40 +56,34 @@
 15 16 [e] system Exibe as datas escolhidas: datas de afastamento.
 16 17 [s] Chefe/Beneficiário Informa se tem pernoite.
 17 18 [e] system Exibe a opcao escolhida: pernoite.
-18 19 [s] Chefe/Beneficiário Informa que acompanha autoridade
-19 20 [e] system Exibe a opcao escolhida: acompanha autoridade.
-20 21 [s] Chefe/Beneficiário Seleciona a justificativa.
-21 22 [e] system Exibe a opcao escolhida: justificativa.
-22 23 [s] Chefe/Beneficiário Detalha a justificativa.
-23 24 [e] system Exibe o texto informado: detalhe da justificativa.
+18 19 [s] Chefe/Beneficiário Seleciona a justificativa.
+19 20 [e] system Exibe a opcao escolhida: justificativa.
+20 21 [s] Chefe/Beneficiário Detalha a justificativa.
+21 22 [e] system Exibe o texto informado: detalhe da justificativa.
+22 23 [s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
+23 24 [e] system Exibe os beneficiarios selecionados.
 24 25 [s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
-25 26 [e] system Exibe os beneficiarios selecionados.
-26 27 [s] Chefe/Beneficiário Seleciona o(s) beneficiarios da(s) diaria(s).
-27 28 [e] system Confirma a existencia de conta para recebimento de diarias do servidor.
-28 29 [s] Chefe/Beneficiário Clica em confirmar.
-29 30 [e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario.
-30 31 [s] Chefe/Beneficiário Verifica os valores presentes na tela.
-31 32 [e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas
-32 33 [c] O sistema salva os dados
-2 34 [s] Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
-34 35 [e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)
-35 36 [s] Chefe/Beneficiário NÃO Escolhe o estado.
-36 37 [e] system O sistema seleciona o estado como PB, automaticamente.
-37 7 [s] Chefe/Beneficiário Escolhe a(s) cidade(s).
-2 38 [s] Chefe/Beneficiário Seleciona o tipo de viagem internacional.
-38 39 [e] system Exibe a lista de países para seleção, no lugar de estado/cidade.
-39 40 [s] Chefe/Beneficiário Seleciona o país da viagem.
-40 41 [e] system Exibe a opcao escolhida: país da viagem
-41 9 [s] Chefe/Beneficiário Escolhe o tipo de deslocamento.
-5 33 [e] system Exibe a mensagem de erro MSG201 - DNE indisponível.
+25 26 [e] system Confirma a existencia de conta para recebimento de diarias do servidor.
+26 27 [s] Chefe/Beneficiário Clica em confirmar.
+27 28 [e] system Calcula o valor da(s) diaria(s) com as informacoes do formulario.
+28 29 [s] Chefe/Beneficiário Verifica os valores presentes na tela.
+29 30 [e] system Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas
+30 31 [c] O sistema salva os dados
+2 32 [s] Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
+32 33 [e] system Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)
+33 34 [s] Chefe/Beneficiário NÃO Escolhe o estado.
+34 35 [e] system O sistema seleciona o estado como PB, automaticamente.
+35 7 [s] Chefe/Beneficiário Escolhe a(s) cidade(s).
+2 36 [s] Chefe/Beneficiário Seleciona o tipo de viagem internacional.
+36 37 [e] system Exibe a lista de países para seleção, no lugar de estado/cidade.
+37 38 [s] Chefe/Beneficiário Seleciona o país da viagem.
+38 39 [e] system Exibe a opcao escolhida: país da viagem
+39 9 [s] Chefe/Beneficiário Escolhe o tipo de deslocamento.
+5 31 [e] system Exibe a mensagem de erro MSG201 - DNE indisponível.
 14 15 [s] Chefe/Beneficiário Informa as datas de afastamento, apos o ultimo dia de viagem.
 14 15 [s] Chefe/Beneficiário Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem.
-18 42 [s] Chefe/Beneficiário Informa que acompanha autoridade
-42 43 [e] system Exibe a opcao escolhida: NÃO acompanha autoridade.
-43 21 [s] Chefe/Beneficiário Seleciona a justificativa.
-19 33 [e] system Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades.
-27 33 [e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
-28 44 [s] Chefe/Beneficiário Clica em limpar campos.
-44 33 [e] system Apaga todas as seleções do usuário.
-29 33 [e] system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
-29 33 [e] system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
+25 31 [e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
+26 40 [s] Chefe/Beneficiário Clica em limpar campos.
+40 31 [e] system Apaga todas as seleções do usuário.
+27 31 [e] system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
+27 31 [e] system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.

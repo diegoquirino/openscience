@@ -1,0 +1,32 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+#
+1 8 conditions
+8 2 O sistema identifica a solicitação a ter a AP registrada (recebida por parâmetro).. O sistema exibe os dados da solicitação para o usuário.
+2 9 steps
+9 3 Chefe Informa o número de Autorização de Pagamento e do Exercício.
+3 10 expected_results
+10 4 system Exibe o número de Autorização de Pagamento e do Exercício nos campos.
+4 11 steps
+11 5 Chefe Confirma a operação.
+5 12 expected_results
+12 6 system Persiste o número da AP e o ano de exercício conforme informados; Altera a situação da diária (solicitação) para PAGAMENTO AUTORIZADO; e Exibe mensagem de sucesso para o usuário.
+6 13 conditions
+13 7 O caso de uso encerra.
+5 14 expected_results
+14 7 system Identifica que campos obrigatórios não foram preenchidos; e Exibe mensagem de erro (MSG203 - Campos obrigatórios / MSG215 - É obrigatório informar o número da autorização de pagamento) para o usuário.
+5 15 expected_results
+15 7 system Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe.) para o usuário.
