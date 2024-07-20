@@ -40,6 +40,8 @@
 40 40
 41 41
 42 42
+43 43
+44 44
 #
 1 2 [c] O usuário acessa o caso de uso através do menu.. O sistema exibe a tela de solicitação de diárias.
 2 3 [s] Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
@@ -90,5 +92,8 @@
 25 31 [e] system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
 26 42 [s] Chefe/Beneficiário Clica em limpar campos.
 42 31 [e] system Apaga todas as seleções do usuário.
+26 43 [s] Chefe/Beneficiário Clica em confirmar.
+43 44 [e] system Exibe uma mensagem de alerta informando sobre o estouro do limite de 10 diárias por mês.
+44 27 [s] Chefe/Beneficiário Fecha o alerta
 27 31 [e] system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
 27 31 [e] system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.

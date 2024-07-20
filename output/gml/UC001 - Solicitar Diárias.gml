@@ -210,6 +210,16 @@ node
   id 42
   label "42"
 ]
+node
+[
+  id 43
+  label "43"
+]
+node
+[
+  id 44
+  label "44"
+]
 edge
 [
   source 1
@@ -503,6 +513,24 @@ edge
   source 42
   target 31
   label "[e] system Apaga todas as seleções do usuário."
+]
+edge
+[
+  source 26
+  target 43
+  label "[s] Chefe/Beneficiário Clica em confirmar."
+]
+edge
+[
+  source 43
+  target 44
+  label "[e] system Exibe uma mensagem de alerta informando sobre o estouro do limite de 10 diárias por mês."
+]
+edge
+[
+  source 44
+  target 27
+  label "[s] Chefe/Beneficiário Fecha o alerta"
 ]
 edge
 [

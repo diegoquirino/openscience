@@ -6,7 +6,7 @@
 systemName "RGP-Diarias"
 
 usecase "UC001 - Solicitar Diárias" {
-	version "1.2.5" type "Update" user "Julio Paiva" date "31/05/2023"
+	version "1.3" type "Upgrade" user "Julio Paiva" date "28/07/2023"
 	actor usuario "Chefe/Beneficiário"
 	
 	preCondition "O usuário acessa o caso de uso através do menu.", 
@@ -37,7 +37,7 @@ usecase "UC001 - Solicitar Diárias" {
 		step 22 system "Exibe os beneficiário(s) selecionado(s)." ef[5]
 		step 23 usuario "Seleciona o(s) beneficiário(s) da(s) diária(s)."
 		step 24 system "Confirma a existência de conta para recebimento de diárias do servidor." ef[2]
-		step 25 usuario "Clica em confirmar." af[4]
+		step 25 usuario "Clica em confirmar." af[4,6]
 		step 26 system "Calcula o valor da(s) diária(s) com as informações do formulário." ef[3,4]
 		step 27 usuario "Verifica os valores presentes na tela:
 						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de uma diária de um ministro do STF.
@@ -71,6 +71,11 @@ usecase "UC001 - Solicitar Diárias" {
 		step 1 usuario "Seleciona o(s) beneficiário(s) da(s) diária(s)."
 		step 2 system "Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social."
 		step 3 usuario "Informa o nome social do beneficiário da(s) diária(s)." bs 24
+	}
+	alternative 6 "Alerta o estouro do limite de 10 diárias por mês" {
+		step 1 usuario "Clica em confirmar."
+		step 2 system "Exibe uma mensagem de alerta informando sobre o estouro do limite de 10 diárias por mês."
+		step 3 usuario "Fecha o alerta" bs 26
 	}
 	
 	exception 1 "DNE Indisponível" {

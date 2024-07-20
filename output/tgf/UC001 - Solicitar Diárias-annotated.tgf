@@ -91,106 +91,117 @@
 91 91
 92 92
 93 93
+94 94
+95 95
+96 96
+97 97
+98 98
 #
-1 43 conditions
-43 2 O usuário acessa o caso de uso através do menu.. O sistema exibe a tela de solicitação de diárias.
-2 44 steps
-44 3 Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
-3 45 expected_results
-45 4 system Exibe a opção escolhida: viagem nacional - fora do estado (interestadual).
-4 46 steps
-46 5 Chefe/Beneficiário Escolhe o estado.
-5 47 expected_results
-47 6 system Exibe a opção escolhida: estado.
-6 48 steps
-48 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
-7 49 expected_results
-49 8 system Exibe a opção escolhida: cidade(s).
-8 50 steps
-50 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
-9 51 expected_results
-51 10 system Exibe a opção escolhida: tipo de deslocamento.
-10 52 steps
-52 11 Chefe/Beneficiário Escolhe o tipo de hospedagem.
-11 53 expected_results
-53 12 system Exibe a opção escolhida: hospedagem.
-12 54 steps
-54 13 Chefe/Beneficiário Escolhe o tipo de período de afastamento.
-13 55 expected_results
-55 14 system Exibe a opção escolhida: período de afastamento.
-14 56 steps
-56 15 Chefe/Beneficiário Informa as datas de afastamento, antes do último dia de viagem.
-15 57 expected_results
-57 16 system Exibe as datas escolhidas: datas de afastamento.
-16 58 steps
-58 17 Chefe/Beneficiário Informa se tem pernoite.
-17 59 expected_results
-59 18 system Exibe a opção escolhida: pernoite.
-18 60 steps
-60 19 Chefe/Beneficiário Seleciona a justificativa.
-19 61 expected_results
-61 20 system Exibe a opção escolhida: justificativa.
-20 62 steps
-62 21 Chefe/Beneficiário Detalha a justificativa.
-21 63 expected_results
-63 22 system Exibe o texto informado: detalhe da justificativa.
-22 64 steps
-64 23 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
-23 65 expected_results
-65 24 system Exibe os beneficiário(s) selecionado(s).
-24 66 steps
-66 25 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
-25 67 expected_results
-67 26 system Confirma a existência de conta para recebimento de diárias do servidor.
-26 68 steps
-68 27 Chefe/Beneficiário Clica em confirmar.
-27 69 expected_results
-69 28 system Calcula o valor da(s) diária(s) com as informações do formulário.
-28 70 steps
-70 29 Chefe/Beneficiário Verifica os valores presentes na tela: 1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de uma diária de um ministro do STF. 2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado. 3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária.
-29 71 expected_results
-71 30 system Altera o status da diária para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas.
-30 72 conditions
-72 31 O sistema salva os dados.
-2 73 steps
-73 32 Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
-32 74 expected_results
-74 33 system Exibe a opção escolhida: viagem nacional - dentro do estado (intermunicipal).
-33 75 steps
-75 34 Chefe/Beneficiário NÃO Escolhe o estado.
-34 76 expected_results
-76 35 system O sistema seleciona o estado como PB, automaticamente.
-35 77 steps
-77 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
-2 78 steps
-78 36 Chefe/Beneficiário Seleciona o tipo de viagem internacional.
-36 79 expected_results
-79 37 system Exibe a lista de países para seleção, no lugar de estado/cidade.
-37 80 steps
-80 38 Chefe/Beneficiário Seleciona o país da viagem.
-38 81 expected_results
-81 39 system Exibe a opção escolhida: país da viagem.
-39 82 steps
-82 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
-5 83 expected_results
-83 31 system Exibe a mensagem de erro MSG201 - DNE indisponível.
-14 84 steps
-84 15 Chefe/Beneficiário Informa as datas de afastamento, após o último dia de viagem.
-22 85 steps
-85 40 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
-40 86 expected_results
-86 41 system Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social.
-41 87 steps
-87 25 Chefe/Beneficiário Informa o nome social do beneficiário da(s) diária(s).
-23 88 expected_results
-88 31 system Não confirma a existência de conta para recebimento de diárias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada.
-25 89 expected_results
-89 31 system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
-26 90 steps
-90 42 Chefe/Beneficiário Clica em limpar campos.
-42 91 expected_results
-91 31 system Apaga todas as seleções do usuário.
-27 92 expected_results
-92 31 system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
-27 93 expected_results
-93 31 system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
+1 45 conditions
+45 2 O usuário acessa o caso de uso através do menu.. O sistema exibe a tela de solicitação de diárias.
+2 46 steps
+46 3 Chefe/Beneficiário Escolhe o tipo de viagem nacional - fora do estado (interestadual).
+3 47 expected_results
+47 4 system Exibe a opção escolhida: viagem nacional - fora do estado (interestadual).
+4 48 steps
+48 5 Chefe/Beneficiário Escolhe o estado.
+5 49 expected_results
+49 6 system Exibe a opção escolhida: estado.
+6 50 steps
+50 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
+7 51 expected_results
+51 8 system Exibe a opção escolhida: cidade(s).
+8 52 steps
+52 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
+9 53 expected_results
+53 10 system Exibe a opção escolhida: tipo de deslocamento.
+10 54 steps
+54 11 Chefe/Beneficiário Escolhe o tipo de hospedagem.
+11 55 expected_results
+55 12 system Exibe a opção escolhida: hospedagem.
+12 56 steps
+56 13 Chefe/Beneficiário Escolhe o tipo de período de afastamento.
+13 57 expected_results
+57 14 system Exibe a opção escolhida: período de afastamento.
+14 58 steps
+58 15 Chefe/Beneficiário Informa as datas de afastamento, antes do último dia de viagem.
+15 59 expected_results
+59 16 system Exibe as datas escolhidas: datas de afastamento.
+16 60 steps
+60 17 Chefe/Beneficiário Informa se tem pernoite.
+17 61 expected_results
+61 18 system Exibe a opção escolhida: pernoite.
+18 62 steps
+62 19 Chefe/Beneficiário Seleciona a justificativa.
+19 63 expected_results
+63 20 system Exibe a opção escolhida: justificativa.
+20 64 steps
+64 21 Chefe/Beneficiário Detalha a justificativa.
+21 65 expected_results
+65 22 system Exibe o texto informado: detalhe da justificativa.
+22 66 steps
+66 23 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
+23 67 expected_results
+67 24 system Exibe os beneficiário(s) selecionado(s).
+24 68 steps
+68 25 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
+25 69 expected_results
+69 26 system Confirma a existência de conta para recebimento de diárias do servidor.
+26 70 steps
+70 27 Chefe/Beneficiário Clica em confirmar.
+27 71 expected_results
+71 28 system Calcula o valor da(s) diária(s) com as informações do formulário.
+28 72 steps
+72 29 Chefe/Beneficiário Verifica os valores presentes na tela: 1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de uma diária de um ministro do STF. 2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado. 3. Manutenção do cargo comissionado e do setor beneficiário à época da concessão da diária.
+29 73 expected_results
+73 30 system Altera o status da diária para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas.
+30 74 conditions
+74 31 O sistema salva os dados.
+2 75 steps
+75 32 Chefe/Beneficiário Seleciona o tipo de viagem nacional - dentro do estado (intermunicipal).
+32 76 expected_results
+76 33 system Exibe a opção escolhida: viagem nacional - dentro do estado (intermunicipal).
+33 77 steps
+77 34 Chefe/Beneficiário NÃO Escolhe o estado.
+34 78 expected_results
+78 35 system O sistema seleciona o estado como PB, automaticamente.
+35 79 steps
+79 7 Chefe/Beneficiário Escolhe a(s) cidade(s).
+2 80 steps
+80 36 Chefe/Beneficiário Seleciona o tipo de viagem internacional.
+36 81 expected_results
+81 37 system Exibe a lista de países para seleção, no lugar de estado/cidade.
+37 82 steps
+82 38 Chefe/Beneficiário Seleciona o país da viagem.
+38 83 expected_results
+83 39 system Exibe a opção escolhida: país da viagem.
+39 84 steps
+84 9 Chefe/Beneficiário Escolhe o tipo de deslocamento.
+5 85 expected_results
+85 31 system Exibe a mensagem de erro MSG201 - DNE indisponível.
+14 86 steps
+86 15 Chefe/Beneficiário Informa as datas de afastamento, após o último dia de viagem.
+22 87 steps
+87 40 Chefe/Beneficiário Seleciona o(s) beneficiário(s) da(s) diária(s).
+40 88 expected_results
+88 41 system Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social.
+41 89 steps
+89 25 Chefe/Beneficiário Informa o nome social do beneficiário da(s) diária(s).
+23 90 expected_results
+90 31 system Não confirma a existência de conta para recebimento de diárias do servidor. Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada.
+25 91 expected_results
+91 31 system Exibe a mensagem de erro MSG202 - RGP Core indisponível.
+26 92 steps
+92 42 Chefe/Beneficiário Clica em limpar campos.
+42 93 expected_results
+93 31 system Apaga todas as seleções do usuário.
+26 94 steps
+94 43 Chefe/Beneficiário Clica em confirmar.
+43 95 expected_results
+95 44 system Exibe uma mensagem de alerta informando sobre o estouro do limite de 10 diárias por mês.
+44 96 steps
+96 27 Chefe/Beneficiário Fecha o alerta
+27 97 expected_results
+97 31 system Exibe a mensagem de erro MSG203 - Campos obrigatórios, MSG214 - Campos obrigatórios da solicitação de diárias (não informados).
+27 98 expected_results
+98 31 system Exibe a mensagem de erro MSG204 - Conflito de duplicidade de diárias.
