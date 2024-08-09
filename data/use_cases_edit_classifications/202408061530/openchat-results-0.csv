@@ -1,0 +1,100 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The updated snippet is a low-impact change because it only changes the number in the alternative flow from '6' to '5'. It doesn't change the system behavior or introduce any new requirements, features, or business model entities. The change can be considered as a textual update.",26223
+1,HIGH,"The updated snippet changes the system behavior by introducing new steps and removing an existing step, which implies a significant change in how the use case operates.",10082
+2,HIGH,"The updated snippet changes the order of steps, removing step 25 and adding a new alternative flow (af) in step 27. This significantly impacts the use case's flow and behavior.",12182
+3,LOW,"The updated snippet removes the original alternative 4 and adds a new alternative 4, but it does not change the system behavior. It only renames the alternative, which is a syntactic edit.",9585
+4,HIGH,"The changes introduce new alternatives and modify system behavior, which can affect the expected outcome of the use case.",15446
+5,LOW,"The changes are purely textual and do not affect the system behavior. They include comments, versioning, actor name, and preconditions, but none of these changes alter the core functionality or the flow of the use case.",15805
+6,HIGH,"The provided text introduces new requirement (Clica em excluir comprovante), adds a business model entity (Enviar prestação de contas) and changes the system behavior in several steps (Exclui o comprovante, Confirma as mensagens, Altera o status da diária, Exibe mensagem de sucesso).",19397
+7,HIGH,"The updated snippet introduces new steps, alternatives, and exceptions, which change the system behavior.",20319
+8,HIGH,The updated snippet changes the expected behavior of the system by adding new requirements and thus is a high-impact change.,8339
+9,LOW,"The updated snippet does not change the system behavior but adds an additional detail of displaying the empenho number and payment authorization as links, which is a minor modification in the text description.",10822
+10,LOW,The updated snippet removes the step reference number 5 in the alternative flow. This change is a syntactic edit as it does not change the system behavior and only modifies the referencing of the existing steps.,9260
+11,LOW,"The updated snippet is missing, so no changes can be identified. Assuming that the issue was due to a typo or formatting error in the original snippet, this would be considered a low-impact change.",9312
+12,LOW,"The changes are textual updates, detailing and adding information about the presentation of additional details. These do not change the system behavior.",8322
+13,LOW,"The change only adds information to the existing step, not altering the expected behavior of the system. It does not introduce new requirements or features.",8718
+14,LOW,"The change in the snippet is a textual update where 'Visualiza' has been replaced with 'Verifica'. This does not alter the system behavior or requirements, but only changes the verb used to describe the action. This would be considered a low-impact edit.",10066
+15,LOW,"The change is a semantic edit which does not alter the expected behavior of the system or the requirements. It's merely replacing 'dados básicos da solicitação' with 'nome do beneficiário, dados básicos da solicitação'. This doesn't introduce new features, delete existing ones, change business model entities, steps, exception flows (ef) or alternative flows (af). The edit is syntactically correct.",13701
+16,HIGH,"The updated snippet changes the user behavior from 'Clica para analisar a prestação de contas.' to 'Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas.' This change introduces a new requirement of verifying the history of the account statement processing before analyzing the account statement, which could potentially impact the system behavior.",12750
+17,LOW,"The changes in the updated snippet are purely textual, and do not change the system behavior or introduce new requirements. The added step does not change the semantic of the original flow.",9289
+18,LOW,"The change is a syntactic edit, as it only adds an additional alternative flow (af) without altering the system's expected behavior or introducing new requirements.",8484
+19,HIGH,"The updated snippet introduces a new alternative flow, which changes the system behavior. It is not merely textual (syntactic) changes.",8286
+20,LOW,"The change does not alter the system behavior, it simply adds an exception flow (ef[5]) to step 22. This implies that there may be additional conditions for showing selected beneficiaries but the core functionality remains the same.",10178
+21,HIGH,"The updated snippet introduces a new exception flow, which changes the system's expected behavior. This is considered a high-impact change as it involves adding a requirement or business model entity.",9326
+22,LOW,"The updated snippet only adds an alternative flow reference (af[5]) to the existing step, without changing the system behavior or introducing new features. It does not change the semantics of the use case, but only extends the possible paths in the flow.",9978
+23,LOW,"The changes are merely textual (update): detailing, typo, synonyms, punctuation, formatting, reducing, reordering or renaming.",9036
+24,LOW,"The change is low-impact because it only changes the detail of the text, specifying that the list is ordered by daily number in ascending order. The system behavior remains the same, and there are no additions or deletions of requirements, steps, or flows.",10167
+25,LOW,"The change made is a simple reordering of the text. The system's expected behavior has not changed, and no new requirements or features have been added.",8595
+26,LOW,"The change is a minor edit, where the system behavior remains unchanged. The additional information about ordering the list by diary number in ascending order does not significantly alter the expected outcome of the use case.",9097
+27,HIGH,"The updated snippet adds a new feature (showing the list of diaries also ordered by arrival date during authorization), which changes the expected behavior of the system. This is not a simple reordering or renaming of existing steps, and thus it's classified as high-impact.",11741
+28,HIGH,The updated snippet introduces a new requirement by adding a new step to display the list of diaries also ordered by arrival date of the request in the settlement phase (after registering the commitment).,9637
+29,LOW,"The changes are merely textual, with no alteration to the system behavior or requirements.",7807
+30,LOW,"The updated snippet does not change the system behavior, it only corrects a typographical error from 'Exibe' to 'Exibe', which is a syntactic edit.",8798
+31,LOW,"The change is a minor textual edit where the system's behavior remains unchanged, only the text was updated. The words are replaced without adding or deleting any requirement, feature, business model entity, step, exception flow (ef) or alternative flow (af).",9863
+32,LOW,"The change is a syntactic edit, involving the update of textual elements such as punctuation and capitalization. It does not alter the system behavior or introduce new requirements or flow.",8554
+33,LOW,"The change is low-impact because it does not change the system behavior (semantic edit). The change is merely textual (update): detailing, typo, synonyms, punctuation, formatting, reducing, reordering or renaming.",10033
+34,LOW,"The updated snippet only contains textual changes (semantic edits) and does not introduce or delete any requirement, feature, business model entity, step, exception flow (ef), or alternative flow (af).",11409
+35,LOW,"The change is a minor textual update, replacing the character 'a' with uppercase 'A' in 'opcao escolhida'. This does not affect the system behavior or requirements.",8993
+36,LOW,"The change is a minor textual update, changing the formatting and punctuation, without altering the system behavior.",7555
+37,LOW,"The changes are mainly textual updates, detailing and renaming. There is no change in the system behavior or any addition/deletion of requirement, feature, business model entity, step, exception flow (ef) or alternative flow (af).",14081
+38,LOW,"The original and updated snippets are semantically the same, with no change in system behavior or requirements. The edit is a simple textual update.",8880
+39,LOW,The change is a simple textual update with no change to the system behavior.,7572
+40,LOW,"The change is a syntactic edit, correcting punctuation and capitalization without affecting the system behavior or requirements.",7752
+41,LOW,"The change is a minor textual update, replacing the character 'a' with 'à', and adding a period at the end of the sentence. This doesn't change the system behavior or expected flow of steps.",9109
+42,LOW,"The changes are only textual updates, with no changes in the system behavior or requirements.",7932
+43,LOW,"The changes in the updated snippet are minor textual updates, such as changing plural to singular and adding parentheses. These do not change the system behavior.",10386
+44,LOW,"The updated snippet simply corrects punctuation and formatting, but does not alter the system behavior or introduce new requirements.",8390
+45,LOW,"The updated snippet is empty, and the original snippet does not show any semantic changes. The edit seems to be a textual one (update): detailing or formatting.",8251
+46,LOW,"The change made is a syntactic edit, as the precondition remains the same but with some minor modifications in punctuation and whitespace.",7815
+47,LOW,"The updated snippet only changes the phrasing and punctuation of the original snippet, without affecting the system behavior or adding/deleting requirements, steps, or flow structures.",8911
+48,LOW,"The change is a syntactic edit, where the text is updated to include punctuation and capitalization but does not change the system behavior or requirements.",7974
+49,LOW,"The change is a simple text edit, changing the capitalization and punctuation without altering the system behavior or requirements.",7554
+50,LOW,The change is a syntactic edit that does not alter the system behavior or the expected flow. It only changes punctuation and capitalization.,7884
+51,LOW,"The updated snippet only changes the punctuation and capitalization of the preCondition, which is a textual update and does not change the system behavior or expected flow.",8501
+52,LOW,"The change is a syntactic edit, as it updates the punctuation without changing the system behavior or introducing new requirements.",7863
+53,LOW,"The update is a syntactic edit, changing punctuation and adding quotation marks around the message ID.",7864
+54,LOW,The change is low-impact because it only updates the punctuation in the step description without changing the system behavior or introducing new requirements.,8070
+55,LOW,"The change is a syntactic edit, as it only involves a detailing and reordering of the text.",8182
+56,LOW,"The change is a semantic edit (from 'O usuario devidamente autenticado e na tela de listagem de diárias' to 'O usuário devidemente autenticado e na tela de listagem de diárias.') which does not alter the system behavior or introduce any new requirements, features, entities or flows.",12032
+57,LOW,"The change is a syntactic edit, as it only updates the wording of a step. No new requirements or features are introduced and no existing ones are removed.",10878
+58,LOW,"The original and updated snippets are the same except for a minor formatting change (adding a newline). The changes are purely textual, with no impact on system behavior or requirements.",9241
+59,LOW,"The updated snippet only includes additional information about the system behavior (showing the list of solicitation from all servers) but doesn't change the overall functionality. Thus, it is a low-impact edit.",9847
+60,LOW,"The change is a syntactic edit, as it is a textual update (detailing) without changing the system behavior.",7842
+61,LOW,"The change is a simple edit of the text, changing the capitalization of the phrase. This does not affect the overall system behavior or functionality.",8308
+62,LOW,"The updated snippet has a minor syntactic edit, changing the punctuation from 'Apresenta a tela de Registrar Empenho' to 'Apresenta a tela de Registrar Empenho.'. There are no changes in system behavior or requirements.",10298
+63,LOW,"The change does not affect the system behavior, but rather corrects a syntactic error by removing the initial 'O' in the original snippet. This is a minor adjustment that does not impact the overall functionality or requirements of the use case.",9630
+64,LOW,"The change is a simple textual update, which does not alter the system's expected behavior. The message being displayed to the user has not changed in terms of functionality or content.",9063
+65,LOW,"The change is a minor edit in terms of punctuation, and does not impact the system's expected behavior or introduce any new requirements.",7881
+66,LOW,"The change is a syntactic edit, only changing the accents in the Portuguese text. The meaning of the system behavior remains unchanged.",8563
+67,LOW,"The changes are only textual updates, with no impact on the system behavior or requirements. The step numbering and content remain unchanged.",8728
+68,LOW,"The change made in the snippet is a simple punctuation adjustment, which does not affect the system behavior or the overall flow of the use case. This makes it a low-impact edit.",8952
+69,LOW,"The updated snippet does not change the system behavior (syntactic edit). The changes are merely textual (update): detailing, punctuation, formatting.",9924
+70,LOW,"The change is a syntactic edit, merely updating the punctuation by adding a period at the end of the sentence. This does not alter the system behavior or introduce new requirements or features.",8729
+71,LOW,"The change is a syntactic edit, which does not change the system behavior. The step number has been updated from 3 to 1, but it does not introduce any new requirements or delete existing ones.",9448
+72,LOW,"The change is a syntactic edit, involving the renaming and reordering of steps without altering the semantics or behavior of the system.",8830
+73,LOW,"The updated snippet only changes punctuation and formatting, but does not change the system behavior or introduce new elements.",8334
+74,LOW,"The change is a syntactic edit, fixing a typo in the text.",7056
+75,LOW,"The original and updated snippets are identical, indicating that the change is not significant and does not affect the system behavior. The edit appears to be a syntactic one with no semantic changes.",10072
+76,LOW,"The change is a syntactic edit, changing the text from 'Permite' to 'Não permite', which does not alter the system behavior or requirements.",8557
+77,LOW,"The change is a syntactic edit, updating the text with a period at the end. There is no change in system behavior or the introduction of new requirements.",8211
+78,LOW,"The updated snippet only changes the punctuation by adding a space, which is a syntactic edit and does not change the system behavior or expected outcome.",8166
+79,LOW,"The changes are minor textual updates, no change in the system behavior.",10681
+80,LOW,"The updated snippet changes only a punctuation mark in the text, which is not altering the system behavior. It's considered a low-impact edit.",8199
+81,LOW,The changes are only a textual update and do not change the system behavior.,7684
+82,LOW,"The change is only a minor syntactic edit, which does not alter the system behavior or any requirement. It simply improves the text formatting by adding a space between a quotation mark and parenthesis.",8906
+83,LOW,The change only rearranges the order of steps and does not alter the system behavior or introduce any new requirements or features.,8503
+84,LOW,"The update does not change the system behavior, it only changes from '-' to '+' and removes a space. This is considered as textual update which doesn't affect the semantics of the use case.",9168
+85,LOW,"The change moves the step's position in the use case but does not alter the system behavior or introduce any new requirements, features, entities, or flows.",8600
+86,LOW,"The change is a textual update (punctuation), and does not change the system behavior or introduce any new requirements, features or flows.",7927
+87,LOW,"The updated snippet does not change the system behavior, it is only a textual update with no changes in semantics or flow structure.",9902
+88,LOW,"The updated snippet changes only the punctuation, which is a syntactic edit and does not change the system behavior.",7493
+89,LOW,"The change is a syntactic edit, updating the text but not changing the system behavior.",8512
+90,LOW,"The change is a minor textual edit, changing the punctuation from one to two dots. It does not affect the system behavior or requirements.",7961
+91,LOW,The change is a simple reordering of the text and does not affect the system's behavior or functionality.,7934
+92,LOW,"The change is a syntactic edit, it only updates the text without changing the system behavior or introducing new requirements or features.",8580
+93,LOW,"The updated snippet simply corrects the formatting and punctuation, without changing the system behavior or introducing new requirements. This is a syntactic edit.",8296
+94,LOW,"The change is a minor textual update, which does not affect the system behavior. It merely adds punctuation to the original step description.",8240
+95,LOW,The change is a typo correction and does not alter the system behavior or semantics.,8312
+96,LOW,"The change is a syntactic edit, which does not alter the system behavior or requirements. It involves updating the text with additional punctuation.",8241
+97,LOW,"The change is simply adding an additional alternative flow number, and does not alter the expected behavior of the system.",7484
+98,LOW,"The updated snippet only adds an alternative flow to the use case, without changing any existing behavior or adding/deleting requirements. The changes are merely textual.",9048

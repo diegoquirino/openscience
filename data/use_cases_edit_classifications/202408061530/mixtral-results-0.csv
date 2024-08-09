@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change is a low-impact syntactic edit as it only modifies the alternative flow reference from 'af[3,6]' to 'af[3,5]' without altering the system's expected behavior or introducing new requirements.",216059
+1,LOW,"The change is a modification of the actor's actions, replacing 'Informa que acompanha autoridade' with 'Seleciona a justificativa.' However, this does not introduce new functionality or delete any steps, and it maintains the same system behavior.",58538
+2,LOW,"The updated snippet removes some steps from the original snippet but maintains the same behavior and structure. No new requirements, features, or business entities have been introduced.",53965
+3,HIGH,"The alternative flow's semantic meaning has changed from user not following authority to clearing fields, indicating a significant behavioral modification.",37309
+4,HIGH,"The original snippet includes an exception flow, while the updated snippet contains 'nan' (not a number), indicating that this exception flow might have been removed or changed. This constitutes a high-impact change since it affects the system's behavior by potentially altering the way error handling is managed.",56290
+5,HIGH,"The updated snippet introduces a new use case 'UC007 - Listar Autorizações de Pagamento Pendentes' with detailed steps, alternatives and preconditions which represents a high-impact change since it adds new system behavior.",76638
+6,HIGH,"The updated snippet introduces a new use case 'UC008 - Registrar Autorização de Pagamento' in the system, which changes the system's expected behavior (semantic edit). This change brings new elements such as requirements, steps, and exception flows, making it a high-impact classification.",78066
+7,HIGH,"The changes include adding new steps, exceptions, and alternatives which significantly affect the system's behavior.",49227
+8,HIGH,"The update introduces a new use case with actor, basic flow, alternatives and exceptions. This change affects the system's expected behavior by adding new functionality.",80349
+9,LOW,"The change is purely textual, providing more detail in step 27 without altering the system's expected behavior.",39283
+10,LOW,"The change is related to the presentation of information, adding links for 'numero do empenho' and 'autorização de pagamento'. It does not modify the system behavior or introduce any new requirements, features, or business entities.",60052
+11,LOW,"The change is related to the alternative flow (af) number, but it does not introduce or delete any requirement, feature, business model entity, step, exception flow, or alter the system behavior.",46145
+12,HIGH,"The original snippet shows an alternative flow 'Período com dias alternados' with two steps, while the updated snippet is missing. This absence changes the system's expected behavior, making it a high-impact change.",52807
+13,LOW,"The change is a textual update, adding information about presenting the justification and detail in the diaries' breakdown.",37741
+14,LOW,"The change is a textual update, adding 'dados do beneficiário' to the system's response.",37816
+15,LOW,"The change is purely textual, changing 'Visualiza' to 'Verifica', which does not modify the system's behavior or introduce new requirements.",40863
+16,LOW,"The change is only textual, updating the system's response by adding 'nome do beneficiário' (beneficiary's name) to the details displayed.",44671
+17,LOW,"The change is a textual update, providing more detail to the existing step without altering the system's expected behavior.",37589
+18,LOW,"The change is a textual update, adding a new requirement without altering the original one's behavior.",38948
+19,LOW,"The change is a low-impact syntactic edit as it only adds an alternative flow (af4) without modifying any existing system behavior or introducing new requirements, features, or business model entities.",49448
+20,LOW,"The change is a new alternative flow, which does not alter the system's behavior significantly. It introduces a new way to order records but does not affect other parts of the use case.",48881
+21,LOW,The updated snippet does not change the system behavior; it only adds an exception flow ef[5]. This addition is a low-impact change as it might detail or expand the system's behavior without altering the existing functionality significantly.,50984
+22,LOW,"The updated snippet adds an exception flow to the use case, which does not change the system's overall behavior or introduce new requirements. Instead, it provides more detail on how the system should handle a specific error condition.",47577
+23,LOW,"The change is a low-impact syntactic edit as it only introduces an alternative flow reference (af[5]) without modifying the actor, action, or affected system components.",43041
+24,HIGH,"The updated snippet introduces a new alternative flow, which changes the system's expected behavior (semantic edit). This addition brings a new requirement for handling the 'nome social' of beneficiaries.",47713
+25,LOW,The change is syntactic; it introduces new system text but does not modify the behavior of the system. The updated snippet provides more detail about how the list will be displayed.,43300
+26,LOW,"The change is a textual update, as the system's expected behavior remains the same - retrieving and displaying the list of allowable daily reimburses. The modification only adds an ordering requirement to the displayed list.",71800
+27,LOW,"The change is purely textual, updating the way the system action is described without altering the expected behavior.",37643
+28,LOW,The change is adding more details to the system's action without altering its behavior or introducing new requirements.,37325
+29,LOW,"The change is a textual update, adding more details to the system's expected behavior without altering the system's action or introducing new requirements or features.",43950
+30,LOW,"The change is a simple text update, updating the word 'usuario' to 'usuário', which does not affect the system behavior or introduce new requirements.",43088
+31,LOW,"The change is merely textual, converting a lowercase 'a' to an uppercase 'A' in the system response. It does not affect the system behavior or introduce any new requirements, features, or business model entities.",51196
+32,LOW,"The change is merely textual, as it modifies the way a string is displayed without altering the system's behavior.",37545
+33,LOW,"The change is a simple typo correction, from 'a opcao' to 'a opção', which does not affect the system behavior.",40733
+34,LOW,"The change is merely textual, correcting a typo in the system's message from 'opcao' to 'opção', which does not affect the system's behavior.",46732
+35,LOW,"The changes are merely textual; the updated snippet uses proper accentuation, which was missing in the original snippet.",40315
+36,LOW,"The change is merely textual, correcting the character 'a' to 'á' in the system response. It does not alter the system behavior or introduce new requirements.",41046
+37,LOW,"The change is merely textual - it corrects a typo in the original snippet by replacing 'opcao' with 'opção', which does not alter the system's expected behavior.",44386
+38,LOW,"The changes are merely textual, where the use case steps and their order remain unchanged. The differences include updating some words to match proper nouns, changing from 'beneficiarios' to 'beneficiário(s)' and 'diaria(s)' to 'diária(s)', as well as updating the representation of diacritic characters (ex: 'seleciona' to 'selecionado').",88273
+39,LOW,"The change is merely textual - substitution of 'um diária' for 'do valor de um diária'. It does not alter the system's expected behavior or introduce new requirements, features, steps, exception flows, or alternative flows.",52068
+40,LOW,"The change is merely textual with different formatting of the system's response, not affecting the system behavior.",34981
+41,LOW,"The change is only a textual update, as it modifies the formatting of the string presented by the system (i.e., adding a period and changing from straight to smart quotes) without altering its meaning or behavior.",47683
+42,LOW,"The change is only a textual update, replacing 'opcao' with 'opção', and adding a punctuation mark at the end of the sentence. It does not alter system behavior or introduce new/delete requirements, features, or business entities.",49965
+43,LOW,"The change is a textual modification in the use case alternative's description, using correct spelling and formatting.",36238
+44,LOW,"The changes are merely textual, as they involve updating the language used in the steps to be more grammatically correct and consistent (e.g., changing 'beneficiarios' to 'beneficiário(s)' and adding appropriate punctuation). These updates do not introduce new functionality or alter the system behavior.",61429
+45,LOW,"The change is only textual, modifying the word 'existencia' to 'existeência'. It does not affect the system behavior or introduce any new requirements, features, or entities.",44282
+46,HIGH,"The updated snippet is 'nan' (not a number), which indicates an error or significant change in the postCondition, suggesting a high-impact modification to the system's expected behavior.",42757
+47,LOW,"The change is merely textual, involving formatting (addition of a period and a space). It does not alter the system's expected behavior or introduce any new requirements, features, steps, or exception/alternative flows.",49673
+48,LOW,"The change is a textual update, replacing 'O usuario acessa' with 'Acessa'. The expected behavior remains unchanged.",39480
+49,LOW,"The change is only a textual update, adding a period at the end of the system's action.",33836
+50,LOW,"The change is only a textual update, adding a period at the end of the system's action, which does not modify the system's behavior.",38978
+51,LOW,"The change is merely textual, adding a period at the end of the system's action description.",32931
+52,LOW,"The change is a textual update, replacing 'usuario' with 'usuário', which does not modify the system behavior or introduce new requirements, features, steps, exception flows, or alternative flows.",45122
+53,LOW,"The change is a punctuation addition, which does not alter the system's behavior or introduce new requirements, features, or entities.",38702
+54,LOW,"The change is a plus sign instead of a minus sign, but it does not affect the system behavior. It seems to be a formatting change or version control notation.",42330
+55,LOW,"The change is merely a textual update, adding a period at the end of the system message in the updated snippet. It does not alter the system's behavior or introduce new requirements.",43483
+56,LOW,"The change is a textual update in the error message, which does not alter system behavior or introduce new requirements, features, or business entities. It's merely a modification of the message content.",44901
+57,LOW,"The change is only a textual update, using correct punctuation at the end of the preCondition sentence.",34463
+58,LOW,"The change is only textual, updating 'extratificação' to 'estratificação'. There are no changes in system behavior, requirements, or any other high-impact modifications.",48253
+59,LOW,"The change is a simple update to the formatting of the preCondition, with no impact on system behavior or requirements.",34676
+60,LOW,"The change is purely textual, updating the description of system behavior without altering its meaning or introducing new requirements.",35148
+61,LOW,"The change is only textual, replacing '-' with '+' without altering the system's expected behavior.",34835
+62,LOW,"The change is merely textual, converting the first letter of the actor's action to uppercase, which does not modify the system behavior.",40610
+63,LOW,"The change is merely textual - adding a period at the end of the sentence, which does not alter the system's behavior.",36950
+64,LOW,"The change is merely textual - a formatting difference in the use of quotation marks, which does not affect the system's behavior.",37341
+65,LOW,"The change is a simple text update, replacing '-' with '+', which does not alter system behavior or introduce new/delete requirements, features, or business model entities.",42179
+66,LOW,"The change is a simple update in formatting, converting the actor name to standard case. It does not introduce new requirements or alter the system's behavior.",39582
+67,LOW,"The change is only textual, modifying the formatting of a quotation mark, which does not affect system behavior or introduce any new/deleted requirements.",39832
+68,LOW,"The change is merely textual, adding a period at the end of the user action description and system response. It does not alter the system behavior or introduce new requirements, features, or business entities.",44997
+69,LOW,"The change is only a textual update, adding a period at the end of the sentence, which does not modify the system's behavior.",38582
+70,LOW,"The change is only textual, replacing 'a lista de registros de solicitações, onde o nome deverá constar' with 'a lista de registros de solicitações, onde deverá constar'. The system behavior remains unchanged.",55898
+71,LOW,"The change is only a textual update; it adds a period at the end of the system's message, which does not alter the system's behavior or introduce any new requirements.",42344
+72,LOW,"The change is low-impact because it maintains the system's expected behavior (semantics) and does not introduce new or delete any requirements, features, business model entities, steps, exception flows, or alternative flows. Instead, this update is textual: it changes the step number from 3 to 1, which can be considered a reordering.",64022
+73,LOW,"The change is a syntactic edit as it does not alter the system's behavior. It is a textual update adjusting step numbers, likely due to renumbering or adding an additional step in the updated snippet.",48378
+74,LOW,"The change is a simple '+' sign addition, which suggests that the line was added during the update. There's no alteration in the system behavior as it still displays an error message (MSG210) for an existing payment authorization number.",53932
+75,LOW,"The change is merely textual, as it corrected the typo in the original precondition statement. The system behavior remains unchanged.",37821
+76,LOW,"The change is a syntactic edit, as it does not alter the system's behavior. The '+' signs in the updated snippet indicate that these lines were added, but upon examination, they are identical to the original snippet. No new requirements, features, or business model entities have been introduced; instead, this seems to be a case of re-adding existing content.",65650
+77,LOW,"The change is only textual, replacing 'Permite' (allows) with 'Não permite' (does not allow), which does not modify the system behavior.",41956
+78,LOW,"The change is merely textual - adding a period at the end of the sentence, which does not affect the system's behavior.",35859
+79,LOW,"The change is merely textual, updating a period to a semicolon. It does not alter the system's expected behavior or introduce any new/deleted requirements, features, steps, exception flows, or alternative flows.",45538
+80,LOW,"The updated snippet is a duplicate of the original snippet with different step numbers, indicating a syntactic edit (textual update). There are no changes in system behavior, new requirements, features, business model entities, steps, exception flows, or alternative flows.",64047
+81,LOW,"The change is only a textual update, adding a period at the end of the system action description.",33136
+82,LOW,"The change is merely textual, adding a semicolon at the end of step 1 description within the exception flow. It does not modify the system behavior or introduce any new elements.",43717
+83,LOW,"The change is a simple textual update, modifying the formatting of the precondition sentence without altering its meaning or affecting system behavior.",37148
+84,LOW,"The change is a syntactic edit, as it does not alter the system's behavior. It is a textual update in which step number 4 from the original snippet has been changed to step number 3 in the updated version, and system action 'Exibe os registros de solicitações de diária.' has been moved down one step.",65309
+85,LOW,"The change is a single character edit (plus sign instead of minus sign), which does not affect the system's behavior or introduce new/delete requirements, features, steps, or exception/alternative flows. It appears to be a textual update.",49685
+86,LOW,"The change is purely syntactic, modifying only the step number without affecting system behavior or introducing new/deleting requirements, features, business model entities, steps, exception flows, or alternative flows.",44929
+87,LOW,"The change is merely textual, involving the use of a period instead of a comma. It does not alter the system's behavior or introduce any new requirements or features.",42479
+88,LOW,"The change is purely textual, with no impact on system behavior. Both snippets have the same content; only formatting has changed (addition of '+').",44119
+89,LOW,"The change is only a textual update, adding a period at the end of the system's action description.",34027
+90,LOW,"The change is purely textual, replacing 'a lista de registros de solicitações, onde o nome deverá constar' with 'a lista de registros de solicitações, onde deverá constar'. There is no impact on the system's expected behavior or any other elements such as requirements, features, or business model entities.",68160
+91,LOW,"The change is merely a textual update, adding a period at the end of the system's action.",34099
+92,LOW,"The change is merely textual, involving a formatting difference in the use of quotation marks. The meaning and expected behavior of the system remain unchanged.",39326
+93,LOW,"The change is merely a plus sign added at the beginning, which usually indicates an addition in version control systems. The text itself remains unchanged, so it's a low-impact update (possibly to mark the addition of this sentence to the document).",65390
+94,LOW,"The change is merely textual, updating a period to a double space in the precondition.",75634
+95,LOW,"The change is only a textual update in the step's annotation, which does not alter system behavior or introduce new requirements.",36176
+96,LOW,"The change is only a textual update, replacing 'conta bancários' with 'conta bancária' in the informational message displayed by the system.",43060
+97,LOW,"The change is a textual update, adding a period at the end of the system's message in the updated snippet. It does not alter the system behavior or introduce new requirements.",45025
+98,LOW,"The change is adding a number to the af attribute, which indicates that an alternative flow (4 or 6) will be executed. This does not alter the system's expected behavior, nor does it introduce new requirements or features; hence, it can be considered low-impact.",52855
+99,HIGH,"The updated snippet introduces an alternative flow, which changes the system's expected behavior. This is a semantic edit and not merely a textual update.",40834

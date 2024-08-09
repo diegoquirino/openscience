@@ -1,0 +1,4 @@
+Do "[target]" introduce new features, requirements, steps, exception flows or alternative flows that were not present in "[origin]"?
+Are the changes in "[target]" merely textual, typo, synonyms, punctuation or formatting, without altering the logic or behavior that were present in "[origin]" (semantically equivalent)?
+Are the changes in "[target]" just detailing, reducing, reordering or renaming of the checks that need to be made, usually related only to data presentation in comparison with "[origin]" (semantically equivalent)?
+Do "[target]" remove or deprecate features, requirements, steps, exception flow or alternative flow, or promote significant alterations in the logic or behavior that were present in "[origin]"?
