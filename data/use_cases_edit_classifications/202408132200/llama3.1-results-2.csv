@@ -1,0 +1,93 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change from 'af[3,6]' to 'af[3,5]' in the updated snippet does not alter the expected system behavior. It only updates the number of alternative flows pointed to by 'af', which is a textual change without any semantic implications.",15816
+1,HIGH,"The updated snippet introduces new steps (step 21 and step 22) which modify the system expected behavior, changing the sequence of actions performed by the user and the system.",21330
+2,LOW,"The change is a reordering of steps, updating the step numbers and changing some wording to be more concise.",27520
+3,LOW,"The update only changed the alternative flow name, without altering the expected system behavior.",15998
+4,LOW,"The updated snippet simply removes the exception flow, which does not change the system behavior but rather reduces or deletes an existing requirement. It's a syntactic edit that corrects or omits text.",14042
+5,HIGH,"The changes introduce a new use case 'Listar Autorizações de Pagamento Pendentes' which includes new requirements, steps and exception flows.",33886
+6,HIGH,The updated snippet introduces a new feature that changes the expected system behavior,31560
+7,HIGH,"The updated snippet introduces a new feature, alternative flows, and exception flows which is considered as high-impact change because it changes the system expected behavior (semantic edit)",38937
+8,HIGH,"It introduces new conditions that affect the system's behavior, which is a semantic edit.",20080
+9,HIGH,introduces new system behavior,16119
+10,HIGH,"The update changes the expected system behavior by removing one of the alternative flows (af) in step 13, which could potentially affect the overall functionality and outcome of the use case.",15318
+11,HIGH,"The updated snippet completely removes a previously defined alternative flow in the original snippet, which indicates a significant change to the system's behavior.",12364
+12,HIGH,"The updated snippet introduces a new requirement (apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe), which indicates a semantic edit and changes the system expected behavior.",24210
+13,HIGH,"The update adds a new piece of information ('dados do beneficiário') to the system's expected behavior, which indicates a semantic edit.",22516
+14,LOW,"The updated snippet changes only the wording of a single step, without altering the overall behavior or structure of the use case.",18584
+15,LOW,"The change adds a detail to an existing step, but does not alter the system's behavior. The changes are merely textual (update): adding a detail, using synonyms (beneficiário instead of aquela).",15486
+16,HIGH,"The original step was a simple action to 'clica para analisar a prestação de contas.' whereas the updated snippet introduces additional context by mentioning 'verifica o histório da tramitação da prestação de contas' which changes the system expected behavior, thus it is a semantic edit and not just a textual (syntactic) one.",22132
+17,HIGH,Introduction of new requirement affects the system's expected behavior.,13153
+18,LOW,"The change involves adding an existing alternative flow reference (af) to the step, which does not alter the system's expected behavior or introduce new requirements.",19961
+19,HIGH,The updated snippet introduces a new exception flow (ef) which indicates a change in system expected behavior.,12190
+20,HIGH,"The updated snippet introduces a new exception flow, which represents a significant change in system behavior.",11348
+21,HIGH,Introducing a new alternative flow without changing the basic flow steps directly but affecting how the system processes information.,69541
+22,HIGH,"The updated snippet introduces a new alternative flow with specific steps and interactions, which changes the system's behavior (semantic edit). This requires adjusting the underlying logic and functionality of the use case.",15872
+23,HIGH,"The updated snippet introduces new behavior by adding an ordering criteria, which changes the system expected behavior.",17736
+24,HIGH,"The change introduces a new requirement, ordering by number of diaries in ascending order, which affects the system's expected behavior.",12474
+25,HIGH,"The updated snippet introduces a new requirement to display the list of diaries ordered by the diary number in ascending order, which changes the system expected behavior.",18143
+26,HIGH,The updated snippet introduces a new requirement (exhibiting the list of diaries ordered by arrival date) which changes the system's expected behavior.,13741
+27,HIGH,"The updated snippet introduces a new requirement by mentioning 'Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho)', which changes the system expected behavior.",17790
+28,LOW,"The update changes a single word from 'escolhida' to 'opção', which is merely textual and does not alter the system's expected behavior.",27910
+29,LOW,"The change is merely textual, updating 'opcao' to 'opção', which does not affect the system's expected behavior.",15792
+30,LOW,"The change is merely textual, updating 'opcao' to 'opção', which does not alter the system's expected behavior.",13430
+31,LOW,The updated snippet corrects a simple typo ('a opcao' -> 'a opção') which does not alter the system's expected behavior.,15918
+32,LOW,"The update only changes textual details such as punctuation and capitalization, without altering the system behavior or introducing any new requirements.",14405
+33,LOW,"The change updates a system message to use a more modern Portuguese word 'opção' instead of 'opcao', which does not alter the expected system behavior.",13247
+34,LOW,"The change is merely textual, replacing 'opcao' with 'opção', which does not alter the system's behavior or functionality.",24327
+35,LOW,"The changes are merely textual (update): detailing, which does not affect the system expected behavior or any requirement.",15295
+36,HIGH,"The change introduces a semantic edit by changing 'uma diária' to 'um diária', affecting the system's expected behavior.",13484
+37,LOW,"The updated snippet only adds a period at the end of the sentence, which is a minor textual change without any impact on the system behavior.",23400
+38,LOW,"The updated snippet corrects a typo ('opcao' -> 'opção'), which does not change the system expected behavior.",13340
+39,LOW,"The updated snippet only changes a single word ('opcao' to 'opção') and adds punctuation, which does not affect the system's expected behavior.",27133
+40,LOW,"The updated snippet merely updates a single word 'Pedido de Diaria' to 'Pedido de diária', and also changes the formatting from 'apos' to 'após'. No new requirements, features, or business model entities are introduced. The step remains unchanged.",18579
+41,LOW,The edit corrects minor typos without changing the system expected behavior.,28718
+42,HIGH,The change is a semantic edit as it alters the system's expected behavior by modifying an exception flow and its description.,24354
+43,LOW,"The updated snippet changes only the textual content (from a post-condition statement to an empty string), without affecting the system's behavior or functionality.",20068
+44,LOW,"The change is merely textual (update): changing 'O usuario devidamente autenticado e na tela inicial do sistema' to 'O usuário devidamente autenticado e na tela inicial do sistema.', which only changes the spelling of 'usuario' to 'usuário', a minor typo correction.",20794
+45,LOW,"The update involves replacing words with synonyms, but does not alter the system's expected behavior.",31027
+46,LOW,"The change is merely textual, updating a detail in the system name.",9726
+47,LOW,"The change only adds a period at the end of the sentence, which is a minor textual update and does not alter the system's expected behavior.",12737
+48,HIGH,"The change alters the original condition by adding a period, changing sentence structure and grammar.",26182
+49,LOW,"The updated snippet only adds a period at the end of the sentence, which does not change the system expected behavior. This is a minor textual update and does not introduce any new requirements or features.",16520
+50,LOW,"The updated snippet is a minor correction to the wording of an existing requirement, and does not change the system's expected behavior.",24013
+51,LOW,"The updated snippet adds a dot at the end of the sentence, which is a minor textual change that does not alter the system's expected behavior.",17783
+52,LOW,"The updated snippet appears to be a minor update, removing spaces before quotation marks, which does not alter the system's expected behavior.",15595
+53,LOW,The change is merely textual (update): replacing a double quote with a period at the end of the precondition.,12386
+54,HIGH,"The change introduces a correction in spelling from 'extratificação' to 'estratificação', which implies that the text has been updated semantically and not just syntactically.",16168
+55,LOW,The updated snippet only changes a minor detail (punctuation) without affecting the overall system behavior.,10841
+56,HIGH,The update changes the expected system behavior by adding 'de todos os servidores' which introduces new information about the type of data being displayed.,15285
+57,LOW,"The updated snippet only changes wording and punctuation, but not the expected system behavior.",21356
+58,HIGH,"The update introduces new text that directly affects the system behavior, as it changes what the system is expected to do (exhibit data). This is a semantic edit.",13926
+59,LOW,The updated snippet is a minor textual change (update) without altering the system behavior.,10448
+60,LOW,"The updated snippet only changes a typo ('O' -> 'O') and adds a period at the end of the precondition, which does not alter the system's behavior or introduce any new requirements.",14565
+61,LOW,"The change is a simple correction of punctuation and wording, with no impact on the system's expected behavior or functionality.",22710
+62,LOW,"The updated snippet only changes punctuation and formatting of existing text, without changing the system behavior.",11694
+63,HIGH,"The edit changes the system expected behavior by adding a period, which indicates that it's now a statement, not just a command.",12441
+64,LOW,"The updated snippet is a syntactic edit, as it only changes the wording of the system's expected behavior without altering its core functionality. The change is merely textual (update), focusing on detailing and clarity rather than introducing new requirements or modifying the business model entity.",20667
+65,LOW,"The change adds a period at the end of the step description, which is a minor textual update and does not affect the system behavior.",12339
+66,LOW,"The change only updates the step number and does not alter the actor, action, or expected behavior.",12938
+67,LOW,"The changes are merely textual (update): detailing, renaming steps 4 and 5 to 3 and 4 respectively. It does not change the system behavior.",15665
+68,LOW,"The change from ""O usuario devidamente autenticado e na tela inicial do sistema"" to ""O usuário devidamente autenticado e na tela inicial do sistema."" only updates the detailing, specifically correcting a typo from ""usuario"" to ""usuário"", without changing the system expected behavior.",17367
+69,LOW,"The updated snippet only adds an additional step with no changes to system behavior, it's merely a textual update.",23691
+70,LOW,"The edit adds a '+' sign but keeps the same text, which indicates a minor textual update rather than a change to system behavior.",24291
+71,LOW,"The update adds a period at the end of the sentence, which is a minor textual change without altering the system's expected behavior.",12261
+72,LOW,The change is only fixing a typo and does not affect the system's behavior.,16668
+73,LOW,The changes are merely textual (update): reordering steps with no change in system behavior.,22737
+74,LOW,"The change only updates a detail (typo) without altering the system's expected behavior or introducing new requirements, features, business model entities, steps, exception flows, or alternative flows.",14357
+75,HIGH,"The change introduces a new semicolon (;) at the end of the step description, which can affect the system's expected behavior.",21862
+76,HIGH,minor punctuation correction affecting system clarity,19926
+77,LOW,"The updated snippet appears to be a simple update in wording, replacing a period with a quotation mark, which does not change the system's behavior.",17068
+78,HIGH,"The step number was changed from 4 to 2, which indicates a reordering of steps in the basic flow, affecting the expected system behavior.",15147
+79,LOW,The change is purely textual and does not modify the system expected behavior.,16958
+80,LOW,The updated snippet only adds a '+' before 'step 4' and does not change any system behavior. It's a minor textual update.,13482
+81,LOW,"The change adds a period at the end of the sentence, which is a mere textual update and does not alter the system's expected behavior.",12573
+82,HIGH,"The updated snippet changes the system expected behavior by removing the word 'deverá' which implies an obligation, thus changing the semantic meaning of the step.",15251
+83,LOW,"The change adds a period at the end of the sentence, which does not alter the system's expected behavior.",11472
+84,LOW,"The updated snippet appears to be a minor textual change (typos) with no changes in system behavior, thus it's classified as low-impact.",12992
+85,LOW,"The updated snippet is merely a typo correction from 'MSG211 - Número da liquidação já existe.' to 'MSG211 - Número da liquidação já existe' (removing the trailing dot), which does not change the system behavior.",17211
+86,LOW,"The updated snippet only corrects a typo ('O' -> 'Ou'), making it a syntactic edit.",11750
+87,LOW,"The change adds a period at the end of the sentence, which is a minor textual update that does not alter the system's behavior.",14054
+88,LOW,"The updated snippet appears to be a minor textual update, changing the wording of step 4 without altering its functionality.",12595
+89,LOW,The change is merely textual (adding a period at the end of the sentence) and does not alter the system's expected behavior.,12163
+90,LOW,"The change is merely adding an additional alternative flow, without changing the existing steps or system behavior.",11073
+91,HIGH,Introduces a new alternative flow and its corresponding steps which changes the system's expected behavior.,25308

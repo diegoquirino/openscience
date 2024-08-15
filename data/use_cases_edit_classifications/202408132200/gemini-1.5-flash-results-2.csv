@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change only modifies the alternative flow reference, from af[3,6] to af[3,5]. This is a syntactic edit, as it doesn't affect the functionality or expected behavior of the system.",1951
+1,HIGH,"The updated snippet introduces new steps (21 and 22) related to selecting beneficiaries for daily allowances, which was not present in the original snippet. This indicates a significant change in functionality and thus a high-impact edit.",798
+2,HIGH,"The updated snippet removed steps 24 and 25 from the original snippet, which involve the system displaying beneficiaries and the user selecting them. This change alters the system's behavior, suggesting a significant change in the system's functionality. Therefore, it is considered a high-impact change.",952
+3,HIGH,"The alternative flow 'Usuário informa que NÃO acompanha autoridade' has been removed, significantly altering the system's behavior by eliminating a path within the use case.",811
+4,HIGH,"The updated snippet is 'nan' which means the entire exception flow was deleted. This is a significant change, impacting the system's behavior by removing an error handling mechanism.",750
+5,LOW,"The changes are primarily syntactic: formatting, addition of comments, and minor wording updates. No new functionalities or core behaviors are added or removed.",751
+6,HIGH,"The updated snippet introduces a new step (step 3) in the basic flow, which involves the user informing the number of the Payment Authorization and the Exercise. This addition significantly changes the system's expected behavior, making it a high-impact change.",865
+7,HIGH,"The original snippet is empty, and the updated snippet contains a complete use case specification, including steps, alternative flows, and exception flows. This change introduces a significant amount of new content and functionality, representing a high-impact change.",948
+8,HIGH,"The updated snippet adds new functionality by introducing a new alternative flow ('Visualizar documento/comprovante de prestação de contas'), allowing the user to view documents related to the account statement. This is a significant change in the system's behavior.",950
+9,HIGH,"The updated snippet introduces new information about the specific values that the user should verify, which directly impacts the system's expected behavior and adds new requirements. This goes beyond a mere textual change and thus is a high-impact edit.",872
+10,LOW,"The update only adds a new feature (displaying the empenho number and payment authorization as links) to the existing step, without changing the overall purpose or logic of the step. This is a minor addition and does not significantly impact the system's behavior.",1059
+11,LOW,"The change only affects the reference to an alternative flow (af[3,5] -> af[3]). The actual functionality and steps remain unchanged, indicating a minor, syntactic adjustment.",745
+12,HIGH,"The updated snippet is 'nan', indicating the complete removal of the alternative flow. This is a significant change that impacts the system behavior.",726
+13,HIGH,"The updated snippet introduces a new step, ""Apresenta, no detalhamento das diárias, a justificativa concatenada com o detalhe."", which was not present in the original snippet. This adds a new feature to the system and changes its expected behavior, making it a high-impact change.",884
+14,HIGH,"The updated snippet adds the display of beneficiary data in step 4, which changes the system's expected behavior. This is a semantic edit that introduces a new feature and therefore has a high impact.",771
+15,LOW,"The change is a synonym change: 'Visualiza' is replaced by 'Verifica', which does not impact the system's functionality.  The flow remains unchanged.",724
+16,LOW,"The change adds the ""nome do beneficiário"" detail to the displayed information. This is a minor addition that clarifies the data shown and does not change the core functionality of the system.",790
+17,HIGH,"The updated step adds a new action for the user before clicking to analyze the account statement. This introduces a new requirement and changes the system behavior, making it a high-impact change.",765
+18,HIGH,"The updated snippet adds a new requirement (step 3), changing the system's expected behavior. This introduces a new constraint on the use case, thus making it a high-impact edit.",796
+19,HIGH,"The change introduces a new alternative flow (af[4]) which implies a change in the system's expected behavior, therefore it is a high-impact edit.",796
+20,HIGH,The updated snippet introduces a new alternative flow (alternative 4) which changes the system behavior by adding a new way to order the data (by server name).,728
+21,HIGH,"The updated snippet introduces an exception flow (ef[5]), which implies a change in system behavior, requiring handling a specific exception scenario. Therefore, the change is considered high-impact.",785
+22,HIGH,"The updated snippet adds a new exception flow, which significantly changes the system's behavior by introducing an error handling scenario for a non-existent account. This directly impacts the system's functionality and response to specific situations.",814
+23,HIGH,The updated snippet introduces a new alternative flow (af[5]) which was not present in the original snippet. This introduces new behavior and is thus a high-impact change.,737
+24,HIGH,"The updated snippet introduces a new alternative flow (alternative 5 'Informar nome social'), which changes the system's expected behavior by adding a new feature for informing the social name of beneficiaries.",917
+25,HIGH,"The updated snippet introduces a new requirement for sorting the displayed list of requests, which changes the system's expected behavior. This change impacts the functionality and how the information is presented to the user.",775
+26,HIGH,"The updated snippet introduces a new requirement for the system to sort the list of daily rates in ascending order. This is a functional change that impacts the system's behavior, making it a high-impact edit.",878
+27,LOW,"The update provides additional detail about how the list of daily rates is displayed, but does not change the core functionality. The system still displays a list of eligible daily rates. It is merely an improvement to the user interface by adding sorting criteria.",974
+28,HIGH,"The updated snippet adds a new ordering criterion for the list of daily rates, changing the system's expected behavior. This is a semantic change that alters the functionality of the use case, making it a high-impact edit.",833
+29,HIGH,The updated snippet introduces a new sorting criteria (date of arrival of the request in the liquidation phase) which is not present in the original snippet. This change modifies the expected system behavior.,773
+30,LOW,The changes are purely textual - updating the use of accents and adding a space. No system behavior is altered.,1027
+31,LOW,"The change is purely syntactic. It alters the capitalization and hyphenation of a phrase, but does not modify the system's expected behavior.",763
+32,LOW,"The change is merely a textual update (syntactic edit). The change consists in updating the text 'opcao' to 'opção', which is a typo correction. The system behavior remains the same.",784
+33,LOW,"The change is merely a textual update, specifically a synonym change from ""Exibe a opcao"" to ""Exibe a opção"". The functionality and expected system behavior remain the same.",789
+34,LOW,"The change is purely textual, updating the wording from 'opcao' to 'opção'. The system behavior remains unchanged.",704
+35,LOW,"The changes are purely textual, updating the capitalization and accentuation of certain words.  The functionality and flow remain unchanged.",664
+36,LOW,"The change is purely a stylistic one, replacing a period with a colon. It doesn't alter the meaning or functionality of the step.",734
+37,LOW,"The change is a syntactic edit, specifically a typo correction from 'opcao' to 'opção'.  There's no change in the system behavior or requirement, only a correction to the text.",747
+38,LOW,"The changes are merely textual updates: correcting typos, updating synonyms, and improving formatting. The system's expected behavior remains unchanged.",727
+39,LOW,"The change is purely a typo correction, replacing ""um"" with ""uma"" in the description. This doesn't affect the system behavior or the intended meaning.",799
+40,LOW,"The change only involves punctuation, removing a redundant hyphen, which does not affect the system's behavior.",674
+41,LOW,The change is merely a formatting correction (punctuation). It does not change the system's expected behavior.,639
+42,LOW,"The change is merely a punctuation correction, adding a period at the end of the sentence. This doesn't affect the system's behavior or functionality.",734
+43,LOW,The change is a textual update to the alternative flow name.  The functionality and steps remain unchanged.,664
+44,LOW,"The change is purely a textual update involving spelling correction and pluralization of words (beneficiario/beneficiários, diária/diárias) without altering the system behavior.",805
+45,LOW,"The change is a minor textual update, correcting a spelling error ('existencia' to 'existência') and improving punctuation. The system behavior remains unchanged.",751
+46,HIGH,"The updated snippet completely removes the postCondition, which signifies a significant change in the system's expected behavior. It directly impacts the system's functionality and data handling.",761
+47,LOW,"The change is a minor formatting update. The text is now using a period instead of a tab, but the meaning remains the same.",770
+48,LOW,"The change is a minor wording adjustment, making the text more concise and natural. It doesn't affect the core functionality or flow of the use case.",727
+49,LOW,The change is purely a stylistic addition of a period at the end of the sentence. This doesn't impact the system's behavior or the steps involved in the use case.,784
+50,LOW,"The change is only a minor punctuation correction, adding a period at the end of the sentence. This does not impact the system behavior.",866
+51,LOW,The change is a minor textual update (punctuation). The system's expected behavior remains the same: to present the 'Cancelar Solicitação de Diária' screen.,739
+52,LOW,"The change is merely textual (update): punctuation, removing extra space.",1125
+53,LOW,"The change is a simple punctuation fix, removing a superfluous space. It doesn't alter the intended system behavior.",663
+54,LOW,The change is a simple typo correction: 'Solcitação' to 'Solicitação'. The system behavior and functionality remain unchanged.,801
+55,LOW,"The change is a minor syntactic edit, adding a period at the end of the sentence. It does not affect the system behavior or introduce any new functionality.",735
+56,LOW,The change is a minor textual update (removing unnecessary whitespace). It does not alter the system's behavior or introduce any new functionality.,1125
+57,LOW,"The change is merely a punctuation update, modifying the use of a double quote instead of a single quote. This does not impact the functionality or logic of the pre-condition.",1163
+58,LOW,The change is purely textual - 'Apresenta o numero do empenho' is changed to 'Apresenta o número do empenho'. This is a simple spelling correction and doesn't impact the system's behavior.,875
+59,LOW,"The change is a syntactic edit, only changing punctuation. The functionality and system behavior remain unchanged.",722
+60,HIGH,"The updated snippet explicitly mentions 'de todos os servidores', which was not present in the original snippet. This suggests a significant change in functionality, potentially requiring the system to retrieve and display requests from all servers, not just a specific set. Therefore, the impact is classified as HIGH.",955
+61,LOW,"The change is a minor formatting difference, adding a period at the end of the sentence. It does not impact the system behavior or functionality.",745
+62,LOW,"The change is a syntactic edit, specifically a formatting update. It changes the capitalization and adds a period at the end of the step description. The system behavior remains unchanged.",720
+63,LOW,"The change is only a punctuation addition, which doesn't impact the system's behavior. The functionality of presenting the 'Registrar Empenho' screen remains the same.",790
+64,LOW,"The change is purely textual, adding the ""+"" symbol at the beginning of the text.  This does not affect the system's behavior, therefore it's a low-impact edit.",809
+65,LOW,The update is a syntactic edit - a punctuation change. The message content and intended behavior remain the same.,644
+66,LOW,"The change is merely a punctuation correction, updating a comma to a period. This is a syntactic edit that does not affect the system's behavior or requirements.",835
+67,LOW,"The change is a simple typo correction, replacing 'numero' with 'número'. This is a syntactic edit with no impact on system behavior.",680
+68,LOW,"The changes are purely textual, only adding a period to the step 3 description. The system behavior and functionality remain unchanged.",716
+69,LOW,The change only involves adding a period at the end of the sentence. This is a purely syntactic edit that doesn't affect the system's expected behavior.,838
+70,LOW,"The change is purely cosmetic, adding a '+' before the step description. The step's content remains unchanged.",713
+71,LOW,"The change is a purely syntactic one, adding a period at the end of the step description. It doesn't affect the system's expected behavior or introduce any new requirements or functionalities.",811
+72,HIGH,"The change in the step number significantly impacts the flow of the use case, potentially altering the system's expected behavior. It indicates a major modification to the sequence of actions.",933
+73,LOW,"The change is a re-ordering of steps, without changing the system's expected behavior. The steps are simply numbered differently.",692
+74,LOW,"The change is a minor syntactic update, removing unnecessary punctuation. It doesn't affect the system's behavior or introduce any new functionality.",709
+75,LOW,The change is simply a punctuation update. The meaning of the precondition remains the same.,619
+76,LOW,"The change is simply a textual update, with no change to the system behavior. The steps and flows remain the same.",640
+77,LOW,"The change is purely syntactic, removing the word 'Permite' which is a synonym for 'permite'. The logic and functionality remain the same.",717
+78,LOW,The change is a minor syntactic edit: adding a period at the end of the sentence. The system behavior and functionality remain unchanged.,756
+79,LOW,"The change is merely a punctuation update, changing a semicolon to a period, without affecting the meaning or functionality of the precondition.",716
+80,LOW,"The changes are just a renumbering of steps, not changing the flow of the use case",770
+81,LOW,"The change is a minor formatting change, adding a period to the end of the sentence. It does not affect the system's behavior or introduce any new functionality.",769
+82,LOW,The change is purely syntactic - a semicolon has been added at the end of the step description. This does not affect the system's behavior or introduce any new functionality.,776
+83,LOW,The change is a minor syntactic edit: it updates the punctuation from a single quote to a period. This does not change the meaning or functionality of the precondition.,793
+84,LOW,The changes are purely a renumbering of steps. The system functionality and user interaction remain the same.,667
+85,LOW,The change is merely a typo correction. The functionality and expected behavior remain unchanged. ,1342
+86,HIGH,"The step number has been changed from 4 to 2, indicating a significant change in the flow of the use case.",710
+87,LOW,The change is only a formatting adjustment (punctuation). It does not alter the intended meaning or functionality of the precondition.,842
+88,LOW,"The change is purely a syntactic correction, changing 'numero' to 'número'. The functionality and expected behavior of the system remain the same.",829
+89,LOW,"The change is a minor syntactic edit, adding a period at the end of the sentence. It does not affect the system's behavior or functionality.",766
+90,LOW,"The change is purely cosmetic. It only involves adding a '+' before the step 2 statement, which doesn't affect the functionality or logic of the use case.",727
+91,LOW,The change is merely a punctuation addition. It does not alter the system's expected behavior or functionality.,690
+92,LOW,"The update only adds a plus sign (+) before the precondition, which does not impact the system's behavior or logic. It's likely a formatting change or a version control artifact.",767
+93,LOW,"The update is a minor syntactic change, removing a hyphen in the description. This change doesn't affect the system's behavior or logic. The message and its meaning remain unchanged.",798
+94,LOW,"The change is a minor syntactic update, changing a single character from a double quote to a period. It does not affect the meaning of the precondition or the system's expected behavior.",767
+95,LOW,The change is a simple punctuation correction (adding a period). It doesn't impact the functionality or meaning of the step.,1332
+96,LOW,"The change is a minor syntactic edit, only modifying the wording of the step 4 description. The system behavior remains unchanged.",700
+97,LOW,"The change is purely syntactical, adding a period to the end of the sentence.  There is no change to the system's expected behavior or the core functionality of the step.",878
+98,HIGH,"The updated snippet adds a new alternative flow (af[6]) to the step 25, changing the expected behavior of the system. This is a semantic change, indicating a high-impact edit.",787
+99,HIGH,"The updated snippet introduces a new alternative flow (alternative 6) which significantly changes the system behavior. This flow handles the scenario where the user exceeds the daily limit, altering the user interaction and system response.",868

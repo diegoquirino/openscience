@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,HIGH,The updated snippet changes the alternative flows (af) referenced by step 13. This directly affects the system's behavior as it alters the potential paths the use case can take.,53486
+1,HIGH,"The updated snippet introduces new steps and alters the system's flow. Users can now select beneficiaries alongside detailing a justification, significantly changing the use case's purpose and functionality.",50841
+2,HIGH,"The updated snippet changes the order of steps, implying a change in the system's flow. Step 24 is now executed before step 25, altering the user interaction and potentially the system's logic.",51051
+3,HIGH,"The change renames the alternative flow from 'Usuário informa que NÃO acompanha autoridade' to 'Limpar Campos', suggesting a significant shift in the system's expected behavior.",46944
+4,LOW,"The provided updated snippet is empty.  Since there's no change to compare with the original, it's considered a low-impact edit (syntactic).",43533
+5,HIGH,"The updated snippet introduces new alternative flows (af) and steps, significantly altering the system's behavior by adding functionalities like filtering authorizations by assigned user and managing responsibilities for payment authorization.",63428
+6,HIGH,"The updated snippet introduces new steps and exceptions, modifying the system's flow and handling of error scenarios. This directly impacts the system's behavior.",65275
+7,HIGH,"The updated snippet introduces new alternative flows (af[1,2,3,4,5]), steps within these flows, and exceptions (ef[2,3], ef[4]). This signifies a change in the system's behavior and functionality, not just a textual modification.",90316
+8,HIGH,"The updated snippet introduces new steps in the basic flow and alternative flows, modifying the system's behavior when analyzing a performance report. This indicates a semantic edit.",68792
+9,HIGH,"The updated snippet introduces specific criteria that the system should check during the verification step, altering the system's expected behavior.",55403
+10,HIGH,"The updated snippet introduces a new system behavior: displaying the number of the empenho and authorization of payment as links. This changes the functionality of the use case, making it a high-impact change.",53481
+11,HIGH,"Removing an alternative flow (af[3,5]) changes the possible execution paths of the use case, thus impacting the system's behavior.",44992
+12,LOW,"The provided updated snippet is empty.  Without the updated content, it's impossible to determine if the change is high or low impact.",52981
+13,HIGH,The update introduces a new feature: presenting the justification concatenated with the detail in the diárias. This changes the system's expected behavior.,48373
+14,HIGH,"The update adds new information about displaying 'dados do beneficiário' (beneficiary data), altering the system's expected behavior by including additional details in the output.",46483
+15,HIGH,"The change from 'Visualiza' to 'Verifica' alters the verb meaning, thus impacting the system's expected behavior.",77613
+16,HIGH,"The update adds new information ('nome do beneficiário') to what the system displays, altering its expected behavior.",42127
+17,HIGH,"The update adds a new action to the system behavior: 'Verifica o histório da tramitação da prestação de contas.' This introduces a change in what the system does, making it a semantic edit with high impact.",50211
+18,HIGH,"The updated snippet introduces a new requirement (point 3), changing the system's expected behavior.",48112
+19,HIGH,"The change adds an additional alternative flow (af[1,2,3,4])  indicating the system now handles more scenarios compared to the original use case. This directly impacts the system's behavior.",50789
+20,HIGH,The updated snippet introduces a new alternative flow (`Ordenar pelo nome do servidor`) which changes the system's behavior by adding sorting functionality based on server name. This constitutes a semantic edit.,48311
+21,HIGH,The updated snippet introduces an exception flow (ef[5]) which wasn't present in the original. This directly changes how the system behaves by potentially diverting execution from the basic flow.,48143
+22,HIGH,The updated snippet introduces a new exception flow handling the case of an un-registered bank account for daily allowance payments. This alters the system's behavior by adding a specific error message and preventing the process from continuing.,48974
+23,HIGH,"The addition of 'af[5]' introduces an alternative flow, changing the system's behavior by allowing for a different execution path depending on the outcome specified in alternative flow 5.",46589
+24,HIGH,"The updated snippet introduces a new alternative flow ""Informar nome social"" which changes the system's behavior by allowing users to input beneficiary social names. This is a semantic edit that adds functionality.",49481
+25,HIGH,"The update changes the system's behavior by introducing sorting criteria, altering how the list of solicitudes is presented.",41169
+26,HIGH,The updated snippet changes the system behavior by adding sorting to the list of diárias aptas para pagamento. This is a semantic edit that impacts how the system functions.,50685
+27,HIGH,"The update changes the system's behavior by adding sorting functionality to the displayed list of expense reports, making it a semantic edit.",78848
+28,HIGH,"The updated snippet adds a new requirement to the system's behavior: ordering the list of diárias by the date of arrival of the authorization request. This is a semantic change, not just a stylistic one.",61134
+29,HIGH,The updated snippet adds new functionality to the system: ordering the list of daily expenses by arrival date in addition to the existing order by expense number. This represents a change in the system's behavior and is therefore a high-impact edit.,60825
+30,LOW,"The changes are merely textual, involving corrections in phrasing and capitalization. The system's expected behavior remains the same.",52562
+31,LOW,"The change is merely a syntactic one, updating the indentation without altering the text content or system behavior.",45065
+32,LOW,"The change is a simple addition of a plus sign, which doesn't alter the system's expected behavior or the flow of the use case.",46020
+33,LOW,"The change is merely a stylistic one, replacing a dash (-) with a plus sign (+). This does not alter the meaning or functionality of the step.",43782
+34,LOW,"The change is only a plus sign added before the line, it doesn't affect the system's displayed text.",41803
+35,LOW,"The changes are only stylistic, using more specific wording. The system's behavior remains the same.",50559
+36,LOW,"The change is merely a plus sign added before the step, which is a formatting change and doesn't affect the system's behavior.",45628
+37,LOW,"The change is merely textual, correcting a misplaced '+' symbol. It does not alter the system's behavior or the text displayed.",54781
+38,LOW,"The changes are purely syntactical, involving the correction of plural nouns and articles. The system's behavior remains unchanged.",57151
+39,LOW,"The change is merely a grammatical correction, replacing 'um' with 'uma', which doesn't alter the meaning or functionality.",46412
+40,LOW,The change is merely a punctuation correction (adding a period at the end of the sentence). It does not alter the system's intended action.,47833
+41,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and does not alter the system's intended action.,45339
+42,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and doesn't alter the system's intended action.,52127
+43,LOW,"The change is purely syntactic. It corrects the phrasing from ""apos realizacao da viagem"" to ""apos o ultimo dia de viagem"", without altering the meaning or functionality of the use case.",53005
+44,LOW,"The changes are syntactic edits, focusing on grammatical corrections and pluralization to improve sentence structure and clarity. There's no alteration to the system's actions or flow.",51453
+45,LOW,The change is a syntactic edit: it corrects punctuation and spacing. It doesn't alter the meaning or system behavior.,47474
+46,LOW,"The updated snippet is missing. Without seeing the change, we can assume it's a low-impact edit as it likely only involves formatting or textual changes.",51109
+47,LOW,The change is only a minor grammatical correction (adding a period at the end of the sentence) and does not affect the meaning or behavior of the use case.,49296
+48,LOW,The change is a syntactic edit - it merely corrects the phrasing ('acessa' instead of 'acesse') without altering the intended action or behavior.,52058
+49,LOW,"The change is a simple syntactic edit, adding a period at the end of the sentence. It doesn't alter the system's expected behavior.",49596
+50,LOW,"The change is a simple syntactic edit, adding a period at the end of the sentence. It doesn't alter the system's functionality or expected behavior.",48987
+51,LOW,The change is a syntactic edit. It corrects punctuation (adding a period at the end of the sentence) without altering the system's action.,51449
+52,LOW,The change is a minor grammatical correction (adding a period at the end of the sentence) and does not alter the meaning or behavior of the precondition.,48723
+53,LOW,"The change is a stylistic one, adding a period at the end of the message. It does not alter the system's action or the flow of execution.",51886
+54,LOW,The change is merely a textual update: addition of a plus sign (+). It doesn't alter the core message or system behavior.,58891
+55,LOW,The change is merely a syntactic edit. It corrects punctuation (adding a period) without altering the meaning or behavior of the system.,62280
+56,LOW,The change is merely a plus sign added at the beginning of the line. This is a syntactical edit and does not change the underlying meaning or behavior of the use case.,57284
+57,LOW,The change is a minor grammatical correction (adding a period at the end of the sentence) and does not alter the meaning or expected behavior of the use case.,56267
+58,LOW,The change is purely syntactical: adding a plus sign before each line. It doesn't alter the content or functionality described in the use case.,58287
+59,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and does not alter the meaning or behavior of the use case.,51304
+60,HIGH,The update changes the scope of the system's action by including all servers instead of potentially a subset. This is a semantic change impacting the system's behavior.,51862
+61,LOW,"The change is merely a syntactic edit, adding a period at the end of the sentence. It does not alter the system's expected behavior.",46726
+62,LOW,"The change is merely a stylistic one, correcting capitalization and adding punctuation. It doesn't alter the underlying meaning or action of the step.",50632
+63,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and does not alter the system's functionality.,55882
+64,LOW,"The change is merely a textual update, correcting capitalization. It doesn't alter the intended meaning or system behavior.",51018
+65,LOW,The change is a simple typo correction (adding a missing space) and doesn't alter the intended message displayed to the user.,51598
+66,LOW,"The change is merely a syntactic edit, correcting a punctuation error. It doesn't alter the meaning or expected behavior of the pre-condition.",54317
+67,LOW,The change is merely a correction of capitalization from 'diárias' to 'Diárias'. This is a syntactic edit that doesn't alter the system's intended behavior.,54566
+68,LOW,"The change is merely textual, adding a period at the end of the user's action. It doesn't alter the system's expected behavior.",55080
+69,LOW,The change is a simple grammatical correction (adding a period) and does not alter the system's intended action.,49881
+70,LOW,"The change is a stylistic one, refining the phrasing without altering the core system action described in step 2.",57298
+71,LOW,"The change is a simple syntactic edit, adding a period at the end of the sentence. It does not alter the system's functionality or behavior.",49951
+72,HIGH,"Changing the step number from 3 to 1 significantly alters the sequence of actions in the use case, impacting the system's expected behavior.",64863
+73,HIGH,"The change modifies the order of actions in the use case, potentially impacting the system's flow and behavior.",48293
+74,LOW,The change is a simple addition of a plus sign and does not alter the meaning or functionality described in the snippet.,53360
+75,LOW,"The change is merely a stylistic one, correcting the punctuation. It does not alter the meaning or behavior of the precondition.",48333
+76,LOW,"The changes are purely syntactical, adding '+' symbols before the steps. This does not alter the system's behavior or introduce new elements.",62208
+77,LOW,The change is purely syntactic - it removes a prefix ('Permite não permite'). This doesn't alter the underlying meaning or behavior of the system.,46762
+78,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and doesn't alter the system's intended action.,46261
+79,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and doesn't alter the meaning or expected behavior of the system.,51948
+80,HIGH,"The updated snippet changes the order of actions between the user and the system. This directly impacts the flow of the use case, constituting a semantic edit.",63998
+81,LOW,"The change is merely a stylistic one, adding a period at the end of the sentence. It does not alter the system's action.",52191
+82,LOW,"The change is a syntactic edit, adding a semicolon at the end of the system's action. It doesn't alter the meaning or behavior described in the exception flow.",52555
+83,LOW,The change is merely a syntactic edit. It corrects the punctuation but does not alter the meaning or behavior of the precondition.,61904
+84,HIGH,The updated snippet changes the actor performing the action in step 4 from 'usuario' to 'system'. This alters the system's behavior as the responsibility of displaying the records shifts.,65840
+85,LOW,The change is merely a punctuation edit (adding a period at the end of the sentence) and doesn't affect the system's behavior.,62372
+86,HIGH,"The change modifies the sequence of actions performed by the system. Step 4 is now step 2, indicating a significant alteration in the flow of the use case.",54482
+87,LOW,The change is merely a stylistic one (adding a period at the end of the sentence) and does not alter the meaning or behavior described in the precondition.,60862
+88,LOW,"The change only affects the wording of the system's output, not the underlying functionality.",66621
+89,LOW,"The change is merely a stylistic one, adding a period at the end of the sentence. It doesn't alter the system's action.",58020
+90,LOW,The change is a simple addition of a plus sign at the beginning of the line. This is a syntactic edit and doesn't alter the meaning or behavior described in the step.,63693
+91,LOW,"The change is merely a stylistic one, adding a period at the end of the sentence. It doesn't alter the system's action or behavior.",53056
+92,LOW,The change is merely a plus sign added before the preCondition. This is a syntactic edit and doesn't alter the meaning or behavior of the system.,52556
+93,LOW,"The change is a syntactic edit, merely adding a space. It doesn't alter the meaning or functionality of the use case.",49642
+94,LOW,The change is a simple punctuation correction (adding a period at the end of the sentence) and does not affect the meaning or behavior of the use case.,51692
+95,LOW,"The change is merely a stylistic one, adding a period at the end of the sentence. It does not alter the action described.",51513
+96,LOW,"The change is a syntactic edit. It corrects the phrasing ""atualização de conta bancários"" to ""atualização de conta bancária"", which doesn't alter the core meaning or functionality of the system.",52503
+97,LOW,The change is a simple grammatical correction (adding a period at the end of the sentence) and does not alter the system's intended message.,48347
+98,HIGH,"The change adds an additional alternative flow (af[6]) to be considered, meaning the system's behavior is now more complex and potentially different.",50334
+99,HIGH,The updated snippet introduces a new alternative flow that modifies the system's behavior by displaying an alert message when a user exceeds a daily limit. This constitutes a semantic edit as it changes how the system responds to a specific user action.,59377

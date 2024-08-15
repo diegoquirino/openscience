@@ -1,0 +1,98 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,HIGH,"The change in the 'af[3,6]' alternative flow to 'af[3,5]' alters the system expected behavior by changing an exception flow number. This could potentially impact which scenarios are accounted for within that use case.",23726
+1,HIGH,"The updated snippet introduces a new flow by changing the initial step, which alters the expected behavior of the system. This is considered a semantic edit because it adds or modifies requirements and potentially changes how users interact with the system.",25999
+2,HIGH,"The updated snippet changes the order and references of steps, which may affect the sequence of actions in the use case flow. Specifically, step 25 has been moved to after step 24, and the reference to alternative flow af[4] is introduced for step 25, indicating a change in how user interactions are structured.",32724
+3,HIGH,"The update changes the name of an alternative flow, modifying a fundamental aspect of the use case's behavior. This introduces a new requirement or modifies an existing one.",29246
+4,LOW,"The updated snippet is 'nan', which appears to be a placeholder or indicates the absence of changes. Since there are no specific changes listed, we cannot classify it as high-impact; hence, assuming no change has been made.",22388
+5,LOW,"The update adds metadata to the use case (systemName, version, etc.) and does not modify any of the actual content or behavior described in the original snippet.",28193
+6,HIGH,"The updated snippet introduces new content that changes the system's expected behavior, including requirement and feature details. It also adds a basic flow with several steps, an exception flow for 'Número da AP já existe', which impacts the use case semantics significantly.",38331
+7,LOW,"The changes introduced do not alter the system's expected behavior, functionality or structure. They are largely syntactic edits such as detailing and reordering.",40938
+8,LOW,"The change is a syntactic edit that adds an exception flow 'Prestação de contas em situação diferente de REALIZADA' and updates the postCondition, which are minor textual modifications without altering system behavior.",36863
+9,HIGH,"The change introduces new requirements and alternative flows, altering the system's expected behavior by adding specific conditions related to different entities.",38469
+10,HIGH,"The change introduces new behavior to the system by specifying additional information that needs to be displayed, which is considered a semantic edit.",24614
+11,HIGH,"The change from af[3,5] to af[3] modifies the number of alternative flows related to step 13, which could potentially alter system behavior by modifying how many alternative paths are available in this use case. This impacts both the semantic understanding and execution flow within the system.",26848
+12,LOW,"The change from the original snippet to an empty string (nan) does not alter any system behavior, rules, or structure. It is a syntactic edit that removes content without introducing new features or changing requirements.",22727
+13,HIGH,"The updated snippet introduces a new requirement and deletes existing content, altering the expected behavior of the system by adding additional information related to diaries and justifications.",21450
+14,HIGH,"The change in the updated snippet adds new information (dados do beneficiário) to what is already being done by the system, potentially altering its expected behavior and adding a new step or detail that was not present before. This indicates an increase in complexity which may have semantic implications on how the system operates.",23178
+15,HIGH,"The change in the step description modifies the system expected behavior, altering the semantic meaning of what the actor is supposed to do.",22245
+16,HIGH,"The updated snippet introduces new information about the 'nome do beneficiário' (name of the beneficiary), which is an addition to the system's expected behavior in step 4, potentially affecting the requirements or features.",24755
+17,HIGH,"The updated snippet changes the system expected behavior by altering the action description in a significant way, introducing new information about what needs to be clicked on (histórico da tramitação) and potentially impacting how actors interact with the system.",22854
+18,HIGH,"The update changes the original use case, introducing a new requirement that affects the system's expected behavior. This constitutes a semantic edit as it alters the meaning and content of the existing specification.",22495
+19,HIGH,"The change from af[1,2,3] to af[1,2,3,4] in the updated snippet introduces a new alternative flow number '4' for the use case. This addition alters the expected behavior of the system by expanding the available paths during step 4, potentially affecting how the use case is executed and its associated post-conditions.",24560
+20,HIGH,"The updated snippet introduces a new alternative flow 'Ordenar pelo nome do servidor' with its corresponding steps, which changes the system expected behavior by adding a feature that allows users to sort diary requests by server name. This is considered a semantic edit as it alters the functionality of the use case.",23742
+21,HIGH,"The update introduces an exception flow (ef) with number 5, which changes the system expected behavior by adding a new path in the use case's execution. This is considered a semantic edit.",22370
+22,HIGH,"The updated snippet introduces a new exception flow that changes the system's expected behavior, impacting both the requirement and feature of handling unregistered daily accounts.",22412
+23,HIGH,"The change introduces an alternative flow, potentially altering the system's expected behavior by adding a new path (af[5]) in step 21 of the use case.",21436
+24,HIGH,"The updated snippet adds a new alternative flow, which introduces changes to the system's expected behavior and functionality by incorporating steps related to informing social security numbers for beneficiaries. This alters both the use case specification (semantic edit) and could impact associated requirements, features, or business processes.",22661
+25,HIGH,"The update changes the expected behavior of the system by introducing a new requirement to sort the list of requests by daily number in ascending order, which can affect how the system processes and displays the data.",22759
+26,HIGH,"The updated snippet introduces a new requirement, changing the system behavior from displaying any list of diaries suitable for payment to displaying them ordered by days in ascending order. This modification alters not only the functionality but also potentially affects user experience and system logic.",23867
+27,HIGH,"It changes the system expected behavior by altering the description of what 'Exibe a lista de diárias (solicitações) aptas para pagamento' entails, potentially affecting requirements and post-conditions.",23321
+28,HIGH,"The updated snippet changes the system expected behavior by adding an additional requirement about displaying diaries ordered by request arrival date after authorization, which introduces a new feature and affects multiple aspects such as requirements and steps.",24482
+29,HIGH,"The change in the updated snippet introduces additional behavior to the system, detailing an extra step that was not present in the original. This is a semantic edit as it modifies the system's expected functionality.",24234
+30,HIGH,"The change in the preCondition introduces a new term ('O usuario' to 'O usuário'), altering the system expected behavior (semantic edit) by changing the meaning from 'user' to Spanish, which could imply a different user base and potentially affect non-English speaking users.",24799
+31,LOW,"The updated snippet only introduces a minor change in the text, making it a syntactic edit without altering the system behavior or specifying new requirements.",23913
+32,LOW,"The update is a minor syntactic change without altering the semantics or system behavior, involving only typo correction and formatting.",22049
+33,LOW,"The change is a syntactic edit that does not alter the system behavior. The meaning remains the same, and it's likely just an update in wording or synonym usage.",21923
+34,LOW,"The change from 'system' to a lowercase 'sytem' does not alter the system behavior or meaning, it is merely a formatting edit.",21674
+35,LOW,"The changes do not modify the system's behavior; they are syntactical edits, including formatting and typo corrections.",22400
+36,LOW,The change from 'Exibe a opcao escolhida' to 'Exibe a opção escolhida' is a minor stylistic variation that does not alter the semantic meaning or expected behavior of the system.,24672
+37,LOW,"The change from 'Exibe a opcao escolhida' to 'Exibe a opção escolhida' is simply a spelling variation, which does not alter the system behavior or meaning of the use case.",21066
+38,HIGH,"The updated snippet changes the system expected behavior by altering specific words, which can affect the semantic meaning of the steps in the use case. Specifically, 'Seleciona' is changed to 'Seleciona o(s) beneficiário(s)' and 'Exibe' to 'Exibe os beneficiários selecionados', potentially changing how users interact with the system.",27005
+39,LOW,"The change is a simple spelling correction, which does not alter the semantic meaning or functionality of the requirement.",25065
+40,LOW,"The updated snippet does not change the system behavior and appears to be a syntactic edit, possibly correcting formatting or typo.",22756
+41,LOW,The change is a syntactic edit that involves updating the text with correct punctuation without altering the system's expected behavior.,21843
+42,LOW,"The change is a simple edit in translating the term 'Pedido de Diaria apos realizacao da viagem' to 'Pedido de diária após realização da viagem'. It does not alter the system behavior or functionality, but merely updates the textual representation of the use case.",22244
+43,HIGH,"The update has made a semantic change by altering the form of words to better fit the context and potentially improve clarity. The changes include pluralizing 'beneficiario' in step 1 and step 2, which could have implications on system behavior if it was previously expecting singular values.",24909
+44,LOW,"The update is purely syntactical, adding only quotation marks and removing the hyphen, without altering any semantic elements of the use case.",23902
+45,NONE,"The updated snippet is simply 'nan', indicating no change at all. Therefore, there's neither a high-impact nor low-impact classification.",22187
+46,LOW,"The update is purely syntactic, changing only punctuation without altering the meaning or system behavior.",22298
+47,LOW,The change is a simple rephrasing of the actor's action without changing system behavior or functionality.,21577
+48,LOW,"The updated snippet changes the capitalization of 'system' to lowercase in a way that does not alter any system behavior or specification, hence it is considered a low-impact change.",21067
+49,LOW,"The update is a syntactic change that does not alter the semantic meaning or system behavior, only improving readability.",20738
+50,LOW,"The change is a syntactic edit, as it only involves the formatting of the precondition text without altering its meaning or introducing new requirements.",20753
+51,LOW,"The change is syntactic, involving the removal of extra characters that are not impacting the semantics or functionality.",21624
+52,HIGH,"The update changes the meaning of a business rule regarding cancellation, introducing a new term 'Solicitação de diária' which alters the expected behavior and could potentially affect testing scenarios.",22455
+53,LOW,"The update changes the capitalization and punctuation of a system action step but does not alter any requirements, behaviors or functionalities.",23173
+54,LOW,The updated snippet is a textual change that does not alter the system behavior but simply updates the existing message. It's a syntactic edit without introducing new requirements or features.,22006
+55,LOW,"The change in the preCondition snippet is purely syntactic, involving an update of formatting by removing unnecessary spaces. This does not alter the system's expected behavior.",22743
+56,HIGH,"The change introduces a new requirement by adding 'estratificação do cálculo da diária' which may modify the system behavior, possibly representing an update to how data is categorized in the system's calculations.",23189
+57,LOW,"The change in the preCondition snippet is a syntactic edit, where no semantic meaning has been altered. The updated version is identical to the original except for minor formatting differences such as the addition of whitespace.",23572
+58,HIGH,"The update changes the system expected behavior by altering how solicitations are listed. It introduces a new requirement that solicitations from all servers should be included, which may necessitate modification to related features or processes.",22743
+59,LOW,"The change from 'step 1 usuario' to 'step 1 usuario' is purely syntactical, not altering the meaning or behavior of the system.",21506
+60,LOW,The update does not change the system behavior and is a syntactic edit with minor formatting changes.,20484
+61,LOW,"The change is syntactic, involving a minor textual modification without altering the system's behavior or requirements.",20793
+62,LOW,"The updated snippet changes the capitalization of a string, which is purely textual and does not affect the system's expected behavior or semantics.",21361
+63,LOW,"The update is a syntactic edit, as it only changes the formatting of the precondition string without altering its meaning or introducing new requirements.",22310
+64,LOW,"The change is a syntactic edit, involving the correction of spelling ('Recupera' to 'Recupera') without altering system behavior.",22207
+65,LOW,"The update simply adds full stops to the end of steps, which is a syntactic edit and does not change system behavior.",21156
+66,LOW,"The updated snippet is a syntactic edit, changing punctuation and formatting without altering the system's behavior or functionality.",20760
+67,HIGH,"The change introduces a semantic edit by altering the expected system behavior in step 2, potentially affecting how the user's name is managed during the update and desatribution of responsibniess.",22790
+68,LOW,"The update simply changes the punctuation from a space to an end quote, which is a syntactic edit without affecting system behavior.",22914
+69,HIGH,"The change in step number and the reordering of actions signifies a semantic edit, potentially altering the expected behavior of the system by introducing new requirements or affecting how exceptions are handled.",21974
+70,HIGH,"The update changes the sequence of steps, which implies a change in the expected behavior and flow within the use case. This is considered a semantic edit as it affects how the system should respond to user actions.",21570
+71,LOW,"The updated snippet does not alter the system behavior but only corrects a typo in the message, making it a syntactic edit.",22612
+72,LOW,"The change from the original to updated snippet only adds a period at the end, which is considered a syntactic edit without altering the system's behavior.",20931
+73,LOW,"The change only updates the text to correct synonyms, without altering system behavior or adding/removing requirements.",21424
+74,HIGH,"The change alters the semantic meaning of the original text, potentially impacting system behavior by introducing a new requirement.",22320
+75,LOW,"The updated snippet only removes a redundant space in the system step description, which does not alter the semantic meaning or behavior of the use case.",21479
+76,LOW,The update does not change the system behavior and is simply a textual refinement with no semantic impact.,20612
+77,LOW,"The update simply reorders the steps in the use case without altering the system behavior or introducing new requirements, features, exceptions, alternatives, or business models.",24932
+78,LOW,"The update is a syntactic edit, improving the clarity of the step description without altering the system behavior or semantics.",25051
+79,LOW,The update from the original snippet to the updated snippet does not change the system behavior; it is a syntactic edit that only adds punctuation.,20635
+80,LOW,The change is a syntactic edit as it only corrects the existing precondition without altering its meaning or system behavior.,21928
+81,HIGH,"The change impacts the semantic meaning of the steps, altering the sequence and introducing a new actor 'system' at step 4. This modifies the expected behavior from user interaction to system execution.",21977
+82,LOW,"The change is syntactical, involving a minor textual adjustment that does not alter the expected behavior of the system.",23995
+83,HIGH,"The change in the step number alters the expected flow of actions, potentially affecting system behavior and user experience.",20917
+84,LOW,"The update only changes the formatting of the precondition text from hyphen to plus without altering its meaning, thus it is a syntactic edit.",24035
+85,LOW,"The updated snippet does not change the system behavior. The text is a simple clarification with no added or removed requirements, features, business model entities, steps, exceptions, or alternatives.",22193
+86,LOW,"The change is purely syntactical, altering punctuation without affecting the semantic meaning or system behavior.",22229
+87,HIGH,"The change modifies the semantics of the system's behavior by altering how the user is described in relation to their role, which could affect the understanding and implementation of the use case.",22318
+88,LOW,"The change from 'system ""Apresenta a tela de Registrar Liquidações""' to 'system ""Apresenta a tela de Registrar Liquidações.""' is purely syntactical, involving punctuation without altering the system's expected behavior or requirements.",23818
+89,LOW,"The change simply adds a plus sign, which is syntactic and does not alter the meaning or behavior of the use case.",20525
+90,LOW,"The updated snippet only contains a minor textual change without altering the system behavior or introducing new requirements, features, exceptions, or alternatives.",23515
+91,LOW,"The update is purely textual, correcting the case formatting in the preCondition without changing any system behavior or structure.",20798
+92,LOW,"The change is purely syntactic, modifying the text by correcting a typo without altering the semantic meaning or functionality.",21481
+93,LOW,"The change from 'Conta bancários' to 'bancária' is a minor textual update, likely a typo or synonym replacement that does not alter the system behavior.",22631
+94,LOW,"The change from the original to updated snippet is a syntactic edit, as it only involves correcting typographical errors and formatting without altering system behavior or introducing new requirements.",21981
+95,HIGH,"The update changes the number of alternative flows associated with a step, which alters the expected system behavior and introduces new requirements or paths.",20966
+96,HIGH,"The update introduces a new alternative flow (alternative 6) with specific steps, which changes the system's expected behavior and outlines an additional scenario. This is considered a semantic edit as it adds new requirements or functionality.",23436

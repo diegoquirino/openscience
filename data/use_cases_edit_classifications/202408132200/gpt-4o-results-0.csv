@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,HIGH,"The update changes one of the alternative flows referenced in step 13 from 'af[3,6]' to 'af[3,5]'. This alters the path the system takes for handling certain input, which impacts the system's behavior.",2048
+1,HIGH,"The updated snippet introduces new steps that were not present in the original snippet, specifically steps 21 and 22. These changes alter the sequence of actions and expected system behavior, making this a high-impact change.",1533
+2,HIGH,"The updated snippet changes the sequence of actions and alters the alternative flow reference, which impacts the system's expected behavior.",1379
+3,HIGH,"The change replaces the alternative flow 'Usuário informa que NÃO acompanha autoridade' with 'Limpar Campos', thus modifying the expected behavior of the system.",1293
+4,HIGH,"The updated snippet removed an exception flow, which changes the system's expected behavior.",2452
+5,HIGH,"The updated snippet fully describes a new use case with multiple steps, alternative and basic flows, as well as actors, preconditions, and postconditions. This represents a significant change to the system's expected behavior, introducing new functionalities and requirements.",1799
+6,HIGH,"The updated snippet defines a new use case (UC008) with detailed steps, pre-conditions, and exception flows which were not present in the original snippet. This introduces new requirements, features, steps, and exception flows, altering the system's expected behavior.",2030
+7,HIGH,"The updated snippet introduces a new use case (UC009 - Prestar Contas) with a full, detailed specification including new requirement steps, alternative flows, and exception flows, which changes the system's expected behavior.",1770
+8,HIGH,"The changes introduce an entirely new use case with detailed steps, alternative flows, and exception flows, which alters the system's expected behavior.",1387
+9,HIGH,The update adds specific validation criteria for the values the user verifies on the screen. This changes the expected system behavior by introducing new requirements that must be satisfied.,1471
+10,HIGH,"The update changes the system behavior by introducing new information (links for numero do empenho and authorization de pagamento), which represents a new feature and affects the expected output of step 2.",1722
+11,HIGH,The removal of an alternative flow (af[5]) changes the expected behavior of the system by altering the potential paths that the use case can take.,1188
+12,HIGH,"The updated snippet indicates a deletion of an alternative flow. This removal changes the system's expected behavior by eliminating a specific path of execution, making it a high-impact change.",1584
+13,HIGH,"The updated snippet introduces a new feature that involves presenting 'the justification concatenated with the detail' in the detailing of the daily expenses. This change affects the system's expected behavior, thus it is classified as high-impact.",1439
+14,HIGH,"The change introduces additional data (dados do beneficiário) to be displayed by the system, which modifies the system's expected behavior in step 4.",1592
+15,LOW,The change from 'Visualiza' to 'Verifica' is a synonym substitution and does not alter the system's expected behavior. It is a textual update.,1606
+16,HIGH,The update introduces additional information (nome do beneficiário) which changes the system's expected behavior by displaying new details that were not previously included.,1789
+17,HIGH,"The update introduces a new action ('Verifica o histório da tramitação da prestação de contas') before the original action, which changes the expected system behavior.",1558
+18,HIGH,"The change introduces a new requirement regarding the maintenance of the commissioned position and the beneficiary sector at the time of the daily allowance grant, which alters the system's expected behavior.",1521
+19,HIGH,"The change introduces a new alternative flow (af[4]), which affects the system's expected behavior.",1250
+20,HIGH,The changes introduce a new alternative flow that impacts the system's behavior by adding a new way to sort records based on the server's name.,1951
+21,HIGH,"The updated snippet introduces a new exception flow (ef[5]), which changes the system's expected behavior and can impact the control flow of the use case.",2186
+22,HIGH,"The changes introduce a new exception flow, which changes the expected behavior of the system by specifying how it handles a new error condition.",1246
+23,HIGH,"The addition of 'af[5]' introduces a new alternative flow, which changes the system behavior by altering the sequence of steps the user might take.",1595
+24,HIGH,"The update introduces a new alternative flow. This change impacts the system's expected behavior by adding new steps and functionality, which qualifies as a high-impact (semantic) change.",1672
+25,HIGH,"The update changes the system's expected behavior by specifying the ordering of the list, which introduces a new requirement and affects how the feature operates.",1824
+26,HIGH,"The update changes the expected behavior of the system by adding a requirement to order the list of diárias in ascending order, which is a semantic change.",3345
+27,HIGH,"The update changes the expected behavior of the system by specifying the order in which the list should be displayed, thus altering the requirements and the system's operation.",1541
+28,HIGH,"The update changes the system's expected behavior by introducing an additional requirement to order the list of diárias by the arrival date, which is a semantic change.",1435
+29,HIGH,The update changes the system behavior by adding a new requirement to order the list of requests also by the date of arrival in the settlement phase.,1463
+30,LOW,"The changes are purely syntactic, involving corrections to spelling and punctuation without altering the semantic content of the preconditions.",1147
+31,LOW,"The update corrected a typo in the word 'opcao' to 'opção', which does not change the system behavior but only impacts the text's correctness.",1504
+32,LOW,"The change is syntactic, fixing a typo from 'opcao' to 'opção'. It does not alter the system behavior or introduce/delete any requirements or flows.",1247
+33,LOW,"The change is a syntactic edit that corrects a typo from 'opcao' to 'opção', without altering the system's expected behavior.",1911
+34,LOW,"The change made is merely syntactic, updating the text by correcting the spelling of 'opcao' to 'opção'. It does not alter the system behavior or the semantic meaning of the use case.",1389
+35,LOW,"The update only includes changes to the textual elements, corrects characters and punctuation to match proper formatting (e.g., 'opcao' to 'opção'), without altering the system behavior or the logical structure of the use case steps.",1678
+36,LOW,"The change is purely textual. It corrects a typographical error in the word 'opcao' to 'opção' without altering the system behavior, flow, or any use case logic.",1885
+37,LOW,"The change is a textual edit, correcting the word 'opcao' to 'opção'. It does not alter the system behavior.",1218
+38,LOW,"The changes are purely textual, including the corrections of special characters (accents) and slight adjustments in wording, without altering the system's expected behavior, steps, or flow.",1231
+39,LOW,"The change is merely a syntactic edit, correcting a typo by replacing 'um diária' with 'uma diária'. It does not alter the system's behavior or the meaning of the sentence.",2749
+40,LOW,The change only involves the addition of a punctuation mark (a period at the end of the sentence). This is a syntactic edit that does not alter the system’s expected behavior.,2332
+41,LOW,The change is a punctuation update (adding a period) which does not alter the system's expected behavior or its actions.,1771
+42,LOW,The change involves only the addition of a punctuation mark and does not alter the system behavior or the semantics of the use case.,1231
+43,LOW,"The changes are merely textual, involving corrections in punctuation and spelling without altering the system's expected behavior.",1427
+44,LOW,"The changes in the updated snippet are merely syntactic edits including the use of proper accent marks and punctuation, which do not alter the system's expected behavior.",1314
+45,LOW,"The changes made are purely syntactic, involving corrections in punctuation and typo fixes. These do not affect the system's behavior or logic.",1376
+46,HIGH,"The removal of the postCondition changes the system's expected behavior. Post-condition is crucial as it captures the state of the system after the execution of the use case, and removing it indicates a significant semantic change.",1414
+47,LOW,The change is merely a syntactic edit involving punctuation. It does not alter the system's expected behavior or add/remove any requirements or flows.,1610
+48,LOW,"The updates are purely textual and do not alter the system's behavior: detailing, correcting typos, and formatting.",1378
+49,LOW,"The change is merely a textual edit involving the addition of a punctuation mark, which does not alter the system behavior or the meaning of the step.",1479
+50,LOW,"The update merely adds a punctuation mark at the end of the sentence, which does not change the system behavior.",1078
+51,LOW,The update only adds a period at the end of the sentence for punctuation. This is a purely syntactic edit and does not alter the system's behavior.,1506
+52,LOW,"The change is a syntactic edit, adding a period at the end of the sentence. It doesn't alter the system's expected behavior.",1992
+53,LOW,"The change is purely punctuation-related (adding a period), which does not alter the system behavior or requirements.",1151
+54,LOW,The change corrects a typo in a message string without altering the system behavior or the flow of the use case.,1256
+55,LOW,The change involves only the addition of a punctuation mark (period) which does not alter the system’s behavior or the use case functionality. It is a merely syntactic edit.,1285
+56,LOW,the change is merely correcting punctuation and does not alter the system behavior or any logical flow.,1326
+57,LOW,The change only adds a punctuation mark and does not affect the system behavior.,1218
+58,LOW,"The change is purely syntactic, correcting a typo from 'extratificação' to 'estratificação' and 'numero' to 'número', without altering the system behavior or the semantics of the steps described.",1727
+59,LOW,The update is merely adding a punctuation mark (period) at the end of the precondition. This does not change the system behavior but is a syntactic edit.,1441
+60,HIGH,"The update changes the scope of the system's behavior by specifying that the list includes requests from all servers, not just a general list. This affects the expected behavior and thus constitutes a high-impact change.",1615
+61,LOW,"the change introduced is a punctuation mark, which does not affect the system behavior or logic, making it a syntactic edit.",1372
+62,LOW,"The change only involves capitalization and punctuation, which are purely syntactic edits. This does not alter the system's expected behavior.",1293
+63,LOW,"The change is a punctuation edit, adding a period at the end of the sentence. It does not alter the system behavior or the semantics of the use case.",1876
+64,LOW,The change corrects a capitalization error from 'Sistema' to 'sistema'. This is a syntactic edit and does not modify the system's expected behavior.,1942
+65,LOW,"The change involves the removal of a punctuation mark, which does not alter the system's behavior or the expected message content. It is a syntactic edit.",2257
+66,LOW,"The change is merely syntactic, involving only the correction of a misspelled word ('usuario' to 'usuário') and the addition of punctuation. It does not affect the system's expected behavior.",1508
+67,LOW,The change is a minor textual correction (typo fix) and does not alter the system's expected behavior.,1657
+68,LOW,"The update only involves adding punctuation marks at the end of the sentences, which does not change the system behavior or the essence of the use case steps.",1153
+69,LOW,The update introduces a punctuation change (a period at the end). This does not alter the system's expected behavior or functional outcome (syntactic edit).,1322
+70,LOW,"The update is a syntactic edit, removing an redundant phrase 'o nome' without altering the system behavior or requirements.",1724
+71,LOW,"The change is purely syntactic, involving only the addition of a period at the end of the sentence. It does not alter the system behavior or the use case functionality.",1701
+72,HIGH,"The change modifies the sequence of actions in the use case, moving the informing of the payment authorization number and exercise from step 3 to step 1, thereby altering the system's expected behavior.",1510
+73,HIGH,"The change modifies the order of the steps in the use case, which affects the sequence of operations and alters system behavior.",1145
+74,LOW,"The change is merely syntactic, altering the punctuation by removing a redundant period. It does not impact the system behavior or semantics.",2695
+75,LOW,"The change is a syntactic edit, involving punctuation correction, which does not alter the system behavior.",1252
+76,LOW,"The update only fixes a typo in the word 'histórico'. It does not introduce or delete any requirements, features, entities, steps, exception flows, or alternative flows.",1857
+77,HIGH,"The change affects the system's expected behavior by transitioning from 'permitting' to 'not permitting' new submissions or changes, which is a semantic edit.",2835
+78,LOW,"The update is a syntactic edit that only introduces a punctuation mark, which does not change the system behavior.",1367
+79,LOW,The change is merely a punctuation edit (adding a period) and does not affect the system behavior.,1316
+80,LOW,The change is syntactic and involves reordering the steps without altering their content or the overall system behavior.,1728
+81,LOW,"The update merely adds a punctuation mark (a period), which does not change the system's expected behavior.",1547
+82,LOW,"The change is merely a punctuation addition (a semicolon), which does not alter the system's expected behavior or introduce new requirements, features, or flows.",1499
+83,LOW,"The change is primarily syntactic, involving punctuation (adding a period) and a minor correction in spelling ('usuario' to 'usuário'), which does not alter the behavior or the requirements of the system.",2171
+84,LOW,"The changes only involve the reordering of steps. This does not alter the system's behavior or introduce any new requirements, features, or business entities.",1561
+85,LOW,The change is merely a syntactic edit that adds a punctuation mark (period) at the end of the sentence. It does not alter the system behavior or semantic content of the use case.,1828
+86,HIGH,"The step number change from 'step 4' to 'step 2' alters the sequence of actions in the use case, thus changing the expected system behavior.",1940
+87,LOW,"The change involves only a textual edit (adding a period and correcting a typo), which does not affect the system's expected behavior.",1549
+88,LOW,"The change is purely syntactic, correcting the accent on the word 'diária' without affecting the system's expected behavior or any functional requirements.",1321
+89,LOW,"The update is merely a punctuation change, adding a period at the end of the sentence. This does not alter the system's behavior or functionality.",5764
+90,LOW,"The change is merely syntactic, specifically the removal of the redundant phrase 'a lista de' without altering the expected behavior or logic of the system.",1432
+91,LOW,"The change is merely adding punctuation (a period at the end of the sentence), which does not affect the system behavior or functionality.",1300
+92,LOW,The change adjusts the capitalization from 'O Sistema' to 'O sistema'. This is a syntactic edit that does not alter the system's expected behavior or requirements.,1694
+93,LOW,The updated snippet only makes a minor textual change by removing the period at the end of the error message. This does not affect the system's expected behavior.,1316
+94,LOW,"The change is purely syntactic, correcting a typo and adding punctuation. It does not affect the system's expected behavior.",1395
+95,LOW,"The change is a syntactic edit involving only the addition of a period at the end of the sentence, which does not alter the system's expected behavior.",1208
+96,LOW,"The change is merely textual, correcting a typo in the word 'bancários' to 'bancária', and does not alter the system's expected behavior or requirements.",1319
+97,LOW,"The update merely added a punctuation mark (a period) at the end of the sentence, which doesn't change the system behavior. This is a syntactic edit.",4014
+98,HIGH,"The change introduces a new alternative flow (af[6]), which alters the expected behavior of the system by adding a new path the system needs to handle. Therefore, this is a high-impact change.",1492
+99,HIGH,"The change introduces a new alternative flow to the use case, which alters the system's expected behavior by handling cases where the limit of 10 daily activities per month is exceeded.",1910
