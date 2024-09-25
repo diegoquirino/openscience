@@ -137,37 +137,40 @@ def get_min_positive_difference(row):
     return min(differences) if differences else float('nan')
 
 
-def calculate_low_impacted_size(row):
-    # test cases that include updated steps classified by our strategy as 'low impact'
+def sets_of_cts_from(row):
+    new_cts = row['new_cts'] if pd.notna(row['new_cts']) else set()
     obsolete_cts_low_low = row['obsolete_cts_low_low'] if pd.notna(row['obsolete_cts_low_low']) else set()
     obsolete_cts_low_high = row['obsolete_cts_low_high'] if pd.notna(row['obsolete_cts_low_high']) else set()
     obsolete_cts_high = row['obsolete_cts_high'] if pd.notna(row['obsolete_cts_high']) else set()
-    new_cts = row['new_cts'] if pd.notna(row['new_cts']) else set()
-    return len((obsolete_cts_low_low - obsolete_cts_low_high)
-               & (obsolete_cts_low_low - obsolete_cts_high)
-               & (obsolete_cts_low_low - new_cts))
+    return new_cts, obsolete_cts_low_low, obsolete_cts_low_high, obsolete_cts_high
+
+
+def calculate_low_impacted_size(row):
+    # test cases that include updated steps classified by our strategy as 'low impact'
+    new_cts, obsolete_cts_low_low, obsolete_cts_low_high, obsolete_cts_high = sets_of_cts_from(row)
+    return len(
+        (obsolete_cts_low_low - obsolete_cts_low_high) &
+        (obsolete_cts_low_low - obsolete_cts_high) &
+        (obsolete_cts_low_low - new_cts)
+    )
 
 
 def calculate_high_impacted_size(row):
     # test cases that include 'high impact' steps
-    obsolete_cts_low_low = row['obsolete_cts_low_low'] if pd.notna(row['obsolete_cts_low_low']) else set()
-    obsolete_cts_low_high = row['obsolete_cts_low_high'] if pd.notna(row['obsolete_cts_low_high']) else set()
-    obsolete_cts_high = row['obsolete_cts_high'] if pd.notna(row['obsolete_cts_high']) else set()
-    new_cts = row['new_cts'] if pd.notna(row['new_cts']) else set()
-    high_united = obsolete_cts_high.union(new_cts)
-    return len((high_united - obsolete_cts_low_low)
-               & (high_united - obsolete_cts_low_high))
+    new_cts, obsolete_cts_low_low, obsolete_cts_low_high, obsolete_cts_high = sets_of_cts_from(row)
+    return len(
+        (obsolete_cts_high - obsolete_cts_low_low) &
+        (obsolete_cts_high - obsolete_cts_low_high) &
+        (obsolete_cts_high - new_cts)
+    )
 
 
 def calculate_mixed_impacted_size(row):
     # test cases that include at least one 'high impact' step and at least one 'low impact' step
-    new_cts = row['new_cts'] if pd.notna(row['new_cts']) else set()
-    obsolete_cts_low_low = row['obsolete_cts_low_low'] if pd.notna(row['obsolete_cts_low_low']) else set()
-    obsolete_cts_low_high = row['obsolete_cts_low_high'] if pd.notna(row['obsolete_cts_low_high']) else set()
-    obsolete_cts_high = row['obsolete_cts_high'] if pd.notna(row['obsolete_cts_high']) else set()
-    low_united = obsolete_cts_low_low.union(obsolete_cts_low_high)
-    high_united = obsolete_cts_high.union(new_cts)
-    return len(low_united.intersection(high_united))
+    new_cts, obsolete_cts_low_low, obsolete_cts_low_high, obsolete_cts_high = sets_of_cts_from(row)
+    return len(
+        obsolete_cts_low_high.union(obsolete_cts_low_low.intersection(obsolete_cts_high))
+    )
 
 
 def extract_model_and_round(path):
