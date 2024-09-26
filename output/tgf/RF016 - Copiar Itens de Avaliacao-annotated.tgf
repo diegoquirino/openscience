@@ -1,0 +1,148 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+63 63
+64 64
+65 65
+66 66
+67 67
+68 68
+69 69
+70 70
+71 71
+#
+1 34 conditions
+34 2 Lider de Pessoas esta autenticado no sistema e tem permissao para copiar itens de avaliacoes
+2 35 steps
+35 3 Lider de Pessoas acessa a funcionalidade 'Avaliacoes' a partir do menu inicial
+3 36 expected_results
+36 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Copiar' dentre as varias exibidas
+4 37 steps
+37 5 Lider de Pessoas com uma Avaliacao selecionada, clica na opcao 'Copiar' para copia-la
+5 38 expected_results
+38 6 system apresenta o formulario para copiar a Avaliacao com os valores atuais ja preenchidos, exceto o 'Avaliado', que deve estar vazio
+6 39 steps
+39 7 Lider de Pessoas seleciona o 'Periodo Avaliativo' da Avaliacao
+7 40 expected_results
+40 8 system apresenta o campo 'Periodo Avaliativo' preenchido corretamente
+8 41 steps
+41 9 Lider de Pessoas seleciona o colaborador a ser 'Avaliado' na Avaliacao
+9 42 expected_results
+42 10 system apresenta o campo 'Avaliado' preenchido corretamente
+10 43 steps
+43 11 Lider de Pessoas escolhe que deseja 'fazer uma copia' do Perfil de Competencias
+11 44 expected_results
+44 12 system apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'SIM' selecionada
+12 45 steps
+45 13 Lider de Pessoas preenche o 'nome' do novo Perfil de Competencias da Avaliacao
+13 46 expected_results
+46 14 system apresenta o campo 'nome' do novo Perfil de Competencias da Avaliacao preenchido corretamente
+14 47 steps
+47 15 Lider de Pessoas clica na opcao 'Confirmar'
+15 48 expected_results
+48 16 system apresenta uma mensagem de confirmacao referente a criacao do novo Perfil de Competencias
+16 49 steps
+49 17 Lider de Pessoas confirma a operacao de criacao do novo Perfil de Competencias
+17 50 expected_results
+50 18 system realiza a acao conforme a opcao selecionada pelo usuario e      retorna feedback correspondente
+18 51 conditions
+51 19 A copia de itens de avaliacao e realizada com sucesso.
+2 52 steps
+52 20 Lider de Pessoas acessa a funcionalidade 'Catalogo (Perfis) de Competencias' a partir do menu inicial
+20 53 expected_results
+53 21 system exibe a listagem dos Perfis de Competencias com a opcao 'Copiar' dentre as varias exibidas
+21 54 steps
+54 22 Lider de Pessoas com um Perfil de Competencias selecionado, clica na opcao 'Copiar' para copia-lo
+22 55 expected_results
+55 23 system apresenta o formulario para copiar o Perfil de Competencias com os valores atuais ja preenchidos
+23 56 steps
+56 24 Lider de Pessoas seleciona o 'Periodo Avaliativo' da Avaliacao
+24 57 expected_results
+57 25 system apresenta o campo 'Periodo Avaliativo' preenchido corretamente
+25 58 steps
+58 26 Lider de Pessoas preenche o 'nome' do novo Perfil de Competencias da Avaliacao
+26 59 expected_results
+59 27 system apresenta o campo 'nome' do novo Perfil de Competencias preenchido corretamente
+27 60 steps
+60 17 Lider de Pessoas clica na opcao 'Confirmar'
+10 61 steps
+61 28 Lider de Pessoas escolhe que nao deseja 'fazer uma copia' do Perfil de Competencias
+28 62 expected_results
+62 29 system apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'NAO' selecionada
+29 63 steps
+63 30 Lider de Pessoas seleciona um Perfil de Competencias dentre os disponiveis
+30 64 expected_results
+64 31 system apresenta o 'nome' do Perfil de Competencias existente escolhido
+31 65 steps
+65 17 Lider de Pessoas clica na opcao 'Confirmar'
+14 66 steps
+66 32 Lider de Pessoas nao confirma a operacao de criacao do novo Perfil de Competencias
+32 67 expected_results
+67 19 system apresenta o formulario para copiar a Avaliacao com os valores ja preenchidos
+16 68 steps
+68 33 Lider de Pessoas nao confirma a operacao de criacao do novo Perfil de Competencias
+33 69 expected_results
+69 19 system exibe a listagem de Avaliacoes sem uma nova avaliacao copiada
+17 70 expected_results
+70 19 system exibe uma mensagem de erro ao tentar salvar a nova Avaliacao, informando o campo ou a validacao que falhou
+17 71 expected_results
+71 19 system exibe uma mensagem de erro ao tentar copiar a Avaliacao, informando que o Perfil de Competencias com este nome ja existe

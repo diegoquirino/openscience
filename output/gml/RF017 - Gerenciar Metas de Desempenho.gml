@@ -71,7 +71,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias listadas"
+  label "[e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias exibidas"
 ]
 edge
 [

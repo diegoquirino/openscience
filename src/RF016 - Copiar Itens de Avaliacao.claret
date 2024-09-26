@@ -1,0 +1,67 @@
+systemName "GTI-Competencias"
+
+usecase "RF016 - Copiar Itens de Avaliacao" {
+  version "1.5" type "Criacao" user "Carlos Diego" date "03/06/2022"
+  actor lider "Lider de Pessoas"
+  preCondition "Lider de Pessoas esta autenticado no sistema e tem permissao para copiar itens de avaliacoes"
+
+  basic {
+    step 1 lider "acessa a funcionalidade 'Avaliacoes' a partir do menu inicial" af[1]
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Copiar' dentre as varias exibidas" 
+    step 3 lider "com uma Avaliacao selecionada, clica na opcao 'Copiar' para copia-la"
+    step 4 system "apresenta o formulario para copiar a Avaliacao com os valores atuais ja preenchidos, exceto o 'Avaliado', que deve estar vazio"
+    step 5 lider  "seleciona o 'Periodo Avaliativo' da Avaliacao"
+    step 6 system "apresenta o campo 'Periodo Avaliativo' preenchido corretamente"
+    step 7 lider "seleciona o colaborador a ser 'Avaliado' na Avaliacao"
+    step 8 system "apresenta o campo 'Avaliado' preenchido corretamente"
+    step 9 lider "escolhe que deseja 'fazer uma copia' do Perfil de Competencias" af[2]
+    step 10 system "apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'SIM' selecionada"
+    step 11 lider "preenche o 'nome' do novo Perfil de Competencias da Avaliacao"
+    step 12 system "apresenta o campo 'nome' do novo Perfil de Competencias da Avaliacao preenchido corretamente"
+    step 13 lider "clica na opcao 'Confirmar'" af[3]
+    step 14 system "apresenta uma mensagem de confirmacao referente a criacao do novo Perfil de Competencias"
+    step 15 lider "confirma a operacao de criacao do novo Perfil de Competencias" af[4]
+    step 16 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+				    retorna feedback correspondente" ef[1,2]
+  }
+
+  alternative 1 "Copiar Perfil de Competencias" {
+    step 1 lider "acessa a funcionalidade 'Catalogo (Perfis) de Competencias' a partir do menu inicial"
+    step 2 system "exibe a listagem dos Perfis de Competencias com a opcao 'Copiar' dentre as varias exibidas"
+    step 3 lider "com um Perfil de Competencias selecionado, clica na opcao 'Copiar' para copia-lo"
+    step 4 system "apresenta o formulario para copiar o Perfil de Competencias com os valores atuais ja preenchidos"
+    step 5 lider  "seleciona o 'Periodo Avaliativo' da Avaliacao"
+    step 6 system "apresenta o campo 'Periodo Avaliativo' preenchido corretamente"
+    step 7 lider "preenche o 'nome' do novo Perfil de Competencias da Avaliacao"
+    step 8 system "apresenta o campo 'nome' do novo Perfil de Competencias preenchido corretamente" 
+    step 9 lider "clica na opcao 'Confirmar'" bs 16
+  }
+  
+  alternative 2 "Nao Fazer uma Copia do Perfil de Competencias" {
+  	step 1 lider "escolhe que nao deseja 'fazer uma copia' do Perfil de Competencias"
+    step 2 system "apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'NAO' selecionada"
+    step 3 lider "seleciona um Perfil de Competencias dentre os disponiveis"
+    step 4 system "apresenta o 'nome' do Perfil de Competencias existente escolhido" 
+    step 5 lider "clica na opcao 'Confirmar'" bs 16
+  }
+  
+  alternative 3 "Nao Confirmar a Copia do Perfil de Competencias" {
+  	step 1 lider "nao confirma a operacao de criacao do novo Perfil de Competencias"
+    step 2 system "apresenta o formulario para copiar a Avaliacao com os valores ja preenchidos"
+  }
+  
+  alternative 4 "Cancelar Copia do Perfil de Competencias" {
+  	step 1 lider "nao confirma a operacao de criacao do novo Perfil de Competencias"
+    step 2 system "exibe a listagem de Avaliacoes sem uma nova avaliacao copiada"
+  }
+
+  exception 1 "Falha ao Salvar a nova Avaliacao" {
+    step 1 system "exibe uma mensagem de erro ao tentar salvar a nova Avaliacao, informando o campo ou a validacao que falhou"
+  }
+
+  exception 2 "Falha ao Fazer uma Copia do Perfil de Competencias" {
+    step 1 system "exibe uma mensagem de erro ao tentar copiar a Avaliacao, informando que o Perfil de Competencias com este nome ja existe"
+  }
+
+  postCondition "A copia de itens de avaliacao e realizada com sucesso."
+}

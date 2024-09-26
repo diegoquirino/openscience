@@ -13,22 +13,40 @@
 13 13
 14 14
 15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
 #
-1 2 [c] Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes
+1 2 [c] Avaliador de Pessoas esta autenticado no sistema e tem permissao para gerenciar Respostas de Avaliacoes
 2 3 [s] Avaliador de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
-3 4 [e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas
-4 5 [s] Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao
+3 4 [e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias exibidas
+4 5 [s] Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para responder a uma Avaliacao ou Autoavaliacao
 5 6 [e] system apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao
-6 7 [s] Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
-7 8 [e] system apresenta o campo 'Nivel da Competencia' preenchido corretamente
-8 9 [s] Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
-9 10 [e] system apresenta os 'Apontamentos' preenchidos corretamente
-10 11 [s] Avaliador de Pessoas clica na opcao 'Salvar'
-11 12 [e] system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
-12 13 [c] A gestao de Respostas de Avaliacoes e realizada com sucesso.
-5 13 [e] system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
-10 14 [s] Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
-14 15 [e] system limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado
-15 6 [s] Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
-11 13 [e] system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
-11 13 [e] system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
+6 7 [s] Avaliador de Pessoas seleciona o 'Nivel de Interacao' para cada Perfil de Competencias avaliado
+7 8 [e] system apresenta o campo 'Nivel de Interacao' preenchido corretamente
+8 9 [s] Avaliador de Pessoas seleciona que e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado
+9 10 [e] system apresenta o campo 'Capaz de Avaliar' preenchido como 'SIM'
+10 11 [s] Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
+11 12 [e] system apresenta o campo 'Nivel da Competencia' preenchido corretamente
+12 13 [s] Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
+13 14 [e] system apresenta os 'Apontamentos' preenchidos corretamente
+14 15 [s] Avaliador de Pessoas clica na opcao 'Salvar'
+15 16 [e] system realiza a acao conforme a opcao selecionada pelo usuario e      retorna feedback correspondente
+16 17 [c] A gestao de Respostas de Avaliacoes e realizada com sucesso.
+5 17 [e] system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
+8 18 [s] Avaliador de Pessoas seleciona que nao e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado
+18 19 [e] system apresenta o campo 'Capaz de Avaliar' preenchido como 'NAO'
+19 20 [s] Avaliador de Pessoas preenche o campo de 'Justificativas' para cada Perfil de Competencias avaliado
+20 21 [e] system apresenta o campo de 'Capaz de Avaliar' preenchido corretamente
+21 15 [s] Avaliador de Pessoas clica no botao 'Justificar'
+14 22 [s] Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
+22 23 [e] system limpa os campos 'Nivel da Competencia' e 'Apontamentos' exibidos na tela para cada Perfil de Competencias avaliado
+23 6 [s] Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
+15 17 [e] system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
+15 17 [e] system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
+15 17 [e] system exibe uma mensagem de erro informando ao usuario que nao informou justificativa

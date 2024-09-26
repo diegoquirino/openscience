@@ -7,7 +7,7 @@ usecase "RF009 - Gerenciar Resultados de Avaliacoes" {
 
   basic {
     step 1 lider "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
-    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas" 
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias exibidas" 
     step 3 lider "com uma avaliacao selecionada, clica na opcao 'Resultado' para efetivar o feedback"
     step 4 system "apresenta o formulario para cadastro da Ata de Reuniao"
     step 5 lider  "preenche a 'Ata de Reuniao de Feedback' da Avaliacao para cada Perfil de Competencias avaliado"

@@ -31,40 +31,78 @@
 31 31
 32 32
 33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
 #
-1 16 conditions
-16 2 Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes
-2 17 steps
-17 3 Avaliador de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
-3 18 expected_results
-18 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas
-4 19 steps
-19 5 Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao
-5 20 expected_results
-20 6 system apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao
-6 21 steps
-21 7 Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
-7 22 expected_results
-22 8 system apresenta o campo 'Nivel da Competencia' preenchido corretamente
-8 23 steps
-23 9 Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
-9 24 expected_results
-24 10 system apresenta os 'Apontamentos' preenchidos corretamente
-10 25 steps
-25 11 Avaliador de Pessoas clica na opcao 'Salvar'
-11 26 expected_results
-26 12 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
-12 27 conditions
-27 13 A gestao de Respostas de Avaliacoes e realizada com sucesso.
+1 24 conditions
+24 2 Avaliador de Pessoas esta autenticado no sistema e tem permissao para gerenciar Respostas de Avaliacoes
+2 25 steps
+25 3 Avaliador de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
+3 26 expected_results
+26 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias exibidas
+4 27 steps
+27 5 Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para responder a uma Avaliacao ou Autoavaliacao
 5 28 expected_results
-28 13 system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
-10 29 steps
-29 14 Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
-14 30 expected_results
-30 15 system limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado
-15 31 steps
-31 6 Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
-11 32 expected_results
-32 13 system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
-11 33 expected_results
-33 13 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
+28 6 system apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao
+6 29 steps
+29 7 Avaliador de Pessoas seleciona o 'Nivel de Interacao' para cada Perfil de Competencias avaliado
+7 30 expected_results
+30 8 system apresenta o campo 'Nivel de Interacao' preenchido corretamente
+8 31 steps
+31 9 Avaliador de Pessoas seleciona que e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado
+9 32 expected_results
+32 10 system apresenta o campo 'Capaz de Avaliar' preenchido como 'SIM'
+10 33 steps
+33 11 Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
+11 34 expected_results
+34 12 system apresenta o campo 'Nivel da Competencia' preenchido corretamente
+12 35 steps
+35 13 Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
+13 36 expected_results
+36 14 system apresenta os 'Apontamentos' preenchidos corretamente
+14 37 steps
+37 15 Avaliador de Pessoas clica na opcao 'Salvar'
+15 38 expected_results
+38 16 system realiza a acao conforme a opcao selecionada pelo usuario e      retorna feedback correspondente
+16 39 conditions
+39 17 A gestao de Respostas de Avaliacoes e realizada com sucesso.
+5 40 expected_results
+40 17 system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
+8 41 steps
+41 18 Avaliador de Pessoas seleciona que nao e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado
+18 42 expected_results
+42 19 system apresenta o campo 'Capaz de Avaliar' preenchido como 'NAO'
+19 43 steps
+43 20 Avaliador de Pessoas preenche o campo de 'Justificativas' para cada Perfil de Competencias avaliado
+20 44 expected_results
+44 21 system apresenta o campo de 'Capaz de Avaliar' preenchido corretamente
+21 45 steps
+45 15 Avaliador de Pessoas clica no botao 'Justificar'
+14 46 steps
+46 22 Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
+22 47 expected_results
+47 23 system limpa os campos 'Nivel da Competencia' e 'Apontamentos' exibidos na tela para cada Perfil de Competencias avaliado
+23 48 steps
+48 6 Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
+15 49 expected_results
+49 17 system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
+15 50 expected_results
+50 17 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
+15 51 expected_results
+51 17 system exibe uma mensagem de erro informando ao usuario que nao informou justificativa

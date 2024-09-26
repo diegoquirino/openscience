@@ -192,7 +192,7 @@ edge
 [
   source 4
   target 5
-  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar um nova Competencia (portfolio)"
+  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar uma nova Competencia (portfolio)"
 ]
 edge
 [
@@ -282,7 +282,7 @@ edge
 [
   source 4
   target 19
-  label "[s] Lider de Pessoas seleciona um Competencias (Portfolio) da listagem"
+  label "[s] Lider de Pessoas seleciona uma Competencias (Portfolio) da listagem"
 ]
 edge
 [
@@ -300,7 +300,7 @@ edge
 [
   source 4
   target 21
-  label "[s] Lider de Pessoas seleciona um Competencias (Portfolio) da listagem"
+  label "[s] Lider de Pessoas seleciona uma Competencias (Portfolio) da listagem"
 ]
 edge
 [
@@ -336,7 +336,7 @@ edge
 [
   source 4
   target 26
-  label "[s] Lider de Pessoas seleciona um Competencias (Portfolio) da listagem"
+  label "[s] Lider de Pessoas seleciona uma Competencias (Portfolio) da listagem"
 ]
 edge
 [
@@ -366,7 +366,7 @@ edge
 [
   source 30
   target 17
-  label "[e] system exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) excluida"
+  label "[e] system exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) nao excluida"
 ]
 edge
 [

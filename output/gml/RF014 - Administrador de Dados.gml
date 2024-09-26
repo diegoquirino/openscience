@@ -64,7 +64,7 @@ edge
 [
   source 1
   target 2
-  label "[c] Administrador esta autenticado no sistema; e, tem permissao para alterar Gerente de Desempenho"
+  label "[c] Administrador esta autenticado no sistema e tem permissao para alterar Gerente de Desempenho"
 ]
 edge
 [
@@ -76,7 +76,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem do Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"
+  label "[e] system exibe a listagem dos Perfis de Competencias cadastrados com a opcao 'Alterar Gerente' dentre as varias exibidas"
 ]
 edge
 [
@@ -94,7 +94,7 @@ edge
 [
   source 6
   target 7
-  label "[s] Administrador preenche o campo 'Login do Novo Gerente de Desempenho' do novo Gerente de Desempenho para o Perfil de Competencias "
+  label "[s] Administrador preenche o campo 'Login do Novo Gerente de Desempenho' para o Perfil de Competencias"
 ]
 edge
 [
@@ -130,7 +130,7 @@ edge
 [
   source 12
   target 11
-  label "[e] system apresenta o Catalogo (Perfis) de Competencias cadastradas sem nenhuma alteracao"
+  label "[e] system apresenta o Catalogo (Perfis) de Competencias sem nenhuma alteracao"
 ]
 edge
 [

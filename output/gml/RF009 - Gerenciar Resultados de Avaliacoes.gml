@@ -86,7 +86,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas"
+  label "[e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias exibidas"
 ]
 edge
 [
@@ -104,7 +104,7 @@ edge
 [
   source 6
   target 7
-  label "[s] Lider de Pessoas seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
+  label "[s] Lider de Pessoas preenche a 'Ata de Reuniao de Feedback' da Avaliacao para cada Perfil de Competencias avaliado"
 ]
 edge
 [

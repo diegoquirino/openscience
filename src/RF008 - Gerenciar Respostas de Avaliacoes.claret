@@ -1,22 +1,26 @@
 systemName "GTI-Competencias"
 
 usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
-  version "1.1" type "Criacao" user "Aislan Fernandes" date "03/12/2020"
+  version "1.5" type "Alteracao" user "Carlos Diego" date "28/11/2022"
   actor avaliador "Avaliador de Pessoas"
   preCondition "Avaliador de Pessoas esta autenticado no sistema e tem permissao para gerenciar Respostas de Avaliacoes"
 
   basic {
     step 1 avaliador "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
-    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas" 
-    step 3 avaliador "com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao"
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias exibidas" 
+    step 3 avaliador "com uma avaliacao selecionada, clica na opcao 'Formulario' para responder a uma Avaliacao ou Autoavaliacao"
     step 4 system "apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao" ef[1]
-    step 5 avaliador  "seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
-    step 6 system "apresenta o campo 'Nivel da Competencia' preenchido corretamente"
-    step 7 avaliador "adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado"
-    step 8 system "apresenta os 'Apontamentos' preenchidos corretamente"
-	step 9 avaliador "clica na opcao 'Salvar'" af[1]
-    step 10 system "realiza a acao conforme a opcao selecionada pelo usuario e 
-				    retorna feedback correspondente" ef[2,3]
+    step 5 avaliador  "seleciona o 'Nivel de Interacao' para cada Perfil de Competencias avaliado"
+    step 6 system "apresenta o campo 'Nivel de Interacao' preenchido corretamente"
+    step 7 avaliador  "seleciona que e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado" af[2]
+    step 8 system "apresenta o campo 'Capaz de Avaliar' preenchido como 'SIM'"
+    step 9 avaliador  "seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
+    step 10 system "apresenta o campo 'Nivel da Competencia' preenchido corretamente"
+    step 11 avaliador "adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado"
+    step 12 system "apresenta os 'Apontamentos' preenchidos corretamente"
+	step 13 avaliador "clica na opcao 'Salvar'" af[1]
+    step 14 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+				    retorna feedback correspondente" ef[2,3,4]
   }
 
   exception 1 "Nao e um dos avaliadores" {
@@ -31,10 +35,22 @@ usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
     step 1 system "exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou"
   }
   
+  exception 4 "Sem Justificativa" {
+    step 1 system "exibe uma mensagem de erro informando ao usuario que nao informou justificativa"
+  }
+  
   alternative 1 "Resolve 'limpar' a Resposta de Avaliacao" {
     step 1 avaliador "clica na opcao 'Excluir' para cada Perfil de Competencias avaliado"
     step 2 system "limpa os campos 'Nivel da Competencia' e 'Apontamentos' exibidos na tela para cada Perfil de Competencias avaliado"
     step 3 avaliador "verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos" bs 5 
+  }
+  
+  alternative 2 "Nao e Capaz de Avaliar a Competencia" {
+  	step 1 avaliador  "seleciona que nao e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado"
+    step 2 system "apresenta o campo 'Capaz de Avaliar' preenchido como 'NAO'"
+    step 3 avaliador "preenche o campo de 'Justificativas' para cada Perfil de Competencias avaliado"
+    step 4 system "apresenta o campo de 'Capaz de Avaliar' preenchido corretamente"
+    step 5 avaliador "clica no botao 'Justificar'" bs 14
   }
 
   postCondition "A gestao de Respostas de Avaliacoes e realizada com sucesso."
