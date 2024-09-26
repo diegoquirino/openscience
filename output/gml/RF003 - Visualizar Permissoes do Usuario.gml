@@ -41,12 +41,12 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a tela com a tabela das permissoes concedidas ao seu usuario"
+  label "[e] system exibe a tela com a tabela das Permissoes concedidas ao seu usuario"
 ]
 edge
 [
   source 4
   target 5
-  label "[c] Usuario visualiza a tabela das permissoes concedidas ao seu usuario"
+  label "[c] Usuario visualiza a tabela das Permissoes concedidas ao seu usuario"
 ]
 ]

@@ -1,11 +1,11 @@
 systemName "GTI-Competencias"
 
 usecase "RF002 - Realizar Logout" {
-  version "0.1" type "Criacao" user "Aislan Fernandes" date "17/07/2020"
+  version "1.0" type "Alteracao" user "Aislan Fernandes" date "17/07/2020"
   actor sysUser "Usuario do Sistema"
   preCondition "Usuario autenticado no sistema (em qualquer tela)"
   basic {
-    step 1 sysUser "clica na opcao de logout atraves da opcao disponivel no canto superior direito"
+    step 1 sysUser "clica na opcao de Logout atraves da opcao disponivel no canto superior direito"
     step 2 system "exibe uma mensagem de sucesso e apresenta a tela inicial do sistema"
   }
   postCondition "Usuario deslogado com sucesso"

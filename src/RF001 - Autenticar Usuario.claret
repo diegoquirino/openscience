@@ -1,12 +1,12 @@
 systemName "GTI-Competencias"
 
 usecase "RF001 - Autenticar Usuario" {
-  version "0.1" type "Criacao" user "Aislan Fernandes" date "13/07/2020"
+  version "1.0" type "Alteracao" user "Aislan Fernandes" date "13/07/2020"
   actor sysUser "Usuario do Sistema"
   preCondition "Usuario se encontra na tela inicial do sistema
 				Usuario esta visualizando uma mensagem de erro informando que o acesso a pagina nao e permitido para usuarios sem autenticacao"
   basic {
-    step 1 sysUser "inicia a tela de login atraves da opcao de login no canto superior direito"
+    step 1 sysUser "inicia a tela de login atraves da opcao de Login no canto superior direito"
     step 2 system "apresenta um formulario com campos de nome de usuario e senha e um botao entrar"
     step 3 sysUser "preenche os campos e clica no botao entrar" af[1]
     step 4 system "exibe uma mensagem de sucesso" ef[1,2,3]

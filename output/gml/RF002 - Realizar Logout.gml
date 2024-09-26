@@ -35,7 +35,7 @@ edge
 [
   source 2
   target 3
-  label "[s] Usuario do Sistema clica na opcao de logout atraves da opcao disponivel no canto superior direito"
+  label "[s] Usuario do Sistema clica na opcao de Logout atraves da opcao disponivel no canto superior direito"
 ]
 edge
 [

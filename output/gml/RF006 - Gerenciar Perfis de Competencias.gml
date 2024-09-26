@@ -174,25 +174,25 @@ edge
 [
   source 1
   target 2
-  label "[c] Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias."
+  label "[c] Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Perfis de Competencias."
 ]
 edge
 [
   source 2
   target 3
-  label "[s] Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
+  label "[s] Lider de Pessoas acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial"
 ]
 edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [
   source 4
   target 5
-  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar um novo perfil"
+  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar um Novo Perfil de Competencias"
 ]
 edge
 [
@@ -288,19 +288,19 @@ edge
 [
   source 20
   target 21
-  label "[c] A gestao de perfis de competencias e realizada com sucesso."
+  label "[c] A gestao de Perfis de Competencias e realizada com sucesso."
 ]
 edge
 [
   source 2
   target 22
-  label "[s] Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
+  label "[s] Usuario Nao-Autenticado acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial"
 ]
 edge
 [
   source 22
   target 21
-  label "[e] system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  label "[e] system exibe a listagem dos Perfis de Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
 ]
 edge
 [
@@ -354,7 +354,7 @@ edge
 [
   source 29
   target 21
-  label "[e] system exibe a listagem dos perfis de competencias sem o perfil de competencias excluido"
+  label "[e] system exibe a listagem dos Perfis de Competencias sem o perfil de competencias excluido"
 ]
 edge
 [
@@ -390,24 +390,24 @@ edge
 [
   source 34
   target 21
-  label "[e] system exibe a listagem dos perfis de competencias com o perfil de competencias excluido"
+  label "[e] system exibe a listagem dos Perfis de Competencias com o perfil de competencias excluido"
 ]
 edge
 [
   source 19
   target 21
-  label "[e] system exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validacao que falhou"
+  label "[e] system exibe uma mensagem de erro ao tentar salvar o novo Perfil de Competencias, informando o campo ou a validacao que falhou"
 ]
 edge
 [
   source 19
   target 21
-  label "[e] system exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validacao que falhou"
+  label "[e] system exibe uma mensagem de erro ao tentar editar o Perfil de Competencias, informando o campo ou a validacao que falhou"
 ]
 edge
 [
-  source 19
+  source 29
   target 21
-  label "[e] system exibe uma mensagem de erro ao tentar excluir o perfil"
+  label "[e] system exibe uma mensagem de erro ao tentar excluir o Perfil de Competencias"
 ]
 ]

@@ -1,0 +1,131 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+#
+1 29 conditions
+29 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Niveis das Competencias.
+2 30 steps
+30 3 Lider de Pessoas acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial
+3 31 expected_results
+31 4 system exibe a listagem dos Niveis das Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 32 steps
+32 5 Lider de Pessoas clica na opcao 'Novo' para criar um novo Niveis das Competencias
+5 33 expected_results
+33 6 system apresenta o formulario para cadastro e alteracao de Niveis das Competencias
+6 34 steps
+34 7 Lider de Pessoas preenche o campo 'Nome' com dados validos
+7 35 expected_results
+35 8 system apresenta o campo 'Nome' preenchido corretamente
+8 36 steps
+36 9 Lider de Pessoas preenche o campo 'Valor' com um numero inteiro referente a pontuacao a ser obtida no atendimento do respectivo nivel
+9 37 expected_results
+37 10 system apresenta o campo 'Valor' preenchido corretamente
+10 38 steps
+38 11 Lider de Pessoas preenche o campo 'Descricao' com a descricao do nivel de competencia
+11 39 expected_results
+39 12 system apresenta o campo 'Descricao' preenchido corretamente
+12 40 steps
+40 13 Lider de Pessoas clica na opcao 'Salvar'
+13 41 expected_results
+41 14 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+14 42 conditions
+42 15 A gestao de Niveis das Competencias e realizada com sucesso.
+2 43 steps
+43 16 Usuario Nao-Autenticado acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial
+16 44 expected_results
+44 15 system exibe a listagem dos Niveis das Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
+4 45 steps
+45 17 Lider de Pessoas seleciona um Nivel das Competencias da listagem
+17 46 expected_results
+46 18 system destaca o Nivel das Competencias selecionado na listagem
+18 47 steps
+47 5 Lider de Pessoas clica na opcao 'Editar' para modificar o Nivel das Competencias selecionado
+4 48 steps
+48 19 Lider de Pessoas seleciona um Nivel das Competencias da listagem
+19 49 expected_results
+49 20 system destaca o Nivel das Competencias selecionado na listagem
+20 50 steps
+50 21 Lider de Pessoas clica na opcao 'Excluir' para excluir o Nivel das Competencias selecionado
+21 51 expected_results
+51 22 system solicita confirmacao de exclusao
+22 52 steps
+52 23 Lider de Pessoas confirma a exclusao do Nivel das Competencias
+23 53 expected_results
+53 15 system exibe a listagem dos Niveis das Competencias sem o Nivel das Competencias excluido
+4 54 steps
+54 24 Lider de Pessoas seleciona um Nivel das Competencias da listagem
+24 55 expected_results
+55 25 system destaca o Nivel das Competencias selecionado na listagem
+25 56 steps
+56 26 Lider de Pessoas clica na opcao 'Excluir' para excluir o Nivel das Competencias selecionado
+26 57 expected_results
+57 27 system solicita confirmacao de exclusao
+27 58 steps
+58 28 Lider de Pessoas nao confirma a exclusao do Nivel das Competencias
+28 59 expected_results
+59 15 system exibe a listagem dos Niveis das Competencias com o Nivel das Competencias excluido
+13 60 expected_results
+60 15 system exibe uma mensagem de erro ao tentar salvar o novo Nivel das Competencias, informando o campo ou a validacao que falhou
+13 61 expected_results
+61 15 system exibe uma mensagem de erro ao tentar editar o Nivel das Competencias, informando o campo ou a validacao que falhou
+23 62 expected_results
+62 15 system exibe uma mensagem de erro ao tentar excluir o Nivel das Competencias

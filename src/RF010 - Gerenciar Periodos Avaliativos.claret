@@ -1,24 +1,24 @@
 systemName "GTI-Competencias"
 
 usecase "RF010 - Gerenciar Periodos Avaliativos" {
-  version "0.1" type "Criacao" user "Aislan Fernandes" date "30/07/2020"
+  version "1.0" type "Final" user "Aislan Fernandes" date "30/07/2020"
   actor lider "Lider de Pessoas"
   actor usuarioNA "Usuario Nao-Autenticado"
   preCondition "Lider de Pessoas esta autenticado no sistema e 
-				tem permissao para gerenciar perfis de competencias."
+				tem permissao para gerenciar Periodos Avaliativos."
 
   basic {
-    step 1 lider "acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial" af[4]
-    step 2 system "exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 1 lider "acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial" af[4]
+    step 2 system "exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
     step 3 lider "clica na opcao 'Novo' para criar um novo Periodo Avaliativo" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de Periodo Avaliativo"
     step 5 lider "preenche o campo 'Nome' com o ano correspondente"
     step 6 system "apresenta o campo 'Nome' preenchido corretamente"
-    step 7 lider "preenche o campo 'Data Inicial e Data Final' selecionando um lider da lista"
+    step 7 lider "preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo"
     step 8 system "apresenta o campo 'Data Inicial e Data Final' preenchido corretamente"
 	step 17 lider "clica na opcao 'Salvar'"
     step 18 system "realiza a acao conforme a opcao selecionada pelo usuario e 
-				   retorna feedback correspondente" ef[1,2,3]
+				   retorna feedback correspondente" ef[1,2]
   }
 
   alternative 1 "Editar Periodo Avaliativo Existente" {
@@ -33,7 +33,7 @@ usecase "RF010 - Gerenciar Periodos Avaliativos" {
     step 3 lider "clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado"
     step 4 system "solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo"
     step 5 lider "confirma a exclusao do Periodo Avaliativo"
-    step 6 system "exibe a listagem dos perfis de competencias sem o Periodo Avaliativo excluido"
+    step 6 system "exibe a listagem dos Periodos Avaliativos sem o Periodo Avaliativo excluido" ef[3]
   }
 
   alternative 3 "Negar Exclusao do Periodo Avaliativo" {
@@ -42,12 +42,12 @@ usecase "RF010 - Gerenciar Periodos Avaliativos" {
     step 3 lider "clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado"
     step 4 system "solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo"
     step 5 lider "nao confirma a exclusao do Periodo Avaliativo"
-    step 6 system "exibe a listagem dos perfis de competencias com o Periodo Avaliativo excluido"
+    step 6 system "exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {
-  	step 1 usuarioNA "acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
-  	step 2 system "exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  	step 1 usuarioNA "acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial"
+  	step 2 system "exibe a listagem dos Periodos Avaliativos cadastrados apenas para visualizacao com a opcao 'Ajuda'"
   }
 
   exception 1 "Falha ao Salvar o Novo Periodo Avaliativo" {
@@ -62,5 +62,5 @@ usecase "RF010 - Gerenciar Periodos Avaliativos" {
     step 1 system "exibe uma mensagem de erro ao tentar excluir o Periodo Avaliativo"
   }
 
-  postCondition "A gestao de perfis de competencias e realizada com sucesso."
+  postCondition "A gestao de Periodos Avaliativos e realizada com sucesso."
 }

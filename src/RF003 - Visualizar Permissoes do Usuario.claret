@@ -1,12 +1,12 @@
 systemName "GTI-Competencias"
 
 usecase "RF003 - Visualizar Permissoes do Usuario" {
-  version "0.1" type "Criacao" user "Aislan Fernandes" date "17/07/2020"
+  version "1.0" type "Alteracao" user "Aislan Fernandes" date "17/07/2020"
   actor sysUser "Usuario do Sistema"
   preCondition "Usuario autenticado no sistema (em qualquer tela)"
   basic {
     step 1 sysUser "clica no seu nome, apresentado no canto superior direito"
-    step 2 system "exibe a tela com a tabela das permissoes concedidas ao seu usuario"
+    step 2 system "exibe a tela com a tabela das Permissoes concedidas ao seu usuario"
   }
-  postCondition "Usuario visualiza a tabela das permissoes concedidas ao seu usuario"
+  postCondition "Usuario visualiza a tabela das Permissoes concedidas ao seu usuario"
 }

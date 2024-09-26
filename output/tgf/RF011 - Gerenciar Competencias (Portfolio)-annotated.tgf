@@ -76,15 +76,15 @@
 76 76
 #
 1 35 conditions
-35 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar competencias (portfolio).
+35 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Competencias (Portfolio).
 2 36 steps
-36 3 Lider de Pessoas acessa a funcionalidade de gestao de competencias (portfolio) a partir do menu inicial
+36 3 Lider de Pessoas acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial
 3 37 expected_results
-37 4 system exibe a listagem dos competencias (portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+37 4 system exibe a listagem dos Competencias (Portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
 4 38 steps
 38 5 Lider de Pessoas clica na opcao 'Novo' para criar um nova Competencia (portfolio)
 5 39 expected_results
-39 6 system apresenta o formulario para cadastro e alteracao de competecias (portfolio)
+39 6 system apresenta o formulario para cadastro e alteracao de Competencias (Portfolio)
 6 40 steps
 40 7 Lider de Pessoas seleciona no campo 'Tipo de Competencia' a opcao comportamental
 7 41 expected_results
@@ -106,41 +106,41 @@
 15 49 expected_results
 49 16 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
 16 50 conditions
-50 17 A gestao de competencias (portfolio) e realizada com sucesso.
+50 17 A gestao de Competencias (Portfolio) e realizada com sucesso.
 2 51 steps
-51 18 Usuario Nao-Autenticado acessa a funcionalidade de gestao de competencias (portfolio) a partir do menu inicial
+51 18 Usuario Nao-Autenticado acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial
 18 52 expected_results
-52 17 system exibe a listagem dos competencias (portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'
+52 17 system exibe a listagem dos Competencias (Portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'
 4 53 steps
-53 19 Lider de Pessoas seleciona um competecias (portfolio) da listagem
+53 19 Lider de Pessoas seleciona um Competencias (Portfolio) da listagem
 19 54 expected_results
-54 20 system destaca o competecias (portfolio) selecionado na listagem
+54 20 system destaca o Competencias (Portfolio) selecionado na listagem
 20 55 steps
-55 5 Lider de Pessoas clica na opcao 'Editar' para modificar o competecias (portfolio) selecionado
+55 5 Lider de Pessoas clica na opcao 'Editar' para modificar o Competencias (Portfolio) selecionado
 4 56 steps
-56 21 Lider de Pessoas seleciona um competecias (portfolio) da listagem
+56 21 Lider de Pessoas seleciona um Competencias (Portfolio) da listagem
 21 57 expected_results
-57 22 system destaca o competecias (portfolio) selecionado na listagem
+57 22 system destaca o Competencias (Portfolio) selecionado na listagem
 22 58 steps
-58 23 Lider de Pessoas clica na opcao 'Excluir' para excluir o competecias (portfolio) selecionado
+58 23 Lider de Pessoas clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado
 23 59 expected_results
 59 24 system solicita confirmacao de exclusao mostrando o nome da Competencia (portfolio)
 24 60 steps
 60 25 Lider de Pessoas confirma a exclusao da Competencia (portfolio)
 25 61 expected_results
-61 17 system exibe a listagem dos competencias (portfolio) sem o competecias (portfolio) excluido
+61 17 system exibe a listagem dos Competencias (Portfolio) sem o Competencias (Portfolio) excluido
 4 62 steps
-62 26 Lider de Pessoas seleciona um competecias (portfolio) da listagem
+62 26 Lider de Pessoas seleciona um Competencias (Portfolio) da listagem
 26 63 expected_results
-63 27 system destaca o competecias (portfolio) selecionado na listagem
+63 27 system destaca o Competencias (Portfolio) selecionado na listagem
 27 64 steps
-64 28 Lider de Pessoas clica na opcao 'Excluir' para excluir o competecias (portfolio) selecionado
+64 28 Lider de Pessoas clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado
 28 65 expected_results
 65 29 system solicita confirmacao de exclusao mostrando o nome da Competencia (portfolio)
 29 66 steps
 66 30 Lider de Pessoas nao confirma a exclusao da Competencia (portfolio)
 30 67 expected_results
-67 17 system exibe a listagem dos competencias (portfolio) com o competecias (portfolio) excluido
+67 17 system exibe a listagem dos Competencias (Portfolio) com o Competencias (Portfolio) excluido
 6 68 steps
 68 7 Lider de Pessoas seleciona no campo 'Tipo de Competencia' a opcao tecnica
 12 69 steps
@@ -157,5 +157,5 @@
 74 17 system exibe uma mensagem de erro ao tentar salvar a nova Competencia (portfolio), informando o campo ou a validacao que falhou
 15 75 expected_results
 75 17 system exibe uma mensagem de erro ao tentar editar a Competencia (portfolio), informando o campo ou a validacao que falhou
-15 76 expected_results
+25 76 expected_results
 76 17 system exibe uma mensagem de erro ao tentar excluir a Competencia (portfolio)

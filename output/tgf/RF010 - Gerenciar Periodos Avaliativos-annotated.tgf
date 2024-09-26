@@ -58,11 +58,11 @@
 58 58
 #
 1 27 conditions
-27 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias.
+27 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Periodos Avaliativos.
 2 28 steps
-28 3 Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+28 3 Lider de Pessoas acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial
 3 29 expected_results
-29 4 system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+29 4 system exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
 4 30 steps
 30 5 Lider de Pessoas clica na opcao 'Novo' para criar um novo Periodo Avaliativo
 5 31 expected_results
@@ -72,7 +72,7 @@
 7 33 expected_results
 33 8 system apresenta o campo 'Nome' preenchido corretamente
 8 34 steps
-34 9 Lider de Pessoas preenche o campo 'Data Inicial e Data Final' selecionando um lider da lista
+34 9 Lider de Pessoas preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo
 9 35 expected_results
 35 10 system apresenta o campo 'Data Inicial e Data Final' preenchido corretamente
 10 36 steps
@@ -80,11 +80,11 @@
 11 37 expected_results
 37 12 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
 12 38 conditions
-38 13 A gestao de perfis de competencias e realizada com sucesso.
+38 13 A gestao de Periodos Avaliativos e realizada com sucesso.
 2 39 steps
-39 14 Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+39 14 Usuario Nao-Autenticado acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial
 14 40 expected_results
-40 13 system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
+40 13 system exibe a listagem dos Periodos Avaliativos cadastrados apenas para visualizacao com a opcao 'Ajuda'
 4 41 steps
 41 15 Lider de Pessoas seleciona um Periodo Avaliativo da listagem
 15 42 expected_results
@@ -102,7 +102,7 @@
 20 48 steps
 48 21 Lider de Pessoas confirma a exclusao do Periodo Avaliativo
 21 49 expected_results
-49 13 system exibe a listagem dos perfis de competencias sem o Periodo Avaliativo excluido
+49 13 system exibe a listagem dos Periodos Avaliativos sem o Periodo Avaliativo excluido
 4 50 steps
 50 22 Lider de Pessoas seleciona um Periodo Avaliativo da listagem
 22 51 expected_results
@@ -114,10 +114,10 @@
 25 54 steps
 54 26 Lider de Pessoas nao confirma a exclusao do Periodo Avaliativo
 26 55 expected_results
-55 13 system exibe a listagem dos perfis de competencias com o Periodo Avaliativo excluido
+55 13 system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido
 11 56 expected_results
 56 13 system exibe uma mensagem de erro ao tentar salvar o novo Periodo Avaliativo, informando o campo ou a validacao que falhou
 11 57 expected_results
 57 13 system exibe uma mensagem de erro ao tentar editar o Periodo Avaliativo, informando o campo ou a validacao que falhou
-11 58 expected_results
+21 58 expected_results
 58 13 system exibe uma mensagem de erro ao tentar excluir o Periodo Avaliativo

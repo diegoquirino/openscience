@@ -1,0 +1,151 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+63 63
+64 64
+65 65
+66 66
+67 67
+68 68
+69 69
+70 70
+71 71
+72 72
+#
+1 34 conditions
+34 2 Lider de Pessoas esta autenticado no sistema;  tem permissao para gerenciar Avaliacoes
+2 35 steps
+35 3 Lider de Pessoas acessa a funcionalidade de gestao de Avaliacoes a partir do menu inicial
+3 36 expected_results
+36 4 system exibe a listagem dos Avaliacoes cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 37 steps
+37 5 Lider de Pessoas clica na opcao 'Novo' para criar uma nova Avaliacao
+5 38 expected_results
+38 6 system apresenta o formulario para cadastro e alteracao de Avaliacao
+6 39 steps
+39 7 Lider de Pessoas seleciona o 'Periodo Avaliativo' da Avaliacao
+7 40 expected_results
+40 8 system apresenta o campo 'Periodo Avaliativo' preenchido corretamente
+8 41 steps
+41 9 Lider de Pessoas seleciona o 'Perfil' de competencias da Avaliacao
+9 42 expected_results
+42 10 system apresenta o campo 'Perfil' de competencias preenchido corretamente e                   apresenta o campo 'Metas' com as respectivas competencias, cada uma preenchida com nivel igual 1 (um)
+10 43 steps
+43 11 Lider de Pessoas seleciona o colaborador a ser 'Avaliado' na Avaliacao
+11 44 expected_results
+44 12 system apresenta o campo 'Avaliado' preenchido corretamente
+12 45 steps
+45 13 Lider de Pessoas Em 'Metas', insere o 'Nivel' esperado para cada competencia do perfil selecionado na Avaliacao
+13 46 expected_results
+46 14 system apresenta em 'Metas' os campos 'Nivel' preenchido corretamente
+14 47 steps
+47 15 Lider de Pessoas seleciona 'Avaliadores' da Avaliacao
+15 48 expected_results
+48 16 system apresenta a lista de 'Avaliadores' preenchida corretamente
+16 49 steps
+49 17 Lider de Pessoas clica na opcao 'Salvar'
+17 50 expected_results
+50 18 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+18 51 conditions
+51 19 A gestao de Avaliacoes e realizada com sucesso.
+4 52 steps
+52 20 Lider de Pessoas seleciona uma Avaliacao da listagem
+20 53 expected_results
+53 21 system destaca a Avaliacao selecionada na listagem
+21 54 steps
+54 22 Lider de Pessoas clica na opcao 'Editar' para modificar a Avaliacao selecionada
+22 55 expected_results
+55 23 system apresenta o formulario para e alteracao de Avaliacao
+23 56 steps
+56 12 Lider de Pessoas verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' somente leitura
+4 57 steps
+57 24 Lider de Pessoas seleciona uma Avaliacao da listagem
+24 58 expected_results
+58 25 system destaca a Avaliacao selecionada na listagem
+25 59 steps
+59 26 Lider de Pessoas clica na opcao 'Excluir' para excluir a Avaliacao selecionada
+26 60 expected_results
+60 27 system solicita confirmacao de exclusao da Avaliacao
+27 61 steps
+61 28 Lider de Pessoas confirma a exclusao do Avaliacao
+28 62 expected_results
+62 19 system exibe a listagem dos Avaliacoes sem o Avaliacao excluido
+4 63 steps
+63 29 Lider de Pessoas seleciona uma Avaliacao da listagem
+29 64 expected_results
+64 30 system destaca a Avaliacao selecionada na listagem
+30 65 steps
+65 31 Lider de Pessoas clica na opcao 'Excluir' para excluir a Avaliacao selecionada
+31 66 expected_results
+66 32 system solicita confirmacao de exclusao da Avaliacao
+32 67 steps
+67 33 Lider de Pessoas nao confirma a exclusao do Avaliacao
+33 68 expected_results
+68 19 system exibe a listagem dos Avaliacoes com o Avaliacao excluido
+17 69 expected_results
+69 19 system exibe uma mensagem de erro ao tentar salvar a nova Avaliacao, informando o campo ou a validacao que falhou
+17 70 expected_results
+70 19 system exibe uma mensagem de erro ao tentar editar a Avaliacao, informando o campo ou a validacao que falhou
+28 71 expected_results
+71 19 system exibe uma mensagem de erro ao tentar excluir a Avaliacao
+28 72 expected_results
+72 19 system exibe uma mensagem de erro ao tentar excluir a Avaliacao informando que o usuario nao e o lider

@@ -1,16 +1,16 @@
 systemName "GTI-Competencias"
 
 usecase "RF006 - Gerenciar Perfis de Competencias" {
-  version "0.1" type "Criacao" user "Aislan Fernandes" date "20/07/2020"
+  version "1.0" type "Alteracao" user "Aislan Fernandes" date "20/07/2020"
   actor lider "Lider de Pessoas"
   actor usuarioNA "Usuario Nao-Autenticado"
   preCondition "Lider de Pessoas esta autenticado no sistema e 
-				tem permissao para gerenciar perfis de competencias."
+				tem permissao para gerenciar Perfis de Competencias."
 
   basic {
-    step 1 lider "acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial" af[4]
-    step 2 system "exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
-    step 3 lider "clica na opcao 'Novo' para criar um novo perfil" af[1,2,3]
+    step 1 lider "acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial" af[4]
+    step 2 system "exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Novo' para criar um Novo Perfil de Competencias" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de perfil de competencias"
     step 5 lider "preenche o campo 'Periodo Avaliativo' com o ano correspondente"
     step 6 system "apresenta o campo 'Periodo Avaliativo' preenchido corretamente"
@@ -26,10 +26,10 @@ usecase "RF006 - Gerenciar Perfis de Competencias" {
 	step 16 system "apresenta as 'Competencias Tecnicas' selecionadas"
 	step 17 lider "clica na opcao 'Salvar'"
     step 18 system "realiza a acao conforme a opcao selecionada pelo usuario e 
-				   retorna feedback correspondente" ef[1,2,3]
+				   retorna feedback correspondente" ef[1,2]
   }
 
-  alternative 1 "Editar Perfil de Competencias Existente" {
+  alternative 1 "Editar Perfil de Competencias de Competencias Existente" {
     step 1 lider "seleciona um perfil de competencias da listagem"
     step 2 system "destaca o perfil de competencias selecionado na listagem"
     step 3 lider "clica na opcao 'Editar' para modificar o perfil de competencias selecionado" bs 4
@@ -41,7 +41,7 @@ usecase "RF006 - Gerenciar Perfis de Competencias" {
     step 3 lider "clica na opcao 'Excluir' para excluir o perfil de competencias selecionado"
     step 4 system "solicita confirmacao de exclusao mostrando o nome do perfil"
     step 5 lider "confirma a exclusao do perfil"
-    step 6 system "exibe a listagem dos perfis de competencias sem o perfil de competencias excluido"
+    step 6 system "exibe a listagem dos Perfis de Competencias sem o perfil de competencias excluido" ef[3]
   }
 
   alternative 3 "Negar Exclusao do Perfil de Competencias" {
@@ -50,25 +50,25 @@ usecase "RF006 - Gerenciar Perfis de Competencias" {
     step 3 lider "clica na opcao 'Excluir' para excluir o perfil de competencias selecionado"
     step 4 system "solicita confirmacao de exclusao mostrando o nome do perfil"
     step 5 lider "nao confirma a exclusao do perfil"
-    step 6 system "exibe a listagem dos perfis de competencias com o perfil de competencias excluido"
+    step 6 system "exibe a listagem dos Perfis de Competencias com o perfil de competencias excluido"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {
-  	step 1 usuarioNA "acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
-  	step 2 system "exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  	step 1 usuarioNA "acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial"
+  	step 2 system "exibe a listagem dos Perfis de Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
   }
 
-  exception 1 "Falha ao Salvar o Novo Perfil" {
-    step 1 system "exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validacao que falhou"
+  exception 1 "Falha ao Salvar o Novo Perfil de Competencias" {
+    step 1 system "exibe uma mensagem de erro ao tentar salvar o novo Perfil de Competencias, informando o campo ou a validacao que falhou"
   }
 
-  exception 2 "Erro ao Editar Perfil" {
-    step 1 system "exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validacao que falhou"
+  exception 2 "Erro ao Editar Perfil de Competencias" {
+    step 1 system "exibe uma mensagem de erro ao tentar editar o Perfil de Competencias, informando o campo ou a validacao que falhou"
   }
 
-  exception 3 "Falha na Exclusao do Perfil" {
-    step 1 system "exibe uma mensagem de erro ao tentar excluir o perfil"
+  exception 3 "Falha na Exclusao do Perfil de Competencias" {
+    step 1 system "exibe uma mensagem de erro ao tentar excluir o Perfil de Competencias"
   }
 
-  postCondition "A gestao de perfis de competencias e realizada com sucesso."
+  postCondition "A gestao de Perfis de Competencias e realizada com sucesso."
 }

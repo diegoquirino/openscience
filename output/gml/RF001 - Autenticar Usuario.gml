@@ -45,7 +45,7 @@ edge
 [
   source 2
   target 3
-  label "[s] Usuario do Sistema inicia a tela de login atraves da opcao de login no canto superior direito"
+  label "[s] Usuario do Sistema inicia a tela de login atraves da opcao de Login no canto superior direito"
 ]
 edge
 [

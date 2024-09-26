@@ -1,0 +1,42 @@
+systemName "GTI-Competencias"
+
+usecase "RF012 - Ajuda" {
+  version "1.0" type "Criacao" user "Aislan Fernandes" date "20/07/2020"
+  actor lider "Lider de Pessoas"
+  actor usuarioNA "Usuario Nao-Autenticado"
+  preCondition "Lider de Pessoas esta autenticado no sistema"
+
+  basic {
+    step 1 lider "acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial" af[1,2,3,4]
+    step 2 system "exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Perfis de Competencias"
+    step 4 system "apresenta um painel lateral com a ajuda contextual, dividido em quatro partes: 
+				   'Glossario', 'Funcionalidades', 'Validacoes' e 'Permissoes do Usuario'" 
+  }
+  
+  alternative 1 "Ajuda contextual na gestao de Periodos Avaliativos" {
+  	step 1 lider "acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial"
+    step 2 system "exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Periodos Avaliativos" bs 4
+  }
+  
+  alternative 2 "Ajuda contextual na gestao de Competencias (portfolio)" {
+  	step 1 lider "acessa a funcionalidade de gestao de Competencias (portfolio) a partir do menu inicial"
+    step 2 system "exibe a listagem das Competencias (portfolio) cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Competencias (portfolio)" bs 4
+  }
+  
+  alternative 3 "Ajuda contextual na gestao de Avaliacoes" {
+  	step 1 lider "acessa a funcionalidade de gestao de Avaliacoes a partir do menu inicial"
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Avaliacoes" bs 4
+  }
+  
+  alternative 4 "Ajuda contextual na gestao de Niveis das Competencias" {
+  	step 1 lider "acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial"
+    step 2 system "exibe a listagem dos Niveis das Competencias cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 3 lider "clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Niveis das Competencias" bs 4
+  }
+ 
+  postCondition "A Ajuda e apresentada com sucesso."
+}

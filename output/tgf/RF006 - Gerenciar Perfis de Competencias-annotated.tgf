@@ -74,13 +74,13 @@
 74 74
 #
 1 35 conditions
-35 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias.
+35 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Perfis de Competencias.
 2 36 steps
-36 3 Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+36 3 Lider de Pessoas acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial
 3 37 expected_results
-37 4 system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+37 4 system exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
 4 38 steps
-38 5 Lider de Pessoas clica na opcao 'Novo' para criar um novo perfil
+38 5 Lider de Pessoas clica na opcao 'Novo' para criar um Novo Perfil de Competencias
 5 39 expected_results
 39 6 system apresenta o formulario para cadastro e alteracao de perfil de competencias
 6 40 steps
@@ -112,11 +112,11 @@
 19 53 expected_results
 53 20 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
 20 54 conditions
-54 21 A gestao de perfis de competencias e realizada com sucesso.
+54 21 A gestao de Perfis de Competencias e realizada com sucesso.
 2 55 steps
-55 22 Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+55 22 Usuario Nao-Autenticado acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial
 22 56 expected_results
-56 21 system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
+56 21 system exibe a listagem dos Perfis de Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
 4 57 steps
 57 23 Lider de Pessoas seleciona um perfil de competencias da listagem
 23 58 expected_results
@@ -134,7 +134,7 @@
 28 64 steps
 64 29 Lider de Pessoas confirma a exclusao do perfil
 29 65 expected_results
-65 21 system exibe a listagem dos perfis de competencias sem o perfil de competencias excluido
+65 21 system exibe a listagem dos Perfis de Competencias sem o perfil de competencias excluido
 4 66 steps
 66 30 Lider de Pessoas seleciona um perfil de competencias da listagem
 30 67 expected_results
@@ -146,10 +146,10 @@
 33 70 steps
 70 34 Lider de Pessoas nao confirma a exclusao do perfil
 34 71 expected_results
-71 21 system exibe a listagem dos perfis de competencias com o perfil de competencias excluido
+71 21 system exibe a listagem dos Perfis de Competencias com o perfil de competencias excluido
 19 72 expected_results
-72 21 system exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validacao que falhou
+72 21 system exibe uma mensagem de erro ao tentar salvar o novo Perfil de Competencias, informando o campo ou a validacao que falhou
 19 73 expected_results
-73 21 system exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validacao que falhou
-19 74 expected_results
-74 21 system exibe uma mensagem de erro ao tentar excluir o perfil
+73 21 system exibe uma mensagem de erro ao tentar editar o Perfil de Competencias, informando o campo ou a validacao que falhou
+29 74 expected_results
+74 21 system exibe uma mensagem de erro ao tentar excluir o Perfil de Competencias

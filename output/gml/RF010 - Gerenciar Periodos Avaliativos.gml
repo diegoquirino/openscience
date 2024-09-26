@@ -134,19 +134,19 @@ edge
 [
   source 1
   target 2
-  label "[c] Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias."
+  label "[c] Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar Periodos Avaliativos."
 ]
 edge
 [
   source 2
   target 3
-  label "[s] Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
+  label "[s] Lider de Pessoas acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial"
 ]
 edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [
@@ -176,7 +176,7 @@ edge
 [
   source 8
   target 9
-  label "[s] Lider de Pessoas preenche o campo 'Data Inicial e Data Final' selecionando um lider da lista"
+  label "[s] Lider de Pessoas preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo"
 ]
 edge
 [
@@ -200,19 +200,19 @@ edge
 [
   source 12
   target 13
-  label "[c] A gestao de perfis de competencias e realizada com sucesso."
+  label "[c] A gestao de Periodos Avaliativos e realizada com sucesso."
 ]
 edge
 [
   source 2
   target 14
-  label "[s] Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"
+  label "[s] Usuario Nao-Autenticado acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial"
 ]
 edge
 [
   source 14
   target 13
-  label "[e] system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  label "[e] system exibe a listagem dos Periodos Avaliativos cadastrados apenas para visualizacao com a opcao 'Ajuda'"
 ]
 edge
 [
@@ -266,7 +266,7 @@ edge
 [
   source 21
   target 13
-  label "[e] system exibe a listagem dos perfis de competencias sem o Periodo Avaliativo excluido"
+  label "[e] system exibe a listagem dos Periodos Avaliativos sem o Periodo Avaliativo excluido"
 ]
 edge
 [
@@ -302,7 +302,7 @@ edge
 [
   source 26
   target 13
-  label "[e] system exibe a listagem dos perfis de competencias com o Periodo Avaliativo excluido"
+  label "[e] system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido"
 ]
 edge
 [
@@ -318,7 +318,7 @@ edge
 ]
 edge
 [
-  source 11
+  source 21
   target 13
   label "[e] system exibe uma mensagem de erro ao tentar excluir o Periodo Avaliativo"
 ]
