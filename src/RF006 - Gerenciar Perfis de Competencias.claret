@@ -29,7 +29,7 @@ usecase "RF006 - Gerenciar Perfis de Competencias" {
 				   retorna feedback correspondente" ef[1,2]
   }
 
-  alternative 1 "Editar Perfil de Competencias de Competencias Existente" {
+  alternative 1 "Editar Perfil de Competencias Existente" {
     step 1 lider "seleciona um perfil de competencias da listagem"
     step 2 system "destaca o perfil de competencias selecionado na listagem"
     step 3 lider "clica na opcao 'Editar' para modificar o perfil de competencias selecionado" bs 4

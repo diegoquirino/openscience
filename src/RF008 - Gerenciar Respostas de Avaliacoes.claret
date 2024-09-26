@@ -1,0 +1,41 @@
+systemName "GTI-Competencias"
+
+usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
+  version "1.1" type "Criacao" user "Aislan Fernandes" date "03/12/2020"
+  actor avaliador "Avaliador de Pessoas"
+  preCondition "Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes"
+
+  basic {
+    step 1 avaliador "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas" 
+    step 3 avaliador "com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao"
+    step 4 system "apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao" ef[1]
+    step 5 avaliador  "seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
+    step 6 system "apresenta o campo 'Nivel da Competencia' preenchido corretamente"
+    step 7 avaliador "adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado"
+    step 8 system "apresenta os 'Apontamentos' preenchidos corretamente"
+	step 9 avaliador "clica na opcao 'Salvar'" af[1]
+    step 10 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+				   retorna feedback correspondente" ef[2,3]
+  }
+
+  exception 1 "Nao e um dos avaliadores" {
+    step 1 system "exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores"
+  }
+  
+  exception 2 "Falha ao Salvar a nova Avaliacao" {
+    step 1 system "exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou"
+  }
+
+  exception 3 "Erro ao Editar Avaliacao" {
+    step 1 system "exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou"
+  }
+  
+  alternative 1 "Resolve 'limpar' a Resposta de Avaliacao" {
+    step 1 avaliador "clica na opcao 'Excluir' para cada Perfil de Competencias avaliado"
+    step 2 system "limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado"
+    step 5 avaliador "verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos" bs 5 
+  }
+
+  postCondition "A gestao de Respostas de Avaliacoes e realizada com sucesso."
+}

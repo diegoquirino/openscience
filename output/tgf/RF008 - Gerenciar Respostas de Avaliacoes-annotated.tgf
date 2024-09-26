@@ -1,0 +1,70 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+#
+1 16 conditions
+16 2 Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes
+2 17 steps
+17 3 Avaliador de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
+3 18 expected_results
+18 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas
+4 19 steps
+19 5 Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao
+5 20 expected_results
+20 6 system apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao
+6 21 steps
+21 7 Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
+7 22 expected_results
+22 8 system apresenta o campo 'Nivel da Competencia' preenchido corretamente
+8 23 steps
+23 9 Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
+9 24 expected_results
+24 10 system apresenta os 'Apontamentos' preenchidos corretamente
+10 25 steps
+25 11 Avaliador de Pessoas clica na opcao 'Salvar'
+11 26 expected_results
+26 12 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+12 27 conditions
+27 13 A gestao de Respostas de Avaliacoes e realizada com sucesso.
+5 28 expected_results
+28 13 system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
+10 29 steps
+29 14 Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
+14 30 expected_results
+30 15 system limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado
+15 31 steps
+31 6 Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
+11 32 expected_results
+32 13 system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
+11 33 expected_results
+33 13 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou

@@ -186,7 +186,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem dos Competencias (Portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem das Competencias (Portfolio) cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [
@@ -276,7 +276,7 @@ edge
 [
   source 18
   target 17
-  label "[e] system exibe a listagem dos Competencias (Portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  label "[e] system exibe a listagem das Competencias (Portfolio) cadastradas apenas para visualizacao com a opcao 'Ajuda'"
 ]
 edge
 [
@@ -288,13 +288,13 @@ edge
 [
   source 19
   target 20
-  label "[e] system destaca o Competencias (Portfolio) selecionado na listagem"
+  label "[e] system destaca a Competencia (Portfolio) selecionada na listagem"
 ]
 edge
 [
   source 20
   target 5
-  label "[s] Lider de Pessoas clica na opcao 'Editar' para modificar o Competencias (Portfolio) selecionado"
+  label "[s] Lider de Pessoas clica na opcao 'Editar' para modificar a Competencia (Portfolio) selecionada"
 ]
 edge
 [
@@ -306,13 +306,13 @@ edge
 [
   source 21
   target 22
-  label "[e] system destaca o Competencias (Portfolio) selecionado na listagem"
+  label "[e] system destaca a Competencia (Portfolio) selecionada na listagem"
 ]
 edge
 [
   source 22
   target 23
-  label "[s] Lider de Pessoas clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado"
+  label "[s] Lider de Pessoas clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada"
 ]
 edge
 [
@@ -330,7 +330,7 @@ edge
 [
   source 25
   target 17
-  label "[e] system exibe a listagem dos Competencias (Portfolio) sem o Competencias (Portfolio) excluido"
+  label "[e] system exibe a listagem das Competencias (Portfolio) sem a Competencia (Portfolio) excluida"
 ]
 edge
 [
@@ -342,13 +342,13 @@ edge
 [
   source 26
   target 27
-  label "[e] system destaca o Competencias (Portfolio) selecionado na listagem"
+  label "[e] system destaca a Competencia (Portfolio) selecionada na listagem"
 ]
 edge
 [
   source 27
   target 28
-  label "[s] Lider de Pessoas clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado"
+  label "[s] Lider de Pessoas clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada"
 ]
 edge
 [
@@ -366,7 +366,7 @@ edge
 [
   source 30
   target 17
-  label "[e] system exibe a listagem dos Competencias (Portfolio) com o Competencias (Portfolio) excluido"
+  label "[e] system exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) excluida"
 ]
 edge
 [

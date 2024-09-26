@@ -1,0 +1,18 @@
+systemName "GTI-Competencias"
+
+usecase "RF005 - Visualizar Status do Processo" {
+  version "1.1" type "Criacao" user "Aislan Fernandes" date "08/10/2020"
+  actor usuarioNA "Usuario Nao-Autenticado"
+  preCondition "Usuario nao-autenticado no sistema se encontra na tela inicial do sistema"  
+  basic {
+    step 1 usuarioNA "acessa a funcionalidade para visualizar o status do PGDC"
+    step 2 system "apresenta o campo 'Periodo Avaliativo' para ser escolhido pelo usuario" ef[1]
+    step 3 usuarioNA "escolhe no campo 'Periodo Avaliativo' o ano correspondente"
+    step 4 system "exibe na pagina uma tabela contendo as informacoes (basicamente listagem dos perfis de competencias - cf. RF006): 
+                   Perfil de Competencias; Unidade de Trabalho; Gerente do Desempenho; e, Situacao."
+  }
+  exception 1 "Nao existem Periodos Avaliativos Cadastrados" {
+  	step 1 system "exibe uma mensagem de erro informando que nao existem Periodos Avaliativos cadastrados"
+  }
+  postCondition "Usuario visualiza a tabela das Permissoes concedidas ao seu usuario"
+}

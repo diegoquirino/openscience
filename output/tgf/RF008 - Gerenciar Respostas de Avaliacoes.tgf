@@ -1,0 +1,34 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+#
+1 2 [c] Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes
+2 3 [s] Avaliador de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
+3 4 [e] system exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas
+4 5 [s] Avaliador de Pessoas com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao
+5 6 [e] system apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao
+6 7 [s] Avaliador de Pessoas seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
+7 8 [e] system apresenta o campo 'Nivel da Competencia' preenchido corretamente
+8 9 [s] Avaliador de Pessoas adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado
+9 10 [e] system apresenta os 'Apontamentos' preenchidos corretamente
+10 11 [s] Avaliador de Pessoas clica na opcao 'Salvar'
+11 12 [e] system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+12 13 [c] A gestao de Respostas de Avaliacoes e realizada com sucesso.
+5 13 [e] system exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores
+10 14 [s] Avaliador de Pessoas clica na opcao 'Excluir' para cada Perfil de Competencias avaliado
+14 15 [e] system limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado
+15 6 [s] Avaliador de Pessoas verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos
+11 13 [e] system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
+11 13 [e] system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou

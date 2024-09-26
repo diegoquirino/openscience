@@ -1,0 +1,30 @@
+systemName "GTI-Competencias"
+
+usecase "RF014 - Administrador de Dados" {
+  version "1.1" type "Criacao" user "Aislan Fernandes" date "02/12/2020"
+  actor admin "Administrador"
+  preCondition "Administrador esta autenticado no sistema; e, tem permissao para alterar Gerente de Desempenho"
+
+  basic {
+    step 1 admin "acessa a funcionalidade de Catalogo (Perfis) de Competencias a partir do menu inicial"
+    step 2 system "exibe a listagem das Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas" 
+    step 3 admin "com um perfil selecionado, clica na opcao 'Alterar Gerente' para efetivar a mudanca"
+    step 4 system "apresenta o formulario para cadastro do novo Gerente de Desempenho"
+    step 5 admin  "preenche o campo 'Login do Novo Gerente de Desempenho' do novo Gerente de Desempenho para o Perfil de Competencias "
+    step 6 system "apresenta o campo 'Login do Novo Gerente de Desempenho' preenchido corretamente"
+	step 7 admin "clica na opcao 'Confirmar'" af[1]
+    step 8 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+				   retorna feedback correspondente" ef[1,2]
+  }
+
+  exception 1 "Falha ao Salvar o novo Gerente de Desempenho" {
+    step 1 system "exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou"
+  }
+  
+  alternative 1 "Encerrar definitivamente" {
+    step 1 admin "clica na opcao 'Cancelar'"
+    step 2 system "apresenta o Catalogo (Perfis) de Competencias cadastradas sem nenhuma alteracao"
+  }
+
+  postCondition "A alteracao do Gerente de Desempenho e realizada com sucesso."
+}

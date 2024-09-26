@@ -9,7 +9,7 @@ usecase "RF011 - Gerenciar Competencias (Portfolio)" {
 
   basic {
     step 1 lider "acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial" af[4]
-    step 2 system "exibe a listagem dos Competencias (Portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 2 system "exibe a listagem das Competencias (Portfolio) cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
     step 3 lider "clica na opcao 'Novo' para criar um nova Competencia (portfolio)" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de Competencias (Portfolio)"
     step 5 lider "seleciona no campo 'Tipo de Competencia' a opcao comportamental" af[5]
@@ -27,31 +27,31 @@ usecase "RF011 - Gerenciar Competencias (Portfolio)" {
 
   alternative 1 "Editar Competencias (Portfolio) Existente" {
     step 1 lider "seleciona um Competencias (Portfolio) da listagem"
-    step 2 system "destaca o Competencias (Portfolio) selecionado na listagem"
-    step 3 lider "clica na opcao 'Editar' para modificar o Competencias (Portfolio) selecionado" bs 4
+    step 2 system "destaca a Competencia (Portfolio) selecionada na listagem"
+    step 3 lider "clica na opcao 'Editar' para modificar a Competencia (Portfolio) selecionada" bs 4
   }
   
-  alternative 2 "Confirmar Exclusao do Competencias (Portfolio)" {
+  alternative 2 "Confirmar Exclusao da Competencia (Portfolio)" {
   	step 1 lider "seleciona um Competencias (Portfolio) da listagem"
-    step 2 system "destaca o Competencias (Portfolio) selecionado na listagem"
-    step 3 lider "clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado"
+    step 2 system "destaca a Competencia (Portfolio) selecionada na listagem"
+    step 3 lider "clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada"
     step 4 system "solicita confirmacao de exclusao mostrando o nome da Competencia (portfolio)"
     step 5 lider "confirma a exclusao da Competencia (portfolio)"
-    step 6 system "exibe a listagem dos Competencias (Portfolio) sem o Competencias (Portfolio) excluido" ef[3]
+    step 6 system "exibe a listagem das Competencias (Portfolio) sem a Competencia (Portfolio) excluida" ef[3]
   }
 
-  alternative 3 "Negar Exclusao do Competencias (Portfolio)" {
+  alternative 3 "Negar Exclusao da Competencia (Portfolio)" {
   	step 1 lider "seleciona um Competencias (Portfolio) da listagem"
-    step 2 system "destaca o Competencias (Portfolio) selecionado na listagem"
-    step 3 lider "clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado"
+    step 2 system "destaca a Competencia (Portfolio) selecionada na listagem"
+    step 3 lider "clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada"
     step 4 system "solicita confirmacao de exclusao mostrando o nome da Competencia (portfolio)"
     step 5 lider "nao confirma a exclusao da Competencia (portfolio)"
-    step 6 system "exibe a listagem dos Competencias (Portfolio) com o Competencias (Portfolio) excluido"
+    step 6 system "exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) excluida"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {
   	step 1 usuarioNA "acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial"
-  	step 2 system "exibe a listagem dos Competencias (Portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'"
+  	step 2 system "exibe a listagem das Competencias (Portfolio) cadastradas apenas para visualizacao com a opcao 'Ajuda'"
   }
   
   alternative 5 "Cadastro ou edicao de competencia tecnica" {

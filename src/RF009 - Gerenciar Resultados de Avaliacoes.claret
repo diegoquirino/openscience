@@ -1,0 +1,34 @@
+systemName "GTI-Competencias"
+
+usecase "RF009 - Gerenciar Resultados de Avaliacoes" {
+  version "1.1" type "Criacao" user "Aislan Fernandes" date "30/11/2020"
+  actor lider "Lider de Pessoas"
+  preCondition "Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Resultados de Avaliacoes"
+
+  basic {
+    step 1 lider "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas" 
+    step 3 lider "com uma avaliacao selecionada, clica na opcao 'Resultados' para efetivar o feedback"
+    step 4 system "apresenta o formulario para cadastro da Ata de Reuniao"
+    step 5 lider  "seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
+    step 6 system "apresenta o campo 'Ata de Reuniao de Feedback' preenchido corretamente"
+	step 7 lider "clica na opcao 'Salvar'" af[1]
+    step 8 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+				   retorna feedback correspondente" ef[1,2]
+  }
+
+  exception 1 "Falha ao Salvar a nova Avaliacao" {
+    step 1 system "exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou"
+  }
+
+  exception 2 "Erro ao Editar Avaliacao" {
+    step 1 system "exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou"
+  }
+  
+  alternative 1 "Encerrar definitivamente" {
+    step 1 lider "clica na opcao 'Encerrar' para a Avaliacao de Competencias"
+    step 2 system "apresenta o campo 'Ata de Reuniao de Feedback'"
+  }
+
+  postCondition "A gestao de Resultados de Avaliacoes e realizada com sucesso."
+}
