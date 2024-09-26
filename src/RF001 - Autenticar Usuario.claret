@@ -1,0 +1,27 @@
+systemName "GTI-Competencias"
+
+usecase "RF001 - Autenticar Usuario" {
+  version "0.1" type "Criacao" user "Aislan Fernandes" date "13/07/2020"
+  actor sysUser "Usuario do Sistema"
+  preCondition "Usuario se encontra na tela inicial do sistema
+				Usuario esta visualizando uma mensagem de erro informando que o acesso a pagina nao e permitido para usuarios sem autenticacao"
+  basic {
+    step 1 sysUser "inicia a tela de login atraves da opcao de login no canto superior direito"
+    step 2 system "apresenta um formulario com campos de nome de usuario e senha e um botao entrar"
+    step 3 sysUser "preenche os campos e clica no botao entrar" af[1]
+    step 4 system "exibe uma mensagem de sucesso" ef[1,2,3]
+  }
+  alternative 1 "Nome de usuario e previsto pelo navegador" {
+    step 1 sysUser "seleciona um nome de usuario sugerido, digita a senha e clica no botao entrar" bs 4
+  }
+  exception 1 "TJSeg (permissoes) fora do ar" {
+   step 1 system "alerta que o TJSeg (sistema que fornece as permissoes de acesso e escrita) esta fora do ar" bs 3
+  }
+  exception 2 "CAS2 (permissoes) fora do ar" {
+   step 1 system "alerta que o CAS (sistema de autorizacao login-senha) esta fora do ar" bs 3
+  }
+  exception 3 "Combinacao de nome de usuario/senha incorreta" {
+    step 1 system "alerta que o nome de usuario e/ou senha estao incorretos" bs 3
+  }
+  postCondition "Usuario logado com sucesso"
+}

@@ -1,0 +1,155 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+27 27
+28 28
+29 29
+30 30
+31 31
+32 32
+33 33
+34 34
+35 35
+36 36
+37 37
+38 38
+39 39
+40 40
+41 41
+42 42
+43 43
+44 44
+45 45
+46 46
+47 47
+48 48
+49 49
+50 50
+51 51
+52 52
+53 53
+54 54
+55 55
+56 56
+57 57
+58 58
+59 59
+60 60
+61 61
+62 62
+63 63
+64 64
+65 65
+66 66
+67 67
+68 68
+69 69
+70 70
+71 71
+72 72
+73 73
+74 74
+#
+1 35 conditions
+35 2 Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias.
+2 36 steps
+36 3 Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+3 37 expected_results
+37 4 system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 38 steps
+38 5 Lider de Pessoas clica na opcao 'Novo' para criar um novo perfil
+5 39 expected_results
+39 6 system apresenta o formulario para cadastro e alteracao de perfil de competencias
+6 40 steps
+40 7 Lider de Pessoas preenche o campo 'Periodo Avaliativo' com o ano correspondente
+7 41 expected_results
+41 8 system apresenta o campo 'Periodo Avaliativo' preenchido corretamente
+8 42 steps
+42 9 Lider de Pessoas preenche o campo 'Lider' selecionando um lider da lista
+9 43 expected_results
+43 10 system apresenta o campo 'Lider' preenchido corretamente
+10 44 steps
+44 11 Lider de Pessoas preenche o campo 'Unidade' com a unidade organizacional correspondente
+11 45 expected_results
+45 12 system apresenta o campo 'Unidade' preenchido corretamente
+12 46 steps
+46 13 Lider de Pessoas preenche o campo 'Nome de Perfil' com o nome do perfil correspondente
+13 47 expected_results
+47 14 system apresenta o campo 'Nome de Perfil' preenchido corretamente
+14 48 steps
+48 15 Lider de Pessoas seleciona as 'Competencias Comportamentais' correspondentes
+15 49 expected_results
+49 16 system apresenta as 'Competencias Comportamentais' selecionadas
+16 50 steps
+50 17 Lider de Pessoas seleciona as 'Competencias Tecnicas' correspondentes
+17 51 expected_results
+51 18 system apresenta as 'Competencias Tecnicas' selecionadas
+18 52 steps
+52 19 Lider de Pessoas clica na opcao 'Salvar'
+19 53 expected_results
+53 20 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+20 54 conditions
+54 21 A gestao de perfis de competencias e realizada com sucesso.
+2 55 steps
+55 22 Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+22 56 expected_results
+56 21 system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
+4 57 steps
+57 23 Lider de Pessoas seleciona um perfil de competencias da listagem
+23 58 expected_results
+58 24 system destaca o perfil de competencias selecionado na listagem
+24 59 steps
+59 5 Lider de Pessoas clica na opcao 'Editar' para modificar o perfil de competencias selecionado
+4 60 steps
+60 25 Lider de Pessoas seleciona um perfil de competencias da listagem
+25 61 expected_results
+61 26 system destaca o perfil de competencias selecionado na listagem
+26 62 steps
+62 27 Lider de Pessoas clica na opcao 'Excluir' para excluir o perfil de competencias selecionado
+27 63 expected_results
+63 28 system solicita confirmacao de exclusao mostrando o nome do perfil
+28 64 steps
+64 29 Lider de Pessoas confirma a exclusao do perfil
+29 65 expected_results
+65 21 system exibe a listagem dos perfis de competencias sem o perfil de competencias excluido
+4 66 steps
+66 30 Lider de Pessoas seleciona um perfil de competencias da listagem
+30 67 expected_results
+67 31 system destaca o perfil de competencias selecionado na listagem
+31 68 steps
+68 32 Lider de Pessoas clica na opcao 'Excluir' para excluir o perfil de competencias selecionado
+32 69 expected_results
+69 33 system solicita confirmacao de exclusao mostrando o nome do perfil
+33 70 steps
+70 34 Lider de Pessoas nao confirma a exclusao do perfil
+34 71 expected_results
+71 21 system exibe a listagem dos perfis de competencias com o perfil de competencias excluido
+19 72 expected_results
+72 21 system exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validacao que falhou
+19 73 expected_results
+73 21 system exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validacao que falhou
+19 74 expected_results
+74 21 system exibe uma mensagem de erro ao tentar excluir o perfil

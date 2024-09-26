@@ -1,0 +1,59 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+23 23
+24 24
+25 25
+26 26
+#
+1 2 [c] Lider de Pessoas esta autenticado no sistema e  tem permissao para gerenciar perfis de competencias.
+2 3 [s] Lider de Pessoas acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+3 4 [e] system exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+4 5 [s] Lider de Pessoas clica na opcao 'Novo' para criar um novo Periodo Avaliativo
+5 6 [e] system apresenta o formulario para cadastro e alteracao de Periodo Avaliativo
+6 7 [s] Lider de Pessoas preenche o campo 'Nome' com o ano correspondente
+7 8 [e] system apresenta o campo 'Nome' preenchido corretamente
+8 9 [s] Lider de Pessoas preenche o campo 'Data Inicial e Data Final' selecionando um lider da lista
+9 10 [e] system apresenta o campo 'Data Inicial e Data Final' preenchido corretamente
+10 11 [s] Lider de Pessoas clica na opcao 'Salvar'
+11 12 [e] system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+12 13 [c] A gestao de perfis de competencias e realizada com sucesso.
+2 14 [s] Usuario Nao-Autenticado acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial
+14 13 [e] system exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'
+4 15 [s] Lider de Pessoas seleciona um Periodo Avaliativo da listagem
+15 16 [e] system destaca o Periodo Avaliativo selecionado na listagem
+16 5 [s] Lider de Pessoas clica na opcao 'Editar' para modificar o Periodo Avaliativo selecionado
+4 17 [s] Lider de Pessoas seleciona um Periodo Avaliativo da listagem
+17 18 [e] system destaca o Periodo Avaliativo selecionado na listagem
+18 19 [s] Lider de Pessoas clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado
+19 20 [e] system solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo
+20 21 [s] Lider de Pessoas confirma a exclusao do Periodo Avaliativo
+21 13 [e] system exibe a listagem dos perfis de competencias sem o Periodo Avaliativo excluido
+4 22 [s] Lider de Pessoas seleciona um Periodo Avaliativo da listagem
+22 23 [e] system destaca o Periodo Avaliativo selecionado na listagem
+23 24 [s] Lider de Pessoas clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado
+24 25 [e] system solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo
+25 26 [s] Lider de Pessoas nao confirma a exclusao do Periodo Avaliativo
+26 13 [e] system exibe a listagem dos perfis de competencias com o Periodo Avaliativo excluido
+11 13 [e] system exibe uma mensagem de erro ao tentar salvar o novo Periodo Avaliativo, informando o campo ou a validacao que falhou
+11 13 [e] system exibe uma mensagem de erro ao tentar editar o Periodo Avaliativo, informando o campo ou a validacao que falhou
+11 13 [e] system exibe uma mensagem de erro ao tentar excluir o Periodo Avaliativo
