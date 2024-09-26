@@ -8,7 +8,7 @@ usecase "RF007 - Gerenciar Avaliacoes" {
 
   basic {
     step 1 lider "acessa a funcionalidade de gestao de Avaliacoes a partir do menu inicial"
-    step 2 system "exibe a listagem dos Avaliacoes cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 2 system "exibe a listagem das Avaliacoes cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
     step 3 lider "clica na opcao 'Novo' para criar uma nova Avaliacao" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de Avaliacao"
     step 5 lider  "seleciona o 'Periodo Avaliativo' da Avaliacao"
@@ -19,7 +19,7 @@ usecase "RF007 - Gerenciar Avaliacoes" {
     step 9 lider "seleciona o colaborador a ser 'Avaliado' na Avaliacao"
     step 10 system "apresenta o campo 'Avaliado' preenchido corretamente"
     step 11 lider "Em 'Metas', insere o 'Nivel' esperado para cada competencia do perfil selecionado na Avaliacao"
-    step 12 system "apresenta em 'Metas' os campos 'Nivel' preenchido corretamente"              
+    step 12 system "apresenta em 'Metas' os campos 'Nivel' preenchidos corretamente"              
     step 13 lider "seleciona 'Avaliadores' da Avaliacao"
     step 14 system "apresenta a lista de 'Avaliadores' preenchida corretamente"
 	step 15 lider "clica na opcao 'Salvar'"
@@ -31,26 +31,26 @@ usecase "RF007 - Gerenciar Avaliacoes" {
     step 1 lider "seleciona uma Avaliacao da listagem"
     step 2 system "destaca a Avaliacao selecionada na listagem"
     step 3 lider "clica na opcao 'Editar' para modificar a Avaliacao selecionada"
-    step 4 system "apresenta o formulario para e alteracao de Avaliacao"
-    step 5 lider "verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' somente leitura" bs 11
+    step 4 system "apresenta o formulario para e alteracao da Avaliacao"
+    step 5 lider "verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' estao em modo somente leitura" bs 11
   }
   
-  alternative 2 "Confirmar Exclusao do Avaliacao" {
+  alternative 2 "Confirmar Exclusao da Avaliacao" {
   	step 1 lider "seleciona uma Avaliacao da listagem"
     step 2 system "destaca a Avaliacao selecionada na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir a Avaliacao selecionada" 
     step 4 system "solicita confirmacao de exclusao da Avaliacao"
     step 5 lider "confirma a exclusao do Avaliacao"
-    step 6 system "exibe a listagem dos Avaliacoes sem o Avaliacao excluido" ef[3,4]
+    step 6 system "exibe a listagem das Avaliacoes sem a Avaliacao excluida" ef[3,4]
   }
 
-  alternative 3 "Negar Exclusao do Avaliacao" {
+  alternative 3 "Nao Confirmar a Exclusao da Avaliacao" {
   	step 1 lider "seleciona uma Avaliacao da listagem"
     step 2 system "destaca a Avaliacao selecionada na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir a Avaliacao selecionada"
     step 4 system "solicita confirmacao de exclusao da Avaliacao"
     step 5 lider "nao confirma a exclusao do Avaliacao"
-    step 6 system "exibe a listagem dos Avaliacoes com o Avaliacao excluido"
+    step 6 system "exibe a listagem das Avaliacoes com a Avaliacao nao excluida"
   }
 
   exception 1 "Falha ao Salvar a nova Avaliacao" {

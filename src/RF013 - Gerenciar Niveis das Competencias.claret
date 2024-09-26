@@ -10,7 +10,7 @@ usecase "RF013 - Gerenciar Niveis das Competencias" {
   basic {
     step 1 lider "acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial" af[4]
     step 2 system "exibe a listagem dos Niveis das Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
-    step 3 lider "clica na opcao 'Novo' para criar um novo Niveis das Competencias" af[1,2,3]
+    step 3 lider "clica na opcao 'Novo' para criar um novo Nivel das Competencias" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de Niveis das Competencias"
     step 5 lider "preenche o campo 'Nome' com dados validos"
     step 6 system "apresenta o campo 'Nome' preenchido corretamente"
@@ -38,13 +38,13 @@ usecase "RF013 - Gerenciar Niveis das Competencias" {
     step 6 system "exibe a listagem dos Niveis das Competencias sem o Nivel das Competencias excluido" ef[3]
   }
 
-  alternative 3 "Negar Exclusao do Nivel das Competencias" {
+  alternative 3 "Nao Confirmar Exclusao do Nivel das Competencias" {
   	step 1 lider "seleciona um Nivel das Competencias da listagem"
     step 2 system "destaca o Nivel das Competencias selecionado na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir o Nivel das Competencias selecionado"
     step 4 system "solicita confirmacao de exclusao"
     step 5 lider "nao confirma a exclusao do Nivel das Competencias"
-    step 6 system "exibe a listagem dos Niveis das Competencias com o Nivel das Competencias excluido"
+    step 6 system "exibe a listagem dos Niveis das Competencias com o Nivel das Competencias nao excluido"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {

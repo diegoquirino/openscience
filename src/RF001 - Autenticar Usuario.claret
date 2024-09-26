@@ -6,12 +6,12 @@ usecase "RF001 - Autenticar Usuario" {
   preCondition "Usuario se encontra na tela inicial do sistema
 				Usuario esta visualizando uma mensagem de erro informando que o acesso a pagina nao e permitido para usuarios sem autenticacao"
   basic {
-    step 1 sysUser "inicia a tela de login atraves da opcao de Login no canto superior direito"
+    step 1 sysUser "abre a tela de login atraves da opcao de Login no canto superior direito"
     step 2 system "apresenta um formulario com campos de nome de usuario e senha e um botao entrar"
     step 3 sysUser "preenche os campos e clica no botao entrar" af[1]
     step 4 system "exibe uma mensagem de sucesso" ef[1,2,3]
   }
-  alternative 1 "Nome de usuario e previsto pelo navegador" {
+  alternative 1 "Nome de usuario e preenchido automaticamente pelo navegador" {
     step 1 sysUser "seleciona um nome de usuario sugerido, digita a senha e clica no botao entrar" bs 4
   }
   exception 1 "TJSeg (permissoes) fora do ar" {

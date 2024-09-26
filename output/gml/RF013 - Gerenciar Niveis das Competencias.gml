@@ -162,7 +162,7 @@ edge
 [
   source 4
   target 5
-  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar um novo Niveis das Competencias"
+  label "[s] Lider de Pessoas clica na opcao 'Novo' para criar um novo Nivel das Competencias"
 ]
 edge
 [
@@ -324,7 +324,7 @@ edge
 [
   source 28
   target 15
-  label "[e] system exibe a listagem dos Niveis das Competencias com o Nivel das Competencias excluido"
+  label "[e] system exibe a listagem dos Niveis das Competencias com o Nivel das Competencias nao excluido"
 ]
 edge
 [

@@ -9,16 +9,16 @@ usecase "RF015 - Gerenciar Planos de Capacitacao de TI" {
 
   basic {
     step 1 lider "acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial" af[4]
-    step 2 system "exibe a listagem das Planos de Capacitacao de TI cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
+    step 2 system "exibe a listagem dos Planos de Capacitacao de TI cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'" 
     step 3 lider "clica na opcao 'Novo' para criar uma nova Capacitacao de TI" af[1,2,3]
     step 4 system "apresenta o formulario para cadastro e alteracao de Planos de Capacitacao de TI"
-    step 5 lider "escolha o 'Periodo Avaliativo' apropriado no campo de selecao"
+    step 5 lider "escolhe o 'Periodo Avaliativo' apropriado no campo de selecao"
 	step 6 system "exibe o 'Periodo Avaliativo' selecionado corretamente"
-	step 7 lider "selecione a 'Unidade' correspondente no campo de selecao de unidade"
+	step 7 lider "seleciona a 'Unidade' correspondente no campo de selecao de unidade"
 	step 8 system "exibe o campo 'Unidade' preenchido corretamente"
-	step 9 lider "preencha o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais"
+	step 9 lider "preenche o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais"
 	step 10 system "exibe o campo 'Possiveis Capacitacoes' preenchido corretamente"
-	step 11 lider "preencha o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao"
+	step 11 lider "preenche o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao"
 	step 12 system "exibe o campo 'Observacao' preenchido corretamente"
 	step 13 lider "seleciona as 'Pessoas' que farao parte do plano de capacitacao"
 	step 14 system "exibe as 'Pessoas' escolhidas corretamente na lista 'Selecionadas'"
@@ -30,32 +30,32 @@ usecase "RF015 - Gerenciar Planos de Capacitacao de TI" {
   }
 
   alternative 1 "Editar Planos de Capacitacao de TI Existente" {
-    step 1 lider "seleciona um Planos de Capacitacao de TI da listagem"
+    step 1 lider "seleciona um Plano de Capacitacao de TI da listagem"
     step 2 system "destaca a Capacitacao de TI selecionada na listagem"
     step 3 lider "clica na opcao 'Editar' para modificar a Capacitacao de TI selecionada" bs 4
   }
   
   alternative 2 "Confirmar Exclusao da Capacitacao de TI" {
-  	step 1 lider "seleciona um Planos de Capacitacao de TI da listagem"
+  	step 1 lider "seleciona um Plano de Capacitacao de TI da listagem"
     step 2 system "destaca a Capacitacao de TI selecionada na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir a Capacitacao de TI selecionada"
     step 4 system "solicita confirmacao de exclusao mostrando o nome da Capacitacao de TI"
     step 5 lider "confirma a exclusao da Capacitacao de TI"
-    step 6 system "exibe a listagem das Planos de Capacitacao de TI sem a Capacitacao de TI excluida" ef[3,4]
+    step 6 system "exibe a listagem dos Planos de Capacitacao de TI sem a Capacitacao de TI excluida" ef[3,4]
   }
 
-  alternative 3 "Negar Exclusao da Capacitacao de TI" {
-  	step 1 lider "seleciona um Planos de Capacitacao de TI da listagem"
+  alternative 3 "Nao Confirmar Exclusao da Capacitacao de TI" {
+  	step 1 lider "seleciona um Plano de Capacitacao de TI da listagem"
     step 2 system "destaca a Capacitacao de TI selecionada na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir a Capacitacao de TI selecionada"
     step 4 system "solicita confirmacao de exclusao mostrando o nome da Capacitacao de TI"
     step 5 lider "nao confirma a exclusao da Capacitacao de TI"
-    step 6 system "exibe a listagem das Planos de Capacitacao de TI com a Capacitacao de TI excluida"
+    step 6 system "exibe a listagem dos Planos de Capacitacao de TI com a Capacitacao de TI nao excluida"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {
   	step 1 usuarioNA "acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial"
-  	step 2 system "exibe a listagem das Planos de Capacitacao de TI cadastradas apenas para visualizacao com a opcao 'Ajuda'"
+  	step 2 system "exibe a listagem dos Planos de Capacitacao de TI cadastrados apenas para visualizacao com a opcao 'Ajuda'"
   }
 
   exception 1 "Falha ao Salvar a nova Capacitacao de TI" {

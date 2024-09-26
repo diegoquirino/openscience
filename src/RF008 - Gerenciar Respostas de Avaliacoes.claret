@@ -3,7 +3,7 @@ systemName "GTI-Competencias"
 usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
   version "1.1" type "Criacao" user "Aislan Fernandes" date "03/12/2020"
   actor avaliador "Avaliador de Pessoas"
-  preCondition "Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes"
+  preCondition "Avaliador de Pessoas esta autenticado no sistema e tem permissao para gerenciar Respostas de Avaliacoes"
 
   basic {
     step 1 avaliador "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
@@ -16,7 +16,7 @@ usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
     step 8 system "apresenta os 'Apontamentos' preenchidos corretamente"
 	step 9 avaliador "clica na opcao 'Salvar'" af[1]
     step 10 system "realiza a acao conforme a opcao selecionada pelo usuario e 
-				   retorna feedback correspondente" ef[2,3]
+				    retorna feedback correspondente" ef[2,3]
   }
 
   exception 1 "Nao e um dos avaliadores" {
@@ -33,8 +33,8 @@ usecase "RF008 - Gerenciar Respostas de Avaliacoes" {
   
   alternative 1 "Resolve 'limpar' a Resposta de Avaliacao" {
     step 1 avaliador "clica na opcao 'Excluir' para cada Perfil de Competencias avaliado"
-    step 2 system "limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado"
-    step 5 avaliador "verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos" bs 5 
+    step 2 system "limpa os campos 'Nivel da Competencia' e 'Apontamentos' exibidos na tela para cada Perfil de Competencias avaliado"
+    step 3 avaliador "verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos" bs 5 
   }
 
   postCondition "A gestao de Respostas de Avaliacoes e realizada com sucesso."

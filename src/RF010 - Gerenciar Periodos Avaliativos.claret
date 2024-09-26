@@ -14,10 +14,10 @@ usecase "RF010 - Gerenciar Periodos Avaliativos" {
     step 4 system "apresenta o formulario para cadastro e alteracao de Periodo Avaliativo"
     step 5 lider "preenche o campo 'Nome' com o ano correspondente"
     step 6 system "apresenta o campo 'Nome' preenchido corretamente"
-    step 7 lider "preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo"
-    step 8 system "apresenta o campo 'Data Inicial e Data Final' preenchido corretamente"
-	step 17 lider "clica na opcao 'Salvar'"
-    step 18 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+    step 7 lider "preenche o campo 'Data Inicial' e 'Data Final' informando as respectivas datas referentes ao periodo"
+    step 8 system "apresenta o campo 'Data Inicial' e 'Data Final' preenchido corretamente"
+	step 9 lider "clica na opcao 'Salvar'"
+    step 10 system "realiza a acao conforme a opcao selecionada pelo usuario e 
 				   retorna feedback correspondente" ef[1,2]
   }
 
@@ -36,13 +36,13 @@ usecase "RF010 - Gerenciar Periodos Avaliativos" {
     step 6 system "exibe a listagem dos Periodos Avaliativos sem o Periodo Avaliativo excluido" ef[3]
   }
 
-  alternative 3 "Negar Exclusao do Periodo Avaliativo" {
+  alternative 3 "Nao Confirmar Exclusao do Periodo Avaliativo" {
   	step 1 lider "seleciona um Periodo Avaliativo da listagem"
     step 2 system "destaca o Periodo Avaliativo selecionado na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado"
     step 4 system "solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo"
     step 5 lider "nao confirma a exclusao do Periodo Avaliativo"
-    step 6 system "exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido"
+    step 6 system "exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo nao excluido"
   }
   
   alternative 4 "Modo de visualizacao para usuarios nao-autenticados" {

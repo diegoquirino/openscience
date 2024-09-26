@@ -59,7 +59,7 @@ edge
 [
   source 1
   target 2
-  label "[c] Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Metas de Desempenho"
+  label "[c] Lider de Pessoas esta autenticado no sistema e tem permissao para gerenciar Metas de Desempenho"
 ]
 edge
 [
@@ -77,13 +77,13 @@ edge
 [
   source 4
   target 5
-  label "[s] Lider de Pessoas com uma avaliacao selecionada, clica na opcao 'Editar' modificar a Avaliacao de Desempenho"
+  label "[s] Lider de Pessoas com uma avaliacao selecionada, clica na opcao 'Editar' para modificar a Avaliacao de Desempenho"
 ]
 edge
 [
   source 5
   target 6
-  label "[e] system apresenta o formulario com o campo 'Metas' constando cada Competencia do perfil avaliado"
+  label "[e] system apresenta o formulario com o campo 'Metas' contendo cada Competencia do perfil avaliado"
 ]
 edge
 [

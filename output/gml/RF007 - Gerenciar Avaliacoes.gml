@@ -181,7 +181,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem dos Avaliacoes cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem das Avaliacoes cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [
@@ -241,7 +241,7 @@ edge
 [
   source 13
   target 14
-  label "[e] system apresenta em 'Metas' os campos 'Nivel' preenchido corretamente"
+  label "[e] system apresenta em 'Metas' os campos 'Nivel' preenchidos corretamente"
 ]
 edge
 [
@@ -295,13 +295,13 @@ edge
 [
   source 22
   target 23
-  label "[e] system apresenta o formulario para e alteracao de Avaliacao"
+  label "[e] system apresenta o formulario para e alteracao da Avaliacao"
 ]
 edge
 [
   source 23
   target 12
-  label "[s] Lider de Pessoas verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' somente leitura"
+  label "[s] Lider de Pessoas verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' estao em modo somente leitura"
 ]
 edge
 [
@@ -337,7 +337,7 @@ edge
 [
   source 28
   target 19
-  label "[e] system exibe a listagem dos Avaliacoes sem o Avaliacao excluido"
+  label "[e] system exibe a listagem das Avaliacoes sem a Avaliacao excluida"
 ]
 edge
 [
@@ -373,7 +373,7 @@ edge
 [
   source 33
   target 19
-  label "[e] system exibe a listagem dos Avaliacoes com o Avaliacao excluido"
+  label "[e] system exibe a listagem das Avaliacoes com a Avaliacao nao excluida"
 ]
 edge
 [

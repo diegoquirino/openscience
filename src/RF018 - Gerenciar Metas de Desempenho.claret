@@ -3,13 +3,13 @@ systemName "GTI-Competencias"
 usecase "RF018 - Gerenciar Metas de Desempenho" {
   version "1.2" type "Criacao" user "Aislan Fernandes" date "13/05/2021"
   actor lider "Lider de Pessoas"
-  preCondition "Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Metas de Desempenho"
+  preCondition "Lider de Pessoas esta autenticado no sistema e tem permissao para gerenciar Metas de Desempenho"
 
   basic {
     step 1 lider "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
     step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias listadas" 
-    step 3 lider "com uma avaliacao selecionada, clica na opcao 'Editar' modificar a Avaliacao de Desempenho"
-    step 4 system "apresenta o formulario com o campo 'Metas' constando cada Competencia do perfil avaliado"
+    step 3 lider "com uma avaliacao selecionada, clica na opcao 'Editar' para modificar a Avaliacao de Desempenho"
+    step 4 system "apresenta o formulario com o campo 'Metas' contendo cada Competencia do perfil avaliado"
     step 5 lider  "altera o valor da 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao atual (valores padrao de 1 a 4)"
     step 6 system "apresenta o campo 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao preenchido corretamente"
 	step 7 lider "clica na opcao 'Salvar'"

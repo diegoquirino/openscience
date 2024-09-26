@@ -175,7 +175,7 @@ edge
 [
   source 14
   target 15
-  label "[e] system exibe a listagem dos Niveis das Competencias cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem dos Niveis das Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [

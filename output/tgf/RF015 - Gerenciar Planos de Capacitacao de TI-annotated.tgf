@@ -79,25 +79,25 @@
 2 36 steps
 36 3 Lider de Pessoas acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial
 3 37 expected_results
-37 4 system exibe a listagem das Planos de Capacitacao de TI cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
+37 4 system exibe a listagem dos Planos de Capacitacao de TI cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'
 4 38 steps
 38 5 Lider de Pessoas clica na opcao 'Novo' para criar uma nova Capacitacao de TI
 5 39 expected_results
 39 6 system apresenta o formulario para cadastro e alteracao de Planos de Capacitacao de TI
 6 40 steps
-40 7 Lider de Pessoas escolha o 'Periodo Avaliativo' apropriado no campo de selecao
+40 7 Lider de Pessoas escolhe o 'Periodo Avaliativo' apropriado no campo de selecao
 7 41 expected_results
 41 8 system exibe o 'Periodo Avaliativo' selecionado corretamente
 8 42 steps
-42 9 Lider de Pessoas selecione a 'Unidade' correspondente no campo de selecao de unidade
+42 9 Lider de Pessoas seleciona a 'Unidade' correspondente no campo de selecao de unidade
 9 43 expected_results
 43 10 system exibe o campo 'Unidade' preenchido corretamente
 10 44 steps
-44 11 Lider de Pessoas preencha o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais
+44 11 Lider de Pessoas preenche o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais
 11 45 expected_results
 45 12 system exibe o campo 'Possiveis Capacitacoes' preenchido corretamente
 12 46 steps
-46 13 Lider de Pessoas preencha o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao
+46 13 Lider de Pessoas preenche o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao
 13 47 expected_results
 47 14 system exibe o campo 'Observacao' preenchido corretamente
 14 48 steps
@@ -117,15 +117,15 @@
 2 55 steps
 55 22 Usuario Nao-Autenticado acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial
 22 56 expected_results
-56 21 system exibe a listagem das Planos de Capacitacao de TI cadastradas apenas para visualizacao com a opcao 'Ajuda'
+56 21 system exibe a listagem dos Planos de Capacitacao de TI cadastrados apenas para visualizacao com a opcao 'Ajuda'
 4 57 steps
-57 23 Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem
+57 23 Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem
 23 58 expected_results
 58 24 system destaca a Capacitacao de TI selecionada na listagem
 24 59 steps
 59 5 Lider de Pessoas clica na opcao 'Editar' para modificar a Capacitacao de TI selecionada
 4 60 steps
-60 25 Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem
+60 25 Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem
 25 61 expected_results
 61 26 system destaca a Capacitacao de TI selecionada na listagem
 26 62 steps
@@ -135,9 +135,9 @@
 28 64 steps
 64 29 Lider de Pessoas confirma a exclusao da Capacitacao de TI
 29 65 expected_results
-65 21 system exibe a listagem das Planos de Capacitacao de TI sem a Capacitacao de TI excluida
+65 21 system exibe a listagem dos Planos de Capacitacao de TI sem a Capacitacao de TI excluida
 4 66 steps
-66 30 Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem
+66 30 Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem
 30 67 expected_results
 67 31 system destaca a Capacitacao de TI selecionada na listagem
 31 68 steps
@@ -147,7 +147,7 @@
 33 70 steps
 70 34 Lider de Pessoas nao confirma a exclusao da Capacitacao de TI
 34 71 expected_results
-71 21 system exibe a listagem das Planos de Capacitacao de TI com a Capacitacao de TI excluida
+71 21 system exibe a listagem dos Planos de Capacitacao de TI com a Capacitacao de TI nao excluida
 19 72 expected_results
 72 21 system exibe uma mensagem de erro ao tentar salvar a nova Capacitacao de TI, informando o campo ou a validacao que falhou
 19 73 expected_results

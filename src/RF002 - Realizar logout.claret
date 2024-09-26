@@ -5,7 +5,7 @@ usecase "RF002 - Realizar Logout" {
   actor sysUser "Usuario do Sistema"
   preCondition "Usuario autenticado no sistema (em qualquer tela)"
   basic {
-    step 1 sysUser "clica na opcao de Logout atraves da opcao disponivel no canto superior direito"
+    step 1 sysUser "clica na opcao de Logout disponivel no canto superior direito"
     step 2 system "exibe uma mensagem de sucesso e apresenta a tela inicial do sistema"
   }
   postCondition "Usuario deslogado com sucesso"

@@ -176,13 +176,13 @@ edge
 [
   source 8
   target 9
-  label "[s] Lider de Pessoas preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo"
+  label "[s] Lider de Pessoas preenche o campo 'Data Inicial' e 'Data Final' informando as respectivas datas referentes ao periodo"
 ]
 edge
 [
   source 9
   target 10
-  label "[e] system apresenta o campo 'Data Inicial e Data Final' preenchido corretamente"
+  label "[e] system apresenta o campo 'Data Inicial' e 'Data Final' preenchido corretamente"
 ]
 edge
 [
@@ -302,7 +302,7 @@ edge
 [
   source 26
   target 13
-  label "[e] system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido"
+  label "[e] system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo nao excluido"
 ]
 edge
 [

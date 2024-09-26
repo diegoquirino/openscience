@@ -44,7 +44,7 @@ usecase "RF006 - Gerenciar Perfis de Competencias" {
     step 6 system "exibe a listagem dos Perfis de Competencias sem o perfil de competencias excluido" ef[3]
   }
 
-  alternative 3 "Negar Exclusao do Perfil de Competencias" {
+  alternative 3 "Nao Confirmar Exclusao do Perfil de Competencias" {
   	step 1 lider "seleciona um perfil de competencias da listagem"
     step 2 system "destaca o perfil de competencias selecionado na listagem"
     step 3 lider "clica na opcao 'Excluir' para excluir o perfil de competencias selecionado"

@@ -186,7 +186,7 @@ edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem das Planos de Capacitacao de TI cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
+  label "[e] system exibe a listagem dos Planos de Capacitacao de TI cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"
 ]
 edge
 [
@@ -204,7 +204,7 @@ edge
 [
   source 6
   target 7
-  label "[s] Lider de Pessoas escolha o 'Periodo Avaliativo' apropriado no campo de selecao"
+  label "[s] Lider de Pessoas escolhe o 'Periodo Avaliativo' apropriado no campo de selecao"
 ]
 edge
 [
@@ -216,7 +216,7 @@ edge
 [
   source 8
   target 9
-  label "[s] Lider de Pessoas selecione a 'Unidade' correspondente no campo de selecao de unidade"
+  label "[s] Lider de Pessoas seleciona a 'Unidade' correspondente no campo de selecao de unidade"
 ]
 edge
 [
@@ -228,7 +228,7 @@ edge
 [
   source 10
   target 11
-  label "[s] Lider de Pessoas preencha o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais"
+  label "[s] Lider de Pessoas preenche o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais"
 ]
 edge
 [
@@ -240,7 +240,7 @@ edge
 [
   source 12
   target 13
-  label "[s] Lider de Pessoas preencha o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao"
+  label "[s] Lider de Pessoas preenche o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao"
 ]
 edge
 [
@@ -300,13 +300,13 @@ edge
 [
   source 22
   target 21
-  label "[e] system exibe a listagem das Planos de Capacitacao de TI cadastradas apenas para visualizacao com a opcao 'Ajuda'"
+  label "[e] system exibe a listagem dos Planos de Capacitacao de TI cadastrados apenas para visualizacao com a opcao 'Ajuda'"
 ]
 edge
 [
   source 4
   target 23
-  label "[s] Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem"
+  label "[s] Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem"
 ]
 edge
 [
@@ -324,7 +324,7 @@ edge
 [
   source 4
   target 25
-  label "[s] Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem"
+  label "[s] Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem"
 ]
 edge
 [
@@ -354,13 +354,13 @@ edge
 [
   source 29
   target 21
-  label "[e] system exibe a listagem das Planos de Capacitacao de TI sem a Capacitacao de TI excluida"
+  label "[e] system exibe a listagem dos Planos de Capacitacao de TI sem a Capacitacao de TI excluida"
 ]
 edge
 [
   source 4
   target 30
-  label "[s] Lider de Pessoas seleciona um Planos de Capacitacao de TI da listagem"
+  label "[s] Lider de Pessoas seleciona um Plano de Capacitacao de TI da listagem"
 ]
 edge
 [
@@ -390,7 +390,7 @@ edge
 [
   source 34
   target 21
-  label "[e] system exibe a listagem das Planos de Capacitacao de TI com a Capacitacao de TI excluida"
+  label "[e] system exibe a listagem dos Planos de Capacitacao de TI com a Capacitacao de TI nao excluida"
 ]
 edge
 [

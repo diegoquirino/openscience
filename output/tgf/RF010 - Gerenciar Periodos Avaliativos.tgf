@@ -32,8 +32,8 @@
 5 6 [e] system apresenta o formulario para cadastro e alteracao de Periodo Avaliativo
 6 7 [s] Lider de Pessoas preenche o campo 'Nome' com o ano correspondente
 7 8 [e] system apresenta o campo 'Nome' preenchido corretamente
-8 9 [s] Lider de Pessoas preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo
-9 10 [e] system apresenta o campo 'Data Inicial e Data Final' preenchido corretamente
+8 9 [s] Lider de Pessoas preenche o campo 'Data Inicial' e 'Data Final' informando as respectivas datas referentes ao periodo
+9 10 [e] system apresenta o campo 'Data Inicial' e 'Data Final' preenchido corretamente
 10 11 [s] Lider de Pessoas clica na opcao 'Salvar'
 11 12 [e] system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
 12 13 [c] A gestao de Periodos Avaliativos e realizada com sucesso.
@@ -53,7 +53,7 @@
 23 24 [s] Lider de Pessoas clica na opcao 'Excluir' para excluir o Periodo Avaliativo selecionado
 24 25 [e] system solicita confirmacao de exclusao mostrando o nome do Periodo Avaliativo
 25 26 [s] Lider de Pessoas nao confirma a exclusao do Periodo Avaliativo
-26 13 [e] system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido
+26 13 [e] system exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo nao excluido
 11 13 [e] system exibe uma mensagem de erro ao tentar salvar o novo Periodo Avaliativo, informando o campo ou a validacao que falhou
 11 13 [e] system exibe uma mensagem de erro ao tentar editar o Periodo Avaliativo, informando o campo ou a validacao que falhou
 21 13 [e] system exibe uma mensagem de erro ao tentar excluir o Periodo Avaliativo
