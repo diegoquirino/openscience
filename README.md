@@ -53,7 +53,11 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 This project is licensed under the [MIT License](LICENSE).
 
+---
+
 ## Contact
+
+Feel free to explore and contribute to these open science projects. For any questions or discussions, please open an issue or contact:
 
 * *Researcher:* Carlos Diego Quirino Lima
 * *E-mails:* [diego.quirino@tjpb.jus.br](mailto:diego.quirino@tjpb.jus.br) or [diego.quirino@copin.ufcg.edu.br](mailto:diego.quirino@copin.ufcg.edu.br)
