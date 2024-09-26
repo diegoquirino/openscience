@@ -63,7 +63,7 @@ edge
 [
   source 5
   target 6
-  label "[e] system exibe na pagina uma tabela contendo as informacoes (basicamente listagem das unidades) do estado de realizacao do PGPD, nas fases:                    Responsavel (Unidade), Competencias, Avaliacoes."
+  label "[e] system exibe na pagina uma tabela contendo as informacoes do estado de realizacao do PGPD naquele Periodo Avaliativo:                    - Grafico com o resumo da situacao das competencias (para avaliar, avaliadas, para capacitar e capacitadas)                   - Grafico com o resumo da situacao das unidades (sem/com competencias mapeadas, sem/com avaliacoes pendentes e sem/com capacitacoes planejadas)                    - Tabela com: Responsavel (Unidade), Competencias, Avaliacoes."
 ]
 edge
 [
