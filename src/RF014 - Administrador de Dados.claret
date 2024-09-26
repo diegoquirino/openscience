@@ -6,8 +6,8 @@ usecase "RF014 - Administrador de Dados" {
   preCondition "Administrador esta autenticado no sistema; e, tem permissao para alterar Gerente de Desempenho"
 
   basic {
-    step 1 admin "acessa a funcionalidade de Catalogo (Perfis) de Competencias a partir do menu inicial"
-    step 2 system "exibe a listagem das Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas" 
+    step 1 admin "acessa a funcionalidade de 'Catalogo (Perfis) de Competencias' a partir do menu inicial"
+    step 2 system "exibe a listagem do Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas" 
     step 3 admin "com um perfil selecionado, clica na opcao 'Alterar Gerente' para efetivar a mudanca"
     step 4 system "apresenta o formulario para cadastro do novo Gerente de Desempenho"
     step 5 admin  "preenche o campo 'Login do Novo Gerente de Desempenho' do novo Gerente de Desempenho para o Perfil de Competencias "

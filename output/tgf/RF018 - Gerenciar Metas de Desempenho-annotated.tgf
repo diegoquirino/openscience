@@ -1,0 +1,45 @@
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+9 9
+10 10
+11 11
+12 12
+13 13
+14 14
+15 15
+16 16
+17 17
+18 18
+19 19
+20 20
+21 21
+22 22
+#
+1 12 conditions
+12 2 Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Metas de Desempenho
+2 13 steps
+13 3 Lider de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
+3 14 expected_results
+14 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias listadas
+4 15 steps
+15 5 Lider de Pessoas com uma avaliacao selecionada, clica na opcao 'Editar' modificar a Avaliacao de Desempenho
+5 16 expected_results
+16 6 system apresenta o formulario com o campo 'Metas' constando cada Competencia do perfil avaliado
+6 17 steps
+17 7 Lider de Pessoas altera o valor da 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao atual (valores padrao de 1 a 4)
+7 18 expected_results
+18 8 system apresenta o campo 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao preenchido corretamente
+8 19 steps
+19 9 Lider de Pessoas clica na opcao 'Salvar'
+9 20 expected_results
+20 10 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+10 21 conditions
+21 11 A gestao de Metas de Desempenho e realizada com sucesso.
+9 22 expected_results
+22 11 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou

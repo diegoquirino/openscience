@@ -39,13 +39,13 @@ edge
 [
   source 1
   target 2
-  label "[c] Usuario nao-autenticado no sistema se encontra na tela inicial do sistema"
+  label "[c] Usuario nao-autenticado no sistema"
 ]
 edge
 [
   source 2
   target 3
-  label "[s] Usuario Nao-Autenticado acessa a funcionalidade para visualizar o status do PGDC"
+  label "[s] Usuario Nao-Autenticado acessa a tela inicial do sistema"
 ]
 edge
 [
@@ -63,13 +63,19 @@ edge
 [
   source 5
   target 6
-  label "[e] system exibe na pagina uma tabela contendo as informacoes (basicamente listagem dos perfis de competencias - cf. RF006):                    Perfil de Competencias; Unidade de Trabalho; Gerente do Desempenho; e, Situacao."
+  label "[e] system exibe na pagina uma tabela contendo as informacoes (basicamente listagem das unidades) do estado de realizacao do PGPD, nas fases:                    Responsavel (Unidade), Competencias, Avaliacoes."
 ]
 edge
 [
   source 6
   target 7
   label "[c] Usuario visualiza a tabela das Permissoes concedidas ao seu usuario"
+]
+edge
+[
+  source 2
+  target 3
+  label "[s] Usuario Nao-Autenticado acessa a opcao 'Inicio (Painel)'"
 ]
 edge
 [

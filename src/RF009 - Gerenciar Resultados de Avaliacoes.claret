@@ -8,12 +8,18 @@ usecase "RF009 - Gerenciar Resultados de Avaliacoes" {
   basic {
     step 1 lider "acessa a funcionalidade de Avaliacoes a partir do menu inicial"
     step 2 system "exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas" 
-    step 3 lider "com uma avaliacao selecionada, clica na opcao 'Resultados' para efetivar o feedback"
+    step 3 lider "com uma avaliacao selecionada, clica na opcao 'Resultado' para efetivar o feedback"
     step 4 system "apresenta o formulario para cadastro da Ata de Reuniao"
     step 5 lider  "seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado"
     step 6 system "apresenta o campo 'Ata de Reuniao de Feedback' preenchido corretamente"
-	step 7 lider "clica na opcao 'Salvar'" af[1]
-    step 8 system "realiza a acao conforme a opcao selecionada pelo usuario e 
+    step 7 lider "verifica a presenca (somente leitura) do detalhe de cada competencia avaliada"
+    step 8 system "apresenta os detalhes de cada competencia, incluindo: 
+                   - a descricao da competencia;
+                   - o valor da autoavaliacao, a media das notas dos avaliadores e o valor da meta do avaliado;
+                   - os niveis de avaliacao para aquela competencia; e,
+                   - os apontamentos."
+	step 9 lider "clica na opcao 'Salvar'" af[1]
+    step 10 system "realiza a acao conforme a opcao selecionada pelo usuario e 
 				   retorna feedback correspondente" ef[1,2]
   }
 

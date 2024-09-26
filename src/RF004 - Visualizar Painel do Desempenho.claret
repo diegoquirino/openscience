@@ -1,0 +1,24 @@
+systemName "GTI-Competencias"
+
+usecase "RF004 - Visualizar Painel do Desempenho" {
+  version "1.2" type "Criacao" user "Aislan Fernandes" date "17/05/2021"
+  actor usuarioNA "Usuario Nao-Autenticado"
+  preCondition "Usuario nao-autenticado no sistema"  
+  basic {
+    step 1 usuarioNA "acessa a tela inicial do sistema" af[1]
+    step 2 system "apresenta o campo 'Periodo Avaliativo' para ser escolhido pelo usuario" ef[1]
+    step 3 usuarioNA "escolhe no campo 'Periodo Avaliativo' o ano correspondente"
+    step 4 system "exibe na pagina uma tabela contendo as informacoes (basicamente listagem das unidades) do estado de realizacao do PGPD, nas fases: 
+                   Responsavel (Unidade), Competencias, Avaliacoes."
+  }
+  
+  alternative 1 "Retornando a tela inicial pelo menu do sistema" {
+  	step 1 usuarioNA "acessa a opcao 'Inicio (Painel)'" bs 2
+  }
+  
+  exception 1 "Nao existem Periodos Avaliativos Cadastrados" {
+  	step 1 system "exibe uma mensagem de erro informando que nao existem Periodos Avaliativos cadastrados"
+  }
+  
+  postCondition "Usuario visualiza a tabela das Permissoes concedidas ao seu usuario"
+}

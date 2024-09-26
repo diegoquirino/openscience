@@ -70,13 +70,13 @@ edge
 [
   source 2
   target 3
-  label "[s] Administrador acessa a funcionalidade de Catalogo (Perfis) de Competencias a partir do menu inicial"
+  label "[s] Administrador acessa a funcionalidade de 'Catalogo (Perfis) de Competencias' a partir do menu inicial"
 ]
 edge
 [
   source 3
   target 4
-  label "[e] system exibe a listagem das Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"
+  label "[e] system exibe a listagem do Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"
 ]
 edge
 [

@@ -24,32 +24,40 @@
 24 24
 25 25
 26 26
+27 27
+28 28
+29 29
+30 30
 #
-1 13 conditions
-13 2 Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Resultados de Avaliacoes
-2 14 steps
-14 3 Lider de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
-3 15 expected_results
-15 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas
-4 16 steps
-16 5 Lider de Pessoas com uma avaliacao selecionada, clica na opcao 'Resultados' para efetivar o feedback
-5 17 expected_results
-17 6 system apresenta o formulario para cadastro da Ata de Reuniao
-6 18 steps
-18 7 Lider de Pessoas seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
-7 19 expected_results
-19 8 system apresenta o campo 'Ata de Reuniao de Feedback' preenchido corretamente
-8 20 steps
-20 9 Lider de Pessoas clica na opcao 'Salvar'
-9 21 expected_results
-21 10 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
-10 22 conditions
-22 11 A gestao de Resultados de Avaliacoes e realizada com sucesso.
-8 23 steps
-23 12 Lider de Pessoas clica na opcao 'Encerrar' para a Avaliacao de Competencias
-12 24 expected_results
-24 11 system apresenta o campo 'Ata de Reuniao de Feedback'
-9 25 expected_results
-25 11 system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
-9 26 expected_results
-26 11 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
+1 15 conditions
+15 2 Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Resultados de Avaliacoes
+2 16 steps
+16 3 Lider de Pessoas acessa a funcionalidade de Avaliacoes a partir do menu inicial
+3 17 expected_results
+17 4 system exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas
+4 18 steps
+18 5 Lider de Pessoas com uma avaliacao selecionada, clica na opcao 'Resultado' para efetivar o feedback
+5 19 expected_results
+19 6 system apresenta o formulario para cadastro da Ata de Reuniao
+6 20 steps
+20 7 Lider de Pessoas seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado
+7 21 expected_results
+21 8 system apresenta o campo 'Ata de Reuniao de Feedback' preenchido corretamente
+8 22 steps
+22 9 Lider de Pessoas verifica a presenca (somente leitura) do detalhe de cada competencia avaliada
+9 23 expected_results
+23 10 system apresenta os detalhes de cada competencia, incluindo:                    - a descricao da competencia;                   - o valor da autoavaliacao, a media das notas dos avaliadores e o valor da meta do avaliado;                   - os niveis de avaliacao para aquela competencia; e,                   - os apontamentos.
+10 24 steps
+24 11 Lider de Pessoas clica na opcao 'Salvar'
+11 25 expected_results
+25 12 system realiza a acao conforme a opcao selecionada pelo usuario e     retorna feedback correspondente
+12 26 conditions
+26 13 A gestao de Resultados de Avaliacoes e realizada com sucesso.
+10 27 steps
+27 14 Lider de Pessoas clica na opcao 'Encerrar' para a Avaliacao de Competencias
+14 28 expected_results
+28 13 system apresenta o campo 'Ata de Reuniao de Feedback'
+11 29 expected_results
+29 13 system exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou
+11 30 expected_results
+30 13 system exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou
