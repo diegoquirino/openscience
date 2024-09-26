@@ -38,3 +38,24 @@ To explore the content of a project, click on the branch name above or switch to
    ```bash
    git clone https://github.com/diegoquirino/openscience.git
    ```
+
+2. **Switch to a Branch**
+
+   ```bash
+   git checkout <branch-name>
+   ```
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+* *Researcher:* Carlos Diego Quirino Lima
+* *E-mails:* [diego.quirino@tjpb.jus.br](mailto:diego.quirino@tjpb.jus.br) or [diego.quirino@copin.ufcg.edu.br](mailto:diego.quirino@copin.ufcg.edu.br)
+
+---
