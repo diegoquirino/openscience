@@ -1,6 +1,6 @@
 # Open Science Repository
 
-Welcome to the **Open Science** repository by [Carlos Diego Quirino Lima](https://github.com/diegoquirino). This repository hosts a collection of projects and experiments dedicated to advancing open science initiatives.
+Welcome to the **Open Science** repository by [Carlos Diego Quirino Lima](https://github.com/diegoquirino). This repository hosts a collection of projects and experiments related to my research as a Ph.D. student dedicated to advancing open science initiatives.
 
 ## Branches and Projects
 
