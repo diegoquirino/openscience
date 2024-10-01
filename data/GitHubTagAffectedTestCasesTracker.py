@@ -8,9 +8,10 @@ import re
 
 class GitHubTagAffectedTestCasesTracker:
 
-    def __init__(self, software='rgp-diarias', test_suite_reduction_strategy='Complete',
+    def __init__(self, software='rgp-diarias', test_suite_reduction_strategy='Complete', ucPrefixPattern=r'UC\d+',
                  claret_output_path='output/xlsx', conf_file=os.path.join(os.getcwd(), 'data', 'github.conf'),
                  environment_github_api_key_name='GITHUB_API_KEY'):
+        self.ucPrefixPattern = ucPrefixPattern
         self.repo_owner, self.repo_name = utils.get_github_repo_data(conf_file)
         self.test_suite_reduction_strategy = test_suite_reduction_strategy
         # ATP - Reduced (Adaptive Random Testing by Jaccard Distance)
@@ -33,7 +34,7 @@ class GitHubTagAffectedTestCasesTracker:
         df['affected_cts'] = None
         df['total_ct'] = 0
         for index, row in df.iterrows():
-            ucx_filename = utils.extract_ucx_from_filename(row['filename'])
+            ucx_filename = utils.extract_ucx_from_filename(row['filename'], self.ucPrefixPattern)
             base_tag = row['base_tag']
             head_tag = row['head_tag']
             base_tag_text = utils.extract_quoted_excerpts(row['base_tag_lines_txt'])
@@ -50,10 +51,11 @@ class GitHubTagAffectedTestCasesTracker:
                 print('New TC - created in head_tag')
                 local_file_path = self.download_file_from_github(head_tag, keywords)
                 print(local_file_path)
-                tcs_with_excerpt, total_test_cases = self.find_test_cases_with_excerpts_into_dowloaded_file(local_file_path, head_tag_text)
+                tcs_with_excerpt, total_test_cases = self.find_test_cases_with_excerpts_into_dowloaded_file(
+                    local_file_path, head_tag_text)
                 df.at[index, 'total_ct'] = total_test_cases
                 df.at[index, 'affected_cts'] = str(tcs_with_excerpt)
-                print(f'{tcs_with_excerpt} of total {total_test_cases}')
+                print(f'{tcs_with_excerpt} of total {total_test_cases}\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n')
                 df.at[index, 'new_ct'] = len(tcs_with_excerpt)
                 total_reusable = total_test_cases - len(tcs_with_excerpt)
                 df.at[index, 'reusable_ct'] = 0 if total_reusable <= 0 else total_reusable
@@ -62,11 +64,22 @@ class GitHubTagAffectedTestCasesTracker:
                 if not head_tag_text:
                     df.at[index, 'edit_classification_truth'] = 'HIGH'
                 # Obsolete CT - count how many test cases were deleted in base_tag
-                # Obsolete CT - count how many test cases were updated in base_tag
+                # Obsolete CT - count how many test cases were updated in head or base_tag
                 print('Obsolete TC - deleted and/or updated (affected in base_tag)')
-                local_file_path = self.download_file_from_github(base_tag, keywords)
+                try:
+                    found_on_head_tag = False
+                    local_file_path = self.download_file_from_github(base_tag, keywords)
+                except Exception as error:
+                    print("An exception occurred:", error)
+                    found_on_head_tag = True
+                    local_file_path = self.download_file_from_github(head_tag, keywords)
                 print(local_file_path)
-                tcs_with_excerpt, total_test_cases = self.find_test_cases_with_excerpts_into_dowloaded_file(local_file_path, base_tag_text)
+                if found_on_head_tag:
+                    tcs_with_excerpt, total_test_cases = self.find_test_cases_with_excerpts_into_dowloaded_file(
+                        local_file_path, head_tag_text)
+                else:
+                    tcs_with_excerpt, total_test_cases = self.find_test_cases_with_excerpts_into_dowloaded_file(
+                        local_file_path, base_tag_text)
                 df.at[index, 'total_ct'] = total_test_cases
                 df.at[index, 'affected_cts'] = str(tcs_with_excerpt)
                 print(f'{tcs_with_excerpt} of total {total_test_cases}')
@@ -87,7 +100,7 @@ class GitHubTagAffectedTestCasesTracker:
             df.drop(columns=['index'], inplace=True)
             df.reset_index(drop=True, inplace=True)
         # Generating results file
-        results_file_path = os.path.join(os.getcwd(), f'{self.software}_diffs_counted_'
+        results_file_path = os.path.join(os.getcwd(), 'data', f'{self.software}_diffs_counted_'
                                                       f'{self.test_suite_reduction_strategy}.csv')
         df.to_csv(results_file_path, index=True, index_label='index')
 
@@ -110,11 +123,14 @@ class GitHubTagAffectedTestCasesTracker:
         for item in tree:
             if item['type'] == 'blob' and self.claret_output_path in item['path']:
                 file_name = item['path'].split('/')[-1]
+                # print(f'{tag}/{keys}/{base_url} in {file_name} >> {response.status_code} >> {len(tree)}')
+                # time.sleep(10)
                 if all(keyword in file_name for keyword in keys):
                     file_url = (f'https://raw.githubusercontent.com/'
                                 f'{self.repo_owner}/{self.repo_name}/{tag}/{item['path']}')
                     # Download the file
                     file_response = requests.get(file_url, headers=self.headers)
+                    print(f'{file_name} - {file_response.status_code} >> {file_url}')
                     if file_response.status_code == 200:
                         with open(file_name, 'wb') as f:
                             f.write(file_response.content)
@@ -140,11 +156,15 @@ class GitHubTagAffectedTestCasesTracker:
                 - xlsx_total_test_cases (int): The total number of test cases found in the Excel file.
         """
         xlsx_df = pd.read_excel(filepath).map(str)
-        xlsx_total_test_cases = 0
-        current_test_case_id = None
-        xlsx_tcs_with_excerpt = set()
+        # xlsx_total_test_cases = 0
+        # current_test_case_id = None
+        # xlsx_tcs_with_excerpt = set()
         for excerpt in excerpts:
             for i, xlsx_row in xlsx_df.iterrows():
+                if i == 0:
+                    xlsx_total_test_cases = 0
+                    current_test_case_id = None
+                    xlsx_tcs_with_excerpt = set()
                 if 'TC' in xlsx_row.iloc[1]:
                     current_test_case_id = xlsx_row.iloc[1]
                 elif 'Size: ' in xlsx_row.iloc[3]:

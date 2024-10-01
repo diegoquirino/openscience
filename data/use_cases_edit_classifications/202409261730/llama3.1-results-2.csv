@@ -1,0 +1,90 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The updated snippet only changes a single word 'login' to 'Login', which is a minor textual update that does not alter the system's expected behavior.",27521
+1,LOW,The change is merely textual (update): it corrects a typo in 'logout' and adds capitalization to 'Logout'. No semantic changes are introduced.,27562
+2,LOW,"The change is only a minor textual edit, correcting a typo in the word 'permissoes' to the correct spelling 'Permissoes'. The system behavior remains unchanged.",28121
+3,LOW,"The updated snippet only corrects a typo ('c' -> 'C') in the post-condition text, without changing the system's expected behavior.",26831
+4,LOW,The edits primarily address textual aspects such as wording and formatting rather than altering the system's expected behavior or functional logic.,50347
+5,LOW,"The update changes the text of step 6, but does not modify its behavior or reference any new elements, only making a minor textual adjustment.",26077
+6,HIGH,"The change introduces a capital letter in 'Perfis' which affects the system's expected behavior, changing the text from 'exibe a listagem dos perfis de competencias...' to 'exibe a listagem dos Perfis de Competencias...'",28753
+7,LOW,"The update only corrects a typo in the actor name, changing 'usuarioNA' to 'usuárioNA', without affecting the system's expected behavior.",29517
+8,LOW,"The change is merely textual (update): the field name 'Novo Perfil' has been renamed to 'Novo Perfil de Competencias', which does not alter the system's expected behavior or introduce any new requirements.",30832
+9,LOW,The change is merely textual (update) with the addition of a descriptive phrase and correcting an error in specific naming.,26455
+10,LOW,"The change is merely a textual update from 'excluir o perfil' to 'excluir o Perfil de Competencias', which does not alter the system behavior.",35800
+11,LOW,"The change is a simple textual update from 'A gestao de perfis de competencias' to 'A gestao de Perfis de Competencias', which does not alter the system's expected behavior or introduce new requirements.",27970
+12,HIGH,"This edit changes the system expected behavior (semantic edit), introducing new steps and exception flows that alter the user's interaction with the system.",49417
+13,LOW,"The updated snippet changes the text from 'perfis de competencias' to 'Periodos Avaliativos', but it does not alter the system's expected behavior or introduce new requirements. This appears to be a minor update, likely for formatting or clarity purposes.",28139
+14,HIGH,"The changes introduce new ones or delete: requirement, feature, business model entity, step, exception flow (ef) or alternative flow (af)",33196
+15,LOW,"The updated snippet introduces a synonym ('informando' instead of 'selecionando'), which does not alter the system's expected behavior. It's merely a textual update.",29223
+16,HIGH,"The change introduces a new exception flow (ef[3]) which indicates a semantic edit, altering the system's behavior.",32210
+17,HIGH,"The change alters the system's expected behavior, replacing 'perfis de competencias' with 'Periodos Avaliativos', which affects the list items being displayed.",27613
+18,HIGH,The changes modify the system expected behavior by shifting from one functional menu to another.,40295
+19,LOW,"The change from 'gestao de perfis de competencias' to 'gestao de Periodos Avaliativos' does not alter the expected behavior or functionality of the system, it's just a renaming and detail improvement.",30514
+20,LOW,"the update introduces no changes in system expected behavior and merely corrects typo, synonym, or formatting issues",37142
+21,LOW,"The change is merely textual (update): it corrects a typo from 'Competecias' to 'Competencias', without altering the system's expected behavior.",36509
+22,LOW,"The changes are merely textual (update): renaming 'competecias' to 'Competencias', 'portfolio' to '(Portfolio)', and updating details.",33775
+23,HIGH,The updated snippet introduces a new exception flow (ef[3]) which indicates a significant change in the system's behavior.,27788
+24,LOW,"The update is a minor textual edit to correct spelling and capitalization, with no impact on system behavior.",49826
+25,HIGH,"The change introduces new capital letters, which implies a semantic edit and changes the system expected behavior.",42386
+26,LOW,"The updated snippet only changes 'funcionalidade de gestao de competencias (portfolio)' to 'funcionalidade de gestao de Competencias (Portfolio)', which is a minor textual change, not altering the system behavior or adding/removing any requirement, feature, business model entity, step, exception flow, or alternative flow.",41089
+27,LOW,"The change is merely textual (update): a typo correction from 'gestao' to 'Gestao', and removing capitalization inconsistency between 'Competencias' and 'portfolio'",29980
+28,HIGH,"The update introduces new features, steps, and exception flows, modifying the system's expected behavior.",71142
+29,HIGH,"The changes introduce new ones or delete: requirement, feature, business model entity, step, exception flow (ef) or alternative flow (af).",49202
+30,HIGH,"The updated snippet introduces a new system, use case, and feature which changes the expected behavior of the system.",47369
+31,HIGH,"introduces new requirements, features, or deletes existing ones",56187
+32,LOW,"The change only updates a word 'Competencias' to 'das Competencias', which does not alter the expected system behavior.",27843
+33,LOW,"The changes are merely textual (update): using 'Competencia' instead of 'Competencias', and 'selecionada' instead of 'selecionado'. No change in system behavior.",32097
+34,HIGH,"The change from 'Competencias' to 'Competencia' is a semantic edit as it implies a singular item rather than a plural set, which can affect the system's expected behavior.",37837
+35,LOW,"The update snippet changes only the text, replacing 'Competencias (Portfolio)' with 'das Competencias (Portfolio)', and correcting 'a' to 'a'. No changes were made to the system's expected behavior or functionality.",34002
+36,HIGH,"The changes are semantic edits that modify the system expected behavior, changing 'Competencias (Portfolio)' to 'Competencia (Portfolio)', which affects the meaning of the step.",53328
+37,HIGH,"The change introduces a subtle but semantically significant variation in the system's expected behavior, specifically altering how it handles singular vs plural nouns.",46904
+38,LOW,"The change is merely textual, correcting a typo from 'cadastrados' to 'cadastradas', without altering the system's expected behavior.",37292
+39,HIGH,"The updated preCondition removes a descriptive detail that was present in the original snippet, which could indicate a semantic edit and thus a high-impact change.",40074
+40,LOW,"The change updates a step description to access a tela inicial do sistema from acessa a funcionalidade para visualizar o status do PGDC, which does not alter the system's expected behavior.",41237
+41,HIGH,"The updated snippet introduces new information about the state of realization of PGPD, which changes the system expected behavior.",38524
+42,LOW,The update adds a new alternative flow without changing the system's expected behavior.,46721
+43,LOW,"The change updates a single word ('Resultados' to 'Resultado') without altering the system behavior or introducing new requirements, features, entities, steps, exception flows, or alternative flows.",40240
+44,HIGH,"The updated snippet introduces new system behavior by presenting additional details and niveis de avaliacao, which suggests a change in the system's expected output.",54907
+45,LOW,The updated snippet only corrects minor textual issues (typo and punctuation) without changing the system expected behavior.,42675
+46,HIGH,"The updated snippet introduces new requirement, feature and alternative/exception flows (af[4], alternative 1, alternative 2, exception 2) or deletes existing ones (alternative 3), which changes the system expected behavior.",64179
+47,HIGH,"The update introduces a new requirement (gestao de Metas de Desempenho) and changes the basic flow by adding steps, which affects the system expected behavior.",49753
+48,HIGH,"The update changes the system expected behavior by introducing new information, such as Grafico with resumo da situacao das competencias and unidades, which indicates a semantic edit.",41851
+49,LOW,"The updated snippet is a textual change (update) that does not affect the system behavior, only removing the word 'de' from the description. This type of edit is considered syntactic and falls under the low-impact category.",42926
+50,HIGH,"The change introduces a semantic edit, modifying the system's expected behavior by changing the wording of the action performed by the system.",35853
+51,LOW,"The updated snippet only changes a single word ('Avaliacoes cadastrados' to 'Avaliacoes cadastradas'), which is considered a syntactic edit, not altering the system's expected behavior.",43812
+52,LOW,"The change from 'prenchido corretamente' to 'preenchidos corretamente' is merely textual, updating details without altering system behavior.",32504
+53,HIGH,"The changes introduce a semantic edit to the system expected behavior, altering the content and meaning of the text in the step 5 action.",40008
+54,HIGH,"The change introduces a semantic edit by modifying the system's expected behavior, replacing 'excluido' with 'excluida', which affects the outcome of the use case.",26474
+55,HIGH,The change introduces a new condition (removal of semicolon) which could alter the system's expected behavior.,34489
+56,LOW,"The changes are merely textual (update): 'limpa os campos apresentados' -> 'limpa os campos exibidos', renaming steps from 2 to 3 and moving one step back to maintain the basic flow, which doesn't change the system's expected behavior.",31600
+57,LOW,"The change from 'seleciona' (select) to 'preenche' (fill out) does not alter the system's expected behavior, as it is still about selecting or filling out an Ata de Reuniao de Feedback, just changing the verb to make it more precise.",29794
+58,HIGH,"The changes introduce a new step (step 9 lider ""clica na opcao 'Salvar'""), which indicates a semantic edit, altering the system's expected behavior. Additionally, there is a change in the wording of existing steps (e.g., ""preenche o campo 'Data Inicial e Data Final'"" becomes ""preenche o campo 'Data Inicial' e 'Data Final'""). This suggests that the updates are not merely textual and do introduce new requirements or modify existing ones.",43924
+59,HIGH,"It changes the system expected behavior (semantic edit), introducing new ones or deleting: requirement, feature, business model entity, step.",31657
+60,LOW,minor textual update with no change in system expected behavior,40827
+61,LOW,"The change from singular to plural 'Competencias' to 'Competencias (Portfolio)' does not alter the system's expected behavior or introduce new requirements, features, business model entities, steps, exception flows, or alternative flows. It is merely a textual update.",32594
+62,HIGH,"The updated snippet changes the expected system behavior by altering the text 'excluida' to 'nao excluida', which implies a change in the system's output or behavior.",28240
+63,LOW,"The change is merely textual, updating a detail in the system expected behavior without altering its overall meaning or functionality.",28142
+64,LOW,"The change is merely textual (update) from 'Niveis' to 'Nivel', with no impact on the system expected behavior or functionality.",27190
+65,HIGH,"The updated snippet changes the system expected behavior by removing the word 'excluido' (excluded) from the text, which implies that the level of competence is not excluded from the list anymore.",45315
+66,LOW,"The change is merely textual (update) and does not alter the system expected behavior, as it's just a typo correction.",27903
+67,HIGH,"The updated snippet changes the system expected behavior by modifying the description of the 'step 2' action, indicating a semantic edit.",39719
+68,LOW,"The updated snippet changes only the detailing of the step 5, it does not change the system behavior or introduce new requirements.",27522
+69,LOW,"The change in the updated snippet is merely textual, as it removes a word ('cadastradas') from the original phrase without altering the system's expected behavior.",30305
+70,HIGH,"The updated snippet changes the system expected behavior by modifying the description of what the system should display, which indicates a semantic edit.",35233
+71,LOW,"The change is merely textual, replacing 'escolha' with 'escolhe', which does not affect the system's expected behavior.",29821
+72,LOW,"The change from 'selecione' to 'seleciona' is a typo correction, which does not alter the system's expected behavior.",28054
+73,LOW,"The updated snippet changes only a single word ('lider' to 'preenche'), which does not affect the system's expected behavior. This is considered a syntactic edit, rather than a semantic one.",29782
+74,LOW,"The change is merely textual (update) and corrects a typo in 'lider' to 'preenche', which does not alter the system expected behavior.",31617
+75,LOW,The change only corrects a minor typo ('plano' vs 'planos') and does not alter the expected behavior of the system.,28056
+76,LOW,"The updated snippet corrects a typo in the word ""Planos"" to ""Plano"", which does not change the system's expected behavior.",31053
+77,HIGH,"The change alters the system expected behavior by modifying the text in the step 6, indicating a semantic edit.",29818
+78,HIGH,The updated snippet changes the system expected behavior by modifying the name of the alternative flow from 'Negar Exclusao da Capacitacao de TI' to 'Nao Confirmar Exclusao da Capacitacao de TI'. This is a semantic edit that introduces a change in the system's behavior.,36139
+79,LOW,"The change is purely textual, updating a detail in the step description without altering the system's expected behavior.",27515
+80,HIGH,"The change introduces a new requirement (semantic edit) by changing 'Planos de Capacitacao de TI cadastradas apenas para visualizacao' to 'Planos de Capacitacao de TI cadastrados apenas para visualizacao', which changes the system expected behavior.",30884
+81,LOW,"The updated snippet changes only the wording of the precondition without altering its meaning, which is a syntactic edit.",27741
+82,HIGH,"The change alters the system expected behavior by modifying the description of a step, introducing new options, and changing the purpose of clicking an option (from creating to responding), indicating a high-impact edit.",33140
+83,HIGH,"The changes introduce a new requirement (selecting 'Nivel de Interacao' and 'Capaz de Avaliar') and modify the existing steps, which indicates a semantic edit that alters the system's expected behavior.",43971
+84,HIGH,"The change introduces a new exception flow, which implies a modification to the system's expected behavior.",26901
+85,LOW,The updated snippet adds new details and steps to an existing use case without changing the system's expected behavior.,34881
+86,LOW,"The change updates the word 'varias listadas' to 'varias exibidas', which is a minor textual edit that does not alter the system's expected behavior.",29907
+87,HIGH,"The changes introduce new steps, alternative flows, and exception flows, which suggests a significant update to the system's behavior.",49006
+88,LOW,"The updated snippet is a syntactic edit, changing 'varias listadas' to 'varias exibidas', which does not alter the system's expected behavior.",42604

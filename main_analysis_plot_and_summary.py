@@ -3,8 +3,8 @@ import data.utils as utils
 import pandas as pd
 import os
 
-SOFTWARE = 'rgp-diarias'
-CURRENT_USE_CASES_EDIT_CLASSIFICATIONS_PATH = '202408132200'
+SOFTWARE = 'gti-competencias'
+CURRENT_USE_CASES_EDIT_CLASSIFICATIONS_PATH = '202409261730'
 DATAPATH = os.path.join(os.getcwd(), 'data', 'use_cases_edit_classifications',
                         CURRENT_USE_CASES_EDIT_CLASSIFICATIONS_PATH)
 ANALYSIS_RESULTS_PATH = os.path.join(os.getcwd(), 'analysis', 'results',
@@ -14,7 +14,7 @@ ANALYSIS_RESULTS_PATH = os.path.join(os.getcwd(), 'analysis', 'results',
 if __name__ == '__main__':
     software_conf_file_path = os.path.join(os.getcwd(), 'data', f'{SOFTWARE}.conf')
     prefix, software, versions, turns, tcs_strategy = utils.get_software_data(software_conf_file_path)
-    truth_diffs_path = os.path.join(os.getcwd(), 'data', f'{software}_diffs_cts_counted_{tcs_strategy}.csv')
+    truth_diffs_path = os.path.join(os.getcwd(), 'data', f'{software}_diffs_counted_{tcs_strategy}.csv')
     truth_df = pd.read_csv(truth_diffs_path)
     summary_analysis = SummaryAnalysis()
     for use_cases_edit_classifications_file in os.listdir(DATAPATH):

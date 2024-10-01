@@ -1,0 +1,100 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change is a minor modification in the text, not changing the expected behavior of the system or introducing new requirements. It only adjusts the punctuation and capitalization.",84508
+1,LOW,"The change is a syntactic edit, where the system behavior remains unchanged. The text was updated with proper capitalization.",77741
+2,LOW,"The change is a typographic correction, capitalizing the first letter of 'Permissoes' without changing the system behavior.",83032
+3,LOW,"The change is a simple edit of the postCondition, which does not affect the system behavior or the overall requirements.",78065
+4,LOW,The updated snippet changes the capitalization of 'Perfis de Competencias' and does not alter the system behavior or introduce new requirements or flows. It is a syntactic edit.,80497
+5,LOW,"The changes are minor and do not impact the overall functionality or behavior of the use case. They are mainly related to capitalization, punctuation, and adding additional detail.",81776
+6,HIGH,"The change introduces a new exception flow, which may alter the expected behavior of the system.",91251
+7,LOW,The change is low-impact because it does not alter the system behavior or introduce new requirements. It only improves the formatting and capitalization of the text.,82269
+8,LOW,"The changes in the snippets are mainly about formatting and punctuation. There is no change in system behavior or in the addition/deletion of requirements, features, business model entities, steps, exception flows (ef) or alternative flows (af).",79507
+9,LOW,"The change updates the error message to be more specific and includes the addition of 'de Competencias'. The overall behavior or system flow remains unchanged, making this a low-impact edit.",91610
+10,LOW,"The change is a syntactic edit, it only changes the textual description of the use case without changing its semantic meaning or system behavior.",94042
+11,LOW,"The changes are merely textual, detailing and renaming without changing the system behavior.",86403
+12,LOW,"The updated snippet only changes the capitalization of a word, which is a textual update and does not change the system behavior.",93239
+13,HIGH,"This edit changes the expected behavior of the system by introducing new alternatives and exceptions, which would likely change how the system functions.",85459
+14,LOW,"The change is a mere textual update, replacing 'permissao para gerenciar perfis de competencias' with 'tem permissao para gerenciar Periodos Avaliativos.'. This does not alter the system behavior and is not introducing any new requirements or features.",139032
+15,HIGH,"The original and updated snippets change the system expected behavior, as it modifies the functionalities from 'gestao de perfis de competencias' to 'gestao de Periodos Avaliativos'. This changes the system behavior (semantic edit) and introduces a new feature.",91072
+16,LOW,"The change only modifies the way a step is described, without altering the system behavior or introducing new requirements. The original and updated snippets still describe the same action - filling in the 'Data Initial and Data Final' field with dates related to a period.",93679
+17,HIGH,"The updated snippet changes the system behavior, as it modifies the output of the system from displaying a list of competency profiles without the evaluation period to showing a list of evaluation periods without the excluded one. This change has a direct impact on the system's functionality and behavior.",86751
+18,LOW,"The change only updates the text of the step, without changing the system behavior or introducing new requirements. The focus has shifted from displaying competency profiles to displaying assessment periods, but this is a semantic edit within the same context and does not alter the underlying functionality.",85079
+19,HIGH,"The use case has been changed from managing competency profiles to managing assessment periods, which significantly changes the system behavior and introduces a new feature.",88674
+20,LOW,"The change only modifies the text of the post-condition, without altering the system's expected behavior or introducing new elements. It is merely a semantic edit.",97450
+21,LOW,"The change is a syntactic edit, with no impact on system behavior. It only changes capitalization and punctuation.",87600
+22,LOW,"The changes are purely textual and do not affect the system's behavior or requirements. They include capitalization adjustments, punctuation additions, and spelling corrections.",84153
+23,LOW,"The change is a minor modification to the text, changing the case of 'Competencias' and adding parenthesis. This does not alter the semantic meaning or flow of the use case.",90768
+24,LOW,"The changes made in the updated snippet are primarily textual updates. The term 'competecias' has been replaced with 'Competencias', and some punctuation marks have been added for clarity. The system behavior remains unchanged.",82229
+25,LOW,"The changes are mainly textual updates (capitalization, spacing, and punctuation), which do not change the system behavior. The only semantic edit is a minor change in the name of an alternative flow from 'Confirmar Exclusao do competecias (portfolio)' to 'Confirmar Exclusao do Competencias (Portfolio)', but this does not alter the expected behavior.",94905
+26,LOW,"The change is a syntactic edit, as it only updates the capitalization and punctuation of the text without changing its meaning or introducing new requirements.",89776
+27,LOW,"The changes are mostly textual updates, including adding spaces, fixing capitalization, and updating names. The basic flow of the use case remains unchanged.",88010
+28,LOW,"The change is a minor textual update in capitalization and spacing, which does not alter the system's expected behavior. No new requirements or features were introduced, nor any old ones deleted.",86043
+29,LOW,"The changes are mostly textual updates, with a few minor modifications in capitalization and formatting. This does not change the system behavior.",80709
+30,LOW,"The updated snippet only changes the capitalization of certain words, which is a textual update and does not change the system behavior or requirements.",82690
+31,HIGH,"The updated snippet introduces new alternatives, changing the system behavior.",92714
+32,HIGH,"The updated snippet introduces new alternatives and exceptions which change the system's expected behavior, thus classifying it as a high-impact edit.",141627
+33,LOW,"The changes are mostly textual updates and do not change the system behavior. The only addition is the 'Nao existem Periodos Avaliativos Cadastrados' exception, which does not seem to significantly alter the overall functionality of the use case.",132650
+34,HIGH,"The updated snippet introduces new exception flows and alternative flow, indicating a change in the system behavior.",126049
+35,HIGH,"The changes introduced in the updated snippet add a new actor, modify preconditions and postconditions, and add an alternative flow. These modifications significantly alter the expected behavior of the system, making the impact high.",123227
+36,LOW,"The updated snippet does not change the system behavior. It is a simple rephrasing of the original step, changing 'cadastrados' to 'cadastradas'. There is no semantic edit and no new features or deletions.",101954
+37,LOW,"The changes are only syntactic edits, correcting the use of 'selecionado' to 'selecionada', and changing the singular 'Competencias (Portfolio)' to ' Competencia (Portfolio)'. There is no change in the system behavior.",88074
+38,LOW,"The changes are merely textual (update): detailing, typo, synonyms, punctuation, formatting, reducing, reordering or renaming.",91102
+39,LOW,"The change is a syntactic edit, where the text has been slightly rephrased without altering the system's expected behavior or introducing new requirements or entities.",93110
+40,LOW,"The changes are minor and only involve textual updates, not affecting the system behavior.",89470
+41,LOW,"The change is a simple semantic edit that does not alter the system behavior or requirements. The only difference is the use of 'a' instead of 'o' in the sentence, which does not affect the functionality or flow of the use case.",123405
+42,LOW,"The updated snippet only changes the verb tense from 'exibe' (show) to 'exibe' (shows), and adds the word 'cadastradas' (registered). These are syntactic edits that do not change the system behavior, but rather provide more detail. The meaning of the use case is preserved.",95383
+43,LOW,"The updated snippet does not change the system behavior, but only provides additional details and clarity. The changes are mainly related to textual updates, such as renaming of variables (e.g., from 'Gerente' to 'Administrador'), providing more context in descriptions, and minor restructuring of the document format.",100686
+44,LOW,"The change is a syntactic edit, it only removes the detail about the screen where the user is found (tela inicial do sistema). It doesn't change the semantic of the precondition or any system behavior.",115079
+45,HIGH,"The updated snippet changes the system behavior by introducing a new step and an alternative flow, which significantly alters the use case's expected functionality.",97462
+46,HIGH,"The updated snippet changes the system behavior by introducing new components (Responsavel, Competencias, Avaliacoes) and removing existing ones (Perfil de Competencias, Unidade de Trabalho, Gerente do Desempenho, Situacao).",111093
+47,HIGH,"The change introduces a new alternative flow, indicating a different behavior in the use case.",98245
+48,LOW,"The change is merely a typographical correction, changing the term 'Resultados' to 'Resultado'. It does not alter the system behavior or introduce new requirements. This is a syntactic edit rather than a semantic one.",94245
+49,HIGH,"The updated snippet changes the system behavior by adding a new step (step 7 and step 9) and removing an existing step (step 8). The introduction of step 7 and step 9 introduce new requirements for the system, which constitutes a high-impact change.",119085
+50,LOW,"The changes are merely textual, detailing and reordering of the steps.",95757
+51,HIGH,"The edit involves changing the system's expected behavior by introducing new flows, deleting existing ones, and modifying several steps. This results in a significant change to the system's functionality.",101059
+52,HIGH,"The updated snippet introduces new steps and changes the system behavior by adding a new alternative flow, which indicates that it is a high-impact edit.",160072
+53,HIGH,"The change introduces new information (graphs and additional table) which significantly alters the behavior of the system, thus classifying it as high-impact.",115303
+54,LOW,"The change is a synonym replacement (inicia -> abre), which doesn't affect the system behavior.",99069
+55,LOW,"The original and updated snippets both describe the same action, with only a slight change in phrasing. The update does not alter the expected behavior of the system or introduce any new requirements.",86953
+56,LOW,"The updated snippet does not change the system behavior, as it is a minor textual edit to improve readability and clarity.",89542
+57,LOW,The change only restructured the snippet without changing the system behavior or requirements.,86597
+58,LOW,"The change is a syntactic edit, as it changes the verb tense from 'apresenta' to 'apresenta', which does not alter the system behavior. This is a minor grammar correction and not a change in the expected system behavior or its requirements.",90985
+59,LOW,"The changes are syntactic edits, updating the text with correct spelling and grammar.",84931
+60,LOW,"The update changes the article 'a' to 'o', which is a minor textual edit and does not change the system behavior.",100254
+61,LOW,"The change is a syntactic edit, only changing the wording of the step but not altering the expected behavior or adding/removing any elements from the use case.",106983
+62,LOW,"The updated snippet simply combines two separate conditions into one using 'e' (and), which does not change the overall system behavior or requirements. It is a syntactic edit.",104688
+63,LOW,"The change only includes a minor edit in the wording from 'apresentados' to 'exibidos', and does not change the overall behavior or logic of the system.",89946
+64,LOW,"The updated snippet changes the verb 'seleciona' to 'preenche', which is a syntactic edit and does not change the system behavior or introduce new requirements. The overall functionality of the use case remains the same.",95979
+65,LOW,"The changes are primarily textual updates, such as adding the word 'e' in step 7 and 8 and adding a new step (step 9) with no change in system behavior.",100403
+66,LOW,"The change from 'excluido' to 'nao excluido' is a semantic edit but does not introduce new requirements, features or business model entities. It only changes the logic of showing the Periodos Avaliativos with or without the excluded period.",95348
+67,LOW,"The change is a minor edit that does not affect the system behavior. The original and updated snippets have the same semantic meaning, with only a slight difference in textual formatting.",95211
+68,LOW,"The change is a simple textual edit, where the word 'step' was replaced with 'lider'. This does not change the system behavior or requirements, but only restructures the sentence.",85096
+69,LOW,"The updated snippet is a syntactic edit, as it only changes the textual formatting (addition of '+' symbol) without changing the system behavior or introducing new elements.",86416
+70,LOW,"The change is a textual update to the alternative flow name, but does not change the system behavior. It's a renaming of the alternative flow.",87080
+71,LOW,"The change is a syntactic edit, changing the wording from 'excluida' to 'nao excluida'. It does not alter the system behavior or introduce any new requirements or features.",99039
+72,LOW,"The change is merely a textual update, changing 'cadastradas' to 'cadastrados', which does not affect the system behavior or semantics.",92189
+73,LOW,"The updated snippet does not change the system behavior, it only removes the extra space before 'af' in the original snippet. This is a syntactic edit and does not affect the semantics of the use case.",88369
+74,LOW,"The change is merely a textual update (semantic edit) without changing the system behavior, as it only changes the wording from 'excluido' to 'nao excluido'. This does not introduce or delete any requirements, features, business model entities, steps, exception flows, or alternative flows. It just changes the way the requirement is described, which is a low-impact change.",92001
+75,LOW,"The change is a syntactic edit, simplifying the precondition statement by combining two separate statements into one.",85511
+76,LOW,"The updated snippet has only made a minor change in the textual detailing of the step, without affecting the system behavior or introducing new requirements.",79028
+77,LOW,"The change is a syntactic edit, simply reducing redundancy and making the text more concise.",87269
+78,LOW,"The change is a syntactic edit, as it only removes 'cadastradas' and keeps the semantic meaning of the step unchanged.",93545
+79,LOW,"The updated snippet changes only the verb tense from 'exibe a listagem' to 'exibe a listagem', which is a minor textual update and does not change the system behavior.",90869
+80,LOW,"The change is a simple edit of a word from 'escolha' to 'escolhe', which does not alter the expected behavior of the system or introduce new requirements. This is a minor syntactic change and not a semantic one.",89011
+81,LOW,"The change is a simple syntax edit, changing the verb tense from 'selecione' to 'seleciona'. This does not alter the system behavior or any requirements.",86603
+82,LOW,"The change is a syntactic edit, where the text has been updated to have proper capitalization and punctuation. There is no change in the system behavior or the semantic content of the use case.",87575
+83,LOW,"The updated snippet changes the text to use the present tense 'preenche' instead of 'preencha', which is a syntactic edit and does not change the system behavior.",86491
+84,LOW,"The original and updated snippets are identical in terms of semantics, structure and flow. The change is merely a rewording without affecting the system behavior.",90839
+85,LOW,"The change is a syntactic edit, as it only updates the text without changing the system behavior or introducing new requirements.",83937
+86,LOW,The updated snippet does not change the system behavior (syntactic edit). It only changes the text of the step and maintains the original exception flow (ef).,87253
+87,LOW,The changes are merely renaming the alternative from 'Negar Exclusao da Capacitacao de TI' to 'Nao Confirmar Exclusao da Capacitacao de TI'. There is no change in system behavior and it is a syntactic edit.,92291
+88,LOW,"The change is only a textual update, changing 'excluida' to 'nao excluida'. This does not change the system behavior and does not introduce any new requirements or features.",102946
+89,LOW,"The change is a syntactic edit where the text is updated to use present tense and correct some punctuation. This does not change the system behavior or introduce new requirements, features or entities.",89280
+90,LOW,"The original and updated snippets only differ in the use of space between conditions, which does not change the system behavior or expected outcomes. This is a syntactic edit.",85491
+91,LOW,"The changes are minor textual updates, such as changing single quotes to double quotes and adding a comma in step 3. There is no change in the system behavior or requirements.",85707
+92,LOW,"The changes are minor and do not impact the overall system behavior. The original and updated snippets both describe a similar sequence of actions within the use case, with only slight alterations in wording.",92546
+93,HIGH,"The updated snippet introduces new steps and changes the order of existing ones, indicating a change in system behavior. It also adds a new alternative flow and an exception flow, which suggests that the use case now includes additional conditional paths for execution.",106529
+94,HIGH,The updated snippet introduces a new exception flow and changes the system behavior by adding a step within that exception.,151991
+95,LOW,"The changes made in the updated snippet are all textual updates, detailing and reordering of steps. No new requirements, features or business model entities have been introduced.",91330
+96,LOW,"The change is a syntactic edit, as it only modifies the wording of a step without changing its meaning or behavior.",90679
+97,HIGH,"The proposed changes significantly alter the system's expected behavior by introducing new steps, alternatives, and exceptions to the process. The requirement for making a copy of a Perfis de Competencias and creating a new Avaliacao is introduced. Additionally, the exception handling for saving the new evaluation and creating a copy of the Perfis de Competencias has also been modified. Therefore, these changes have a high impact on the system's behavior.",105659
+98,LOW,"The change is a syntactic edit, only modifying the verb tense ('exibe' to 'exibidas') and adding a preposition ('dentre as varias listadas' to 'dentre as varias exibidas'). There are no changes in system behavior or requirements.",208060

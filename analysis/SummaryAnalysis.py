@@ -118,7 +118,7 @@ class SummaryAnalysis:
         df_filtered = df_filtered.drop(columns=['round', 'tn', 'fp', 'fn', 'tp'])
         df_filtered = df_filtered.sort_values(by='avg_lost_classifications', ascending=True)
         # Generate a boxplot to show error variance among rounds for each model
-        plt.figure(figsize=(6, 6))
+        plt.figure(figsize=(6, 4))
         sns.boxplot(x='model', y='avg_lost_classifications', data=df_filtered)
         # Set plot style to grayscale
         sns.set_theme(style='whitegrid')
@@ -128,6 +128,10 @@ class SummaryAnalysis:
         plt.xlabel('Text-generation LLM', fontsize=12)
         plt.ylabel('Quantity', fontsize=12)
         plt.xticks(rotation=45)
+        # Determine the maximum value for y-axis
+        max_value = df_filtered['avg_lost_classifications'].max()
+        # Set y-axis ticks to integer values from 1 to max_value
+        plt.yticks(range(0, int(max_value) + 1))
         # Show the plot
         plt.tight_layout()
         plt.show()
@@ -163,7 +167,7 @@ class SummaryAnalysis:
         df_filtered['avg_high_impact_predicted'] = df_filtered['tn'] + df_filtered['fp']  # NEGATIVE = HIGH impact
 
         # Generate a boxplot to show error variance among rounds for each model
-        plt.figure(figsize=(6, 6))
+        plt.figure(figsize=(6, 4))
         sns.boxplot(x='model', y='avg_low_impact_predicted', data=df_filtered)
         # Set plot style to grayscale
         sns.set_theme(style='whitegrid')
@@ -215,7 +219,7 @@ class SummaryAnalysis:
         # df_melted = df_filtered.melt(id_vars="model", var_name="Metric", value_name="Count")
         # df_melted.sort_values(by=['Count'], ascending=True)
         # Plot only the TP for the sorted models
-        plt.figure(figsize=(6, 6))
+        plt.figure(figsize=(6, 4))
         sns.boxplot(x="model", y="tp", data=df_tp_sorted)
         # plt.figure(figsize=(6, 6))
         # sns.boxplot(x="model", y="Count", hue="Metric", data=df_melted)

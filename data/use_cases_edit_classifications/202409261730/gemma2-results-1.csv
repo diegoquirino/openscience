@@ -1,0 +1,100 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change is purely syntactic, correcting capitalization. It doesn't alter the core action described in the step.",79203
+1,LOW,The change is merely a stylistic correction (changing 'opcao' to 'opcao' ) and doesn't alter the core meaning or functionality of the step.,81897
+2,LOW,"The change is a simple capitalization adjustment, not altering the system's functionality.",78394
+3,LOW,"The change is a simple capitalization adjustment, not altering the meaning of the post-condition.",78777
+4,LOW,The change is a simple capitalization adjustment and does not alter the underlying meaning or functionality of the use case.,78544
+5,HIGH,"The updated snippet changes the wording to be more specific about creating a 'Novo Perfil de Competencias',  impacting the system's expected behavior. This is not simply a stylistic change.",95780
+6,HIGH,"The change introduces an exception flow (ef[3]) which indicates a new path the use case can take, signifying a potential change in system behavior.",82177
+7,LOW,"The change is a simple capitalization adjustment, not altering the system's intended action.",77164
+8,HIGH,The capitalization of 'Perfis de Competencias'  changes the meaning and likely impacts how the system understands and processes user requests.,92280
+9,HIGH,"The updated exception clarifies the specific context of the error, implying a change in the system's behavior by distinguishing 'Novo Perfil' from 'Novo Perfil de Competencias'. This suggests a potential modification to the underlying functionality.",93558
+10,HIGH,"The updated exception explicitly references 'Perfil de Competencias', indicating a change in the system's behavior and scope. This is not merely a syntactic edit but a semantic one that affects the functionality.",88400
+11,HIGH,"The exception name is changed from a generic ""Falha na Exclusao do Perfil"" to a more specific ""Falha na Exclusao do Perfil de Competencias"". This implies a change in the system's behavior as it now differentiates between excluding different types of profiles.",94039
+12,LOW,The change is a simple capitalization adjustment and does not alter the meaning of the postcondition.,76684
+13,HIGH,"The updated snippet introduces new alternative flows (af) and exception flows (ef), altering the system's behavior by adding new paths and handling different scenarios for editing, confirming, and denying the exclusion of an evaluation. This signifies a semantic edit with implications on the system's functionality.",144192
+14,HIGH,"The change modifies the permissions granted to the actor, altering the system's functionality and behavior. This is a semantic edit that impacts the core purpose of the use case.",88227
+15,HIGH,The updated snippet changes the functionality accessed by the user from 'gestao de perfis de competencias' to 'gestao de Periodos Avaliativos'. This represents a change in system behavior and is therefore a high-impact edit.,97613
+16,HIGH,"The update changes the system's expected behavior by shifting from selecting a leader to directly inputting dates. This is a semantic change, not just a textual one.",87079
+17,HIGH,"The update changes what the system displays (from a list of competences to a list of evaluation periods), altering the core functionality.",84938
+18,HIGH,"The change alters the information displayed, moving from a list of 'perfis de competencias' to a list of 'Periodos Avaliativos'. This is a semantic change affecting what the system outputs.",87662
+19,HIGH,"The change alters the core functionality of the use case. It shifts from managing 'perfis de competencias' (competency profiles) to managing 'Periodos Avaliativos' (Evaluation Periods), significantly impacting the system's behavior.",99131
+20,HIGH,The postcondition now refers to a different system action ('gestao de Periodos Avaliativos') compared to the original ('gestao de perfis de competencias'). This indicates a change in the system's expected behavior.,88714
+21,LOW,The change is a simple capitalization adjustment and doesn't alter the meaning of the permission granted.,80682
+22,HIGH,"The change from ""competencias"" to ""Competencias"" and the use of parentheses is a semantic edit that could potentially impact the system's behavior if it relies on case sensitivity or specific formatting for identifying competencies.",93118
+23,LOW,"The change is a simple capitalization correction, not impacting the system's functionality.",79180
+24,HIGH,"The change from 'competecias (portfolio)' to 'Competencias (Portfolio)' constitutes a semantic edit, potentially impacting the system's understanding of data and functionality.",91040
+25,HIGH,"The change from 'competecias' to 'Competencias'  represents a semantic edit, potentially altering the system's intended behavior and data representation.",95791
+26,HIGH,"The change introduces a new exception flow (ef[3]), indicating a modification in how the system handles exceptions. This likely alters the system's behavior.",87066
+27,LOW,"The changes are syntactical, involving capitalization and wording adjustments. The core functionality and steps of the use case remain the same.",88680
+28,LOW,"The change is a stylistic one, updating capitalization and wording without altering the system's intended action.",79836
+29,LOW,"The changes are merely stylistic, updating capitalization and wording without altering the core actions described in the use case.",84074
+30,LOW,"The change is a simple capitalization adjustment, not altering the meaning of the post condition.",77168
+31,HIGH,"The updated snippet introduces four new alternative flows (af[1,2,3,4]) each describing a different type of help contextual within the system. This significantly alters the use case's behavior and functionality compared to the original version.",125415
+32,HIGH,The updated snippet introduces a new alternative flow (af[4]) and modifies the basic flow by adding more steps. This changes the system's behavior by introducing a new user interaction path.,150272
+33,HIGH,"The updated snippet introduces a new exception flow 'Nao existem Periodos Avaliativos Cadastrados', changing the system's behavior when no evaluation periods are found.",106138
+34,HIGH,"The updated snippet introduces new steps and alternative flows, modifying the original use case's functionality. Specifically, it adds the ability to 'limpar' (clear) responses for each competency evaluated, representing a significant change in system behavior.",141847
+35,HIGH,The updated snippet introduces a new alternative flow (af[1]) and modifies the basic flow by adding steps and changing the outcome of step 7. This represents a change in system behavior.,115043
+36,LOW,The change is a simple correction of capitalization from 'exibe' to 'exibe'. It doesn't alter the meaning or functionality of the system's action.,85831
+37,HIGH,"The updated snippet changes the wording to singular ""Competencia (Portfolio)"" instead of plural ""Competencias (Portfolios)"". This implies a change in the system's expected behavior, as it now focuses on editing a single item rather than multiple.",94651
+38,HIGH,The change modifies the verb used to describe the system's action from 'destaca o Competencias (Portfolio)' to 'destaca a Competencia (Portfolio)'. This suggests a potential alteration in the system's behavior and how it interacts with user selection.,93003
+39,HIGH,"The change in wording from ""sem o Competencias (Portfolio) excluido"" to ""sem a Competencia (Portfolio) excluida"" alters the meaning of the system's action. This indicates a semantic edit and therefore a high-impact change.",90797
+40,HIGH,The changes affect the wording describing the system's action and the object being acted upon. This could indicate a change in functionality or intent.,121749
+41,HIGH,"The change in wording from ""excluido"" to ""excluida""  alters the grammatical subject and likely indicates a change in the system's behavior regarding the exclusion of a competency. This is a semantic edit that could impact how the system functions.",93874
+42,LOW,"The change is a syntactic edit, correcting the pluralization of 'Competencias' to 'Competencias'. This does not alter the system's functionality.",84567
+43,HIGH,The updated snippet introduces a new exception flow ('Falha ao Salvar o novo Gerente de Desempenho') and modifies the behavior with additional steps in the basic flow. These changes directly impact the system's functionality.,131347
+44,HIGH,"The pre-condition is changed from specifying the user's location (tela inicial do sistema) to a more general state (no sistema). This could imply a change in the system's behavior, as it might not strictly enforce the user being on the initial screen before executing the use case.",97705
+45,HIGH,"The change modifies the starting action of the use case, shifting from accessing the PGDC status functionality to accessing the system's initial screen. This alters the system's expected behavior and introduces a new alternative flow (af[1]).",104142
+46,HIGH,"The updated snippet shows a significant change in the displayed information. It moves from listing 'Perfis de Competencias' to displaying 'unidades' and specific phases within the PGPD process. This implies a shift in the system's functionality and data presentation, making it a high-impact change.",107078
+47,HIGH,"The updated snippet introduces a new alternative flow ""Retornando a tela inicial pelo menu do sistema"" which changes the system's behavior by adding a new option for the user to return to the initial screen through the system menu.",91964
+48,HIGH,Changing 'Resultados' to 'Resultado' alters the system's expected behavior as it now reflects a singular result instead of multiple.,113904
+49,HIGH,The update changes the system's behavior by introducing new steps and actions. The system now verifies the presence of competition details before displaying them to the user.,102341
+50,LOW,The changes are textual modifications (synonyms and formatting) and do not alter the core actions described in the use case.,92480
+51,HIGH,"The updated snippet introduces new alternative flows (af) and exception flows (ef), altering the system's behavior in handling user actions like editing, deleting, and viewing Capacitacao de TI. This indicates a semantic edit rather than just a syntactic one.",152446
+52,HIGH,"The updated snippet introduces new steps in the basic flow, modifies existing steps, and adds a new exception flow. This directly impacts the system's behavior by changing how it handles editing performance evaluations.",127812
+53,HIGH,"The update introduces new elements to the displayed information (graphs and detailed table content), significantly altering the system's output.",103921
+54,LOW,"The change is a simple rewording from ""inicia"" to ""abre"", which doesn't alter the core action of opening the login screen.",86846
+55,LOW,"The change is purely syntactical, removing the word 'a' from the user action description. It doesn't alter the meaning or behavior of the Logout functionality.",88219
+56,HIGH,"The update changes the system's output by specifying 'informacoes sobre' instead of 'uma tabela contendo as informacoes', altering the content displayed to the user.",87207
+57,LOW,"The change is merely a textual one, correcting a grammatical error ('exibe' instead of 'exibe'). It doesn't alter the system's intended behavior.",87683
+58,LOW,"The change is merely textual, correcting a grammatical error from 'preenchido corretamente' to 'preenchidos corretamente'.",87097
+59,HIGH,"The update changes the wording of the system's action from 'apresenta o formulario para e alteracao de Avaliacao' to 'apresenta o formulario para e alteracao da Avaliacao', which could potentially change the user interface and the way users interact with the system.",100975
+60,HIGH,"The change in wording from 'exibi uma listagem dos Avaliacoes sem o Avaliacao excluido' to 'exibe a listagem das Avaliacoes sem a Avaliacao excluida' modifies the system's expected behavior. It alters the meaning of what is being displayed, indicating a high-impact change.",105308
+61,HIGH,The change in wording from 'excluido' to 'nao excluida' alters the system's behavior. It now displays evaluations that are *not* excluded instead of those that are.,97313
+62,LOW,"The change is purely syntactic, involving only a minor adjustment to the wording. The underlying meaning and system behavior remain unchanged.",96898
+63,HIGH,"The change in wording from 'apresentados' to 'exibidos' suggests a shift in the system's behavior. While seemingly minor, it could indicate a difference in how the fields are displayed and potentially handled.",98324
+64,HIGH,"The original step describes the leader 'selecting' a document, while the updated step describes them 'filling in' a document. This indicates a change in the system's expected behavior - from selection to completion of an action.",94228
+65,HIGH,"The updated snippet introduces a new step (step 9) and modifies the wording of existing steps, changing the flow and expected behavior.  This indicates a semantic edit rather than a simple syntactic one.",99899
+66,HIGH,"The change in the phrase from 'excluido' to 'nao excluido' alters the system's behavior. It means the system now displays all Periodos Avaliativos, not excluding a specific one.",96629
+67,LOW,The change is a simple grammatical correction from 'um nova' to 'uma nova'. This doesn't alter the system's functionality.,85688
+68,LOW,"The change is a simple grammatical correction, from 'Competencias' to 'Competencias', and does not alter the intended action of the use case.",86740
+69,LOW,"The change from ""seleciona um"" to ""seleciona uma"" is a grammatical correction and doesn't alter the core action of the step.",86231
+70,HIGH,"The change in alternative name from 'Negar Exclusao da Competencia (Portfolio)' to 'Nao Confirmar Exclusao da Competencia (Portfolio)'  indicates a potential shift in system behavior. This could imply a difference in how the exclusion process is handled, making it a high-impact change.",96345
+71,HIGH,"The change in wording from 'excluida' to 'nao excluida' directly affects the system's behavior. It implies that the list now includes the excluded competence, a significant alteration to the original use case.",95919
+72,LOW,The change is merely a plus sign added at the beginning of the line. It's a syntactical edit and doesn't alter the system's behavior as described in the step.,88039
+73,LOW,"The change is a simple correction of the wording from ""Niveis"" to ""Nivel"" which doesn't affect the core functionality described in the step.",87357
+74,HIGH,"The change from 'excluido' to 'nao excluido' directly alters the system's behavior. It now displays competencies including the excluded level, a significant difference from the original description.",92252
+75,LOW,"The change is a stylistic edit, combining two preconditions into one without altering the meaning.",77507
+76,LOW,"The change is syntactic; it removes 'do Catalogo' from the system's output description, but doesn't alter the core functionality of displaying a list of competence profiles with an 'Alterar Gerente' option.",88189
+77,LOW,"The change removes the unnecessary phrase ""do novo Gerente de Desempenho"" which is redundant and does not alter the core action of filling in a field for the 'Novo Gerente de Desempenho' within the 'Perfil de Competencias'.",93168
+78,LOW,"The change removes the word ""cadastradas"" from the system's output. This is a textual edit and doesn't alter the core functionality of presenting the catalog of competences.",88764
+79,LOW,The change is merely a textual update: replacing 'a listagem das' with 'dos'. It does not alter the system's intended behavior.,88583
+80,LOW,"The change is a minor syntactic edit, replacing ""escolha"" with ""escolhe"", which doesn't alter the intended meaning or system behavior.",88044
+81,LOW,"The change is a simple syntactic edit, correcting the verb tense from ""selecione"" to ""seleciona"". This doesn't alter the intended system behavior.",87710
+82,LOW,"The change is a simple grammatical correction, from 'preencha' to 'preenche', and does not alter the intended meaning or system behavior.",86202
+83,LOW,"The change is merely a stylistic one, correcting the verb conjugation from 'preencha' to 'preenche'. This doesn't alter the system's functionality or intended behavior.",92240
+84,LOW,"The change is a stylistic edit, replacing 'Planos' with 'Plano'. This doesn't alter the core action of the step.",84143
+85,LOW,"The change is merely a stylistic one, replacing ""Planos de Capacitacao de TI"" with ""Plano de Capacitacao de TI"". The core action remains the same.",86134
+86,LOW,"The change is a syntactic edit, correcting the article ""a"" to ""os"". It doesn't alter the system's intended behavior.",87454
+87,HIGH,The change in the alternative name from 'Negar Exclusao da Capacitacao de TI' to 'Nao Confirmar Exclusao da Capacitacao de TI' suggests a potential shift in the system's behavior or the specific action taken within that alternative flow. This is a semantic edit that could impact how the system responds to certain user inputs.,106720
+88,HIGH,"The change in wording from 'excluida' to 'nao excluida' directly alters the system's behavior. The system now displays plans that include Capacitacao de TI, rather than excluding it.",89555
+89,LOW,"The change is purely syntactic, replacing 'Planos de Capacitacao de TI' with 'planos de capacitacao de TI',  retaining the same meaning and system behavior.",86276
+90,LOW,"The change is purely syntactical, combining the two clauses in the precondition with 'e' instead of '; e',.",83544
+91,LOW,"The changes are syntactical edits, such as using 'para' instead of 'modifcar' and 'contendo' instead of 'constando'. The overall system behavior remains the same.",91350
+92,HIGH,The updated snippet changes the system's action. It now says the user can 'responder a uma Avaliacao ou Autoavaliacao' instead of just 'criar uma nova Avaliacao'. This implies a change in functionality.,98014
+93,HIGH,"The updated snippet introduces new steps and modifies the flow of actions. The system now handles different aspects like 'Nivel de Interacao' and 'Capaz de Avaliar a Competencia', which were not present in the original use case. This represents a significant change in the system's expected behavior.",164414
+94,HIGH,The updated snippet introduces a new exception flow 'Sem Justificativa' which alters the system's behavior by displaying an error message when a justification is not provided. This represents a change in functionality.,87623
+95,HIGH,"The updated snippet introduces a new alternative flow, changing the system's behavior by adding a specific scenario where an evaluator determines they are 'Nao e Capaz de Avaliar a Competencia'. This represents a semantic edit.",94219
+96,LOW,"The change is a syntactic edit, replacing ""listadas"" with ""exibidas"", which are synonyms. This doesn't alter the system's core function or expected behavior.",90765
+97,HIGH,"The updated snippet introduces new alternative flows (af[2], af[3]), an exception flow (ef[1,2]) and modifies existing steps within the basic flow. These changes directly impact the system's behavior by adding new options and handling different scenarios during the 'Copiar Itens de Avaliacao' use case.",219586
+98,LOW,The change is a simple word substitution ('listadas' to 'exibidas') which doesn't alter the core meaning of the system action.,88367

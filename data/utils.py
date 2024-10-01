@@ -48,6 +48,7 @@ def log_error(message=""):
 
 def extract_json_answer(input_string):
     # Using a regular expression to extract the JSON from the string
+    print(f'Extract JSON Input String: {input_string}')
     match = re.search(r'\{.*?}', input_string, re.DOTALL)
     if match:
         json_str = match.group()
@@ -55,15 +56,14 @@ def extract_json_answer(input_string):
             json_data = json.loads(json_str)
             return json_data
         except json.JSONDecodeError as e:
-            log_error(f"Erro ao decodificar JSON: {e}")
+            log_error(f'Extract JSON Input String: {input_string}\nErro ao decodificar JSON: {e}')
             return None
     else:
-        log_error("Nenhum JSON encontrado na string.")
+        log_error(f'Extract JSON Input String: {input_string}\nNenhum JSON encontrado na string.')
         return None
 
 
-def extract_ucx_from_filename(filename):
-    pattern = r'UC\d+'
+def extract_ucx_from_filename(filename, pattern=r'UC\d+'):
     matches = re.findall(pattern, filename)
     return matches[0]
 
