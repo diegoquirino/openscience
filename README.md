@@ -2,6 +2,8 @@
 
 Experiment #1: **Integrating** Text-Generation Large Language Models (LLMs) *in* Test Case Maintenance (TCM) **with** Model-Based Testing (MBT) in the ***RGP-Diarias and GTI-Competencias Systems of the Court of Justice of the State of Paraíba (TJPB), Brazil***
 
+[Zenodo Public Repository](https://zenodo.org/records/13883640)
+
 ## Contact
 
 * *Researcher:* Carlos Diego Quirino Lima
