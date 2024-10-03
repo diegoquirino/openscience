@@ -169,7 +169,7 @@ def calculate_mixed_impacted_size(row):
     # test cases that include at least one 'high impact' step and at least one 'low impact' step
     new_cts, obsolete_cts_low_low, obsolete_cts_low_high, obsolete_cts_high = sets_of_cts_from(row)
     return len(
-        obsolete_cts_low_high.union(obsolete_cts_low_low.intersection(obsolete_cts_high))
+        obsolete_cts_low_high.union(obsolete_cts_low_low.intersection(obsolete_cts_high.union(new_cts)))
     )
 
 
