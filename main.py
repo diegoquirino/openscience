@@ -30,11 +30,10 @@ def process_model(model):
             result_df.to_csv(file_path, index_label='index')
 
 
-# MODELS = ['gpt-4o', 'gpt-4o-mini', 'gemini-1.5-flash',
-#           'openchat', 'gemma2', 'llama3.1', 'qwen2', 'phi3', 'mistral', 'mixtral']
-MODELS = ['mixtral']
+MODELS = ['gpt-4o', 'gpt-4o-mini', 'gemini-1.5-flash',
+          'openchat', 'gemma2', 'llama3.1', 'qwen2', 'phi3', 'mistral', 'mixtral']
 SOFTWARE = 'gti-competencias'
-MAX_WORKERS = 10
+MAX_WORKERS = 4
 
 if __name__ == '__main__':
     software_conf_file_path = os.path.join(os.getcwd(), 'data', f'{SOFTWARE}.conf')

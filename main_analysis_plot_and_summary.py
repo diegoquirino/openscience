@@ -29,7 +29,7 @@ if __name__ == '__main__':
                                                                 conf_matrix_title=f'{file_name.upper()} Confusion Matrix',
                                                                 accuracy_graph_title=f'{file_name.upper()} Accuracy')
             conf_matrix, accuracy, recall, precision, f1 = confusion_matrix_analysis.calculate()
-            # confusion_matrix_analysis.plot()
+            confusion_matrix_analysis.plot()
             test_cases_analysis = TestCasesAnalysis(use_case_edit_classifications_file_path, truth_diffs_path)
             merged_df, grouped_df = test_cases_analysis.merge_and_process()
             os.makedirs(ANALYSIS_RESULTS_PATH, exist_ok=True)
