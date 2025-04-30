@@ -6,7 +6,15 @@ Welcome to the **Open Science** repository by [Carlos Diego Quirino Lima](https:
 
 Below is an overview of the key branches in this repository, each associated with specific research projects and academic conferences.
 
-### ICST 2025 Projects
+### COMPSAC 2025 Projects
+
+These branches contain work related to the **IEEE 49th Annual Computers, Software, and Applications Conference (COMPSAC) 2025**:
+
+- (Dataset) [**experiment01_LLMs_TCM_MBT_GTI-Competencias**](https://github.com/diegoquirino/openscience/tree/experiment01_LLMs_TCM_MBT_GTI-Competencias)
+- (Dataset) [**experiment01_LLMs_TCM_MBT_RGP-Diarias**](https://github.com/diegoquirino/openscience/tree/experiment01_LLMs_TCM_MBT_RGP-Diarias)
+- (Scripts) [**rag_cottot_llms_tcm_mbt**](https://github.com/diegoquirino/openscience/tree/rag_cottot_llms_tcm_mbt)
+
+### ICST 2025 Projects (rejected paper)
 
 These branches contain work related to the **International Conference on Software Testing (ICST) 2025**:
 
