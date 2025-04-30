@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change only modifies the alternative flow reference from 'af[3,6]' to 'af[3,5]'. This is a syntactic edit as it doesn't alter the user action or the system's expected behavior, only the flow connection.",1953
+1,HIGH,"The update introduces a new step (step 21) and system response (step 22) related to selecting beneficiaries. This change introduces a new feature and alters the expected behavior of the use case, making it a high-impact edit.",1520
+2,HIGH,"The change reorders steps in the basic flow, potentially altering the system's expected behavior. Steps 24 and 25 are swapped, which could impact the flow of actions and the system's response.",1502
+3,HIGH,"The change removes an entire alternative flow (Usuário informa que NÃO acompanha autoridade) and replaces it with a new one (Limpar Campos). This fundamentally alters the possible user interactions and system responses, thus impacting the system's behavior.",1531
+4,HIGH,"The update removes an entire exception flow, which directly impacts the system's behavior by eliminating a specific error handling scenario. This constitutes a semantic change.",1136
+5,HIGH,"The updated snippet introduces a new use case with a complete set of steps, actors, preconditions, and postconditions. This represents a significant change in system functionality, classifying it as a high-impact edit.",1336
+6,HIGH,"The updated snippet introduces a new use case 'UC008 - Registrar Autorização de Pagamento' with its complete specification including actors, preconditions, basic flow, alternative flows, and post-conditions. This represents a new functionality being added to the system, hence a high-impact change.",1653
+7,HIGH,"The updated snippet introduces a new use case 'UC009 - Prestar Contas' with detailed steps, alternative flows, and exception flows. This significantly changes the system's expected behavior by adding a new functionality.",1619
+8,HIGH,"The updated snippet introduces a new use case with a complete set of steps, actors, preconditions, and postconditions. This represents a significant change in system functionality, classifying it as a high-impact edit.",1350
+9,HIGH,"The update introduces new requirements and specific details about the verification process, changing the expected behavior of the system. The user is now expected to verify specific values and conditions, which was not present in the original snippet.",1542
+10,HIGH,"The update introduces new functionality: displaying the empenho number and payment authorization as links. This changes the system's behavior by adding new elements to the displayed information, thus classifying it as a high-impact change.",1368
+11,LOW,"The change only removes a reference to an alternative flow (af[5]) without altering the core action or functionality described in step 13. This is a syntactic edit, hence low-impact.",2659
+12,HIGH,"The updated snippet removes an entire alternative flow, which represents a change in the system's expected behavior. This is a semantic edit, hence classified as high-impact.",1768
+13,LOW,"The change is purely textual, replacing 'Visualiza' with 'Verifica'. This does not alter the system's expected behavior or functionality. It's a synonym change, hence a low-impact edit.",1302
+14,LOW,"The change is textual and does not alter the core functionality. The user still clicks to analyze the account statement, but the updated description provides more context about the action.",1197
+15,LOW,"The change only adds a reference to an additional alternative flow (af[4]) without altering the core functionality described in step 4. This is a syntactic edit, hence low-impact.",1249
+16,HIGH,"The updated snippet introduces a new alternative flow (alternative 4 ""Ordenar pelo nome do servidor"") which changes the system's behavior by adding a new functionality: ordering requests by server name. This is a semantic edit, hence a high-impact change.",1630
+17,HIGH,"The addition of 'ef[5]' introduces a new exception flow, indicating a potential change in the system's behavior. This signifies a semantic edit, hence a high-impact change.",1166
+18,HIGH,The updated snippet introduces a new exception flow (exception 5) which changes the system's behavior by handling a specific error scenario: 'Conta para recebimento de diárias não cadastrada'. This addition represents a new requirement and alters the system's expected response in a specific situation.,1736
+19,HIGH,"The update introduces a reference to an alternative flow (af[5]) at step 21. This indicates a change in the system's behavior, potentially introducing a new path or condition within the use case.",1239
+20,HIGH,"The updated snippet introduces a new alternative flow 'Informar nome social' which adds a new functionality to the use case. This changes the system's expected behavior by allowing users to provide a social name for beneficiaries, thus classifying it as a high-impact change.",1474
+21,LOW,"The change is syntactic. The system still displays a list of pending requests, but now with an added sorting criterion (by daily number in ascending order). This is a refinement of the existing functionality, not a change in core behavior.",1349
+22,LOW,"The change is syntactic. The system still retrieves and displays a list of eligible daily allowances for payment. The update only adds a sorting criterion (by daily allowance number in ascending order), which is a refinement of the existing functionality and does not change the core behavior.",1468
+23,LOW,"The change is syntactic. The system still displays a list of eligible daily allowances, but now it's ordered by daily allowance number in ascending order. This is a refinement of the display, not a change in core functionality.",1307
+24,HIGH,"The updated snippet introduces a new functionality: ordering the list of daily allowances by the arrival date of the request in the authorization phase. This change alters the system's behavior by adding a new sorting criterion, thus classifying it as a high-impact edit.",1810
+25,HIGH,"The updated snippet introduces a new functionality: ordering the list of daily allowances by the arrival date of the request in the liquidation phase. This change alters the system's behavior by adding a new sorting criterion, thus classifying it as a high-impact edit.",1976
+26,LOW,The changes are purely textual (spelling and punctuation) and do not alter the system's behavior or functionality. They are considered syntactic edits.,1034
+27,LOW,"The change is purely syntactic, replacing 'Exibe a opcao' with 'Exibe a opção'. This does not alter the system's behavior or functionality.",1632
+28,LOW,"The change is purely syntactic. It only modifies the wording from 'opcao escolhida' to 'opção escolhida', which is a minor spelling correction and does not alter the system's behavior.",1722
+29,LOW,"The change is purely syntactic, replacing ""opcao"" with ""opção"" which are synonyms. The system's behavior remains unchanged.",1081
+30,LOW,"The change is purely textual, replacing ""a opcao"" with ""a opção"". This does not alter the system's behavior or functionality.",1360
+31,LOW,The changes are purely textual (using 'opção' instead of 'opcao' and 'último' instead of 'ultimo'). The system's behavior and the flow of the use case remain unchanged.,1463
+32,LOW,"The change is purely textual, replacing ""opcao"" with ""opção"" (both meaning ""option"" in Portuguese). This does not alter the system's behavior or functionality.",1223
+33,LOW,"The change is purely syntactic, replacing 'a opcao' with 'a opção'. This does not alter the system's behavior or functionality.",1339
+34,LOW,The changes are purely textual (singular/plural agreement and minor spelling corrections) and do not alter the system's behavior or the flow of the use case.,2390
+35,LOW,"The change is purely textual, updating punctuation and capitalization. It does not alter the system's behavior or functionality.",1533
+36,LOW,"The change is purely syntactic, updating the punctuation from a single quote to a double quote. This does not alter the system's behavior or functionality.",1275
+37,LOW,"The change is purely syntactic, updating punctuation from a colon to a period. This does not alter the system's behavior or the meaning of the step.",1103
+38,LOW,"The change is purely textual, involving only minor modifications to capitalization and punctuation. The core functionality and flow of the alternative flow remain unchanged.",1953
+39,LOW,The changes are purely textual (grammatical corrections and singular/plural adjustments) and do not alter the system's behavior or the flow of the use case.,1411
+40,HIGH,"The update removes the entire postCondition, which fundamentally changes the expected behavior of the use case.  The system no longer has a defined outcome, making this a high-impact change.",1205
+41,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1614
+42,LOW,"The change is purely textual, replacing 'O usuario' with 'Acessa' and rephrasing the sentence slightly. This does not alter the system's expected behavior or functionality.",1524
+43,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1354
+44,LOW,"The change is purely syntactic, updating punctuation from a missing period to a period at the end of the sentence. This does not alter the system's expected behavior.",1375
+45,LOW,"The change is purely syntactic, updating punctuation from a missing period to a period at the end of the sentence. This does not alter the system's expected behavior.",1340
+46,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1743
+47,LOW,The change is purely syntactic. It only involves adding a period at the end of the message displayed by the system. This does not alter the system's behavior or functionality.,2106
+48,LOW,"The change is purely syntactic, adding a period at the end of the sentence. It does not alter the system's behavior or the meaning of the message displayed.",1478
+49,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1255
+50,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1232
+51,LOW,The change is textual and does not alter the core functionality. It adds clarifying information about the source of the requests (all servers) but doesn't change the system's behavior of displaying a sorted list of pending requests.,1331
+52,LOW,The change is purely textual (capitalization and punctuation) and does not alter the functionality or expected behavior of the system. It remains the same action: filtering the list by beneficiaries without a creditor number.,1629
+53,LOW,"The change is purely syntactic, updating punctuation from a missing period to a period at the end of the sentence. This does not alter the system's expected behavior.",1119
+54,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1290
+55,LOW,"The change is purely syntactic, involving only the addition of a period at the end of steps 3 and 4. This does not alter the system's expected behavior or functionality.",2604
+56,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1334
+57,LOW,"The change is purely textual, removing the redundant phrase ""no caso de desatribuição"" from the step description. The system's behavior remains unchanged.",1166
+58,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1141
+59,HIGH,"The change reorders a step in the basic flow of the use case. This alters the sequence of actions performed by the user, potentially impacting the system's behavior and logic.",1276
+60,HIGH,"The change reorders steps in the basic flow, potentially altering the sequence of actions and impacting the system's behavior. This is a semantic edit.",1089
+61,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1258
+62,LOW,"The change is purely syntactic. The wording of step 6 remains the same, and no new steps, alternative flows, or exception flows are introduced or deleted. The change only involves adding a '+' symbol to indicate the step's presence in the updated version.",1932
+63,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1457
+64,LOW,"The change is purely syntactic, correcting punctuation (adding a period at the end of the sentence) without altering the meaning or behavior of the precondition.",1278
+65,HIGH,"The change introduces a new step (step 5) which alters the flow of the use case. This represents a change in the system's expected behavior, classifying it as a high-impact edit.",1345
+66,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1119
+67,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1246
+68,HIGH,"The change reorders the steps in the basic flow, altering the sequence of actions performed by the user and the system. This change in the order of steps can potentially impact the system's behavior and logic.",1502
+69,HIGH,"The change in step number from 4 to 2 alters the sequence of actions in the use case, potentially impacting the system's behavior and logic flow.",1379
+70,LOW,"The change is purely syntactic, correcting punctuation (adding a period at the end of the sentence) without altering the meaning or behavior of the precondition.",1286
+71,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1120
+72,LOW,"The change is purely textual, removing the redundant phrase ""no caso de desatribuição"" from the step description. The system's behavior remains unchanged.",1151
+73,LOW,"The change is purely syntactic, updating punctuation from no period to a period at the end of the sentence. This does not alter the system's expected behavior.",1129
+74,LOW,The change is purely textual (adding a '+' symbol) and does not alter the meaning or functionality described in the precondition. It is a syntactic edit.,1064
+75,LOW,"The change is purely textual (adding a period at the end of the sentence) and does not alter the meaning or logic of the precondition. Therefore, it is classified as a low-impact change.",1257
+76,LOW,"The change is purely syntactic, adding a period at the end of the sentence. It does not alter the user's action or the system's expected response.",1170
+77,LOW,"The change is purely textual, correcting the word 'bancários' to singular 'bancária'. This does not alter the system's behavior or functionality.",1154
+78,LOW,"The change is purely syntactic, involving only a punctuation update (adding a period at the end of the sentence). The system's behavior remains unchanged.",1083
+79,LOW,"The change only adds a reference to an additional alternative flow (af[6]) without altering the core action or flow described in step 25. This is a syntactic edit, hence low-impact.",1302
+80,HIGH,The updated snippet introduces a new alternative flow (alternative 6) which changes the system's behavior by adding a new scenario: alerting the user about exceeding the daily limit. This is a semantic change as it introduces a new feature/requirement.,1396

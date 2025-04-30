@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,HIGH,"Modifying the referenced alternative flows from af[3,6] to af[3,5] alters the system's behavior by changing the possible alternate execution paths.",4787
+1,HIGH,"The changes involve modifying existing steps, removing alternative and exception flows, and adding new steps related to selecting beneficiaries. These alterations affect the system's expected behavior, thereby classifying the change as high-impact.",16402
+2,HIGH,"The updated snippet removes steps related to displaying and selecting beneficiaries, altering the system's expected behavior by eliminating critical actions in the use case.",9682
+3,HIGH,"The alternative flow was changed from detailing a user informing about not accompanying authority to a different flow 'Limpar Campos', altering the system's behavior.",3474
+4,HIGH,Deleting an exception flow alters the system's expected behavior by removing a defined error handling path.,4052
+5,HIGH,"The updated snippet introduces a completely new use case with multiple steps, alternative flows, and system interactions, thereby altering the system's expected behavior.",3769
+6,HIGH,"A new use case is introduced, adding a new requirement and system behavior.",2019
+7,HIGH,"The addition of a new use case introduces new functionality and system behavior, affecting the system's requirements and expected operations.",2748
+8,HIGH,"The updated snippet introduces a new use case with detailed steps, actors, and conditions, thereby adding a new requirement and altering the system's expected behavior.",4062
+9,HIGH,"The updated snippet adds specific verification criteria regarding percentage limits for different user roles, which changes the system's expected behavior by introducing new requirements for value validation.",3644
+10,LOW,The update adds descriptive details about how specific information is presented (as links) without altering the overall behavior or functionality of the system.,3529
+11,HIGH,Removing the reference to alternative flow 5 alters the system's behavior by excluding a possible alternative path.,2734
+12,HIGH,"The updated snippet removes an alternative flow, which alters the system's expected behavior.",3732
+13,LOW,Changed the action description using a synonym without affecting system behavior.,2794
+14,HIGH,"A new action 'Verifica o histório da tramitação da prestação de contas' was added, altering the system's expected behavior by introducing an additional step in the use case.",2243
+15,HIGH,Adding a new alternative flow alters the system's behavior by introducing an additional possible execution path.,3472
+16,HIGH,"Added a new alternative flow, altering the system's behavior.",2912
+17,HIGH,Adding an exception flow (ef[5]) alters the system's behavior by introducing a new exception scenario at step 22.,4275
+18,HIGH,"An exception flow 'Conta para recebimento de diárias não cadastrada' was added, altering the system's expected behavior.",3586
+19,HIGH,"Adding an alternative flow (af[5]) introduces a new possible behavior, altering the system's expected behavior.",2905
+20,HIGH,"The update introduces a new alternative flow, changing the system's expected behavior.",3311
+21,HIGH,"The update introduces a specific ordering to the displayed list, altering the system's behavior.",3028
+22,HIGH,"The change alters the system's behavior by adding an order to the list retrieval, affecting how the information is presented to the user.",3099
+23,LOW,"The update adds a specification for ordering the list in ascending order, which is a textual clarification and does not alter the fundamental behavior of displaying the eligible daily requests.",4298
+24,HIGH,"The update introduces an additional ordering criterion, altering the system's behavior in how it retrieves and displays the list of diárias.",3884
+25,HIGH,"The updated snippet introduces an additional ordering criterion (by request arrival date) for displaying the list of diárias, thereby altering the system's behavior by providing a new way to view the data.",3674
+26,LOW,"The updates involve only textual corrections, such as adding diacritics and fixing spelling, without altering the use case's behavior.",2528
+27,LOW,"The change only corrects a typo by adding an accent to 'opcao', without altering the system's behavior.",1997
+28,LOW,"The change only corrects a spelling typo from 'opcao' to 'opção', without altering the system's behavior.",2380
+29,LOW,"The change involves correcting the spelling by adding an accent, which does not alter the system's behavior.",6963
+30,LOW,The update corrects a spelling typo without altering the system's behavior.,2256
+31,LOW,The changes involve only orthographic corrections (adding diacritics) without altering the system's behavior or logic.,3818
+32,LOW,The change only corrects the spelling of a word without altering the system's behavior.,2146
+33,LOW,"The change corrects the spelling by adding an accent to 'opcao', which is a textual update and does not alter the system's behavior.",1863
+34,LOW,"The changes involve correcting spelling and adding accents to words without altering the use case steps or system behavior, making them syntactic edits.",4279
+35,LOW,Only fixed a typo and added punctuation without altering system behavior.,6585
+36,LOW,The changes involve correcting a typo ('opcao' to 'opção') and adding a period for punctuation. These are syntactic edits that do not alter the system's expected behavior.,2523
+37,LOW,The change involves only textual corrections (accent and punctuation) without altering the system's behavior.,2400
+38,LOW,The updates involve correcting spelling and adding accents without altering the system's behavior or functionality.,3981
+39,LOW,"The changes involve minor textual updates such as adding plural indicators, correcting accents, and adding punctuation, which do not alter the system's expected behavior.",3944
+40,HIGH,"The removal of the postCondition deletes a system requirement, altering the system's expected behavior.",3604
+41,LOW,The changes involve minor textual corrections and punctuation additions without altering the system's expected behavior.,2567
+42,LOW,The change only rephrases the step description without altering the system's behavior or requirements.,3599
+43,LOW,"The change only adds a period, which is a syntactic edit and does not alter the system's behavior.",2100
+44,LOW,"The change only adds a period at the end of the step description, which is a syntactic adjustment and does not alter the system's behavior.",2391
+45,LOW,"The change only adds a period at the end of the step description, which is a syntactic edit that does not alter the system's behavior.",3113
+46,LOW,"The changes involve only syntactic updates, such as adding an accent to a word and including a period, without altering the use case's behavior or requirements.",3022
+47,LOW,"Only punctuation was added to the message, which does not alter the system's behavior.",2083
+48,LOW,"Added a period to the message string, which is a syntactic change that does not affect system behavior.",3147
+49,LOW,"The changes are purely textual, adding an accent and punctuation without altering the system's behavior.",3145
+50,LOW,"The changes involve correcting the spelling of 'usuario' to 'usuário' and adding a period, which are purely syntactic edits that do not alter the system's behavior.",2213
+51,HIGH,"The update adds specifying that the list includes requests from all servers, altering the scope of data displayed and potentially changing the system's behavior.",4381
+52,LOW,"The changes involve only capitalization of the first letter and the addition of a period, which are syntactic edits that do not alter the system's behavior.",7175
+53,LOW,"Added a period at the end of the step description, which is a syntactic punctuation change that does not alter the system's behavior.",2857
+54,LOW,"The changes involve minor textual updates, such as correcting the accent in 'usuário' and adding a period, without altering the system's behavior.",2647
+55,LOW,"The changes involve only adding punctuation (periods) at the end of the step descriptions, without altering the system's behavior.",3085
+56,LOW,The change only adds a punctuation mark (a period) without altering the system's expected behavior.,2242
+57,LOW,The change only involves removing a determiner without altering the system's expected behavior or functionality.,3968
+58,LOW,Added a punctuation mark without changing system behavior.,3565
+59,LOW,"The change only reorders the step number from 3 to 1 without altering the action or system behavior, making it a syntactic edit.",1872
+60,LOW,"The changes only involve renumbering the steps without altering their content or the sequence of actions, thereby not affecting the system's expected behavior.",5093
+61,LOW,"The changes are purely syntactic, correcting spelling and punctuation without altering the system's behavior.",2549
+62,LOW,The update corrects a typo from 'histório' to 'histórico' without altering the system's behavior or functionality.,3319
+63,LOW,"The change only adds a period, which is a syntactic edit that does not affect the system's behavior.",2316
+64,LOW,"The updates are syntactic, fixing typos and adding punctuation without altering system behavior.",2538
+65,LOW,The changes involve correcting a typo and renumbering steps without altering the use case's system behavior.,4106
+66,LOW,Only a punctuation mark was added without changing the system's behavior.,2824
+67,LOW,"The changes involve only textual corrections, such as adding an accent and punctuation, without altering the system’s behavior.",2335
+68,LOW,The change only involves reordering step numbers without altering the system's behavior or requirements.,6652
+69,LOW,The change only repositions the step number without modifying the action or system behavior.,2453
+70,LOW,"The changes involve correcting the spelling by adding an accent and adding punctuation, which are syntactic edits that do not alter the system's behavior.",2654
+71,LOW,"The update only adds a period at the end of the step description, which does not alter the system's behavior.",2661
+72,LOW,Removed redundant wording without altering the system's expected behavior.,3173
+73,LOW,"The update only adds a period at the end of the step description, which is a minor syntactic change that does not alter the system's behavior.",2226
+74,LOW,"The modification only changes the capitalization of 'Sistema' to 'sistema', which does not affect the system's behavior.",3220
+75,LOW,"The changes involve only textual updates, such as adding an accent and punctuation, without altering the system's behavior.",2503
+76,LOW,"The modification solely adds punctuation (a period) to the step description, which is a syntactic change and does not affect the system's behavior.",2213
+77,LOW,The change only corrects the grammatical number from 'conta bancários' to 'conta bancária' without altering the use case's behavior or functionality.,3608
+78,LOW,Adding a period at the end of the step is a syntactic change and does not alter the system's behavior.,3085
+79,HIGH,Adding an additional alternative flow (af[6]) modifies the system's behavior by introducing a new alternative path.,3382
+80,HIGH,Added a new alternative flow which changes the system's behavior.,3472

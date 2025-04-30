@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change is purely syntactic, involving only the capitalization of a single word within a string. This does not alter the action described or the system's expected behavior. It is akin to a typographical correction and does not introduce any new requirements or modify existing ones. Therefore, this change is classified as low-impact.",5918
+1,LOW,"The change is purely syntactic, involving only the capitalization of a word within a string. This does not alter the action described or the system's expected behavior. It is akin to a typographical correction and does not introduce any new requirements or modify existing ones. Therefore, it is classified as low-impact.",5459
+2,LOW,"The change is purely typographical, involving only the capitalization of a word without altering the meaning or behavior of the system.",7162
+3,LOW,"The change only involves capitalization of a word in the post-condition, which does not affect the meaning or the system's expected behavior. It is a syntactic edit.",4931
+4,LOW,The change only involves capitalization of words and does not alter the meaning or behavior described in the use case. It is a syntactic edit that improves formatting without impacting functionality.,8487
+5,,,94123
+6,HIGH,"The change removes a reference to an exception flow at step 3, which alters the system's handling of exceptions at that step. This is a semantic edit that impacts the system's behavior, hence classified as high-impact.",8400
+7,HIGH,"The addition of 'ef[3]' introduces an exception flow, which potentially changes the system's behavior by adding a new path for exception handling. This qualifies as a high-impact change.",9840
+8,LOW,"The change is purely syntactic, involving only capitalization of certain words without altering the meaning or functionality of the use case. Hence, it is classified as low-impact.",6704
+9,LOW,"The changes are purely syntactic, involving only capitalization of certain terms without altering the meaning or behavior described in the use case.",7481
+10,,,90490
+11,,,91449
+12,,,86045
+13,LOW,"The change only involves capitalization of words in the postCondition, which does not alter the meaning or the system's expected behavior. It is a typographical change and therefore considered a low-impact edit.",8349
+14,HIGH,"The change introduces a complete new use case for managing evaluations, which adds new features and behaviors to the system. This constitutes a significant alteration to the system's expected behavior, hence classified as high-impact.",9612
+15,HIGH,"The change from managing 'perfiles de competencias' to 'Periodos Avaliativos' alters the system's functionality by changing the type of entities being managed. This impacts the system's behavior and requirements, hence it is classified as high-impact.",10821
+16,HIGH,"The change alters the system's expected behavior by shifting from managing 'perfis de competencias' to 'Periodos Avaliativos', indicating a change in the functionality and system interactions.",8661
+17,HIGH,"The change modifies the method of filling date fields from selecting a leader to directly entering dates, which affects the system's behavior and likely requires changes in implementation.",8251
+18,HIGH,"The change removes a reference to an exception flow at step 3, which alters the system's handling of exceptions at that step. This is a semantic edit that impacts the system's behavior, hence classified as high-impact.",8006
+19,HIGH,"The change modifies the entity being listed and introduces an exception flow, both of which affect the system's behavior.",6706
+20,HIGH,"The change modifies the system's expected behavior by altering the data presented in a list from competency profiles to evaluation periods, which introduces a new requirement or feature.",8532
+21,HIGH,"The change involves a shift from managing 'perfis de competencias' to managing 'Periodos Avaliativos', which alters the system's functionality and expected behavior.",8285
+22,HIGH,"The change from managing 'perfiles de competências' to 'Períodos Avaliativos' in the post-condition represents a fundamental shift in the use case's objective. This alteration likely requires significant adjustments to the system's design, implementation, and interactions with other components, thus qualifying as a high-impact change.",9273
+23,LOW,"The changes are purely in the casing of certain words ('competencias' to 'Competencias' and 'portfolio' to 'Portfolio') without altering the meaning or introducing new requirements, features, or flows. This is considered a syntactic edit, hence low-impact.",7671
+24,LOW,"The changes are purely syntactic, involving capitalization of words without altering the functionality or behavior of the use case.",6466
+25,LOW,"The changes are limited to capitalization and typo correction in the description of step 4, without altering the system's expected behavior or requirements.",6312
+26,HIGH,"The change removes a reference to an exception flow at step 3, which alters the system's handling of exceptions at that step. This is a semantic edit that impacts the system's behavior, hence classified as high-impact.",7990
+27,,,90270
+28,,,90887
+29,HIGH,"The addition of `ef[3]` introduces an exception flow, potentially altering the system's behavior by incorporating additional error handling or alternative paths. This modification affects the flow of the use case beyond just syntactic changes, hence it is classified as high-impact.",7715
+30,,,91734
+31,LOW,"The changes involve capitalization and typo corrections in the description of step 6, which do not alter the system's behavior or requirements.",7528
+32,LOW,"The changes are purely syntactic, involving capitalization without altering the meaning or behavior described in the use case steps.",7481
+33,LOW,"The change involves only capitalization of certain words in the post-condition, which does not alter the semantic meaning or the expected behavior of the system. It is considered a stylistic adjustment and thus a low-impact change.",9848
+34,HIGH,"The changes include the introduction of a new use case, 'RF012 - Ajuda', which specifies new actor interactions and system behaviors related to accessing help features across different management functionalities. This introduces new requirements and behaviors not present in the original snippet, thus qualifying as a high-impact change.",6560
+35,HIGH,"The updated snippet introduces a new use case 'RF013 - Gerenciar Niveis das Competencias' which includes details about managing levels of competencies, including interactions with actors, preconditions, basic flow, alternative flows, exception flows, and postconditions. This addition represents a new feature or requirement for the system, thereby changing the system's expected behavior. Hence, this is classified as a high-impact change.",7047
+36,HIGH,"The change introduces a new use case, defining a new feature or requirement for the system. This alteration affects the system's behavior by specifying new functionalities and interactions that were not previously documented. Therefore, it is classified as high-impact.",9280
+37,HIGH,"The updated snippet introduces a entirely new use case, 'RF008 - Gerenciar Respostas de Avaliacoes,' which did not exist in the original snippet ('nan'). Introducing a new use case represents the addition of a new feature or requirement, significantly altering the system's expected behavior. This aligns with the definition of a high-impact change.",7548
+38,HIGH,"The change introduces a全新 use case, 'RF009 - Gerenciar Resultados de Avaliacoes', which adds new functionality to the system. This inclusion alters the system's expected behavior by providing new capabilities, thereby classifying it as a high-impact change.",10333
+39,LOW,"The changes are purely syntactic, correcting grammar without altering the functionality or behavior described in the use case. The system's behavior remains unchanged.",6019
+40,LOW,"The changes are purely textual, correcting noun and adjective agreements without altering the steps, actions, or flow of the use case. Thus, they do not impact the system's behavior and are classified as low-impact.",10035
+41,LOW,"The changes are purely textual, correcting grammar and noun agreement without altering the system's behavior or the flow of the use case.",48558
+42,LOW,The changes are grammatical corrections in the description without altering the system's behavior or the flow of the use case.,9457
+43,LOW,"The changes are purely textual, correcting noun and gender agreement without altering the system's behavior or the use case flow.",9703
+44,LOW,"The change is purely grammatical, correcting gender agreement in Portuguese without altering the system's behavior or requirements.",46545
+45,LOW,"The change corrects the grammatical article from 'dos' to 'das' in the description of the system's action, without altering the system's behavior or the steps in the use case. This is considered a syntactic edit.",9745
+46,HIGH,"The change is classified as high-impact because it introduces a new use case that defines a new feature for the system. This addition requires significant modifications to the system's behavior, including new functionalities for administrators to alter performance managers for competency profiles. The introduction of new actors, flows, and conditions necessitates comprehensive changes to the system's design and implementation, thereby qualifying as a high-impact edit.",12340
+47,HIGH,"The change modifies the precondition by removing details about the user's location, which could alter when the use case is applicable and thus impact the system's behavior.",9278
+48,HIGH,"The change modifies the step description, altering the starting point of the use case, and introduces an alternative flow, both of which impact the system's behavior.",7742
+49,,,85578
+50,LOW,"The change from 'Resultados' to 'Resultado' is a singular noun form adjustment in Portuguese, correcting from plural to singular. This does not alter the action or the expected behavior of the system, hence it is a syntactic edit without impacting system behavior.",5599
+51,HIGH,"The changes introduce new steps and alter the sequence of actions, requiring the system to handle and display additional information, thus changing the system's expected behavior.",11113
+52,,,90584
+53,HIGH,"The change introduces a entirely new use case, which adds a new feature to the system, significantly altering its behavior and functionality.",9207
+54,HIGH,"The change introduces a new use case, which adds a new feature to the system. This alteration significantly affects the system's expected behavior by requiring the implementation of functionality to manage performance goals, including editing evaluations and handling exceptions. Therefore, this change is classified as high-impact.",10478
+55,LOW,The change from 'inicia' to 'abre' is a synonymous replacement that does not alter the system's expected behavior. It is a syntactic edit without impacting the use case's requirements or flow.,7004
+56,LOW,The change is a minor rephrasing that does not alter the system's expected behavior or requirements.,8019
+57,LOW,"The change is purely grammatical, correcting the gender agreement in Portuguese without altering the system's behavior or requirements.",8530
+58,LOW,"The change corrects the agreement of the adjective with the plural noun in the description, ensuring accuracy without altering the system's behavior or requirements.",7216
+59,LOW,"The changes are purely syntactic, involving minor grammatical adjustments and rephrasing for clarity without altering the system's expected behavior.",9723
+60,LOW,The changes are purely grammatical corrections and do not alter the system's behavior or the flow of the use case.,8758
+61,HIGH,"The change alters the system's behavior by modifying what is displayed to the user, specifically including an evaluation that was previously excluded. This impacts the user's interaction and the data they rely on, hence it is a high-impact change.",7531
+62,LOW,"The change involves removing a semicolon and comma in the precondition and replacing them with a conjunction, which does not alter the logical conditions or the system's expected behavior. It is a syntactic improvement for clarity.",9479
+63,HIGH,"The change involves re-adding a statement that was previously removed, which pertains to the system's behavior regarding feedback and exception handling. This alteration affects the system's expected behavior, hence it is classified as high-impact.",8012
+64,HIGH,"The change involves reordering of steps and potential addition or deletion of steps, which can affect the sequence and flow of the use case, thereby impacting the system's expected behavior.",9570
+65,HIGH,"The change modifies both the action performed by the actor (from selecting to filling in) and removes a specific range, which likely alters the system's behavior.",7952
+66,HIGH,"The change involves splitting a single field into two separate fields, which affects the system's data handling and processing, thus changing the expected behavior.",12166
+67,HIGH,"The change alters the system's expected behavior by modifying what is displayed in the list of evaluation periods, from excluding to not excluding a specific period. This directly impacts the functionality and user experience, hence it is classified as high-impact.",7028
+68,LOW,"The change is a grammatical correction from 'um' to 'uma' in the description, which does not alter the system's expected behavior or functionality. It is purely a syntactic edit.",7510
+69,LOW,The change from 'um' to 'uma' is a grammatical correction in the actor's action description and does not alter the system's expected behavior or the flow of the use case.,8027
+70,LOW,"The change is purely grammatical, correcting the article from 'um' to 'uma' without altering the action or system behavior.",7186
+71,,,89391
+72,HIGH,"The change alters the system's expected behavior by modifying the display of competencies in the list, specifically whether a competency is excluded or not. This is a semantic edit that affects the functionality and user experience.",8389
+73,LOW,The change is a grammatical correction from 'cadastradas' to 'cadastrados' without altering the system's behavior or requirements.,8757
+74,HIGH,"The change from 'Niveis' to 'Nivel' alters the semantic meaning from creating multiple levels to creating a single level, which impacts the system's expected behavior.",50876
+75,HIGH,"The change alters the system's behavior by changing whether a specific competence level is included or excluded in the displayed list, which is a semantic edit.",7582
+76,LOW,"The change involves only the removal of punctuation marks in the precondition without altering the meaning or the conditions required for the use case. Therefore, it does not impact the system's behavior and is classified as a low-impact change.",9560
+77,LOW,"The change involves removing 'Catalogo (' and ')' around 'Perfis' without altering the core functionality described in the step. The system still displays the list of 'Perfis de Competencias' with the option to 'Alterar Gerente'. Therefore, this is classified as a low-impact change.",12195
+78,LOW,"The change removes a descriptive phrase without altering the action performed or the system's expected behavior. Assuming the field name is unique and the context remains clear, this is considered a low-impact edit.",18821
+79,HIGH,"The removal of 'cadastradas' changes the description from 'registered competencies' to 'competencies,' which could alter the system's behavior by changing the set of competencies presented. This is considered a semantic edit and thus high-impact.",8030
+80,LOW,"The change is a grammatical correction from 'das Planos' to 'dos Planos', which does not alter the system's behavior or functionality. It is a syntactic edit that improves the text without introducing new requirements or changing existing ones.",9639
+81,LOW,"The change is purely textual, involving the substitution of one verb form in the step description. This alteration does not modify the action being performed or the expected behavior of the use case. It appears to be a minor grammatical adjustment or correction, which does not affect the system's functionality or requirements. Therefore, this change is classified as low-impact because it does not change the system's expected behavior; it is a syntactic edit.",6409
+82,LOW,"The change from 'selecione' to 'seleciona' is a syntactic edit that does not alter the system's expected behavior. It merely changes the verb form from imperative to indicative, without changing the action performed by the actor.",6759
+83,LOW,"The change from 'preencha' to 'preenche' is a shift from imperative to declarative voice, which does not alter the action or the expected behavior of the system. Therefore, it is classified as a low-impact change.",8588
+84,LOW,"The change from 'preencha' to 'preenche' is a shift from imperative to indicative verb form, but it does not alter the required action or the system's expected behavior. Therefore, it is classified as a low-impact edit.",10074
+85,LOW,"The change from 'Planos' to 'Plano' is a correction from plural to singular, likely for accuracy in description. Since the system's behavior remains unchanged—selecting one plan from the list—this is considered a low-impact edit.",5442
+86,HIGH,"The change from 'Planos' (plural) to 'Plano' (singular) alters the number of items selected, which impacts the system's expected behavior. This requires changes in how the system handles selections and may affect related logic and tests.",7261
+87,LOW,The change corrects a grammatical error from 'das Planos' to 'dos Planos' without altering the system's behavior or requirements. It is a syntactic edit that improves clarity without introducing any new functionality or deleting existing elements.,9216
+88,,,97124
+89,HIGH,The change modifies the system's expected behavior by altering whether a specific training is included or excluded in the list displayed to the user. This is a semantic edit that affects the functionality described in the use case.,7667
+90,LOW,The change corrects a grammatical error from 'das Planos' to 'dos Planos' without altering the system's behavior or requirements. It is a syntactic edit that improves the clarity of the text without impacting functionality.,8625
+91,LOW,"The changes are purely syntactic, involving the removal of a semicolon and a comma in the precondition. The meaning and requirements remain unchanged, hence it does not impact the system's behavior.",13919
+92,,,86240
+93,HIGH,The change in step 3 alters the system's expected behavior by changing the action from creating a new evaluation to responding to an evaluation or self-evaluation. This is a semantic edit that impacts the system's functionality.,48472
+94,HIGH,"The changes introduce new steps, alter existing ones, and reorder the flow, significantly impacting the system's behavior.",16089
+95,,,80740
+96,,,92623
+97,LOW,"The change from 'listadas' to 'exibidas' is a synonym substitution that does not alter the system's expected behavior or requirements. It appears to be a minor textual adjustment for clarity or consistency, hence it is classified as low-impact.",10987
+98,HIGH,"The change introduces a new use case, which adds a new requirement or feature to the system. This alteration affects the system's expected behavior by expanding its functionality, hence it is classified as high-impact.",8891
+99,LOW,"The change involves replacing 'listadas' with 'exibidas', which are synonyms in this context. This substitution does not alter the system's behavior or the flow of the use case. It is therefore classified as a low-impact change.",8759

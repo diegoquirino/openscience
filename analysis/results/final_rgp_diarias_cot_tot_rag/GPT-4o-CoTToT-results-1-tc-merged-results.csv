@@ -1,0 +1,518 @@
+index,previous_filename,filename,base_tag,head_tag,base_tag_lines_txt,head_tag_lines_txt,edit_classification_truth,new_ct,obsolete_ct,reusable_ct,affected_cts,total_ct,edit_classification,decision_rationale,elapsed_time_ms
+0,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,"-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,6]
+","+		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
+",LOW,0,33,67,"{'TC58', 'TC90', 'TC95', 'TC65', 'TC26', 'TC61', 'TC94', 'TC91', 'TC63', 'TC97', 'TC64', 'TC93', 'TC25', 'TC98', 'TC27', 'TC62', 'TC96', 'TC28', 'TC30', 'TC23', 'TC92', 'TC59', 'TC32', 'TC66', 'TC56', 'TC33', 'TC24', 'TC100', 'TC29', 'TC31', 'TC57', 'TC60', 'TC99'}",100,HIGH,"The change modifies the reference of an alternative flow from af[3,6] to af[3,5]. This alters the step at which the flow diverges, potentially impacting the behavior and outcome of the use case execution. Such changes are considered high-impact as they can change how the system processes this particular scenario.",1797
+1,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,"-		step 17 usuario ""Informa que acompanha autoridade"" af[4]
+-		step 18 system ""Exibe a opcao escolhida: acompanha autoridade."" ef[5]
+-		step 19 usuario ""Seleciona a justificativa.""
+-		step 20 system ""Exibe a opcao escolhida: justificativa.""
+-		step 21 usuario ""Detalha a justificativa.""
+-		step 22 system ""Exibe o texto informado: detalhe da justificativa.""
+","+		step 17 usuario ""Seleciona a justificativa.""
++		step 18 system ""Exibe a opcao escolhida: justificativa.""
++		step 19 usuario ""Detalha a justificativa.""
++		step 20 system ""Exibe o texto informado: detalhe da justificativa.""
++		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 22 system ""Exibe os beneficiarios selecionados.""
+",HIGH,0,45,55,"{'TC87', 'TC21', 'TC42', 'TC20', 'TC8', 'TC10', 'TC22', 'TC65', 'TC75', 'TC89', 'TC63', 'TC97', 'TC40', 'TC52', 'TC19', 'TC43', 'TC9', 'TC78', 'TC44', 'TC64', 'TC98', 'TC62', 'TC41', 'TC76', 'TC74', 'TC53', 'TC30', 'TC55', 'TC51', 'TC77', 'TC32', 'TC66', 'TC7', 'TC86', 'TC85', 'TC18', 'TC54', 'TC33', 'TC100', 'TC29', 'TC31', 'TC88', 'TC11', 'TC96', 'TC99'}",100,HIGH,"The original steps 17 and 18 have been removed and replaced with new actions beginning from step 17, which alters the sequence and content of user actions and system responses. Additionally, new steps 21 and 22 have been added to involve selecting and displaying 'beneficiarios', introducing a new requirement. These changes alter the system's expected behavior and functionality, representing a semantic edit.",1539
+2,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,"-		step 24 system ""Exibe os beneficiarios selecionados.""
+-		step 25 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 26 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
+-		step 27 usuario ""Clica em confirmar."" af [5]
+-		step 28 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
+-		step 29 usuario ""Verifica os valores presentes na tela.""
+-		step 30 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
+","+		step 24 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
++		step 25 usuario ""Clica em confirmar."" af [4]
++		step 26 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
++		step 27 usuario ""Verifica os valores presentes na tela.""
++		step 28 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
+",LOW,0,18,82,"{'TC72', 'TC27', 'TC33', 'TC94', 'TC11', 'TC55', 'TC5', 'TC100', 'TC22', 'TC83', 'TC78', 'TC44', 'TC38', 'TC16', 'TC49', 'TC89', 'TC60', 'TC66'}",100,HIGH,"The update involves the removal of a step where the system displays the selected beneficiaries and changes the sequence of steps concerning user confirmation and account verification. These changes potentially alter the workflow and system behavior, specifically in how user interactions lead to the solicitation of the daily allowance, impacting the use case semantics.",1732
+3,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,"-	alternative 4 ""Usuário informa que NÃO acompanha autoridade"" {
+-		step 1 usuario ""Informa que acompanha autoridade""
+-		step 2 system ""Exibe a opcao escolhida: NÃO acompanha autoridade.""
+-		step 3 usuario ""Seleciona a justificativa."" bs 20
+-	}
+-	alternative 5 ""Limpar Campos"" {
+","+	alternative 4 ""Limpar Campos"" {
+",HIGH,0,45,55,"{'TC72', 'TC58', 'TC71', 'TC90', 'TC2', 'TC15', 'TC83', 'TC26', 'TC82', 'TC91', 'TC94', 'TC4', 'TC48', 'TC79', 'TC49', 'TC36', 'TC46', 'TC3', 'TC13', 'TC14', 'TC12', 'TC38', 'TC68', 'TC45', 'TC93', 'TC37', 'TC27', 'TC25', 'TC69', 'TC23', 'TC1', 'TC92', 'TC81', 'TC34', 'TC16', 'TC59', 'TC70', 'TC56', 'TC80', 'TC24', 'TC5', 'TC35', 'TC47', 'TC57', 'TC60'}",100,HIGH,"The update alters the flow by replacing the existing alternative 'Usuário informa que NÃO acompanha autoridade' with 'Limpar Campos', effectively removing the previously specified steps and their associated logic. This change impacts the system's behavior as it changes how the use case is executed, qualifying it as a high-impact change.",1694
+4,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,"-	exception 5 ""Servidor não pode estar em companhia de autoridade"" {
+-		step 1 system ""Exibe a mensagem de erro MSG206 - A categoria funcional do servidor não permite acompanhar autoridades.""
+-	}
+",,HIGH,0,9,91,"{'TC84', 'TC50', 'TC6', 'TC95', 'TC73', 'TC39', 'TC17', 'TC61', 'TC28'}",100,HIGH,"The original snippet describes an exception flow at step 5 involving an error message, and the updated snippet is missing entirely, suggesting the removal of an exception flow. The removal of an exception flow changes the system’s behavior by altering how the system handles certain error conditions, hence it is classified as a high-impact change.",1650
+5,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,,"+/*
++ * RGP_DIARIAS: UC007 - Listar Autorizações de Pagamento Pendentes
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que permite 
++ * ao usuário, listar diárias (solicitações) aptas/pendentes de autorização de pagamento.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC007 - Listar Autorizações de Pagamento Pendentes"" {
++	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++		
++	basic {
++		step 1 usuario ""Clica para exibir a lista de diárias (solicitações) aptas para pagamento (SITUAÇÃO LIQUIDADA).""
++		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
++		step 3 usuario ""Seleciona uma diária apta para pagamento"" af[1,2,3,4]
++		step 4 system ""Destaca a diária selecionada""
++	}
++	
++	alternative 1 ""Detalhar diária (solicitação)"" {
++		step 1 usuario ""Clica para detalhar a solicitação de diária.""
++		step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	alternative 2 ""Atribuir/Desatribuir responsabilidade de autorização de pagamento para si"" {
++		step 1 usuario ""Dado um registro selecionado (solicitação aguardando autorização de pagamento - AP), o usuário pode atribuir/desatribuir a responsabilidade da AP a si próprio; e
++					Clica para atribuir/desatribuir o registro a si mesmo.""
++		step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
++	}
++	alternative 3 ""Realizar autorização de pagamento"" {
++		step 1 usuario ""Clica para realizar a autorização de pagamento.""
++		step 2 system ""Apresenta a tela de Registrar Autorizações de Pagamento""
++	}
++	alternative 4 ""Filtrar autorizações de pagamento pendentes por usuário atribuído"" {
++		step 1 usuario ""Seleciona um usuário para filtrar as autorizações de pagamento associadas a ele; e
++					Submete a busca ao sistema.""
++		step 2 system ""Filtra os registros (autorizações de pagamento pendentes) e exibe apenas aqueles atribuídos ao usuário selecionado.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+",HIGH,5,0,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,HIGH,"The updated snippet introduces a new use case, 'UC007 - Listar Autorizações de Pagamento Pendentes', which specifies detailed steps for listing and managing pending payment authorizations, along with several alternative flows for different user actions. This addition substantially changes the system's expected behavior by defining new functionalities and interactions, making it a high-impact change.",1479
+6,,src/UC008_Registrar_Autorizacao_de_Pagamento.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,,"+/*
++ * RGP_DIARIAS: UC008 - Registrar Autorização de Pagamento
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário,registrar autorizações de pagamento (AP) de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC008 - Registrar Autorização de Pagamento"" {
++	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O sistema identifica a solicitação a ter a AP registrada (recebida por parâmetro)."",
++			""O sistema exibe os dados da solicitação para o usuário.""
++		
++	basic {
++		step 3 usuario ""Informa o número de Autorização de Pagamento e do Exercício.""
++		step 2 system ""Exibe o número de Autorização de Pagamento e do Exercício nos campos.""
++		step 4 usuario ""Confirma a operação.""
++		step 5 system ""Persiste o número da AP e o ano de exercício conforme informados;
++					Altera a situação da diária (solicitação) para PAGAMENTO AUTORIZADO; e
++					Exibe mensagem de sucesso para o usuário."" ef[1,2]
++	}
++	exception 1 ""Campos obrigatórios não informados"" {
++		step 1 system ""Identifica que campos obrigatórios não foram preenchidos; e
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios / MSG215 - É obrigatório informar o número da autorização de pagamento) para o usuário.""
++	}
++	exception 2 ""Número da AP já existe"" {
++		step 1 system ""Verifica que já existe um número de AP (considerando também o mesmo exercício) registrado na base de dados; e
++					Interrompe a operação e exibe mensagem de erro (MSG210 - Número da autorização de pagamento já existe.) para o usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+",HIGH,1,0,2,{'TC3'},3,HIGH,"The updated snippet introduces a complete use case, 'UC008 - Registrar Autorização de Pagamento,' which specifies new functionality for registering payment authorizations. This represents a semantic change as it adds new requirements, actors, preconditions, basic flows, exceptions, and postconditions that alter the expected behavior and capabilities of the system.",1675
+7,,src/UC009_Prestar_Contas.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,,"+/*
++ * RGP_DIARIAS: UC009 - Prestar Contas
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, realizar a prestação de contas de uma viagem.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC009 - Prestar Contas"" {
++	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++		
++	basic {
++		step 1 usuario ""Clica para realizar a prestação de contas.""
++		step 2 system ""Exibe a lista de solicitações de diárias (histórico) em ordem decrescente DO NÚMERO DA DIÁRIA (da maior para a de menor número)."" ef[4]
++		step 3 usuario ""Indica uma solicitação de diárias a fim de realizar a prestação de contas.""
++		step 4 system ""Exibe os detalhes referentes à solicitação selecionada, bem como identificando e apresentando os tipos de documentos/comprovantes a serem informados/consultados pelo usuário; e
++					Exibe o histórico da tramitação da prestação de contas."" ef[2,3]
++		step 5 usuario ""Visualiza o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
++		step 6 system ""Exibe o histórico da tramitação da prestação de contas."" 
++	}
++	
++	alternative 1 ""Inserir comprovantes"" {
++		step 1 usuario ""Clica em inserir;
++					Seleciona um tipo de comprovante;
++					Seleciona um arquivo.""
++		step 2 system ""Realiza o upload do arquivo indicado pelo usuário.""
++	}
++	alternative 2 ""Visualizar comprovante"" {
++		step 1 usuario ""Clica em visualizar comprovante.""
++		step 2 system ""Exibe modal com o comprovante.""
++	}
++	alternative 3 ""Excluir documento"" {
++		step 1 usuario ""Clica em excluir comprovante.""
++		step 2 system ""Exclui o comprovante.""
++	}
++	alternative 4 ""Enviar prestação de contas"" {
++		step 1 usuario ""Clica em confirmar (enviar prestação de contas).""
++		step 2 system ""Exibe a mensagem de confirmação (MSG104 - Confirmar a prestação de contas) para o usuário."" ef[1]
++		step 3 usuario ""Confirma as mensagens, concordando com o prosseguimento da prestação de contas.""
++		step 4 system ""Altera o status da diária para PRESTAÇÃO DE CONTAS REALIZADA e salva os dados da solicitação;
++					Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico;
++					Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário.""
++	}
++	exception 1 ""Prestação de contas sem todos os documentos anexados"" {
++		step 1 system ""Identifica que pelo menos um dos documentos solicitados para prestação de contas não foi anexado pelo usuário;
++					Exibe mensagem de alerta (MSG001 - Documentos não informados na prestação de contas) para o usuário.""
++	}
++	exception 2 ""Prestação de contas já realizada."" {
++		step 1 system ""Identifica que a prestação de contas indicada pelo usuário não está em nenhum desses dois estados: a) NÃO REALIZADA e b) DEVOLVIDA;
++					Permite não permite um novo envio ou alterações na prestação (exclusão de documentos).""
++	}
++	exception 3 ""Prestação de contas ainda não pode ser realizada."" {
++		step 1 system ""Identifica que a solicitação indicada pelo usuário ainda não pode ter sua prestação de contas realizada;
++					Exibe mensagem de erro (MSG212 - Prestação de contas ainda não pode ser realizada) para o usuário, impedindo que ele preste contas (anexa arquivos e etc).""
++	}
++	alternative 5 ""Detalhar solicitação de diária."" {
++		step 1 usuario ""Clica para detalhar a solicitação de diária.""
++		step 2 system ""Apresenta a tela de Detalhar Diárias""
++	}
++	exception 4 ""Listagem de diárias para o perfil OPERADOR"" {
++		step 1 system ""Identifica que se trata de um usuário com perfil OPERADOR;
++					Exibe tanto as solicitações do próprio usuário quanto as solicitações dos demais servidores lotados na mesma unidade administrativa dele (OPERADOR).""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+",HIGH,10,0,0,"{'TC7', 'TC6', 'TC3', 'TC9', 'TC5', 'TC10', 'TC2', 'TC1', 'TC8', 'TC4'}",10,HIGH,"The updated snippet introduces a completely new use case specification in CLARET notation, encompassing system behavior, actor roles, basic flows, alternative flows, exception flows, and conditions. This constitutes a high-impact change as it defines the expected behavior of the system and introduces multiple requirements and potential system responses not present before.",1924
+8,,src/UC010_Analisar_Prestacao_de_Contas.claret,exp01_rgp-diarias_v0.1,exp01_rgp-diarias_v0.2,,"+/*
++ * RGP_DIARIAS: UC010 - Analisar Prestação de Contas
++ * Este caso de uso tem o objetivo de especificar a funcionalidade que 
++ * permite ao usuário, analisar prestações de contas de diárias.
++ */
++systemName ""RGP-Diarias""
++
++usecase ""UC010 - Analisar Prestação de Contas"" {
++	version ""0.1"" type ""Creation"" user ""Daniel Medeiros"" date ""13/04/2020""
++	actor usuario ""Chefe""
++	
++	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
++	
++	basic {
++		step 1 usuario ""Acessa a funcionalidade de prestação de contas.""
++		step 2 system ""Apresenta a lista de prestações de contas relacionadas à sua competência (em ordem decrescente DO NÚMERO DA DIÁRIA, da maior para a de menor número).""
++		step 3 usuario ""Indica uma prestação de contas para analisar.""
++		step 4 system ""Exibe os detalhes relativos àquela prestação de contas (dados básicos da solicitação e documentos anexos);
++					Exibe o histórico da tramitação da prestação de contas."" ef[2]
++		step 6 usuario ""Clica para analisar a prestação de contas.""
++		step 7 system ""Exibe a tela para prestação de contas""
++		step 8 usuario ""Informa o parecer da prestação de contas.""
++		step 9 system ""Exibe mensagem de confirmação (MSG105 - Confirmar parecer da prestação de contas) para o usuário.""
++		step 10 usuario ""Confirma o parecer dado (confirma operação)."" af[1,2]
++		step 11 system ""Persiste as informações, alterando o status da prestação de contas conforme informada pelo usuário;
++					Realiza o registro do envio da prestação de contas para possibilitar posterior acompanhamento histórico;
++					Exibe mensagem de sucesso (MSG302 - Operação realizada com sucesso!) para o usuário."" ef[1]
++	}
++	
++	alternative 1 ""Visualizar documento/comprovante de prestação de contas"" {
++		step 1 usuario ""Clica no documento a exibir.""
++		step 2 system ""Exibe o documento em tela para o usuário.""
++	}
++	
++	alternative 2 ""Detalhar solicitação de diárias"" {
++		step 1 usuario ""Clica para detalhar a solicitação relacionada a uma determinada prestação de contas.""
++		step 2 system ""Exibe a tela de Detalhar Diárias""
++	}
++	
++	exception 1 ""Campos obrigatório não preenchidos"" {
++		step 1 system ""Identifica que campos obrigatórios do parecer/análise não foram devidamente preenchidos
++					Exibe mensagem de erro (MSG203 - Campos obrigatórios) para o usuário.""
++	}
++	exception 2""Prestação de contas em situação diferente de REALIZADA"" {
++		step 1 system ""Identifica que a prestação de contas escolhida é diferente de REALIZADA;
++					Não permite que seja feita análise por parte do usuário.""
++	}
++	
++	postCondition ""O caso de uso encerra.""
++	
++}
+",HIGH,5,0,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,HIGH,"The updated snippet introduces a detailed use case specification in CLARET notation for 'UC010 - Analisar Prestação de Contas', which was absent in the original snippet. This includes defining the system name, use case metadata, actor, pre-condition, a series of basic steps for the flow, alternative flows, exception flows, and a post-condition. These additions significantly alter the system's expected behavior by specifying how the system should interact with users and handle various scenarios, representing a high-impact change.",7619
+9,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v0.2,exp01_rgp-diarias_v1.0.1,"-		step 27 usuario ""Verifica os valores presentes na tela.""
+","+		step 27 usuario ""Verifica os valores presentes na tela:
++						1. Magistrados e desembargadores: não podem ultrapassar 60% do valor de um diária de um ministro do STF.
++						2. Servidores não podem ultrapassar 60% do valor de uma diária de um Magistrado.""
+",LOW,0,9,37,"{'TC36', 'TC20', 'TC30', 'TC46', 'TC5', 'TC15', 'TC10', 'TC25', 'TC41'}",46,HIGH,"The update specifies additional conditions for verifying the values on the screen, introducing new business rules regarding the limit on daily values for magistrates and servers. This changes the expected behavior of the system by introducing new requirements, which classify it as a high-impact change.",1218
+10,,src/UC004_Detalhar_Diarias.claret,exp01_rgp-diarias_v1.0.1,exp01_rgp-diarias_v1.0.2,"-		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).""
+","+		step 2 system ""Apresenta a tela com as informações da diária do servidor (dados gerais da diária, extratificação do cálculo da diária, conta para crédito, período da viagem, histórico de tramitação, detalhamento de empenho e pagamento, prestação de contas e seus detalhes).
++					Apresenta o numero do empenho e a autorização de pagamento como links.""
+",LOW,0,1,2,{'TC3'},3,LOW,"The update adds a more detailed presentation aspect by including additional data (the number of empenho and payment authorization as links) to the screen in step 2. This is a textual update that improves the level of detail for display purposes but does not alter the core functionality or behavior of the system. As such, this change is classified as low-impact because it does not introduce new features or modify existing system behavior, only enhances the representation of information already being shown.",3320
+11,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.0.2,exp01_rgp-diarias_v1.0.3,"-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3,5]
+","+		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3]
+",HIGH,0,15,31,"{'TC27', 'TC42', 'TC11', 'TC30', 'TC46', 'TC13', 'TC43', 'TC15', 'TC29', 'TC12', 'TC14', 'TC26', 'TC44', 'TC45', 'TC28'}",46,HIGH,"The removal of an alternative flow from the reference list 'af[3,5]' to 'af[3]' changes the behavior of the use case. This alters the branching possibilities during execution and potentially affects the logic of the flow, which classifies it as a high-impact change.",4376
+12,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.0.2,exp01_rgp-diarias_v1.0.3,"-	alternative 5 ""Período com dias alternados"" {
+-		step 1 usuario ""Informa as datas de afastamento ALTERNADAS, antes do ultimo dia de viagem."" bs 14
+-	}
+",,HIGH,0,15,31,"{'TC36', 'TC18', 'TC20', 'TC33', 'TC19', 'TC3', 'TC5', 'TC2', 'TC35', 'TC1', 'TC17', 'TC34', 'TC4', 'TC16', 'TC32'}",46,HIGH,"The entire alternative flow was removed from the use case, which impacts the system's expected behavior as it no longer recognizes or handles the scenario where the user provides alternate dates before the last day of travel. This change represents a semantic edit, hence it is classified as high-impact.",3764
+13,,src/UC009_Prestar_Contas.claret,exp01_rgp-diarias_v1.0.3,exp01_rgp-diarias_v1.1,"-		step 5 usuario ""Visualiza o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+","+		step 5 usuario ""Verifica o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+",LOW,0,1,9,{'TC10'},10,LOW,"The update involves a change in wording from 'Visualiza' to 'Verifica' in step 5. This is a syntactic edit, as it does not introduce or remove any requirements or alter the expected behavior of the system. The semantic meaning remains the same, as both terms imply the user's engagement with the history of account processing. Therefore, the impact on the system's functionality is low.",1971
+14,,src/UC010_Analisar_Prestacao_de_Contas.claret,exp01_rgp-diarias_v1.0.3,exp01_rgp-diarias_v1.1,"-		step 6 usuario ""Clica para analisar a prestação de contas.""
+","+		step 6 usuario ""Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas.""
+",LOW,0,4,1,"{'TC4', 'TC5', 'TC3', 'TC2'}",5,HIGH,"The updated snippet changes the behavior of the user by adding an additional action, 'verifies the history of the processing of the accounting statement,' before clicking to analyze it. This modifies the system's expected behavior by introducing a new step in the process.",1294
+15,,src/UC011_Listar_Solicitacoes_de_Diarias.claret,exp01_rgp-diarias_v1.1,exp01_rgp-diarias_v1.1.1,"-		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3]
+","+		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3,4]
+",HIGH,0,1,3,{'TC4'},4,HIGH,"The update involves adding a new alternative flow (af[4]) to step 4, which changes the system's expected behavior by introducing additional behavior to consider. Therefore, it fits the criteria of a high-impact change as it introduces a new requirement or feature in terms of alternative flow handling.",1616
+16,,src/UC011_Listar_Solicitacoes_de_Diarias.claret,exp01_rgp-diarias_v1.1,exp01_rgp-diarias_v1.1.1,,"+	alternative 4 ""Ordenar pelo nome do servidor"" {
++		step 1 usuario ""Clica para ordenar pelo nome do servidor.""
++		step 2 system ""Visualiza os registros de solicitações de diária ordenado pelo nome do servidor.""
++	}
+",HIGH,1,0,4,{'TC1'},5,HIGH,"The addition of an alternative flow introduces a new behavior to the system, as it allows the user to interact with and view information in a new way by sorting records. This change alters the expected behaviors within the use case, thus classifying it as high-impact.",1386
+17,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.1.1,exp01_rgp-diarias_v1.2,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 22 system ""Exibe os beneficiarios selecionados.""
+","+		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" 
++		step 22 system ""Exibe os beneficiarios selecionados."" ef[5]
+",HIGH,0,30,1,"{'TC20', 'TC6', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC26', 'TC4', 'TC19', 'TC3', 'TC13', 'TC9', 'TC17', 'TC14', 'TC12', 'TC25', 'TC27', 'TC28', 'TC30', 'TC23', 'TC1', 'TC16', 'TC7', 'TC18', 'TC24', 'TC5', 'TC29', 'TC31', 'TC11'}",31,HIGH,"The update introduces an exception flow (ef[5]) to step 22, which changes the expected behavior of the system by allowing for an exceptional scenario. This constitutes a semantic change, influencing how the system handles certain situations and altering the system's expected behavior.",1519
+18,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.1.1,exp01_rgp-diarias_v1.2,,"+	exception 5 ""Conta para recebimento de diárias não cadastrada"" {
++		step 1 system ""Não confirma a existencia de conta para recebimento de diarias do servidor.
++					Exibe a mensagem de erro MSG002 - Conta para recebimento de diárias não cadastrada.""
++	}
+",HIGH,37,0,0,"{'TC21', 'TC20', 'TC6', 'TC2', 'TC8', 'TC10', 'TC22', 'TC15', 'TC26', 'TC4', 'TC36', 'TC19', 'TC3', 'TC13', 'TC9', 'TC17', 'TC14', 'TC12', 'TC37', 'TC25', 'TC27', 'TC28', 'TC30', 'TC23', 'TC1', 'TC34', 'TC16', 'TC32', 'TC7', 'TC18', 'TC33', 'TC24', 'TC5', 'TC29', 'TC35', 'TC31', 'TC11'}",37,HIGH,"The addition of an exception flow that handles a specific case ('Conta para recebimento de diárias não cadastrada') changes the system's expected behavior. This semantic edit introduces new handling logic when an account for receiving payments isn't registered, which impacts the system's functionality and execution path.",1597
+19,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2,exp01_rgp-diarias_v1.2.1,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" 
+","+		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" af[5]
+",HIGH,0,36,1,"{'TC21', 'TC20', 'TC6', 'TC2', 'TC8', 'TC10', 'TC22', 'TC15', 'TC26', 'TC4', 'TC36', 'TC19', 'TC3', 'TC13', 'TC9', 'TC17', 'TC14', 'TC12', 'TC37', 'TC27', 'TC28', 'TC30', 'TC23', 'TC1', 'TC34', 'TC16', 'TC32', 'TC7', 'TC18', 'TC33', 'TC24', 'TC5', 'TC29', 'TC35', 'TC31', 'TC11'}",37,HIGH,"The update adds an alternative flow reference (af[5]) to step 21, which implies the introduction of a new or modified path in the use case. This change affects the system's expected behavior by potentially altering the sequence of actions or conditions under which the flow proceeds, thus categorizing it as a high-impact change.",3086
+20,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2,exp01_rgp-diarias_v1.2.1,,"+	alternative 5 ""Informar nome social"" {
++		step 1 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
++		step 2 system ""Exibe os beneficiarios selecionados e o campo para preenchimento do nome social""
++		step 3 usuario ""Informa o nome social do beneficiario da(s) diaria(s)"" bs 24
++	}
+",HIGH,30,0,37,"{'TC58', 'TC2', 'TC15', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC36', 'TC50', 'TC46', 'TC3', 'TC13', 'TC14', 'TC12', 'TC38', 'TC37', 'TC27', 'TC25', 'TC23', 'TC1', 'TC34', 'TC16', 'TC59', 'TC24', 'TC5', 'TC35', 'TC47', 'TC57', 'TC60'}",67,HIGH,"The updated snippet introduces a new alternative flow 'Informar nome social' at step 5, which adds new system functionality for handling a social name. This introduction of a new feature changes the system's expected behavior, thus classifying the change as high-impact.",1570
+21,,src/UC005_Listar_Empenhos_Pendentes.claret,exp01_rgp-diarias_v1.2.1,exp01_rgp-diarias_v1.2.3,"-		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas.""
+","+		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.""
+",LOW,0,1,6,{'TC7'},7,LOW,"The change made to step 2 involves sorting the list of requests by 'numero da diaria' in ascending order. This is a syntactic change focusing on the presentation of the data rather than altering the fundamental behavior or introducing/removing functionality. Therefore, it is considered low-impact as it does not affect the system's expected behavior but enhances the usability of the displayed information.",1681
+22,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.1,exp01_rgp-diarias_v1.2.3,"-		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento.""
+","+		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,The update details the display of the list to be ordered by the number of diárias in ascending order. This is a textual update that enhances clarity without altering the system's fundamental behavior or changing any requirements or features.,1483
+23,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.1,exp01_rgp-diarias_v1.2.3,"-		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento."" 
+","+		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente."" 
+",LOW,0,1,3,{'TC4'},4,LOW,"The change involves ordering the list of requests by the daily rate number in ascending order. This is a presentation change and does not alter the core functionality or expected outcomes of the use case. It is a syntactic edit focusing on how the information is displayed to the end-user, thus classified as low-impact.",1847
+24,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.3,exp01_rgp-diarias_v1.2.4,"-		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente.""
+","+		step 2 system ""Recupera e exibe para o usuário a lista de diárias aptas para pagamento ordenado pelo numero de diarias em ordem crescente.
++					Exibe esta lista de diárias também ordenada pela data de chegada da solicitação na fase de autorização (após registrar o empenho).""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,HIGH,"The update introduces a new requirement for displaying the list of diárias ordered by an additional criterion (the date of arrival of the request in the authorization phase). This alters the expected behavior of the system by changing how the list is presented to the user, which qualifies as a high-impact, semantic change.",2367
+25,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.3,exp01_rgp-diarias_v1.2.4,"-		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente."" 
+","+		step 4 system ""Exibe a lista de diárias (solicitações) aptas para pagamento ordenado pelo numero da diaria em ordem crescente.
++					Exibe esta lista de diarias também ordenada pela data de chegada da solicitação na fase de liquidação (após registrar o empenho).""
+",LOW,0,1,3,{'TC4'},4,HIGH,"The updated snippet introduces a new feature by adding a requirement to display the list of diaries also sorted by the arrival date in the liquidation phase. This changes the system's expected behavior, thereby classifying it as a high-impact change.",1613
+26,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario acessa o caso de uso atraves do menu."", 
+-		""O sistema exibe a tela de solicitacao de diarias.""
+","+	preCondition ""O usuário acessa o caso de uso através do menu."", 
++		""O sistema exibe a tela de solicitação de diárias.""
+",LOW,0,67,0,"{'TC58', 'TC21', 'TC42', 'TC20', 'TC6', 'TC39', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC65', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC63', 'TC40', 'TC36', 'TC52', 'TC50', 'TC46', 'TC19', 'TC3', 'TC43', 'TC13', 'TC9', 'TC17', 'TC14', 'TC44', 'TC64', 'TC47', 'TC12', 'TC38', 'TC37', 'TC45', 'TC27', 'TC62', 'TC41', 'TC28', 'TC25', 'TC53', 'TC30', 'TC55', 'TC23', 'TC1', 'TC51', 'TC34', 'TC16', 'TC59', 'TC32', 'TC66', 'TC7', 'TC18', 'TC56', 'TC54', 'TC33', 'TC24', 'TC67', 'TC29', 'TC5', 'TC35', 'TC31', 'TC11', 'TC57', 'TC60'}",67,LOW,"The updates made to the use case were purely syntactic, involving the correction of minor typographical errors and usage of accents in the text. These changes do not alter the system's expected behavior or functionality, but rather improve the readability and correctness of the language used in the preconditions.",5548
+27,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a opcao escolhida: viagem nacional - fora do estado (interestadual)."" 
+","+		step 2 system ""Exibe a opção escolhida: viagem nacional - fora do estado (interestadual)."" 
+",LOW,0,23,44,"{'TC58', 'TC65', 'TC61', 'TC48', 'TC63', 'TC49', 'TC52', 'TC50', 'TC46', 'TC64', 'TC45', 'TC62', 'TC53', 'TC55', 'TC51', 'TC59', 'TC66', 'TC56', 'TC54', 'TC67', 'TC47', 'TC57', 'TC60'}",67,LOW,"The change involves a minor textual update, specifically correcting the spelling of the word 'opcao' to 'opção'. This does not affect the system's behavior or change any functional requirements, thus it is classified as low-impact.",2091
+28,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 system ""Exibe a opcao escolhida: estado."" ef[1]
+","+		step 4 system ""Exibe a opção escolhida: estado."" ef[1]
+",LOW,0,22,45,"{'TC58', 'TC65', 'TC61', 'TC48', 'TC63', 'TC49', 'TC52', 'TC50', 'TC46', 'TC64', 'TC62', 'TC53', 'TC55', 'TC51', 'TC59', 'TC66', 'TC56', 'TC54', 'TC67', 'TC47', 'TC57', 'TC60'}",67,LOW,"The change is a minor syntactic edit, specifically correcting the typography of the word 'opcao' to 'opção'. This does not alter the system's behavior or functionality and is purely a textual update.",5405
+29,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 6 system ""Exibe a opcao escolhida: cidade(s).""
+","+		step 6 system ""Exibe a opção escolhida: cidade(s).""
+",LOW,0,44,23,"{'TC58', 'TC42', 'TC39', 'TC65', 'TC26', 'TC61', 'TC48', 'TC49', 'TC63', 'TC40', 'TC36', 'TC52', 'TC50', 'TC46', 'TC43', 'TC47', 'TC64', 'TC37', 'TC38', 'TC25', 'TC27', 'TC62', 'TC41', 'TC28', 'TC53', 'TC30', 'TC55', 'TC23', 'TC51', 'TC34', 'TC59', 'TC32', 'TC66', 'TC56', 'TC54', 'TC33', 'TC24', 'TC67', 'TC29', 'TC35', 'TC31', 'TC44', 'TC57', 'TC60'}",67,LOW,"The change from 'opcao' to 'opção' in the text corrects the spelling of a word, which is a syntactic edit that does not alter the system's expected behavior. It is purely a textual update, thus classifying it as a low-impact change.",1551
+30,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 8 system ""Exibe a opcao escolhida: tipo de deslocamento.""
+","+		step 8 system ""Exibe a opção escolhida: tipo de deslocamento.""
+",LOW,0,66,1,"{'TC58', 'TC21', 'TC42', 'TC20', 'TC6', 'TC39', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC65', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC63', 'TC40', 'TC36', 'TC52', 'TC50', 'TC46', 'TC19', 'TC3', 'TC43', 'TC13', 'TC9', 'TC17', 'TC14', 'TC44', 'TC64', 'TC47', 'TC12', 'TC38', 'TC37', 'TC27', 'TC25', 'TC62', 'TC41', 'TC28', 'TC53', 'TC30', 'TC55', 'TC23', 'TC1', 'TC51', 'TC34', 'TC16', 'TC59', 'TC32', 'TC66', 'TC7', 'TC18', 'TC56', 'TC54', 'TC33', 'TC24', 'TC5', 'TC67', 'TC29', 'TC35', 'TC31', 'TC11', 'TC57', 'TC60'}",67,LOW,"The change involves a correction in spelling by adding an accent to the letter 'o' in the word 'opção'. This is a textual update aimed at fixing a typo, and it does not alter the system's expected behavior or functionality.",1508
+31,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 10 system ""Exibe a opcao escolhida: hospedagem.""
+-		step 11 usuario ""Escolhe o tipo de periodo de afastamento.""
+-		step 12 system ""Exibe a opcao escolhida: periodo de afastamento.""
+-		step 13 usuario ""Informa as datas de afastamento, antes do ultimo dia de viagem."" af[3]
+","+		step 10 system ""Exibe a opção escolhida: hospedagem.""
++		step 11 usuario ""Escolhe o tipo de período de afastamento.""
++		step 12 system ""Exibe a opção escolhida: período de afastamento.""
++		step 13 usuario ""Informa as datas de afastamento, antes do último dia de viagem."" af[3]
+",LOW,0,33,34,"{'TC58', 'TC21', 'TC42', 'TC20', 'TC39', 'TC15', 'TC22', 'TC65', 'TC61', 'TC63', 'TC40', 'TC36', 'TC19', 'TC43', 'TC13', 'TC17', 'TC14', 'TC64', 'TC12', 'TC38', 'TC37', 'TC62', 'TC41', 'TC34', 'TC16', 'TC59', 'TC66', 'TC18', 'TC67', 'TC35', 'TC44', 'TC57', 'TC60'}",67,LOW,"The changes made in the updated snippet involve the addition of diacritical marks (accents) to words, correcting 'opcao' to 'opção' and 'periodo' to 'período'. These are purely textual updates focusing on correcting typos or improving readability, without altering the functional behavior or semantic meaning of the use case steps. Thus, they do not affect the system's expected behavior and are considered syntactic edits.",3383
+32,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 16 system ""Exibe a opcao escolhida: pernoite.""
+","+		step 16 system ""Exibe a opção escolhida: pernoite.""
+",LOW,0,66,1,"{'TC58', 'TC21', 'TC42', 'TC20', 'TC6', 'TC39', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC65', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC63', 'TC40', 'TC36', 'TC52', 'TC50', 'TC46', 'TC19', 'TC3', 'TC43', 'TC13', 'TC9', 'TC17', 'TC14', 'TC44', 'TC64', 'TC47', 'TC12', 'TC38', 'TC37', 'TC27', 'TC25', 'TC62', 'TC41', 'TC28', 'TC53', 'TC30', 'TC55', 'TC23', 'TC1', 'TC51', 'TC34', 'TC16', 'TC59', 'TC32', 'TC66', 'TC7', 'TC18', 'TC56', 'TC54', 'TC33', 'TC24', 'TC5', 'TC67', 'TC29', 'TC35', 'TC31', 'TC11', 'TC57', 'TC60'}",67,LOW,"The change involves a correction of a typo in the word 'opcao' to 'opção', which does not alter the system's functionality or behavior. It is a textual update intended to fix a spelling issue, classifying it as low-impact.",1570
+33,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 18 system ""Exibe a opcao escolhida: justificativa.""
+","+		step 18 system ""Exibe a opção escolhida: justificativa.""
+",LOW,0,66,1,"{'TC58', 'TC21', 'TC42', 'TC20', 'TC6', 'TC39', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC65', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC63', 'TC40', 'TC36', 'TC52', 'TC50', 'TC46', 'TC19', 'TC3', 'TC43', 'TC13', 'TC9', 'TC17', 'TC14', 'TC44', 'TC64', 'TC47', 'TC12', 'TC38', 'TC37', 'TC27', 'TC25', 'TC62', 'TC41', 'TC28', 'TC53', 'TC30', 'TC55', 'TC23', 'TC1', 'TC51', 'TC34', 'TC16', 'TC59', 'TC32', 'TC66', 'TC7', 'TC18', 'TC56', 'TC54', 'TC33', 'TC24', 'TC5', 'TC67', 'TC29', 'TC35', 'TC31', 'TC11', 'TC57', 'TC60'}",67,LOW,"The update involves a simple textual change from 'opcao' to 'opção', which is an accent correction. This is a syntactic edit and does not alter the system's expected behavior or the semantics of the use case.",1526
+34,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 21 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s)."" af[5]
+-		step 22 system ""Exibe os beneficiarios selecionados."" ef[5]
+-		step 23 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 24 system ""Confirma a existencia de conta para recebimento de diarias do servidor."" ef[2]
+-		step 25 usuario ""Clica em confirmar."" af [4]
+-		step 26 system ""Calcula o valor da(s) diaria(s) com as informacoes do formulario."" ef[3,4]
+","+		step 21 usuario ""Seleciona o(s) beneficiário(s) da(s) diária(s)."" af[5]
++		step 22 system ""Exibe os beneficiário(s) selecionado(s)."" ef[5]
++		step 23 usuario ""Seleciona o(s) beneficiário(s) da(s) diária(s).""
++		step 24 system ""Confirma a existência de conta para recebimento de diárias do servidor."" ef[2]
++		step 25 usuario ""Clica em confirmar."" af[4]
++		step 26 system ""Calcula o valor da(s) diária(s) com as informações do formulário."" ef[3,4]
+",LOW,0,12,55,"{'TC27', 'TC56', 'TC50', 'TC33', 'TC11', 'TC67', 'TC5', 'TC22', 'TC61', 'TC44', 'TC38', 'TC16'}",67,LOW,"The changes between the original snippet and the updated snippet involve syntactic edits such as fixing typos and adjusting the use of accents in the Portuguese language. These changes do not affect the system's behavior or introduce any new requirements or functionality; they merely correct the spelling of words ('beneficiarios' to 'beneficiário(s)' and 'existencia' to 'existência') and refine the textual representation. Therefore, the impact on the use case is classified as low-impact.",2071
+35,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 28 system ""Altera o status da diaria para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas""
+","+		step 28 system ""Altera o status da diária para SOLICITADA: (antes) para empenho; ou, (depois) para prestação de contas.""
+",LOW,0,12,55,"{'TC27', 'TC56', 'TC50', 'TC33', 'TC11', 'TC67', 'TC5', 'TC22', 'TC61', 'TC44', 'TC38', 'TC16'}",67,LOW,"The change between the original and updated snippet is purely syntactic: a period was added at the end of the sentence. This does not alter the system's behavior or the semantics of the step. Therefore, it is classified as a low-impact change.",1555
+36,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a opcao escolhida: viagem nacional - dentro do estado (intermunicipal)""
+","+		step 2 system ""Exibe a opção escolhida: viagem nacional - dentro do estado (intermunicipal).""
+",LOW,0,22,45,"{'TC42', 'TC39', 'TC26', 'TC40', 'TC36', 'TC43', 'TC37', 'TC38', 'TC25', 'TC27', 'TC41', 'TC28', 'TC30', 'TC23', 'TC34', 'TC32', 'TC33', 'TC24', 'TC29', 'TC35', 'TC31', 'TC44'}",67,LOW,"The update involves a syntactic change from 'opcao' to 'opção' and adds a period at the end of the sentence. These are textual edits that do not alter the system's expected behavior or logic, hence it's a low-impact change.",3603
+37,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 system ""Exibe a opcao escolhida: país da viagem""
+","+		step 4 system ""Exibe a opção escolhida: país da viagem.""
+",LOW,0,22,45,"{'TC21', 'TC20', 'TC6', 'TC8', 'TC10', 'TC22', 'TC2', 'TC15', 'TC4', 'TC19', 'TC3', 'TC13', 'TC9', 'TC17', 'TC14', 'TC12', 'TC1', 'TC16', 'TC7', 'TC18', 'TC5', 'TC11'}",67,LOW,"The update involves a minor textual change where the word 'opcao' has been corrected to 'opção', and a period has been added at the end. These adjustments are syntactic edits that do not alter the behavior or functionality of the system. The core action being described, which is the system displaying the chosen travel country, remains unchanged in terms of the system's expected operations.",5549
+38,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	alternative 3 ""Pedido de Diaria apos realizacao da viagem."" {
+-		step 1 usuario ""Informa as datas de afastamento, apos o ultimo dia de viagem."" bs 14 
+","+	alternative 3 ""Pedido de diária após realização da viagem."" {
++		step 1 usuario ""Informa as datas de afastamento, após o último dia de viagem."" bs 14 
+",LOW,0,33,34,"{'TC6', 'TC8', 'TC10', 'TC2', 'TC26', 'TC4', 'TC48', 'TC49', 'TC52', 'TC50', 'TC46', 'TC3', 'TC9', 'TC47', 'TC25', 'TC27', 'TC28', 'TC53', 'TC30', 'TC55', 'TC23', 'TC1', 'TC51', 'TC32', 'TC7', 'TC56', 'TC54', 'TC33', 'TC24', 'TC5', 'TC29', 'TC31', 'TC11'}",67,LOW,"The changes made in the updated snippet are purely textual and involve fixing typos, specifically updating the capitalization and accented characters to standardize the text according to correct language syntax. These modifications do not alter the behavior or semantics of the use case; they improve readability and accuracy of the text without impacting functionality.",4050
+39,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 1 usuario ""Seleciona o(s) beneficiarios da(s) diaria(s).""
+-		step 2 system ""Exibe os beneficiarios selecionados e o campo para preenchimento do nome social""
+-		step 3 usuario ""Informa o nome social do beneficiario da(s) diaria(s)"" bs 24
+","+		step 1 usuario ""Seleciona o(s) beneficiário(s) da(s) diária(s).""
++		step 2 system ""Exibe os beneficiário(s) selecionado(s) e o campo para preenchimento do nome social.""
++		step 3 usuario ""Informa o nome social do beneficiário da(s) diária(s)."" bs 24
+",LOW,0,30,37,"{'TC58', 'TC2', 'TC15', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC36', 'TC50', 'TC46', 'TC3', 'TC13', 'TC14', 'TC12', 'TC38', 'TC37', 'TC27', 'TC25', 'TC23', 'TC1', 'TC34', 'TC16', 'TC59', 'TC24', 'TC5', 'TC35', 'TC47', 'TC57', 'TC60'}",67,LOW,"The changes between the original and updated use case snippets are purely textual, involving punctuation adjustments and the use of plural forms marked with parentheses. These modifications do not alter the functional behavior, logic, or flow of the system, as they focus solely on syntactical elements such as grammar and punctuation. Therefore, the impact of these changes is low, as they are aimed at improving readability or clarity without affecting the system's expected behavior.",3208
+40,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	postCondition ""O sistema salva os dados""
+-}
+",,HIGH,0,12,55,"{'TC27', 'TC56', 'TC50', 'TC33', 'TC11', 'TC67', 'TC5', 'TC22', 'TC61', 'TC44', 'TC38', 'TC16'}",67,HIGH,The removal of the postCondition changes the system's expected behavior as it deletes the requirement that the system saves the data. This constitutes a high-impact change because post-conditions define the outcome of the use case once executed successfully. Removing it alters the use case semantics.,2642
+41,,src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,"The change made is a textual update that corrects a typo and adds a period at the end of the preCondition statement. These changes do not affect the system's expected behavior or functionality, thus classifying it as a low-impact change.",1371
+42,,src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 1 usuario ""O usuario acessa o caso de uso atraves do menu."" af[1,2,3,4]
+","+		step 1 usuario ""Acessa o caso de uso através do menu."" af[1,2,3,4]
+",LOW,0,1,4,{'TC5'},5,LOW,"The change is a syntactic edit that does not alter the system's behavior. It involves rephrasing the step's description without modifying the steps, flows, or logic. The altered text is a stylistic update for conciseness and does not affect the functionality described by the use case.",4876
+43,,src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Detalhar Diárias""
+","+		step 2 system ""Apresenta a tela de Detalhar Diárias.""
+",LOW,0,1,4,{'TC3'},5,LOW,"The update involves adding a period at the end of the sentence in step 2. This change is purely syntactic and does not alter the behavior or logic of the use case, thus classifying it as low-impact.",1207
+44,,src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Analisar Prestação de Contas""
+","+		step 2 system ""Apresenta a tela de Analisar Prestação de Contas.""
+",LOW,0,1,4,{'TC2'},5,LOW,"The change involves adding a period at the end of a sentence. This is a syntactic edit that does not alter the system's expected behavior or any functional aspect of the use case. Therefore, it is classified as a low-impact change.",3614
+45,,src/UC002_Gerenciar_Diarias_Do_Beneficiario_Minhas_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Cancelar Solicitação de Diária""
+","+		step 2 system ""Apresenta a tela de Cancelar Solicitação de Diária.""
+",LOW,0,1,4,{'TC1'},5,LOW,"The update adds a period to the end of the sentence in step 2. This is purely a syntactic change and does not affect the system's behavior, functionality, or flow. Therefore, it is a low-impact change.",2125
+46,,src/UC003_Cancelar_Solicitacao_Diaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial de cancelar diárias""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial de cancelar diárias.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,"The change involves only a correction in spelling from 'O usuario' to 'O usuário' and the addition of a period at the end of the sentence, which are minor textual and syntactic edits. These changes do not affect the system's expected behavior or the logic of the use case.",1487
+47,,src/UC003_Cancelar_Solicitacao_Diaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)"" ef[1]
+","+		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)."" ef[1]
+",LOW,0,4,1,"{'TC1', 'TC5', 'TC4', 'TC2'}",5,LOW,"The change made in the updated snippet is purely syntactic, involving the addition of a period at the end of a sentence within a system message. This change does not alter the system's expected behavior, functionality, or any of the business rules associated with the use case. Hence, it qualifies as a low-impact change.",1754
+48,,src/UC003_Cancelar_Solicitacao_Diaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)"" 
+","+		step 2 system ""Exibe a mensagem (MSG102 - Confirmar cancelamento)."" 
+",LOW,0,4,1,"{'TC1', 'TC5', 'TC4', 'TC2'}",5,LOW,"The update involves adding a period at the end of the sentence to improve punctuation. This kind of change is a syntactic edit that does not alter the system's expected behavior. It is a textual update that improves readability but does not modify any functionality or logic of the use case, thus classifying it as low-impact.",1783
+49,,src/UC004_Detalhar_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela de listagem de diárias""
+","+	preCondition ""O usuário devidamente autenticado e na tela de listagem de diárias.""
+",LOW,0,3,0,"{'TC1', 'TC3', 'TC2'}",3,LOW,"The change involves a syntactic edit by adding a punctuation mark (a period) at the end of the preCondition sentence. It does not alter the system's behavior or introduce new concepts or requirements, thus classifying it as low-impact.",1730
+50,,src/UC005_Listar_Empenhos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela de listagem de empenhos""
+","+	preCondition ""O usuário devidamente autenticado e na tela de listagem de empenhos.""
+",LOW,0,7,0,"{'TC7', 'TC6', 'TC3', 'TC2', 'TC5', 'TC1', 'TC4'}",7,LOW,"The change involves a syntactic update, correcting a spelling mistake and adding a period at the end. This does not alter the meaning or behavior of the precondition, thus classifying it as low-impact.",1427
+51,,src/UC005_Listar_Empenhos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas ordenado pelo numero da diaria em ordem crescente.""
+","+		step 2 system ""Exibe a lista de solicitações aguardando serem empenhadas, de todos os servidores, ordenado pelo número da diária em ordem crescente.""
+",LOW,0,1,6,{'TC7'},7,LOW,"The update adds a detail to specify that the list includes requests from 'all servers'. This change does not alter the use case's fundamental behavior but merely specifies an existing aspect in more detail. Hence, it's a syntactic edit focusing on clarifying the existing functionality rather than altering it.",2680
+52,,src/UC005_Listar_Empenhos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 1 usuario ""filtra a listagem por registros cujos beneficiários não possuem número do credor""
+","+		step 1 usuario ""Filtra a listagem por registros cujos beneficiários não possuem número do credor.""
+",LOW,0,3,4,"{'TC4', 'TC3', 'TC5'}",7,LOW,"The update only changes the capitalization of the first letter and adds punctuation (a period) at the end. These are purely syntactic edits, which do not affect the system's behavior or the semantics of the use case.",1373
+53,,src/UC005_Listar_Empenhos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Registrar Empenho""
+","+		step 2 system ""Apresenta a tela de Registrar Empenho.""
+",LOW,0,1,6,{'TC1'},7,LOW,"The change consists of adding a period at the end of the sentence in step 2. This is a syntactic edit that does not affect the system's behavior, functionality, or logic. Therefore, it is classified as a low-impact change.",1560
+54,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,"The update only involves a textual change that corrects the capitalization of 'usuário', adds an accent, and a period at the end of the sentence. These adjustments do not alter the fundamental meaning or system behavior as described by the preCondition.",2507
+55,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 3 usuario ""Seleciona uma diária apta para pagamento"" af[1,2,3,4]
+-		step 4 system ""Destaca a diária selecionada""
+","+		step 3 usuario ""Seleciona uma diária apta para pagamento."" af[1,2,3,4]
++		step 4 system ""Destaca a diária selecionada.""
+",LOW,0,1,4,{'TC5'},5,LOW,"The update only adds a period at the end of the sentences in step 3 and step 4. This is a textual update for consistency in punctuation that does not alter the use case's functionality or the system's expected behavior. Therefore, it is classified as a low-impact change since it does not introduce or remove any requirements or features.",1815
+56,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Detalhar Diárias""
+","+		step 2 system ""Apresenta a tela de Detalhar Diárias.""
+",LOW,0,1,4,{'TC4'},5,LOW,"The update involves a syntactic change by adding a period at the end of the sentence. It does not alter the system's behavior, functionality, or logic. Therefore, it is classified as a low-impact change.",1315
+57,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
+","+		step 2 system ""Atualiza a lista de registros de solicitações, onde deverá constar o nome do usuário logado (que se atribuiu como responsável pela AP) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
+",LOW,0,1,4,{'TC3'},5,LOW,The change involves a minor textual edit that removes redundant wording ('o nome') and does not affect the semantic meaning or behavior of the use case. It aligns with examples of textual updates that improve clarity without altering functionality.,1782
+58,,src/UC007_Listar_Autorizacoes_Pagamentos_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Registrar Autorizações de Pagamento""
+","+		step 2 system ""Apresenta a tela de Registrar Autorizações de Pagamento.""
+",LOW,0,1,4,{'TC2'},5,LOW,"The change made in the updated snippet is the addition of a period at the end of the sentence. This is a syntactic edit that does not alter the system's expected behavior or the meaning of the sentence. Therefore, it is classified as a low-impact change.",1500
+59,,src/UC008_Registrar_Autorizacao_de_Pagamento.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 3 usuario ""Informa o número de Autorização de Pagamento e do Exercício.""
+","+		step 1 usuario ""Informa o número de Autorização de Pagamento e do Exercício.""
+",LOW,0,3,0,"{'TC1', 'TC3', 'TC2'}",3,HIGH,"The update changes the sequence of steps in the use case. Moving an action from step 3 to step 1 alters the expected workflow and potentially the system's behavior, indicating a semantic edit rather than purely syntactic.",1324
+60,,src/UC008_Registrar_Autorizacao_de_Pagamento.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 usuario ""Confirma a operação.""
+-		step 5 system ""Persiste o número da AP e o ano de exercício conforme informados;
+","+		step 3 usuario ""Confirma a operação.""
++		step 4 system ""Persiste o número da AP e o ano de exercício conforme informados;
+",LOW,0,3,0,"{'TC1', 'TC3', 'TC2'}",3,HIGH,"The change modifies the sequence of steps in the use case by shifting step 4 and step 5 to earlier positions (step 3 and step 4 respectively). This alteration impacts the order of actions in the system's workflow, hence it affects the expected behavior and is considered a high-impact change.",1444
+61,,src/UC009_Prestar_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,10,0,"{'TC7', 'TC6', 'TC3', 'TC9', 'TC5', 'TC10', 'TC2', 'TC1', 'TC8', 'TC4'}",10,LOW,The update involves a syntactic change: correcting a typo in 'usuario' to 'usuário' and adding a period at the end of the sentence. This modification does not alter the system's behavior or the use case's logic.,4333
+62,,src/UC009_Prestar_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 5 usuario ""Verifica o histório da tramitação da prestação de contas."" af[1,2,3,4,5]
+-		step 6 system ""Exibe o histórico da tramitação da prestação de contas."" 
+","+		step 5 usuario ""Verifica o histórico da tramitação da prestação de contas."" af[1,2,3,4,5]
++		step 6 system ""Exibe o histórico da tramitação da prestação de contas.""
+",LOW,0,1,9,{'TC10'},10,LOW,"The update involves the correction of a minor typo in the word 'histórico' from 'histório.' This change does not affect the system's behavior or functionality, as it is purely a textual correction. Therefore, it is classified as a low-impact change.",5735
+63,,src/UC009_Prestar_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Apresenta a tela de Detalhar Diárias""
+","+		step 2 system ""Apresenta a tela de Detalhar Diárias.""
+",LOW,0,1,9,{'TC4'},10,LOW,"The update adds a period at the end of the sentence in step 2. This is a syntactic edit that does not change the system's expected behavior. The functionality and semantics of the step remain unchanged, thus classifying it as a low-impact change.",1505
+64,,src/UC010_Analisar_Prestacao_de_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,"The change involves correcting a typo in the word 'usuário' and adding a period at the end of the sentence. These are textual updates that do not alter the system's behavior, thereby qualifying as a low-impact change.",1526
+65,,src/UC010_Analisar_Prestacao_de_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 6 usuario ""Verifica o histório da tramitação da prestação de contas e clica para analisar a prestação de contas.""
+-		step 7 system ""Exibe a tela para prestação de contas""
+-		step 8 usuario ""Informa o parecer da prestação de contas.""
+-		step 9 system ""Exibe mensagem de confirmação (MSG105 - Confirmar parecer da prestação de contas) para o usuário.""
+-		step 10 usuario ""Confirma o parecer dado (confirma operação)."" af[1,2]
+-		step 11 system ""Persiste as informações, alterando o status da prestação de contas conforme informada pelo usuário;
+","+		step 5 usuario ""Verifica o histórico da tramitação da prestação de contas e clica para analisar a prestação de contas.""
++		step 6 system ""Exibe a tela para prestação de contas.""
++		step 7 usuario ""Informa o parecer da prestação de contas.""
++		step 8 system ""Exibe mensagem de confirmação (MSG105 - Confirmar parecer da prestação de contas) para o usuário.""
++		step 9 usuario ""Confirma o parecer dado (confirma operação)."" af[1,2]
++		step 10 system ""Persiste as informações, alterando o status da prestação de contas conforme informada pelo usuário;
+",LOW,0,2,3,"{'TC4', 'TC5'}",5,LOW,"The change is a syntactic edit involving renumbering of the steps in the use case flow without altering the semantic meaning or functionality. The sequence of operations and their descriptions remain unchanged, which suggests it doesn't affect the expected behavior of the system.",5002
+66,,src/UC010_Analisar_Prestacao_de_Contas.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 2 system ""Exibe a tela de Detalhar Diárias""
+","+		step 2 system ""Exibe a tela de Detalhar Diárias.""
+",LOW,0,1,4,{'TC2'},5,LOW,"The change consists of adding a period at the end of the sentence in step 2. This is a syntactic edit that does not alter the system's expected behavior or functionality, merely improves punctuation for readability or stylistic consistency.",3823
+67,,src/UC011_Listar_Solicitacoes_de_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,5,0,"{'TC3', 'TC2', 'TC1', 'TC5', 'TC4'}",5,LOW,"The change involves correcting a typographical error and adding a period for textual coherence, which does not alter the system's expected behavior or the logic of the use case. It is a syntactic edit that maintains the intended meaning of the precondition.",1683
+68,,src/UC011_Listar_Solicitacoes_de_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3,4]
+-		step 5 system ""Exibe os registros de solicitações de diária.""
+","+		step 3 usuario ""Visualiza os registros de solicitações de diária."" af[1,2,3,4]
++		step 4 system ""Exibe os registros de solicitações de diária.""
+",LOW,0,1,4,{'TC5'},5,LOW,"The update only involves reordering the steps, changing step 4 to step 3 and step 5 to step 4. This does not introduce any new requirements or affect the system's expected behavior, making it a syntactic edit rather than a semantic one.",1533
+69,,src/UC011_Listar_Solicitacoes_de_Diarias.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 system ""Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário.""
+","+		step 2 system ""Exibe uma nova listagem de solicitações, de acordo com os filtros informados pelo usuário.""
+",LOW,0,1,4,{'TC2'},5,HIGH,"The update changes the system's expected behavior by moving the action from step 4 to step 2 in the use case flow, which affects the order of operations and the sequence in which system actions are performed. Such a change can alter how the system executes the use case and impacts the user experience by potentially offering the list of requests earlier in the sequence.",1604
+70,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,4,0,"{'TC1', 'TC3', 'TC4', 'TC2'}",4,LOW,The change involves correcting a typo by adding an accent to 'usuário' and adding a period at the end of the sentence. These are syntactic edits that do not alter the system's behavior or requirements.,1447
+71,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	  	step 2 system ""Apresenta a tela de Detalhar Diárias""
+","+	  	step 2 system ""Apresenta a tela de Detalhar Diárias.""
+",LOW,0,1,3,{'TC3'},4,LOW,"The update is purely syntactic, adding a period at the end of the sentence in step 2, which does not alter the system's behavior or functionality.",1404
+72,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	  	step 2 system ""Atualiza a lista de registros de solicitações, onde o nome deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
+","+	  	step 2 system ""Atualiza a lista de registros de solicitações, onde deverá constar o nome do usuário logado (que se atribuiu como responsável pela liquidação) no campo de atribuição (no caso de desatribuição, o nome deverá ser removido).""
+",LOW,0,1,3,{'TC2'},4,LOW,The change in the updated snippet involves removing the unnecessary word 'o' which does not alter the system's expected behavior or logic. It is merely a syntactic edit aimed at improving or clarifying the text without any impact on the underlying functionality or semantics of the system.,1935
+73,,src/UC012_Listar_Liquidacoes_Pendentes.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	  	step 2 system ""Apresenta a tela de Registrar Liquidações""
+","+	  	step 2 system ""Apresenta a tela de Registrar Liquidações.""
+",LOW,0,1,3,{'TC1'},4,LOW,"The change consists of adding a period at the end of the sentence, which is a textual update focusing on punctuation. This is a syntactic edit and does not alter the system's behavior or the use case's semantic meaning.",4426
+74,,src/UC013_Registrar_Liquidacao.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O Sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro)"",
+","+	preCondition ""O sistema identifica a solicitação a ter a liquidação registrada (recebida por parâmetro)"",
+",LOW,0,3,0,"{'TC1', 'TC3', 'TC2'}",3,LOW,"The change involves the capitalization of 'Sistema' to 'sistema' in the precondition statement. This is purely a syntactic edit and does not affect the system's expected behavior or modify any functional requirements. Therefore, it is classified as a low-impact change.",1319
+75,,src/UC014_Minha_Conta_Bancaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	preCondition ""O usuario devidamente autenticado e na tela inicial do sistema""
+","+	preCondition ""O usuário devidamente autenticado e na tela inicial do sistema.""
+",LOW,0,4,0,"{'TC1', 'TC3', 'TC4', 'TC2'}",4,LOW,"The change involves the correction of a typo in the word 'usuario' to 'usuário' and the addition of a period at the end of the sentence. These changes are syntactic edits that do not alter the system's behavior or requirements, hence classified as low-impact.",2958
+76,,src/UC014_Minha_Conta_Bancaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	  	step 1 usuario ""Acessa a funcionalidade Minha Conta Bancária (menu)"" 
+","+	  	step 1 usuario ""Acessa a funcionalidade Minha Conta Bancária (menu)."" 
+",LOW,0,4,0,"{'TC1', 'TC3', 'TC4', 'TC2'}",4,LOW,"The change involved adding a period at the end of the step description. This is a textual update that does not alter the functionality or expected behavior of the system, thus it is a syntactic edit classified as low-impact.",1586
+77,,src/UC014_Minha_Conta_Bancaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-		step 4 system ""Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancários (dados bancários)) para o usuário sobre a manutenção de informações bancárias."" 
+","+		step 4 system ""Exibe mensagens informativas (MSG403 - Informativos sobre a atualização de conta bancária (dados bancários)) para o usuário sobre a manutenção de informações bancárias."" 
+",LOW,0,1,3,{'TC4'},4,LOW,"The change in the updated snippet involves a minor textual edit — specifically, a correction of a grammatical error by changing 'bancários' to 'bancária' to properly accord with 'conta'. This modification does not alter the system's behavior or the logical flow of the use case. Therefore, it is classified as a low-impact change.",1709
+78,,src/UC014_Minha_Conta_Bancaria.claret,exp01_rgp-diarias_v1.2.4,exp01_rgp-diarias_v1.2.5,"-	  	step 2 system ""Apresenta os campos (banco/agência/conta corrente) alterados""
+","+	  	step 2 system ""Apresenta os campos (banco/agência/conta corrente) alterados.""
+",LOW,0,3,1,"{'TC1', 'TC3', 'TC2'}",4,LOW,"The change consists of adding a period at the end of the sentence, which is purely a punctuation change and does not alter the system's expected behavior. It is a syntactic edit that improves sentence readability but does not introduce, modify, or delete any requirement, feature, or flow within the use case.",2215
+79,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.5,exp01_rgp-diarias_v1.3,"-		step 25 usuario ""Clica em confirmar."" af[4]
+","+		step 25 usuario ""Clica em confirmar."" af[4,6]
+",HIGH,0,36,31,"{'TC21', 'TC42', 'TC20', 'TC10', 'TC22', 'TC15', 'TC65', 'TC26', 'TC61', 'TC4', 'TC48', 'TC49', 'TC36', 'TC50', 'TC3', 'TC43', 'TC9', 'TC14', 'TC44', 'TC37', 'TC38', 'TC25', 'TC27', 'TC55', 'TC16', 'TC59', 'TC32', 'TC66', 'TC56', 'TC54', 'TC33', 'TC67', 'TC5', 'TC31', 'TC11', 'TC60'}",67,HIGH,"The update includes a new alternative flow ('af[6]') for step 25 that did not exist in the original snippet. Adding a new alternative flow modifies the potential paths of execution within the use case, which constitutes a change in the system's expected behavior, qualifying it as a high-impact change.",2402
+80,,src/UC001_Solicitar_Diarias.claret,exp01_rgp-diarias_v1.2.5,exp01_rgp-diarias_v1.3,,"+	alternative 6 ""Alerta o estouro do limite de 10 diárias por mês"" {
++		step 1 usuario ""Clica em confirmar.""
++		step 2 system ""Exibe uma mensagem de alerta informando sobre o estouro do limite de 10 diárias por mês.""
++		step 3 usuario ""Fecha o alerta"" bs 26
++	}
+",HIGH,36,0,67,"{'TC72', 'TC21', 'TC71', 'TC20', 'TC90', 'TC2', 'TC4', 'TC82', 'TC89', 'TC63', 'TC97', 'TC36', 'TC46', 'TC19', 'TC3', 'TC13', 'TC47', 'TC64', 'TC12', 'TC38', 'TC37', 'TC98', 'TC45', 'TC62', 'TC28', 'TC53', 'TC30', 'TC55', 'TC81', 'TC54', 'TC80', 'TC73', 'TC29', 'TC88', 'TC11', 'TC99'}",103,HIGH,"The updated snippet introduces a new alternative flow that adds additional behavior to the use case. This alternative flow involves user interaction (confirmation and alert handling) regarding exceeding a limit of 10 daily tasks per month. Introducing this new logic and checks constitutes a change to the system's expected behavior, making the impact high.",5449

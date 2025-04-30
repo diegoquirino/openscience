@@ -1,0 +1,856 @@
+index,previous_filename,filename,base_tag,head_tag,base_tag_lines_txt,head_tag_lines_txt,edit_classification_truth,new_ct,obsolete_ct,reusable_ct,affected_cts,total_ct,edit_classification,decision_rationale,elapsed_time_ms
+0,,src/RF001 - Autenticar Usuario.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 1 sysUser ""inicia a tela de login atraves da opcao de login no canto superior direito""
+","+    step 1 sysUser ""inicia a tela de login atraves da opcao de Login no canto superior direito""
+",LOW,0,14,0,"{'TC8', 'TC7', 'TC9', 'TC12', 'TC6', 'TC3', 'TC14', 'TC13', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",14,LOW,"The update is a syntactic edit involving a capitalization change of the word 'login' to 'Login'. This does not change the system's behavior or expected functionality, hence it is classified as low-impact.",2590
+1,,src/RF002 - Realizar logout.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 1 sysUser ""clica na opcao de logout atraves da opcao disponivel no canto superior direito""
+","+    step 1 sysUser ""clica na opcao de Logout atraves da opcao disponivel no canto superior direito""
+",LOW,0,1,0,{'TC1'},1,LOW,"The change consists of altering the capitalization of the word 'Logout' from lowercase to uppercase. This is a textual update that does not affect the system's behavior or functionality. Hence, it is classified as a low-impact change as it involves synonym or formatting adjustments without semantic impact.",2715
+2,,src/RF003 - Visualizar Permissoes do Usuario.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 2 system ""exibe a tela com a tabela das permissoes concedidas ao seu usuario""
+","+    step 2 system ""exibe a tela com a tabela das Permissoes concedidas ao seu usuario""
+",LOW,0,1,0,{'TC1'},1,LOW,"The change involves the capitalization of a term ('Permissoes' instead of 'permissoes'), which is a textual update affecting the notation and style but not altering the system's behavior or logic. Therefore, it is classified as a low-impact change.",2810
+3,,src/RF003 - Visualizar Permissoes do Usuario.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  postCondition ""Usuario visualiza a tabela das permissoes concedidas ao seu usuario""
+","+  postCondition ""Usuario visualiza a tabela das Permissoes concedidas ao seu usuario""
+",LOW,0,1,0,{'TC1'},1,LOW,"The change involves capitalizing the word 'Permissoes' in the post-condition, which is a textual update that does not alter the system's behavior, functionality, or requirements. Thus, it is classified as a low-impact modification.",2430
+4,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				tem permissao para gerenciar perfis de competencias.""
+","+				tem permissao para gerenciar Perfis de Competencias.""
+",LOW,0,11,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,LOW,"The change involves capitalization of letters in the phrase 'perfis de competencias' without altering the meaning or behavior of the system. This is a textual update focused on formatting, which is considered a syntactic edit and has a low impact on the system's expected behavior.",2766
+5,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 1 lider ""acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"" af[4]
+-    step 2 system ""exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+-    step 3 lider ""clica na opcao 'Novo' para criar um novo perfil"" af[1,2,3]
+","+    step 1 lider ""acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial"" af[4]
++    step 2 system ""exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Novo' para criar um Novo Perfil de Competencias"" af[1,2,3]
+",LOW,0,4,7,"{'TC11', 'TC10', 'TC9', 'TC8'}",11,LOW,"The changes made in the updated snippet are textual and do not alter the functionality or behavior of the system. The updates include capitalization changes and the addition of 'de Competencias' to provide more context in the description. These are syntactic edits, thus classified as low-impact.",3662
+6,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				   retorna feedback correspondente"" ef[1,2,3]
+","+				   retorna feedback correspondente"" ef[1,2]
+",HIGH,0,2,9,"{'TC11', 'TC7'}",11,HIGH,"The original exception flow pointed to 'ef[1,2,3]' indicating that there were exception flows at steps 1, 2, and 3. The updated snippet points to 'ef[1,2]', removing the exception flow at step 3. Removing an exception flow can alter the expected behavior of the system by changing how the system responds to certain exceptions. Therefore, this change is classified as high-impact because it modifies the system's behavior by removing a significant aspect of its handling of exceptions.",3981
+7,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos perfis de competencias sem o perfil de competencias excluido""
+","+    step 6 system ""exibe a listagem dos Perfis de Competencias sem o perfil de competencias excluido"" ef[3]
+",HIGH,0,1,10,{'TC3'},11,HIGH,"The update introduces an exception flow (ef[3]) to step 6, which alters the system's behavior by defining a scenario where an exception occurs. This constitutes a high-impact change because it modifies the expected behavior and processing logic of the use case.",4308
+8,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos perfis de competencias com o perfil de competencias excluido""
+","+    step 6 system ""exibe a listagem dos Perfis de Competencias com o perfil de competencias excluido""
+",LOW,0,1,10,{'TC2'},11,LOW,"The change involves capitalizing the first letters of 'perfis de competencias', which is a syntactic edit focused on formatting and does not alter the system's behavior or functionality. Therefore, it is deemed to be a low-impact change.",1500
+9,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  	step 1 usuarioNA ""acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial""
+-  	step 2 system ""exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+","+  	step 1 usuarioNA ""acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial""
++  	step 2 system ""exibe a listagem dos Perfis de Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+",LOW,0,1,10,{'TC1'},11,LOW,"The changes involve only the capitalization of the term 'Perfis de Competencias'. This is a textual update that does not affect the system's behavior, functionality, or logic. Such edits are considered syntactic, fitting the criteria for a low-impact change.",9093
+10,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  exception 1 ""Falha ao Salvar o Novo Perfil"" {
+-    step 1 system ""exibe uma mensagem de erro ao tentar salvar o novo perfil, informando o campo ou a validacao que falhou""
+","+  exception 1 ""Falha ao Salvar o Novo Perfil de Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar o novo Perfil de Competencias, informando o campo ou a validacao que falhou""
+",LOW,0,2,9,"{'TC8', 'TC4'}",11,HIGH,"The update involves a semantic change by specifying 'Novo Perfil de Competencias' instead of 'Novo Perfil', which alters the expected behavior of the system by potentially targeting a different entity or concept within the use case. This introduction of specificity may affect how the rest of the system interacts with this particular use case.",2295
+11,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  exception 2 ""Erro ao Editar Perfil"" {
+-    step 1 system ""exibe uma mensagem de erro ao tentar editar o perfil, informando o campo ou a validacao que falhou""
+","+  exception 2 ""Erro ao Editar Perfil de Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar o Perfil de Competencias, informando o campo ou a validacao que falhou""
+",LOW,0,2,9,"{'TC9', 'TC5'}",11,LOW,"The change involves renaming the exception and message to specify 'Perfil de Competencias' instead of just 'Perfil'. This is a syntactic edit that clarifies the context but doesn't alter the system's behavior or introduce any new requirements. It refines existing terminology without affecting the existing functionality, hence it is classified as low-impact.",2881
+12,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  exception 3 ""Falha na Exclusao do Perfil"" {
+-    step 1 system ""exibe uma mensagem de erro ao tentar excluir o perfil""
+","+  exception 3 ""Falha na Exclusao do Perfil de Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir o Perfil de Competencias""
+",LOW,0,2,9,"{'TC6', 'TC10'}",11,HIGH,"The change modifies an exception flow by specifying 'Perfil de Competencias' instead of just 'perfil'. This suggests a change in the expected behavior by narrowing down or changing the target of the exception, which potentially affects how the system handles this particular flow. This type of modification impacts the semantics of the use case and not just its syntax.",4979
+13,,src/RF006 - Gerenciar Perfis de Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  postCondition ""A gestao de perfis de competencias e realizada com sucesso.""
+","+  postCondition ""A gestao de Perfis de Competencias e realizada com sucesso.""
+",LOW,0,2,9,"{'TC11', 'TC7'}",11,LOW,"The change in the postCondition involves capitalizing the words 'Perfis de Competencias'. This alteration is syntactic, aiming to adjust formatting, and does not affect the system's behavior or introduce/remove any functional elements. Hence, it is considered a low-impact change.",2836
+14,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,,"+systemName ""GTI-Competencias""
++
++usecase ""RF007 - Gerenciar Avaliacoes"" {
++  version ""1.0"" type ""Criacao"" user ""Aislan Fernandes"" date ""03/08/2020""
++  actor lider ""Lider de Pessoas""
++  preCondition ""Lider de Pessoas esta autenticado no sistema; 
++				tem permissao para gerenciar Avaliacoes""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de gestao de Avaliacoes a partir do menu inicial""
++    step 2 system ""exibe a listagem dos Avaliacoes cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Novo' para criar uma nova Avaliacao"" af[1,2,3]
++    step 4 system ""apresenta o formulario para cadastro e alteracao de Avaliacao""
++    step 5 lider  ""seleciona o 'Periodo Avaliativo' da Avaliacao""
++    step 6 system ""apresenta o campo 'Periodo Avaliativo' preenchido corretamente""
++    step 7 lider ""seleciona o 'Perfil' de competencias da Avaliacao""
++    step 8 system ""apresenta o campo 'Perfil' de competencias preenchido corretamente e
++                   apresenta o campo 'Metas' com as respectivas competencias, cada uma preenchida com nivel igual 1 (um)""
++    step 9 lider ""seleciona o colaborador a ser 'Avaliado' na Avaliacao""
++    step 10 system ""apresenta o campo 'Avaliado' preenchido corretamente""
++    step 11 lider ""Em 'Metas', insere o 'Nivel' esperado para cada competencia do perfil selecionado na Avaliacao""
++    step 12 system ""apresenta em 'Metas' os campos 'Nivel' preenchido corretamente""              
++    step 13 lider ""seleciona 'Avaliadores' da Avaliacao""
++    step 14 system ""apresenta a lista de 'Avaliadores' preenchida corretamente""
++	step 15 lider ""clica na opcao 'Salvar'""
++    step 16 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1,2]
++  }
++
++  alternative 1 ""Editar Avaliacao Existente"" {
++    step 1 lider ""seleciona uma Avaliacao da listagem""
++    step 2 system ""destaca a Avaliacao selecionada na listagem""
++    step 3 lider ""clica na opcao 'Editar' para modificar a Avaliacao selecionada""
++    step 4 system ""apresenta o formulario para e alteracao de Avaliacao""
++    step 5 lider ""verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' somente leitura"" bs 11
++  }
++  
++  alternative 2 ""Confirmar Exclusao do Avaliacao"" {
++  	step 1 lider ""seleciona uma Avaliacao da listagem""
++    step 2 system ""destaca a Avaliacao selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Avaliacao selecionada"" 
++    step 4 system ""solicita confirmacao de exclusao da Avaliacao""
++    step 5 lider ""confirma a exclusao do Avaliacao""
++    step 6 system ""exibe a listagem dos Avaliacoes sem o Avaliacao excluido"" ef[3,4]
++  }
++
++  alternative 3 ""Negar Exclusao do Avaliacao"" {
++  	step 1 lider ""seleciona uma Avaliacao da listagem""
++    step 2 system ""destaca a Avaliacao selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Avaliacao selecionada""
++    step 4 system ""solicita confirmacao de exclusao da Avaliacao""
++    step 5 lider ""nao confirma a exclusao do Avaliacao""
++    step 6 system ""exibe a listagem dos Avaliacoes com o Avaliacao excluido""
++  }
++
++  exception 1 ""Falha ao Salvar a nova Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar a nova Avaliacao, informando o campo ou a validacao que falhou""
++  }
++
++  exception 2 ""Erro ao Editar Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar a Avaliacao, informando o campo ou a validacao que falhou""
++  }
++
++  exception 3 ""Falha na Exclusao do Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir a Avaliacao""
++  }
++  
++  exception 4 ""Falha na Exclusao do Avaliacao: nao e o lider"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir a Avaliacao informando que o usuario nao e o lider""
++  }
++
++  postCondition ""A gestao de Avaliacoes e realizada com sucesso.""
++}
+",HIGH,10,0,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC10', 'TC4', 'TC2'}",10,HIGH,"The updated snippet introduces a new use case in the system with specific flows including basic, alternative, and exception flows. These flows provide a structure for managing evaluations, including actions like creating, editing, and deleting evaluations. The inclusion of exception handling indicates changes to how the system should respond to various situations, enhancing understanding and behavior within the specified use case. As these additions define the system's expected behavior interactions, they constitute high-impact changes to the system requirements and functionality.",3170
+15,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				tem permissao para gerenciar perfis de competencias.""
+","+				tem permissao para gerenciar Periodos Avaliativos.""
+",LOW,0,11,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,HIGH,"The change updates the permission from managing 'perfils de competencias' to managing 'Periodos Avaliativos'. This alters the system's expected behavior by modifying what the actor is authorized to manage, indicating a change in system functionality and requirements, thus classifying it as high-impact.",2636
+16,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 1 lider ""acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial"" af[4]
+-    step 2 system ""exibe a listagem dos perfis de competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 1 lider ""acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial"" af[4]
++    step 2 system ""exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,10,1,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,HIGH,"The changes in the updated snippet involve modifying the key entities from 'gestao de perfis de competencias' and 'listagem dos perfis de competencias cadastrados' to 'gestao de Periodos Avaliativos' and 'listagem dos Periodos Avaliativos cadastrados'. This alters the subject of the use case, suggesting a shift in the feature or business model entity being managed by the system. Such a change impacts the system's expected behavior by modifying the context and functionality, thus representing a semantic edit.",2438
+17,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 7 lider ""preenche o campo 'Data Inicial e Data Final' selecionando um lider da lista""
+","+    step 7 lider ""preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo""
+",LOW,0,8,3,"{'TC8', 'TC7', 'TC6', 'TC5', 'TC11', 'TC10', 'TC4', 'TC9'}",11,LOW,"The change modifies the description of step 7 by altering the method of input for the 'Data Inicial e Data Final' field, switching from selecting a leader from a list to providing the specific dates. This change is syntactic as it alters the description without introducing new functionality or removing existing functionality, thus not affecting the system's expected behavior at a semantic level.",2040
+18,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				   retorna feedback correspondente"" ef[1,2,3]
+","+				   retorna feedback correspondente"" ef[1,2]
+",HIGH,0,2,9,"{'TC11', 'TC7'}",11,HIGH,"The change involved the modification of an exception flow list from ef[1,2,3] to ef[1,2], which affects the defined paths that the system can take in response to exceptions. This alters the system's expected behavior, making it a high-impact change.",2058
+19,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos perfis de competencias sem o Periodo Avaliativo excluido""
+","+    step 6 system ""exibe a listagem dos Periodos Avaliativos sem o Periodo Avaliativo excluido"" ef[3]
+",HIGH,0,1,10,{'TC3'},11,HIGH,"The change systematically alters the focus of step 6 from displaying a list of competency profiles to displaying a list of evaluation periods. This change affects the expected behavior and functionality of the system, indicating a transition to a different set of data being processed, which is a high-impact change. Additionally, the inclusion of an exception flow (ef[3]) introduces a new behavior in handling errors or special cases, further corroborating the classification as high-impact.",3038
+20,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos perfis de competencias com o Periodo Avaliativo excluido""
+","+    step 6 system ""exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido""
+",LOW,0,1,10,{'TC2'},11,HIGH,"The change in the updated snippet alters the system's behavior by modifying the content of what is displayed. Originally, the system displayed 'competency profiles with the excluded evaluation period,' but the update changes this to 'evaluation periods with the excluded evaluation period.' This change affects what information is presented to the user, thus impacting the system's expected behavior.",4747
+21,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  	step 1 usuarioNA ""acessa a funcionalidade de gestao de perfis de competencias a partir do menu inicial""
+-  	step 2 system ""exibe a listagem dos perfis de competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+","+  	step 1 usuarioNA ""acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial""
++  	step 2 system ""exibe a listagem dos Periodos Avaliativos cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+",LOW,0,1,10,{'TC1'},11,HIGH,"The update changes the fundamental elements being managed in the system from 'gestao de perfis de competencias' to 'gestao de Periodos Avaliativos', which alters the core functionality and behavior of the system. This constitutes a semantic change as it involves modifying the primary focus of the use case from one domain aspect to another, thus categorizing it as high-impact.",2693
+22,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  postCondition ""A gestao de perfis de competencias e realizada com sucesso.""
+","+  postCondition ""A gestao de Periodos Avaliativos e realizada com sucesso.""
+",LOW,0,2,9,"{'TC11', 'TC7'}",11,HIGH,"The change in the post-condition modifies the expected outcome of the use case from managing competency profiles to managing evaluation periods. This is a semantic change as it alters the system's expected behavior by defining a new goal or functionality that the system now needs to achieve. Such a change impacts the fundamental expectations of the use case, thus classifying it as high-impact.",2538
+23,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				tem permissao para gerenciar competencias (portfolio).""
+","+				tem permissao para gerenciar Competencias (Portfolio).""
+",LOW,0,35,0,"{'TC7', 'TC29', 'TC30', 'TC23', 'TC6', 'TC21', 'TC31', 'TC26', 'TC22', 'TC20', 'TC34', 'TC4', 'TC16', 'TC3', 'TC18', 'TC13', 'TC9', 'TC2', 'TC25', 'TC33', 'TC24', 'TC11', 'TC32', 'TC17', 'TC14', 'TC1', 'TC10', 'TC8', 'TC19', 'TC5', 'TC27', 'TC35', 'TC12', 'TC28', 'TC15'}",35,LOW,"The change involves capitalizing words 'Competencias' and 'Portfolio'. This is a syntactic edit related to formatting, which does not alter the system's expected behavior or introduce any new requirements or constraints. Therefore, it is classified as low-impact.",2310
+24,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 1 lider ""acessa a funcionalidade de gestao de competencias (portfolio) a partir do menu inicial"" af[4]
+-    step 2 system ""exibe a listagem dos competencias (portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 1 lider ""acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial"" af[4]
++    step 2 system ""exibe a listagem dos Competencias (Portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,34,1,"{'TC7', 'TC29', 'TC30', 'TC23', 'TC6', 'TC21', 'TC31', 'TC26', 'TC22', 'TC20', 'TC34', 'TC4', 'TC16', 'TC3', 'TC18', 'TC13', 'TC9', 'TC2', 'TC25', 'TC33', 'TC24', 'TC11', 'TC32', 'TC17', 'TC14', 'TC10', 'TC8', 'TC19', 'TC5', 'TC27', 'TC35', 'TC12', 'TC28', 'TC15'}",35,LOW,"The change involves capitalization of letters in the terms 'Competencias' and 'Portfolio', which is a cosmetic alteration. This does not affect the system's behavior, requirements, or functionality, hence it's a syntactic edit and classified as low-impact.",8179
+25,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 4 system ""apresenta o formulario para cadastro e alteracao de competecias (portfolio)""
+","+    step 4 system ""apresenta o formulario para cadastro e alteracao de Competencias (Portfolio)""
+",LOW,0,32,3,"{'TC7', 'TC29', 'TC30', 'TC23', 'TC6', 'TC21', 'TC31', 'TC26', 'TC22', 'TC20', 'TC34', 'TC4', 'TC16', 'TC18', 'TC13', 'TC9', 'TC25', 'TC33', 'TC24', 'TC11', 'TC32', 'TC17', 'TC14', 'TC10', 'TC8', 'TC19', 'TC5', 'TC27', 'TC35', 'TC12', 'TC28', 'TC15'}",35,LOW,"The update only involves the capitalization of words in the text, which does not alter the system's behavior or functionality. This is a syntactic edit.",2202
+26,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-				   retorna feedback correspondente"" ef[1,2,3]
+","+				   retorna feedback correspondente"" ef[1,2]
+",HIGH,0,8,27,"{'TC7', 'TC23', 'TC19', 'TC31', 'TC27', 'TC35', 'TC11', 'TC15'}",35,HIGH,"The update involves modifying the exception flow reference from ef[1,2,3] to ef[1,2], which alters the system's expected behavior, potentially impacting how exceptions are handled in the use case. This constitutes a high-impact change as it removes an exception flow that was previously considered, thereby affecting the requirement or behavior associated with exception handling.",2285
+27,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  alternative 1 ""Editar competecias (portfolio) Existente"" {
+-    step 1 lider ""seleciona um competecias (portfolio) da listagem""
+-    step 2 system ""destaca o competecias (portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Editar' para modificar o competecias (portfolio) selecionado"" bs 4
+","+  alternative 1 ""Editar Competencias (Portfolio) Existente"" {
++    step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
++    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
++    step 3 lider ""clica na opcao 'Editar' para modificar o Competencias (Portfolio) selecionado"" bs 4
+",LOW,0,16,19,"{'TC8', 'TC7', 'TC19', 'TC11', 'TC6', 'TC18', 'TC14', 'TC17', 'TC13', 'TC5', 'TC12', 'TC10', 'TC4', 'TC9', 'TC15', 'TC16'}",35,LOW,"The changes made in the updated snippet are purely textual and involve capitalizing the words 'Competencias' and 'Portfolio'. These modifications are syntactic edits and do not alter the system's expected behavior, requirements, or logic. Therefore, the impact of these changes is classified as low-impact.",48562
+28,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  alternative 2 ""Confirmar Exclusao do competecias (portfolio)"" {
+-  	step 1 lider ""seleciona um competecias (portfolio) da listagem""
+-    step 2 system ""destaca o competecias (portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Excluir' para excluir o competecias (portfolio) selecionado""
+","+  alternative 2 ""Confirmar Exclusao do Competencias (Portfolio)"" {
++  	step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
++    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado""
+",LOW,0,2,33,"{'TC3', 'TC2'}",35,LOW,"The changes made to the alternative flow involve capitalization adjustments in the names 'Competencias' and 'Portfolio'. These are purely syntactic edits that do not affect the use case's behavior or introduce any new requirements or steps. Therefore, the impact is classified as low.",5371
+29,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos competencias (portfolio) sem o competecias (portfolio) excluido""
+","+    step 6 system ""exibe a listagem dos Competencias (Portfolio) sem o Competencias (Portfolio) excluido"" ef[3]
+",HIGH,0,1,34,{'TC3'},35,HIGH,"The update adds an exception flow (ef[3]) to step 6, which alters the control flow of the system by introducing a new exception path. This constitutes a semantic change in the use case's expected behavior, thus classifying the change as high-impact.",4815
+30,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  alternative 3 ""Negar Exclusao do competecias (portfolio)"" {
+-  	step 1 lider ""seleciona um competecias (portfolio) da listagem""
+-    step 2 system ""destaca o competecias (portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Excluir' para excluir o competecias (portfolio) selecionado""
+","+  alternative 3 ""Negar Exclusao do Competencias (Portfolio)"" {
++  	step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
++    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado""
+",LOW,0,2,33,"{'TC3', 'TC2'}",35,LOW,"The changes in the updated snippet are purely textual, involving capitalization of 'Competencias (Portfolio)' in several instances. These updates do not alter the system's expected behavior or logic, hence they are classified as low-impact, being syntactic edits aimed at consistency or readability improvements.",2749
+31,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-    step 6 system ""exibe a listagem dos competencias (portfolio) com o competecias (portfolio) excluido""
+","+    step 6 system ""exibe a listagem dos Competencias (Portfolio) com o Competencias (Portfolio) excluido""
+",LOW,0,1,34,{'TC2'},35,LOW,"The change involves capitalizing the words 'Competencias' and 'Portfolio'. This is a syntactic edit as it pertains to text formatting and does not alter the system's expected behavior or functionality. Thus, it is classified as a low-impact change.",3469
+32,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  	step 1 usuarioNA ""acessa a funcionalidade de gestao de competencias (portfolio) a partir do menu inicial""
+-  	step 2 system ""exibe a listagem dos competencias (portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+","+  	step 1 usuarioNA ""acessa a funcionalidade de gestao de Competencias (Portfolio) a partir do menu inicial""
++  	step 2 system ""exibe a listagem dos Competencias (Portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+",LOW,0,1,34,{'TC1'},35,LOW,"The changes made in the updated snippet are purely syntactic, focusing on capitalization adjustments for 'Competencias' and 'Portfolio'. These changes do not alter the system's expected behavior or its functionality, but rather improve consistency or readability in the text. Hence, the impact of these modifications is low.",2478
+33,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,"-  postCondition ""A gestao de competencias (portfolio) e realizada com sucesso.""
+","+  postCondition ""A gestao de Competencias (Portfolio) e realizada com sucesso.""
+",LOW,0,8,27,"{'TC7', 'TC23', 'TC19', 'TC31', 'TC27', 'TC35', 'TC11', 'TC15'}",35,LOW,The update involves capitalization changes to 'Competencias' and 'Portfolio'. This is a syntactic edit that does not alter the system's behavior or the semantic meaning of the post-condition.,1539
+34,,src/RF012 - Ajuda.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,,"+systemName ""GTI-Competencias""
++
++usecase ""RF012 - Ajuda"" {
++  version ""1.0"" type ""Criacao"" user ""Aislan Fernandes"" date ""20/07/2020""
++  actor lider ""Lider de Pessoas""
++  actor usuarioNA ""Usuario Nao-Autenticado""
++  preCondition ""Lider de Pessoas esta autenticado no sistema""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de gestao de Perfis de Competencias a partir do menu inicial"" af[1,2,3,4]
++    step 2 system ""exibe a listagem dos Perfis de Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Perfis de Competencias""
++    step 4 system ""apresenta um painel lateral com a ajuda contextual, dividido em quatro partes: 
++				   'Glossario', 'Funcionalidades', 'Validacoes' e 'Permissoes do Usuario'"" 
++  }
++  
++  alternative 1 ""Ajuda contextual na gestao de Periodos Avaliativos"" {
++  	step 1 lider ""acessa a funcionalidade de gestao de Periodos Avaliativos a partir do menu inicial""
++    step 2 system ""exibe a listagem dos Periodos Avaliativos cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Periodos Avaliativos"" bs 4
++  }
++  
++  alternative 2 ""Ajuda contextual na gestao de Competencias (portfolio)"" {
++  	step 1 lider ""acessa a funcionalidade de gestao de Competencias (portfolio) a partir do menu inicial""
++    step 2 system ""exibe a listagem das Competencias (portfolio) cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Competencias (portfolio)"" bs 4
++  }
++  
++  alternative 3 ""Ajuda contextual na gestao de Avaliacoes"" {
++  	step 1 lider ""acessa a funcionalidade de gestao de Avaliacoes a partir do menu inicial""
++    step 2 system ""exibe a listagem das Avaliacoes cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Avaliacoes"" bs 4
++  }
++  
++  alternative 4 ""Ajuda contextual na gestao de Niveis das Competencias"" {
++  	step 1 lider ""acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial""
++    step 2 system ""exibe a listagem dos Niveis das Competencias cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Ajuda' para visualizar a ajuda da gestao de Niveis das Competencias"" bs 4
++  }
++ 
++  postCondition ""A Ajuda e apresentada com sucesso.""
++}
+",HIGH,5,0,0,"{'TC3', 'TC1', 'TC5', 'TC4', 'TC2'}",5,HIGH,"The update introduces a new use case 'RF012 - Ajuda' with a basic flow and four alternative flows. This change adds new functionality involving multiple actor interactions and system responses, altering the expected behavior of the system. Therefore, it is classified as a high-impact change.",3010
+35,,src/RF013 - Gerenciar Niveis das Competencias.claret,exp01_gti-competencias_v0.1,exp01_gti-competencias_v1.0,,"+systemName ""GTI-Competencias""
++
++usecase ""RF013 - Gerenciar Niveis das Competencias"" {
++  version ""1.0"" type ""Criacao"" user ""Aislan Fernandes"" date ""11/08/2020""
++  actor lider ""Lider de Pessoas""
++  actor usuarioNA ""Usuario Nao-Autenticado""
++  preCondition ""Lider de Pessoas esta autenticado no sistema e 
++				tem permissao para gerenciar Niveis das Competencias.""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial"" af[4]
++    step 2 system ""exibe a listagem dos Niveis das Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Novo' para criar um novo Niveis das Competencias"" af[1,2,3]
++    step 4 system ""apresenta o formulario para cadastro e alteracao de Niveis das Competencias""
++    step 5 lider ""preenche o campo 'Nome' com dados validos""
++    step 6 system ""apresenta o campo 'Nome' preenchido corretamente""
++    step 7 lider ""preenche o campo 'Valor' com um numero inteiro referente a pontuacao a ser obtida no atendimento do respectivo nivel""
++    step 8 system ""apresenta o campo 'Valor' preenchido corretamente""
++    step 9 lider ""preenche o campo 'Descricao' com a descricao do nivel de competencia""
++    step 10 system ""apresenta o campo 'Descricao' preenchido corretamente""
++	step 11 lider ""clica na opcao 'Salvar'""
++    step 12 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1,2]
++  }
++
++  alternative 1 ""Editar Nivel das Competencias Existente"" {
++    step 1 lider ""seleciona um Nivel das Competencias da listagem""
++    step 2 system ""destaca o Nivel das Competencias selecionado na listagem""
++    step 3 lider ""clica na opcao 'Editar' para modificar o Nivel das Competencias selecionado"" bs 4
++  }
++  
++  alternative 2 ""Confirmar Exclusao do Nivel das Competencias"" {
++  	step 1 lider ""seleciona um Nivel das Competencias da listagem""
++    step 2 system ""destaca o Nivel das Competencias selecionado na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir o Nivel das Competencias selecionado""
++    step 4 system ""solicita confirmacao de exclusao""
++    step 5 lider ""confirma a exclusao do Nivel das Competencias""
++    step 6 system ""exibe a listagem dos Niveis das Competencias sem o Nivel das Competencias excluido"" ef[3]
++  }
++
++  alternative 3 ""Negar Exclusao do Nivel das Competencias"" {
++  	step 1 lider ""seleciona um Nivel das Competencias da listagem""
++    step 2 system ""destaca o Nivel das Competencias selecionado na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir o Nivel das Competencias selecionado""
++    step 4 system ""solicita confirmacao de exclusao""
++    step 5 lider ""nao confirma a exclusao do Nivel das Competencias""
++    step 6 system ""exibe a listagem dos Niveis das Competencias com o Nivel das Competencias excluido""
++  }
++  
++  alternative 4 ""Modo de visualizacao para usuarios nao-autenticados"" {
++  	step 1 usuarioNA ""acessa a funcionalidade de gestao de Niveis das Competencias a partir do menu inicial""
++  	step 2 system ""exibe a listagem dos Niveis das Competencias cadastrados apenas para visualizacao com a opcao 'Ajuda'""
++  }
++
++  exception 1 ""Falha ao Salvar o Novo Nivel das Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar o novo Nivel das Competencias, informando o campo ou a validacao que falhou""
++  }
++
++  exception 2 ""Erro ao Editar Nivel das Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar o Nivel das Competencias, informando o campo ou a validacao que falhou""
++  }
++
++  exception 3 ""Falha na Exclusao do Nivel das Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir o Nivel das Competencias""
++  }
++
++  postCondition ""A gestao de Niveis das Competencias e realizada com sucesso.""
++}
+",HIGH,10,0,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC10', 'TC4', 'TC2'}",10,HIGH,"The updated snippet introduces a complete new use case named 'RF013 - Gerenciar Niveis das Competencias' with detailed steps, alternative flows, and exception flows, which significantly changes the system's expected behavior. This introduction of new functionalities and flow of operations constitutes a high-impact change as it adds new requirements and features to the system.",2841
+36,,src/RF005 - Visualizar Status do Processo.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,,"+systemName ""GTI-Competencias""
++
++usecase ""RF005 - Visualizar Status do Processo"" {
++  version ""1.1"" type ""Criacao"" user ""Aislan Fernandes"" date ""08/10/2020""
++  actor usuarioNA ""Usuario Nao-Autenticado""
++  preCondition ""Usuario nao-autenticado no sistema se encontra na tela inicial do sistema""  
++  basic {
++    step 1 usuarioNA ""acessa a funcionalidade para visualizar o status do PGDC""
++    step 2 system ""apresenta o campo 'Periodo Avaliativo' para ser escolhido pelo usuario"" ef[1]
++    step 3 usuarioNA ""escolhe no campo 'Periodo Avaliativo' o ano correspondente""
++    step 4 system ""exibe na pagina uma tabela contendo as informacoes (basicamente listagem dos perfis de competencias - cf. RF006): 
++                   Perfil de Competencias; Unidade de Trabalho; Gerente do Desempenho; e, Situacao.""
++  }
++  exception 1 ""Nao existem Periodos Avaliativos Cadastrados"" {
++  	step 1 system ""exibe uma mensagem de erro informando que nao existem Periodos Avaliativos cadastrados""
++  }
++  postCondition ""Usuario visualiza a tabela das Permissoes concedidas ao seu usuario""
++}
+",HIGH,2,0,0,"{'TC1', 'TC2'}",2,HIGH,"The update introduces a new use case, 'RF005 - Visualizar Status do Processo,' complete with a system name, basic flow, and exception. This addition changes the system's expected behavior by defining new functionalities and requirements for the system, such as how the user interacts with the system to visualize the status, and handling specific exceptions.",2565
+37,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,,"+systemName ""GTI-Competencias""
++
++usecase ""RF008 - Gerenciar Respostas de Avaliacoes"" {
++  version ""1.1"" type ""Criacao"" user ""Aislan Fernandes"" date ""03/12/2020""
++  actor avaliador ""Avaliador de Pessoas""
++  preCondition ""Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes""
++
++  basic {
++    step 1 avaliador ""acessa a funcionalidade de Avaliacoes a partir do menu inicial""
++    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas"" 
++    step 3 avaliador ""com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao""
++    step 4 system ""apresenta o formulario para cadastro e alteracao de Respostas de Avaliacao"" ef[1]
++    step 5 avaliador  ""seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado""
++    step 6 system ""apresenta o campo 'Nivel da Competencia' preenchido corretamente""
++    step 7 avaliador ""adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado""
++    step 8 system ""apresenta os 'Apontamentos' preenchidos corretamente""
++	step 9 avaliador ""clica na opcao 'Salvar'"" af[1]
++    step 10 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[2,3]
++  }
++
++  exception 1 ""Nao e um dos avaliadores"" {
++    step 1 system ""exibe uma mensagem de erro informando ao usuario que nao e um dos avaliadores""
++  }
++  
++  exception 2 ""Falha ao Salvar a nova Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou""
++  }
++
++  exception 3 ""Erro ao Editar Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou""
++  }
++  
++  alternative 1 ""Resolve 'limpar' a Resposta de Avaliacao"" {
++    step 1 avaliador ""clica na opcao 'Excluir' para cada Perfil de Competencias avaliado""
++    step 2 system ""limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado""
++    step 5 avaliador ""verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos"" bs 5 
++  }
++
++  postCondition ""A gestao de Respostas de Avaliacoes e realizada com sucesso.""
++}
+",HIGH,7,0,0,"{'TC7', 'TC3', 'TC6', 'TC1', 'TC5', 'TC4', 'TC2'}",7,HIGH,"The updated snippet introduces a new use case with a series of steps, exceptions, and an alternative flow that describe the process of managing evaluation responses. This represents a significant change to the system's expected behavior, as it adds new functionalities related to evaluations, including handling different states like form submission, errors, and clearing responses. The addition of exception and alternative flows suggests new error handling and optional processes that were not present before, indicating a high-impact change to the system's behavior and requirements.",3544
+38,,src/RF009 - Gerenciar Resultados de Avaliacoes.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,,"+systemName ""GTI-Competencias""
++
++usecase ""RF009 - Gerenciar Resultados de Avaliacoes"" {
++  version ""1.1"" type ""Criacao"" user ""Aislan Fernandes"" date ""30/11/2020""
++  actor lider ""Lider de Pessoas""
++  preCondition ""Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Resultados de Avaliacoes""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de Avaliacoes a partir do menu inicial""
++    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas"" 
++    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Resultados' para efetivar o feedback""
++    step 4 system ""apresenta o formulario para cadastro da Ata de Reuniao""
++    step 5 lider  ""seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado""
++    step 6 system ""apresenta o campo 'Ata de Reuniao de Feedback' preenchido corretamente""
++	step 7 lider ""clica na opcao 'Salvar'"" af[1]
++    step 8 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1,2]
++  }
++
++  exception 1 ""Falha ao Salvar a nova Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou""
++  }
++
++  exception 2 ""Erro ao Editar Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou""
++  }
++  
++  alternative 1 ""Encerrar definitivamente"" {
++    step 1 lider ""clica na opcao 'Encerrar' para a Avaliacao de Competencias""
++    step 2 system ""apresenta o campo 'Ata de Reuniao de Feedback'""
++  }
++
++  postCondition ""A gestao de Resultados de Avaliacoes e realizada com sucesso.""
++}
+",HIGH,4,0,0,"{'TC3', 'TC1', 'TC4', 'TC2'}",4,HIGH,"The updated snippet introduces an entirely new use case in CLARET notation. This includes defining a new system, a use case with various steps, exceptions, and an alternative flow. These additions change the system's expected behavior by adding new functionalities and requirements, which classifies the change as high-impact.",2088
+39,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 2 system ""exibe a listagem dos Competencias (Portfolio) cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 2 system ""exibe a listagem das Competencias (Portfolio) cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,27,1,"{'TC7', 'TC23', 'TC6', 'TC21', 'TC26', 'TC22', 'TC20', 'TC4', 'TC16', 'TC3', 'TC18', 'TC13', 'TC9', 'TC2', 'TC25', 'TC24', 'TC11', 'TC17', 'TC14', 'TC10', 'TC8', 'TC19', 'TC5', 'TC27', 'TC12', 'TC28', 'TC15'}",28,LOW,"The change is a textual update, altering the gender of the noun 'cadastrados' to 'cadastradas', which is a grammatical correction for agreement with 'Competencias'. This does not affect the system's behavior; thus, it is a low-impact change.",2520
+40,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Editar' para modificar o Competencias (Portfolio) selecionado"" bs 4
+","+    step 2 system ""destaca a Competencia (Portfolio) selecionada na listagem""
++    step 3 lider ""clica na opcao 'Editar' para modificar a Competencia (Portfolio) selecionada"" bs 4
+",LOW,0,12,16,"{'TC8', 'TC7', 'TC11', 'TC6', 'TC14', 'TC13', 'TC5', 'TC12', 'TC10', 'TC9', 'TC15', 'TC16'}",28,LOW,"The changes in the updated snippet involve minor syntactic corrections: changing 'o Competencias (Portfolio) selecionado' to 'a Competencia (Portfolio) selecionada' and updating 'o' and 'Competencias' to 'a' and 'Competencia', respectively, to correct gender agreement and singular/plural consistency. These modifications do not alter the behavior or functionality of the system; they only improve grammatical accuracy. Therefore, the impact is classified as low.",2620
+41,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado""
+","+    step 2 system ""destaca a Competencia (Portfolio) selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada""
+",LOW,0,3,25,"{'TC3', 'TC4', 'TC2'}",28,LOW,"The update involves a minor syntactic edit from 'Competencias' to 'Competencia' and 'selecionado' to 'selecionada', which is a grammatical change in the language used but does not affect the system behavior or functionality. Hence, it is classified as low-impact.",2699
+42,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 6 system ""exibe a listagem dos Competencias (Portfolio) sem o Competencias (Portfolio) excluido"" ef[3]
+","+    step 6 system ""exibe a listagem das Competencias (Portfolio) sem a Competencia (Portfolio) excluida"" ef[3]
+",LOW,0,1,27,{'TC3'},28,LOW,"The update involves a minor syntactic change in the description of step 6, specifically updating the Portuguese grammatical articles to agree in number with the noun ('das' to 'a' and 'excluido' to 'excluida'). This does not alter the system's expected behavior or semantic intent of the use case step.",2536
+43,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 2 system ""destaca o Competencias (Portfolio) selecionado na listagem""
+-    step 3 lider ""clica na opcao 'Excluir' para excluir o Competencias (Portfolio) selecionado""
+","+    step 2 system ""destaca a Competencia (Portfolio) selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Competencia (Portfolio) selecionada""
+",LOW,0,3,25,"{'TC3', 'TC4', 'TC2'}",28,LOW,"The update involves a textual change from 'o Competencias' to 'a Competencia' regarding gender and singular/plural form. This change does not alter the system's expected behavior but rather corrects or clarifies the language used. Thus, it is a syntactic edit indicating a low-impact change.",3329
+44,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-    step 6 system ""exibe a listagem dos Competencias (Portfolio) com o Competencias (Portfolio) excluido""
+","+    step 6 system ""exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) excluida""
+",LOW,0,1,27,{'TC2'},28,LOW,"The change from 'dos Competencias (Portfolio) com o Competencias (Portfolio) excluido' to 'das Competencias (Portfolio) com a Competencia (Portfolio) excluida' is a textual modification focusing on grammatical correctness in Portuguese. This does not alter the system's behavior or introduce new steps, requirements, or flows; it merely corrects the gender and plurality of the language used. Thus, it is classified as a low-impact change.",3005
+45,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,"-  	step 2 system ""exibe a listagem dos Competencias (Portfolio) cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+","+  	step 2 system ""exibe a listagem das Competencias (Portfolio) cadastradas apenas para visualizacao com a opcao 'Ajuda'""
+",LOW,0,1,27,{'TC1'},28,LOW,"The change in the updated snippet is a grammatical correction from 'cadastrados' to 'cadastradas', which adjusts the gender to match the noun 'Competencias'. This is a syntactic edit that does not alter the behavior or the functional requirements of the system. Hence, the impact is classified as low.",3262
+46,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.0,exp01_gti-competencias_v1.1,,"+systemName ""GTI-Competencias""
++
++usecase ""RF014 - Administrador de Dados"" {
++  version ""1.1"" type ""Criacao"" user ""Aislan Fernandes"" date ""02/12/2020""
++  actor admin ""Administrador""
++  preCondition ""Administrador esta autenticado no sistema; e, tem permissao para alterar Gerente de Desempenho""
++
++  basic {
++    step 1 admin ""acessa a funcionalidade de Catalogo (Perfis) de Competencias a partir do menu inicial""
++    step 2 system ""exibe a listagem das Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"" 
++    step 3 admin ""com um perfil selecionado, clica na opcao 'Alterar Gerente' para efetivar a mudanca""
++    step 4 system ""apresenta o formulario para cadastro do novo Gerente de Desempenho""
++    step 5 admin  ""preenche o campo 'Login do Novo Gerente de Desempenho' do novo Gerente de Desempenho para o Perfil de Competencias ""
++    step 6 system ""apresenta o campo 'Login do Novo Gerente de Desempenho' preenchido corretamente""
++	step 7 admin ""clica na opcao 'Confirmar'"" af[1]
++    step 8 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1,2]
++  }
++
++  exception 1 ""Falha ao Salvar o novo Gerente de Desempenho"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar, informando o campo ou a validacao que falhou""
++  }
++  
++  alternative 1 ""Encerrar definitivamente"" {
++    step 1 admin ""clica na opcao 'Cancelar'""
++    step 2 system ""apresenta o Catalogo (Perfis) de Competencias cadastradas sem nenhuma alteracao""
++  }
++
++  postCondition ""A alteracao do Gerente de Desempenho e realizada com sucesso.""
++}
+",HIGH,3,0,0,"{'TC3', 'TC1', 'TC2'}",3,HIGH,"The use case introduces new functionality that allows an administrator to change the 'Gerente de Desempenho'. This involves multiple new steps in the basic flow, handling of exceptions, and an alternative flow. These changes alter the system's behavior, making it a high-impact edit.",2242
+47,src/RF005 - Visualizar Status do Processo.claret,src/RF004 - Visualizar Painel do Desempenho.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,"-  preCondition ""Usuario nao-autenticado no sistema se encontra na tela inicial do sistema""  
+","+  preCondition ""Usuario nao-autenticado no sistema""  
+",LOW,0,2,0,"{'TC1', 'TC2'}",2,LOW,"The change in the preCondition is a simplification of the description. It initially required the user to be on a specific screen, but this detail was removed. This modification does not affect the system's behavior, as the main condition of being 'nao-autenticado no sistema' remains the same. It's a low-impact textual update aimed at simplifying rather than altering the behavior or requirements of the use case.",2956
+48,src/RF005 - Visualizar Status do Processo.claret,src/RF004 - Visualizar Painel do Desempenho.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,"-    step 1 usuarioNA ""acessa a funcionalidade para visualizar o status do PGDC""
+","+    step 1 usuarioNA ""acessa a tela inicial do sistema"" af[1]
+",HIGH,0,2,0,"{'TC1', 'TC2'}",2,HIGH,"The change from 'usuarioNA acessa a funcionalidade para visualizar o status do PGDC' to 'usuarioNA acessa a tela inicial do sistema' introduces a new alternative flow with 'af[1]', which suggests a modification in the system's flow and behavior. This impacts how the user interacts with the system, changing the entry point of the use case and potentially leading to different subsequent actions. Therefore, it qualifies as a high-impact change as it alters the system's expected behavior.",4388
+49,src/RF005 - Visualizar Status do Processo.claret,src/RF004 - Visualizar Painel do Desempenho.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,,"+  
++  alternative 1 ""Retornando a tela inicial pelo menu do sistema"" {
++  	step 1 usuarioNA ""acessa a opcao 'Inicio (Painel)'"" bs 2
++  }
++  
+",HIGH,2,0,2,"{'TC1', 'TC2'}",4,HIGH,"The change introduces a new alternative flow to the use case, which alters the system's expected behavior by providing an additional path the user can take. This is a semantic change and thus classified as high-impact.",2159
+50,,src/RF009 - Gerenciar Resultados de Avaliacoes.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,"-    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Resultados' para efetivar o feedback""
+","+    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Resultado' para efetivar o feedback""
+",LOW,0,4,0,"{'TC3', 'TC1', 'TC4', 'TC2'}",4,LOW,"The change involves a minor textual edit, altering 'Resultados' to 'Resultado'. This modification does not affect the system's behavior or the overall semantics of the use case, as it simply changes the wording without altering functionality or introducing/removing any requirements.",3913
+51,,src/RF009 - Gerenciar Resultados de Avaliacoes.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,"-	step 7 lider ""clica na opcao 'Salvar'"" af[1]
+-    step 8 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
+","+    step 7 lider ""verifica a presenca (somente leitura) do detalhe de cada competencia avaliada""
++    step 8 system ""apresenta os detalhes de cada competencia, incluindo: 
++                   - a descricao da competencia;
++                   - o valor da autoavaliacao, a media das notas dos avaliadores e o valor da meta do avaliado;
++                   - os niveis de avaliacao para aquela competencia; e,
++                   - os apontamentos.""
++	step 9 lider ""clica na opcao 'Salvar'"" af[1]
++    step 10 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
+",HIGH,0,3,1,"{'TC3', 'TC4', 'TC2'}",4,HIGH,The updated snippet introduces new requirements and features by adding steps for reviewing competency details. This changes the system's expected behavior by providing a detailed view of competencies before performing the original action. These changes have a semantic impact on the use case.,3062
+52,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,"-    step 1 admin ""acessa a funcionalidade de Catalogo (Perfis) de Competencias a partir do menu inicial""
+-    step 2 system ""exibe a listagem das Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"" 
+","+    step 1 admin ""acessa a funcionalidade de 'Catalogo (Perfis) de Competencias' a partir do menu inicial""
++    step 2 system ""exibe a listagem do Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"" 
+",LOW,0,3,0,"{'TC3', 'TC1', 'TC2'}",3,LOW,"The changes in the updated snippet are purely syntactic and involve minor punctuation adjustments. In step 1, a set of quotation marks were placed around 'Catalogo (Perfis) de Competencias' to clarify grouping as a single item, and in step 2, minor wording adjustments ('das' to 'do') were made without modifying the semantic content or the behavior of the system. Thus, these edits do not affect the actual functionality or requirements of the use case.",3105
+53,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,,"+systemName ""GTI-Competencias""
++
++usecase ""RF015 - Gerenciar Planos de Capacitacao de TI"" {
++  version ""1.2"" type ""Criacao"" user ""Aislan Fernandes"" date ""23/05/2021""
++  actor lider ""Lider de Pessoas""
++  actor usuarioNA ""Usuario Nao-Autenticado""
++  preCondition ""Lider de Pessoas esta autenticado no sistema e 
++				tem permissao para gerenciar Planos de Capacitacao de TI.""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial"" af[4]
++    step 2 system ""exibe a listagem das Planos de Capacitacao de TI cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
++    step 3 lider ""clica na opcao 'Novo' para criar uma nova Capacitacao de TI"" af[1,2,3]
++    step 4 system ""apresenta o formulario para cadastro e alteracao de Planos de Capacitacao de TI""
++    step 5 lider ""escolha o 'Periodo Avaliativo' apropriado no campo de selecao""
++	step 6 system ""exibe o 'Periodo Avaliativo' selecionado corretamente""
++	step 7 lider ""selecione a 'Unidade' correspondente no campo de selecao de unidade""
++	step 8 system ""exibe o campo 'Unidade' preenchido corretamente""
++	step 9 lider ""preencha o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais""
++	step 10 system ""exibe o campo 'Possiveis Capacitacoes' preenchido corretamente""
++	step 11 lider ""preencha o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao""
++	step 12 system ""exibe o campo 'Observacao' preenchido corretamente""
++	step 13 lider ""seleciona as 'Pessoas' que farao parte do plano de capacitacao""
++	step 14 system ""exibe as 'Pessoas' escolhidas corretamente na lista 'Selecionadas'""
++	step 15 lider ""seleciona as 'Competencias' a serem trabalhadas no plano de capacitacao""
++	step 16 system ""exibe as 'Competencias' selecionadas corretamente na lista 'Selecionadas'""
++	step 17 lider ""clica na opcao 'Salvar'""
++    step 18 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1,2]
++  }
++
++  alternative 1 ""Editar Planos de Capacitacao de TI Existente"" {
++    step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
++    step 2 system ""destaca a Capacitacao de TI selecionada na listagem""
++    step 3 lider ""clica na opcao 'Editar' para modificar a Capacitacao de TI selecionada"" bs 4
++  }
++  
++  alternative 2 ""Confirmar Exclusao da Capacitacao de TI"" {
++  	step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
++    step 2 system ""destaca a Capacitacao de TI selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Capacitacao de TI selecionada""
++    step 4 system ""solicita confirmacao de exclusao mostrando o nome da Capacitacao de TI""
++    step 5 lider ""confirma a exclusao da Capacitacao de TI""
++    step 6 system ""exibe a listagem das Planos de Capacitacao de TI sem a Capacitacao de TI excluida"" ef[3,4]
++  }
++
++  alternative 3 ""Negar Exclusao da Capacitacao de TI"" {
++  	step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
++    step 2 system ""destaca a Capacitacao de TI selecionada na listagem""
++    step 3 lider ""clica na opcao 'Excluir' para excluir a Capacitacao de TI selecionada""
++    step 4 system ""solicita confirmacao de exclusao mostrando o nome da Capacitacao de TI""
++    step 5 lider ""nao confirma a exclusao da Capacitacao de TI""
++    step 6 system ""exibe a listagem das Planos de Capacitacao de TI com a Capacitacao de TI excluida""
++  }
++  
++  alternative 4 ""Modo de visualizacao para usuarios nao-autenticados"" {
++  	step 1 usuarioNA ""acessa a funcionalidade de gestao de Planos de Capacitacao de TI a partir do menu inicial""
++  	step 2 system ""exibe a listagem das Planos de Capacitacao de TI cadastradas apenas para visualizacao com a opcao 'Ajuda'""
++  }
++
++  exception 1 ""Falha ao Salvar a nova Capacitacao de TI"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar a nova Capacitacao de TI, informando o campo ou a validacao que falhou""
++  }
++
++  exception 2 ""Erro ao Editar Capacitacao de TI"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar a Capacitacao de TI, informando o campo ou a validacao que falhou""
++  }
++
++  exception 3 ""Falha na Exclusao da Capacitacao de TI"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir a Capacitacao de TI""
++  }
++  
++  exception 4 ""Falha na Exclusao do Avaliacao: nao e o lider"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar excluir a Avaliacao informando que o usuario nao e o lider""
++  }
++
++  postCondition ""A gestao de Planos de Capacitacao de TI e realizada com sucesso.""
++}
+",HIGH,11,0,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,HIGH,"The updated snippet introduces an entirely new use case for managing 'Planos de Capacitacao de TI', specifying various actors, preconditions, and detailed steps including basic, alternative, and exception flows. These additions represent new features and functionalities and significantly alter the expected behavior of the system, making the change high-impact.",4711
+54,,src/RF018 - Gerenciar Metas de Desempenho.claret,exp01_gti-competencias_v1.1,exp01_gti-competencias_v1.2,,"+systemName ""GTI-Competencias""
++
++usecase ""RF018 - Gerenciar Metas de Desempenho"" {
++  version ""1.2"" type ""Criacao"" user ""Aislan Fernandes"" date ""13/05/2021""
++  actor lider ""Lider de Pessoas""
++  preCondition ""Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Metas de Desempenho""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade de Avaliacoes a partir do menu inicial""
++    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias listadas"" 
++    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Editar' modificar a Avaliacao de Desempenho""
++    step 4 system ""apresenta o formulario com o campo 'Metas' constando cada Competencia do perfil avaliado""
++    step 5 lider  ""altera o valor da 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao atual (valores padrao de 1 a 4)""
++    step 6 system ""apresenta o campo 'Meta' para cada Competencia listada do perfil avaliado na Avaliacao preenchido corretamente""
++	step 7 lider ""clica na opcao 'Salvar'""
++    step 8 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				   retorna feedback correspondente"" ef[1]
++  }
++
++  exception 1 ""Erro ao Editar Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar editar, informando o campo ou a validacao que falhou""
++  }
++
++  postCondition ""A gestao de Metas de Desempenho e realizada com sucesso.""
++}
+",HIGH,2,0,0,"{'TC1', 'TC2'}",2,HIGH,"The updated snippet introduces a new use case 'RF018 - Gerenciar Metas de Desempenho' in CLARET notation, which includes a series of steps and an exception flow related to managing performance goals. This change is a semantic edit as it adds a new feature to the system, altering its expected behavior and functionality.",3440
+55,,src/RF001 - Autenticar Usuario.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 1 sysUser ""inicia a tela de login atraves da opcao de Login no canto superior direito""
+","+    step 1 sysUser ""abre a tela de login atraves da opcao de Login no canto superior direito""
+",LOW,0,14,0,"{'TC8', 'TC7', 'TC9', 'TC12', 'TC6', 'TC3', 'TC14', 'TC13', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",14,LOW,"The change involves a textual edit where 'inicia' has been replaced with 'abre', both of which convey the action of starting or opening the login screen. This is a synonym substitution and does not alter the system's behavior, thus classified as low-impact.",2357
+56,,src/RF002 - Realizar logout.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 1 sysUser ""clica na opcao de Logout atraves da opcao disponivel no canto superior direito""
+","+    step 1 sysUser ""clica na opcao de Logout disponivel no canto superior direito""
+",LOW,0,1,0,{'TC1'},1,LOW,"The change involves the removal of the phrase 'atraves da opcao', which does not affect the meaning or function of the action being described. The user action remains the same, indicating a syntactic edit rather than a semantic change to the system's behavior.",6581
+57,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""exibe a listagem dos Avaliacoes cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 2 system ""exibe a listagem das Avaliacoes cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,10,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC10', 'TC4', 'TC2'}",10,LOW,"The change in the snippet involves a minor textual correction from 'cadastrados' to 'cadastradas'. This update does not alter the functionality or behavior of the system but is more likely to be a grammatical correction related to the agreement in gender of the word 'Avaliacoes.' Therefore, it is classified as a low-impact change.",3495
+58,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 12 system ""apresenta em 'Metas' os campos 'Nivel' preenchido corretamente""              
+","+    step 12 system ""apresenta em 'Metas' os campos 'Nivel' preenchidos corretamente""              
+",LOW,0,3,7,"{'TC8', 'TC10', 'TC9'}",10,LOW,"The change involves a minor textual correction in the form of agreement between the noun and adjective, changing 'preenchido' to 'preenchidos'. This does not alter the functionality or behavior of the system; therefore, it is classified as a low-impact syntactic edit.",2373
+59,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 4 system ""apresenta o formulario para e alteracao de Avaliacao""
+-    step 5 lider ""verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' somente leitura"" bs 11
+","+    step 4 system ""apresenta o formulario para e alteracao da Avaliacao""
++    step 5 lider ""verifica que os campos 'Periodo Avaliativo', 'Perfil' e 'Avaliado' estao em modo somente leitura"" bs 11
+",LOW,0,3,7,"{'TC6', 'TC7', 'TC5'}",10,LOW,"The changes made in the updated snippet are syntactical in nature. The adjustment to the description of the system's behavior in step 4 and the clarification of the read-only status of certain fields in step 5 do not alter the underlying behavior or functionality of the system. Therefore, the edit does not introduce or remove any requirements or features and is classified as low-impact.",2726
+60,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem dos Avaliacoes sem o Avaliacao excluido"" ef[3,4]
+","+    step 6 system ""exibe a listagem das Avaliacoes sem a Avaliacao excluida"" ef[3,4]
+",LOW,0,1,9,{'TC2'},10,LOW,"The change is a syntactic edit that involves adjusting the sentence for grammatical harmony, switching from 'excluido' to 'excluida'. This does not alter the semantic outcome or behavior of the system as described by the use case.",2148
+61,,src/RF007 - Gerenciar Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem dos Avaliacoes com o Avaliacao excluido""
+","+    step 6 system ""exibe a listagem das Avaliacoes com a Avaliacao nao excluida""
+",LOW,0,1,9,{'TC1'},10,HIGH,"The change modifies the expected behavior of the system by altering the outcome of step 6. Instead of excluding an evaluation from the list, the updated step retains it. This impacts the system's functionality and expected results, characterizing a semantic change.",2110
+62,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  preCondition ""Avaliador de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Respostas de Avaliacoes""
+","+  preCondition ""Avaliador de Pessoas esta autenticado no sistema e tem permissao para gerenciar Respostas de Avaliacoes""
+",LOW,0,7,0,"{'TC7', 'TC3', 'TC6', 'TC1', 'TC5', 'TC4', 'TC2'}",7,LOW,"The update involves a syntactic change by removing a semicolon and a comma in the sentence within the precondition. This change does not affect the system's expected behavior or the logical flow of the use case, as the meaning of the precondition remains identical. Therefore, it is classified as a low-impact change.",4598
+63,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-				   retorna feedback correspondente"" ef[2,3]
+","+				    retorna feedback correspondente"" ef[2,3]
+",LOW,0,2,5,"{'TC7', 'TC4'}",7,LOW,"The change in the snippet appears to be related to formatting or whitespace adjustment, as there is no alteration to the textual content or structure of the specification itself. The behavior and logic of the use case remain unchanged, indicating a low-impact modification.",2212
+64,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""limpa os campos apresentados 'Nivel da Competencia' e 'Apontamentos' apresentados na tela para cada Perfil de Competencias avaliado""
+-    step 5 avaliador ""verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos"" bs 5 
+","+    step 2 system ""limpa os campos 'Nivel da Competencia' e 'Apontamentos' exibidos na tela para cada Perfil de Competencias avaliado""
++    step 3 avaliador ""verifica que os campos 'Nivel da Competencia' e 'Apontamentos' estao limpos"" bs 5 
+",LOW,0,3,4,"{'TC3', 'TC4', 'TC2'}",7,HIGH,"The update introduces a new step (step 3) for the actor 'avaliador' and changes the step numbering, indicating a change in the sequence and flow of actions. This results in a semantic change in the system's behavior, thereby classifying it as a high-impact change.",4995
+65,,src/RF009 - Gerenciar Resultados de Avaliacoes.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 5 lider  ""seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado""
+","+    step 5 lider  ""preenche a 'Ata de Reuniao de Feedback' da Avaliacao para cada Perfil de Competencias avaliado""
+",LOW,0,4,0,"{'TC3', 'TC1', 'TC4', 'TC2'}",4,HIGH,"The change alters the system's expected behavior by modifying what the 'lider' must do in step 5. The original snippet specifies selecting a document, whereas the updated snippet requires filling out the document. This impacts the system's functionality, as it changes the nature of the interaction and the expected outcome of the use case.",2375
+66,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 7 lider ""preenche o campo 'Data Inicial e Data Final' informando as respectivas datas referente ao periodo""
+-    step 8 system ""apresenta o campo 'Data Inicial e Data Final' preenchido corretamente""
+-	step 17 lider ""clica na opcao 'Salvar'""
+-    step 18 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
+","+    step 7 lider ""preenche o campo 'Data Inicial' e 'Data Final' informando as respectivas datas referentes ao periodo""
++    step 8 system ""apresenta o campo 'Data Inicial' e 'Data Final' preenchido corretamente""
++	step 9 lider ""clica na opcao 'Salvar'""
++    step 10 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
+",LOW,0,6,4,"{'TC8', 'TC7', 'TC6', 'TC5', 'TC10', 'TC9'}",10,LOW,"The update involves rewording steps that include minor grammatical corrections and step renumbering without altering the logic or interactions of the use case. The actions within each step remain semantically identical, indicating a low-impact change focused on syntactic clarity rather than functional modification.",2027
+67,,src/RF010 - Gerenciar Periodos Avaliativos.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo excluido""
+","+    step 6 system ""exibe a listagem dos Periodos Avaliativos com o Periodo Avaliativo nao excluido""
+",LOW,0,1,9,{'TC2'},10,HIGH,"The change from 'excluido' (excluded) to 'nao excluido' (not excluded) in step 6 alters the expected behavior of the system. This change affects the list of 'Periodos Avaliativos' being displayed, which impacts the system's functionality and the information available to the user. As such, this qualifies as a semantic edit, warranting a high-impact classification.",2589
+68,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 3 lider ""clica na opcao 'Novo' para criar um nova Competencia (portfolio)"" af[1,2,3]
+","+    step 3 lider ""clica na opcao 'Novo' para criar uma nova Competencia (portfolio)"" af[1,2,3]
+",LOW,0,12,16,"{'TC25', 'TC23', 'TC19', 'TC24', 'TC18', 'TC21', 'TC17', 'TC26', 'TC27', 'TC22', 'TC28', 'TC20'}",28,LOW,"The change corrected a grammatical error in the phrase 'um nova' to 'uma nova.' This is a syntactic edit that does not change the system's expected behavior or functionality, hence it is classified as a low-impact change.",1921
+69,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
+","+    step 1 lider ""seleciona uma Competencias (Portfolio) da listagem""
+",LOW,0,15,13,"{'TC8', 'TC7', 'TC9', 'TC12', 'TC6', 'TC3', 'TC14', 'TC13', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2', 'TC15', 'TC16'}",28,LOW,"The update changes the article from 'um' to 'uma', which is a syntactic edit and does not alter the system's behavior. This is a textual change that improves grammatical accuracy but doesn't affect the use case execution or requirements.",1608
+70,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  	step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
+","+  	step 1 lider ""seleciona uma Competencias (Portfolio) da listagem""
+",LOW,0,15,13,"{'TC8', 'TC7', 'TC9', 'TC12', 'TC6', 'TC3', 'TC14', 'TC13', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2', 'TC15', 'TC16'}",28,LOW,"The change made is a textual edit involving the correction of an article ('um' to 'uma') in the use case description. This is a syntactic change that does not affect the system's behavior or functionality, and therefore can be classified as low-impact.",2291
+71,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  alternative 3 ""Negar Exclusao da Competencia (Portfolio)"" {
+-  	step 1 lider ""seleciona um Competencias (Portfolio) da listagem""
+","+  alternative 3 ""Nao Confirmar Exclusao da Competencia (Portfolio)"" {
++  	step 1 lider ""seleciona uma Competencias (Portfolio) da listagem""
+",LOW,0,15,13,"{'TC8', 'TC7', 'TC9', 'TC12', 'TC6', 'TC3', 'TC14', 'TC13', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2', 'TC15', 'TC16'}",28,LOW,"The changes involve a renaming of the alternative flow title and a minor grammatical correction ('um' to 'uma') in the step description. These updates do not alter the system's expected behavior or introduce/remove any functional elements of the use case, thus qualifying as syntactic edits. Therefore, the impact is classified as low.",2136
+72,,src/RF011 - Gerenciar Competencias Portfolio.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) excluida""
+","+    step 6 system ""exibe a listagem das Competencias (Portfolio) com a Competencia (Portfolio) nao excluida""
+",LOW,0,1,27,{'TC2'},28,HIGH,"The change alters the system's expected behavior by modifying the outcome of step 6, where the competencies list is displayed with the portfolio either excluded or not excluded. This impacts the business logic and functionality of the use case, thus constituting a semantic edit.",9640
+73,,src/RF012 - Ajuda.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""exibe a listagem dos Niveis das Competencias cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 2 system ""exibe a listagem dos Niveis das Competencias cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,1,4,{'TC1'},5,LOW,"The update involves a slight grammatical correction from 'cadastradas' to 'cadastrados'. This correction is syntactic and does not alter the expected behavior of the system or the functionality as described in the use case step. Therefore, it is classified as a low-impact change.",2259
+74,,src/RF013 - Gerenciar Niveis das Competencias.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 3 lider ""clica na opcao 'Novo' para criar um novo Niveis das Competencias"" af[1,2,3]
+","+    step 3 lider ""clica na opcao 'Novo' para criar um novo Nivel das Competencias"" af[1,2,3]
+",LOW,0,3,7,"{'TC8', 'TC10', 'TC9'}",10,LOW,"The change in the use case snippet is a correction of a typo in the word 'Niveis' to 'Nivel.' This does not alter the system's expected behavior or functionality; it is a textual update for accuracy. Therefore, it is classified as a low-impact change.",2393
+75,,src/RF013 - Gerenciar Niveis das Competencias.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem dos Niveis das Competencias com o Nivel das Competencias excluido""
+","+    step 6 system ""exibe a listagem dos Niveis das Competencias com o Nivel das Competencias nao excluido""
+",LOW,0,1,9,{'TC2'},10,HIGH,"The change modifies the system's expected behavior by altering the filter criteria for displaying the list of 'Niveis das Competencias'. The original snippet displayed competencies including the ones marked as excluded, while the updated snippet displays competencies excluding the ones marked as excluded. This change affects what is shown to the user, impacting the system's functional output.",2227
+76,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  preCondition ""Administrador esta autenticado no sistema; e, tem permissao para alterar Gerente de Desempenho""
+","+  preCondition ""Administrador esta autenticado no sistema e tem permissao para alterar Gerente de Desempenho""
+",LOW,0,3,0,"{'TC3', 'TC1', 'TC2'}",3,LOW,"The change involves removing a semicolon and a conjunction, which is a minor syntactic edit that does not alter the system's functionality or expected behavior. The precondition essentially remains the same in meaning and requirement.",2032
+77,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""exibe a listagem do Catalogo (Perfis) de Competencias cadastradas com a opcao 'Alterar Gerente' dentre as varias listadas"" 
+","+    step 2 system ""exibe a listagem dos Perfis de Competencias cadastrados com a opcao 'Alterar Gerente' dentre as varias listadas"" 
+",LOW,0,3,0,"{'TC3', 'TC1', 'TC2'}",3,LOW,"The change involves a textual update where 'Catalogo (Perfis)' is replaced with 'Perfis'. This alteration simplifies the description without altering the behavior or functionality of the system. It does not introduce or remove steps, flows, or requirements, and thus is a syntactic edit classified as low-impact.",2396
+78,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 5 admin  ""preenche o campo 'Login do Novo Gerente de Desempenho' do novo Gerente de Desempenho para o Perfil de Competencias ""
+","+    step 5 admin  ""preenche o campo 'Login do Novo Gerente de Desempenho' para o Perfil de Competencias""
+",LOW,0,3,0,"{'TC3', 'TC1', 'TC2'}",3,LOW,"The update involves removing a redundant portion of the sentence ('do novo Gerente de Desempenho'), which does not alter the core function or behavior expected from the system. The action of filling the 'Login do Novo Gerente de Desempenho' field remains unchanged in terms of its impact on the use case specification, as it is assumed the context of 'for the Perfil de Competencias' suffices for understanding, making this a syntactic update.",5659
+79,,src/RF014 - Administrador de Dados.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""apresenta o Catalogo (Perfis) de Competencias cadastradas sem nenhuma alteracao""
+","+    step 2 system ""apresenta o Catalogo (Perfis) de Competencias sem nenhuma alteracao""
+",LOW,0,1,2,{'TC1'},3,LOW,"The change involves the removal of the phrase 'cadastradas' when describing the Competencias. This appears to be a textual edit and does not alter the fundamental behavior or functionality of the system as described in the use case. It likely clarifies or simplifies the language by omitting a redundant detail about Competencias being registered or cataloged, which is implicit in the term 'Catalogo'. Therefore, the change is classified as low-impact.",3066
+80,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 2 system ""exibe a listagem das Planos de Capacitacao de TI cadastradas com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+","+    step 2 system ""exibe a listagem dos Planos de Capacitacao de TI cadastrados com opcoes de 'Novo', 'Editar', 'Excluir' e 'Ajuda'"" 
+",LOW,0,10,1,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,LOW,"The change between the original and updated snippets involves a minor syntactic edit, specifically the correction of a grammatical error from 'das Planos de Capacitacao de TI cadastradas' to 'dos Planos de Capacitacao de TI cadastrados'. This does not affect the system's behavior or functionality, as it merely corrects the gender and number agreement of the words in the sentence. Therefore, it is classified as a low-impact change.",2510
+81,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 5 lider ""escolha o 'Periodo Avaliativo' apropriado no campo de selecao""
+","+    step 5 lider ""escolhe o 'Periodo Avaliativo' apropriado no campo de selecao""
+",LOW,0,6,5,"{'TC8', 'TC7', 'TC6', 'TC11', 'TC10', 'TC9'}",11,LOW,"The change involves a minor syntactic edit: the verb form changed from 'escolha' to 'escolhe'. This does not alter the system's behavior or the semantic meaning of the step but is rather a linguistic adjustment. Therefore, it is classified as low-impact.",2266
+82,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-	step 7 lider ""selecione a 'Unidade' correspondente no campo de selecao de unidade""
+","+	step 7 lider ""seleciona a 'Unidade' correspondente no campo de selecao de unidade""
+",LOW,0,6,5,"{'TC8', 'TC7', 'TC6', 'TC11', 'TC10', 'TC9'}",11,LOW,"The change from 'selecione' to 'seleciona' is a syntactic edit that does not alter the functionality or expected behavior of the system. This change appears to correct the verb conjugation, which is a textual update and does not introduce, delete, or modify a requirement or feature. Therefore, it is considered a low-impact change.",2674
+83,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-	step 9 lider ""preencha o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais""
+","+	step 9 lider ""preenche o campo 'Possiveis Capacitacoes' com informacoes sobre capacitacoes adicionais""
+",LOW,0,6,5,"{'TC8', 'TC7', 'TC6', 'TC11', 'TC10', 'TC9'}",11,LOW,"The change from 'preencha' to 'preenche' is a minor grammatical edit and does not alter the semantic meaning or behavior of the system. It is a syntactic update that corrects the verb conjugation, which remains within the context of the use case but does not introduce or remove any features, actions, or logic from the use case flow.",2862
+84,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-	step 11 lider ""preencha o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao""
+","+	step 11 lider ""preenche o campo 'Observacao' com informacoes adicionais ou relevantes sobre o plano de capacitacao""
+",LOW,0,6,5,"{'TC8', 'TC7', 'TC6', 'TC11', 'TC10', 'TC9'}",11,LOW,"The change from 'preencha' to 'preenche' is a textual update, specifically a grammatical or stylistic adjustment, which does not alter the system's expected behavior or logic. It is considered a syntactic edit and therefore classified as low-impact.",33281
+85,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
+","+    step 1 lider ""seleciona um Plano de Capacitacao de TI da listagem""
+",LOW,0,7,4,"{'TC8', 'TC7', 'TC3', 'TC6', 'TC5', 'TC4', 'TC2'}",11,LOW,"The change involves a minor textual correction from 'Planos' to 'Plano', which is likely a grammatical or typographical adjustment without affecting the system's expected behavior or the underlying functionality of the use case. Consequently, it does not introduce or remove any requirements, features, or functional elements, classifying it as a low-impact change.",5119
+86,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  	step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
+","+  	step 1 lider ""seleciona um Plano de Capacitacao de TI da listagem""
+",LOW,0,7,4,"{'TC8', 'TC7', 'TC3', 'TC6', 'TC5', 'TC4', 'TC2'}",11,LOW,"The update involved a minor textual change, correcting 'Planos' to 'Plano', which is likely a grammatical fix. It does not alter the core steps or behavior of the system as described in the use case, therefore qualifies as a syntactic edit.",1726
+87,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem das Planos de Capacitacao de TI sem a Capacitacao de TI excluida"" ef[3,4]
+","+    step 6 system ""exibe a listagem dos Planos de Capacitacao de TI sem a Capacitacao de TI excluida"" ef[3,4]
+",LOW,0,1,10,{'TC3'},11,LOW,"The change involves a minor textual edit: changing 'a listagem das' to 'a listagem dos'. This is a syntactic adjustment affecting the article for 'Planos de Capacitacao de TI' in Portuguese. The change does not affect the system's expected behavior or functionality, thus it's a low-impact edit.",1941
+88,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  alternative 3 ""Negar Exclusao da Capacitacao de TI"" {
+-  	step 1 lider ""seleciona um Planos de Capacitacao de TI da listagem""
+","+  alternative 3 ""Nao Confirmar Exclusao da Capacitacao de TI"" {
++  	step 1 lider ""seleciona um Plano de Capacitacao de TI da listagem""
+",LOW,0,7,4,"{'TC8', 'TC7', 'TC3', 'TC6', 'TC5', 'TC4', 'TC2'}",11,LOW,"The changes are textual and do not alter the behavior of the system. 'Negar Exclusao da Capacitacao de TI' is renamed to 'Nao Confirmar Exclusao da Capacitacao de TI', which is a synonym change and consolidation of wording, and 'Planos de Capacitacao de TI' is corrected to 'Plano de Capacitacao de TI' to fix a plurality typo. These adjustments are syntactic and do not introduce or remove any requirements, features, flows, or steps.",5413
+89,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 6 system ""exibe a listagem das Planos de Capacitacao de TI com a Capacitacao de TI excluida""
+","+    step 6 system ""exibe a listagem dos Planos de Capacitacao de TI com a Capacitacao de TI nao excluida""
+",LOW,0,1,10,{'TC2'},11,HIGH,"The update changes the system's expected behavior by modifying the condition under which the list of 'Planos de Capacitacao de TI' is displayed. Originally, it was displayed with the 'Capacitacao de TI' excluded, but the update changes it to display without excluding 'Capacitacao de TI'. This alteration affects what information is available to the user and how the system executes the use case, thus constituting a high-impact change.",3419
+90,,src/RF015 - Gerenciar Planos de Capacitacao de TI.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  	step 2 system ""exibe a listagem das Planos de Capacitacao de TI cadastradas apenas para visualizacao com a opcao 'Ajuda'""
+","+  	step 2 system ""exibe a listagem dos Planos de Capacitacao de TI cadastrados apenas para visualizacao com a opcao 'Ajuda'""
+",LOW,0,1,10,{'TC1'},11,LOW,"The change is a syntactic edit involving a minor grammatical correction from 'cadastradas' (feminine) to 'cadastrados' (masculine), aligning with 'Planos' which is masculine. This does not alter the system's functionality or behavior, but rather ensures grammatical consistency in the language used.",2412
+91,,src/RF018 - Gerenciar Metas de Desempenho.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-  preCondition ""Lider de Pessoas esta autenticado no sistema; e, tem permissao para gerenciar Metas de Desempenho""
+","+  preCondition ""Lider de Pessoas esta autenticado no sistema e tem permissao para gerenciar Metas de Desempenho""
+",LOW,0,2,0,"{'TC1', 'TC2'}",2,LOW,"The change made is purely syntactic, involving the removal of punctuation ('; and,') in the preCondition statement. It does not alter the semantic meaning or expected behavior of the system. Therefore, this edit is classified as low-impact.",2046
+92,,src/RF018 - Gerenciar Metas de Desempenho.claret,exp01_gti-competencias_v1.3,exp01_gti-competencias_v1.4,"-    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Editar' modificar a Avaliacao de Desempenho""
+-    step 4 system ""apresenta o formulario com o campo 'Metas' constando cada Competencia do perfil avaliado""
+","+    step 3 lider ""com uma avaliacao selecionada, clica na opcao 'Editar' para modificar a Avaliacao de Desempenho""
++    step 4 system ""apresenta o formulario com o campo 'Metas' contendo cada Competencia do perfil avaliado""
+",LOW,0,2,0,"{'TC1', 'TC2'}",2,LOW,"The changes made to the original snippet are purely syntactic, involving the addition of the word 'para' for clarity in step 3, and changing 'constando' to 'contendo' in step 4. These modifications do not alter the functionality or behavior of the system as outlined in the use case but rather adjust the wording for better readability and understanding. Therefore, the changes are classified as low-impact.",3588
+93,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,"-    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias listadas"" 
+-    step 3 avaliador ""com uma avaliacao selecionada, clica na opcao 'Formulario' para criar uma nova Avaliacao""
+","+    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Formulario' dentre as varias exibidas"" 
++    step 3 avaliador ""com uma avaliacao selecionada, clica na opcao 'Formulario' para responder a uma Avaliacao ou Autoavaliacao""
+",LOW,0,7,0,"{'TC7', 'TC3', 'TC6', 'TC1', 'TC5', 'TC4', 'TC2'}",7,HIGH,"The change in step 3 alters the expected behavior of the use case by modifying the action taken by the 'avaliador'. Originally, the 'avaliador' clicked 'Formulario' to create a new 'Avaliacao'. In the updated version, the 'avaliador' clicks 'Formulario' to respond to an 'Avaliacao' or 'Autoavaliacao'. This affects the functionality and purpose of the action, indicating a change in system behavior, hence it's classified as high-impact.",3257
+94,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,"-    step 5 avaliador  ""seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado""
+-    step 6 system ""apresenta o campo 'Nivel da Competencia' preenchido corretamente""
+-    step 7 avaliador ""adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado""
+-    step 8 system ""apresenta os 'Apontamentos' preenchidos corretamente""
+-	step 9 avaliador ""clica na opcao 'Salvar'"" af[1]
+-    step 10 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
+-				    retorna feedback correspondente"" ef[2,3]
+","+    step 5 avaliador  ""seleciona o 'Nivel de Interacao' para cada Perfil de Competencias avaliado""
++    step 6 system ""apresenta o campo 'Nivel de Interacao' preenchido corretamente""
++    step 7 avaliador  ""seleciona que e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado"" af[2]
++    step 8 system ""apresenta o campo 'Capaz de Avaliar' preenchido como 'SIM'""
++    step 9 avaliador  ""seleciona o 'Nivel da Competencia' da Avaliacao (1 a 4) para cada Perfil de Competencias avaliado""
++    step 10 system ""apresenta o campo 'Nivel da Competencia' preenchido corretamente""
++    step 11 avaliador ""adiciona 'Apontamentos' sobre a avaliacao para cada Perfil de Competencias avaliado""
++    step 12 system ""apresenta os 'Apontamentos' preenchidos corretamente""
++	step 13 avaliador ""clica na opcao 'Salvar'"" af[1]
++    step 14 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				    retorna feedback correspondente"" ef[2,3,4]
+",HIGH,0,6,1,"{'TC7', 'TC3', 'TC6', 'TC5', 'TC4', 'TC2'}",7,HIGH,"The update introduces several key changes that affect the system's expected behavior. These include: the introduction of new steps regarding the selection of 'Nivel de Interacao' and determining if one is 'Capaz de Avaliar a Competencia', the addition of associated alternative flows (af[2]), and the modification of existing steps and introduction of new steps in the sequence. These changes add new requirements and alter the flow significantly, impacting the semantics of the use case which warrants a high-impact classification.",6184
+95,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,,"+  exception 4 ""Sem Justificativa"" {
++    step 1 system ""exibe uma mensagem de erro informando ao usuario que nao informou justificativa""
++  }
++  
+",HIGH,4,0,13,"{'TC12', 'TC4', 'TC8', 'TC16'}",17,HIGH,The updated snippet introduces a new exception flow ('Sem Justificativa') with a step that changes the system's behavior by displaying an error message to the user under circumstances where no justification is provided. This is considered a high-impact change as it modifies the expected behavior of the system by adding a new requirement for handling specific input conditions.,2514
+96,,src/RF008 - Gerenciar Respostas de Avaliacoes.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,,"+  
++  alternative 2 ""Nao e Capaz de Avaliar a Competencia"" {
++  	step 1 avaliador  ""seleciona que nao e 'Capaz de Avaliar a Competencia' para cada Perfil de Competencias avaliado""
++    step 2 system ""apresenta o campo 'Capaz de Avaliar' preenchido como 'NAO'""
++    step 3 avaliador ""preenche o campo de 'Justificativas' para cada Perfil de Competencias avaliado""
++    step 4 system ""apresenta o campo de 'Capaz de Avaliar' preenchido corretamente""
++    step 5 avaliador ""clica no botao 'Justificar'"" bs 14
++  }
+",HIGH,8,0,9,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC5', 'TC4', 'TC2'}",17,HIGH,"The updated snippet introduces an alternative flow named 'Nao e Capaz de Avaliar a Competencia' at step 2. This addition changes the system's expected behavior by providing a new decision path that affects how the system and the actor interact, which qualifies as a semantic edit impacting the functionality of the use case.",2658
+97,,src/RF009 - Gerenciar Resultados de Avaliacoes.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,"-    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias listadas"" 
+","+    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Resultado' dentre as varias exibidas"" 
+",LOW,0,4,0,"{'TC3', 'TC1', 'TC4', 'TC2'}",4,LOW,"The change is a syntactic edit, replacing 'listadas' with 'exibidas', which are synonyms in this context. This does not affect the system's behavior or alter any requirements, as the modification is purely textual and does not introduce or remove any functionality.",1934
+98,,src/RF016 - Copiar Itens de Avaliacao.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,,"+systemName ""GTI-Competencias""
++
++usecase ""RF016 - Copiar Itens de Avaliacao"" {
++  version ""1.5"" type ""Criacao"" user ""Carlos Diego"" date ""03/06/2022""
++  actor lider ""Lider de Pessoas""
++  preCondition ""Lider de Pessoas esta autenticado no sistema e tem permissao para copiar itens de avaliacoes""
++
++  basic {
++    step 1 lider ""acessa a funcionalidade 'Avaliacoes' a partir do menu inicial"" af[1]
++    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Copiar' dentre as varias exibidas"" 
++    step 3 lider ""com uma Avaliacao selecionada, clica na opcao 'Copiar' para copia-la""
++    step 4 system ""apresenta o formulario para copiar a Avaliacao com os valores atuais ja preenchidos, exceto o 'Avaliado', que deve estar vazio""
++    step 5 lider  ""seleciona o 'Periodo Avaliativo' da Avaliacao""
++    step 6 system ""apresenta o campo 'Periodo Avaliativo' preenchido corretamente""
++    step 7 lider ""seleciona o colaborador a ser 'Avaliado' na Avaliacao""
++    step 8 system ""apresenta o campo 'Avaliado' preenchido corretamente""
++    step 9 lider ""escolhe que deseja 'fazer uma copia' do Perfil de Competencias"" af[2]
++    step 10 system ""apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'SIM' selecionada""
++    step 11 lider ""preenche o 'nome' do novo Perfil de Competencias da Avaliacao""
++    step 12 system ""apresenta o campo 'nome' do novo Perfil de Competencias da Avaliacao preenchido corretamente""
++    step 13 lider ""clica na opcao 'Confirmar'"" af[3]
++    step 14 system ""apresenta uma mensagem de confirmacao referente a criacao do novo Perfil de Competencias""
++    step 15 lider ""confirma a operacao de criacao do novo Perfil de Competencias"" af[4]
++    step 16 system ""realiza a acao conforme a opcao selecionada pelo usuario e 
++				    retorna feedback correspondente"" ef[1,2]
++  }
++
++  alternative 1 ""Copiar Perfil de Competencias"" {
++    step 1 lider ""acessa a funcionalidade 'Catalogo (Perfis) de Competencias' a partir do menu inicial""
++    step 2 system ""exibe a listagem dos Perfis de Competencias com a opcao 'Copiar' dentre as varias exibidas""
++    step 3 lider ""com um Perfil de Competencias selecionado, clica na opcao 'Copiar' para copia-lo""
++    step 4 system ""apresenta o formulario para copiar o Perfil de Competencias com os valores atuais ja preenchidos""
++    step 5 lider  ""seleciona o 'Periodo Avaliativo' da Avaliacao""
++    step 6 system ""apresenta o campo 'Periodo Avaliativo' preenchido corretamente""
++    step 7 lider ""preenche o 'nome' do novo Perfil de Competencias da Avaliacao""
++    step 8 system ""apresenta o campo 'nome' do novo Perfil de Competencias preenchido corretamente"" 
++    step 9 lider ""clica na opcao 'Confirmar'"" bs 16
++  }
++  
++  alternative 2 ""Nao Fazer uma Copia do Perfil de Competencias"" {
++  	step 1 lider ""escolhe que nao deseja 'fazer uma copia' do Perfil de Competencias""
++    step 2 system ""apresenta o campo 'fazer uma copia' do Perfil de Competencias com a opcao 'NAO' selecionada""
++    step 3 lider ""seleciona um Perfil de Competencias dentre os disponiveis""
++    step 4 system ""apresenta o 'nome' do Perfil de Competencias existente escolhido"" 
++    step 5 lider ""clica na opcao 'Confirmar'"" bs 16
++  }
++  
++  alternative 3 ""Nao Confirmar a Copia do Perfil de Competencias"" {
++  	step 1 lider ""nao confirma a operacao de criacao do novo Perfil de Competencias""
++    step 2 system ""apresenta o formulario para copiar a Avaliacao com os valores ja preenchidos""
++  }
++  
++  alternative 4 ""Cancelar Copia do Perfil de Competencias"" {
++  	step 1 lider ""nao confirma a operacao de criacao do novo Perfil de Competencias""
++    step 2 system ""exibe a listagem de Avaliacoes sem uma nova avaliacao copiada""
++  }
++
++  exception 1 ""Falha ao Salvar a nova Avaliacao"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar salvar a nova Avaliacao, informando o campo ou a validacao que falhou""
++  }
++
++  exception 2 ""Falha ao Fazer uma Copia do Perfil de Competencias"" {
++    step 1 system ""exibe uma mensagem de erro ao tentar copiar a Avaliacao, informando que o Perfil de Competencias com este nome ja existe""
++  }
++
++  postCondition ""A copia de itens de avaliacao e realizada com sucesso.""
++}
+",HIGH,11,0,0,"{'TC8', 'TC7', 'TC9', 'TC3', 'TC6', 'TC1', 'TC5', 'TC11', 'TC10', 'TC4', 'TC2'}",11,HIGH,"The updated snippet introduces a new use case 'RF016 - Copiar Itens de Avaliacao' in the CLARET notation. It defines the system behavior for copying evaluation items, including the basic flow, several alternative flows, and exception flows. These additions establish new requirements and functionalities, altering the system's behavior, which classifies this change as high-impact.",3923
+99,src/RF018 - Gerenciar Metas de Desempenho.claret,src/RF017 - Gerenciar Metas de Desempenho.claret,exp01_gti-competencias_v1.4,exp01_gti-competencias_v1.5,"-    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias listadas"" 
+","+    step 2 system ""exibe a listagem das Avaliacoes cadastradas com a opcao 'Editar' dentre as varias exibidas"" 
+",LOW,0,2,0,"{'TC1', 'TC2'}",2,LOW,"The change is a textual update rather than a change in the system's behavior. The word 'listadas' was replaced with 'exibidas', which are synonyms in this context, and does not alter the functional requirements or expected behavior of the system.",3732

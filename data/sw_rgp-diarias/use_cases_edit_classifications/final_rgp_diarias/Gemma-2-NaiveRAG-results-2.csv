@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change only affects the numerical value within the 'af' tag, likely indicating a minor adjustment to the expected response format or a slight change in the expected number of elements. This is unlikely to significantly alter the overall functionality of the use case.",4368
+1,HIGH,"The update introduces a new step involving the selection of beneficiaries, significantly altering the dialogue flow and functionality of the use case.",3746
+2,HIGH,The change significantly alters the user flow by removing steps related to beneficiary selection. This implies a fundamental change in how the system handles daily allowance requests.,5500
+3,HIGH,The change removes an entire alternative branch ('Usuário informa que NÃO acompanha autoridade') and replaces it with a new one ('Limpar Campos'). This significantly alters the flow and functionality of the use case.,4684
+4,HIGH,The change is high-impact because the entire use case has been removed (replaced with 'nan'). This indicates a significant alteration in functionality.,3367
+5,HIGH,The updated snippet introduces a completely new use case with detailed steps and alternative flows. This represents a significant addition to the system's functionality.,3524
+6,HIGH,"The updated snippet introduces a new use case with detailed steps, actors, preconditions, and postconditions. This represents a significant addition to the system's functionality and therefore constitutes a high-impact change.",3981
+7,HIGH,"The updated snippet introduces a completely new use case with detailed steps, actors, and alternative flows. This represents a significant addition to the system's functionality.",3825
+8,HIGH,"The updated snippet introduces a completely new use case with detailed steps, actors, and flow. This represents a significant addition to the system's functionality.",4747
+9,HIGH,The update significantly changes the user's action by providing specific values and comparisons to be verified. This alters the core functionality and expected outcome of the step.,4031
+10,LOW,The update adds additional details (empenho number and payment authorization links) to the existing step description. This is a functional enhancement rather than a fundamental change in the system's behavior.,6800
+11,LOW,"The change only affects the argument passed to the 'af' function, reducing it from 'af[3,5]' to 'af[3]'. This likely represents a minor adjustment to the data extraction or processing logic, without fundamentally altering the user interaction or overall functionality.",4078
+12,HIGH,The change from a defined use case with steps to 'nan' (likely indicating removal) represents a significant alteration in functionality. This is a high-impact change.,3467
+13,LOW,"The change is minor, only modifying the verb from 'Visualiza' to 'Verifica'. This likely doesn't significantly alter the functionality or intent of the step.",3645
+14,LOW,The change adds context to the user action by specifying they are verifying the history before clicking to analyze. This doesn't fundamentally alter the core functionality or flow of the use case.,3706
+15,LOW,"The change only adds an additional element to the 'af' list, which likely represents a minor adjustment to the user interface or data filtering. This is unlikely to significantly alter the core functionality of the use case.",4321
+16,HIGH,The update introduces a new functionality: ordering by server name. This represents a significant change to the system's capabilities and user interaction.,4113
+17,LOW,"The change is minor, adding a simple tag 'ef[5]' to the system's response. This likely indicates a formatting or emphasis change and doesn't fundamentally alter the dialogue flow or functionality.",5578
+18,HIGH,"The update introduces a new exception handling block, indicating a significant change in the system's behavior and potential impact on functionality.",3727
+19,LOW,"The change is minor, adding a tag 'af[5]' which likely indicates an annotation or formatting instruction. It doesn't alter the core functionality or meaning of the user step.",4509
+20,HIGH,"The update introduces a new alternative flow ('Informar nome social') with multiple steps, significantly altering the user interaction and system behavior.",3693
+21,LOW,"The change modifies the sorting order of the displayed list, which is a relatively minor functional adjustment.",3324
+22,LOW,"The change modifies the sorting order of the displayed list, which is a relatively minor functional adjustment.",3329
+23,LOW,"The change is minor, only adding a sorting criterion to the list of daily requests eligible for payment. The core functionality remains the same.",6592
+24,HIGH,"The update introduces a new sorting criterion (date of arrival request) in addition to the existing one (number of daily rates). This change significantly alters the output and functionality of the system, making it a high-impact change.",4030
+25,HIGH,"The update adds a new sorting criterion (date of arrival in the liquidation phase) to the system's output, significantly changing the functionality and potentially the user experience.",8439
+26,LOW,The changes are purely cosmetic (spelling and punctuation) and do not affect the functional logic of the use case.,3745
+27,LOW,"The change is purely cosmetic, replacing 'opcao' with 'opção'. This does not affect the functionality or logic of the system.",3630
+28,LOW,"The change is purely cosmetic, replacing 'opcao' with 'opção'. This does not affect the functionality or logic of the system.",3722
+29,LOW,"The change is purely cosmetic, updating 'opcao' to 'opção' without affecting functionality.",3502
+30,LOW,"The change is purely cosmetic, correcting the spelling of 'opção' from 'opcao'.",3995
+31,LOW,"The change is purely cosmetic, replacing 'ultimo' with 'último'. This does not affect the functionality or logic of the dialogue flow.",3756
+32,LOW,"The change is purely cosmetic, correcting a minor spelling error ('opcao' instead of 'opção'). This does not affect the functionality or logic of the system.",3656
+33,LOW,"The change is purely cosmetic, only affecting the spacing around the word 'opção'.",4608
+34,LOW,The changes are purely grammatical (singular/plural agreement and minor spelling corrections) and do not affect the core functionality or logic of the use case.,3610
+35,LOW,"The change is purely cosmetic, only affecting capitalization and punctuation. The core functionality and meaning of the step remain unchanged.",3944
+36,LOW,"The change is purely cosmetic, correcting the capitalization of 'opção' to 'Opção'. This does not affect the functionality or logic of the system.",3901
+37,LOW,"The change is purely cosmetic, modifying punctuation from a space to a period at the end of the sentence. This does not affect the functionality or logic of the step.",4276
+38,LOW,"The changes are purely cosmetic, involving minor spelling and punctuation adjustments (e.g., 'Diaria' to 'diária', 'apos' to 'após', 'ultimo' to 'último'). The core functionality and meaning of the use case remain unchanged.",3936
+39,LOW,The changes are purely grammatical (singular/plural agreement and gendered nouns) and do not affect the core functionality or logic of the use case.,3996
+40,HIGH,The change from a post-condition describing system behavior to 'nan' (likely indicating removal) represents a significant alteration in the system's functionality. This is a high-impact change.,3965
+41,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' from 'usuario'. This does not affect the functional logic or meaning of the precondition.",4690
+42,LOW,"The change is purely cosmetic, replacing 'O usuario' with 'Acessa' and rephrasing slightly. The core functionality and meaning remain the same.",4132
+43,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3831
+44,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3397
+45,LOW,"The change is purely cosmetic, modifying punctuation at the end of the sentence. This does not affect the core functionality or meaning of the step.",4051
+46,LOW,"The change is purely cosmetic, correcting a minor grammatical error (adding a period at the end of the sentence). It does not affect the functional logic or meaning of the precondition.",3797
+47,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3720
+48,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",4271
+49,LOW,"The change is purely cosmetic, modifying punctuation from a comma to a period. This does not affect the functional meaning of the precondition.",6098
+50,LOW,"The change is purely cosmetic, modifying punctuation from a comma to a period. This does not affect the functional meaning of the precondition.",4287
+51,LOW,The change adds a clarifying detail (including requests from all servers) but doesn't fundamentally alter the core functionality of displaying a sorted list of pending requests.,3749
+52,LOW,"The change is purely cosmetic, altering capitalization and punctuation without affecting the core meaning or functionality of the step.",3464
+53,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3752
+54,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' from 'usuario'. This does not affect the functional logic or meaning of the precondition.",3654
+55,LOW,The changes are purely cosmetic (adding periods at the end of sentences). This does not affect the core functionality or logic of the use case.,3687
+56,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3511
+57,LOW,"The change is minor and only affects the wording, not the core functionality. The meaning remains the same: update the request list with the logged-in user's name in the assignment field.",3823
+58,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",5302
+59,HIGH,"Changing the step number from 3 to 1 significantly alters the flow and order of the user interaction, potentially impacting the overall logic of the use case.",3842
+60,HIGH,"The change reorders steps in the user interaction flow, potentially affecting the overall logic and user experience.",6561
+61,LOW,"The change is purely cosmetic, correcting a minor grammatical error (period placement) without affecting the meaning or functionality.",3997
+62,LOW,The change is purely cosmetic. Both snippets are identical.,3232
+63,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3739
+64,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' from 'usuario'. This does not affect the functional logic of the precondition.",4177
+65,LOW,The change only involves renumbering the steps in the use case. The functionality and flow remain the same.,4022
+66,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",5269
+67,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' from 'usuario'. This does not affect the functional logic or meaning of the precondition.",4634
+68,LOW,The change only involves reordering two steps in the dialogue flow. This is a minor structural change and does not significantly alter the functionality or intent of the use case.,4464
+69,HIGH,Changing the step number from 4 to 2 significantly alters the flow and order of actions in the use case. This is a high-impact change as it potentially affects the overall logic and user experience.,4647
+70,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' from 'usuario'. This does not affect the functional logic of the precondition.",3817
+71,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",3460
+72,LOW,"The change is minor and only affects the wording, not the core functionality. The meaning remains the same: update the list of requests with the logged-in user's name in the assignment field.",3913
+73,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or logic of the step.",4686
+74,LOW,"The change is purely cosmetic, only updating the formatting of the precondition without altering its meaning or functionality.",4685
+75,LOW,"The change is purely cosmetic, correcting the spelling of 'usuário' to 'usuário' and adding a period at the end of the sentence. This does not affect the functional logic of the precondition.",4272
+76,LOW,"The change is purely cosmetic, adding a period at the end of the sentence. This does not affect the functionality or meaning of the step.",3855
+77,LOW,"The change is minor, only correcting a grammatical error from 'contas bancários' to 'conta bancária'.",3624
+78,LOW,"The change is purely cosmetic, only affecting punctuation. It does not alter the functionality or meaning of the step.",3640
+79,LOW,"The change only modifies the array index in the 'af' tag, indicating a potential change in the specific element being referenced. This is unlikely to significantly alter the overall functionality or logic of the use case.",3850
+80,HIGH,"The update introduces a new alternative flow within the use case, indicating a significant change in functionality and user interaction.",3594

@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change only updates the alternative flow reference from 'af[3,6]' to 'af[3,5]'. This does not alter the system's expected behavior, making it a low-impact change.",1251
+1,HIGH,"The updated snippet introduces a new requirement by adding a step for selecting beneficiaries, which changes the system's expected behavior. This modification is considered a high-impact change.",751
+2,HIGH,"The updated snippet introduces changes in the system's behavior by reordering steps 25 and 27, and altering the step 26 functionality. The system now calculates the value of the diaries before confirming their existence, which was not the case in the original snippet.",1553
+3,HIGH,"The change introduces a new alternative flow 'Limpar Campos', which is not present in the original snippet. This modification significantly alters the system's expected behavior, making it a high-impact change.",912
+4,HIGH,"The updated snippet is missing the original content, which suggests the removal of an exception flow. This change alters the system's expected behavior, making it a high-impact edit.",506
+5,HIGH,"The updated snippet introduces new requirements, features, and business model entities, such as the actor 'Chefe', the pre-condition, and the four alternative flows (1-4). These changes significantly alter the system's expected behavior, making it a high-impact edit.",604
+6,HIGH,"The updated snippet introduces a new use case 'UC008 - Registrar Autorização de Pagamento', which is a new requirement for the system. This change significantly alters the system's expected behavior, making it a high-impact change.",995
+7,HIGH,"The updated snippet introduces new requirements, such as the addition of alternative flows (alternative 5 'Detalhar solicitação de diária' and exception 4 'Listagem de diárias para o perfil OPERADOR'), which significantly change the system's behavior. Therefore, the change is classified as high-impact.",707
+8,HIGH,"The updated snippet introduces new requirements, features, and business model entities, such as the addition of exception flows (ef[1] and ef[2]), alternative flows (af[1,2]), and a detailed description of the actor and pre-condition. These changes significantly alter the system's expected behavior, making it a high-impact edit.",685
+9,HIGH,"The updated snippet introduces new requirements for the system, specifying limits for magistrates, desembargadores, and servidores, which changes the system's expected behavior. This is a semantic edit, and thus classified as high-impact.",605
+10,LOW,"The change in the updated snippet is a syntactic edit, as it adds a new step that presents the number of the empenho and the authorization of payment as links. This change does not alter the system's expected behavior.",628
+11,LOW,"The change removes an alternative flow option (5) from the original snippet, but it does not alter the system's expected behavior. This is considered a low-impact change as it is a syntactic edit.",530
+12,LOW,"The updated snippet is empty, which suggests a removal or deletion of the alternative flow 'Período com dias alternados'. However, since the original snippet already provided a complete description of the alternative flow, the removal does not change the system's expected behavior. Therefore, it is classified as a low-impact change.",681
+13,HIGH,"The change in the verb from 'Visualiza' (view) to 'Verifica' (check) implies a semantic difference in the system's expected behavior, making it a high-impact change.",529
+14,HIGH,"The updated snippet introduces a new requirement for the user to 'Verifica o histório da tramitação da prestação de contas', which changes the system's expected behavior. This modification is not a simple syntactic edit and thus classifies as a high-impact change.",1539
+15,LOW,"The change is a syntactic edit, as it only adds an additional alternative flow (4) to the existing list. This does not alter the system's expected behavior.",533
+16,HIGH,"The change introduces a new alternative flow 'Ordenar pelo nome do servidor', which modifies the system's expected behavior by providing an additional sorting option for the list of daily requests. This change is considered high-impact as it alters the system's functionality.",598
+17,LOW,"The updated snippet does not change the system's expected behavior. It only adds an exception flow (ef[5]) to step 22, which does not affect the basic flow of the use case.",535
+18,HIGH,"The change introduces a new exception flow (exception 5) and a new step (step 1) with specific actions, which alters the system's expected behavior. This change is considered high-impact.",528
+19,LOW,"The change is a syntactic edit, as it adds an alternative flow (af) reference to step 21 without altering the system's expected behavior.",524
+20,HIGH,"The updated snippet introduces a new alternative flow 'Informar nome social', which changes the system's expected behavior by adding a new step for the user to input the social name of the beneficiary. This modification is considered a high-impact change.",632
+21,LOW,"The change is a syntactic edit, as it only modifies the presentation of the list (ordering by the number of the daily report in ascending order), without altering the system's expected behavior.",529
+22,LOW,"The change is a syntactic edit, as it only reorders the diaries by number in ascending order without altering the system's expected behavior.",546
+23,LOW,"The change is a syntactic edit, as it only reorders the presentation of the list of diaries (solicitations) without altering the system's expected behavior.",497
+24,HIGH,"The updated snippet introduces a new requirement for the system to display the list of diaries also ordered by the arrival date of the request during the authorization phase (after registering the commitment). This change alters the system's expected behavior, making it a high-impact edit.",770
+25,HIGH,"The updated snippet introduces a new requirement for the system to display the list of diaries also ordered by the date of arrival during the liquidation phase (after registering the commitment). This change alters the system's expected behavior, making it a high-impact edit.",603
+26,LOW,"The change is a syntactic edit, as it only involves adding a '+' symbol for the addition of a line and a space after the comma in the precondition. The system's behavior remains unchanged.",733
+27,LOW,"The change is a syntactic edit, as it only corrects the capitalization of the word 'opção' to 'Opção'. This does not affect the system's expected behavior.",528
+28,LOW,"The change is a syntactic edit, as it only corrects a typo in the text ('opcao' to 'opção') without affecting the system's expected behavior.",527
+29,LOW,"The change is a syntactic edit, as the updated snippet corrects a grammatical error by adding an apostrophe to the word 'opção'. This change does not affect the system's expected behavior.",514
+30,LOW,"The change is a syntactic edit, as the updated snippet uses a different verb form ('opção' instead of 'opcao') and a different punctuation mark (':' instead of '.'). However, the semantics of the sentence remain the same, so the change does not impact the system's expected behavior.",678
+31,LOW,"The updated snippet only includes textual changes such as capitalization, punctuation, and spelling. These changes do not affect the system's behavior, making it a low-impact change.",551
+32,LOW,"The change is a syntactic edit, correcting a missing 'o' in the word 'opção'. This does not alter the system's expected behavior.",604
+33,LOW,"The change is a syntactic edit, as the updated snippet uses a different verb form ('opção' instead of 'opcao') and a different punctuation mark (':' instead of ';'). However, the change does not affect the system's expected behavior.",631
+34,LOW,"The changes made in the updated snippet are syntactic edits, such as adding parentheses to the plural nouns 'beneficiarios' and 'beneficiario(s)', and changing the singular noun 'beneficiario' to 'beneficiário'. These changes do not affect the system's expected behavior.",682
+35,LOW,"The change is a syntactic edit, as it only adds a '+' symbol and a period at the end of the sentence. The system's behavior remains unchanged.",530
+36,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",519
+37,LOW,"The change is a syntactic edit, correcting a missing period at the end of the sentence. This does not alter the system's expected behavior.",503
+38,LOW,"The change is a syntactic edit, as it only involves the addition of a '+' symbol and the correction of a typo in Portuguese ('diária' instead of 'Diaria'). The system's behavior remains unchanged.",591
+39,LOW,"The changes made in the updated snippet are syntactic edits, such as correcting the plural form of 'beneficiarios' to 'beneficiario(s)', adjusting the punctuation, and adding a period at the end of the second step. These changes do not affect the system's expected behavior.",688
+40,LOW,"The updated snippet does not contain any changes that affect the system's behavior. It appears to be a removal of the original post-condition without providing a new one, which is likely a syntactic edit for further editing or clarification.",635
+41,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",526
+42,LOW,"The change is a syntactic edit, as it only corrects a typo in the original text ('acessa' to 'acessar'). The system's expected behavior remains unchanged.",508
+43,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",519
+44,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",604
+45,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not affect the system's expected behavior.",554
+46,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",560
+47,LOW,"The change is a syntactic edit, as it only adds a period at the end of the message. This does not alter the system's expected behavior.",509
+48,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",674
+49,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not affect the system's expected behavior.",739
+50,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement. This does not alter the system's expected behavior.",500
+51,HIGH,"The change introduces a new requirement by including 'de todos os servidores' (from all servers), which alters the system's expected behavior.",686
+52,LOW,"The change is a syntactic edit, as it only corrects the capitalization of the text. This does not affect the system's expected behavior.",521
+53,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",508
+54,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",632
+55,LOW,"The change is a syntactic edit, as it only involves textual updates such as adding periods and spaces, without altering the system's expected behavior.",663
+56,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",557
+57,LOW,"The change is a syntactic edit, as it only involves the addition of a '+' symbol at the beginning of the line, which does not alter the system's expected behavior.",637
+58,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not affect the system's expected behavior.",622
+59,LOW,"The change involves a reordering of the steps, which does not alter the system's expected behavior. This is considered a low-impact change.",782
+60,LOW,"The change involves reordering the steps, which does not alter the system's expected behavior. The system still persists the AP number and exercise year as specified in the original snippet.",690
+61,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",452
+62,LOW,"The change is a syntactic edit, as it only involves adding a '+' symbol and a blank line before the original snippet. The system's behavior remains unchanged.",653
+63,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",581
+64,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",598
+65,LOW,"The updated snippet only reorders the steps from the original snippet, which is a syntactic edit and does not change the system's behavior. Therefore, it is classified as a low-impact change.",679
+66,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not affect the system's expected behavior.",598
+67,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",603
+68,LOW,"The change involves reordering the steps, which does not alter the system's expected behavior. The system still displays the records of daily requests as per the original use case.",1441
+69,LOW,"The change is a simple reordering of the steps, which does not affect the system's expected behavior. It is a syntactic edit, not a semantic one.",641
+70,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",476
+71,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",660
+72,LOW,"The change is a syntactic edit, as it only corrects the leading '+' symbol to a '-' symbol, which does not alter the system's expected behavior.",666
+73,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not affect the system's expected behavior.",517
+74,LOW,"The change is a syntactic edit, as the '+' symbol indicates the addition of a line without altering the system's expected behavior. The content of the line remains the same.",576
+75,LOW,"The change is a syntactic edit, as it only corrects the punctuation of the precondition statement.",507
+76,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",665
+77,LOW,"The change is a syntactic edit, as it only corrects a typo in the original snippet by adding a missing 'a' in the word 'atualização'. This change does not alter the system's expected behavior.",738
+78,LOW,"The change is a syntactic edit, as it only adds a period at the end of the sentence. This does not alter the system's expected behavior.",662
+79,LOW,"The change is a syntactic edit, as it only adds an additional alternative flow (af[6]) to the existing one (af[4]). This change does not alter the system's expected behavior.",659
+80,HIGH,"The change introduces a new alternative flow 'Alerta o estouro do limite de 10 diárias por mês', which modifies the system's expected behavior by adding a new alert mechanism for exceeding the daily limit. This change is considered high-impact as it alters the system's functionality.",848

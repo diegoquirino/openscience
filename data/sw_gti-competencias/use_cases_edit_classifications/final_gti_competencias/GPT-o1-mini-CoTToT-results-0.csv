@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change only involves capitalizing the word 'login', which does not affect the system's expected behavior.",6664
+1,LOW,"Only the word 'logout' was capitalized to 'Logout', which is a syntactic change that does not alter the system's behavior.",3365
+2,LOW,"The update only changes the capitalization of 'permissoes' to 'Permissoes', which does not affect the system's behavior or functionality.",5527
+3,LOW,"The change involves only capitalizing the word 'Permissoes' in the postCondition, which does not alter the system's behavior.",2827
+4,LOW,"The change only involves capitalizing 'Perfis de Competencias', which is a syntactic update that does not alter the system's behavior.",3043
+5,LOW,The updates involve only textual changes such as capitalization and adding specific terms without altering the system's behavior or functional requirements.,4722
+6,HIGH,Removing exception flow ef[3] alters the system's expected behavior by no longer handling a specific exception case.,5145
+7,HIGH,"Introduces an exception flow (ef[3]), which changes the system's expected behavior.",3413
+8,LOW,The change only involves capitalization of text without altering the system's behavior.,2858
+9,LOW,The changes involve only capitalization of terms without altering the system's behavior or functionality.,4689
+10,LOW,The changes involve renaming elements to specify the profile type more precisely without altering the system's behavior or the flow of the use case.,5039
+11,HIGH,"The change specifies the exception to apply specifically to editing the 'Perfil de Competencias' instead of a general profile. This introduces a new requirement by narrowing the scope of the exception, thereby altering the system's expected behavior.",3733
+12,HIGH,"The update specifies 'Perfil de Competencias' instead of 'Perfil', altering the system's expected behavior by narrowing the scope of the exception handling.",4303
+13,LOW,"The change involves capitalizing terms without altering the system's behavior or requirements, making it a syntactic edit.",2588
+14,HIGH,"A new use case 'RF007 - Gerenciar Avaliacoes' is introduced with detailed requirements, actors, flows, and exceptions, thereby altering the system's expected behavior.",4648
+15,HIGH,Changing the permission from managing 'perfils de competencias' to 'Periodos Avaliativos' alters the system's functionality and user capabilities.,3420
+16,HIGH,"The change replaces 'gestao de perfis de competencias' with 'gestao de Periodos Avaliativos,' altering the system's functional behavior by introducing a new management feature.",7943
+17,HIGH,"The update changes the actor's action from selecting a leader to inputting specific dates, altering the system's expected behavior.",5584
+18,HIGH,"The update removes an exception flow reference, altering the system's expected behavior.",8507
+19,HIGH,"The update changes the listed entity from 'perfis de competencias' to 'Periodos Avaliativos' and introduces an exception flow 'ef[3]', altering the system's behavior.",3807
+20,HIGH,"The change alters the data being displayed from 'competency profiles' to 'evaluation periods', affecting the system's expected behavior.",3508
+21,HIGH,"The updates change the functionality being accessed and displayed from 'gestao de perfis de competencias' to 'gestao de Periodos Avaliativos', altering the system's expected behavior.",5265
+22,HIGH,"The postCondition was changed from managing 'perfis de competencias' to managing 'Periodos Avaliativos', altering the system's expected behavior by shifting the focus to a different feature.",3691
+23,LOW,The changes involve only capitalization of terms without altering the system's behavior or requirements.,4844
+24,LOW,Only the capitalization of 'competencias' and 'portfolio' was changed without altering the use case's behavior or functionality.,3122
+25,LOW,Only corrected spelling and capitalization without altering the system's behavior.,2250
+26,HIGH,Removing an exception flow (ef[3]) alters the system's behavior by eliminating a possible error handling path.,8166
+27,LOW,"The updates involve only textual changes, such as correcting capitalization and spelling, without altering the use case's behavior or flow.",6415
+28,LOW,The updates only involve capitalization and minor text corrections without altering the use case's behavior or functionality.,2746
+29,HIGH,"Added an exception flow reference (ef[3]), altering the system's expected behavior.",5836
+30,LOW,"The updates involve correcting the capitalization and spelling of 'competecias' to 'Competencias', which are syntactic changes that do not alter the system's behavior.",8039
+31,LOW,The changes involve correcting capitalization and fixing a typo without altering the system's expected behavior.,9605
+32,LOW,"The changes involve only capitalization of terms, without altering the system's behavior or functionality.",10811
+33,LOW,"The update only changes the capitalization of 'competencias' and 'portfolio', which is a syntactic edit that does not affect the system's behavior.",2885
+34,HIGH,"A new use case is introduced, adding multiple alternative flows and expanding system functionality, which changes the system's expected behavior.",4203
+35,HIGH,"A new use case is introduced, adding significant functionality and requirements to the system.",3034
+36,HIGH,"A completely new use case is introduced, adding significant functionality and altering the system's expected behavior.",2855
+37,HIGH,"A new use case is introduced, adding new requirements and system behavior.",2452
+38,HIGH,"A new use case has been added, introducing new requirements and altering the system's expected behavior.",2635
+39,LOW,The changes only correct grammatical gender agreement in the description without altering the use case's functionality or behavior.,4632
+40,LOW,"The changes involve correcting grammatical agreement by adjusting singular and plural forms without altering the system's behavior or functionality, making them syntactic edits.",4100
+41,LOW,The changes involve correcting grammatical number and gender agreement from 'Competencias' to 'Competencia' without altering the use case's functional behavior.,16336
+42,LOW,The changes are grammatical corrections and do not alter the system's expected behavior.,8258
+43,LOW,The changes involve correcting singular terms and gender agreement without altering the system's behavior.,4731
+44,LOW,"The changes are syntactic, correcting grammatical agreements without altering the system's behavior or functionality.",5472
+45,LOW,The changes involve correcting grammatical agreements ('dos' to 'das' and 'cadastrados' to 'cadastradas') without altering the system's behavior or functionality.,2947
+46,HIGH,"A new use case is introduced, adding new requirements and altering the system's expected behavior.",4592
+47,HIGH,"The updated preCondition removes the specific context of the user being on the system's home screen, broadening the condition. This change affects the system's expected behavior by altering the scenarios under which the use case can be initiated.",2866
+48,HIGH,"The updated step changes the user action from accessing a specific functionality to accessing the system's initial screen and introduces an alternative flow (af[1]), thereby altering the system's expected behavior.",5102
+49,HIGH,"Introduces a new alternative flow, altering the system's expected behavior.",5399
+50,LOW,"The change involves renaming the option from 'Resultados' to 'Resultado', which is a textual update and does not alter the system's expected behavior.",4099
+51,HIGH,"The updated snippet introduces new steps to verify and present competency details, altering the use case flow and system behavior.",5040
+52,LOW,"The changes involve only textual updates, such as adding quotes and correcting article agreement, without altering the system's expected behavior.",4138
+53,HIGH,"The addition of a new use case introduces new system functionality and behavior, significantly altering the system's requirements and interactions.",3584
+54,HIGH,"A new use case 'RF018 - Gerenciar Metas de Desempenho' is introduced, adding new functionality and defining system behavior, which affects the system's expected operations.",3327
+55,LOW,"The change involves substituting 'inicia' with 'abre', which does not alter the system's behavior but merely uses a synonym to describe the action.",2341
+56,LOW,The update only simplifies the step description by removing redundant wording without changing the system's behavior or functionality.,2652
+57,LOW,The change corrects grammatical gender agreement without altering the system's behavior.,8263
+58,LOW,Corrected grammatical agreement without altering the system's behavior.,7086
+59,LOW,"The changes are limited to textual modifications, such as adjusting prepositions and adding descriptive phrases, without altering the system's behavior or functionality.",3457
+60,LOW,"The changes are grammatical corrections, adjusting articles and adjective agreements without altering the system's behavior or functionality.",2845
+61,HIGH,"The change alters the condition for listing evaluations from 'excluded' to 'not excluded', modifying the system's behavior.",5174
+62,LOW,"Removed a semicolon, which is a syntactic change that does not alter the system's behavior.",3605
+63,LOW,"The change only involves adjusting indentation, which does not alter the system's behavior.",3607
+64,LOW,The changes involve synonym replacements and step renumbering without altering the system's behavior or logic.,9420
+65,HIGH,"The action changes from selecting to filling in the 'Ata de Reuniao de Feedback', altering the system's expected behavior.",5089
+66,LOW,The changes involve minor textual formatting adjustments and renumbering of steps without altering the system's expected behavior.,4927
+67,HIGH,"The change alters the system's behavior by modifying the displayed Evaluation Periods from excluded to not excluded, impacting the functionality.",3347
+68,LOW,Corrected a grammatical error without altering the system's behavior.,4500
+69,LOW,The change corrects the grammatical article from 'um' to 'uma' without altering the use case's behavior or functionality.,3481
+70,LOW,Corrected grammatical gender without altering system behavior.,3266
+71,LOW,"The changes involve renaming the alternative flow and correcting the article in a step description, which do not alter the system's behavior.",3494
+72,HIGH,"The change alters the system's behavior by modifying the condition under which Competencias are displayed, switching from showing excluded Competencias to not excluded ones.",3378
+73,LOW,The change corrects grammatical agreement from 'cadastradas' to 'cadastrados' without altering the system's behavior or functionality.,3059
+74,LOW,"The change only modifies the wording from 'Niveis' to 'Nivel', without altering the system's behavior.",10278
+75,HIGH,Changing 'excluido' to 'nao excluido' alters the system's behavior by modifying the criteria for displaying competency levels.,7538
+76,LOW,"The change involves removing punctuation without altering the precondition's meaning, thereby not affecting the system's behavior.",8241
+77,HIGH,"The change removes the reference to 'Catalogo (Perfis)' and directly refers to 'Perfis de Competencias', altering the scope of what is being displayed. This modification affects the system's expected behavior by changing the context of the listed items.",5175
+78,LOW,"The change involves removing redundant text without altering the system's behavior or functionality, making it a syntactic edit.",3575
+79,HIGH,"Removing 'cadastradas' changes the scope of the competencies catalog presented, altering the system's expected behavior.",3997
+80,LOW,The change corrects grammatical agreement in the text without altering the system's behavior or functionality.,5251
+81,LOW,"The change only modifies the wording of step 5 from 'escolha' to 'escolhe', which is a syntactic edit and does not affect the system's behavior.",3696
+82,LOW,The change only involves a minor wording update without altering the system's behavior.,4136
+83,LOW,The change involves only a minor textual modification (from 'preencha' to 'preenche') without altering the use case's behavior or logic.,4257
+84,LOW,"The change modifies the verb form from imperative to indicative without altering the use case's behavior or functionality, representing a syntactic update.",4660
+85,LOW,Corrected a grammatical error by changing 'Planos' to 'Plano' without altering the system's behavior.,3395
+86,LOW,"The change corrects a grammatical number from 'Planos' to 'Plano', aligning with the singular 'um' without altering the system's behavior.",4290
+87,LOW,The change corrects a grammatical article from 'das' to 'dos' without altering the system's behavior or functionality.,3083
+88,LOW,"The changes involve renaming an alternative flow using synonyms and correcting a grammatical error, which do not alter the system's expected behavior.",4547
+89,HIGH,The change alters the system's behavior by modifying the display criteria from showing excluded to non-excluded IT Training Plans.,6762
+90,LOW,The changes involve correcting grammatical gender and number agreement without altering the system's behavior.,5035
+91,LOW,The change only adjusts punctuation without altering the system's behavior.,7825
+92,LOW,"The changes involve minor textual modifications, such as adding a connector and replacing synonyms, without altering the system's behavior or functionality.",3214
+93,HIGH,The updated step 3 changes the system's behavior by altering the action from creating a new evaluation to responding to existing evaluations or self-evaluations.,4977
+94,HIGH,"The updated snippet introduces new steps, such as selecting 'Nivel de Interacao' and 'Capaz de Avaliar a Competencia', and adds an additional exception flow (ef[4]). These changes modify the system's expected behavior by introducing new requirements and altering the flow, thereby having a high impact.",5675
+95,HIGH,"Adding an exception flow introduces a new system behavior for handling cases where the user does not provide justification, altering the system's expected behavior.",3958
+96,HIGH,"Added a new alternative flow, which modifies the system's expected behavior.",4100
+97,LOW,The change only alters the wording from 'listadas' to 'exibidas' without affecting the system's behavior.,6975
+98,HIGH,"Introduces a new use case, adding new functionality and altering the system's expected behavior.",8020
+99,LOW,"The change replaces the word 'listadas' with the synonym 'exibidas', which does not alter the system's behavior or functionality.",3424

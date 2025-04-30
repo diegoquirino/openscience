@@ -1,0 +1,101 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"The change involves adding a missing capital letter in the original snippet, which doesn't alter the semantics of the text and therefore does not change the system's expected behavior.",33424
+1,LOW,The change is low-impact because it's a minor text correction of capitalization.,2626
+2,LOW,The change is a case of the textual update where the edit changes only the uppercase/lowercase spelling of a word without changing the overall meaning or behavior of the use case.,3715
+3,LOW,"The updated snippet only changes the capitalization of a word, which is a syntactic edit and does not change the system's expected behavior.",3238
+4,LOW,"A lowercase letter has been changed to uppercase, which does not alter the system's expected behavior.",2818
+5,HIGH,"The system behavior is altered as the text in the snippet is changed from 'gestao de perfis de competencias' to 'Perfis de Competencias' and 'criar um novo perfil' to 'criar um Novo Perfil de Competencias'. This difference, although minor, changes the functional expectation. Thus, it is classified as a high-impact change.",6186
+6,LOW,The updated snippet changes the flow by removing '3' from the list in the 'ef' flow. This change does not impact the system's expected behavior as it only removes a single item from a list.,4050
+7,LOW,"The change in the use case snippet is part of a syntactic edit, where the updated snippet includes a correction in capitalization and the addition of a descriptor. This minor adjustment does not change the system's behavior or expected outcome.",4344
+8,LOW,"The change involves capitalizing the word 'Perfis' in the snippet, which is a syntactic edit and does not change the system's expected behavior.",3433
+9,LOW,The change is a syntactic edit with capitalization adjustments and pluralization of 'Perfil de Competencias'.,2969
+10,LOW,The only change in the updated snippet is the addition of 'de Competencias' in the exception flow description. This change doesn't affect the system's expected behavior and represents a syntactic edit.,4004
+11,LOW,"The change does not alter the system's behavior or semantics. The only modification in the text is the addition of the context 'de Competencias', which does not change the overall meaning of the use case.",4062
+12,LOW,"The change does not affect the system's expected behavior. It only adds a description to the exception flow, which is a low-impact change.",3284
+13,LOW,The change in the use case snippet is a low-impact change as it only involves capitalization of a word in the postCondition. Neither the system's expected behavior nor any other requirements or flow elements have been altered.,4184
+14,LOW,"The change introduces the 'systemName' attribute at the beginning of the use case, which is a syntactic edit without changing the system's behavior. Additionally, other textual updates and formatting adjustments were made. Overall, the changes are low-impact.",5110
+15,LOW,The change from 'competencias' to 'Periodos Avaliativos' is a low-impact edit because it is a textual update that does not change the system's behavior.,3824
+16,LOW,"The original and updated snippets have the same structure and logic. The only difference is the change of 'gestao de perfis de competencias' (competency profile management) to 'Periodos Avaliativos' (assessment periods), which does not impact the system's expected behavior.",5121
+17,LOW,"The update changes the verb from 'selecionando' (selecting) to 'informando' (informing), but the overall meaning and system behavior remain unchanged. This is a syntactic edit rather than a semantic one.",4551
+18,LOW,"This change removes one alternate flow (step 3) while still keeping the other two steps (1 and 2), which does not affect the semantics of the use case.",3703
+19,HIGH,"The change updates the description of the step, changing the system's behavior by displaying a list of Periods Avaliativos instead of Perfis de Competencias, and introduces an exception flow for step 3.",4271
+20,LOW,"Updated snippet changes the text 'Perfis de competencias' to 'Periodos Avaliativos'. The behavior remains the same, as the system is still showing a list, but now for Periodos Avaliativos instead of Perfis de competencias. The semantics of the sentence are preserved.",5413
+21,LOW,The change involves replacing the term 'perfis de competencias' with 'Periodos Avaliativos' and updating the description to match the new term. This change does not modify the system's behavior or expected functionality.,4201
+22,LOW,"The change involves replacing one post condition with another, which does not change the system's expected behavior.",2683
+23,LOW,"The change is a low-impact edit as it just adjusts the text case of 'competencias' and 'portfolio', without altering the system's behavior.",3536
+24,LOW,"Text updates have been made, such as capitalization and spelling, but the system behavior remains the same.",2749
+25,LOW,The change involves capitalizing the word 'competecias' to 'Competencias' and capitalizing the 'p' in 'portfolio'. This change does not alter the system's expected behavior and is only a matter of capitalization and formatting.,4670
+26,HIGH,The change introduces a requirement by modifying the precondition to be a part of two alternative flows instead of three.,2895
+27,LOW,"The change updates the capitalization of the word 'editar' and 'competencias' to 'Editar' and 'Competências' respectively, which is a syntactic change and does not affect the system's behavior.",4414
+28,LOW,"The changes are purely syntactic, involving capitalization, special characters, and spacing. There are no semantic edits that alter the behavior of the system.",3337
+29,LOW,"The change updates the capitalization and punctuation of the text (semantic edit), but does not change the system's expected behavior.",3099
+30,HIGH,"The change introduces a system behavior modification, as it modifies text content that involves system operation.",2186
+31,LOW,The change is low-impact as it involves capitalizing the first letter of the text and adding parentheses to the text. The system's expected behavior remains unchanged.,3604
+32,LOW,"The updated snippet only contains capitalization changes (competencias to Competencias) andity removal, which are low-impact changes that do not alter the system's behavior.",3613
+33,LOW,The change is a low-impact update as it corrects the capitalization of 'competencias' and 'Portfolio'.,3015
+34,HIGH,"Changes the system's expected behavior by adding a new use case with detailed steps, altering the flow of the system.",3203
+35,HIGH,"The system name has been added in the updated snippet, which changes the system's expected behavior.",3126
+36,HIGH,"The change adds a new `systemName`, and modifies the `version`, `type`, `author`, and `date` of the use case, which changes the system's behavior. Therefore, the edit classification is high-impact.",4512
+37,LOW,"The change includes adding the 'systemName' element, which is a syntactic edit and does not change the system functionality. The rest of the changes are textual updates fixing typos and reordering elements, which also constitute syntactic edits.",4734
+38,HIGH,"Changes made include introducing a new system name, adding a version, type, author, and creation date for the use case and changing the actor and pre-condition. These changes impact the system's expected behavior.",4136
+39,LOW,"The updated snippet changed 'cadastrados' to 'cadastradas'. This is a low-impact change as it only modifies the tense of the verb, which does not affect the system's behavior.",4198
+40,LOW,"The change is a low-impact edit, involving a textual update where the synonym 'selecionada' replaces 'selecionado' and 'Competencia' replaces 'Competencias'. No change in semantics is observed.",4790
+41,HIGH,"The change updates the text from 'Competencias (Portfolio)' to 'Competencia (Portfolio)', which changes the system's expected behavior, thus making it a high-impact edit.",3924
+42,LOW,The change does not impact the system behavior semantically; it only affects word order and a single word ('excluido' -> 'excluida') which does not change the meaning of the sentence.,4103
+43,LOW,The changes are low-impact as they are simple textual updates (replacing ' Competencias (Portfolio)' with ' Competencia (Portfolio)' in both steps 2 and 3). These updates do not change the system's expected behavior.,4679
+44,LOW,"The change is a low impact edit, as it only involves replacing the verb 'exibe' with 'excluida' both referring to the action of displaying something with an alteration. This does not change the system's expected behavior.",4466
+45,LOW,"The change is from 'cadastrados' (plural) to 'cadastrada' (singular), which is a minor semantic change. The overall system behavior remains the same.",3869
+46,HIGH,"The change introduces a new system name and modifies the use case's metadata (version, type, author, and creation date).",3311
+47,LOW,The preCondition was slightly adjusted by removing the mention of 'tela inicial do sistema'. This is a low-impact change as it does not alter the system's behavior.,3681
+48,LOW,"The change editing the snippet shows a simple addition of an alternative flow (numbered step) in the updated snippet, which does not alter the system's expected behavior or functionality. It is a syntactic edit and thus low-impact.",4411
+49,HIGH,"The original snippet does not provide any context or clause for the updated snippet. The updated snippet introduces a new alternative flow, which changes the system's expected behavior. Therefore, the change is high-impact.",4177
+50,LOW,"The change is a spelling correction from 'Resultados' to 'Resultado', which does not alter the system's expected behavior.",3166
+51,HIGH,"The updated snippet introduces a new feature about verifying and presenting the details of each competency. This change alters the system's expected behavior, which classifies the change as high-impact.",4107
+52,LOW,The text was reformatted to improve readability and maintain the same meaning.,2406
+53,LOW,"The edit changed the system's name and version, but these changes do not alter the expected behavior of the system.",3407
+54,HIGH,"Introduces a systemName attribute, an actor, and a preCondition, changing the system's expected behavior.",2996
+55,LOW,"Text has been slightly changed from 'inicia' to 'abre' while the meaning remains the same, indicating a low-impact change in semantics.",3440
+56,LOW,The change corrects a grammatical construction and improves readability without altering the semantic meaning or expected behavior of the system.,3086
+57,LOW,The change is a low-impact change due to the correction of grammar from 'cadastrados' to 'cadastradas'. The change does not affect the system's behavior or the expected behavior of the use case.,37816
+58,LOW,The change in the snippet involves a minor grammatical adjustment from 'preenchido corretamente' to 'preenchidos corretamente'. This change is syntactic in nature and does not alter the system's expected behavior.,4480
+59,LOW,"The change is a syntactic edit, involving capitalization and tense adjustment in a single sentence. The meaning and system behavior remain unchanged.",3268
+60,LOW,The change involves a simple grammatical adjustment.,2164
+61,LOW,"The change is a low-impact edit due to the textual update altering the term 'excluido' to 'nao excluida', which does not change the system's behavior.",3895
+62,LOW,"The updated snippet simply joined two separate phrases into one using 'e' (and), making the precondition more concise, but the meaning remains unchanged.",3411
+63,LOW,The change is simply a reordering of elements. The system's expected behavior does not change as a result of this modification.,3046
+64,HIGH,The change replaces 'apresentados' with 'exibidos' and adds a new 'step 3'. Both changes alter the system behavior.,3279
+65,LOW,"The change from 'seleciona o 'Ata de Reuniao de Feedback' da Avaliacao (1 a 4)' to 'preenche a 'Ata de Reuniao de Feedback' da Avaliacao' involves a slight change in text, but does not change the semantic meaning of the step. Therefore, the change is classified as low-impact.",6501
+66,HIGH,"The change provided introduces a new requirement that was not initially present, specifically the separate treatment of 'Data Inicial' and 'Data Final'. This modification significantly alters the behavior of the system and is therefore classified as a high-impact change.",4475
+67,LOW,The update only consists of changing the word 'excluido' to 'não excluido'. The behavior of the system does not change as it still shows the list of Evaluation Periods without excluding the specified Period.,4291
+68,LOW,"The change only introduces a small grammatical edit, updating 'uma nova Competencia' to 'um nova Competencia'.",3268
+69,LOW,The updated snippet has a typo corrected from 'un' to 'uma'.,2565
+70,LOW,"The update only changes a single word ('un') and its placement within the sentence, from 'seleciona um Competencias' to 'seleciona uma Competencias'. There are no differences in system behavior or functionality.",4238
+71,LOW,"The change is a minor edit involving replacing an existing alternative flow with another, but the overall behavior of the system's expected behavior remains the same.",3245
+72,LOW,"The change is low-impact because it does not alter the expected behavior of the system. The updated text contrasts the original text with a simple negation ('excluded' vs. 'not excluded') but keeps the overall meaning the same, indicating that the system will still show a list of competencies with one specific competency included or excluded.",5607
+73,LOW,The change is a syntactic edit where the verb tense has been adjusted from 'cadastradas' (plural feminine verb) to 'cadastrados' (plural masculine verb). This low-impact change does not affect the system's expected behavior.,4486
+74,LOW,The change was only a minor grammatical correction (from 'Niveis' to 'Nivel'). It does not affect the system's expected behavior.,3382
+75,LOW,"The change involves a minor text update, specifically altering the word 'excluido' to 'nao excluido', which does not impact the system's behavior or expected functionality.",3772
+76,LOW,The change is a low-impact edit as it only modifies the precondition's text by adding the word 'e' before 'tem permissao para alterar Gerente de Desempenho'.,4214
+77,LOW,"The update changes the wording from 'do Catalogo (Perfis) de Competencias' to 'os Perfis de Competencias', which is a syntactic edit that does not affect the behavior of the system.",4277
+78,LOW,The change is a minor editing by replacing a semicolon with a period and removing a preposition 'do' without changing the meaning or behavior of the step.,3427
+79,LOW,"The update changed the wording in the sentence from 'cadastradas sem nenhuma alteracao' to 'sem nenhuma alteracao', but the meanings are the same, and the overall behavior of the system remains unchanged. Therefore, this is a low-impact change.",5161
+80,LOW,"Updated text uses plural form 'cadastrados' instead of singular 'cadastrada', changing the subject of the sentence, but not altering the system behavior.",2997
+81,LOW,"The change is a minor update regarding verb conjugation, which does not impact the meaning or behavior of the use case.",2918
+82,LOW,"The updated snippet only changes the verb from 'selecione' to 'seleciona', which is a minor grammatical alteration and does not change the system's behavior.",3867
+83,LOW,"The change only modifies the capitalization of the text in the original snippet, which does not alter the system's expected behavior.",3091
+84,LOW,The change from '-' to '+' is a syntactic edit and does not change the system's expected behavior.,2593
+85,LOW,"The change is low-impact because it seems to be a textual update, adding a plus symbol at the beginning of the step.",3215
+86,LOW,"The change is a typo correction ('un' to 'um'), which is a low-impact edit that does not change the system's expected behavior.",3455
+87,LOW,"The updated snippet only adds a leading '+' sign, which is a syntactic edit indicating the addition of text within the original use case. This does not change the system's behavior or expected output.",3951
+88,LOW,"The change consists of updating the name of the alternative flow and alias of a step. This does not change the semantics or expected behavior of the use case, and is therefore a low-impact change.",3995
+89,LOW,"The change replaces the phrase 'excluida' with 'nao excluida', which is a minor syntactic edit and does not change the system's expected behavior.",3679
+90,LOW,"The change is a minor syntactic edit, as it modifies 'cadastradas' to 'cadastrados'. This change does not affect the system's expected behavior.",3664
+91,LOW,"The change in the precondition statement removes an extra space between 'tem' and 'permissao', which is a syntactic edit and does not change the system's behavior.",3663
+92,LOW,"The update consists of swapping the words 'deve' to 'para' in step 3 and 'constando' to 'contendo' in step 4, which are minor syntactic adjustments that do not change the system's expected behavior.",4545
+93,LOW,The change updates the term &quot;varias listadas&quot; to &quot;varias exibidas&quot; and &quot;criar uma nova Avaliacao&quot; to &quot;responder a uma Avaliacao ou Autoavaliacao&quot;. These changes are minor edits that do not impact the system's expected behavior.,6416
+94,HIGH,The updated snippet introduces a new requirement 'seleciona que e 'Capaz de Avaliar a Competencia'' which changes the system's behavior making it a high-impact change.,4193
+95,HIGH,"The update introduces an exception flow that was not present in the original snippet, which changes the system's expected behavior. This is an example of a high-impact change.",3702
+96,HIGH,"The update introduces a new requirement for an alternative flow, changing the system's behavior.",2602
+97,LOW,"The change is a minor update in text, replacing 'listadas' with 'exibidas'. It does not alter the system's expected behavior.",3274
+98,HIGH,"The edited version adds the systemName property and modifies the metadata. These changes affect the overall system's behavior, thus classifying the change as HIGH.",3838
+99,LOW,"The change is a low-impact alteration, as it only modifies one word in the snippet. It does not introduce new requirements or change the system's expected behavior.",3675

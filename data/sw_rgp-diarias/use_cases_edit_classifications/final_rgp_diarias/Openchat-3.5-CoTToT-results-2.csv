@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,The change is low-impact because it is a modification in an alternative flow part of the same scenario. It does not alter the semantics of the use case and maintains the same level of system expectations.,1526
+1,HIGH,The updated snippet changes the user behavior by removing the action of informing the authorization accompaniment and introducing the actions of selecting the justification and selecting the beneficiaries. This significantly alters the expected behavior of the system.,1583
+2,LOW,"The update does not change any behavior, it only moved step 27 forward one step, and skips some steps. Therefore, from a functional perspective, there is no different expected behavior.",1423
+3,LOW,"The change deletes the existing alternative flow and adds a new one with a different name. However, it does not change the system's expected behavior, because this is a change in names and not in the semantics of the use case. This change does not affect the steps, conditions, or flow of the scenario.",1850
+4,LOW,"The updated snippet is empty, which suggests that the change is not modifying the content. Therefore, it's a syntactic edit and not impacting the system's behavior.",1395
+5,LOW,"The updated snippet contains mostly syntactic edits such as the addition of comments, version, type, user, and date information. No semantic changes to the system's expected behavior are noted.",1468
+6,LOW,"The update contains non-syntactic edits that align with low-impact changes, such as adjusting formatting, adding comments, and reordering elements. These changes do not alter the system's expected behavior.",1599
+7,LOW,"No significant changes have been made that affect the system's behavior. The updates are mostly syntax changes such as comments, reordering, and additional details in alternative flows without changing the original flow.",1460
+8,LOW,"The changes are mainly syntactic updates, such as adding comments, including version, type, author, and creation date metadata, renaming elements, and reordering of basic and alternative flow steps. No new requirements or features have been introduced, and the system's expected behavior has not been changed.",1896
+9,HIGH,"The change adds new content to step 27, which indicates a modification of the system's behavior.",1076
+10,LOW,The change adds a new action in the same step without altering the overall behavior of the system.,1022
+11,LOW,The change is low-impact since it simply removes the reference to an alternative flow (af) from a textual step within the basic flow. This does not change the system's expected behavior.,1466
+12,LOW,"The updated snippet is empty and doesn't provide any changes to the original snippet. Therefore, it can be considered as a low-impact change.",33438
+13,HIGH,"The change alters the expected behavior of the system, as it changes 'Visualize' (View) to 'Verifica' (Check). This significantly modifies the interaction with the user since 'View' implies a passive action while 'Check' is more active and implies additional work from the user.",1856
+14,LOW,"The updated snippet only adds context to the existing step but does not change the system's expected behavior. It is a syntactic edit that provides more detail, not altering the functionality.",1403
+15,LOW,The change is low-impact because it merely adds an alternative flow (4) to step 4 but does not alter the system's behavior or expected functionality.,1296
+16,LOW,"The change is low-impact because it only adds an alternative flow without changing the system's expected behavior. It detailes an action and an outcome for a specific user interaction, but it doesn't introduce or remove a requirement, feature, or entity.",1699
+17,LOW,"The changes in the updated snippet added an exception flow at step 22, but it does not alter the system's expected behavior. The prerequisite step for the exception flow (step 5) has not been disclosed in the updated snippet. According to the classification guidelines, this type of change is considered low-impact as it is a syntactic edit.",3714
+18,HIGH,"The update introduces a new exception flow, which changes the system's expected behavior, thus it is considered high-impact.",1155
+19,LOW,The update adds an alternative flow reference to step 21 without changing the behavior of the system.,1028
+20,LOW,"The update introduces a new alternative flow and steps, but does not change the system's expected behavior.",1066
+21,LOW,"The change in the snippet does not modify the overall behavior of the system. The system still displays the list of requests; however, it now orders them by daily number in ascending order. This change is a low-impact change as it modifies the semantics of the text without significantly altering the expected behavior of the system.",2090
+22,HIGH,"The change in the updated snippet modifies the system's expected behavior by adding the sorting of the diaria list by number of diarias in ascending order. This alters how the system operates, and therefore is considered a high-impact change.",1800
+23,LOW,"The change is low-impact because it reflects a syntactic edit; the addition of the phrase 'ordenado pelo numero da diaria em ordem crescente' does not alter the semantic meaning of the step. The system is still expected to display a list of daily (solicitation) records eligible for payment, but now in ascending order by the daily number. This preserves the system's expected behavior and aligns with the definition of low-impact changes.",2779
+24,HIGH,"A new step with a conditional action was introduced in the updated snippet, which changes the system's expected behavior, making it a high-impact edit.",1345
+25,LOW,"The update is a syntactic edit, as it does not change the system's behavior. The changes consist of adding a new sentence to the flow, providing more information about how the list is ordered. There are no semantic edits like introducing, deleting, or changing requirements, features, entities, steps, or flows.",2062
+26,LOW,"The changes in the updated snippet are syntactic edits, including updating the apostrophe usage, fixing capitalization and punctuation. The behavior of the system remains the same.",34006
+27,LOW,"The change is a syntactic edit, fixing a typo in the phrase `'Exibe a opcao escolhida'`.",1094
+28,LOW,,1364
+29,LOW,"The update changes the wording of the sentence to a correct grammar format ('opção' to 'opção', and adding an accent to 'exibida') but does not change the system's expected behavior.",1523
+30,LOW,"The updated snippet is a syntactic edit, as it involves changing a colon to a semicolon and fixing an apostrophe. These changes do not alter the system's behavior or the semantics of the use case.",34488
+31,LOW,"The changes made are primarily grammatical and punctuation updates, such as fixing the typos and updating the punctuation, which do not change the system's expected behavior. These are syntactic edits and not semantic edits.",1607
+32,LOW,The update changes a grammatical detail (singular to plural) but does not alter the system's behavior or functions.,1135
+33,LOW,"The change made in the snippet is a syntactic edit, as it only changes the spelling of the word 'opcao' to 'opção' and 'escolhida' to 'escolhida', without changing the semantics or system's expected behavior.",1831
+34,LOW,"The changes involve text alignment, changing plural forms, and adjusting punctuation, which are syntactic edits that do not alter the system's expected behavior.",1280
+35,LOW,"The original and updated snippets are the same except for the '+' symbol in the updated snippet. This symbol is used in CLARET notation to indicate an addition or an update, but does not change the semantics or behavior of the use case. Therefore, the change is low-impact.",1910
+36,LOW,"The updated snippet only adds a period at the end of the sentence, which is a syntactic change and does not affect the system's expected behavior. This is characterized as a low-impact change.",1479
+37,LOW,The update only changes the formatting style by adding a period at the end of the sentence. The revised snippet is still in line with the original semantics and does not change the system's behavior.,1376
+38,LOW,The change is a syntactic edit that updates a missing accent in the Portuguese words 'Diaria' and 'afastamento' and adds accent marks to other words. These changes do not affect the behavior of the use case.,1538
+39,LOW,"The updates are mainly syntactic edits, correcting spelling and punctuation. There is no change in semantics or system behavior.",2669
+40,LOW,"The update does not change the system's behavior, as it only removes the post-condition without adding or changing other elements in the use-case snippet.",1293
+41,LOW,"The change only fixes a typographical error by adding a period at the end of the sentence. It does not change any semantic meaning, and still accurately describes the preconditions for the use case. Therefore, it is a low-impact edit.",34440
+42,LOW,"The change consists of a suggestive modification in the user-friendly syntax of the sentence. It does not impact the behavior or specifications of the use case described, and thus, it's low-impact.",1500
+43,LOW,"The update is only a punctuation change, which does not impact the system behavior.",943
+44,LOW,The change is a low-impact one as it is a minor syntax change: adding a period at the end of the sentence. This does not change the system's expected behavior.,1399
+45,LOW,"The change is a syntactic edit, fixing a typo (changing a '+' to '.'). No semantic changes are made to the system's expected behavior.",1315
+46,LOW,The change made is only a syntactic edit: a punctuation change from an underscore to a period. This change does not alter the system's expected behavior or the overall meaning of the pre-condition statement.,1504
+47,LOW,"The change is a low-impact change because it only adds a period at the end of a sentence, which does not change the system's behavior.",1257
+48,LOW,The change only removes the typographical difference between the two snippets and adds a period at the end of the message. Neither change affects the system's behavior.,1312
+49,LOW,"The change is a syntactic edit, involving the removal of a space. The semantics of the preCondition remain unchanged, thus not affecting the system's expected behavior.",1352
+50,LOW,"The replaced string is functionally equivalent to the original, and does not change the system's expected behavior. The change is a syntactic edit.",1221
+51,LOW,"The edit is low impact as it adds a descriptor ('de todos os servidores') without changing the system's expected behavior. The change, while more specific, does not change the core functionality or flow of the use case.",1566
+52,LOW,"The change simply corrects the capitalization and punctuation, which are syntactic edits and do not change the system's behavior.",1168
+53,LOW,"The only change made is the addition of a period at the end of the sentence, which does not affect the system's behavior and is a syntactic edit.",1278
+54,LOW,The updated snippet is a properly formatted variant of the original snippet without altering the functionality or changing the system's behavior.,1177
+55,LOW,"The snippet contains only punctuation updates, which do not change the system's expected behavior. It is simply converting original to updated punctuation usage. The meaning and content of the use case remain the same, hence the classification as low impact.",1638
+56,LOW,The change is a minor grammatical correction without altering the system's behavior.,964
+57,LOW,The change is a low-impact edit because it simply removed the '+' in the beginning and did not change the semantic meaning or system behavior of the use case step.,1334
+58,LOW,The change is a low-impact edit because it only includes the removal of a space which does not affect the system's behavior or expected outcome.,1309
+59,LOW,"The change occurs in step number, without any impact on the system's behavior or semantic of the use case. This indicates a non-impactful edit, thus classifying it as low-impact.",1518
+60,LOW,"The change consists of a reordering of the steps, which does not change the system's behavior. This is a syntactic edit, not a semantic one.",1316
+61,LOW,"The change is a syntactic edit that fixes punctuation and a typo, and it does not alter the system's expected behavior.",1224
+62,LOW,"Both snippets show the same structure and steps, with the only difference being the addition of a '+' before the steps in the updated snippet. There is no change in the system's behavior, and only the syntax of the text has been edited. Therefore, the change is of low impact.",1889
+63,LOW,"The updated snippet is a low-impact edit as it is a syntactic edit, fixing a missing period. The system behavior remains unchanged.",2704
+64,LOW,The change is a low-impact edit as it primarily involves capitalization and an added period. It is a syntactic change and does not alter the system's expected behavior or the semantic meaning of the pre-condition.,1567
+65,LOW,"The change simply rearranged the steps. It didn't introduce or delete a requirement, feature, or business model entity. It also didn't introduce or delete a step, alternative flow, or exception flow. Therefore, the impact of the changes is low.",1706
+66,LOW,"The change only includes a period at the end of the sentence, which is a syntactic edit and does not change the system's behavior.",1191
+67,LOW,"The update includes punctuation adjustments which do not change the semantics or functionality of the use case, thus resulting in a low-impact change.",1255
+68,LOW,"The changes involve renumbering steps, which does not alter the system's behavior; they are syntactic edits.",1108
+69,LOW,"The change moved the order of steps within the use case, which is a syntactic edit and does not change the system's behavior. The updated step now appears in step 2 instead of step 4, but the action being performed and its outcomes remain the same.",1718
+70,LOW,The edit changes the formatting (fixed a missing period) but does not change the system's behavior or expected behavior.,1111
+71,LOW,The change is a low-impact syntactic edit as it consists of adding a full stop at the end of the sentence. This does not change the behavior or semantics of the use case.,1439
+72,LOW,"The original and updated snippets are almost identical; the only difference is the presence of the '+' symbol in the beginning of the updated snippet. The symbol indicates this is a new addition, but the actual change does not alter any core functionality or requirements. Hence, this is classified as a low-impact change, as it only involves a syntactic edit.",2136
+73,LOW,"The change is a syntactic edit, as it only adds a period at the end of the step description, which doesn't change the meaning or behavior of the system.",1319
+74,LOW,"The updated snippet is identical to the original snippet. The preCondition is just copied without any changes. No semantic edit is made, so the impact is low.",1316
+75,LOW,The change is a low-impact edit as it only involves a punctuation correction in the preCondition.,1048
+76,LOW,The only change is the addition of a period at the end of the sentence. This change does not impact the system's expected behavior.,1176
+77,LOW,"The update is a low-impact change because it is a minor edit that does not affect the behavior or functionality of the system. The change corrects a typo in the message 'Informativos sobre a atualização de conta bancária' and modifies parenthesis usage, while maintaining the overall meaning of the use case step.",2102
+78,LOW,"The update does not change the system's expected behavior, as it only adds a period at the end of an existing sentence.",1131
+79,LOW,The change does not change the system's expected behavior. It simply adds one more alternative (af[6]) to step 25 without modifying the base behavior.,1314
+80,HIGH,"The updated snippet introduces a new alternative flow, altering the system's expected behavior during the use case, thus classifying this change as high-impact.",1312

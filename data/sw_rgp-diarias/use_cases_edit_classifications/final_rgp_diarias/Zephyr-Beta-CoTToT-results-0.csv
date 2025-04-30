@@ -1,0 +1,82 @@
+index,edit_classification,decision_rationale,elapsed_time_ms
+0,LOW,"Both snippets describe the user informing the system of the dates of leave before the last day of travel. The update only changes the alternative flow number from 6 to 5, which does not affect the system's expected behavior. Thus, the edit is classified as low-impact.",1841
+1,HIGH,"The addition of steps 19 to 21 introduces a new requirement and changes the expected behavior of the system, making it a high-impact change.",1757
+2,LOW,"In this example, the changes only reflect updates in the format or placement of existing steps and flows. There's no semantic change to the functionality or behavior of the system. Therefore, we classify this edit as LOW-impact.",1144
+3,HIGH,"The original snippet defines an alternative flow named 'Usuário informa que NÃO acompanha autoridade'. In the updated snippet, a new alternative flow named 'Limpar Campos' is introduced, resulting in a change to the system's expected behavior. Therefore, this edit is classified as high-impact.",1878
+4,LOW,"After reviewing the original and updated snippets, it is determined that the updated snippet does not contain any changes to the system's behavior as it is empty. Therefore, we classify this change as low-impact.",1137
+5,LOW,"The updated snippet only adds comments contextualizing the use case, which do not change the system's behavior.",1734
+6,HIGH,"The addition of comments (/*...*/) and a new use case (UC008) indicates a change in system behavior, making it a high-impact edit.",1158
+7,HIGH,"The updated use case introduces a new requirement for handling the case where a solicitation does not have all required documents annexed, which changes the system's expected behavior. Therefore, it should be classified as a high-impact change.",1549
+8,HIGH,Introduces alternative flows and changes the behavior of the use case by allowing the user to view documents and detailed solicitation information,1756
+9,HIGH,"The updated snippet introduces new requirements, which will impact the system's behavior by constraining the values that magistrados and servidores can set. Therefore, this edit falls into the high-impact category.",987
+10,LOW,The update only adds a usability feature of displaying the number of the authorization and payment as links. It does not change the existing functionality of presenting the information of the daily report.,1387
+11,LOW,"The updated snippet only removes the reference to alternative flow 5 in step 13, without affecting the system's expected behavior. Therefore, we classify this edit as LOW impact.",1114
+12,,,63517
+13,HIGH,"The change from 'Visualiza' to 'Verifica' in step 5 of the use case results in a semantic edit, as it alters the system's behavior by changing the actor's action, and would require testing to verify any impact on the system's functionality.",1875
+14,HIGH,"The updated snippet introduces a new requirement for the user to verify the history of the transaction and then perform the existing action, changing the system's expected behavior.",987
+15,LOW,"The update introduces the number 4 in the alternative flows list (af), but it does not change the meaning or behavior of the use case. Therefore, we classify this change as low-impact.",1095
+16,HIGH,"Introduces a new alternative flow to order the records by server name, which changes the behavior of the use case.",775
+17,LOW,Addition of an exceptional flow (ef[5]) does not change the system's expected behavior in the basic flow steps. It's considered a syntactic edit.,2802
+18,HIGH,"Introduces a new requirement, exception flow, and error message, which changes the expected system behavior.",747
+19,LOW,Addition of alternative flow (af) without changing the behavior of the system. Steps before and after the new flow remain intact. This is a low-impact change.,934
+20,HIGH,"Introduces a new alternative flow with multiple steps, altering the system's behavior.",707
+21,HIGH,"Introduces a new requirement, modifying the original behavior by adding an order clause to the display of existing requests.",754
+22,HIGH,"The change introduces a requirement to sort the list of eligible invoices based on the number of diaries, which will affect the system's behavior in step 2. This is considered a high-impact change as it modifies the expected functionality.",1213
+23,HIGH,"Addition of 'ordenado pelo número da diária em ordem crescente' in step 4 changes the behavior of the system by sorting the list of diaries (solicitações) based on the diary number in ascending order. This requires a change in the underlying data structure or algorithm, making it a high-impact change.",1493
+24,HIGH,"The addition of a new step, as well as the inclusion of a new ordering criterion within the same step, indicates a change in expected behavior. This change would significantly impact the system's functionality and therefore qualifies as high-impact.",1176
+25,HIGH,"Introduces a new requirement in the updated snippet, changing the expected behavior of the system by also ordering the list of diaries based on the date of arrival during the liquidation phase.",1281
+26,LOW,"Textual updates such as adding whitespaces and replacing 'O' by 'O usuário' and 'O sistema' by 'O sistema exibe' in preCondition and basic step, respectively, have no impact on the semantics of the use case. Thus, the classification is LOW.",1377
+27,LOW,"The change in the original snippet, which adds spaces between characters in the text displayed by the system, is purely a syntactic edit and does not impact the system's behavior. Therefore, the edit classification is low-impact.",1430
+28,LOW,"This edit is a syntactic one, as it involves a spelling correction and a change in the notation's standard capitalization conventions for Portuguese, while the system's behavior remains unchanged.",1111
+29,LOW,The update in spellings and punctuation falls under the category of low-impact edits as it does not alter the behavior or functionality of the system.,1049
+30,,,63249
+31,LOW,"The updates consist mainly of orthographic corrections such as spacing modification, words replacement, and punctuation. The behavior of the system remains unchanged. Therefore, this change is classified as low-impact.",1201
+32,LOW,"Textual update of step 16, changing spelling of 'opcao' to 'opção' and adding spaces between 'escolhida' and ':'.",1005
+33,LOW,"This edit is syntactic in nature as it involves a spelling correction and the adoption of a more standardized syntax for the notation. Therefore, it is classified as a 'low-impact' change.",965
+34,HIGH,"Introduces changes to the system's expected behavior, such as altering the text of steps 21 and 22 and removing the plural 's' from 'diária(s)' in step 22, which impacts the system's functionality.",1335
+35,LOW,Updated text is a syntactic edit as it involves a simple text addition without any changes to the system's behavior.,790
+36,LOW,"Update involves punctuation and capitalization adjustments, therefore, classified as low-impact.",699
+37,LOW,"This update is a syntactic edit as it only changes the spelling of the text displayed by the system, without impacting its expected behavior.",1452
+38,LOW,"Textual updates, such as renaming an alternative flow and aligning step's label with the original use case syntax, are considered low-impact changes since they do not alter the semantics of the use case.",1167
+39,LOW,"The changes in the updated snippet consist of corrective textual updates, such as adding articles in step 1 and plural noun in step 2, that do not alter the expected system behavior, the sequence of steps or pre/post conditions. Regarding step 3, although the word 's' for plural was added, its behavior still continues directly from step 2, making this a low-impact change.",1815
+40,LOW,No changes were made to the expected behavior of the system. The original postCondition statement was simply removed.,800
+41,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",2744
+42,,,62389
+43,LOW,"The update is a syntactic edit, as it only involves the addition of a period at the end of the step description, which does not change the system's behavior.",919
+44,LOW,"The change consists of adding a period in the end of a text string, which does not alter the system's behavior or functionality. Therefore, this edit is considered low-impact.",896
+45,LOW,"The update only changes the text formatting and grammar without altering the behavior of the system. Therefore, it is a low-impact change.",785
+46,LOW,"The update is merely a syntactic edit, as it involves only aperiod notation and no change in behavior. The updated version of the precondition is still valid and follows the same semantics as the original one.",2136
+47,LOW,"The change is a syntactic edit, as it only includes a period at the end of the message displayed by the system. This edit does not alter the behavior of the system and is considered low impact.",1083
+48,LOW,"The update introduces only a minor syntactic change by adding a period after the message identifier. This does not alter the system's behavior and, accordingly, is considered a low-impact change.",1010
+49,LOW,The edit is a syntactic change that involves correcting a grammatical error by removing a space and changing a period to an abbreviation point. This type of change does not modify the functionality or behavior of the system and is considered low-impact.,1057
+50,LOW,The update is syntactic in nature as it consists of a punctuation change and a renaming error correction in the precondition. This change does not impact the system's behavior and can be considered low-impact.,992
+51,HIGH,"The addition of 'de todos os servidores' in the updated snippet introduces a requirement, affecting the system's expected behavior. Therefore, it is classified as a high-impact change.",1036
+52,LOW,"The update is purely textual, changing the step's description to lowercase while preserving its semantics. There is no new requirement or behavior introduced, making it a low-impact edit.",1175
+53,LOW,"The update is a syntactic edit, as it adds a period at the end of the original text, which does not change the system's expected behavior.",901
+54,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",115
+55,LOW,"Textual updates with no change in behavior, such as adding periods in the instructions and renaming steps, are considered low-impact edits.",927
+56,LOW,"The update is a syntactic edit, as it only involves the addition of a period at the end of the step description, which does not change the system's behavior.",115
+57,LOW,"The change is a textual update that clarifies the expected behavior for step 2 in the system. It doesn't introduce new requirements, delete existing steps, or change the behavior of the system. Therefore, we classify this as a low-impact change.",1915
+58,LOW,This change is semantically equivalent and does not introduce any behavioral changes to the system. Simply adding periods to the end of the text is a stylistic choice that falls under low-impact as it does not affect the system's functionality.,1261
+59,LOW,"The update only involves changing the order of steps, which does not impact the semantic behavior of the use case.",815
+60,LOW,"No new requirements, features, or business model entities added. Update is limited to adding step 3 for usability purposes without changing system behavior. It falls under the low-impact category following the guidelines provided.",1099
+61,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",111
+62,LOW,"The updates only involve textual changes, such as adding a plus sign (+) before the updated steps, without altering the functionality or behavior of the use case.",1017
+63,LOW,"The update is a syntactic edit, as it only involves the addition of a period at the end of the step description, which does not change the system's behavior.",112
+64,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",122
+65,LOW,"The snippets display syntactic changes, such as adding and omitting spaces in step numbers, and reordering steps, which do not alter the use case's behavior.",1886
+66,LOW,The update does not change the behavior of the system as it only adds a period to the end of the text. This is considered a syntactic edit.,1539
+67,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",119
+68,LOW,"The change consists of moving the step 3 statement to step 3, without altering the logical flow of the use case. Therefore, the edit is considered to have low impact.",915
+69,LOW,Textual updating of step 2 to include the same functionality as step 4 without changing the expected behavior of the system.,723
+70,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",114
+71,LOW,"The change involves adding period (.) to the end of a sentence, which does not affect the functional behavior of the use case. As such, it is classified as low-impact.",915
+72,,,63620
+73,LOW,"Textual updates, such as adding a period to a step, generally do not change the system's behavior and are therefore low-impact changes.",816
+74,LOW,The updated preCondition is a textual update that fixes a typo. This does not change the system's behavior.,994
+75,LOW,"The updated preCondition contains a change in formatting (addition of punctuation), affecting the presentation of the requirement but not altering its semantics. As it does not affect the system's behavior, it is classified as a low-impact change.",113
+76,LOW,"Textual update, no change in behavior or requirements. ",665
+77,LOW,"The update adds a space after 'informativos' but does not change the functionality or behavior of the system. Therefore, this edit is considered low-impact.",1021
+78,LOW,The update is a syntactic edit as it only adds a period at the end of the statement. It does not change the semantics or behavior of the system.,948
+79,HIGH,"The addition of alternative flow (af) represents a semantic edit as it introduces a change in the expected behavior of the use case. The user can now follow either alternative flow af[4] or af[4,6] after step 25.",1184
+80,HIGH,"The updated snippet introduces a new alternative flow, which affects the overall behavior of the use case by adding a new message and interaction between the user and the system regarding the limit of 10 diárias por mês. As such, the change is considered high-impact.",1272
