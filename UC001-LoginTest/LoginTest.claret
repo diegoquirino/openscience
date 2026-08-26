@@ -1,7 +1,7 @@
 systemName "Email"
 usecase "Login User" {
-  version "1.7" type "Maintenance (Split)" user "Dalton" date "01/01/2018"
-  requirements "REQ-07"
+  version "1.8" type "Maintenance (Reassign): REQ-07 -> REQ-07 (FR-auth), REQ-08 (NFR-audit), REQ-09 (NFR-notify)" user "Dalton" date "01/01/2018"
+  requirements "REQ-07, REQ-08, REQ-09"
   actor emailUser "Email User"
   preCondition "There is an active network connection."
   basic {
