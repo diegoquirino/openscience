@@ -4,16 +4,19 @@ usecase "Login User" {
   actor emailUser "Email User"
   preCondition "There is an active network connection."
   basic {
-    step 1 emailUser "launches the login screen"
-    step 2 system "presents a form with username and password fields and a submit button"
-    step 3 emailUser "fills out the fields and click on the submit button"
+    step 1 emailUser "displays the login screen"
+    step 2 system "presents a form containing a username text field, a masked password field, and a submit button"
+    step 3 emailUser "fills out the fields and click on the submit button" af[1]
     step 4 system "displays a successful message" ef[1,2]
   }
+  alternative 1 "Username is predicted" {
+    step 1 emailUser "selects a suggested user name, types password and click on the submit button" bs 4
+  }
   exception 1 "User does not exist in database" {
-    step 1 system "alerts that user does not exist" bs 3
+    step 1 system "alerts that user does not exist"
   }
   exception 2 "Incorrect username/password combination" {
-    step 1 system "alerts that username and/or password are incorrect" bs 3
+    step 1 system "alerts that username and/or password are incorrect"
   }
   postCondition "User successfully logged"
 }
