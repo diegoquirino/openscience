@@ -1,23 +1,26 @@
 systemName "Email"
 usecase "Login User" {
-  version "1.3" type "Maintenance (Keep)" user "Dalton" date "01/01/2018"
+  version "1.4" type "Maintenance (Update/Create)" user "Dalton" date "01/01/2018"
   requirements "REQ-07"
   actor emailUser "Email User"
   preCondition "There is an active network connection."
   basic {
     step 1 emailUser "launches the authentication screen"
-    step 2 system "allows users to authenticate using their username and password through a form with username field, masked password field, and submit button"
-    step 3 emailUser "fills out the fields and click on the submit button" af[1]
-    step 4 system "displays a successful message" ef[1,2]
+    step 2 system "allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button"
+    step 3 emailUser "fills out the username, password, and 2FA code fields and clicks on the submit button" af[1]
+    step 4 system "displays a successful message" ef[1,2,3]
   }
   alternative 1 "Username is predicted" {
-    step 1 emailUser "chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form" bs 4
+    step 1 emailUser "chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form" bs 4
   }
   exception 1 "User does not exist in database" {
     step 1 system "alerts: user does not exist"
   }
   exception 2 "Incorrect username/password combination" {
-    step 1 system "alerts: username and/or password are incorrect"
+    step 1 system "alerts: username, password, and/or 2FA code are incorrect"
   }
-  postCondition "User successfully logged"
+  exception 3 "Invalid or expired two-factor authentication code" {
+    step 1 system "alerts: two-factor authentication code is invalid or expired"
+  }
+  postCondition "User successfully authenticated with two-factor verification"
 }
