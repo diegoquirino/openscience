@@ -1,6 +1,6 @@
 systemName "Email"
 usecase "Login User" {
-  version "1.6" type "Maintenance (Merge): password-length TC + uppercase TC -> unified password-policy TC" user "Dalton" date "01/01/2018"
+  version "1.7" type "Maintenance (Split)" user "Dalton" date "01/01/2018"
   requirements "REQ-07"
   actor emailUser "Email User"
   preCondition "There is an active network connection."
@@ -8,7 +8,11 @@ usecase "Login User" {
     step 1 emailUser "launches the authentication screen"
     step 2 system "allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button"
     step 3 emailUser "fills out the username, password, and 2FA code fields and clicks on the submit button" af[1]
-    step 4 system "displays a successful message" ef[1,2,3,4]
+    step 4 system "confirms successful authentication and grants session access" ef[1,2,3,4]
+    step 5 emailUser "continues into the authenticated session"
+    step 6 system "notifies the user via email of the successful login"
+    step 7 emailUser "opens the login notification email"
+    step 8 system "records the login event in the audit log with timestamp and user identity"
   }
   alternative 1 "Username is predicted" {
     step 1 emailUser "chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form" bs 4
@@ -25,5 +29,5 @@ usecase "Login User" {
   exception 4 "Unified password policy (formerly separate length and uppercase checks)" {
     step 1 system "enforces a single password policy requiring a minimum of eight characters and at least one uppercase letter, and alerts if any of the enforced constraints is not satisfied"
   }
-  postCondition "User successfully authenticated with two-factor verification"
+  postCondition "User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log"
 }
