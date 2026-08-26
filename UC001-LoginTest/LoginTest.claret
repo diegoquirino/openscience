@@ -1,6 +1,6 @@
 systemName "Email"
 usecase "Login User" {
-  version "1.8" type "Maintenance (Reassign): REQ-07 -> REQ-07 (FR-auth), REQ-08 (NFR-audit), REQ-09 (NFR-notify)" user "Dalton" date "01/01/2018"
+  version "1.9" type "Maintenance (Flag)" user "Dalton" date "01/01/2018"
   requirements "REQ-07, REQ-08, REQ-09"
   actor emailUser "Email User"
   preCondition "There is an active network connection."
@@ -27,7 +27,7 @@ usecase "Login User" {
     step 1 system "alerts: two-factor authentication code is invalid or expired"
   }
   exception 4 "Unified password policy (formerly separate length and uppercase checks)" {
-    step 1 system "enforces a single password policy requiring a minimum of eight characters and at least one uppercase letter, and alerts if any of the enforced constraints is not satisfied"
+    step 1 system "enforces a single password policy requiring a minimum of some characters and at least one suitable letter, and alerts if any of the enforced constraints is not satisfied"
   }
   postCondition "User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log"
 }
