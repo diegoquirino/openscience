@@ -48,7 +48,7 @@ class XlsxGeneratorTest {
 
             try (FileInputStream fis = new FileInputStream(tempXlsx);
                  Workbook workbook = new XSSFWorkbook(fis)) {
-                Sheet sheet = workbook.getSheet("Casos de Teste");
+                Sheet sheet = workbook.getSheet("Test Cases");
                 assertNotNull(sheet);
 
                 Row r0 = sheet.getRow(0);

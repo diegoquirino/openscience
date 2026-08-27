@@ -17,7 +17,7 @@ public class XlsxGenerator {
 
     public static void generateXlsx(String systemName, String useCaseName, String version, CoverageCriteria criteria, List<TestCase> testCases, File outputFile) throws IOException {
         try (Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("Casos de Teste");
+            Sheet sheet = workbook.createSheet("Test Cases");
             populateSheet(workbook, sheet, systemName, useCaseName, version, criteria, testCases, false);
 
             try (FileOutputStream fos = new FileOutputStream(outputFile)) {

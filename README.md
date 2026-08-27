@@ -1,153 +1,153 @@
 # CLARET Standalone Generator (UFCG / SPLab)
-### Gerador Executável de Casos de Teste e Modelos MBT a partir de Especificações `.claret` e `.dsl` (Java 26)
+### Executable Model-Based Testing and Test Case Generator from `.claret` and `.dsl` Specifications (Java 26)
 
-Esta ferramenta foi desenvolvida no contexto do **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing* - SPLab / UFCG).
+This tool was developed in the context of the **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing*) project at **SPLab** (*Software Practices Laboratory*) of the **Federal University of Campina Grande (UFCG)**.
 
-O projeto **`claret-generator`** opera de forma **100% Standalone (Fat JAR / CLI)** compilado em **Java 26**, suportando os algoritmos formais de cobertura MBT, a organização com diretórios `src/` e `output/` no mesmo nível (movendo os arquivos processados para `src/`) e suporte às extensões `.claret` e `.dsl`.
+The **`claret-generator`** project operates as a **100% Standalone (Fat JAR / CLI)** tool compiled in **Java 26**, supporting formal Model-Based Testing (MBT) coverage criteria, automated folder organization with `src/` and `output/` as siblings at the same level (moving processed source files into `src/`), and full support for both `.claret` and `.dsl` specifications.
 
 ---
 
-## 1. Estrutura de Diretórios do Projeto `claret-generator`
+## 1. Project Directory Structure
 
 ```text
-claret-generator/                         <-- Raiz do projeto
-├── pom.xml                               <-- Configuração Maven (Java 26, POI, Commons CLI, JUnit 5)
-├── README.md                             <-- Documentação principal em português
-├── CLARET_EXECUTAVEL_GUIA.md             <-- Guia oficial detalhado em português (pt-BR)
-├── CLARET_EXECUTABLE_GUIDE.md            <-- Guia técnico completo em inglês (en-US)
-├── .gitignore                            <-- Arquivos ignorados pelo Git
+claret-generator/                         <-- Project Root
+├── pom.xml                               <-- Maven configuration (Java 26, Apache POI, Commons CLI, JUnit 5)
+├── README.md                             <-- Main project documentation (en-US)
+├── CLARET_EXECUTABLE_GUIDE.md            <-- Comprehensive technical user guide (en-US)
+├── .gitignore                            <-- Git ignore rules
 │
-├── samples/                              <-- Especificações de teste de exemplo
-│   ├── login-minitest.claret             <-- Sintaxe padrão Xtext
-│   └── login-minitest-alternative-format-dsl.claret <-- Sintaxe alternativa DSL / Groovy
+├── samples/                              <-- Sample test specifications
+│   ├── login-minitest.claret             <-- Standard Xtext syntax
+│   └── login-minitest-alternative-format-dsl.claret <-- Alternative DSL syntax
 │
 ├── src/
 │   ├── main/java/br/edu/ufcg/splab/claret/
-│   │   ├── Main.java                     <-- Ponto de entrada CLI e orquestrador de diretórios
-│   │   ├── model/                        <-- Modelos de domínio e enums de cobertura
-│   │   │   ├── ClaretSystem.java         <-- Modelo do sistema
-│   │   │   ├── UseCase.java              <-- Modelo do caso de uso
-│   │   │   ├── Step.java                 <-- Modelo de passo com anotações af/ef/bfs
-│   │   │   ├── AlternativeFlow.java      <-- Fluxos alternativos
-│   │   │   ├── ExceptionFlow.java        <-- Fluxos de exceção
-│   │   │   ├── Actor.java                <-- Atores do caso de uso
-│   │   │   ├── TestCase.java             <-- Caso de teste com useCaseVersion
-│   │   │   ├── TestStep.java             <-- Passo de teste com ação e resultado esperado
-│   │   │   └── CoverageCriteria.java     <-- Enums dos critérios MBT (gt, gtp, art, complete)
+│   │   ├── Main.java                     <-- CLI entrypoint and directory orchestrator
+│   │   ├── model/                        <-- Domain models and coverage enums
+│   │   │   ├── ClaretSystem.java         <-- System model
+│   │   │   ├── UseCase.java              <-- Use Case model
+│   │   │   ├── Step.java                 <-- Step model with af/ef/bfs annotations
+│   │   │   ├── AlternativeFlow.java      <-- Alternative flows
+│   │   │   ├── ExceptionFlow.java        <-- Exception flows
+│   │   │   ├── Actor.java                <-- Actors model
+│   │   │   ├── TestCase.java             <-- Test case model with useCaseVersion
+│   │   │   ├── TestStep.java             <-- Test step with actor, action, and expected result
+│   │   │   └── CoverageCriteria.java     <-- MBT coverage criteria enums (gt, gtp, art, complete)
 │   │   ├── parser/
-│   │   │   └── ClaretParser.java         <-- Parser flexível (.claret e .dsl)
+│   │   │   └── ClaretParser.java         <-- Multi-syntax parser (.claret and .dsl)
 │   │   ├── engine/
-│   │   │   └── ClaretProcessor.java      <-- Motor de cobertura e redução (Greedy, ART Jaccard)
+│   │   │   └── ClaretProcessor.java      <-- Test case extraction and reduction engine (Greedy, ART Jaccard)
 │   │   └── generator/
-│   │       ├── XlsxGenerator.java        <-- Gerador de planilhas de teste (.xlsx)
-│   │       ├── TxtGenerator.java         <-- Gerador de especificações em texto tabulado (.txt)
-│   │       ├── LtsGenerator.java         <-- Gerador de modelos TGF (.tgf e -annotated.tgf)
-│   │       ├── AltsGenerator.java        <-- Gerador de especificações ALTS (.alts)
-│   │       ├── DocxGenerator.java        <-- Gerador Microsoft Word (.docx)
-│   │       ├── OdtGenerator.java         <-- Gerador OpenDocument Text (.odt)
-│   │       └── TestLinkXmlGenerator.java <-- Gerador de suítes XML para TestLink
+│   │       ├── XlsxGenerator.java        <-- Excel spreadsheet generator (.xlsx)
+│   │       ├── TxtGenerator.java         <-- Tabulated text specification generator (.txt)
+│   │       ├── LtsGenerator.java         <-- Trivial Graph Format generator (.tgf and -annotated.tgf)
+│   │       ├── AltsGenerator.java        <-- ALTS formal state specification generator (.alts)
+│   │       ├── DocxGenerator.java        <-- Microsoft Word report generator (.docx)
+│   │       ├── OdtGenerator.java         <-- OpenDocument Text report generator (.odt)
+│   │       └── TestLinkXmlGenerator.java <-- TestLink XML suite generator
 │   │
 │   └── test/
 │       ├── java/br/edu/ufcg/splab/claret/
-│       │   ├── ClaretParserTest.java     <-- Testes do parser em ambos os formatos
-│       │   ├── ClaretProcessorTest.java  <-- Testes dos critérios de cobertura
-│       │   ├── XlsxGeneratorTest.java    <-- Testes da planilha XLSX
-│       │   ├── TxtGeneratorTest.java     <-- Testes da geração TXT tabulada
-│       │   ├── LtsGeneratorTest.java     <-- Testes do modelo TGF
-│       │   ├── AltsGeneratorTest.java    <-- Testes de especificação ALTS
-│       │   ├── DocxGeneratorTest.java    <-- Testes de geração DOCX
-│       │   ├── OdtGeneratorTest.java     <-- Testes de geração ODT
-│       │   ├── TestLinkXmlGeneratorTest.java <-- Testes do XML TestLink
-│       │   └── ClaretDirectoryTreeAndExtensionsTest.java <-- Validação da árvore de pastas e extensões
+│       │   ├── ClaretParserTest.java     <-- Parser tests for both syntax styles
+│       │   ├── ClaretProcessorTest.java  <-- Coverage criteria tests
+│       │   ├── XlsxGeneratorTest.java    <-- XLSX spreadsheet generation tests
+│       │   ├── TxtGeneratorTest.java     <-- Tabulated TXT generation tests
+│       │   ├── LtsGeneratorTest.java     <-- TGF graph generation tests
+│       │   ├── AltsGeneratorTest.java    <-- ALTS specification tests
+│       │   ├── DocxGeneratorTest.java    <-- DOCX Word document tests
+│       │   ├── OdtGeneratorTest.java     <-- ODT OpenDocument tests
+│       │   ├── TestLinkXmlGeneratorTest.java <-- TestLink XML suite tests
+│       │   └── ClaretDirectoryTreeAndExtensionsTest.java <-- Directory tree and moving sources tests
 │       └── resources/
 │           ├── login-minitest.claret
 │           └── login-minitest-alternative-format-dsl.claret
 │
-├── target/                               <-- Diretório de build gerado pelo Maven (excluído no clean)
-│   └── claret-generator.jar              <-- Fat JAR executável standalone gerado
+├── target/                               <-- Maven build output directory (cleaned via `mvn clean`)
+│   └── claret-generator.jar              <-- Standalone executable shaded fat JAR
 │
-├── src/                                  <-- Diretório de fontes processados (mesmo nível que output/)
-│   └── *.claret / *.dsl                  <-- Arquivos de especificação movidos após processamento
+├── src/                                  <-- Sibling source directory (same level as output/)
+│   └── *.claret / *.dsl                  <-- Specification files moved after successful processing
 │
-└── output/                               <-- Diretório de saída gerado (mesmo nível que src/)
-    ├── tgf/                              <-- Modelos de transição (.tgf e -annotated.tgf)
-    ├── xlsx/                             <-- Planilhas de teste (--GT-, --GTP-, --ART-, --Complete-)
-    ├── txt/                              <-- Especificações em texto tabulado (.txt)
-    ├── docx/                             <-- Relatórios executivos Microsoft Word (.docx)
-    ├── odt/                              <-- Relatórios executivos OpenDocument Text (.odt)
-    ├── alts/                             <-- Especificações formais ALTS
-    └── xml/                              <-- Suítes XML para importação no TestLink
+└── output/                               <-- Sibling output directory (same level as src/)
+    ├── tgf/                              <-- Graph transition models (.tgf and -annotated.tgf)
+    ├── xlsx/                             <-- Excel test suites (--GT-, --GTP-, --ART-, --Complete-)
+    ├── txt/                              <-- Tabulated text specifications (.txt)
+    ├── docx/                             <-- Microsoft Word formatted reports (.docx)
+    ├── odt/                              <-- OpenDocument Text formatted reports (.odt)
+    ├── alts/                             <-- ALTS formal state specifications
+    └── xml/                              <-- TestLink importable XML suites
 ```
 
 ---
 
-## 2. Abordagens de Cobertura (`-c` / `--coverage`)
+## 2. Supported Coverage Approaches (`-c` / `--coverage`)
 
-| Parâmetro CLI (`-c`) | Nome da Suíte (`Suite Type`) | Algoritmo e Descrição | Sufixo no `.xlsx` e `.txt` |
+| CLI Option (`-c`) | Suite Name in `.xlsx` / `.txt` (`Suite Type`) | Algorithm and Description | Generated Suffix |
 | :--- | :--- | :--- | :--- |
-| **`gt`** *(Padrão)* | **Reduced (Greedy Heuristic - Transition Coverage)** | **Greedy Transition Coverage:** Aplica heurística gulosa para selecionar o menor conjunto possível de casos de teste que cubra todas as transições do grafo. | `--GT-.xlsx` / `--GT-.txt` |
-| **`gtp`** | **Reduced (Greedy Heuristic - Transition Pair Coverage)** | **Greedy Transition Pair Coverage:** Seleciona o conjunto de testes que cobre todas as sequências de pares de transições consecutivas ($T_i \to T_j$). | `--GTP-.xlsx` / `--GTP-.txt` |
-| **`art`** | **Reduced (Adaptive Random Testing by Jaccard Distance)** | **Adaptive Random Testing (ART):** Algoritmo adaptativo baseado na distância de Jaccard entre caminhos para maximizar diversidade. | `--ART-.xlsx` / `--ART-.txt` |
-| **`complete`** | **Complete Test Suite** | **Complete Path Coverage:** Gera a suíte completa de todos os caminhos explorados no grafo sem redução. | `--Complete-.xlsx` / `--Complete-.txt` |
-| **`basic-only`** | **Basic Flow Only (Happy Path)** | **Happy Path:** Gera exclusivamente o caso de teste do fluxo básico. | `--Basic-.xlsx` / `--Basic-.txt` |
-| **`all-branches`** | **Reduced (Decision Branches)** | **Branch Coverage:** Foca nos desvios alternativos e de exceção. | `--Branches-.xlsx` / `--Branches-.txt` |
+| **`gt`** *(Default)* | **Reduced (Greedy Heuristic - Transition Coverage)** | **Greedy Transition Coverage:** Applies a greedy heuristic algorithm to select the minimal test suite that covers every transition (edge) in the use case graph. | `--GT-.xlsx` / `--GT-.txt` |
+| **`gtp`** | **Reduced (Greedy Heuristic - Transition Pair Coverage)** | **Greedy Transition Pair Coverage:** Selects test paths that cover every consecutive pair of transitions ($T_i \to T_j$). | `--GTP-.xlsx` / `--GTP-.txt` |
+| **`art`** | **Reduced (Adaptive Random Testing by Jaccard Distance)** | **Adaptive Random Testing (ART):** Uses Jaccard distance/dissimilarity between test paths to maximize functional diversity and early fault detection. | `--ART-.xlsx` / `--ART-.txt` |
+| **`complete`** | **Complete Test Suite** | **Complete Path Coverage:** Generates all explored graph paths from initial state to terminal states without applying reduction. | `--Complete-.xlsx` / `--Complete-.txt` |
+| **`basic-only`** | **Basic Flow Only (Happy Path)** | **Happy Path:** Generates only the test case for the basic flow (*Smoke Testing*). | `--Basic-.xlsx` / `--Basic-.txt` |
+| **`all-branches`** | **Reduced (Decision Branches)** | **Branch Coverage:** Focuses on conditional branches (alternative flows and exception flows). | `--Branches-.xlsx` / `--Branches-.txt` |
 
 ---
 
-## 3. Padrão de Formatação dos Artefatos Gerados
+## 3. Artifact Formatting Standards
 
-### XLSX (Planilhas Excel) e TXT (Texto Tabulado)
-- **Arquivo Individual (`<UseCase>--GT-.xlsx` e `<UseCase>--GT-.txt`)**:
-  - Cabeçalho: Contém `System: <Nome>`, `Use Case: <Nome>`, `Version: <v>`, `Suite Type: <Tipo>`, `Size: N`, `Creation Date: <data>`.
-  - Casos de Teste: Iniciam diretamente com `Test Case ID: TC...` (não repete o nome do caso de uso antes de cada caso de teste).
-- **Arquivo Consolidado (`all_usecases--GT-.xlsx` e `all_usecases--GT-.txt`)**:
-  - Cabeçalho: Identifica `Use Case: All Use Cases` agrupado por abas de `System Name` (sem versão global no cabeçalho).
-  - Casos de Teste: Cada caso de teste possui uma linha dedicada acima do `Test Case ID` contendo `Use Case: <Nome>` e `Version: <v>`.
+### XLSX (Excel Spreadsheets) & TXT (Tabulated Text)
+- **Single Use Case Files (`<UseCase>--GT-.xlsx` / `<UseCase>--GT-.txt`)**:
+  - Header: Contains `System: <Name>`, `Use Case: <Name>`, `Version: <v>`, `Suite Type: <Type>`, `Size: N`, `Creation Date: <date>`.
+  - Test Cases: Start directly with `Test Case ID: TC...` (use case name is not redundantly repeated before each test case).
+- **Consolidated Files (`all_usecases--GT-.xlsx` / `all_usecases--GT-.txt`)**:
+  - Header: Displays `Use Case: All Use Cases` grouped into sheets/sections by `System Name` (no global version in header).
+  - Test Cases: Each test case has a line immediately above `Test Case ID` displaying `Use Case: <Name>` and `Version: <v>`.
 
-### DOCX (Word) e ODT (OpenDocument)
-- **Hierarquia Tipográfica e de Estilos**:
-  - **Título (Title)**: 20pt Negrito (Azul Marinho `#1A365D`)
-  - **Subtítulo (Subtitle)**: 10pt Itálico (Cinza `#555555`)
-  - **Título 1 (Heading 1)**: 15pt Negrito (`Use Case: <Nome> (v<Versão>)`)
-  - **Título 2 (Heading 2)**: 12pt Negrito (Azul `#2B6CB0` - `[<TC_ID>] <Descrição>`)
-  - **Metadados**: Parágrafos formatados com rótulos em negrito (`System:`, `Preconditions:`, `Postconditions:`).
-  - **Tabela de Passos**: Cabeçalho azul com texto em branco e bordas finas.
+### DOCX (Word) & ODT (OpenDocument)
+- **Typographic & Style Hierarchy**:
+  - **Title**: 20pt Bold (Navy Blue `#1A365D`)
+  - **Subtitle**: 10pt Italic (Gray `#555555`)
+  - **Heading 1**: 15pt Bold (`Use Case: <Name> (v<Version>)`)
+  - **Heading 2**: 12pt Bold (Accent Blue `#2B6CB0` - `[<TC_ID>] <Summary>`)
+  - **Metadata**: Structured paragraphs with bold labels (`System:`, `Preconditions:`, `Postconditions:`).
+  - **Step Tables**: Accent header background with bold white text and thin borders.
 
 ### XML (TestLink)
-- **Suíte Consolidada (`all_usecases_testlink.xml`)**: Cria sub-suítes `<testsuite name="<CasoDeUso>">` agrupadas sob a raiz `<testsuite name="Consolidated Test Suite">`.
+- **Consolidated Suite (`all_usecases_testlink.xml`)**: Creates nested sub-testsuites `<testsuite name="<UseCaseName>">` grouped under the root `<testsuite name="Consolidated Test Suite">`.
 
 ---
 
-## 4. Exemplos de Execução Standalone (Java 26)
+## 4. Standalone CLI Usage Guide (Java 26)
 
-Após executar `mvn package`, o fat JAR executável estará disponível em `target/claret-generator.jar`:
+After compiling with `mvn package`, the standalone executable shaded JAR is available at `target/claret-generator.jar`:
 
 ```bash
-# 1. Processar pasta com arquivos .claret e .dsl (Move para src/ e gera output/tgf/, output/xlsx/, output/txt/, output/docx/, etc.)
+# 1. Process directory containing .claret and .dsl files (Moves to src/ and generates output/tgf/, output/xlsx/, output/txt/, output/docx/, etc.)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output -f all -c gt
 
-# 2. Gerar relatório TXT tabulado
+# 2. Generate tabulated text format (TXT)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output -f txt -c gt
 
-# 3. Gerar relatório DOCX (Word)
+# 3. Generate Microsoft Word format (DOCX)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output -f docx -c gt
 
-# 4. Gerar planilha com cobertura por Pares de Transições (GTP)
+# 4. Generate with Transition Pair Coverage (GTP)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output -f xlsx -c gtp
 
-# 5. Gerar com Adaptive Random Testing (ART por Distância de Jaccard)
+# 5. Generate with Adaptive Random Testing (ART)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output -f xlsx -c art
 
-# 6. Gerar arquivos diretamente na pasta de saída (formato plano, sem subpastas)
+# 6. Output files flatly in root output directory (without format subdirectories)
 java -jar target/claret-generator.jar -i 20150617 -o 20150617/output --flat -f all -c gt
 ```
 
 ---
 
-## 5. Como Importar no TestLink
+## 5. How to Import Tests into TestLink
 
-1. Acesse o **TestLink** e selecione o **Test Project**.
-2. Clique no menu superior **Test Specification** e selecione a suíte na árvore lateral.
-3. No painel direito, clique no ícone de engrenagem (**Actions**) $\rightarrow$ **Import**.
-4. Selecione o arquivo gerado em `<data>/output/xml/*_testlink.xml`.
-5. Confirme o tipo **XML** e clique em **Upload file**.
+1. Log into your TestLink server and select the **Test Project**.
+2. Navigate to **Test Specification** in the top navigation bar.
+3. Select the target test suite node in the left tree.
+4. Click the gear icon (**Actions**) on the right pane and choose **Import**.
+5. Select the generated `<date>/output/xml/*_testlink.xml` file.
+6. Verify **File Type: XML** and click **Upload file**.
