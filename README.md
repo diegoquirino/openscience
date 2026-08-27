@@ -49,19 +49,103 @@ claret-version-control-system/
 
 ## 2. Environment Setup & Configuration
 
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Fill in your environment variables:
-   - `GITHUB_TOKEN`: Personal Access Token with repository and release privileges.
-   - `GITHUB_REPO`: Default GitHub repository (`owner/repo`, e.g., `diegoquirino/openscience`).
-   - `CLARET_JAR_PATH`: Path to the compiled `claret-generator.jar` (e.g. `../claret-generator/target/claret-generator.jar`).
+### 2.1 Prerequisites & System Requirements
 
-3. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Ensure the host environment meets the following runtime prerequisites:
+- **Python 3.10+** (Tested on Python 3.10, 3.11, 3.12, 3.14): Used for executing the agent skills suite, diff analyzers, translator, and synchronizer scripts.
+- **Java Runtime Environment (JRE/JDK 21+ or 26)**: Required for executing the standalone `claret-generator.jar`.
+- **Git 2.x+**: Required for local staging, branch management, committing, and tagging.
+- **GitHub Personal Access Token (PAT)**: Required for REST API operations (creating releases, inspecting trees, and downloading release blobs).
+
+---
+
+### 2.2 Detailed Environment Variables (`.env`)
+
+All sensitive credentials and default paths must be configured via a `.env` file placed at the root of `claret-version-control-system/`. This file is explicitly ignored by Git (`.gitignore`) to guarantee security.
+
+A documented template is provided in [`.env.example`](.env.example):
+
+```bash
+# 1. Create your local .env file from the example template
+cp .env.example .env    # Linux/macOS/Git Bash
+copy .env.example .env  # Windows PowerShell/CMD
+```
+
+#### Environment Variables Reference Table:
+
+| Variable Name | Required? | Default Value in Code | Description & Purpose |
+| :--- | :---: | :--- | :--- |
+| **`GITHUB_TOKEN`** | **Yes** (for API) | `None` | GitHub Personal Access Token (classic token with `repo` scope or fine-grained token with *Contents (Read/Write)* and *Releases (Read/Write)* permissions). |
+| **`GITHUB_REPO`** | **Recommended** | `diegoquirino/openscience` | Target GitHub repository in `owner/repo` format. When configured in `.env`, all skill commands (`/publish-versions`, `/download-releases`, `/diff-src`, `/diff-output`) can be executed without passing `--repo`. |
+| **`GITHUB_BRANCH`** | Optional | `claret-version-control-system` | Default integration/merging branch name used for publication. |
+| **`CLARET_JAR_PATH`** | **Yes** (for compile) | `../claret-generator/target/claret-generator.jar` | Path to the compiled `claret-generator.jar` standalone executable. Can be relative to project root or absolute. |
+| **`JAVA_CMD`** | Optional | `java` | Command or absolute binary path to the Java executable. |
+| **`LLM_PROVIDER`** | Optional | `gemini` | LLM provider used as optional fallback for complex translation (`gemini`, `anthropic`, `openai`). |
+| **`GEMINI_API_KEY`** | Optional | `None` | Google Gemini API Key for semantic translation. |
+| **`ANTHROPIC_API_KEY`** | Optional | `None` | Anthropic Claude API Key for semantic translation. |
+| **`DEFAULT_TARGET_LOCALE`** | Optional | `en-us` | Default target locale for the `spec-translator` skill (`en-us`, `pt-br`, `es-es`, etc.). |
+| **`LOG_LEVEL`** | Optional | `INFO` | Logging verbosity level (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
+
+> [!IMPORTANT]
+> **Zero-Exposure Policy & Zero-Argument Fallback**:
+> - Never commit `.env` or real API keys to version control.
+> - If `GITHUB_REPO` and `GITHUB_TOKEN` are set in `.env`, you do not need to provide `--repo` in skill calls or CLI commands.
+
+---
+
+### 2.3 Python Dependency Installation
+
+It is recommended to use a dedicated Python virtual environment:
+
+```bash
+# Create and activate virtual environment
+python -m venv venv
+
+# On Linux / macOS:
+source venv/bin/activate
+
+# On Windows (PowerShell):
+.\venv\Scripts\Activate.ps1
+
+# Install required dependencies
+pip install -r requirements.txt
+```
+
+#### Included Libraries:
+- **`python-dotenv`**: Safe loading of `.env` configuration.
+- **`PyGithub` & `requests`**: GitHub REST API client for tags, releases, commits, and tree extraction.
+- **`openpyxl`**: Processing and diffing Excel (`.xlsx`) test suite artifacts.
+- **`pydantic`**: Data validation and schema parsing.
+- **`google-genai`**: SDK integration for Gemini API.
+
+---
+
+### 2.4 Compiling the CLARET Generator Fat JAR
+
+The `version-publisher` skill relies on the compiled standalone FAT JAR from `claret-generator`. If it is not yet compiled, build it using Maven:
+
+```bash
+# Navigate to the claret-generator project and build package
+cd ../claret-generator
+mvn clean package -DskipTests
+cd ../claret-version-control-system
+```
+
+Verify that `target/claret-generator.jar` exists at the path defined by `CLARET_JAR_PATH`.
+
+---
+
+### 2.5 Validating the Setup
+
+Run the automated test suite and check multi-agent mirror synchronization:
+
+```bash
+# 1. Run unit test suite
+python -m unittest discover -s tests -v
+
+# 2. Check that skill mirrors and slash commands are in sync
+python scripts/sync_agents.py --check
+```
 
 ---
 
