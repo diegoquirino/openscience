@@ -49,7 +49,27 @@ claret-version-control-system/
 
 ## 2. Environment Setup & Configuration
 
-### 2.1 Prerequisites & System Requirements
+### 2.1 Repository & Branch Checkout
+
+To clone and check out the `claret-version-control-system` branch directly:
+
+```bash
+# Clone the repository and checkout the dedicated branch
+git clone -b claret-version-control-system https://github.com/diegoquirino/openscience.git claret-version-control-system
+cd claret-version-control-system
+```
+
+If you already have a local clone of `openscience`:
+
+```bash
+# Fetch and switch to the claret-version-control-system branch
+git fetch origin
+git checkout -b claret-version-control-system origin/claret-version-control-system
+```
+
+---
+
+### 2.2 Prerequisites & System Requirements
 
 Ensure the host environment meets the following runtime prerequisites:
 - **Python 3.10+** (Tested on Python 3.10, 3.11, 3.12, 3.14): Used for executing the agent skills suite, diff analyzers, translator, and synchronizer scripts.
@@ -59,7 +79,43 @@ Ensure the host environment meets the following runtime prerequisites:
 
 ---
 
-### 2.2 Detailed Environment Variables (`.env`)
+### 2.3 Standalone Generator JAR Integration (Self-Contained vs Symbolic Links)
+
+To avoid relying on external directory paths, `claret-version-control-system` automatically searches for `claret-generator.jar` in the following prioritized order:
+1. `bin/claret-generator.jar` (Recommended self-contained location)
+2. `lib/claret-generator.jar`
+3. `./claret-generator.jar` (Project root)
+4. Path configured in `.env` (`CLARET_JAR_PATH`)
+5. `../claret-generator/target/claret-generator.jar` (Sibling project Maven target)
+
+#### Option A: Direct Internal Checkout / Copy (Self-Contained)
+Copy the compiled JAR directly into the local `bin/` directory:
+
+```bash
+# Linux / macOS
+cp ../claret-generator/target/claret-generator.jar ./bin/claret-generator.jar
+
+# Windows (PowerShell)
+Copy-Item ..\claret-generator\target\claret-generator.jar .\bin\claret-generator.jar
+```
+
+#### Option B: Symbolic Links (Symlinks) / Hard Links
+Use a symbolic link so that rebuilds of the generator are immediately reflected without copying:
+
+```bash
+# Linux / macOS
+ln -sf ../claret-generator/target/claret-generator.jar ./bin/claret-generator.jar
+
+# Windows (PowerShell - Developer Mode or Administrator)
+New-Item -ItemType SymbolicLink -Path ./bin/claret-generator.jar -Target ../claret-generator/target/claret-generator.jar -Force
+
+# Windows (CMD - Hard Link / No Administrator Privileges Required)
+cmd /c mklink /H bin\claret-generator.jar ..\claret-generator\target\claret-generator.jar
+```
+
+---
+
+### 2.4 Detailed Environment Variables (`.env`)
 
 All sensitive credentials and default paths must be configured via a `.env` file placed at the root of `claret-version-control-system/`. This file is explicitly ignored by Git (`.gitignore`) to guarantee security.
 
@@ -78,7 +134,7 @@ copy .env.example .env  # Windows PowerShell/CMD
 | **`GITHUB_TOKEN`** | **Yes** (for API) | `None` | GitHub Personal Access Token (classic token with `repo` scope or fine-grained token with *Contents (Read/Write)* and *Releases (Read/Write)* permissions). |
 | **`GITHUB_REPO`** | **Recommended** | `diegoquirino/openscience` | Target GitHub repository in `owner/repo` format. When configured in `.env`, all skill commands (`/publish-versions`, `/download-releases`, `/diff-src`, `/diff-output`) can be executed without passing `--repo`. |
 | **`GITHUB_BRANCH`** | Optional | `claret-version-control-system` | Default integration/merging branch name used for publication. |
-| **`CLARET_JAR_PATH`** | **Yes** (for compile) | `../claret-generator/target/claret-generator.jar` | Path to the compiled `claret-generator.jar` standalone executable. Can be relative to project root or absolute. |
+| **`CLARET_JAR_PATH`** | Optional | `bin/claret-generator.jar` | Path to the `claret-generator.jar` standalone executable. Defaults automatically to `bin/claret-generator.jar` or sibling `../claret-generator/target/claret-generator.jar`. |
 | **`JAVA_CMD`** | Optional | `java` | Command or absolute binary path to the Java executable. |
 | **`LLM_PROVIDER`** | Optional | `gemini` | LLM provider used as optional fallback for complex translation (`gemini`, `anthropic`, `openai`). |
 | **`GEMINI_API_KEY`** | Optional | `None` | Google Gemini API Key for semantic translation. |
@@ -93,7 +149,7 @@ copy .env.example .env  # Windows PowerShell/CMD
 
 ---
 
-### 2.3 Python Dependency Installation
+### 2.5 Python Dependency Installation
 
 It is recommended to use a dedicated Python virtual environment:
 
@@ -120,22 +176,52 @@ pip install -r requirements.txt
 
 ---
 
-### 2.4 Compiling the CLARET Generator Fat JAR
+### 2.6 Cross-Agent Skills Mirrors & Symbolic Links
 
-The `version-publisher` skill relies on the compiled standalone FAT JAR from `claret-generator`. If it is not yet compiled, build it using Maven:
+The source of truth for agent skills is `.claude/skills/`. To expose these skills interchangeably across IDEs and agents:
 
+#### Automated Synchronization (Recommended):
+Run the cross-platform synchronizer:
 ```bash
-# Navigate to the claret-generator project and build package
-cd ../claret-generator
-mvn clean package -DskipTests
-cd ../claret-version-control-system
+python scripts/sync_agents.py
 ```
+This automatically updates:
+- `.agent/skills/` (Google Antigravity mirror)
+- `.cursor/skills/` (Cursor IDE mirror)
+- `.cursor/commands/` (Cursor slash `/` menu wrappers derived from `.agent/workflows/`)
 
-Verify that `target/claret-generator.jar` exists at the path defined by `CLARET_JAR_PATH`.
+#### Alternative: Directory Symlinks / Junctions:
+If you prefer direct directory links without running the script:
+```bash
+# Linux / macOS:
+ln -s ../.claude/skills .agent/skills
+ln -s ../.claude/skills .cursor/skills
+
+# Windows (PowerShell / CMD Junction):
+cmd /c mklink /J .agent\skills .claude\skills
+cmd /c mklink /J .cursor\skills .claude\skills
+```
+*(Note: `scripts/sync_agents.py` is still recommended because it dynamically generates README headers and converts workflow path targets for Cursor).*
 
 ---
 
-### 2.5 Validating the Setup
+### 2.7 Compiling the CLARET Generator Fat JAR (From Source)
+
+If you are compiling the generator from the sibling project `claret-generator`:
+
+```bash
+# Navigate to claret-generator and compile with Maven (Java 26 / Fat JAR)
+cd ../claret-generator
+mvn clean package -DskipTests
+cd ../claret-version-control-system
+
+# Link or copy into bin/
+cp ../claret-generator/target/claret-generator.jar ./bin/claret-generator.jar
+```
+
+---
+
+### 2.8 Validating the Setup
 
 Run the automated test suite and check multi-agent mirror synchronization:
 

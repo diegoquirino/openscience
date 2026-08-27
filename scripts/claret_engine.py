@@ -78,9 +78,11 @@ def get_claret_jar_path() -> Path:
     # Common workspace locations
     base_dir = Path(__file__).resolve().parent.parent
     candidates.extend([
-        base_dir.parent / "claret-generator" / "target" / "claret-generator.jar",
+        base_dir / "bin" / "claret-generator.jar",
+        base_dir / "lib" / "claret-generator.jar",
         base_dir / "claret-generator.jar",
-        base_dir / "target" / "claret-generator.jar"
+        base_dir / "target" / "claret-generator.jar",
+        base_dir.parent / "claret-generator" / "target" / "claret-generator.jar"
     ])
 
     for p in candidates:
