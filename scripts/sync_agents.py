@@ -54,7 +54,7 @@ def sync_directory_mirror(src: Path, dst: Path, platform_name: str, tool_name: s
     readme_content = f"""# {platform_name} Skills Mirror — Auto-generated
 
 This directory is an automated mirror of `.claude/skills/` enabling **{tool_name}** to discover
-and execute the CLARET Versionador agentic skills.
+and execute the CLARET Version Control System agentic skills.
 
 **Do not edit files here directly.** Edit source files in `.claude/skills/` and run:
 

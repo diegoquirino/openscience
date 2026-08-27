@@ -2,7 +2,7 @@
 """
 test_claret_engine.py
 =====================
-Unit tests for the claret-versionador core engine and skills suite.
+Unit tests for the claret-version-control-system core engine and skills suite.
 """
 
 import sys
@@ -47,7 +47,7 @@ class TestClaretEngine(unittest.TestCase):
     def test_format_branch_title(self):
         self.assertEqual(format_branch_title("saff-study"), "SAFF Study")
         self.assertEqual(format_branch_title("abc_da_net"), "Abc Da Net")
-        self.assertEqual(format_branch_title("claret-versionador"), "CLARET Versionador")
+        self.assertEqual(format_branch_title("claret-version-control-system"), "CLARET Version Control System")
 
     def test_normalize_content(self):
         raw = "  System   \"SAFF\",  {\n\n\n    usecase \"Customer Management\" \n\n}  "

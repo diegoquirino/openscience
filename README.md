@@ -1,14 +1,14 @@
-# CLARET Versionador
+# CLARET Version Control System
 ### Cross-Agent Skills Suite for MBT Specification Versioning, Translation, and Test Suite Diffing
 
-**CLARET Versionador** is an agentic tool suite designed for managing the evolutionary lifecycle of **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing*) and DSL specifications. Built natively for **Claude Code** and interchangeable with **Google Antigravity** and **Cursor IDE**, this project automates specification compilation, GitHub release versioning, token-safe translation, and diff extraction for Model-Based Testing (MBT) studies.
+**CLARET Version Control System** is an agentic tool suite designed for managing the evolutionary lifecycle of **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing*) and DSL specifications. Built natively for **Claude Code** and interchangeable with **Google Antigravity** and **Cursor IDE**, this project automates specification compilation, GitHub release versioning, token-safe translation, and diff extraction for Model-Based Testing (MBT) studies.
 
 ---
 
 ## 1. Project Directory Structure
 
 ```text
-claret-versionador/
+claret-version-control-system/
 ├── .env.example                          <-- Template for environment variables
 ├── .gitignore                            <-- Git ignore rules
 ├── AGENTS.md                             <-- Universal cross-agent manifest

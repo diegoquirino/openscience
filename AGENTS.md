@@ -2,14 +2,14 @@
 
 > Universal cross-tool agent instructions read natively by Claude Code, Google Antigravity, Cursor, and any LLM agent adhering to the `AGENTS.md` standard.
 
-This project implements the **CLARET Versionador** agentic skills suite for Model-Based Testing (MBT) specification lifecycle management, translation, versioning, and test suite diff analysis.
+This project implements the **CLARET Version Control System** agentic skills suite for Model-Based Testing (MBT) specification lifecycle management, translation, versioning, and test suite diff analysis.
 
 ---
 
 ## 1. Safety & Environment Rules
 
 1. **Security & Secrets**: Never commit `.env` or hardcode tokens. All secrets (`GITHUB_TOKEN`, `GEMINI_API_KEY`, etc.) are resolved through `.env`. Use `.env.example` as a template.
-2. **Branch Isolation**: Never push directly to `main`. All operations target dedicated integration branches (e.g. `claret-versionador` or study-specific branches).
+2. **Branch Isolation**: Never push directly to `main`. All operations target dedicated integration branches (e.g. `claret-version-control-system` or study-specific branches).
 3. **DSL Keyword Protection**: Never translate reserved tokens in `.claret` / `.dsl` files (`system`, `usecase`, `version`, `actor`, `step`, `af:`, `ef:`, `bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
 
 ---

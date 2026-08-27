@@ -2,7 +2,7 @@
 """
 claret_engine.py
 ================
-Core shared engine for the claret-versionador suite:
+Core shared engine for the claret-version-control-system suite:
 - Environment and configuration loader (.env)
 - PascalCase file renaming with acronym preservation
 - Execution of standalone claret-generator.jar
@@ -65,7 +65,7 @@ def get_default_repo() -> Optional[str]:
 
 def get_default_branch() -> str:
     """Retrieve default working branch."""
-    return os.getenv("GITHUB_BRANCH", "claret-versionador")
+    return os.getenv("GITHUB_BRANCH", "claret-version-control-system")
 
 def get_claret_jar_path() -> Path:
     """Resolve the path to claret-generator.jar."""
