@@ -40,14 +40,13 @@ Parameters:
 - `--formats`: (Optional) Output test formats (`all`, `xlsx`, `txt`, `docx`, `odt`, `xml`, `tgf`, `alts`). Default: `all`.
 - `--dry-run`: (Optional) Executes naming and generation without pushing to remote GitHub.
 
-## Procedural Workflow
+## Procedural Workflow (Sequential Merging & Publishing)
 
-1. For each version directory in `version_dirs` (ordered from first to last):
-   a. Create or clean the working directory `<branch_name>/`.
-   b. Recursively scan the input version directory for `*.claret` and `*.dsl` files.
-   c. Copy each file to `<branch_name>/` with PascalCase naming (preserving acronyms).
-   d. Invoke `claret-generator.jar` on `<branch_name>/` with specified coverage and formats.
-   e. Verify that `src/` contains specifications and `output/` contains test cases.
-   f. Execute Git stage, commit (`"feat: publish version <X.Y> for <branch>"`), and push to `origin <branch>`.
-   g. Create tag `<branch>_v<X.Y>` and push to remote.
-   h. Create GitHub Release `<Branch Title> v<X.Y>` via REST API.
+1. Initialize or prepare the **main integrator/merging directory** `<branch_name>/` (named after the target branch).
+2. For each version directory in `version_dirs` (ordered sequentially from first to last):
+   a. Recursively scan the current version directory for `*.claret` and `*.dsl` files.
+   b. **Merge and copy** each file into the main integrator directory `<branch_name>/`, renaming them to PascalCase (preserving technical acronyms in uppercase). Modified files overwrite their previous version, while newly introduced files are added, preserving existing unchanged specifications across versions.
+   c. Invoke `claret-generator.jar` on `<branch_name>/` with the specified coverage criteria and formats, which organizes files into `src/` and updates generated test cases in `output/`.
+   d. Execute Git stage (`git add -A`), commit (`"feat(<branch>): publish specification and test suite v<X.Y>"`), and push the incremental version diff to `origin <branch>`.
+   e. Create annotated tag `<branch>_v<X.Y>` and push to remote.
+   f. Create GitHub Release `<Branch Title> v<X.Y>` via REST API.

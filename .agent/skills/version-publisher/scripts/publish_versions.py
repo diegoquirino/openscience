@@ -7,6 +7,7 @@ Processes sequential version directories, renames files to PascalCase (preservin
 runs claret-generator.jar, commits/pushes to GitHub branch, creates tag and release.
 """
 
+import os
 import sys
 import argparse
 import shutil
@@ -36,11 +37,13 @@ def process_and_publish_versions(
     dry_run: bool = False
 ):
     gh = GitHubManager(repo=repo)
+    # The integrator/merging directory name is identical to the branch name
     integrator_dir = PROJECT_ROOT.parent / branch_name if not (PROJECT_ROOT / branch_name).exists() else (PROJECT_ROOT / branch_name)
     integrator_dir.mkdir(parents=True, exist_ok=True)
 
     total = len(version_dirs)
     logger.info(f"Starting version publication for {total} versions on branch '{branch_name}' (Repo: {repo})")
+    logger.info(f"Main integrator/merging directory: '{integrator_dir}' (preserves and merges state across loop iterations)")
 
     for idx, v_entry in enumerate(version_dirs, start=1):
         v_path = Path(v_entry)
@@ -60,20 +63,11 @@ def process_and_publish_versions(
         release_title = f"{format_branch_title(branch_name)} v{ver_str}"
 
         logger.info(f"\n=======================================================")
-        logger.info(f"[{idx}/{total}] Processing version directory: {v_path.name} -> Version {ver_str}")
+        logger.info(f"[{idx}/{total}] Merging version directory: {v_path.name} into '{branch_name}' -> Version {ver_str}")
         logger.info(f"Tag: {tag_name} | Release: {release_title}")
         logger.info(f"=======================================================")
 
-        # 1. Clean previous contents in integrator_dir (except .git)
-        for item in integrator_dir.iterdir():
-            if item.name == ".git":
-                continue
-            if item.is_dir():
-                shutil.rmtree(item)
-            else:
-                item.unlink()
-
-        # 2. Find and copy .claret and .dsl files with PascalCase renaming
+        # 1. Search and merge .claret and .dsl files with PascalCase renaming into integrator_dir
         found_files = 0
         for root_p, _, files in os.walk(v_path):
             for file in files:
@@ -82,10 +76,10 @@ def process_and_publish_versions(
                     new_name = to_pascal_case_with_acronyms(file)
                     dest_file = integrator_dir / new_name
                     shutil.copy2(src_file, dest_file)
-                    logger.debug(f"Copied & renamed: {file} -> {new_name}")
+                    logger.debug(f"Merged & renamed: {file} -> {dest_file}")
                     found_files += 1
 
-        logger.info(f"Prepared {found_files} specification files in integrator directory: {integrator_dir}")
+        logger.info(f"Merged {found_files} specification files from '{v_path.name}' into integrator directory '{integrator_dir}'.")
 
         # 3. Run claret-generator.jar
         success, output = run_claret_generator(
@@ -111,7 +105,6 @@ def process_and_publish_versions(
     logger.info("All version directories processed successfully.")
 
 def main():
-    import os
     parser = argparse.ArgumentParser(description="Publish sequential CLARET version specifications.")
     parser.add_argument("--version-dirs", nargs="+", required=True, help="List of version directories to process")
     parser.add_argument("--branch", required=True, help="Target GitHub branch / integrator directory")

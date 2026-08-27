@@ -68,7 +68,7 @@ claret-versionador/
 ## 3. Skills Matrix & Usage
 
 ### 1. `version-publisher` (`/publish-versions`)
-Processes an array of version directories, renames files to PascalCase (preserving acronyms), executes `claret-generator.jar`, pushes to branch, creates tag (`<branch>_vX.Y`), and creates release (`<Branch Title> vX.Y`).
+Iteratively **merges** an array of version directories into the main integrator directory (named after the target branch), renames files to PascalCase (preserving acronyms), executes `claret-generator.jar` (organizing `src/` and `output/`), pushes the incremental diff to the branch, creates tag (`<branch>_vX.Y`), and creates release (`<Branch Title> vX.Y`).
 
 ```bash
 python .claude/skills/version-publisher/scripts/publish_versions.py \
