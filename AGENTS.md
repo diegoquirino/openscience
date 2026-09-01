@@ -8,7 +8,7 @@ This project implements the **CLARET Version Control System** agentic skills sui
 
 ## 1. Safety & Environment Rules
 
-1. **Security & Secrets**: Never commit `.env` or hardcode tokens. All secrets (`GITHUB_TOKEN`, `GEMINI_API_KEY`, etc.) are resolved through `.env`. Use `.env.example` as a template.
+1. **Security & Secrets**: Never commit `.env` or hardcode tokens. All secrets (`GITHUB_TOKEN`, etc.) are resolved through `.env`. Use `.env.example` as a template.
 2. **Branch Isolation**: Never push directly to `main`. All operations target dedicated integration branches (e.g. `claret-version-control-system` or study-specific branches).
 3. **DSL Keyword Protection**: Never translate reserved tokens in `.claret` / `.dsl` files (`system`, `usecase`, `version`, `actor`, `step`, `af:`, `ef:`, `bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
 

@@ -218,10 +218,7 @@ copy .env.example .env  # Windows PowerShell/CMD
 | **`GITHUB_REPO`** | **Recommended** | `diegoquirino/openscience` | Target GitHub repository in `owner/repo` format. When configured in `.env`, all skill commands (`/publish-versions`, `/download-releases`, `/diff-src`, `/diff-output`) can be executed without passing `--repo`. |
 | **`GITHUB_BRANCH`** | Optional | `claret-version-control-system` | Default integration/merging branch name used for publication. |
 | **`CLARET_JAR_PATH`** | Optional | `bin/claret-generator.jar` | Path to the `claret-generator.jar` standalone executable. Defaults automatically to `bin/claret-generator.jar` or sibling `../claret-generator/target/claret-generator.jar`. |
-| **`JAVA_CMD`** | Optional | `java` | Command or absolute binary path to the Java executable. |
-| **`LLM_PROVIDER`** | Optional | `gemini` | LLM provider used as optional fallback for complex translation (`gemini`, `anthropic`, `openai`). |
-| **`GEMINI_API_KEY`** | Optional | `None` | Google Gemini API Key for semantic translation. |
-| **`ANTHROPIC_API_KEY`** | Optional | `None` | Anthropic Claude API Key for semantic translation. |
+| **`JAVA_CMD`** | Optional | `java` | Command or absolute binary path to the Java executable (Java 26 automatically detected). |
 | **`DEFAULT_TARGET_LOCALE`** | Optional | `en-us` | Default target locale for the `spec-translator` skill (`en-us`, `pt-br`, `es-es`, etc.). |
 | **`LOG_LEVEL`** | Optional | `INFO` | Logging verbosity level (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
 
