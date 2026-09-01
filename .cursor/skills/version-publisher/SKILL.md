@@ -7,46 +7,42 @@ description: Orchestrates sequential versioning of CLARET MBT specifications int
 
 Publishes a sequential array of specification version directories into a GitHub branch with automated MBT test case generation, standard tag creation, and release publishing.
 
-## Key Capabilities
+---
 
-1. **PascalCase Normalization**: Recursively collects `.claret` and `.dsl` files from the given version directory, renaming them to PascalCase while strictly retaining uppercase acronyms (e.g., `CRUD_Users.claret`, `ExtracaoLLT.claret`).
-2. **MBT Test Suite Generation**: Runs `claret-generator.jar` (standalone fat JAR) to parse specifications and generate test cases in `output/` while moving specification files to `src/`.
-3. **Branch Publishing**: Commits and pushes the version artifacts to the target branch (never `main`).
-4. **Git Tagging**: Creates an annotated Git tag formatted as `<branch_name>_v<X.Y>` (e.g., integers like `1` or `2` are automatically normalized to `1.0`, `2.0`).
-5. **GitHub Release**: Publishes a formal GitHub Release titled `<Branch Title> v<X.Y>` (e.g., `Saff Study v1.0`).
+## 1. Native Agent-Driven Workflow (Recommended)
 
-## Prerequisites & Environment
+When an LLM agent (Antigravity, Claude Code, Cursor) executes `/publish-versions` or publishes specifications:
 
-Defined in `.env`:
-- `GITHUB_TOKEN`: GitHub Personal Access Token with repo/release permissions.
-- `GITHUB_REPO`: Target GitHub repository (`owner/repo`). Defaults to `diegoquirino/openscience`.
-- `CLARET_JAR_PATH`: Path to `claret-generator.jar` (e.g., `../claret-generator/target/claret-generator.jar`).
+1. **Prepare Integrator Workspace**:
+   - Work within the target branch directory `<branch_name>/`.
+   - Ensure target branch is checked out (`git checkout -B <branch_name>`).
+2. **Sequential Iteration $(V_1, V_2, \dots, V_n)$**:
+   For each version folder in the user-specified sequence:
+   a. **Merge & Rename**: Copy `.claret` / `.dsl` files into `<branch_name>/`, converting file names to PascalCase with uppercase acronyms (e.g. `CRUD_Cliente.claret`, `ExtracaoLLT.claret`).
+   b. **Generate Test Suite**: Run `claret-generator.jar` (via Java runtime) targeting `<branch_name>/output/` (generating `src/` and `output/`).
+   c. **Git Stage & Commit**: Stage all changes (`git add -A`), commit (`"feat(<branch>): publish specification and test suite v<X.Y>"`), and push to `origin <branch>`.
+   d. **Tag & Release**: Create annotated tag `<branch>_v<X.Y>` and push (`git push origin <branch>_v<X.Y>`).
+3. **Branch Isolation**:
+   - Never push directly to `main`. Always target the dedicated study branch.
 
-## CLI Invocation
+---
+
+## 2. Standalone CLI Invocation (Automated / Headless)
+
+For terminal scripts or CI/CD pipelines:
 
 ```bash
 # Execute version publisher across multiple sequential version directories
 python .claude/skills/version-publisher/scripts/publish_versions.py \
-  --version-dirs 20150617 20150618 20150619 \
+  --version-dirs 1.0 1.1 1.2 \
   --branch saff-study \
   --repo diegoquirino/openscience
 ```
 
 Parameters:
 - `--version-dirs`: (Required) Ordered list of directory paths or version folder names.
-- `--branch`: (Required) Target GitHub branch name (also used as local integrator directory).
+- `--branch`: (Required) Target GitHub branch name.
 - `--repo`: (Optional) GitHub `owner/repo`. Defaults to `GITHUB_REPO` from `.env`.
 - `--coverage`: (Optional) Coverage criteria (`gt`, `gtp`, `art`, `complete`). Default: `gt`.
 - `--formats`: (Optional) Output test formats (`all`, `xlsx`, `txt`, `docx`, `odt`, `xml`, `tgf`, `alts`). Default: `all`.
 - `--dry-run`: (Optional) Executes naming and generation without pushing to remote GitHub.
-
-## Procedural Workflow (Sequential Merging & Publishing)
-
-1. Initialize or prepare the **main integrator/merging directory** `<branch_name>/` (named after the target branch).
-2. For each version directory in `version_dirs` (ordered sequentially from first to last):
-   a. Recursively scan the current version directory for `*.claret` and `*.dsl` files.
-   b. **Merge and copy** each file into the main integrator directory `<branch_name>/`, renaming them to PascalCase (preserving technical acronyms in uppercase). Modified files overwrite their previous version, while newly introduced files are added, preserving existing unchanged specifications across versions.
-   c. Invoke `claret-generator.jar` on `<branch_name>/` with the specified coverage criteria and formats, which organizes files into `src/` and updates generated test cases in `output/`.
-   d. Execute Git stage (`git add -A`), commit (`"feat(<branch>): publish specification and test suite v<X.Y>"`), and push the incremental version diff to `origin <branch>`.
-   e. Create annotated tag `<branch>_v<X.Y>` and push to remote.
-   f. Create GitHub Release `<Branch Title> v<X.Y>` via REST API.

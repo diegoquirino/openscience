@@ -5,36 +5,41 @@ description: Computes GitHub diffs of generated test cases in output/ (supportin
 
 # output-diff-analyzer — Generated Test Suite Diff Analyzer
 
-Analyzes evolutions in generated Model-Based Testing test suites and artifacts in the `output/` directory between consecutive pairs of tags or releases, generating a structured CSV report with normalized text representation.
+Analyzes evolutions in generated Model-Based Testing test suites and artifacts in the `output/` directory between consecutive pairs of tags, releases, or local version directories, generating a structured CSV report with normalized text representation.
 
-## Key Capabilities
+---
 
-1. **Format Filtering**: Filter by target formats (`xlsx`, `txt`, `docx`, `odt`, `xml`, `tgf`, `alts`).
-2. **Scope Selection**:
-   - `all_usecases`: Focuses strictly on consolidated test suite files (e.g. `all_usecases--GT-.xlsx`, `all_usecases--GT-.txt`, `all_usecases_testlink.xml`).
-   - `all`: Analyzes all generated test case files.
-3. **Coverage Approach Filtering**: Optionally filter by coverage suffix:
-   - `GT`: Reduced (Greedy Heuristic - Transition Coverage)
-   - `GTP`: Reduced (Greedy Heuristic - Transition Pair Coverage)
-   - `ART`: Reduced (Adaptive Random Testing by Jaccard Distance)
-   - `Complete`: Complete Path Coverage
-   - `Basic`: Happy Path / Basic Flow Only
-   - `Branches`: Reduced Decision Branches
-4. **Text Extraction & Normalization**:
-   - Parses text content from structured text/XML/XLSX.
-   - Converts to UTF-8 lowercase.
-   - Collapses consecutive whitespace characters into a single space and consecutive empty lines into a single newline.
-5. **Structured CSV Output**:
-   Columns:
-   `# | file | system | source_version | source_content | target_version | target_content`
+## 1. Native Agent-Driven Workflow (Recommended)
 
-## CLI Invocation
+When an LLM agent (Antigravity, Claude Code, Cursor) executes `/diff-output` or analyzes test suite diffs:
+
+1. **Resolve Scope, Formats & Coverage Filter**:
+   - Target formats: `txt`, `xlsx`, `docx`, `odt`, `xml`, `tgf`, `alts` (default: `txt`).
+   - Scope: `all_usecases` (consolidated test suite files only) or `all` (all test case files).
+   - Coverage: `GT`, `GTP`, `ART`, `Complete`, `Basic`, `Branches` (default: `all` or `GT`).
+2. **Extract & Inspect Test Artifacts**:
+   - Retrieve generated test files in `output/` for each adjacent pair $(V_i, V_{i+1})$.
+   - Extract raw text or structured XML/TXT/TGF contents.
+3. **Normalize Content**:
+   - Convert to UTF-8 lowercase.
+   - Collapse consecutive intra-line whitespace into a single space.
+   - Collapse consecutive blank lines into a single newline.
+4. **Generate Structured CSV Report**:
+   - Output CSV with header:
+     `#,file,system,source_version,source_content,target_version,target_content`
+   - Save to requested path (e.g., `./reports/output_diffs.csv`).
+
+---
+
+## 2. Standalone CLI Invocation (Automated / Headless)
+
+For terminal scripts or CI/CD pipelines:
 
 ```bash
-# Analyze diffs of consolidated Excel and TXT test suites under GT coverage
+# Analyze diffs of consolidated TXT test suites under GT coverage
 python .claude/skills/output-diff-analyzer/scripts/diff_output.py \
-  --tags saff-study_v1.0 saff-study_v2.0 \
-  --formats txt xlsx \
+  --tags saff-study_v1.0 saff-study_v1.1 \
+  --formats txt \
   --scope all_usecases \
   --coverage gt \
   --output-csv ./reports/output_diffs.csv \
@@ -44,7 +49,7 @@ python .claude/skills/output-diff-analyzer/scripts/diff_output.py \
 Parameters:
 - `--tags`: (Required) Ordered list of tags or releases.
 - `--formats`: (Optional) Formats to inspect (`txt`, `xlsx`, `docx`, `odt`, `xml`, `tgf`, `alts`, `all`). Default: `txt`.
-- `--scope`: (Optional) `all_usecases` (consolidated suites only) or `all` (all test case files). Default: `all_usecases`.
+- `--scope`: (Optional) `all_usecases` or `all`. Default: `all_usecases`.
 - `--coverage`: (Optional) Coverage criteria suffix filter (`gt`, `gtp`, `art`, `complete`, `basic`, `branches`, `all`). Default: `all`.
 - `--output-csv`: (Optional) Output CSV file path. Default: `./reports/output_diffs.csv`.
 - `--repo`: (Optional) GitHub repository (`owner/repo`). Defaults to `GITHUB_REPO` from `.env`.
