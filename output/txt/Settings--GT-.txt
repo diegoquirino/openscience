@@ -14,7 +14,8 @@ Test Case ID:	TC2	Priority (low,medium,high):		Executed by:
 Description:	Alternative Flow 1: Linguagem Espanhol			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: Abre arquivo de configurações e modifica propriedade linguagem para 'Español', salva e loga novamente no sistema		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
 Postcondition:	
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	

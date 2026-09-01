@@ -19,7 +19,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -49,11 +49,11 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Cancela criação">
+  <testcase name="TC2 - Alternative Flow 1: Campo fora da formatação esperada">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Cancela criação]]></summary>
+    <summary><![CDATA[Alternative Flow 1: Campo fora da formatação esperada]]></summary>
     <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
@@ -66,7 +66,60 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche incorretamente os campos 'Secu Info' e/ou 'Sxx' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que os dados não correspondem a formatação esperada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Secu Info' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Secu Infos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de uma Secu Info]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados da Secu Info]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de Secu Infos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Cancela criação">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Cancela criação]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Secu Infos' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Secu Infos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -78,7 +131,7 @@
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -108,9 +161,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 3: Edita dados">
-    <node_order><![CDATA[3]]></node_order>
-    <externalid><![CDATA[TC3]]></externalid>
+  <testcase name="TC4 - Alternative Flow 3: Edita dados">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
     <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
@@ -125,7 +178,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -161,7 +214,7 @@
       </step>
       <step>
         <step_number><![CDATA[8]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -191,9 +244,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 4: Deleta Secu Info">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
+  <testcase name="TC5 - Alternative Flow 4: Deleta Secu Info">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 4: Deleta Secu Info]]></summary>
     <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
@@ -208,7 +261,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -244,7 +297,7 @@
       </step>
       <step>
         <step_number><![CDATA[8]]></step_number>
-        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info']]></actions>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Secu Info', situado no lado direito inferior da tela]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Secu Info]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>

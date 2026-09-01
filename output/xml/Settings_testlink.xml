@@ -36,7 +36,13 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: Abre arquivo de configurações e modifica propriedade linguagem para 'Español', salva e loga novamente no sistema]]></actions>
+        <actions><![CDATA[administrador: pressiona botão 'Settings']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a janela de configurações]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>

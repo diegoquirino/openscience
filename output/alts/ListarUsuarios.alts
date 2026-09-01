@@ -1,31 +1,31 @@
 ALTS_SPECIFICATION "Listar Usuarios" {
   VERSION: "1.0"
-  PRE_CONDITION: "Existem diversos usuarios de diferentes perfis cadastrados no sistema"
+  PRE_CONDITION: "Existem diversos usuários de diferentes perfis cadastrados no sistema"
   POST_CONDITION: ""
 
   ACTORS {
   }
 
   STATES {
-    S_INIT [initial, guard: "Existem diversos usuarios de diferentes perfis cadastrados no sistema"]
+    S_INIT [initial, guard: "Existem diversos usuários de diferentes perfis cadastrados no sistema"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe tela principal"]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe lista com todos os usuários cadastrados"]
-    S_BF_6 [flow: "basic", actor: "system", action: "exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe página contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos"]
     S_AF1_2 [flow: "alternative_1", description: "Gerente", actor: "system", action: "exibe tela principal"]
-    S_AF1_4 [flow: "alternative_1", description: "Gerente", actor: "system", action: "exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente", returns_to_bf: 5]
+    S_AF1_4 [flow: "alternative_1", description: "Gerente", actor: "system", action: "exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratório que o gerente", returns_to_bf: 5]
     S_AF2_2 [flow: "alternative_2", description: "administrador", actor: "system", action: "exibe tela principal"]
-    S_AF2_4 [flow: "alternative_2", description: "administrador", actor: "system", action: "exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador", returns_to_bf: 5]
+    S_AF2_4 [flow: "alternative_2", description: "administrador", actor: "system", action: "exibe lista somente cos usuários cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratório que o administrador", returns_to_bf: 5]
     S_END [terminal, guard: ""]
   }
 
   TRANSITIONS {
     S_INIT -> S_BF_2 [trigger: "Start"]
     S_BF_2 -> S_BF_4 [event: "system: exibe lista com todos os usuários cadastrados"]
-    S_BF_4 -> S_BF_6 [event: "system: exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos"]
+    S_BF_4 -> S_BF_6 [event: "system: exibe página contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos"]
     S_BF_6 -> S_END [event: "Complete"]
-    S_AF1_2 -> S_AF1_4 [event: "system: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente"]
+    S_AF1_2 -> S_AF1_4 [event: "system: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratório que o gerente"]
     S_AF1_4 -> S_BF_5 [resume_basic_flow: 5]
-    S_AF2_2 -> S_AF2_4 [event: "system: exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador"]
+    S_AF2_2 -> S_AF2_4 [event: "system: exibe lista somente cos usuários cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratório que o administrador"]
     S_AF2_4 -> S_BF_5 [resume_basic_flow: 5]
   }
 }

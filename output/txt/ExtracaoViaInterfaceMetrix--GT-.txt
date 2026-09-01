@@ -51,6 +51,7 @@ Precondition:
 1	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
 2	administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
 3	clock: a cada 10 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; salva a extração no modo offline		
+4	clockOffline: a cada 1 minuto		SYSTEM verifica se existe conexão com o servidor para enviar as extrações offline		
 Postcondition:	Flow interrupted due to exception / error
 
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	

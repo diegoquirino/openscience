@@ -1,13 +1,13 @@
 ALTS_SPECIFICATION "CRUD Users" {
   VERSION: "1.0"
-  PRE_CONDITION: "Deve existir pelo menos um usuário super administrador"
+  PRE_CONDITION: "Deve existir pelo menos um usuário cadastrado"
   POST_CONDITION: ""
 
   ACTORS {
   }
 
   STATES {
-    S_INIT [initial, guard: "Deve existir pelo menos um usuário super administrador"]
+    S_INIT [initial, guard: "Deve existir pelo menos um usuário cadastrado"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe tela principal"]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe lista completa de usuários"]
     S_BF_6 [flow: "basic", actor: "system", action: "exibe página com campos de cadastro do usuário"]

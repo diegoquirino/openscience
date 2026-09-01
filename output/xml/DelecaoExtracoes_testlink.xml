@@ -7,7 +7,7 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 703 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”) ; seleciona opção para mostrar 25 entradas por página]]></preconditions>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -26,7 +26,7 @@
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 702 entradas]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -36,7 +36,7 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 703 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”) ; seleciona opção para mostrar 25 entradas por página]]></preconditions>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -73,7 +73,7 @@
       <step>
         <step_number><![CDATA[6]]></step_number>
         <actions><![CDATA[administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 702 entradas]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -83,26 +83,26 @@
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 703 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”) ; seleciona opção para mostrar 25 entradas por página]]></preconditions>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
         <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup”, “LLT Disabled”  e “Error”]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
-        <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 606 extracoes]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes listadas na tela para delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM marca todas as extracoes listadas após o filtro com um tick]]></expectedresults>
+        <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
@@ -114,36 +114,30 @@
       <step>
         <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 581 entradas]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes da página atual">
+  <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes da página atual]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 703 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”) ; seleciona opção para mostrar 25 entradas por página]]></preconditions>
+    <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao que estão listadas na página ]]></actions>
+        <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
         <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: confirma deleção]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 678 entradas]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

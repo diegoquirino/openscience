@@ -181,6 +181,12 @@
         <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; salva a extração no modo offline]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[clockOffline: a cada 1 minuto]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
     </steps>
   </testcase>
   <testcase name="TC6 - Exception Flow 2: Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio">

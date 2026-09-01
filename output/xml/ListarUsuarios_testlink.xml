@@ -7,7 +7,7 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <preconditions><![CDATA[Existem diversos usuários de diferentes perfis cadastrados no sistema]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -25,8 +25,8 @@
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[system: SYSTEM: exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></actions>
-        <expectedresults><![CDATA[exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe página contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></actions>
+        <expectedresults><![CDATA[exibe página contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -36,7 +36,7 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Gerente]]></summary>
-    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <preconditions><![CDATA[Existem diversos usuários de diferentes perfis cadastrados no sistema]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -48,8 +48,8 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente]]></actions>
-        <expectedresults><![CDATA[exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratório que o gerente]]></actions>
+        <expectedresults><![CDATA[exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratório que o gerente]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -59,7 +59,7 @@
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 2: administrador]]></summary>
-    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <preconditions><![CDATA[Existem diversos usuários de diferentes perfis cadastrados no sistema]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -71,8 +71,8 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador]]></actions>
-        <expectedresults><![CDATA[exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuários cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratório que o administrador]]></actions>
+        <expectedresults><![CDATA[exibe lista somente cos usuários cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratório que o administrador]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

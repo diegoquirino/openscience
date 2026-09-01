@@ -4,7 +4,7 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe tela principal		exibe tela principal		
 2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
@@ -17,14 +17,14 @@ Postcondition:
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Usuário com login repetido			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem informando que os este usuários já existe		exibe mensagem informando que os este usuários já existe		
 Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Edita dados			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
 2	system: SYSTEM: exibe novos dados do usuários		exibe novos dados do usuários		
@@ -32,7 +32,7 @@ Postcondition:
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 4: Edita dados e altera linguagem			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe novos dados do usuários		exibe novos dados do usuários		
 2	system: SYSTEM: é apresentado na nova linguagem		é apresentado na nova linguagem		
@@ -40,7 +40,7 @@ Postcondition:
 
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 5: Reseta senha			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
 2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
@@ -48,7 +48,7 @@ Postcondition:
 
 Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 6: Bloqueio de usuário			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
 2	system: SYSTEM: exibe mensagem confirmando bloqueio de usuário		exibe mensagem confirmando bloqueio de usuário		
@@ -62,14 +62,14 @@ Postcondition:
 
 Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 9: Test de bloqueio			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem que usuário está bloqueado		exibe mensagem que usuário está bloqueado		
 Postcondition:	
 
 Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 10: Deleta usuário			Execution Date:	
-Precondition:	Deve existir pelo menos um usuário super administrador
+Precondition:	Deve existir pelo menos um usuário cadastrado
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem solicitando confirmação		exibe mensagem solicitando confirmação		
 Postcondition:	

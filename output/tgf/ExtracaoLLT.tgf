@@ -21,30 +21,13 @@
 21 21
 22 22
 23 23
-24 24
-25 25
-26 26
-27 27
-28 28
-29 29
-30 30
-31 31
-32 32
-33 33
-34 34
-35 35
-36 36
-37 37
-38 38
-39 39
-40 40
 #
-1 2 [s] operador inicia o SAFF Extractor e se autentica
-2 3 [e] system exibe pagina que requisita dados do terminal
-3 4 [s] operador escolhe opcao Pre_Test para tipo de teste
-4 5 [e] system apresenta a marcacao da opcao escolhida
-5 6 [s] operador digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)
-6 7 [e] system realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')
-7 8 [s] operador loga no servidor e vai ate a pagina de extracoes
-8 9 [e] system exibe lista que inclui a extracao realizada
-9 10 [c] extracao realizada
+1 2 [c] Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+2 3 [s] administrador conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT
+3 4 [e] system entra em modo LLT
+4 5 [s] administrador inicia o SAFF Extractor e se autentica
+5 6 [e] system exibe página que requisita dados do terminal
+6 7 [s] administrador digita o product number e serial number válidos e pressiona tecla Tab
+7 8 [e] system muda foco para campo referente ao tipo de teste
+8 9 [s] administrador escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'
+9 10 [e] system realiza a extração

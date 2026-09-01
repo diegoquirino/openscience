@@ -1,6 +1,6 @@
 System:	SAFF Extractor
 Use Case:	Extracao Offline	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 9 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -46,6 +46,17 @@ Precondition:
 Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
 
 Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Product number e serial number que nao casam			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)		SYSTEM apresenta mensagem de erro		
+4	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+5	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline 			Execution Date:	
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -58,7 +69,7 @@ Precondition:
 7	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista com extracoes realizadas no modo offline		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline 			Execution Date:	
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -68,7 +79,7 @@ Precondition:
 4	operador: nao deseja entrar em modo offline		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 3: Cai conexao novamente			Execution Date:	
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result

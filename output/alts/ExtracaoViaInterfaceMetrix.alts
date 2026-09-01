@@ -25,6 +25,8 @@ ALTS_SPECIFICATION "Extracao via Interface Metrix" {
     S_AF2_1 [flow: "alternative_2", description: "Insere novas extracoes na pasta", actor: "administrador", action: "adiciona novas extracoes na pasta indicada", returns_to_bf: 4]
     S_AF3_1 [flow: "alternative_3", description: "Modifica o intervalo do temporizador", actor: "administrador", action: "modifica o valor da propriedade AUTO_COLLECT_WAIT_TIME para 60 (o valor é em segundos)", returns_to_bf: 4]
     S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem a informacao de quais extracoes foram enviadas para o servidor; salva a extração no modo offline"]
+    S_EF1_2 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "clockOffline", action: "a cada 1 minuto"]
+    S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "verifica se existe conexão com o servidor para enviar as extrações offline"]
     S_EF2_1 [flow: "exception_2", description: "Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio", actor: "system", action: "move a extração para a pasta broken"]
     S_END [terminal, guard: "As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'"]
   }
@@ -49,7 +51,9 @@ ALTS_SPECIFICATION "Extracao via Interface Metrix" {
     S_AF1_3 -> S_BF_4 [resume_basic_flow: 4]
     S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
     S_AF3_1 -> S_BF_4 [resume_basic_flow: 4]
-    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF1_1 -> S_EF1_2 [event: "clockOffline: a cada 1 minuto"]
+    S_EF1_2 -> S_EF1_3 [event: "system: verifica se existe conexão com o servidor para enviar as extrações offline"]
+    S_EF1_3 -> S_END [event: "ErrorExit"]
     S_EF2_1 -> S_END [event: "ErrorExit"]
   }
 }

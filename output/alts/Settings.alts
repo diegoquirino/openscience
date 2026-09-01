@@ -9,11 +9,11 @@ ALTS_SPECIFICATION "Settings" {
 
   STATES {
     S_INIT [initial, guard: "Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês"]
-    S_BF_1 [flow: "basic", actor: "administrador", action: "pressiona botão 'Settings'", branches_af: [1]]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "pressiona botão 'Settings'"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe a janela de configurações"]
-    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'", branches_af: [2, 3]]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'", branches_af: [1, 2, 3]]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português"]
-    S_AF1_1 [flow: "alternative_1", description: "Linguagem Espanhol", actor: "administrador", action: "Abre arquivo de configurações e modifica propriedade linguagem para 'Español', salva e loga novamente no sistema"]
+    S_AF1_1 [flow: "alternative_1", description: "Linguagem Espanhol", actor: "administrador", action: "seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save'"]
     S_AF1_2 [flow: "alternative_1", description: "Linguagem Espanhol", actor: "system", action: "exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol"]
     S_AF2_1 [flow: "alternative_2", description: "Visible Test Type", actor: "administrador", action: "seleciona somente opção 'Pre test' no campo 'Visible Test Type' e pressiona botão 'Save'"]
     S_AF2_2 [flow: "alternative_2", description: "Visible Test Type", actor: "system", action: "atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opção de teste."]
@@ -25,9 +25,9 @@ ALTS_SPECIFICATION "Settings" {
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
     S_BF_1 -> S_BF_2 [event: "system: exibe a janela de configurações"]
-    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Linguagem Espanhol"]
     S_BF_2 -> S_BF_3 [event: "administrador: seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'"]
     S_BF_3 -> S_BF_4 [event: "system: exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Linguagem Espanhol"]
     S_BF_3 -> S_AF2_1 [branch: "AF_2 - Visible Test Type"]
     S_BF_3 -> S_AF3_1 [branch: "AF_3 - Default Test Type"]
     S_BF_4 -> S_END [event: "Complete"]
