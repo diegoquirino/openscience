@@ -10,10 +10,10 @@ system "SAFF Extractor", {
         basicFlow {
             step 1, operador, "inicia o SAFF Extractor e se autentica"
             step 2, system, "exibe pagina que requisita dados do terminal"
-            step 3, operador, "escolhe opcao Pre_Test para tipo de teste", af:[2,3,4,5,7,8]
-            step 4, system, "apresenta a marcacao da opcao escolhida"
-            step 5, operador, "digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)",af:[3,4,5,6]
-            step 4, system, "exibe tela para entrada em modo offline"ef[1,2]
+            step 1, operador, "abre extrator"
+            step 2, system, "exibe tela de login"
+            step 3, operador, "loga no extrator", af:[1]
+            step 4, system, "exibe tela inicial 'SAFF extraction'", ef:[1,2]
         }
 
         exception 1, "Sem conexao e usuario deseja entrar em modo offline ", {
@@ -47,33 +47,6 @@ system "SAFF Extractor", {
             step 3, operador, "realiza uma serie de extracoes"
             step 4, system, "salva as extracoes na pasta local 'OfflineExtraction'" 
         }
-
-        alternative 2, "Operador nao deseja entrar no modo offline", {
-            step 1, operador, "define que o sistema sempre fara extracoes offline"
-            step 2, system, "exibe pagina que requisita dados do terminal"
-            step 3, operador, "realiza uma serie de extracoes"
-            step 4, system, "salva as extracoes na pasta local 'OfflineExtraction'" 
-        }
-
-        alternative 3, "Terminal nao se encontra em modo LLT",{
-            step 1, operador, "conecta terminal em porta USB e o coloca em modo LLT"          
-            step 2, system, "(terminal) entra em modo LLT", bfs:5
-        }
-        alternative 4, "Uso do leitor de codigo de barras",{
-            step 1, operador, "le (via leitor de codigo de barras) um product number e serial number validos", bfs:6
-        }
-        alternative 5, "Product number e/ou serial number invalidos",{
-            step 1, operador, "digita um product number e/ou serial number invalidos"
-            step 2, system, "marca campo em vermelho alertando do erro", bfs:5
-        }
-
-        alternative 6, "Product number e serial number que nao casam",{
-            step 1, operador, "digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)"
-            step 2, system, "apresenta mensagem de erro", bfs:3
-        }
-
-
-
 
         postCondition "extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)"
     }
