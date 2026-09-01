@@ -1,6 +1,474 @@
 System:	SAFF Extractor
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 57 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 101 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
+3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
+4	administrador: faz logout		SYSTEM exibe página de login		
+5	administrador: faz login como operador e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
+6	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+7	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
+8	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
+9	administrador: faz logout		SYSTEM exibe página de login		
+10	administrador: faz login como administrador e vai para a página “Extractions”		SYSTEM exibe uma lista com duas entradas		
+Postcondition:	
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Terminal nao se encontra em modo LLT			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: conecta terminal em porta USB e o coloca em modo LLT		SYSTEM (terminal) entra em modo LLT		
+4	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+5	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Test 1			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: marca opcao Test 1 para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Test 2			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: marca opcao Test 2 para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: QA			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: marca opcao QA para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Note			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: insere uma anotacao para a extracao		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Uso do leitor de codigo de barras			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: le (via leitor de codigo de barras) um product number e serial number validos		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+4	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Redirect			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: marca a opcao 'Redirect to the display of data'		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extracao, a envia para o servidor, a salva nas pastas de backup local e abre o browser mostrando a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Disable LLT			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: marca a opcao 'Disable LLT'		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract		SYSTEM realiza uma extracao Disabled LLT, a envia para o servidor, e a salva nas pastas de backup local		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Product number e/ou serial number invalidos			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e/ou serial number invalidos		SYSTEM marca campo em vermelho alertando do erro		
+4	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+5	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Product number e serial number que nao casam			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)		SYSTEM apresenta mensagem de erro		
+4	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+5	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')		
+6	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que inclui a extracao realizada		
+Postcondition:	extracao realizada
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao existe porta USB cadastrada			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando informando não existe porta USB cadastrada		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC13	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Falha no envio para servidor e Usuário não deseja fazer extração offline			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem informando que houve erro na conexão com o servidor e pergunta se usuario deseja fazer a extração em modo offline		
+4	operador: responde No		SYSTEM fecha janela e retorna a pagina que requisita dados do terminal		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC14	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Falha no envio para servidor e Usuário deseja fazer extração offline			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem informando que houve erro na conexão com o servidor e pergunta se usuario deseja fazer a extração em modo offline		
+4	operador: responde Yes		SYSTEM exibe pagina que requisita dados do terminal		
+5	operador: configura o teste, insere product number e serial number válidos inicia a extracao		SYSTEM salva extração em pasta local		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC15	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Dados de terminal inválidos			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem informando que dados do terminal estão incorretos		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC16	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Nao existe terminal conectado			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem informando que não conseguiu se conectar ao terminal		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Offline sempre			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: define que o sistema sempre fara extracoes offline		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: realiza uma serie de extracoes		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Terminal nao se encontra em modo LLT			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: conecta terminal em porta USB e o coloca em modo LLT		SYSTEM (terminal) entra em modo LLT		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Uso do leitor de codigo de barras			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: le (via leitor de codigo de barras) um product number e serial number validos		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Product number e/ou serial number invalidos			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: digita um product number e/ou serial number invalidos		SYSTEM marca campo em vermelho alertando do erro		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Product number e serial number que nao casam			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)		SYSTEM apresenta mensagem de erro		
+4	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+5	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmacao se usuario quer entrar em modo offline		
+4	operador: confirma que quer entrar em modo offline		SYSTEM exibe pagina que requisita dados do terminal		
+5	operador: realiza uma serie de extracoes sequenciais		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+6	operador: reastabelece conexao		SYSTEM envia extracoes locais para o servidor e as apaga da pasta local 'OfflineExtraction'		
+7	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista com extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
+4	operador: nao deseja entrar em modo offline		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Cai conexao novamente			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: mantem informacao das extracoes nao enviadas a tempo na pasta local		mantem informacao das extracoes nao enviadas a tempo na pasta local		
+2	operador: reastabelece conexao		SYSTEM envia extracoes restantes da pasta local para o servidor e as apaga da pasta 'OfflineExtraction'		
+3	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que contem as extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contem 705 extrações para diversas familias, e pressiona o botao “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+3	administrador: acessa pagina “Extractions”		SYSTEM exibe a lista de extrações com as 50 ultimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+4	administrador: seleciona opcao para mostrar 100 entradas por pagina		SYSTEM exibe a lista de extrações com as 100 ultimas entradas.		
+5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opcoes “Ingenico Brazil” e “Ingenico”		
+6	administrador: seleciona opcao “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a pagina mostrando somente 32 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Filtro default			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contem 705 extrações para diversas familias, e pressiona o botao “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+3	administrador: acessa pagina “Extractions”		SYSTEM exibe a lista de extrações com as 50 ultimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+4	administrador: seleciona opcao para mostrar 100 entradas por pagina		SYSTEM exibe a lista de extrações com as 100 ultimas entradas.		
+5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opcoes “Ingenico Brazil” e “Ingenico”		
+6	administrador: seleciona opcao default no campo de filtro “Customer”		SYSTEM atualiza a pagina mostrando todas 705 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Filtro “Ingenico Brazil”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contem 705 extrações para diversas familias, e pressiona o botao “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+3	administrador: acessa pagina “Extractions”		SYSTEM exibe a lista de extrações com as 50 ultimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+4	administrador: seleciona opcao para mostrar 100 entradas por pagina		SYSTEM exibe a lista de extrações com as 100 ultimas entradas.		
+5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opcoes “Ingenico Brazil” e “Ingenico”		
+6	administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”		SYSTEM atualiza a pagina mostrando 673 extracoes		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Filtro state			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contem 705 extrações para diversas familias, e pressiona o botao “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+3	administrador: acessa pagina “Extractions”		SYSTEM exibe a lista de extrações com as 50 ultimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+4	administrador: seleciona opcao para mostrar 100 entradas por pagina		SYSTEM exibe a lista de extrações com as 100 ultimas entradas.		
+5	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+6	administrador: seleciona opcao “Activated” no campo de filtro “State”		SYSTEM atualiza pagina mostrando 608 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Filtro “Alert Interruption”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opcao “Alert Interruption” no campo de filtro “State”		SYSTEM atualiza pagina mostrando 97 extracoes		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtro “Mockup”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opcao “Mockup” no campo de filtro “State”		SYSTEM atualiza pagina mostrando lista vazia		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Filtro “Error”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opcao “Error” no campo de filtro “State”		SYSTEM atualiza pagina mostrando extrações associadas aos estados 'Alert Interruption' e 'Mockup'		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Extracoes Sequenciais			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Nao existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contem 705 extrações para diversas familias, e pressiona o botao “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+3	administrador: pressiona opcao “Extract from dicrtory”		SYSTEM exibe tela de extracao por diretorio		
+4	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+5	administrador: acessa pagina “Extractions”		SYSTEM exibe uma lista com 1510		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: User invalido			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos		
+3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Password invalida			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login		SYSTEM exibe mensagem de usuario ou senha incorretos na pagina de login; informa o numero de tentativas restantes ate que o usuario seja bloqueado		
+3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Numero de tentativas invalidas e 5			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user correte e o password invalido pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado		
+3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos		SYSTEM exibe mensagem informando usuario esta bloqueado		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuario inativo por 30 minutos			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM finaliza sessão do usuario e retorna a pagina de login ao receber alguma requisicao do usuario		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario inativo por 90 dias			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe mensagem indicando que usuario foi bloqueado		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Linguagem Espanhol			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: Abre arquivo de configurações e modifica propriedade linguagem para 'Español', salva e loga novamente no sistema		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Visible Test Type			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona somente opção 'Pre test' no campo 'Visible Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opção de teste.		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Default Test Type			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona somente opção 'Pre test' no campo 'Default Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' está marcado.		
+Postcondition:	
 
 Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -613,7 +1081,413 @@ Postcondition:
 
 System:	SAFF
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 44 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 78 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	CRUD Cliente	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
+4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
+6	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de clientes		
+Postcondition:	
+
+Use Case:	CRUD Cliente	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela criação			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+3	superAdmin: Cancela criação		SYSTEM exibe lista de clientes		
+4	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+5	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
+6	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+7	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
+8	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de clientes		
+Postcondition:	
+
+Use Case:	CRUD Cliente	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Edita dados			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
+4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
+6	superAdmin: clica no botão 'Edit'		SYSTEM exibe campos do cliente com valores atuais que podem ser editados		
+7	superAdmin: preenche os novos valores e pressiona o botão 'Update		SYSTEM exibe dados do cliente		
+8	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de clientes		
+Postcondition:	
+
+Use Case:	CRUD Cliente	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Deleta cliente			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
+4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
+6	superAdmin: clica no botão 'Delete'		SYSTEM exibe mensagem solicitando confirmação		
+7	superAdmin: pressiona o botão OK		SYSTEM exibe lista de clientes		
+8	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+9	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
+10	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
+11	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
+12	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de clientes		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista diagnosticos		exibe lista diagnosticos		
+3	system: SYSTEM: exibe página com campos de cadastro de novo documento		exibe página com campos de cadastro de novo documento		
+4	system: SYSTEM: exibe lista de diagnósticos		exibe lista de diagnósticos		
+5	system: SYSTEM: exibe dados do diagnóstico		exibe dados do diagnóstico		
+6	system: SYSTEM: retorna a lista de diagnosticos		retorna a lista de diagnosticos		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Scenary ou Situation faltando informacao			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que existe informaçao indispensável faltando		exibe mensagem informando que existe informaçao indispensável faltando		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Campo fora da formatação esperada			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os dados nao correspondem a formatação esperada		exibe mensagem informando que os dados nao correspondem a formatação esperada		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do diagnostico com valores atuais que podem ser editados		exibe campos do diagnostico com valores atuais que podem ser editados		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Deleta diagnostico			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmaçao		exibe mensagem solicitando confirmaçao		
+Postcondition:	
+
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Visualizaçao para Operador, Gerente			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario		exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista completa de documentos		exibe lista completa de documentos		
+3	system: SYSTEM: exibe página com campos de cadastro de novo documento		exibe página com campos de cadastro de novo documento		
+4	system: SYSTEM: exibe lista de documentos		exibe lista de documentos		
+5	system: SYSTEM: abre janela de visualização do pdf		abre janela de visualização do pdf		
+6	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+7	system: SYSTEM: exibe dados do documento		exibe dados do documento		
+8	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+9	system: SYSTEM: se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento		se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Faltando arquivo			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes		exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Documento com nome repetido			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os já existe um documento cadastrado com o nome especificado		exibe mensagem informando que os já existe um documento cadastrado com o nome especificado		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Upload de arquivo nao pdf			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que o documento especificado nao e um arquivo PDF		exibe mensagem informando que o documento especificado nao e um arquivo PDF		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Deleta documento			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmacao		exibe mensagem solicitando confirmacao		
+Postcondition:	
+
+Use Case:	CRUD Documents	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Visualizacao para Operador, Gerente			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista de documentos pertencentes ao mesmo laboratório do usuário		exibe lista de documentos pertencentes ao mesmo laboratório do usuário		
+3	system: SYSTEM: abre janela de visualização do pdf		abre janela de visualização do pdf		
+4	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+5	system: SYSTEM: exibe dados do documento		exibe dados do documento		
+6	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+Postcondition:	
+
+Use Case:	CRUD Laboratorios	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+5	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+6	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratórios		
+Postcondition:	
+
+Use Case:	CRUD Laboratorios	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Campo fora da formatação esperada, e.g, Country = xx			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche incorretamente algum dos campos 'Name', 'Country' ou 'Description' e pressiona o botão 'Create' 		SYSTEM exibe mensagem informando que os dados não correspondem a formatação esperada		
+4	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+5	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+6	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+7	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratórios		
+Postcondition:	
+
+Use Case:	CRUD Laboratorios	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela criação			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: cancela criação		SYSTEM exibe lista de laboratórios		
+4	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+5	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+6	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+7	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+8	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratórios		
+Postcondition:	
+
+Use Case:	CRUD Laboratorios	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+5	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+6	superAdmin: clica no botão 'Edit'		SYSTEM exibe campos do Laboratório com valores atuais que podem ser editados		
+7	superAdmin: preenche os novos valores e pressiona o botão 'Update		SYSTEM exibe lista de laboratórios		
+8	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+9	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+10	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+11	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+12	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratórios		
+Postcondition:	
+
+Use Case:	CRUD Laboratorios	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Nome de Laboratório já existente			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botão 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche o campo 'Name' com um nome de laboratório jã existente. Preenche corretamente os campos 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe mensagem informando que já existe laboratório cadastrado com esse nome		
+4	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+5	superAdmin: seleciona opção 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+6	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratório e lista de usuários associados a este		
+7	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratórios		
+Postcondition:	
+
+Use Case:	CRUD Secu Infos	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Secu Infos' no menu Settings		SYSTEM exibe lista de Secu Infos		
+2	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+3	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+5	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+6	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de Secu Infos		
+Postcondition:	
+
+Use Case:	CRUD Secu Infos	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela criação			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Secu Infos' no menu Settings		SYSTEM exibe lista de Secu Infos		
+2	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+3	superAdmin: Cancela criação		SYSTEM exibe lista de Secu Infos		
+4	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+5	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+6	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+7	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+8	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de Secu Infos		
+Postcondition:	
+
+Use Case:	CRUD Secu Infos	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Secu Infos' no menu Settings		SYSTEM exibe lista de Secu Infos		
+2	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+3	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+5	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+6	superAdmin: clica no botão 'Edit'		SYSTEM exibe campos do Secu Info com valores atuais que podem ser editados		
+7	superAdmin: preenche os novos valores e pressiona o botão 'Update		SYSTEM exibe lista de Secu Infos		
+8	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+9	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+10	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+11	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+12	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de Secu Infos		
+Postcondition:	
+
+Use Case:	CRUD Secu Infos	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Deleta Secu Info			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opção 'Secu Infos' no menu Settings		SYSTEM exibe lista de Secu Infos		
+2	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+3	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+5	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+6	superAdmin: clica no botão 'Delete'		SYSTEM exibe mensagem solicitando confirmação		
+7	superAdmin: pressiona o botao OK		SYSTEM exibe lista de Secu Infos		
+8	superAdmin: seleciona o botão 'Create Secu Info'		SYSTEM exibe página com campos de cadastro de novo Secu Info		
+9	superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo Secu Info e mensagem que um novo entrada foi adicionado		
+10	superAdmin: seleciona opção 'Secu Info' no menu Settings		SYSTEM exibe lista de Secu Infos		
+11	superAdmin: clica no nome de uma Secu Info		SYSTEM exibe dados da Secu Info		
+12	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de Secu Infos		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+3	system: SYSTEM: exibe pagina com campos de cadastro do usuario		exibe pagina com campos de cadastro do usuario		
+4	system: SYSTEM: exibe mensagem indicando que novo usuario foi criado		exibe mensagem indicando que novo usuario foi criado		
+5	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+6	system: SYSTEM: exibe dados do usuario		exibe dados do usuario		
+7	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuário com login repetido			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os este usuarios já existe		exibe mensagem informando que os este usuarios já existe		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+2	system: SYSTEM: exibe novos dados do usuarios		exibe novos dados do usuarios		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Edita dados e altera linguagem			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe novos dados do usuarios		exibe novos dados do usuarios		
+2	system: SYSTEM: e apresentado na nova linguagem		e apresentado na nova linguagem		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Reseta senha			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmacao		exibe mensagem pedindo confirmacao		
+2	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Bloqueio de usuario			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmacao		exibe mensagem pedindo confirmacao		
+2	system: SYSTEM: exibe mensagem confirmando bloqueio de usuario		exibe mensagem confirmando bloqueio de usuario		
+3	system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado		exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado		
+4	system: SYSTEM: exibe dados do usuario		exibe dados do usuario		
+5	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+6	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
+7	system: SYSTEM: exibe mensagem confirmando desbloqueio de usuario		exibe mensagem confirmando desbloqueio de usuario		
+8	system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado		exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Test de bloqueio			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem que usuário esta bloqueado		exibe mensagem que usuário esta bloqueado		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Deleta usuario			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmacao		exibe mensagem solicitando confirmacao		
+Postcondition:	
 
 Use Case:	CRUD Cliente	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	

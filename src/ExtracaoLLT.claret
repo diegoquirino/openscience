@@ -79,7 +79,7 @@ system "SAFF Extractor", {
         alternative 8, "Disable LLT",{
         	step 1, operador, "marca a opcao 'Disable LLT'"
         	step 2, system, "apresenta a marcacao da opcao escolhida"
-            step 3, operador, "digita um product number e serial number validos, preenche o Note e pressiona Extract"
+            step 3, operador, "digita um product number e serial number validos e pressiona Extract"
             step 4, system, "realiza uma extracao Disabled LLT, a envia para o servidor, e a salva nas pastas de backup local"
         }
 

@@ -26,7 +26,7 @@ system "SAFF", {
         alternative 1, "Usuário com login repetido", {
             step 1, usuário, "preenche o campo 'Login' com o login associado a um outro usuario cadastrado. Preenche corretamente os demais campos e pressiona o botão 'Create'"
             step 2, system, "exibe mensagem informando que os este usuarios já existe", bfs:7
-        }
+        }   
 
         alternative 2, "Cancela criacao", {
             step 1, usuário, "cancela criacao", bfs:4
