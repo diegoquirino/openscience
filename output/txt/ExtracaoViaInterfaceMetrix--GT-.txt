@@ -1,6 +1,6 @@
 System:	SAFF Extractor
 Use Case:	Extracao via Interface Matrix	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -43,14 +43,5 @@ Precondition:
 2	operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
 3	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
 4	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
-Postcondition:	Flow interrupted due to exception / error
-
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Extração não se encontra em formato adequado			Execution Date:	
-Precondition:	 
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
-2	operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 30 segundos		SYSTEM move a extração para a pasta broken		
 Postcondition:	Flow interrupted due to exception / error
 

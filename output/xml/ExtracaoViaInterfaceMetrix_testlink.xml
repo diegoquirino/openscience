@@ -160,33 +160,4 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC5 - Exception Flow 2: Extração não se encontra em formato adequado">
-    <node_order><![CDATA[5]]></node_order>
-    <externalid><![CDATA[TC5]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 2: Extração não se encontra em formato adequado]]></summary>
-    <preconditions><![CDATA[ ]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM move a extração para a pasta broken]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
 </testsuite>

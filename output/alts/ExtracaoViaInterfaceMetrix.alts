@@ -15,7 +15,7 @@ ALTS_SPECIFICATION "Extracao via Interface Matrix" {
     S_BF_3 [flow: "basic", actor: "operador", action: "seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", branches_af: [1]]
     S_BF_4 [flow: "basic", actor: "system", action: "bloqueia todos os botoes, com excecao do botao 'Stop'"]
     S_BF_5 [flow: "basic", actor: "clock", action: "a cada 30 segundos"]
-    S_BF_6 [flow: "basic", actor: "system", action: "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", branches_ef: [1, 2]]
+    S_BF_6 [flow: "basic", actor: "system", action: "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", branches_ef: [1]]
     S_BF_7 [flow: "basic", actor: "operador", action: "pressiona botao 'Stop'", branches_af: [2]]
     S_BF_8 [flow: "basic", actor: "system", action: "desbloqueia todos os botoes e para de escutar a pasta indicada"]
     S_AF1_1 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "operador", action: "seleciona pasta vazia, e pressiona botao 'Start'"]
@@ -25,7 +25,6 @@ ALTS_SPECIFICATION "Extracao via Interface Matrix" {
     S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida"]
     S_EF1_2 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "clock", action: "a cada 30 segundos"]
     S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "tenta enviar extrações restantes para o servidor"]
-    S_EF2_1 [flow: "exception_2", description: "Extração não se encontra em formato adequado", actor: "system", action: "move a extração para a pasta broken"]
     S_END [terminal, guard: "As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'"]
   }
 
@@ -39,7 +38,6 @@ ALTS_SPECIFICATION "Extracao via Interface Matrix" {
     S_BF_5 -> S_BF_6 [event: "system: envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada"]
     S_BF_6 -> S_BF_7 [event: "operador: pressiona botao 'Stop'"]
     S_BF_6 -> S_EF1_1 [branch: "EF_1 - Falha no envio ao servidor"]
-    S_BF_6 -> S_EF2_1 [branch: "EF_2 - Extração não se encontra em formato adequado"]
     S_BF_7 -> S_BF_8 [event: "system: desbloqueia todos os botoes e para de escutar a pasta indicada"]
     S_BF_7 -> S_AF2_1 [branch: "AF_2 - Insere novas extracoes na pasta"]
     S_BF_8 -> S_END [event: "Complete"]
@@ -50,6 +48,5 @@ ALTS_SPECIFICATION "Extracao via Interface Matrix" {
     S_EF1_1 -> S_EF1_2 [event: "clock: a cada 30 segundos"]
     S_EF1_2 -> S_EF1_3 [event: "system: tenta enviar extrações restantes para o servidor"]
     S_EF1_3 -> S_END [event: "ErrorExit"]
-    S_EF2_1 -> S_END [event: "ErrorExit"]
   }
 }
