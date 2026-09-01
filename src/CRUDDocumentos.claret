@@ -11,7 +11,7 @@ system "SAFF", {
             step 2, system, "exibe tela principal"
             step 3, usuário, "seleciona opção 'Documents' no menu Settings"
             step 4, system, "exibe lista completa de documentos"
-            step 5, usuário, "seleciona o botão 'Create Document'"
+            step 5, usuário, "seleciona o botão 'Create Document', situado no lado direito inferior da tela"
             step 6, system, "exibe página com campos de cadastro de novo documento"
             step 7, usuário, "preenche corretamente os campos 'Title', 'Description', 'Family' (com uma família com extrações existentes), seleciona um arquivo PDF e pressiona o botão 'Create' ", af:[1,2,6,7]
             step 8, system, "exibe lista de documentos"

@@ -7,15 +7,12 @@ system "SAFF Extractor", {
         preCondition "Usuário está logado no servidor"
 
         basicFlow {
-            step 1, administrador, "abre extrator"
-            step 2, system, "exibe tela de login"
-            step 3, administrador, "loga no extrator", af:[1]
-            step 4, system, "exibe tela inicial 'SAFF extraction'", ef:[1,2]
+            step 1, administrador, "loga no extrator", af[2]
+            step 2, system, "exibe tela inicial 'SAFF extraction'", ef:[1]
         }
 
-        exception 1, "Cai conexão e usuario quer entrar em modo offline ", {
-            step 1, system, "exibe mensagem solicitando confirmação se usuario quer entrar em modo offline"
-            step 2, administrador, "confirma que quer entrar em modo offline"
+        exception 1, "Cai conexão ", {
+            step 2, administrador "confirma que quer entrar em modo offline", af[1]
             step 3, system, "exibe tela inicial 'SAFF extraction'"
             step 4, administrador, "realiza cinco extrações"
             step 5, system, "adiciona novas extrações a pasta local'" 
@@ -25,18 +22,16 @@ system "SAFF Extractor", {
             step 9, system, "exibe lista com extrações realizada no modo offline no topo"
         }
 
-        exception 2, "Cai conexão e usuario quer entrar em modo offline ", {
-            step 1, system, "exibe mensagem solicitando confirmação se usuario quer entrar em modo offline"
-            step 2, administrador, "não deseja entrar em modo offline", bfs:2
+        alternative 1, "Pressiona NO", {
+            step 1, administrador, "Não deseja entrar em modo offline", bfs:2
         }
 
 
-        alternative 1, "Offline sempre", {
+        alternative 2, "Offline sempre", {
             step 1, administrador, "define que o sistema sempre fará extrações offline"
             step 2, system, "exibe tela inicial 'SAFF extraction'"
             step 3, administrador, "realiza cinco extrações"
             step 4, system, "adiciona novas extrações a pasta local'" 
-        }
 
         postCondition " "
     }

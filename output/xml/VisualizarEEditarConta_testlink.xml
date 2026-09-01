@@ -7,26 +7,26 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></actions>
+        <expectedresults><![CDATA[exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe página com campos em branco para atualização]]></actions>
+        <expectedresults><![CDATA[exibe página com campos em branco para atualização]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas]]></actions>
+        <expectedresults><![CDATA[exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -36,137 +36,48 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Troca Idioma]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password', troca 'Language' de Ingles para Portugues e pressiona o botao 'Update']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma]]></actions>
+        <expectedresults><![CDATA[exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Cancela Edicao">
+  <testcase name="TC4 - Alternative Flow 3: Password inválido">
     <node_order><![CDATA[3]]></node_order>
-    <externalid><![CDATA[TC3]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Cancela Edicao]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Cancel']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Password invalido">
-    <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Password invalido]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+    <summary><![CDATA[Alternative Flow 3: Password inválido]]></summary>
+    <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[operador: preenche incorretamente o campos 'Old Password']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem infrmando que o Password fornecido não esta correto]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está correto]]></actions>
+        <expectedresults><![CDATA[exibe mensagem infrmando que o Password fornecido não está correto]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC5 - Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)">
-    <node_order><![CDATA[5]]></node_order>
+  <testcase name="TC5 - Alternative Flow 4: Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)">
+    <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+    <summary><![CDATA[Alternative Flow 4: Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)]]></summary>
+    <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[operador: preenche o campos 'New Password' com uma senha fora dos padroes exigidos]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está conforme o exigido]]></actions>
+        <expectedresults><![CDATA[exibe mensagem infrmando que o Password fornecido não está conforme o exigido]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

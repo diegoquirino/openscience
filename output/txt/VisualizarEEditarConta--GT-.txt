@@ -1,53 +1,34 @@
 System:	SAFF
 Use Case:	Visualizar e editando propria conta	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor
+Precondition:	Usuário deve estar logado no sistema ; administrador ou super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-3	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+1	system: SYSTEM: exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+2	system: SYSTEM: exibe página com campos em branco para atualização		exibe página com campos em branco para atualização		
+3	system: SYSTEM: exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas		exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Troca Idioma			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor
+Precondition:	Usuário deve estar logado no sistema ; administrador ou super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-3	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password', troca 'Language' de Ingles para Portugues e pressiona o botao 'Update'		SYSTEM exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma		
-Postcondition:	
-
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela Edicao			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-3	operador: pressiona botao 'Cancel'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-4	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-5	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+1	system: SYSTEM: exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma		exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma		
 Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Password invalido			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor
+Description:	Alternative Flow 3: Password inválido			Execution Date:	
+Precondition:	Usuário deve estar logado no sistema ; administrador ou super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-3	operador: preenche incorretamente o campos 'Old Password'		SYSTEM exibe mensagem infrmando que o Password fornecido não esta correto		
-4	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+1	system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está correto		exibe mensagem infrmando que o Password fornecido não está correto		
 Postcondition:	
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor
+Description:	Alternative Flow 4: Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)			Execution Date:	
+Precondition:	Usuário deve estar logado no sistema ; administrador ou super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
-2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
-3	operador: preenche o campos 'New Password' com uma senha fora dos padroes exigidos		SYSTEM exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido		
-4	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+1	system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está conforme o exigido		exibe mensagem infrmando que o Password fornecido não está conforme o exigido		
 Postcondition:	
 

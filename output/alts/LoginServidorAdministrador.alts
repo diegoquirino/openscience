@@ -5,13 +5,12 @@ ALTS_SPECIFICATION "Login no servidor como Administrador" {
 
   ACTORS {
     administrador: "Administrador do sistema"
-    clock: "temporizador"
   }
 
   STATES {
     S_INIT [initial, guard: "Deve existir um usuário cadastrado com perfil administrador"]
     S_BF_1 [flow: "basic", actor: "administrador", action: "digita um login e pasword de usuário administrador e pressiona o botão Login", branches_af: [1, 2, 3]]
-    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela “Search extraction”", branches_ef: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela “Search extraction”"]
     S_AF1_1 [flow: "alternative_1", description: "Login ou Password inválidos", actor: "administrador", action: "digita um login de usuário administrador e/ou password invalidos e pressiona Login"]
     S_AF1_2 [flow: "alternative_1", description: "Login ou Password inválidos", actor: "system", action: "exibe mensagem “Invalid username or password” na tela de login", returns_to_bf: 1]
     S_AF2_1 [flow: "alternative_2", description: "Número de tentativas inválidas é 3", actor: "administrador", action: "digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login"]
@@ -20,7 +19,6 @@ ALTS_SPECIFICATION "Login no servidor como Administrador" {
     S_AF3_2 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "system", action: "bloqueia a sessão"]
     S_AF3_3 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "administrador", action: "digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login"]
     S_AF3_4 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "system", action: "informa que usuário está bloqueado"]
-    S_EF3_1 [flow: "exception_3", description: "Usuario inativo por 30 minutos", actor: "system", action: "finaliza sessao do usuario e retorna a pagina de login"]
     S_END [terminal, guard: ""]
   }
 
@@ -39,6 +37,5 @@ ALTS_SPECIFICATION "Login no servidor como Administrador" {
     S_AF3_2 -> S_AF3_3 [event: "administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login"]
     S_AF3_3 -> S_AF3_4 [event: "system: informa que usuário está bloqueado"]
     S_AF3_4 -> S_END [event: "Complete"]
-    S_EF3_1 -> S_END [event: "ErrorExit"]
   }
 }

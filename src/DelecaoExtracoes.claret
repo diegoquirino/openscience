@@ -4,7 +4,7 @@ system "SAFF Extractor", {
 
         actor administrador, "Administrador do sistema"
 
-        preCondition "Usuario deve estar logado no servidor", "705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"
+        preCondition "Usuario deve estar logado no servidor e extrator como administrador", "705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"
 
         basicFlow {
             step 1, administrador, "seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”", af:[2,3]

@@ -26,8 +26,8 @@ ALTS_SPECIFICATION "Extracao Offline" {
     S_EF1_7 [flow: "exception_1", description: "Cai conexão e usuario quer entrar em modo offline", actor: "system", action: "envia extrações locais para o servidor e as apaga da pasta local"]
     S_EF1_8 [flow: "exception_1", description: "Cai conexão e usuario quer entrar em modo offline", actor: "administrador", action: "loga no servidor e vai até a página de extrações"]
     S_EF1_9 [flow: "exception_1", description: "Cai conexão e usuario quer entrar em modo offline", actor: "system", action: "exibe lista com extrações realizada no modo offline no topo"]
-    S_EF2_1 [flow: "exception_2", description: "Cai conexão e usuario nao quer entrar em modo offline", actor: "system", action: "exibe mensagem solicitando confirmação se usuario quer entrar em modo offline"]
-    S_EF2_2 [flow: "exception_2", description: "Cai conexão e usuario nao quer entrar em modo offline", actor: "administrador", action: "não deseja entrar em modo offline"]
+    S_EF2_1 [flow: "exception_2", description: "Cai conexão e usuario quer entrar em modo offline", actor: "system", action: "exibe mensagem solicitando confirmação se usuario quer entrar em modo offline"]
+    S_EF2_2 [flow: "exception_2", description: "Cai conexão e usuario quer entrar em modo offline", actor: "administrador", action: "não deseja entrar em modo offline"]
     S_END [terminal, guard: ""]
   }
 
@@ -39,7 +39,7 @@ ALTS_SPECIFICATION "Extracao Offline" {
     S_BF_3 -> S_AF1_1 [branch: "AF_1 - Offline sempre"]
     S_BF_4 -> S_END [event: "Complete"]
     S_BF_4 -> S_EF1_1 [branch: "EF_1 - Cai conexão e usuario quer entrar em modo offline"]
-    S_BF_4 -> S_EF2_1 [branch: "EF_2 - Cai conexão e usuario nao quer entrar em modo offline"]
+    S_BF_4 -> S_EF2_1 [branch: "EF_2 - Cai conexão e usuario quer entrar em modo offline"]
     S_AF1_1 -> S_AF1_2 [event: "system: exibe tela inicial 'SAFF extraction'"]
     S_AF1_2 -> S_AF1_3 [event: "administrador: realiza cinco extrações"]
     S_AF1_3 -> S_AF1_4 [event: "system: adiciona novas extrações a pasta local'"]

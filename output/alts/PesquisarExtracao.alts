@@ -9,7 +9,7 @@ ALTS_SPECIFICATION "Pesquisar por extracao" {
 
   STATES {
     S_INIT [initial, guard: "Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada"]
-    S_BF_1 [flow: "basic", actor: "administrador", action: "digita no campo “Product Number” o numero de produto e no campo “Serial Number”  o numero serial correspondente e pressiona o botao 'Search'", branches_af: [1]]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'", branches_af: [1]]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe tela correspondente a extracao"]
     S_AF1_1 [flow: "alternative_1", description: "Product Number ou Serial Number invalidos", actor: "administrador", action: "digita o product number e/ou numero serial invalidos e pressiona o botao 'Search'"]
     S_AF1_2 [flow: "alternative_1", description: "Product Number ou Serial Number invalidos", actor: "system", action: "exibe mensagem que product number ou serial number sao invalidos", returns_to_bf: 1]

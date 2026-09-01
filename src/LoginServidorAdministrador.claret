@@ -23,9 +23,7 @@ system "SAFF Extractor", {
 
         alternative 3, "Número de tentativas inválidas é 5", {
             step 1, administrador, "digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login"
-            step 2, system, "bloqueia a sessão"
-            step 3, administrador, "digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login", af:[1,2,3]
-            step 4, system, "informa que usuário está bloqueado"
+            step 2, system, "bloqueia a sessão", bfs:1
         }
 
         postCondition " "

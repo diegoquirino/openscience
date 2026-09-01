@@ -1,48 +1,29 @@
 ALTS_SPECIFICATION "Visualizar e editando propria conta" {
   VERSION: "1.0"
-  PRE_CONDITION: "Usuario deve estar logado no servidor"
+  PRE_CONDITION: "Usuário deve estar logado no sistema ; administrador ou super administrador"
   POST_CONDITION: ""
 
   ACTORS {
-    operador: "Operador do sistema"
   }
 
   STATES {
-    S_INIT [initial, guard: "Usuario deve estar logado no servidor"]
-    S_BF_1 [flow: "basic", actor: "operador", action: "seleciona a opcao 'My Account'"]
+    S_INIT [initial, guard: "Usuário deve estar logado no sistema ; administrador ou super administrador"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos"]
-    S_BF_3 [flow: "basic", actor: "operador", action: "pressiona botao 'Edit'"]
-    S_BF_4 [flow: "basic", actor: "system", action: "exibe pagina com campos em branco para atualizacao"]
-    S_BF_5 [flow: "basic", actor: "operador", action: "preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'", branches_af: [1, 2, 3, 4]]
-    S_BF_6 [flow: "basic", actor: "system", action: "exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas"]
-    S_AF1_1 [flow: "alternative_1", description: "Troca Idioma", actor: "operador", action: "preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password', troca 'Language' de Ingles para Portugues e pressiona o botao 'Update'"]
-    S_AF1_2 [flow: "alternative_1", description: "Troca Idioma", actor: "system", action: "exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma"]
-    S_AF2_1 [flow: "alternative_2", description: "Cancela Edicao", actor: "operador", action: "pressiona botao 'Cancel'", returns_to_bf: 2]
-    S_AF3_1 [flow: "alternative_3", description: "Password invalido", actor: "operador", action: "preenche incorretamente o campos 'Old Password'"]
-    S_AF3_2 [flow: "alternative_3", description: "Password invalido", actor: "system", action: "exibe mensagem infrmando que o Password fornecido não esta correto", returns_to_bf: 5]
-    S_AF4_1 [flow: "alternative_4", description: "Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)", actor: "operador", action: "preenche o campos 'New Password' com uma senha fora dos padroes exigidos"]
-    S_AF4_2 [flow: "alternative_4", description: "Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)", actor: "system", action: "exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido", returns_to_bf: 5]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe página com campos em branco para atualização"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas"]
+    S_AF1_2 [flow: "alternative_1", description: "Troca Idioma", actor: "system", action: "exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma"]
+    S_AF3_2 [flow: "alternative_3", description: "Password inválido", actor: "system", action: "exibe mensagem infrmando que o Password fornecido não está correto", returns_to_bf: 5]
+    S_AF4_2 [flow: "alternative_4", description: "Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)", actor: "system", action: "exibe mensagem infrmando que o Password fornecido não está conforme o exigido", returns_to_bf: 5]
     S_END [terminal, guard: ""]
   }
 
   TRANSITIONS {
-    S_INIT -> S_BF_1 [trigger: "Start"]
-    S_BF_1 -> S_BF_2 [event: "system: exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos"]
-    S_BF_2 -> S_BF_3 [event: "operador: pressiona botao 'Edit'"]
-    S_BF_3 -> S_BF_4 [event: "system: exibe pagina com campos em branco para atualizacao"]
-    S_BF_4 -> S_BF_5 [event: "operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'"]
-    S_BF_5 -> S_BF_6 [event: "system: exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas"]
-    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Troca Idioma"]
-    S_BF_5 -> S_AF2_1 [branch: "AF_2 - Cancela Edicao"]
-    S_BF_5 -> S_AF3_1 [branch: "AF_3 - Password invalido"]
-    S_BF_5 -> S_AF4_1 [branch: "AF_4 - Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)"]
+    S_INIT -> S_BF_2 [trigger: "Start"]
+    S_BF_2 -> S_BF_4 [event: "system: exibe página com campos em branco para atualização"]
+    S_BF_4 -> S_BF_6 [event: "system: exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas"]
     S_BF_6 -> S_END [event: "Complete"]
-    S_AF1_1 -> S_AF1_2 [event: "system: exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma"]
     S_AF1_2 -> S_END [event: "Complete"]
-    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
-    S_AF3_1 -> S_AF3_2 [event: "system: exibe mensagem infrmando que o Password fornecido não esta correto"]
     S_AF3_2 -> S_BF_5 [resume_basic_flow: 5]
-    S_AF4_1 -> S_AF4_2 [event: "system: exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido"]
     S_AF4_2 -> S_BF_5 [resume_basic_flow: 5]
   }
 }

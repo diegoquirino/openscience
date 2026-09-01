@@ -1,6 +1,6 @@
 System:	SAFF Extractor
 Use Case:	Login no servidor como Administrador	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -32,11 +32,4 @@ Precondition:	Deve existir um usuário cadastrado com perfil administrador
 1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
 2	administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login		SYSTEM informa que usuário está bloqueado		
 Postcondition:	
-
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Usuario inativo por 30 minutos			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	system: SYSTEM: finaliza sessao do usuario e retorna a pagina de login		finaliza sessao do usuario e retorna a pagina de login		
-Postcondition:	Flow interrupted due to exception / error
 

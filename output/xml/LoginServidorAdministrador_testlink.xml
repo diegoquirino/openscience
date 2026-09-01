@@ -88,21 +88,4 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC5 - Exception Flow 3: Usuario inativo por 30 minutos">
-    <node_order><![CDATA[5]]></node_order>
-    <externalid><![CDATA[TC5]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 3: Usuario inativo por 30 minutos]]></summary>
-    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[system: SYSTEM: finaliza sessao do usuario e retorna a pagina de login]]></actions>
-        <expectedresults><![CDATA[finaliza sessao do usuario e retorna a pagina de login]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
 </testsuite>

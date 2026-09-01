@@ -9,7 +9,7 @@ system "SAFF", {
         basicFlow {
             step 1, superAdmin, "seleciona opção 'Customers' no menu Settings"
             step 2, system, "exibe lista de clientes"
-            step 3, superAdmin, "seleciona o botão 'Create Customer'"
+            step 3, superAdmin, "seleciona o botão 'Create Customer', situado no lado direito inferior da tela"
             step 4, system, "exibe página com campos de cadastro de novo cliente"
             step 5, superAdmin, "preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ", af:[1,2]
             step 6, system, "exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado"

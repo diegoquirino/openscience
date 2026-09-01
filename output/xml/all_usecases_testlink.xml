@@ -2,907 +2,336 @@
 <testsuite name="Consolidated Test Suite">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
-  <testsuite name="Delecao de Extracoes">
+  <testsuite name="CRUD Cliente">
     <node_order><![CDATA[1]]></node_order>
-    <details><![CDATA[Use case: Delecao de Extracoes]]></details>
+    <details><![CDATA[Use case: CRUD Cliente]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+          <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Cancela delecao">
+    <testcase name="TC2 - Alternative Flow 1: Campo fora da formatação esperada, e.g., &apos;ddd&apos; para &apos;Key File&apos;">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <summary><![CDATA[Alternative Flow 1: Campo fora da formatação esperada, e.g., 'ddd' para 'Key File']]></summary>
+      <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: cancela delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
+          <actions><![CDATA[superAdmin: preenche incorretamente os campos 'Name', 'Key File' e/ou 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem informando que os dados não correspondem a formatação esperada]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e delecao">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Cancela delecao">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: cancela delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e delecao">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Extracao Offline">
-    <node_order><![CDATA[2]]></node_order>
-    <details><![CDATA[Use case: Extracao Offline]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Offline sempre">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: reastabelece conexão]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: não deseja entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Offline sempre">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: reastabelece conexão]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline ">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: abre extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: loga no extrator]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: não deseja entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Login no servidor como Administrador">
-    <node_order><![CDATA[3]]></node_order>
-    <details><![CDATA[Use case: Login no servidor como Administrador]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Login ou Password inválidos">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Login ou Password inválidos]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid username or password” na tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Número de tentativas inválidas é 3">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Número de tentativas inválidas é 3]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem de alerta]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Número de tentativas inválidas é 5">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Número de tentativas inválidas é 5]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia a sessão]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM informa que usuário está bloqueado]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Login ou Password inválidos">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Login ou Password inválidos]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid username or password” na tela de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Número de tentativas inválidas é 3">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Número de tentativas inválidas é 3]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem de alerta]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Número de tentativas inválidas é 5">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Número de tentativas inválidas é 5]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia a sessão]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login]]></actions>
-          <expectedresults><![CDATA[SYSTEM informa que usuário está bloqueado]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Exception Flow 3: Usuario inativo por 30 minutos">
-      <node_order><![CDATA[9]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 3: Usuario inativo por 30 minutos]]></summary>
-      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: finaliza sessao do usuario e retorna a pagina de login]]></actions>
-          <expectedresults><![CDATA[finaliza sessao do usuario e retorna a pagina de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Pesquisar por extracao">
-    <node_order><![CDATA[4]]></node_order>
-    <details><![CDATA[Use case: Pesquisar por extracao]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number invalidos">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number invalidos]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem que product number ou serial number sao invalidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e no campo “Serial Number”  o numero serial correspondente e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number invalidos">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number invalidos]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem que product number ou serial number sao invalidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e no campo “Serial Number”  o numero serial correspondente e pressiona o botao 'Search']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Combinando extracoes com diferente perfis">
-    <node_order><![CDATA[5]]></node_order>
-    <details><![CDATA[Use case: Combinando extracoes com diferente perfis]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: faz logout]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: faz login como operador e vai para a página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista vazia]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[8]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[9]]></step_number>
-          <actions><![CDATA[administrador: faz logout]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[10]]></step_number>
-          <actions><![CDATA[administrador: faz login como administrador e vai para a página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com duas entradas]]></expectedresults>
+          <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+          <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-  </testsuite>
-  <testsuite name="CRUD Cliente">
-    <node_order><![CDATA[6]]></node_order>
-    <details><![CDATA[Use case: CRUD Cliente]]></details>
+    <testcase name="TC3 - Alternative Flow 2: Cancela criação">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Cancela criação]]></summary>
+      <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[superAdmin: Cancela criação]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[8]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+          <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Edita dados">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+      <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Edit']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe campos do cliente com valores atuais que podem ser editados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[superAdmin: preenche os novos valores e pressiona o botão 'Update]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[8]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[9]]></step_number>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[10]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[11]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[12]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+          <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: Deleta cliente">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Deleta cliente]]></summary>
+      <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Delete']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[superAdmin: pressiona o botao OK]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[8]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[9]]></step_number>
+          <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[10]]></step_number>
+          <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[11]]></step_number>
+          <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[12]]></step_number>
+          <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+          <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
     <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
+      <node_order><![CDATA[6]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
@@ -949,7 +378,7 @@
       </steps>
     </testcase>
     <testcase name="TC2 - Alternative Flow 1: Campo fora da formatação esperada, e.g., &apos;ddd&apos; para &apos;Key File&apos;">
-      <node_order><![CDATA[2]]></node_order>
+      <node_order><![CDATA[7]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 1: Campo fora da formatação esperada, e.g., 'ddd' para 'Key File']]></summary>
@@ -1002,7 +431,7 @@
       </steps>
     </testcase>
     <testcase name="TC3 - Alternative Flow 2: Cancela criação">
-      <node_order><![CDATA[3]]></node_order>
+      <node_order><![CDATA[8]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 2: Cancela criação]]></summary>
@@ -1061,7 +490,7 @@
       </steps>
     </testcase>
     <testcase name="TC4 - Alternative Flow 3: Edita dados">
-      <node_order><![CDATA[4]]></node_order>
+      <node_order><![CDATA[9]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
@@ -1144,7 +573,7 @@
       </steps>
     </testcase>
     <testcase name="TC5 - Alternative Flow 4: Deleta cliente">
-      <node_order><![CDATA[5]]></node_order>
+      <node_order><![CDATA[10]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 4: Deleta cliente]]></summary>
@@ -1227,150 +656,8 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="CRUD Diagnosticos">
-    <node_order><![CDATA[7]]></node_order>
-    <details><![CDATA[Use case: CRUD Diagnosticos]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
-          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe lista diagnosticos]]></actions>
-          <expectedresults><![CDATA[exibe lista diagnosticos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe página com campos de cadastro de novo documento]]></actions>
-          <expectedresults><![CDATA[exibe página com campos de cadastro de novo documento]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe lista de diagnósticos]]></actions>
-          <expectedresults><![CDATA[exibe lista de diagnósticos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe dados do diagnóstico]]></actions>
-          <expectedresults><![CDATA[exibe dados do diagnóstico]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[system: SYSTEM: retorna a lista de diagnosticos]]></actions>
-          <expectedresults><![CDATA[retorna a lista de diagnosticos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 6: Scenary ou Situation faltando informacao">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 6: Scenary ou Situation faltando informacao]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que existe informaçao indispensável faltando]]></actions>
-          <expectedresults><![CDATA[exibe mensagem informando que existe informaçao indispensável faltando]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 1: Campo fora da formatação esperada">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Campo fora da formatação esperada]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os dados nao correspondem a formatação esperada]]></actions>
-          <expectedresults><![CDATA[exibe mensagem informando que os dados nao correspondem a formatação esperada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 3: Edita dados">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe campos do diagnostico com valores atuais que podem ser editados]]></actions>
-          <expectedresults><![CDATA[exibe campos do diagnostico com valores atuais que podem ser editados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 4: Deleta diagnostico">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Deleta diagnostico]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe mensagem solicitando confirmaçao]]></actions>
-          <expectedresults><![CDATA[exibe mensagem solicitando confirmaçao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Alternative Flow 5: Visualizaçao para Operador, Gerente">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Visualizaçao para Operador, Gerente]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
-          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[system: SYSTEM: exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario]]></actions>
-          <expectedresults><![CDATA[exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
   <testsuite name="CRUD Documents">
-    <node_order><![CDATA[8]]></node_order>
+    <node_order><![CDATA[2]]></node_order>
     <details><![CDATA[Use case: CRUD Documents]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1569,9 +856,1388 @@
         </step>
       </steps>
     </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista completa de documentos]]></actions>
+          <expectedresults><![CDATA[exibe lista completa de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe página com campos de cadastro de novo documento]]></actions>
+          <expectedresults><![CDATA[exibe página com campos de cadastro de novo documento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista de documentos]]></actions>
+          <expectedresults><![CDATA[exibe lista de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[system: SYSTEM: abre janela de visualização do pdf]]></actions>
+          <expectedresults><![CDATA[abre janela de visualização do pdf]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+          <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe dados do documento]]></actions>
+          <expectedresults><![CDATA[exibe dados do documento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[8]]></step_number>
+          <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+          <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[9]]></step_number>
+          <actions><![CDATA[system: SYSTEM: se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento]]></actions>
+          <expectedresults><![CDATA[se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Faltando arquivo">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Faltando arquivo]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os dados não correspondem a formatação esperada ou está faltando informações]]></actions>
+          <expectedresults><![CDATA[exibe mensagem informando que os dados não correspondem a formatação esperada ou está faltando informações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 6: Documento com nome repetido">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Documento com nome repetido]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os já existe um documento cadastrado com o nome especificado]]></actions>
+          <expectedresults><![CDATA[exibe mensagem informando que os já existe um documento cadastrado com o nome especificado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 7: Upload de arquivo não pdf">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 7: Upload de arquivo não pdf]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que o documento especificado não é um arquivo PDF]]></actions>
+          <expectedresults><![CDATA[exibe mensagem informando que o documento especificado não é um arquivo PDF]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 3: Edita dados">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados]]></actions>
+          <expectedresults><![CDATA[exibe campos do documento com valores atuais que podem ser editados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 4: Deleta documento">
+      <node_order><![CDATA[13]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Deleta documento]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem solicitando confirmação]]></actions>
+          <expectedresults><![CDATA[exibe mensagem solicitando confirmação]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC8 - Alternative Flow 5: Visualização para Operador, Gerente">
+      <node_order><![CDATA[14]]></node_order>
+      <externalid><![CDATA[TC8]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Visualização para Operador, Gerente]]></summary>
+      <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista de documentos pertencentes ao mesmo laboratório do usuário]]></actions>
+          <expectedresults><![CDATA[exibe lista de documentos pertencentes ao mesmo laboratório do usuário]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[system: SYSTEM: abre janela de visualização do pdf]]></actions>
+          <expectedresults><![CDATA[abre janela de visualização do pdf]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+          <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe dados do documento]]></actions>
+          <expectedresults><![CDATA[exibe dados do documento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+          <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Delecao de Extracoes">
+    <node_order><![CDATA[3]]></node_order>
+    <details><![CDATA[Use case: Delecao de Extracoes]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Cancela delecao">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: cancela delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e delecao">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Cancela delecao">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: cancela delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e delecao">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: confirma delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Extracao Offline">
+    <node_order><![CDATA[4]]></node_order>
+    <details><![CDATA[Use case: Extracao Offline]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Pressiona NO">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Pressiona NO]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: Não deseja entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Offline sempre">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Offline sempre]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 1: Cai conexão ">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Cai conexão ]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: reastabelece conexão]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Offline sempre">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: reastabelece conexão]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: não deseja entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Extracao via Interface Matrix">
+    <node_order><![CDATA[5]]></node_order>
+    <details><![CDATA[Use case: Extracao via Interface Matrix]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
+          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Seleciona pasta vazia">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Seleciona pasta vazia]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[operador: seleciona pasta vazia, e pressiona botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[operador: adiciona extracao a pasta indicada]]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
+          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Insere novas extracoes na pasta">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[operador: adiciona novas extracoes na pasta indicada]]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
+          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 1: Falha no envio ao servidor">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM tenta enviar extrações restantes para o servidor]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 2: Extração não se encontra em formato adequado">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Extração não se encontra em formato adequado]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM move a extração para a pasta broken]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Login no servidor como Administrador">
+    <node_order><![CDATA[6]]></node_order>
+    <details><![CDATA[Use case: Login no servidor como Administrador]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Login ou Password inválidos">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Login ou Password inválidos]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid username or password” na tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Número de tentativas inválidas é 3">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Número de tentativas inválidas é 3]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem de alerta]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Número de tentativas inválidas é 5">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Número de tentativas inválidas é 5]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia a sessão]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Login ou Password inválidos">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Login ou Password inválidos]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid username or password” na tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Número de tentativas inválidas é 3">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Número de tentativas inválidas é 3]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem de alerta]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita um login e pasword de usuário administrador e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela “Search extraction”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Número de tentativas inválidas é 5">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Número de tentativas inválidas é 5]]></summary>
+      <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM bloqueia a sessão]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login]]></actions>
+          <expectedresults><![CDATA[SYSTEM informa que usuário está bloqueado]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Pesquisar por extracao">
+    <node_order><![CDATA[7]]></node_order>
+    <details><![CDATA[Use case: Pesquisar por extracao]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extração]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number inválidos">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number inválidos]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita o product number e/ou número serial inválidos e pressiona o botão 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extração]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number invalidos">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number invalidos]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem que product number ou serial number sao invalidos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Combinando extracoes com diferente perfis">
+    <node_order><![CDATA[8]]></node_order>
+    <details><![CDATA[Use case: Combinando extracoes com diferente perfis]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: faz logout]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: faz login como operador e vai para a página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista vazia]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[8]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[9]]></step_number>
+          <actions><![CDATA[administrador: faz logout]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[10]]></step_number>
+          <actions><![CDATA[administrador: faz login como administrador e vai para a página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com duas entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="CRUD Diagnosticos">
+    <node_order><![CDATA[9]]></node_order>
+    <details><![CDATA[Use case: CRUD Diagnosticos]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista diagnosticos]]></actions>
+          <expectedresults><![CDATA[exibe lista diagnosticos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe página com campos de cadastro de novo documento]]></actions>
+          <expectedresults><![CDATA[exibe página com campos de cadastro de novo documento]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista de diagnósticos]]></actions>
+          <expectedresults><![CDATA[exibe lista de diagnósticos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe dados do diagnóstico]]></actions>
+          <expectedresults><![CDATA[exibe dados do diagnóstico]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[system: SYSTEM: retorna a lista de diagnosticos]]></actions>
+          <expectedresults><![CDATA[retorna a lista de diagnosticos]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 6: Scenary ou Situation faltando informacao">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Scenary ou Situation faltando informacao]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que existe informaçao indispensável faltando]]></actions>
+          <expectedresults><![CDATA[exibe mensagem informando que existe informaçao indispensável faltando]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 1: Campo fora da formatação esperada">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Campo fora da formatação esperada]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os dados nao correspondem a formatação esperada]]></actions>
+          <expectedresults><![CDATA[exibe mensagem informando que os dados nao correspondem a formatação esperada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 3: Edita dados">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe campos do diagnostico com valores atuais que podem ser editados]]></actions>
+          <expectedresults><![CDATA[exibe campos do diagnostico com valores atuais que podem ser editados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 4: Deleta diagnostico">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Deleta diagnostico]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem solicitando confirmaçao]]></actions>
+          <expectedresults><![CDATA[exibe mensagem solicitando confirmaçao]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 5: Visualizaçao para Operador, Gerente">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Visualizaçao para Operador, Gerente]]></summary>
+      <preconditions><![CDATA[ ]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+          <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[system: SYSTEM: exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario]]></actions>
+          <expectedresults><![CDATA[exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
   </testsuite>
   <testsuite name="CRUD Laboratorios">
-    <node_order><![CDATA[9]]></node_order>
+    <node_order><![CDATA[10]]></node_order>
     <details><![CDATA[Use case: CRUD Laboratorios]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1953,7 +2619,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Secoes">
-    <node_order><![CDATA[10]]></node_order>
+    <node_order><![CDATA[11]]></node_order>
     <details><![CDATA[Use case: CRUD Secoes]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2039,7 +2705,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Secu Infos">
-    <node_order><![CDATA[11]]></node_order>
+    <node_order><![CDATA[12]]></node_order>
     <details><![CDATA[Use case: CRUD Secu Infos]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2368,7 +3034,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Users">
-    <node_order><![CDATA[12]]></node_order>
+    <node_order><![CDATA[13]]></node_order>
     <details><![CDATA[Use case: CRUD Users]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2604,7 +3270,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Estatisticas">
-    <node_order><![CDATA[13]]></node_order>
+    <node_order><![CDATA[14]]></node_order>
     <details><![CDATA[Use case: Estatisticas]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2771,7 +3437,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Extracao em modo LLT">
-    <node_order><![CDATA[14]]></node_order>
+    <node_order><![CDATA[15]]></node_order>
     <details><![CDATA[Use case: Extracao em modo LLT]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2973,7 +3639,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Extracao via Interface Metrix">
-    <node_order><![CDATA[15]]></node_order>
+    <node_order><![CDATA[16]]></node_order>
     <details><![CDATA[Use case: Extracao via Interface Metrix]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3193,7 +3859,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Realizacao Extracoes em modo diretorio e aplicando filtros">
-    <node_order><![CDATA[16]]></node_order>
+    <node_order><![CDATA[17]]></node_order>
     <details><![CDATA[Use case: Realizacao Extracoes em modo diretorio e aplicando filtros]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3477,7 +4143,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Filtro de Extracoes">
-    <node_order><![CDATA[17]]></node_order>
+    <node_order><![CDATA[18]]></node_order>
     <details><![CDATA[Use case: Filtro de Extracoes]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4014,7 +4680,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Listar Usuarios">
-    <node_order><![CDATA[18]]></node_order>
+    <node_order><![CDATA[19]]></node_order>
     <details><![CDATA[Use case: Listar Usuarios]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4093,7 +4759,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Login no extrator como Administrador">
-    <node_order><![CDATA[19]]></node_order>
+    <node_order><![CDATA[20]]></node_order>
     <details><![CDATA[Use case: Login no extrator como Administrador]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4271,7 +4937,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Settings">
-    <node_order><![CDATA[20]]></node_order>
+    <node_order><![CDATA[21]]></node_order>
     <details><![CDATA[Use case: Settings]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4367,7 +5033,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Visualizacao de Extracoes e outras Features">
-    <node_order><![CDATA[21]]></node_order>
+    <node_order><![CDATA[22]]></node_order>
     <details><![CDATA[Use case: Visualizacao de Extracoes e outras Features]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4551,7 +5217,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Visualizar e editando propria conta">
-    <node_order><![CDATA[22]]></node_order>
+    <node_order><![CDATA[23]]></node_order>
     <details><![CDATA[Use case: Visualizar e editando propria conta]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4565,7 +5231,7 @@
         <step>
           <step_number><![CDATA[1]]></step_number>
           <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4594,7 +5260,7 @@
         <step>
           <step_number><![CDATA[1]]></step_number>
           <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4623,7 +5289,7 @@
         <step>
           <step_number><![CDATA[1]]></step_number>
           <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4635,7 +5301,7 @@
         <step>
           <step_number><![CDATA[3]]></step_number>
           <actions><![CDATA[operador: pressiona botao 'Cancel']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4664,7 +5330,7 @@
         <step>
           <step_number><![CDATA[1]]></step_number>
           <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4699,7 +5365,7 @@
         <step>
           <step_number><![CDATA[1]]></step_number>
           <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
@@ -4727,26 +5393,26 @@
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+      <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></actions>
+          <expectedresults><![CDATA[exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe página com campos em branco para atualização]]></actions>
+          <expectedresults><![CDATA[exibe página com campos em branco para atualização]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas]]></actions>
+          <expectedresults><![CDATA[exibe página com informações do usuário e apresenta mensagem informando que as informações foram atualizadas]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
@@ -4756,137 +5422,48 @@
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 1: Troca Idioma]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+      <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password', troca 'Language' de Ingles para Portugues e pressiona o botao 'Update']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma]]></actions>
+          <expectedresults><![CDATA[exibe página com informações do usuário. Apresenta mensagem informando que as informações foram atualizadas e atualiza conta no novo idioma]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Cancela Edicao">
+    <testcase name="TC4 - Alternative Flow 3: Password inválido">
       <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Cancela Edicao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Cancel']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Password invalido">
-      <node_order><![CDATA[9]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Password invalido]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+      <summary><![CDATA[Alternative Flow 3: Password inválido]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: preenche incorretamente o campos 'Old Password']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem infrmando que o Password fornecido não esta correto]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está correto]]></actions>
+          <expectedresults><![CDATA[exibe mensagem infrmando que o Password fornecido não está correto]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC5 - Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)">
-      <node_order><![CDATA[10]]></node_order>
+    <testcase name="TC5 - Alternative Flow 4: Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)">
+      <node_order><![CDATA[9]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor]]></preconditions>
+      <summary><![CDATA[Alternative Flow 4: Novo Password fora dos padrões (uppercase, lowercase, numbers, special characters and size between 8 and 20)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no sistema ; administrador ou super administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: seleciona a opcao 'My Account']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Edit']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com campos em branco para atualizacao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: preenche o campos 'New Password' com uma senha fora dos padroes exigidos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas]]></expectedresults>
+          <actions><![CDATA[system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está conforme o exigido]]></actions>
+          <expectedresults><![CDATA[exibe mensagem infrmando que o Password fornecido não está conforme o exigido]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
