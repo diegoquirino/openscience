@@ -5,6 +5,91 @@
 
 ---
 
+## ⚙️ Architecture & Process Workflow Diagrams
+
+### 1. Cross-Agent Ecosystem & Synchronization Architecture
+```mermaid
+graph TD
+    subgraph SOT ["Single Source of Truth"]
+        CLAUDE[".claude/skills/<br/>(Canonical Skills & Scripts)"]
+    end
+
+    subgraph SyncEngine ["Synchronization Engine"]
+        SYNC["scripts/sync_agents.py"]
+    end
+
+    subgraph Mirrors ["Cross-Tool Mirrors & Command Interfaces"]
+        AGY[".agent/skills/ & workflows/<br/>(Google Antigravity)"]
+        CUR[".cursor/skills/ & commands/<br/>(Cursor IDE Slash Menus)"]
+        CLAUDE_CLI["Claude Code CLI<br/>(Native Discovery)"]
+    end
+
+    subgraph CoreEngine ["CLARET Engine & External Drivers"]
+        ENGINE["scripts/claret_engine.py<br/>(Shared Engine)"]
+        JAR["bin/claret-generator.jar<br/>(Java 26 Fat JAR)"]
+        GH_API["GitHub REST API<br/>(PyGithub / Git CLI)"]
+        LLM["LLM Translators<br/>(Gemini / Claude APIs)"]
+    end
+
+    CLAUDE --> SYNC
+    SYNC --> AGY
+    SYNC --> CUR
+    SYNC --> CLAUDE_CLI
+
+    AGY & CUR & CLAUDE_CLI --> ENGINE
+    ENGINE --> JAR
+    ENGINE --> GH_API
+    ENGINE --> LLM
+```
+
+### 2. End-to-End Specification Lifecycle Workflow
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as Researcher / Agent
+    participant Pub as /publish-versions
+    participant JAR as claret-generator.jar
+    participant Git as GitHub (Branch / Tags / Releases)
+    participant Down as /download-releases
+    participant Trans as /translate-specs
+    participant DiffSrc as /diff-src
+    participant DiffOut as /diff-output
+
+    rect rgb(240, 248, 255)
+        Note over Dev,Git: Phase 1: Iterative Version Publication & MBT Suite Generation
+        Dev->>Pub: /publish-versions --version-dirs 1.0 1.1 ... 2.9 --branch saff-study
+        loop For each sequential version folder
+            Pub->>Pub: Scan and merge .claret/.dsl files into branch folder (PascalCase)
+            Pub->>JAR: Execute JAR (-i saff-study -o output/ -c gt -f all)
+            JAR-->>Pub: Produce src/ and generated output/ test suites
+            Pub->>Git: Commit & Push ("feat(saff-study): publish vX.Y")
+            Pub->>Git: Push Tag (saff-study_vX.Y) & Create Release ("SAFF Study vX.Y")
+        end
+    end
+
+    rect rgb(255, 248, 240)
+        Note over Dev,Trans: Phase 2: Downstream Asset Retrieval & Multilingual Translation
+        Dev->>Down: /download-releases --tags saff-study_v1.0 saff-study_v2.0
+        Down->>Git: Fetch source trees (src/)
+        Down-->>Dev: Downloaded segregated local folders
+        Dev->>Trans: /translate-specs --dirs downloads/v1.0 --locale en-us
+        Trans-->>Dev: DSL Token-Preserved Translated Specifications
+    end
+
+    rect rgb(240, 255, 240)
+        Note over Dev,DiffOut: Phase 3: Evolutionary Diff & Empirical Study Analysis
+        Dev->>DiffSrc: /diff-src --tags saff-study_v1.0 saff-study_v2.0 saff-study_v3.0
+        DiffSrc->>Git: Compute adjacent Git diffs on src/ (.claret)
+        DiffSrc-->>Dev: Normalized CSV Report (src_diffs.csv)
+
+        Dev->>DiffOut: /diff-output --tags saff-study_v1.0 saff-study_v2.0 --formats txt xlsx
+        DiffOut->>Git: Compute adjacent diffs on output/ test cases (GT, ART, etc.)
+        DiffOut-->>Dev: Normalized CSV Report (output_diffs.csv)
+    end
+```
+
+---
+
 ## 1. Project Directory Structure
 
 ```text
