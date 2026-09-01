@@ -62,11 +62,13 @@ def process_and_publish_versions(
             elif (PROJECT_ROOT / v_entry).exists():
                 v_path = PROJECT_ROOT / v_entry
 
-        if not v_path.exists():
-            logger.error(f"Version directory not found: {v_entry}")
-            continue
+        # Resolve version string: prefer semantic folder name (e.g. '1.0', '1.1', '2.9') or sequential index
+        raw_name = v_path.name.lstrip("vV")
+        if re.match(r'^\d+(\.\d+)+$', raw_name):
+            ver_str = format_version(raw_name)
+        else:
+            ver_str = format_version(idx)
 
-        ver_str = format_version(idx)
         tag_name = f"{branch_name}_v{ver_str}"
         release_title = f"{format_branch_title(branch_name)} v{ver_str}"
 
