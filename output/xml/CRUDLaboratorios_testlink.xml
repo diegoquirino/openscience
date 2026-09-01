@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CRUD Laboratorios">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Campo fora da formatacao esperada, e.g, Country = xx">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Campo fora da formatacao esperada, e.g, Country = xx]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche incorretamente algum dos campos 'Name', 'Country' ou 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que os dados nao correspondem a formatação esperada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Cancela criacao">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Cancela criacao]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: cancela criacao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Edita dados">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botao 'Edit']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe campos do Laboratório com valores atuais que podem ser editados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: preenche os novos valores e pressiona o botao 'Update]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[9]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[10]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[11]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[12]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Nome de Laboratorio já existente">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Nome de Laboratorio já existente]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratórios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botao 'Create Laboratories']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo Laboratório]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche o campo 'Name' com um nome de laboratorio ja existente. Preenche corretamente os campos 'Country' e 'Description' e pressiona o botao 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que ja existe laboratório cadastrado com esse nome]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Laboratories' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um Laboratório]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de laboratorios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

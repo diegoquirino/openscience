@@ -1,0 +1,59 @@
+ALTS_SPECIFICATION "CRUD Secu Infos" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Estar logado como super administrador"
+  POST_CONDITION: ""
+
+  ACTORS {
+    superAdmin: "Super administrador"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Estar logado como super administrador"]
+    S_BF_1 [flow: "basic", actor: "superAdmin", action: "seleciona opção 'Secu Infos' no menu Settings"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe lista de Secu Infos"]
+    S_BF_3 [flow: "basic", actor: "superAdmin", action: "seleciona o botao 'Create Secu Info'"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe pagina com campos de cadastro de novo Secu Info"]
+    S_BF_5 [flow: "basic", actor: "superAdmin", action: "preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create'", branches_af: [1]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe pagina com dados do novo Secu Info e mensagem que um novo entrada foi adicionado"]
+    S_BF_7 [flow: "basic", actor: "superAdmin", action: "seleciona opcao 'Secu Info' no menu Settings"]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe lista de Secu Infos"]
+    S_BF_9 [flow: "basic", actor: "superAdmin", action: "clica no nome de uma Secu Info"]
+    S_BF_10 [flow: "basic", actor: "system", action: "exibe dados da Secu Info"]
+    S_BF_11 [flow: "basic", actor: "superAdmin", action: "clica no botao 'Cancel'", branches_af: [3, 4]]
+    S_BF_12 [flow: "basic", actor: "system", action: "retorna a lista de Secu Infos"]
+    S_AF1_1 [flow: "alternative_1", description: "Cancela criacao", actor: "superAdmin", action: "Cancela criacao", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "Edita dados", actor: "superAdmin", action: "clica no botao 'Edit'"]
+    S_AF3_2 [flow: "alternative_3", description: "Edita dados", actor: "system", action: "exibe campos do Secu Info com valores atuais que podem ser editados"]
+    S_AF3_3 [flow: "alternative_3", description: "Edita dados", actor: "superAdmin", action: "preenche os novos valores e pressiona o botão 'Update", returns_to_bf: 2]
+    S_AF4_1 [flow: "alternative_4", description: "Deleta Secu Info", actor: "superAdmin", action: "clica no botao 'Delete'"]
+    S_AF4_2 [flow: "alternative_4", description: "Deleta Secu Info", actor: "system", action: "exibe mensagem solicitando confirmacao"]
+    S_AF4_3 [flow: "alternative_4", description: "Deleta Secu Info", actor: "superAdmin", action: "pressiona o botao OK", returns_to_bf: 2]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe lista de Secu Infos"]
+    S_BF_2 -> S_BF_3 [event: "superAdmin: seleciona o botao 'Create Secu Info'"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe pagina com campos de cadastro de novo Secu Info"]
+    S_BF_4 -> S_BF_5 [event: "superAdmin: preenche corretamente os campos 'Secu Info' e 'Sxx' e pressiona o botão 'Create'"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe pagina com dados do novo Secu Info e mensagem que um novo entrada foi adicionado"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Cancela criacao"]
+    S_BF_6 -> S_BF_7 [event: "superAdmin: seleciona opcao 'Secu Info' no menu Settings"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe lista de Secu Infos"]
+    S_BF_8 -> S_BF_9 [event: "superAdmin: clica no nome de uma Secu Info"]
+    S_BF_9 -> S_BF_10 [event: "system: exibe dados da Secu Info"]
+    S_BF_10 -> S_BF_11 [event: "superAdmin: clica no botao 'Cancel'"]
+    S_BF_11 -> S_BF_12 [event: "system: retorna a lista de Secu Infos"]
+    S_BF_11 -> S_AF3_1 [branch: "AF_3 - Edita dados"]
+    S_BF_11 -> S_AF4_1 [branch: "AF_4 - Deleta Secu Info"]
+    S_BF_12 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_AF3_2 [event: "system: exibe campos do Secu Info com valores atuais que podem ser editados"]
+    S_AF3_2 -> S_AF3_3 [event: "superAdmin: preenche os novos valores e pressiona o botão 'Update"]
+    S_AF3_3 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF4_1 -> S_AF4_2 [event: "system: exibe mensagem solicitando confirmacao"]
+    S_AF4_2 -> S_AF4_3 [event: "superAdmin: pressiona o botao OK"]
+    S_AF4_3 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

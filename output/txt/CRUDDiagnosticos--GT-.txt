@@ -1,0 +1,52 @@
+System:	SAFF
+Use Case:	CRUD Diagnosticos	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista diagnosticos		exibe lista diagnosticos		
+3	system: SYSTEM: exibe página com campos de cadastro de novo documento		exibe página com campos de cadastro de novo documento		
+4	system: SYSTEM: exibe lista de diagnosticos		exibe lista de diagnosticos		
+5	system: SYSTEM: exibe dados do diagnostico		exibe dados do diagnostico		
+6	system: SYSTEM: retorna a lista de diagnosticos		retorna a lista de diagnosticos		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Scenary ou Situation faltando informacao			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que existe informaçao indispensável faltando		exibe mensagem informando que existe informaçao indispensável faltando		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Campo fora da formatacao esperada			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os dados nao correspondem a formatacao esperada		exibe mensagem informando que os dados nao correspondem a formatacao esperada		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do diagnostico com valores atuais que podem ser editados		exibe campos do diagnostico com valores atuais que podem ser editados		
+Postcondition:	
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Deleta diagnostico			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmacao		exibe mensagem solicitando confirmacao		
+Postcondition:	
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Visualizaçao para Operador, Gerente			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario		exibe lista de diagnosticos pertencentes ao mesmo laboratorio do usuario		
+Postcondition:	
+

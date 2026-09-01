@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CRUD Users">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuários]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuários]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe pagina com campos de cadastro do usuario]]></actions>
+        <expectedresults><![CDATA[exibe pagina com campos de cadastro do usuario]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem indicando que novo usuario foi criado]]></actions>
+        <expectedresults><![CDATA[exibe mensagem indicando que novo usuario foi criado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuarios]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuarios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe dados do usuario]]></actions>
+        <expectedresults><![CDATA[exibe dados do usuario]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuarios]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuarios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Usuário com login repetido">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Usuário com login repetido]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os este usuarios já existe]]></actions>
+        <expectedresults><![CDATA[exibe mensagem informando que os este usuarios já existe]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Edita dados">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados]]></actions>
+        <expectedresults><![CDATA[exibe campos do documento com valores atuais que podem ser editados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe novos dados do usuarios]]></actions>
+        <expectedresults><![CDATA[exibe novos dados do usuarios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Edita dados e altera linguagem">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Edita dados e altera linguagem]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe novos dados do usuarios]]></actions>
+        <expectedresults><![CDATA[exibe novos dados do usuarios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: e apresentado na nova linguagem]]></actions>
+        <expectedresults><![CDATA[e apresentado na nova linguagem]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Reseta senha">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Reseta senha]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem pedindo confirmacao]]></actions>
+        <expectedresults><![CDATA[exibe mensagem pedindo confirmacao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuarios]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuarios]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Bloqueio de usuario">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Bloqueio de usuario]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem pedindo confirmacao]]></actions>
+        <expectedresults><![CDATA[exibe mensagem pedindo confirmacao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem confirmando bloqueio de usuario]]></actions>
+        <expectedresults><![CDATA[exibe mensagem confirmando bloqueio de usuario]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe dados do usuario]]></actions>
+        <expectedresults><![CDATA[exibe dados do usuario]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados]]></actions>
+        <expectedresults><![CDATA[exibe campos do documento com valores atuais que podem ser editados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem pedindo confirmação]]></actions>
+        <expectedresults><![CDATA[exibe mensagem pedindo confirmação]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem confirmando desbloqueio de usuario]]></actions>
+        <expectedresults><![CDATA[exibe mensagem confirmando desbloqueio de usuario]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC10 - Alternative Flow 9: Test de bloqueio">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC10]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 9: Test de bloqueio]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem que usuário esta bloqueado]]></actions>
+        <expectedresults><![CDATA[exibe mensagem que usuário esta bloqueado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC11 - Alternative Flow 10: Deleta usuario">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC11]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 10: Deleta usuario]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um usuário super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem solicitando confirmacao]]></actions>
+        <expectedresults><![CDATA[exibe mensagem solicitando confirmacao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

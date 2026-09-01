@@ -1,0 +1,59 @@
+ALTS_SPECIFICATION "CRUD Cliente" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Estar logado como super administrador"
+  POST_CONDITION: ""
+
+  ACTORS {
+    superAdmin: "Super administrador"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Estar logado como super administrador"]
+    S_BF_1 [flow: "basic", actor: "superAdmin", action: "seleciona opção 'Customers' no menu Settings"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe lista de clientes"]
+    S_BF_3 [flow: "basic", actor: "superAdmin", action: "seleciona o botão 'Create Customer'"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe página com campos de cadastro de novo cliente"]
+    S_BF_5 [flow: "basic", actor: "superAdmin", action: "preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create'", branches_af: [1]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado"]
+    S_BF_7 [flow: "basic", actor: "superAdmin", action: "seleciona opção 'Customers' no menu Settings"]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe lista de clientes"]
+    S_BF_9 [flow: "basic", actor: "superAdmin", action: "clica no nome de um cliente"]
+    S_BF_10 [flow: "basic", actor: "system", action: "exibe dados do cliente"]
+    S_BF_11 [flow: "basic", actor: "superAdmin", action: "clica no botão 'Cancel'", branches_af: [2, 3]]
+    S_BF_12 [flow: "basic", actor: "system", action: "retorna a lista de clientes"]
+    S_AF1_1 [flow: "alternative_1", description: "Cancela criação", actor: "superAdmin", action: "Cancela criação", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Edita dados", actor: "superAdmin", action: "clica no botão 'Edit'"]
+    S_AF2_2 [flow: "alternative_2", description: "Edita dados", actor: "system", action: "exibe campos do cliente com valores atuais que podem ser editados"]
+    S_AF2_3 [flow: "alternative_2", description: "Edita dados", actor: "superAdmin", action: "preenche os novos valores e pressiona o botão 'Update", returns_to_bf: 10]
+    S_AF3_1 [flow: "alternative_3", description: "Deleta cliente", actor: "superAdmin", action: "clica no botão 'Delete'"]
+    S_AF3_2 [flow: "alternative_3", description: "Deleta cliente", actor: "system", action: "exibe mensagem solicitando confirmação"]
+    S_AF3_3 [flow: "alternative_3", description: "Deleta cliente", actor: "superAdmin", action: "pressiona o botão OK", returns_to_bf: 2]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe lista de clientes"]
+    S_BF_2 -> S_BF_3 [event: "superAdmin: seleciona o botão 'Create Customer'"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe página com campos de cadastro de novo cliente"]
+    S_BF_4 -> S_BF_5 [event: "superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create'"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Cancela criação"]
+    S_BF_6 -> S_BF_7 [event: "superAdmin: seleciona opção 'Customers' no menu Settings"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe lista de clientes"]
+    S_BF_8 -> S_BF_9 [event: "superAdmin: clica no nome de um cliente"]
+    S_BF_9 -> S_BF_10 [event: "system: exibe dados do cliente"]
+    S_BF_10 -> S_BF_11 [event: "superAdmin: clica no botão 'Cancel'"]
+    S_BF_11 -> S_BF_12 [event: "system: retorna a lista de clientes"]
+    S_BF_11 -> S_AF2_1 [branch: "AF_2 - Edita dados"]
+    S_BF_11 -> S_AF3_1 [branch: "AF_3 - Deleta cliente"]
+    S_BF_12 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_AF2_2 [event: "system: exibe campos do cliente com valores atuais que podem ser editados"]
+    S_AF2_2 -> S_AF2_3 [event: "superAdmin: preenche os novos valores e pressiona o botão 'Update"]
+    S_AF2_3 -> S_BF_10 [resume_basic_flow: 10]
+    S_AF3_1 -> S_AF3_2 [event: "system: exibe mensagem solicitando confirmação"]
+    S_AF3_2 -> S_AF3_3 [event: "superAdmin: pressiona o botão OK"]
+    S_AF3_3 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

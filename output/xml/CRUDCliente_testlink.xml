@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CRUD Cliente">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Cancela criação">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Cancela criação]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: Cancela criação]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Edita dados">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Edita dados]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Edit']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe campos do cliente com valores atuais que podem ser editados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: preenche os novos valores e pressiona o botão 'Update]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Deleta cliente">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Deleta cliente]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Delete']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: pressiona o botão OK]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona o botão 'Create Customer']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com campos de cadastro de novo cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[9]]></step_number>
+        <actions><![CDATA[superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' ]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[10]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opção 'Customers' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[11]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de um cliente]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados do cliente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[12]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de clientes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

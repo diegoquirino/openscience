@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Extracao em modo LLT">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Terminal nao se encontra em modo LLT">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Terminal nao se encontra em modo LLT]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: conecta terminal em porta USB e o coloca em modo LLT]]></actions>
+        <expectedresults><![CDATA[SYSTEM (terminal) entra em modo LLT]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Test 1">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Test 1]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: marca opcao Test 1 para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Test 2">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Test 2]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: marca opcao Test 2 para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: QA">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: QA]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: marca opcao QA para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Note">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Note]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: insere uma anotacao para a extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Uso do leitor de codigo de barras">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Uso do leitor de codigo de barras]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: le (via leitor de codigo de barras) um product number e serial number validos]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Alternative Flow 7: Redirect">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 7: Redirect]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: marca a opcao 'Redirect to the display of data']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extracao, a envia para o servidor, a salva nas pastas de backup local e abre o browser mostrando a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC9 - Alternative Flow 8: Disable LLT">
+    <node_order><![CDATA[9]]></node_order>
+    <externalid><![CDATA[TC9]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 8: Disable LLT]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: marca a opcao 'Disable LLT']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos, preenche o Note e pressiona Extract]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza uma extracao Disabled LLT, a envia para o servidor, e a salva nas pastas de backup local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC10 - Alternative Flow 9: Product number e/ou serial number invalidos">
+    <node_order><![CDATA[10]]></node_order>
+    <externalid><![CDATA[TC10]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 9: Product number e/ou serial number invalidos]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e/ou serial number invalidos]]></actions>
+        <expectedresults><![CDATA[SYSTEM marca campo em vermelho alertando do erro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC11 - Alternative Flow 10: Product number e serial number que nao casam">
+    <node_order><![CDATA[11]]></node_order>
+    <externalid><![CDATA[TC11]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 10: Product number e serial number que nao casam]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta mensagem de erro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM realiza a extração, a envia para o servidor, e a salva nas pastas de backup local ('Backup' e 'Results')]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista que inclui a extracao realizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC12 - Exception Flow 1: Nao existe porta USB cadastrada">
+    <node_order><![CDATA[12]]></node_order>
+    <externalid><![CDATA[TC12]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Nao existe porta USB cadastrada]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando informando não existe porta USB cadastrada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC13 - Exception Flow 2: Falha no envio para servidor e Usuário não deseja fazer extração offline">
+    <node_order><![CDATA[13]]></node_order>
+    <externalid><![CDATA[TC13]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Falha no envio para servidor e Usuário não deseja fazer extração offline]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que houve erro na conexão com o servidor e pergunta se usuario deseja fazer a extração em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: responde No]]></actions>
+        <expectedresults><![CDATA[SYSTEM fecha janela e retorna a pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC14 - Exception Flow 3: Falha no envio para servidor e Usuário deseja fazer extração offline">
+    <node_order><![CDATA[14]]></node_order>
+    <externalid><![CDATA[TC14]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: Falha no envio para servidor e Usuário deseja fazer extração offline]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que houve erro na conexão com o servidor e pergunta se usuario deseja fazer a extração em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: responde Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: configura o teste, insere product number e serial number válidos inicia a extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM salva extração em pasta local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC15 - Exception Flow 4: Dados de terminal inválidos">
+    <node_order><![CDATA[15]]></node_order>
+    <externalid><![CDATA[TC15]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 4: Dados de terminal inválidos]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que dados do terminal estão incorretos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC16 - Exception Flow 5: Nao existe terminal conectado">
+    <node_order><![CDATA[16]]></node_order>
+    <externalid><![CDATA[TC16]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 5: Nao existe terminal conectado]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que não conseguiu se conectar ao terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

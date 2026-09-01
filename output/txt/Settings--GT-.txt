@@ -1,0 +1,35 @@
+System:	SAFF Extractor
+Use Case:	Settings	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botao 'Settings'		SYSTEM exibe a janela de configuracoes		
+2	administrador: seleciona a opção 'Portugues' no campo 'Language' e salva		SYSTEM exibe tela inicial 'SAFF extraction' tualizada com todos os campos em portugues		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Linguagem Espanhol			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: Abre arquivo de configuracoes e modifica propriedade linguagem para 'Espanol', salva e loga novamente no sistema		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Visible Test Type			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botao 'Settings'		SYSTEM exibe a janela de configuracoes		
+2	administrador: seleciona somente opcao 'Pre test' no campo 'Visible Test Type' e pressiona botao 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opcao de teste.		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Default Test Type			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botao 'Settings'		SYSTEM exibe a janela de configuracoes		
+2	administrador: seleciona somente opcao 'Pre test' no campo 'Default Test Type' e pressiona botao 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' esta marcado.		
+Postcondition:	
+

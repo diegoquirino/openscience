@@ -1,0 +1,66 @@
+System:	SAFF Extractor
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: User invalido			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos		
+3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Password invalida			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user de um usuário administrador corretamente, digita uma password invalida e pressiona o botao Login		SYSTEM abre um pop-up e exibe a mensagem de usuario ou senha incorretos; informa o numero de tentativas restantes ate que o usuario seja bloqueado		
+3	administrador: pressiona o botao Ok		SYSTEM fecha a janela pop-up		
+4	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Numero de tentativas invalidas e 5			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user correte e o password invalido pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado		
+3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos		SYSTEM exibe mensagem informando usuario esta bloqueado		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Sem conexao com o servidor e usuario deseja fazer extracao offline			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pop-up questionando se o usuqrio deseja fazer extracoes offline		
+3	administrador: pressiona o botao Yes		SYSTEM fecha a janela pop-up e exibe tela de extracao por dispositivo em modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Sem conexao com o servidor e usuario nao deseja fazer extração offline			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pop-up questionando se o usuário deveja fazer extracoes offline		
+3	administrador: pressiona o botao No		SYSTEM fecha a janela pop-up		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Usuario inativo por 90 dias			Execution Date:	
+Precondition:	Deve existir um usuario cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe mensagem indicando que usuario foi bloqueado		
+Postcondition:	Flow interrupted due to exception / error
+

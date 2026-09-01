@@ -1,0 +1,90 @@
+ALTS_SPECIFICATION "Combinando extracoes com diferente perfis" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Administrador deve estar logado ; não existem extrações cadastradas"
+  POST_CONDITION: ""
+
+  ACTORS {
+    superAdministrador: "Super Administrador"
+    administrador: "Administrador"
+    operator: "Operador de uma lab diferente do administrador"
+    operatorDois: "Operador de mesmo lab do administrador"
+    manager: "Gerente de uma lab diferente do administrador e operador"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Administrador deve estar logado ; não existem extrações cadastradas"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "pressiona opção “Extract from directory”"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela de extração por diretório"]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_5 [flow: "basic", actor: "administrador", action: "acessa página “Extractions”"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe a lista de extrações com somente um elemento"]
+    S_BF_7 [flow: "basic", actor: "administrador", action: "faz logout"]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe página de login"]
+    S_BF_9 [flow: "basic", actor: "operator", action: "faz login e vai para a página “Extractions”"]
+    S_BF_10 [flow: "basic", actor: "system", action: "exibe uma lista vazia"]
+    S_BF_11 [flow: "basic", actor: "operator", action: "pressiona opção “Extract from directory”"]
+    S_BF_12 [flow: "basic", actor: "system", action: "exibe tela de extração por diretório"]
+    S_BF_13 [flow: "basic", actor: "operator", action: "seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_14 [flow: "basic", actor: "system", action: "exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_15 [flow: "basic", actor: "operator", action: "acessa página “Extractions”"]
+    S_BF_16 [flow: "basic", actor: "system", action: "exibe a lista de extrações com somente um elemento"]
+    S_BF_17 [flow: "basic", actor: "operator", action: "faz logout"]
+    S_BF_18 [flow: "basic", actor: "system", action: "exibe página de login"]
+    S_BF_19 [flow: "basic", actor: "operatorDois", action: "faz login e vai para a página “Extractions”"]
+    S_BF_20 [flow: "basic", actor: "system", action: "exibe uma lista com uma extração"]
+    S_BF_17 [flow: "basic", actor: "operatorDois", action: "faz logout"]
+    S_BF_18 [flow: "basic", actor: "system", action: "exibe página de login"]
+    S_BF_19 [flow: "basic", actor: "manager", action: "faz login e vai para a página “Extractions”"]
+    S_BF_20 [flow: "basic", actor: "system", action: "exibe uma lista vazia"]
+    S_BF_21 [flow: "basic", actor: "manager", action: "pressiona opção “Extract from directory”"]
+    S_BF_22 [flow: "basic", actor: "system", action: "exibe tela de extração por diretório"]
+    S_BF_23 [flow: "basic", actor: "manager", action: "seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_24 [flow: "basic", actor: "system", action: "exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_25 [flow: "basic", actor: "manager", action: "acessa página “Extractions”"]
+    S_BF_26 [flow: "basic", actor: "system", action: "exibe a lista de extrações com somente um elemento"]
+    S_BF_27 [flow: "basic", actor: "manager", action: "faz logout"]
+    S_BF_28 [flow: "basic", actor: "system", action: "exibe página de login"]
+    S_BF_29 [flow: "basic", actor: "superAdministrador", action: "faz login e vai para a página “Extractions”"]
+    S_BF_30 [flow: "basic", actor: "system", action: "exibe lista com três extrações"]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela de extração por diretório"]
+    S_BF_2 -> S_BF_3 [event: "administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_4 -> S_BF_5 [event: "administrador: acessa página “Extractions”"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe a lista de extrações com somente um elemento"]
+    S_BF_6 -> S_BF_7 [event: "administrador: faz logout"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe página de login"]
+    S_BF_8 -> S_BF_9 [event: "operator: faz login e vai para a página “Extractions”"]
+    S_BF_9 -> S_BF_10 [event: "system: exibe uma lista vazia"]
+    S_BF_10 -> S_BF_11 [event: "operator: pressiona opção “Extract from directory”"]
+    S_BF_11 -> S_BF_12 [event: "system: exibe tela de extração por diretório"]
+    S_BF_12 -> S_BF_13 [event: "operator: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_13 -> S_BF_14 [event: "system: exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_14 -> S_BF_15 [event: "operator: acessa página “Extractions”"]
+    S_BF_15 -> S_BF_16 [event: "system: exibe a lista de extrações com somente um elemento"]
+    S_BF_16 -> S_BF_17 [event: "operator: faz logout"]
+    S_BF_17 -> S_BF_18 [event: "system: exibe página de login"]
+    S_BF_18 -> S_BF_19 [event: "operatorDois: faz login e vai para a página “Extractions”"]
+    S_BF_19 -> S_BF_20 [event: "system: exibe uma lista com uma extração"]
+    S_BF_20 -> S_BF_17 [event: "operatorDois: faz logout"]
+    S_BF_17 -> S_BF_18 [event: "system: exibe página de login"]
+    S_BF_18 -> S_BF_19 [event: "manager: faz login e vai para a página “Extractions”"]
+    S_BF_19 -> S_BF_20 [event: "system: exibe uma lista vazia"]
+    S_BF_20 -> S_BF_21 [event: "manager: pressiona opção “Extract from directory”"]
+    S_BF_21 -> S_BF_22 [event: "system: exibe tela de extração por diretório"]
+    S_BF_22 -> S_BF_23 [event: "manager: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”"]
+    S_BF_23 -> S_BF_24 [event: "system: exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada"]
+    S_BF_24 -> S_BF_25 [event: "manager: acessa página “Extractions”"]
+    S_BF_25 -> S_BF_26 [event: "system: exibe a lista de extrações com somente um elemento"]
+    S_BF_26 -> S_BF_27 [event: "manager: faz logout"]
+    S_BF_27 -> S_BF_28 [event: "system: exibe página de login"]
+    S_BF_28 -> S_BF_29 [event: "superAdministrador: faz login e vai para a página “Extractions”"]
+    S_BF_29 -> S_BF_30 [event: "system: exibe lista com três extrações"]
+    S_BF_30 -> S_END [event: "Complete"]
+  }
+}

@@ -1,0 +1,66 @@
+System:	SAFF
+Use Case:	CRUD Documents	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista completa de documentos		exibe lista completa de documentos		
+3	system: SYSTEM: exibe página com campos de cadastro de novo documento		exibe página com campos de cadastro de novo documento		
+4	system: SYSTEM: exibe lista de documentos		exibe lista de documentos		
+5	system: SYSTEM: abre janela de visualização do pdf		abre janela de visualização do pdf		
+6	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+7	system: SYSTEM: exibe dados do documento		exibe dados do documento		
+8	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+9	system: SYSTEM: se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento		se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Faltando arquivo			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes		exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Documento com nome repetido			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os já existe um documento cadastrado com o nome especificado		exibe mensagem informando que os já existe um documento cadastrado com o nome especificado		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Upload de arquivo nao pdf			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que o documento especificado nao e um arquivo PDF		exibe mensagem informando que o documento especificado nao e um arquivo PDF		
+Postcondition:	
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+Postcondition:	
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Deleta documento			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmacao		exibe mensagem solicitando confirmacao		
+Postcondition:	
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Visualizacao para Operador, Gerente			Execution Date:	
+Precondition:	Deve existir pelo menos um Documento cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista de documentos pertencentes ao mesmo laboratório do usuário		exibe lista de documentos pertencentes ao mesmo laboratório do usuário		
+3	system: SYSTEM: abre janela de visualização do pdf		abre janela de visualização do pdf		
+4	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+5	system: SYSTEM: exibe dados do documento		exibe dados do documento		
+6	system: SYSTEM: retorna a lista de documentos		retorna a lista de documentos		
+Postcondition:	
+

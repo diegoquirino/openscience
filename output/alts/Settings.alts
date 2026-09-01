@@ -1,0 +1,41 @@
+ALTS_SPECIFICATION "Settings" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles"
+  POST_CONDITION: ""
+
+  ACTORS {
+    administrador: "Administrador do sistema"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "pressiona botao 'Settings'", branches_af: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe a janela de configuracoes"]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona a opção 'Portugues' no campo 'Language' e salva", branches_af: [2, 3]]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela inicial 'SAFF extraction' tualizada com todos os campos em portugues"]
+    S_AF1_1 [flow: "alternative_1", description: "Linguagem Espanhol", actor: "administrador", action: "Abre arquivo de configuracoes e modifica propriedade linguagem para 'Espanol', salva e loga novamente no sistema"]
+    S_AF1_2 [flow: "alternative_1", description: "Linguagem Espanhol", actor: "system", action: "exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol"]
+    S_AF2_1 [flow: "alternative_2", description: "Visible Test Type", actor: "administrador", action: "seleciona somente opcao 'Pre test' no campo 'Visible Test Type' e pressiona botao 'Save'"]
+    S_AF2_2 [flow: "alternative_2", description: "Visible Test Type", actor: "system", action: "atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opcao de teste."]
+    S_AF3_1 [flow: "alternative_3", description: "Default Test Type", actor: "administrador", action: "seleciona somente opcao 'Pre test' no campo 'Default Test Type' e pressiona botao 'Save'"]
+    S_AF3_2 [flow: "alternative_3", description: "Default Test Type", actor: "system", action: "atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' esta marcado."]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe a janela de configuracoes"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Linguagem Espanhol"]
+    S_BF_2 -> S_BF_3 [event: "administrador: seleciona a opção 'Portugues' no campo 'Language' e salva"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe tela inicial 'SAFF extraction' tualizada com todos os campos em portugues"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Visible Test Type"]
+    S_BF_3 -> S_AF3_1 [branch: "AF_3 - Default Test Type"]
+    S_BF_4 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_AF1_2 [event: "system: exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol"]
+    S_AF1_2 -> S_END [event: "Complete"]
+    S_AF2_1 -> S_AF2_2 [event: "system: atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opcao de teste."]
+    S_AF2_2 -> S_END [event: "Complete"]
+    S_AF3_1 -> S_AF3_2 [event: "system: atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' esta marcado."]
+    S_AF3_2 -> S_END [event: "Complete"]
+  }
+}

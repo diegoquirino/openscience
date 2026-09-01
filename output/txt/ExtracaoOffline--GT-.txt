@@ -1,0 +1,90 @@
+System:	SAFF Extractor
+Use Case:	Extracao Offline	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 9 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Offline sempre			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: define que o sistema sempre fara extracoes offline		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: realiza uma serie de extracoes		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Terminal nao se encontra em modo LLT			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: conecta terminal em porta USB e o coloca em modo LLT		SYSTEM (terminal) entra em modo LLT		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Uso do leitor de codigo de barras			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: le (via leitor de codigo de barras) um product number e serial number validos		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Product number e/ou serial number invalidos			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: digita um product number e/ou serial number invalidos		SYSTEM marca campo em vermelho alertando do erro		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Product number e serial number que nao casam			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)		SYSTEM apresenta mensagem de erro		
+4	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+5	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmacao se usuario quer entrar em modo offline		
+4	operador: confirma que quer entrar em modo offline		SYSTEM exibe pagina que requisita dados do terminal		
+5	operador: realiza uma serie de extracoes sequenciais		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+6	operador: reastabelece conexao		SYSTEM envia extracoes locais para o servidor e as apaga da pasta local 'OfflineExtraction'		
+7	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista com extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
+4	operador: nao deseja entrar em modo offline		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Cai conexao novamente			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: mantem informacao das extracoes nao enviadas a tempo na pasta local		mantem informacao das extracoes nao enviadas a tempo na pasta local		
+2	operador: reastabelece conexao		SYSTEM envia extracoes restantes da pasta local para o servidor e as apaga da pasta 'OfflineExtraction'		
+3	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que contem as extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
+

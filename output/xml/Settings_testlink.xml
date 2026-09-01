@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Settings">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Settings']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a janela de configuracoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona a opção 'Portugues' no campo 'Language' e salva]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction' tualizada com todos os campos em portugues]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Linguagem Espanhol">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Linguagem Espanhol]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: Abre arquivo de configuracoes e modifica propriedade linguagem para 'Espanol', salva e loga novamente no sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Visible Test Type">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Visible Test Type]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Settings']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a janela de configuracoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona somente opcao 'Pre test' no campo 'Visible Test Type' e pressiona botao 'Save']]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opcao de teste.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Default Test Type">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Default Test Type]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; Sistema esta configurado para ingles]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Settings']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a janela de configuracoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona somente opcao 'Pre test' no campo 'Default Test Type' e pressiona botao 'Save']]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' esta marcado.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

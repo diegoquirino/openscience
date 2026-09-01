@@ -1,0 +1,74 @@
+System:	SAFF
+Use Case:	CRUD Laboratorios	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+5	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+6	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratorios		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Campo fora da formatacao esperada, e.g, Country = xx			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche incorretamente algum dos campos 'Name', 'Country' ou 'Description' e pressiona o botão 'Create' 		SYSTEM exibe mensagem informando que os dados nao correspondem a formatação esperada		
+4	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+5	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+6	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+7	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratorios		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela criacao			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: cancela criacao		SYSTEM exibe lista de laboratórios		
+4	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+5	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+6	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+7	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+8	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratorios		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+4	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+5	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+6	superAdmin: clica no botao 'Edit'		SYSTEM exibe campos do Laboratório com valores atuais que podem ser editados		
+7	superAdmin: preenche os novos valores e pressiona o botao 'Update		SYSTEM exibe lista de laboratórios		
+8	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+9	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+10	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+11	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+12	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratorios		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Nome de Laboratorio já existente			Execution Date:	
+Precondition:	Estar logado como super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratórios		
+2	superAdmin: seleciona o botao 'Create Laboratories'		SYSTEM exibe página com campos de cadastro de novo Laboratório		
+3	superAdmin: preenche o campo 'Name' com um nome de laboratorio ja existente. Preenche corretamente os campos 'Country' e 'Description' e pressiona o botao 'Create' 		SYSTEM exibe mensagem informando que ja existe laboratório cadastrado com esse nome		
+4	superAdmin: preenche corretamente os campos 'Name', 'Country' e 'Description' e pressiona o botão 'Create' 		SYSTEM exibe pagina com dados do novo Laboratório e mensagem que um novo entrada foi adicionado		
+5	superAdmin: seleciona opcao 'Laboratories' no menu Settings		SYSTEM exibe lista de laboratorios		
+6	superAdmin: clica no nome de um Laboratório		SYSTEM exibe dados do Laboratorio e lista de usuarios associados a este		
+7	superAdmin: clica no botão 'Cancel'		SYSTEM retorna a lista de laboratorios		
+Postcondition:	
+

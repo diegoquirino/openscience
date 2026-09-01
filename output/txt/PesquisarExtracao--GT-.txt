@@ -1,0 +1,19 @@
+System:	SAFF Extractor
+Use Case:	Pesquisar por extracao	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 2 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita no campo “Product Number” o numero de produto e no campo “Serial Number”  o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Product Number ou Serial Number invalidos			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search'		SYSTEM exibe mensagem que product number ou serial number sao invalidos		
+2	administrador: digita no campo “Product Number” o numero de produto e no campo “Serial Number”  o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+Postcondition:	
+

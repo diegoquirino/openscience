@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CRUD Secoes">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Sections' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Secoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de uma secao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados da secao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botao 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de secoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Edita dados">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Edita dados]]></summary>
+    <preconditions><![CDATA[Estar logado como super administrador]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Sections' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Secoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de uma secao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados da secao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botão 'Edit']]></actions>
+        <expectedresults><![CDATA[SYSTEM lista as opcoes possíveis de serem incluidas na secao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[superAdmin: escolhe as opcoes e pressiona o botão 'Update]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando que a secao foi atualizada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[superAdmin: seleciona opcao 'Sections' no menu Settings]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Secoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[superAdmin: clica no nome de uma secao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe dados da secao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[superAdmin: clica no botao 'Cancel']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna a lista de secoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

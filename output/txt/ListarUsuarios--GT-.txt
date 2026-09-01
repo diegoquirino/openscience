@@ -1,0 +1,29 @@
+System:	SAFF
+Use Case:	Listar Usuarios	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Existem diversos usuarios de diferentes perfis cadastrados no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista com todos os usuários cadastrados		exibe lista com todos os usuários cadastrados		
+3	system: SYSTEM: exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos		exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Gerente			Execution Date:	
+Precondition:	Existem diversos usuarios de diferentes perfis cadastrados no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente		exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: administrador			Execution Date:	
+Precondition:	Existem diversos usuarios de diferentes perfis cadastrados no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador		exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador		
+Postcondition:	
+

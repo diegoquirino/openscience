@@ -1,0 +1,65 @@
+ALTS_SPECIFICATION "CRUD Users" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Deve existir pelo menos um usuário super administrador"
+  POST_CONDITION: ""
+
+  ACTORS {
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Deve existir pelo menos um usuário super administrador"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe lista completa de usuários"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe pagina com campos de cadastro do usuario"]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe mensagem indicando que novo usuario foi criado"]
+    S_BF_10 [flow: "basic", actor: "system", action: "exibe lista completa de usuarios"]
+    S_BF_14 [flow: "basic", actor: "system", action: "exibe dados do usuario"]
+    S_BF_16 [flow: "basic", actor: "system", action: "exibe lista completa de usuarios"]
+    S_AF1_2 [flow: "alternative_1", description: "Usuário com login repetido", actor: "system", action: "exibe mensagem informando que os este usuarios já existe", returns_to_bf: 7]
+    S_AF3_2 [flow: "alternative_3", description: "Edita dados", actor: "system", action: "exibe campos do documento com valores atuais que podem ser editados"]
+    S_AF3_4 [flow: "alternative_3", description: "Edita dados", actor: "system", action: "exibe novos dados do usuarios"]
+    S_AF4_2 [flow: "alternative_4", description: "Edita dados e altera linguagem", actor: "system", action: "exibe novos dados do usuarios"]
+    S_AF4_4 [flow: "alternative_4", description: "Edita dados e altera linguagem", actor: "system", action: "e apresentado na nova linguagem"]
+    S_AF5_2 [flow: "alternative_5", description: "Reseta senha", actor: "system", action: "exibe mensagem pedindo confirmacao"]
+    S_AF5_4 [flow: "alternative_5", description: "Reseta senha", actor: "system", action: "exibe lista completa de usuarios", returns_to_bf: 5]
+    S_AF6_2 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe mensagem pedindo confirmacao"]
+    S_AF6_4 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe mensagem confirmando bloqueio de usuario"]
+    S_AF6_6 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado"]
+    S_AF6_8 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe dados do usuario"]
+    S_AF6_10 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe campos do documento com valores atuais que podem ser editados"]
+    S_AF6_12 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe mensagem pedindo confirmação"]
+    S_AF6_14 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe mensagem confirmando desbloqueio de usuario"]
+    S_AF6_16 [flow: "alternative_6", description: "Bloqueio de usuario", actor: "system", action: "exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado", returns_to_bf: 5]
+    S_AF9_2 [flow: "alternative_9", description: "Test de bloqueio", actor: "system", action: "exibe mensagem que usuário esta bloqueado"]
+    S_AF10_2 [flow: "alternative_10", description: "Deleta usuario", actor: "system", action: "exibe mensagem solicitando confirmacao"]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_2 [trigger: "Start"]
+    S_BF_2 -> S_BF_4 [event: "system: exibe lista completa de usuários"]
+    S_BF_4 -> S_BF_6 [event: "system: exibe pagina com campos de cadastro do usuario"]
+    S_BF_6 -> S_BF_8 [event: "system: exibe mensagem indicando que novo usuario foi criado"]
+    S_BF_8 -> S_BF_10 [event: "system: exibe lista completa de usuarios"]
+    S_BF_10 -> S_BF_14 [event: "system: exibe dados do usuario"]
+    S_BF_14 -> S_BF_16 [event: "system: exibe lista completa de usuarios"]
+    S_BF_16 -> S_END [event: "Complete"]
+    S_AF1_2 -> S_BF_7 [resume_basic_flow: 7]
+    S_AF3_2 -> S_AF3_4 [event: "system: exibe novos dados do usuarios"]
+    S_AF3_4 -> S_END [event: "Complete"]
+    S_AF4_2 -> S_AF4_4 [event: "system: e apresentado na nova linguagem"]
+    S_AF4_4 -> S_END [event: "Complete"]
+    S_AF5_2 -> S_AF5_4 [event: "system: exibe lista completa de usuarios"]
+    S_AF5_4 -> S_BF_5 [resume_basic_flow: 5]
+    S_AF6_2 -> S_AF6_4 [event: "system: exibe mensagem confirmando bloqueio de usuario"]
+    S_AF6_4 -> S_AF6_6 [event: "system: exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado"]
+    S_AF6_6 -> S_AF6_8 [event: "system: exibe dados do usuario"]
+    S_AF6_8 -> S_AF6_10 [event: "system: exibe campos do documento com valores atuais que podem ser editados"]
+    S_AF6_10 -> S_AF6_12 [event: "system: exibe mensagem pedindo confirmação"]
+    S_AF6_12 -> S_AF6_14 [event: "system: exibe mensagem confirmando desbloqueio de usuario"]
+    S_AF6_14 -> S_AF6_16 [event: "system: exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado"]
+    S_AF6_16 -> S_BF_5 [resume_basic_flow: 5]
+    S_AF9_2 -> S_END [event: "Complete"]
+    S_AF10_2 -> S_END [event: "Complete"]
+  }
+}

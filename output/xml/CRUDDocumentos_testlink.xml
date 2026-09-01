@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CRUD Documents">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista completa de documentos]]></actions>
+        <expectedresults><![CDATA[exibe lista completa de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe página com campos de cadastro de novo documento]]></actions>
+        <expectedresults><![CDATA[exibe página com campos de cadastro de novo documento]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista de documentos]]></actions>
+        <expectedresults><![CDATA[exibe lista de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[system: SYSTEM: abre janela de visualização do pdf]]></actions>
+        <expectedresults><![CDATA[abre janela de visualização do pdf]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+        <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe dados do documento]]></actions>
+        <expectedresults><![CDATA[exibe dados do documento]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+        <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[9]]></step_number>
+        <actions><![CDATA[system: SYSTEM: se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento]]></actions>
+        <expectedresults><![CDATA[se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Faltando arquivo">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Faltando arquivo]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes]]></actions>
+        <expectedresults><![CDATA[exibe mensagem informando que os dados não correspondem a formatação esperada ou esta faltando informacoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 6: Documento com nome repetido">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Documento com nome repetido]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem informando que os já existe um documento cadastrado com o nome especificado]]></actions>
+        <expectedresults><![CDATA[exibe mensagem informando que os já existe um documento cadastrado com o nome especificado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 7: Upload de arquivo nao pdf">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 7: Upload de arquivo nao pdf]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem informando que o documento especificado nao e um arquivo PDF]]></actions>
+        <expectedresults><![CDATA[exibe mensagem informando que o documento especificado nao e um arquivo PDF]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 3: Edita dados">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Edita dados]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados]]></actions>
+        <expectedresults><![CDATA[exibe campos do documento com valores atuais que podem ser editados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 4: Deleta documento">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Deleta documento]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe mensagem solicitando confirmacao]]></actions>
+        <expectedresults><![CDATA[exibe mensagem solicitando confirmacao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Alternative Flow 5: Visualizacao para Operador, Gerente">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Visualizacao para Operador, Gerente]]></summary>
+    <preconditions><![CDATA[Deve existir pelo menos um Documento cadastrado]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista de documentos pertencentes ao mesmo laboratório do usuário]]></actions>
+        <expectedresults><![CDATA[exibe lista de documentos pertencentes ao mesmo laboratório do usuário]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: SYSTEM: abre janela de visualização do pdf]]></actions>
+        <expectedresults><![CDATA[abre janela de visualização do pdf]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+        <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe dados do documento]]></actions>
+        <expectedresults><![CDATA[exibe dados do documento]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[system: SYSTEM: retorna a lista de documentos]]></actions>
+        <expectedresults><![CDATA[retorna a lista de documentos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

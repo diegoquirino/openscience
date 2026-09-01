@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Listar Usuarios">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista com todos os usuários cadastrados]]></actions>
+        <expectedresults><![CDATA[exibe lista com todos os usuários cadastrados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></actions>
+        <expectedresults><![CDATA[exibe pagina contendo os campos 'Name', 'Login', 'Type' e 'Language' devidamente preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Gerente">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Gerente]]></summary>
+    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente]]></actions>
+        <expectedresults><![CDATA[exibe lista somente cos usuários cadastrados do tipo 'Operator' associados ao mesmo laboratorio que o gerente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: administrador">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: administrador]]></summary>
+    <preconditions><![CDATA[Existem diversos usuarios de diferentes perfis cadastrados no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe tela principal]]></actions>
+        <expectedresults><![CDATA[exibe tela principal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[system: SYSTEM: exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador]]></actions>
+        <expectedresults><![CDATA[exibe lista somente cos usuarios cadastrados do tipo 'Operator' e 'Manager' associados ao mesmo laboratorio que o administrador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

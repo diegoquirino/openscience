@@ -1,0 +1,76 @@
+System:	SAFF
+Use Case:	CRUD Users	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+3	system: SYSTEM: exibe pagina com campos de cadastro do usuario		exibe pagina com campos de cadastro do usuario		
+4	system: SYSTEM: exibe mensagem indicando que novo usuario foi criado		exibe mensagem indicando que novo usuario foi criado		
+5	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+6	system: SYSTEM: exibe dados do usuario		exibe dados do usuario		
+7	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuário com login repetido			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os este usuarios já existe		exibe mensagem informando que os este usuarios já existe		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+2	system: SYSTEM: exibe novos dados do usuarios		exibe novos dados do usuarios		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Edita dados e altera linguagem			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe novos dados do usuarios		exibe novos dados do usuarios		
+2	system: SYSTEM: e apresentado na nova linguagem		e apresentado na nova linguagem		
+Postcondition:	
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Reseta senha			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmacao		exibe mensagem pedindo confirmacao		
+2	system: SYSTEM: exibe lista completa de usuarios		exibe lista completa de usuarios		
+Postcondition:	
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Bloqueio de usuario			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmacao		exibe mensagem pedindo confirmacao		
+2	system: SYSTEM: exibe mensagem confirmando bloqueio de usuario		exibe mensagem confirmando bloqueio de usuario		
+3	system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado		exibe lista completa de usuários onde o usuario atualizado e sinalizado como bloqueado		
+4	system: SYSTEM: exibe dados do usuario		exibe dados do usuario		
+5	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+6	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
+7	system: SYSTEM: exibe mensagem confirmando desbloqueio de usuario		exibe mensagem confirmando desbloqueio de usuario		
+8	system: SYSTEM: exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado		exibe lista completa de usuários onde o usuario atualizado nao e sinalizado como bloqueado		
+Postcondition:	
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Test de bloqueio			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem que usuário esta bloqueado		exibe mensagem que usuário esta bloqueado		
+Postcondition:	
+
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Deleta usuario			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário super administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmacao		exibe mensagem solicitando confirmacao		
+Postcondition:	
+
