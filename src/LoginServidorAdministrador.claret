@@ -13,6 +13,8 @@ system "SAFF Extractor", {
             step 2, system, "exibe pagina de login"
             step 3, administrador, "digita o user e a password de um usuario administrador e pressiona o botao Login", af:[1,2,3]
             step 4, system, "exibe pagina 'Search extraction'", ef:[1,2]
+            step 1, administrador, "abre outro navegador na pagina de login e insere user e password do usuario ja logado"
+            step 2, system, "desloga o usuario na pagina anterior e continua sua sessao na nova pagina"
         }
 
         alternative 1, "User invalido", {

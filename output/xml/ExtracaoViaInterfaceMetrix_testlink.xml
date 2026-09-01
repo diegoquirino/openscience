@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Extracao via Interface Metrix">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Altera a pasta C:\\Collect para uma pasta vazia">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Altera a pasta C:\\Collect para uma pasta vazia]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona pasta vazia, e pressiona botao 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: adiciona extracao a pasta indicada]]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Insere novas extracoes na pasta">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: adiciona novas extracoes na pasta indicada]]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Modifica o intervalo do temporizador">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Modifica o intervalo do temporizador]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: modifica o valor da propriedade AUTO_COLLECT_WAIT_TIME para 60 (o valor é em segundos)]]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 1: Falha no envio ao servidor">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; salva a extração no modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 2: Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio]]></summary>
+    <preconditions><![CDATA[ ]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: inicia o SAFF Extractor e se autentica]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[clock: a cada 10 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM move a extração para a pasta broken]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>
