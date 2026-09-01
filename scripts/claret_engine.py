@@ -270,10 +270,12 @@ class GitHubManager:
 
     def add_commit_push(self, repo_dir: Path, branch: str, commit_message: str) -> bool:
         """Stage all changes, commit, and push to the specified branch."""
-        # Ensure directory is a git repository
-        if not (repo_dir / ".git").exists():
+        # Ensure directory is a valid git repository
+        rc, _, _ = self.run_git(["rev-parse", "--is-inside-work-tree"], cwd=repo_dir)
+        if rc != 0:
             self.run_git(["init"], cwd=repo_dir)
             remote_url = f"https://github.com/{self.repo}.git"
+            self.run_git(["remote", "remove", "origin"], cwd=repo_dir)
             self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
 
         # Ensure branch exists and is checked out
