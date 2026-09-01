@@ -1,6 +1,50 @@
 System:	SAFF Extractor
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 51 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 60 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
+2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
+3	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 704 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela delecao			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
+2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
+3	administrador: cancela delecao		SYSTEM fecha janela pop-up		
+4	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
+5	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
+6	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 704 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Realiza Filtro e delecao			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+2	administrador: seleciona opcao “Activated” no campo de filtro “State”		SYSTEM atualiza pagina mostrando 608 extracoes		
+3	administrador: seleciona o check box que marca todas extracoes para delecao		SYSTEM marca todas extracoes após o filtro com um tick		
+4	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao		
+5	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 96 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Deleta todas extracoes			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box que marca todas extracoes para delecao		SYSTEM marca o check box com um tick		
+2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas		
+Postcondition:	
 
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -36,13 +80,65 @@ Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline 			Execution Date:	
+Description:	Exception Flow 2: Cai conexão e usuario quer entrar em modo offline 			Execution Date:	
 Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre extrator		SYSTEM exibe tela de login		
 2	administrador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
 3	administrador: não deseja entrar em modo offline		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
+2	administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login		SYSTEM informa que usuário está bloqueado		
+Postcondition:	
+
+Use Case:	Pesquisar por extracao	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+Postcondition:	
+
+Use Case:	Pesquisar por extracao	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Product Number ou Serial Number invalidos			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search'		SYSTEM exibe mensagem que product number ou serial number sao invalidos		
+2	administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+Postcondition:	
 
 Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -172,57 +268,43 @@ Postcondition:	Flow interrupted due to exception / error
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	 
+Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
-2	operador: abre extrator		SYSTEM exibe tela de login		
-3	operador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
-Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+1	administrador: abre extrator		SYSTEM exibe tela de login		
+2	administrador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
+Postcondition:	
 
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Offline sempre			Execution Date:	
-Precondition:	 
+Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
-2	operador: abre extrator		SYSTEM exibe tela de login		
-3	operador: define que o sistema sempre fara extracoes offline		SYSTEM exibe pagina que requisita dados do terminal		
-4	operador: realiza uma serie de extracoes		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
-Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+1	administrador: abre extrator		SYSTEM exibe tela de login		
+2	administrador: define que o sistema sempre fará extrações offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+Postcondition:	
 
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline 			Execution Date:	
-Precondition:	 
+Description:	Exception Flow 1: Cai conexão e usuario quer entrar em modo offline 			Execution Date:	
+Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
-2	operador: abre extrator		SYSTEM exibe tela de login		
-3	operador: loga no extrator		SYSTEM exibe mensagem solicitando confirmacao se usuario quer entrar em modo offline		
-4	operador: confirma que quer entrar em modo offline		SYSTEM exibe pagina que requisita dados do terminal		
-5	operador: realiza uma serie de extracoes sequenciais		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
-6	operador: reastabelece conexao		SYSTEM envia extracoes locais para o servidor e as apaga da pasta local 'OfflineExtraction'		
-7	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista com extracoes realizadas no modo offline		
+1	administrador: abre extrator		SYSTEM exibe tela de login		
+2	administrador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
+3	administrador: confirma que quer entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+4	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+5	administrador: reastabelece conexão		SYSTEM envia extrações locais para o servidor e as apaga da pasta local		
+6	administrador: loga no servidor e vai até a página de extrações		SYSTEM exibe lista com extrações realizada no modo offline no topo		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Extracao Offline	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline 			Execution Date:	
-Precondition:	 
+Description:	Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline 			Execution Date:	
+Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
-2	operador: abre extrator		SYSTEM exibe tela de login		
-3	operador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
-4	operador: nao deseja entrar em modo offline		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao Offline	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Cai conexao novamente			Execution Date:	
-Precondition:	 
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	system: SYSTEM: mantem informacao das extracoes nao enviadas a tempo na pasta local		mantem informacao das extracoes nao enviadas a tempo na pasta local		
-2	operador: reastabelece conexao		SYSTEM envia extracoes restantes da pasta local para o servidor e as apaga da pasta 'OfflineExtraction'		
-3	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que contem as extracoes realizadas no modo offline		
+1	administrador: abre extrator		SYSTEM exibe tela de login		
+2	administrador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
+3	administrador: não deseja entrar em modo offline		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Extracao via Interface Metrix	Version:	1.0
@@ -541,7 +623,7 @@ Postcondition:
 
 System:	SAFF
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 71 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 76 test case(s)	Creation Date:	01/09/2026
 
 Use Case:	CRUD Cliente	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -1371,6 +1453,60 @@ Description:	Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowe
 Precondition:	Usuario deve estar logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos		
+2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+3	operador: preenche o campos 'New Password' com uma senha fora dos padroes exigidos		SYSTEM exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido		
+4	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+Postcondition:	
+
+Use Case:	Visualizar e editando propria conta	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+3	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+Postcondition:	
+
+Use Case:	Visualizar e editando propria conta	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Troca Idioma			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+3	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password', troca 'Language' de Ingles para Portugues e pressiona o botao 'Update'		SYSTEM exibe pagina com informações do usuario. Apresenta mensagem informando que as informacoes foram atualizadas e atualiza conta no novo idioma		
+Postcondition:	
+
+Use Case:	Visualizar e editando propria conta	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela Edicao			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+3	operador: pressiona botao 'Cancel'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+4	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+5	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+Postcondition:	
+
+Use Case:	Visualizar e editando propria conta	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Password invalido			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
+2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
+3	operador: preenche incorretamente o campos 'Old Password'		SYSTEM exibe mensagem infrmando que o Password fornecido não esta correto		
+4	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		
+Postcondition:	
+
+Use Case:	Visualizar e editando propria conta	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Novo Password fora dos padroes (uppercase, lowercase, numbers, special characters and size between 8 and 20)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: seleciona a opcao 'My Account'		SYSTEM exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos		
 2	operador: pressiona botao 'Edit'		SYSTEM exibe pagina com campos em branco para atualizacao		
 3	operador: preenche o campos 'New Password' com uma senha fora dos padroes exigidos		SYSTEM exibe mensagem infrmando que o Password fornecido nao esta conforme o exigido		
 4	operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'		SYSTEM exibe pagina com informacoes do usuario e apresenta mensagem informando que as informacoes foram atualizadas		

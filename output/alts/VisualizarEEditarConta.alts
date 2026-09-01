@@ -10,7 +10,7 @@ ALTS_SPECIFICATION "Visualizar e editando propria conta" {
   STATES {
     S_INIT [initial, guard: "Usuario deve estar logado no servidor"]
     S_BF_1 [flow: "basic", actor: "operador", action: "seleciona a opcao 'My Account'"]
-    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos"]
     S_BF_3 [flow: "basic", actor: "operador", action: "pressiona botao 'Edit'"]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe pagina com campos em branco para atualizacao"]
     S_BF_5 [flow: "basic", actor: "operador", action: "preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'", branches_af: [1, 2, 3, 4]]
@@ -27,7 +27,7 @@ ALTS_SPECIFICATION "Visualizar e editando propria conta" {
 
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
-    S_BF_1 -> S_BF_2 [event: "system: exibe tela onde os campos 'Name', 'Login', 'Type', 'Laboratory' e 'Language'. Eles estão devidamente preenchidos"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela onde os campos 'Name', 'Login', 'Type' e 'Language'. Eles estão devidamente preenchidos"]
     S_BF_2 -> S_BF_3 [event: "operador: pressiona botao 'Edit'"]
     S_BF_3 -> S_BF_4 [event: "system: exibe pagina com campos em branco para atualizacao"]
     S_BF_4 -> S_BF_5 [event: "operador: preenche corretamente os campos 'Old Password', 'New Password', 'Confirm Password' e pressiona o botao 'Update'"]

@@ -25,7 +25,7 @@ system "SAFF Extractor", {
             step 9, system, "exibe lista com extrações realizada no modo offline no topo"
         }
 
-        exception 2, "Cai conexão e usuario nao quer entrar em modo offline ", {
+        exception 2, "Cai conexão e usuario quer entrar em modo offline ", {
             step 1, system, "exibe mensagem solicitando confirmação se usuario quer entrar em modo offline"
             step 2, administrador, "não deseja entrar em modo offline", bfs:2
         }
