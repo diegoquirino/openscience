@@ -88,7 +88,7 @@ Precondition:
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
 2	operador: marca a opcao 'Disable LLT'		SYSTEM apresenta a marcacao da opcao escolhida		
-3	operador: digita um product number e serial number validos, preenche o Note e pressiona Extract		SYSTEM realiza uma extracao Disabled LLT, a envia para o servidor, e a salva nas pastas de backup local		
+3	operador: digita um product number e serial number validos e pressiona Extract		SYSTEM realiza uma extracao Disabled LLT, a envia para o servidor, e a salva nas pastas de backup local		
 Postcondition:	extracao realizada
 
 Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	

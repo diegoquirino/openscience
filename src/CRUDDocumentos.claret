@@ -11,11 +11,11 @@ system "SAFF", {
             step 2, system, "exibe tela principal"
             step 3, usuário, "seleciona opção 'Documents' no menu Settings"
             step 4, system, "exibe lista completa de documentos"
-            step 5, usuário, "seleciona o botão 'Create Document'"
-            step 6, system, "exibe página com campos de cadastro de novo documento"
-            step 7, usuário, "preenche corretamente os campos 'Title', 'Description', 'Family', seleciona um arquivo PDF e pressiona o botão 'Create' ", af:[1,2,6,7]
+            step 5, usuário, "seleciona o botao 'Create Document'"
+            step 6, system, "exibe pagina com campos de cadastro de novo documento"
+            step 7, usuário, "preenche corretamente os campos 'Title', 'Description', 'Family' (com uma família com extracoes existentes), seleciona um arquivo PDF e pressiona o botao 'Create' ", af:[1,2,6,7]
             step 8, system, "exibe lista de documentos"
-            step 9, usuário, "clica no ícone link de visualização do documento"
+            step 9, usuário, "clica no nome link de visualizacao do documento"
             step 10, system, "abre janela de visualização do pdf"
             step 11, usuário, "fecha janela"
             step 12, system, "retorna a lista de documentos"
@@ -23,8 +23,8 @@ system "SAFF", {
             step 14, system, "exibe dados do documento"
             step 15, usuário, "clica no botão 'Cancel'", af:[3,4]
             step 16, system, "retorna a lista de documentos"
-            step 17, usuário, "abre lista de extrações e seleciona uma extração das famílias cadastradas anteriormente"
-            step 18, system, "se existir extração da familia cadastrada, esta deve exibir no campo Document um link para o novo documento"
+            step 17, usuário, "abre lista de extracoes e seleciona uma das famílias cadastradas anteriormente"
+            step 18, system, "se existir extracao da familia cadastrada, esta deve exibir no campo Document um link para o novo documento"
         }
 
         alternative 1, "Faltando arquivo", {

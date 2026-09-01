@@ -7,13 +7,13 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Administrador deve estar logado ; não existem extrações cadastradas]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: pressiona opção “Extract from directory”]]></actions>
+        <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -37,80 +37,38 @@
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[operator: faz login e vai para a página “Extractions”]]></actions>
+        <actions><![CDATA[administrador: faz login como operador e vai para a página “Extractions”]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe uma lista vazia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[operator: pressiona opção “Extract from directory”]]></actions>
+        <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[operator: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
+        <actions><![CDATA[administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[8]]></step_number>
-        <actions><![CDATA[operator: acessa página “Extractions”]]></actions>
+        <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[9]]></step_number>
-        <actions><![CDATA[operator: faz logout]]></actions>
+        <actions><![CDATA[administrador: faz logout]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[10]]></step_number>
-        <actions><![CDATA[operatorDois: faz login e vai para a página “Extractions”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe uma lista com uma extração]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[11]]></step_number>
-        <actions><![CDATA[operatorDois: faz logout]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[12]]></step_number>
-        <actions><![CDATA[manager: faz login e vai para a página “Extractions”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe uma lista vazia]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[13]]></step_number>
-        <actions><![CDATA[manager: pressiona opção “Extract from directory”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[14]]></step_number>
-        <actions><![CDATA[manager: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[15]]></step_number>
-        <actions><![CDATA[manager: acessa página “Extractions”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com somente um elemento]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[16]]></step_number>
-        <actions><![CDATA[manager: faz logout]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe página de login]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[17]]></step_number>
-        <actions><![CDATA[superAdministrador: faz login e vai para a página “Extractions”]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista com três extrações]]></expectedresults>
+        <actions><![CDATA[administrador: faz login como administrador e vai para a página “Extractions”]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe uma lista com duas entradas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

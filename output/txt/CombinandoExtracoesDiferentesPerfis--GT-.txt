@@ -4,24 +4,17 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 1 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Administrador deve estar logado ; não existem extrações cadastradas
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from directory”		SYSTEM exibe tela de extração por diretório		
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
 2	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
 3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
 4	administrador: faz logout		SYSTEM exibe página de login		
-5	operator: faz login e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
-6	operator: pressiona opção “Extract from directory”		SYSTEM exibe tela de extração por diretório		
-7	operator: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
-8	operator: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
-9	operator: faz logout		SYSTEM exibe página de login		
-10	operatorDois: faz login e vai para a página “Extractions”		SYSTEM exibe uma lista com uma extração		
-11	operatorDois: faz logout		SYSTEM exibe página de login		
-12	manager: faz login e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
-13	manager: pressiona opção “Extract from directory”		SYSTEM exibe tela de extração por diretório		
-14	manager: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
-15	manager: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
-16	manager: faz logout		SYSTEM exibe página de login		
-17	superAdministrador: faz login e vai para a página “Extractions”		SYSTEM exibe lista com três extrações		
+5	administrador: faz login como operador e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
+6	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+7	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
+8	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
+9	administrador: faz logout		SYSTEM exibe página de login		
+10	administrador: faz login como administrador e vai para a página “Extractions”		SYSTEM exibe uma lista com duas entradas		
 Postcondition:	
 
