@@ -19,7 +19,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de extracao por dispositivo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -42,13 +42,19 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos]]></expectedresults>
+        <actions><![CDATA[administrador: digita o user de um usuário inválido, digita uma password e pressiona o botao Login]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid user or password” na tela de login]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
+        <actions><![CDATA[system: SYSTEM: exibe tela de login]]></actions>
+        <expectedresults><![CDATA[exibe tela de login]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de extracao por dispositivo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -72,7 +78,7 @@
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: digita o user de um usuário administrador corretamente, digita uma password invalida e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre um pop-up e exibe a mensagem de usuario ou senha incorretos; informa o numero de tentativas restantes ate que o usuario seja bloqueado]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM abre um pop-up e exibe a mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” em um pop-up]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
@@ -83,7 +89,13 @@
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
+        <actions><![CDATA[system: SYSTEM: exibe tela de login]]></actions>
+        <expectedresults><![CDATA[exibe tela de login]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de extracao por dispositivo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -106,14 +118,14 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user correte e o password invalido pela sexta vez e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado]]></expectedresults>
+        <actions><![CDATA[administrador: digita o user de um usuario administrador corretamente, digita uma password invalida pela sexta vez e pressiona o botao Login]]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia o usuário e exibe a mensagem 'This user has been blocked']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem informando usuario esta bloqueado]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando usuario está bloqueado]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -135,7 +147,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe pop-up questionando se o usuqrio deseja fazer extracoes offline]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -147,11 +159,11 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC6 - Exception Flow 2: Sem conexao com o servidor e usuario nao deseja fazer extração offline">
+  <testcase name="TC6 - Exception Flow 2: Sem conexao com o servidor e usuário nao deseja fazer extração offline">
     <node_order><![CDATA[6]]></node_order>
     <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 2: Sem conexao com o servidor e usuario nao deseja fazer extração offline]]></summary>
+    <summary><![CDATA[Exception Flow 2: Sem conexao com o servidor e usuário nao deseja fazer extração offline]]></summary>
     <preconditions><![CDATA[Deve existir um usuario cadastrado com perfil administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
@@ -164,7 +176,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe pop-up questionando se o usuário deveja fazer extracoes offline]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -193,8 +205,14 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem indicando que usuario foi bloqueado]]></expectedresults>
+        <actions><![CDATA[administrador: digita o user e a password de um usuário administrador e pressiona o botao Login]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a mensagem 'This user has been blocked']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: executa programa externo que reinicia senha de super admin]]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

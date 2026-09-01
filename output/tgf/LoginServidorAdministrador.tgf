@@ -14,9 +14,13 @@
 14 14
 15 15
 16 16
+17 17
+18 18
 #
 1 2 [c] Deve existir um usuario cadastrado com perfil administrador
 2 3 [s] administrador acessa o sistema
 3 4 [e] system exibe pagina de login
 4 5 [s] administrador digita o user e a password de um usuario administrador e pressiona o botao Login
 5 6 [e] system exibe pagina 'Search extraction'
+6 7 [s] administrador abre outro navegador na pagina de login e insere user e password do usuario ja logado
+7 8 [e] system desloga o usuario na pagina anterior e continua sua sessao na nova pagina

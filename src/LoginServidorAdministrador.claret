@@ -12,36 +12,33 @@ system "SAFF Extractor", {
             step 1, administrador, "acessa o sistema"
             step 2, system, "exibe pagina de login"
             step 3, administrador, "digita o user e a password de um usuario administrador e pressiona o botao Login", af:[1,2,3]
-            step 4, system, "exibe pagina 'Search extraction'", ef:[1,2]
-            step 1, administrador, "abre outro navegador na pagina de login e insere user e password do usuario ja logado"
-            step 2, system, "desloga o usuario na pagina anterior e continua sua sessao na nova pagina"
+            step 4, system, "exibe pagina “Search extraction”", ef:[1,2]
         }
 
         alternative 1, "User invalido", {
             step 1, administrador, "digita o user de um usuário invalido, digita uma password e pressiona o botao Login"
-            step 2, system, "exibe na pagina de login uma mensagem de usuario ou senha incorretos", bfs:3
+            step 2, system, "exibe mensagem “Invalid user or password” na pagina de login", bfs:3
         }
 
         alternative 2, "Password invalida", {
             step 1, administrador, "digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login"
-            step 2, system, "exibe mensagem de usuario ou senha incorretos na pagina de login; informa o numero de tentativas restantes ate que o usuario seja bloqueado", bfs:3
+            step 2, system, "exibe mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” na página de login", bfs:3
         }
 
-        alternative 3, "Numero de tentativas invalidas e 5", {
-            step 1, administrador, "digita o user correte e o password invalido pela sexta vez e pressiona o botao Login"
-            step 2, system, "bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado"
-            step 3, administrador, "tenta mais uma vez logar na conta do usuário, agora com dados validos"
-            step 4, system, "exibe mensagem informando usuario esta bloqueado"
+        alternative 3, "Número de tentativas invalidas e 5", {
+            step 1, administrador, "digita o user de um usuario administrador corretamente, digita uma password inválida pela sexta vez e pressiona o botao Login"
+            step 2, system, "bloqueia o usuario"
+            step 3, system, "exibe a mensagem “This user has been blocked.”"
         }
 
         exception 1, "Usuario inativo por 30 minutos", {
-            step 1, system, "finaliza sessão do usuario e retorna a pagina de login ao receber alguma requisicao do usuario", bfs:3
+            step 1, system, "finaliza sessão do usuario e retorna a pagina de login ao receber alguma requisicao do usuario", bfs:2
         }
 
         exception 2, "Usuario inativo por 90 dias", {
-            step 1, system, "exibe mensagem indicando que usuario foi bloqueado"
+            step 1, system, "exibe a mensagem “This user has been blocked.”"
         }
 
-        postCondition " "
+        postCondition "O usuario deve estar logado"
     }    
 }

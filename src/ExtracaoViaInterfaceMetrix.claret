@@ -20,12 +20,12 @@ system "SAFF Extractor", {
             step 3, administrador, "seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", af:[1]
             step 4, system, "bloqueia todos os botoes, com excecao do botao 'Stop'"
             step 5, clock, "a cada 10 segundos"
-            step 6, system, "verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline", ef:[1,2]
+            step 6, system, "verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada", "verifica se existe conexão com o servidor para enviar as extrações offline", ef:[1,2]
             step 7, administrador, "pressiona botao 'Stop'", af:[2]
             step 8, system, "desbloqueia todos os botoes e para de escutar a pasta indicada"
         }
 
-        alternative 1, "Altera a pasta C:\\Collect para uma pasta vazia", {
+        alternative 1, "Altera a pasta C\:\\Collect para uma pasta vazia", {
             step 1, administrador, "seleciona pasta vazia, e pressiona botao 'Start'"
             step 2, system, "fica em espera ate que alguma extracao seja adicionada na pasta indicada"
             step 3, administrador, "adiciona extracao a pasta indicada" , bfs:4

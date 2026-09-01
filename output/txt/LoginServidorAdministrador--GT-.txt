@@ -8,6 +8,7 @@ Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
 2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+3	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
@@ -17,6 +18,7 @@ Precondition:	Deve existir um usuario cadastrado com perfil administrador
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
 2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos		
 3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+4	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
 Postcondition:	
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
@@ -26,6 +28,7 @@ Precondition:	Deve existir um usuario cadastrado com perfil administrador
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
 2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login		SYSTEM exibe mensagem de usuario ou senha incorretos na pagina de login; informa o numero de tentativas restantes ate que o usuario seja bloqueado		
 3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
+4	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
 Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
