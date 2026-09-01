@@ -11,7 +11,7 @@ system "SAFF", {
             step 2, system, "exibe tela principal"
             step 3, usuário, "seleciona opçao 'Diagnostics' no menu Settings"
             step 4, system, "exibe lista diagnosticos"
-            step 5, usuário, "seleciona o botao 'Create Diagnostic'"
+            step 5, usuário, "seleciona o botao 'Create Diagnostic', situado no lado direito inferior da tela"
             step 6, system, "exibe página com campos de cadastro de novo documento"
             step 7, usuário, "preenche corretamente os campos 'Name', 'Family', 'Type', 'Scenary', 'Situation' e pressiona o botao 'Create' ", af:[6,1,2]
             step 8, system, "exibe lista de diagnósticos"

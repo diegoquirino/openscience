@@ -1,0 +1,147 @@
+System:	SAFF
+Use Case:	Filtro de Extracoes	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 13 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona datas personalizadas (inicial e final) para filtro		SYSTEM exibe as data selecionadas		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Datas default			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: nao seleciona datas para filtro		SYSTEM exibe a selecao da a data de hoje para as datas inicio e fim		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Ontem			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona opcao 'Ontem' como data de selecao do filtro		SYSTEM exibe a selecao da opcao ontem como data de selecao de filtro		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Ultimos 7 dias			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona opcao 'Ultimos 7 dias' como data de selecao do filtro		SYSTEM exibe a selecao da opcao Ultimos 7 dias como data de selecao de filtro		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Ultimos 30 dias			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona opcao 'Ultimos 30 dias' como data de selecao do filtro		SYSTEM exibe a selecao da opcao Ultimos 30 dias como data de selecao de filtro		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Esse mes			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona opcao 'Esse mes' como data de selecao do filtro		SYSTEM exibe a selecao da opcao Esse mes como data de selecao de filtro		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Mes passado			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona opcao 'Mes passado' como data de selecao do filtro		SYSTEM exibe a selecao da opcao Mes passado como data de selecao de filtro		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Somente data inicio			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona somente a data inicio		SYSTEM mantem datas que estavam selecionadas anteriormente. Se nao existia data selecionada, a aparece a data default		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Somente data final			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona somente a data final		SYSTEM mantem datas que estavam selecionadas anteriormente. Se nao existia data selecionada, a aparece a data default		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Filtro apos log off			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona datas personalizadas (inicial e final) para filtro		SYSTEM exibe as data selecionadas		
+3	operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: faz log off		SYSTEM exibe tela inicial de login		
+5	operador: faz log in		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Opcoes de filtro para Super administrador e Super-viewer			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona datas personalizadas (inicial e final) para filtro		SYSTEM exibe as data selecionadas		
+3	superAdminViewer: preenche os campos de filtro (todas opcoes de filtro aparecem, incluindo filtro de laboratorio) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 11: Opcoes de filtro para Administrador e Manager			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona datas personalizadas (inicial e final) para filtro		SYSTEM exibe as data selecionadas		
+3	adminManager: preenche os campos de filtro (filtro de laboratorio nao aparece) e manda aplicar filtro		SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+
+Test Case ID:	TC13	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 12: Sem filtros			Execution Date:	
+Precondition:	Operador deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com lista de extracoes realizadas		
+2	operador: seleciona datas personalizadas (inicial e final) para filtro		SYSTEM exibe as data selecionadas		
+3	operador: nao preenche os campos de filtro e manda aplicar filtro		SYSTEM mostra lista completa de de extracoes		
+4	operador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+5	operador: retorna para tela de exibicao de extracoes		SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente		
+Postcondition:	
+

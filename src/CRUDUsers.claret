@@ -2,9 +2,9 @@ system "SAFF", {
     usecase "CRUD Users", {
         version "1.0", type:"Creation", user:"Everton", date:"20/03/2015"
 
-        actor usuário, "Super administrador"
+        actor usuário, "Usuário"
 
-        preCondition "Deve existir pelo menos um usuário super administrador" 
+        preCondition "Deve existir pelo menos um usuário cadastrado" 
 
         basicFlow {
             step 1, usuário, "loga no sistema com perfil de super administrador"

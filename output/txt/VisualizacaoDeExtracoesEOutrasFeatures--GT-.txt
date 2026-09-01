@@ -1,0 +1,59 @@
+System:	SAFF
+Use Case:	Visualizacao de Extracoes e outras Features	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Edicao de Note			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: clica no campo Note de uma extracao		SYSTEM permite a edicao no note		
+3	administrador: modifica o valor do Note e clica fora da area de edicao ou pressiona tecla tab		SYSTEM atualiza campo note da extracao		
+4	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Download CSV			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	super: clica no botao 'Download CSV'		SYSTEM cria arquivo csv e pergunta onde este deve ser salvo		
+3	super: escolhe pasta destino		SYSTEM salva arquivo na pasta selecionada		
+4	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Selecao tabela			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: clica no botao 'Selecionar Tabela'		SYSTEM como selecionado a tabela de extracoes em exibicao		
+3	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Internacionalizacao			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: clica no de Ajustes de Usuario, opcao Idioma, e altera o idioma		SYSTEM atualiza todos os menus, campos, opcoes e elementos com a correspondente traducao segundo o novo idioma. Apenas os dados das extracoes permanecem com idioma inalterado		
+3	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Tentativa de Edicao de Note sem permissao			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	opManSV: clica no campo Note de uma extracao		SYSTEM nao permite a edicao no note		
+3	administrador: seleciona uma extracao		SYSTEM exibe extracao selecionada		
+Postcondition:	
+

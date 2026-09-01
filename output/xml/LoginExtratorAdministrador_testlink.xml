@@ -7,7 +7,7 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -30,7 +30,7 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Login ou Password inválidos]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -54,12 +54,12 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Numero de tentativas invalidas é 3">
+  <testcase name="TC3 - Alternative Flow 2: Número de tentativas inválidas é 3">
     <node_order><![CDATA[3]]></node_order>
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Numero de tentativas invalidas é 3]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <summary><![CDATA[Alternative Flow 2: Número de tentativas inválidas é 3]]></summary>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -83,12 +83,12 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Numero de tentativas invalidas é 5">
+  <testcase name="TC4 - Alternative Flow 3: Número de tentativas inválidas é 5">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Numero de tentativas invalidas é 5]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <summary><![CDATA[Alternative Flow 3: Número de tentativas inválidas é 5]]></summary>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -117,7 +117,7 @@
     <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -152,7 +152,7 @@
     <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
+    <preconditions><![CDATA[Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -172,35 +172,6 @@
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: pressiona No]]></actions>
         <expectedresults><![CDATA[SYSTEM fecha a janela pop-up]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC7 - Exception Flow 3: Usuario inativo por 90 dias">
-    <node_order><![CDATA[7]]></node_order>
-    <externalid><![CDATA[TC7]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 3: Usuario inativo por 90 dias]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado no servidor como super administrador]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: abre módulo de extração]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe página inicial do módulo de extração]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita um login de usuário administrador e password e pressiona Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM infoma que usuario esta bloqueado por inatividade]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: executa programa externo que reinicia senha de super admin]]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Estatisticas">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com a lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona opcao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM gera os graficos correspondentes aos campos solicitados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Filtro">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Filtro]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com a lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona opcao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: preenche os campos que deseja ter estatisticas e pressiona botao Filtrar]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM gera os graficos correspondentes aos campos solicitados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Esconder Filtro">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Esconder Filtro]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com a lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona link 'Esconder Filtro']]></actions>
+        <expectedresults><![CDATA[SYSTEM esconde campos de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: pressiona link 'Esconder Filtro']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe novamente campos de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM gera os graficos correspondentes aos campos solicitados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Limpar">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Limpar]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com a lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona opcao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: preenche os campos que deseja ter estatisticas e pressiona botao Limpar]]></actions>
+        <expectedresults><![CDATA[SYSTEM limpa todos os campos de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM gera os graficos correspondentes aos campos solicitados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Sem filtros">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Sem filtros]]></summary>
+    <preconditions><![CDATA[Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com a lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: seleciona opcao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: nao preenche os campos de fitro e pressiona botao Estatisticas]]></actions>
+        <expectedresults><![CDATA[SYSTEM gera os graficos correspondentes a todas extracoes ate o ultimo update]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

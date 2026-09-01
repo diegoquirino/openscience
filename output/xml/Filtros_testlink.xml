@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Filtro de Extracoes">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona datas personalizadas (inicial e final) para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe as data selecionadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Datas default">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Datas default]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: nao seleciona datas para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da a data de hoje para as datas inicio e fim]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Ontem">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Ontem]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona opcao 'Ontem' como data de selecao do filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da opcao ontem como data de selecao de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Ultimos 7 dias">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Ultimos 7 dias]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona opcao 'Ultimos 7 dias' como data de selecao do filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da opcao Ultimos 7 dias como data de selecao de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Ultimos 30 dias">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Ultimos 30 dias]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona opcao 'Ultimos 30 dias' como data de selecao do filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da opcao Ultimos 30 dias como data de selecao de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Esse mes">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Esse mes]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona opcao 'Esse mes' como data de selecao do filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da opcao Esse mes como data de selecao de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Mes passado">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Mes passado]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona opcao 'Mes passado' como data de selecao do filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a selecao da opcao Mes passado como data de selecao de filtro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Alternative Flow 7: Somente data inicio">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 7: Somente data inicio]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona somente a data inicio]]></actions>
+        <expectedresults><![CDATA[SYSTEM mantem datas que estavam selecionadas anteriormente. Se nao existia data selecionada, a aparece a data default]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC9 - Alternative Flow 8: Somente data final">
+    <node_order><![CDATA[9]]></node_order>
+    <externalid><![CDATA[TC9]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 8: Somente data final]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona somente a data final]]></actions>
+        <expectedresults><![CDATA[SYSTEM mantem datas que estavam selecionadas anteriormente. Se nao existia data selecionada, a aparece a data default]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC10 - Alternative Flow 9: Filtro apos log off">
+    <node_order><![CDATA[10]]></node_order>
+    <externalid><![CDATA[TC10]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 9: Filtro apos log off]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona datas personalizadas (inicial e final) para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe as data selecionadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: preenche os campos de filtro (somente Product Number e Serial Number) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: faz log off]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial de login]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: faz log in]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC11 - Alternative Flow 10: Opcoes de filtro para Super administrador e Super-viewer">
+    <node_order><![CDATA[11]]></node_order>
+    <externalid><![CDATA[TC11]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 10: Opcoes de filtro para Super administrador e Super-viewer]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona datas personalizadas (inicial e final) para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe as data selecionadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[superAdminViewer: preenche os campos de filtro (todas opcoes de filtro aparecem, incluindo filtro de laboratorio) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC12 - Alternative Flow 11: Opcoes de filtro para Administrador e Manager">
+    <node_order><![CDATA[12]]></node_order>
+    <externalid><![CDATA[TC12]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 11: Opcoes de filtro para Administrador e Manager]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona datas personalizadas (inicial e final) para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe as data selecionadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[adminManager: preenche os campos de filtro (filtro de laboratorio nao aparece) e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM atualiza os campos de filtro, mostrando em destaque o valor escolhido; atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC13 - Alternative Flow 12: Sem filtros">
+    <node_order><![CDATA[13]]></node_order>
+    <externalid><![CDATA[TC13]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 12: Sem filtros]]></summary>
+    <preconditions><![CDATA[Operador deve estar logado no servidor ; ja existem diversas extracoes registradas]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[operador: acessa tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com lista de extracoes realizadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[operador: seleciona datas personalizadas (inicial e final) para filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe as data selecionadas]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[operador: nao preenche os campos de filtro e manda aplicar filtro]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra lista completa de de extracoes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[operador: seleciona uma extracao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe extracao selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[operador: retorna para tela de exibicao de extracoes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de extracoes preservando o filtro aplicado anteriormente]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

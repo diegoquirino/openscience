@@ -1,0 +1,56 @@
+ALTS_SPECIFICATION "Estatisticas" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas"
+  POST_CONDITION: ""
+
+  ACTORS {
+    administrador: "Administrador ou Super administrador do sistema"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "acessa tela de exibicao de extracoes"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela com a lista de extracoes realizadas"]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona opcao Estatisticas", branches_af: [2]]
+    S_BF_4 [flow: "basic", actor: "system", action: "Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)"]
+    S_BF_5 [flow: "basic", actor: "administrador", action: "preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas", branches_af: [1, 3, 4]]
+    S_BF_6 [flow: "basic", actor: "system", action: "gera os graficos correspondentes aos campos solicitados"]
+    S_AF1_1 [flow: "alternative_1", description: "Filtro", actor: "administrador", action: "preenche os campos que deseja ter estatisticas e pressiona botao Filtrar"]
+    S_AF1_2 [flow: "alternative_1", description: "Filtro", actor: "system", action: "atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado"]
+    S_AF1_3 [flow: "alternative_1", description: "Filtro", actor: "administrador", action: "pressiona botao Estatisticas", returns_to_bf: 6]
+    S_AF2_1 [flow: "alternative_2", description: "Esconder Filtro", actor: "administrador", action: "pressiona link 'Esconder Filtro'"]
+    S_AF2_2 [flow: "alternative_2", description: "Esconder Filtro", actor: "system", action: "esconde campos de filtro"]
+    S_AF2_3 [flow: "alternative_2", description: "Esconder Filtro", actor: "administrador", action: "pressiona link 'Esconder Filtro'"]
+    S_AF2_4 [flow: "alternative_2", description: "Esconder Filtro", actor: "system", action: "exibe novamente campos de filtro", returns_to_bf: 5]
+    S_AF3_1 [flow: "alternative_3", description: "Limpar", actor: "administrador", action: "preenche os campos que deseja ter estatisticas e pressiona botao Limpar"]
+    S_AF3_2 [flow: "alternative_3", description: "Limpar", actor: "system", action: "limpa todos os campos de filtro", returns_to_bf: 5]
+    S_AF4_1 [flow: "alternative_4", description: "Sem filtros", actor: "administrador", action: "nao preenche os campos de fitro e pressiona botao Estatisticas"]
+    S_AF4_2 [flow: "alternative_4", description: "Sem filtros", actor: "system", action: "gera os graficos correspondentes a todas extracoes ate o ultimo update"]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela com a lista de extracoes realizadas"]
+    S_BF_2 -> S_BF_3 [event: "administrador: seleciona opcao Estatisticas"]
+    S_BF_3 -> S_BF_4 [event: "system: Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Esconder Filtro"]
+    S_BF_4 -> S_BF_5 [event: "administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas"]
+    S_BF_5 -> S_BF_6 [event: "system: gera os graficos correspondentes aos campos solicitados"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Filtro"]
+    S_BF_5 -> S_AF3_1 [branch: "AF_3 - Limpar"]
+    S_BF_5 -> S_AF4_1 [branch: "AF_4 - Sem filtros"]
+    S_BF_6 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_AF1_2 [event: "system: atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado"]
+    S_AF1_2 -> S_AF1_3 [event: "administrador: pressiona botao Estatisticas"]
+    S_AF1_3 -> S_BF_6 [resume_basic_flow: 6]
+    S_AF2_1 -> S_AF2_2 [event: "system: esconde campos de filtro"]
+    S_AF2_2 -> S_AF2_3 [event: "administrador: pressiona link 'Esconder Filtro'"]
+    S_AF2_3 -> S_AF2_4 [event: "system: exibe novamente campos de filtro"]
+    S_AF2_4 -> S_BF_5 [resume_basic_flow: 5]
+    S_AF3_1 -> S_AF3_2 [event: "system: limpa todos os campos de filtro"]
+    S_AF3_2 -> S_BF_5 [resume_basic_flow: 5]
+    S_AF4_1 -> S_AF4_2 [event: "system: gera os graficos correspondentes a todas extracoes ate o ultimo update"]
+    S_AF4_2 -> S_END [event: "Complete"]
+  }
+}

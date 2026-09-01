@@ -7,14 +7,14 @@ system "SAFF Extractor", {
         preCondition "Usuário deve estar logado no servidor e extrator como administrador", "Sistema está configurado para inglês"
 
         basicFlow {
-            step 1, administrador, "pressiona botão 'Settings'", af:[1]
+            step 1, administrador, "pressiona botão 'Settings'"
             step 2, system, "exibe a janela de configurações"
-            step 3, administrador, "seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'", af:[2,3]
+            step 3, administrador, "seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'", af:[1,2,3]
             step 4, system, "exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português"
         }
 
         alternative 1, "Linguagem Espanhol", {
-            step 1, administrador, "Abre arquivo de configurações e modifica propriedade linguagem para 'Español', salva e loga novamente no sistema" 
+            step 1, administrador, "seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save'" 
             step 2, system, "exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol"
         }
 

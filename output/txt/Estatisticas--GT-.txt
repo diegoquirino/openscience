@@ -1,0 +1,52 @@
+System:	SAFF
+Use Case:	Estatisticas	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	01/09/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: seleciona opcao Estatisticas		SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)		
+3	administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas		SYSTEM gera os graficos correspondentes aos campos solicitados		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Filtro			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: seleciona opcao Estatisticas		SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)		
+3	administrador: preenche os campos que deseja ter estatisticas e pressiona botao Filtrar		SYSTEM atualiza a lista de extracoes mostrando apenas aquelas condizentes com o filtro solicitado		
+4	administrador: pressiona botao Estatisticas		SYSTEM gera os graficos correspondentes aos campos solicitados		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Esconder Filtro			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: pressiona link 'Esconder Filtro'		SYSTEM esconde campos de filtro		
+3	administrador: pressiona link 'Esconder Filtro'		SYSTEM exibe novamente campos de filtro		
+4	administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas		SYSTEM gera os graficos correspondentes aos campos solicitados		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Limpar			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: seleciona opcao Estatisticas		SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)		
+3	administrador: preenche os campos que deseja ter estatisticas e pressiona botao Limpar		SYSTEM limpa todos os campos de filtro		
+4	administrador: preenche os campos que deseja ter estatisticas e pressiona botao Estatisticas		SYSTEM gera os graficos correspondentes aos campos solicitados		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Sem filtros			Execution Date:	
+Precondition:	Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: acessa tela de exibicao de extracoes		SYSTEM exibe tela com a lista de extracoes realizadas		
+2	administrador: seleciona opcao Estatisticas		SYSTEM Mostra lista de todas extracoes realizadas ate o ultimo update e exibe campos para criacao de estatisticas das extracoes (mesmos campos da tela de filtros + Data de Fabricacao + Secu Info)		
+3	administrador: nao preenche os campos de fitro e pressiona botao Estatisticas		SYSTEM gera os graficos correspondentes a todas extracoes ate o ultimo update		
+Postcondition:	
+

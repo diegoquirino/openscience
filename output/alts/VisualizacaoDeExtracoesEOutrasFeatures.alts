@@ -1,0 +1,61 @@
+ALTS_SPECIFICATION "Visualizacao de Extracoes e outras Features" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas"
+  POST_CONDITION: ""
+
+  ACTORS {
+    administrador: "Administrador ou Super administrador do sistema"
+    super: "Super administrador do sistema"
+    opManSV: "Operador, Manager ou Super-viewer do sistema"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario deve estar logado no servidor ; ja existem diversas extracoes registradas"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "acessa tela de exibicao de extracoes"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela com a lista de extracoes realizadas"]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona uma extracao", branches_af: [1, 2, 3, 4, 5]]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe extracao selecionada"]
+    S_AF1_1 [flow: "alternative_1", description: "Edicao de Note", actor: "administrador", action: "clica no campo Note de uma extracao"]
+    S_AF1_2 [flow: "alternative_1", description: "Edicao de Note", actor: "system", action: "permite a edicao no note"]
+    S_AF1_3 [flow: "alternative_1", description: "Edicao de Note", actor: "administrador", action: "modifica o valor do Note e clica fora da area de edicao ou pressiona tecla tab"]
+    S_AF1_4 [flow: "alternative_1", description: "Edicao de Note", actor: "system", action: "atualiza campo note da extracao", returns_to_bf: 3]
+    S_AF2_1 [flow: "alternative_2", description: "Download CSV", actor: "super", action: "clica no botao 'Download CSV'"]
+    S_AF2_2 [flow: "alternative_2", description: "Download CSV", actor: "system", action: "cria arquivo csv e pergunta onde este deve ser salvo"]
+    S_AF2_3 [flow: "alternative_2", description: "Download CSV", actor: "super", action: "escolhe pasta destino"]
+    S_AF2_4 [flow: "alternative_2", description: "Download CSV", actor: "system", action: "salva arquivo na pasta selecionada", returns_to_bf: 3]
+    S_AF3_1 [flow: "alternative_3", description: "Selecao tabela", actor: "administrador", action: "clica no botao 'Selecionar Tabela'"]
+    S_AF3_2 [flow: "alternative_3", description: "Selecao tabela", actor: "system", action: "como selecionado a tabela de extracoes em exibicao", returns_to_bf: 3]
+    S_AF4_1 [flow: "alternative_4", description: "Internacionalizacao", actor: "administrador", action: "clica no de Ajustes de Usuario, opcao Idioma, e altera o idioma"]
+    S_AF4_2 [flow: "alternative_4", description: "Internacionalizacao", actor: "system", action: "atualiza todos os menus, campos, opcoes e elementos com a correspondente traducao segundo o novo idioma. Apenas os dados das extracoes permanecem com idioma inalterado", returns_to_bf: 3]
+    S_AF5_1 [flow: "alternative_5", description: "Tentativa de Edicao de Note sem permissao", actor: "opManSV", action: "clica no campo Note de uma extracao"]
+    S_AF5_2 [flow: "alternative_5", description: "Tentativa de Edicao de Note sem permissao", actor: "system", action: "nao permite a edicao no note", returns_to_bf: 3]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela com a lista de extracoes realizadas"]
+    S_BF_2 -> S_BF_3 [event: "administrador: seleciona uma extracao"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe extracao selecionada"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Edicao de Note"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Download CSV"]
+    S_BF_3 -> S_AF3_1 [branch: "AF_3 - Selecao tabela"]
+    S_BF_3 -> S_AF4_1 [branch: "AF_4 - Internacionalizacao"]
+    S_BF_3 -> S_AF5_1 [branch: "AF_5 - Tentativa de Edicao de Note sem permissao"]
+    S_BF_4 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_AF1_2 [event: "system: permite a edicao no note"]
+    S_AF1_2 -> S_AF1_3 [event: "administrador: modifica o valor do Note e clica fora da area de edicao ou pressiona tecla tab"]
+    S_AF1_3 -> S_AF1_4 [event: "system: atualiza campo note da extracao"]
+    S_AF1_4 -> S_BF_3 [resume_basic_flow: 3]
+    S_AF2_1 -> S_AF2_2 [event: "system: cria arquivo csv e pergunta onde este deve ser salvo"]
+    S_AF2_2 -> S_AF2_3 [event: "super: escolhe pasta destino"]
+    S_AF2_3 -> S_AF2_4 [event: "system: salva arquivo na pasta selecionada"]
+    S_AF2_4 -> S_BF_3 [resume_basic_flow: 3]
+    S_AF3_1 -> S_AF3_2 [event: "system: como selecionado a tabela de extracoes em exibicao"]
+    S_AF3_2 -> S_BF_3 [resume_basic_flow: 3]
+    S_AF4_1 -> S_AF4_2 [event: "system: atualiza todos os menus, campos, opcoes e elementos com a correspondente traducao segundo o novo idioma. Apenas os dados das extracoes permanecem com idioma inalterado"]
+    S_AF4_2 -> S_BF_3 [resume_basic_flow: 3]
+    S_AF5_1 -> S_AF5_2 [event: "system: nao permite a edicao no note"]
+    S_AF5_2 -> S_BF_3 [resume_basic_flow: 3]
+  }
+}

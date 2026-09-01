@@ -1,10 +1,10 @@
 System:	SAFF Extractor
 Use Case:	Login no extrator como Administrador	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
@@ -12,7 +12,7 @@ Postcondition:
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
@@ -20,8 +20,8 @@ Precondition:	Usuário deve estar logado no servidor como super administrador
 Postcondition:	
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Numero de tentativas invalidas é 3			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
@@ -29,8 +29,8 @@ Precondition:	Usuário deve estar logado no servidor como super administrador
 Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Numero de tentativas invalidas é 5			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia usuário		
@@ -39,7 +39,7 @@ Postcondition:
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
@@ -49,19 +49,10 @@ Postcondition:	Flow interrupted due to exception / error
 
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
 3	administrador: pressiona No		SYSTEM fecha a janela pop-up		
-Postcondition:	Flow interrupted due to exception / error
-
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Usuario inativo por 90 dias			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM infoma que usuario esta bloqueado por inatividade		
-3	administrador: executa programa externo que reinicia senha de super admin		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
