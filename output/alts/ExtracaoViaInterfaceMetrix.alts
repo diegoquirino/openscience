@@ -1,58 +1,54 @@
-ALTS_SPECIFICATION "Extracao via Interface Metrix" {
+ALTS_SPECIFICATION "Extracao via Interface Matrix" {
   VERSION: "1.0"
   PRE_CONDITION: " "
   POST_CONDITION: "As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'"
 
   ACTORS {
-    administrador: "administrador do sistema"
+    operador: "operador do sistema"
     clock: "temporizador"
-    clockOffline: "temporizador offline"
   }
 
   STATES {
     S_INIT [initial, guard: " "]
-    S_BF_1 [flow: "basic", actor: "administrador", action: "inicia o SAFF Extractor e se autentica", branches_af: [3]]
+    S_BF_1 [flow: "basic", actor: "operador", action: "inicia o SAFF Extractor e se autentica"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe tela de coleta automatica"]
-    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", branches_af: [1]]
+    S_BF_3 [flow: "basic", actor: "operador", action: "seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", branches_af: [1]]
     S_BF_4 [flow: "basic", actor: "system", action: "bloqueia todos os botoes, com excecao do botao 'Stop'"]
-    S_BF_5 [flow: "basic", actor: "clock", action: "a cada 10 segundos"]
-    S_BF_6 [flow: "basic", actor: "system", action: "verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada", branches_ef: [1, 2]]
-    S_BF_7 [flow: "basic", actor: "administrador", action: "pressiona botao 'Stop'", branches_af: [2]]
+    S_BF_5 [flow: "basic", actor: "clock", action: "a cada 30 segundos"]
+    S_BF_6 [flow: "basic", actor: "system", action: "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", branches_ef: [1, 2]]
+    S_BF_7 [flow: "basic", actor: "operador", action: "pressiona botao 'Stop'", branches_af: [2]]
     S_BF_8 [flow: "basic", actor: "system", action: "desbloqueia todos os botoes e para de escutar a pasta indicada"]
-    S_AF1_1 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "administrador", action: "seleciona pasta vazia, e pressiona botao 'Start'"]
+    S_AF1_1 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "operador", action: "seleciona pasta vazia, e pressiona botao 'Start'"]
     S_AF1_2 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "system", action: "fica em espera ate que alguma extracao seja adicionada na pasta indicada"]
-    S_AF1_3 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "administrador", action: "adiciona extracao a pasta indicada", returns_to_bf: 4]
-    S_AF2_1 [flow: "alternative_2", description: "Insere novas extracoes na pasta", actor: "administrador", action: "adiciona novas extracoes na pasta indicada", returns_to_bf: 4]
-    S_AF3_1 [flow: "alternative_3", description: "Modifica o intervalo do temporizador", actor: "administrador", action: "modifica o valor da propriedade AUTO_COLLECT_WAIT_TIME para 60 (o valor é em segundos)", returns_to_bf: 4]
-    S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem a informacao de quais extracoes foram enviadas para o servidor; salva a extração no modo offline"]
-    S_EF1_2 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "clockOffline", action: "a cada 1 minuto"]
-    S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "verifica se existe conexão com o servidor para enviar as extrações offline"]
-    S_EF2_1 [flow: "exception_2", description: "Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio", actor: "system", action: "move a extração para a pasta broken"]
+    S_AF1_3 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "operador", action: "adiciona extracao a pasta indicada", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "Insere novas extracoes na pasta", actor: "operador", action: "adiciona novas extracoes na pasta indicada", returns_to_bf: 4]
+    S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida"]
+    S_EF1_2 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "clock", action: "a cada 30 segundos"]
+    S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "tenta enviar extrações restantes para o servidor"]
+    S_EF2_1 [flow: "exception_2", description: "Extração não se encontra em formato adequado", actor: "system", action: "move a extração para a pasta broken"]
     S_END [terminal, guard: "As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'"]
   }
 
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
     S_BF_1 -> S_BF_2 [event: "system: exibe tela de coleta automatica"]
-    S_BF_1 -> S_AF3_1 [branch: "AF_3 - Modifica o intervalo do temporizador"]
-    S_BF_2 -> S_BF_3 [event: "administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'"]
+    S_BF_2 -> S_BF_3 [event: "operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'"]
     S_BF_3 -> S_BF_4 [event: "system: bloqueia todos os botoes, com excecao do botao 'Stop'"]
     S_BF_3 -> S_AF1_1 [branch: "AF_1 - Seleciona pasta vazia"]
-    S_BF_4 -> S_BF_5 [event: "clock: a cada 10 segundos"]
-    S_BF_5 -> S_BF_6 [event: "system: verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada"]
-    S_BF_6 -> S_BF_7 [event: "administrador: pressiona botao 'Stop'"]
+    S_BF_4 -> S_BF_5 [event: "clock: a cada 30 segundos"]
+    S_BF_5 -> S_BF_6 [event: "system: envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada"]
+    S_BF_6 -> S_BF_7 [event: "operador: pressiona botao 'Stop'"]
     S_BF_6 -> S_EF1_1 [branch: "EF_1 - Falha no envio ao servidor"]
-    S_BF_6 -> S_EF2_1 [branch: "EF_2 - Extração não se encontra em formato adequado ou o diretório do SERIALNUMBER está vazio"]
+    S_BF_6 -> S_EF2_1 [branch: "EF_2 - Extração não se encontra em formato adequado"]
     S_BF_7 -> S_BF_8 [event: "system: desbloqueia todos os botoes e para de escutar a pasta indicada"]
     S_BF_7 -> S_AF2_1 [branch: "AF_2 - Insere novas extracoes na pasta"]
     S_BF_8 -> S_END [event: "Complete"]
     S_AF1_1 -> S_AF1_2 [event: "system: fica em espera ate que alguma extracao seja adicionada na pasta indicada"]
-    S_AF1_2 -> S_AF1_3 [event: "administrador: adiciona extracao a pasta indicada"]
+    S_AF1_2 -> S_AF1_3 [event: "operador: adiciona extracao a pasta indicada"]
     S_AF1_3 -> S_BF_4 [resume_basic_flow: 4]
     S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
-    S_AF3_1 -> S_BF_4 [resume_basic_flow: 4]
-    S_EF1_1 -> S_EF1_2 [event: "clockOffline: a cada 1 minuto"]
-    S_EF1_2 -> S_EF1_3 [event: "system: verifica se existe conexão com o servidor para enviar as extrações offline"]
+    S_EF1_1 -> S_EF1_2 [event: "clock: a cada 30 segundos"]
+    S_EF1_2 -> S_EF1_3 [event: "system: tenta enviar extrações restantes para o servidor"]
     S_EF1_3 -> S_END [event: "ErrorExit"]
     S_EF2_1 -> S_END [event: "ErrorExit"]
   }

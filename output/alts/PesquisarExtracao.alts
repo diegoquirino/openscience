@@ -1,6 +1,6 @@
 ALTS_SPECIFICATION "Pesquisar por extracao" {
   VERSION: "1.0"
-  PRE_CONDITION: "Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada"
+  PRE_CONDITION: "Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada"
   POST_CONDITION: ""
 
   ACTORS {
@@ -8,20 +8,20 @@ ALTS_SPECIFICATION "Pesquisar por extracao" {
   }
 
   STATES {
-    S_INIT [initial, guard: "Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada"]
-    S_BF_1 [flow: "basic", actor: "administrador", action: "digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'", branches_af: [1]]
-    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela correspondente a extracao"]
-    S_AF1_1 [flow: "alternative_1", description: "Product Number ou Serial Number invalidos", actor: "administrador", action: "digita o product number e/ou numero serial invalidos e pressiona o botao 'Search'"]
-    S_AF1_2 [flow: "alternative_1", description: "Product Number ou Serial Number invalidos", actor: "system", action: "exibe mensagem que product number ou serial number sao invalidos", returns_to_bf: 1]
+    S_INIT [initial, guard: "Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'", branches_af: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela correspondente a extração"]
+    S_AF1_1 [flow: "alternative_1", description: "Product Number ou Serial Number inválidos", actor: "administrador", action: "digita o product number e/ou número serial inválidos e pressiona o botão 'Search'"]
+    S_AF1_2 [flow: "alternative_1", description: "Product Number ou Serial Number inválidos", actor: "system", action: "exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”", returns_to_bf: 1]
     S_END [terminal, guard: ""]
   }
 
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
-    S_BF_1 -> S_BF_2 [event: "system: exibe tela correspondente a extracao"]
-    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Product Number ou Serial Number invalidos"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela correspondente a extração"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Product Number ou Serial Number inválidos"]
     S_BF_2 -> S_END [event: "Complete"]
-    S_AF1_1 -> S_AF1_2 [event: "system: exibe mensagem que product number ou serial number sao invalidos"]
+    S_AF1_1 -> S_AF1_2 [event: "system: exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”"]
     S_AF1_2 -> S_BF_1 [resume_basic_flow: 1]
   }
 }

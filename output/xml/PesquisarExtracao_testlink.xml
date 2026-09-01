@@ -7,37 +7,37 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
+        <actions><![CDATA[administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extração]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number invalidos">
+  <testcase name="TC2 - Alternative Flow 1: Product Number ou Serial Number inválidos">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number invalidos]]></summary>
-    <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada]]></preconditions>
+    <summary><![CDATA[Alternative Flow 1: Product Number ou Serial Number inválidos]]></summary>
+    <preconditions><![CDATA[Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem que product number ou serial number sao invalidos]]></expectedresults>
+        <actions><![CDATA[administrador: digita o product number e/ou número serial inválidos e pressiona o botão 'Search']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extracao]]></expectedresults>
+        <actions><![CDATA[administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela correspondente a extração]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

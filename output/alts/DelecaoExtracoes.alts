@@ -1,6 +1,6 @@
 ALTS_SPECIFICATION "Delecao de Extracoes" {
   VERSION: "1.0"
-  PRE_CONDITION: "Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"
+  PRE_CONDITION: "Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"
   POST_CONDITION: ""
 
   ACTORS {
@@ -8,7 +8,7 @@ ALTS_SPECIFICATION "Delecao de Extracoes" {
   }
 
   STATES {
-    S_INIT [initial, guard: "Usuario deve estar logado no servidor ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"]
+    S_INIT [initial, guard: "Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)"]
     S_BF_1 [flow: "basic", actor: "administrador", action: "seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”", branches_af: [2, 3]]
     S_BF_2 [flow: "basic", actor: "system", action: "marca selecao com um tick"]
     S_BF_3 [flow: "basic", actor: "administrador", action: "pressiona o botao “Delete extractions”"]

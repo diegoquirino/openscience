@@ -4,16 +4,16 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 2 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+1	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Product Number ou Serial Number invalidos			Execution Date:	
-Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extracao cadastrada
+Description:	Alternative Flow 1: Product Number ou Serial Number inválidos			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita o product number e/ou numero serial invalidos e pressiona o botao 'Search'		SYSTEM exibe mensagem que product number ou serial number sao invalidos		
-2	administrador: digita no campo “Product Number” o numero de produto e o numero serial correspondente e pressiona o botao 'Search'		SYSTEM exibe tela correspondente a extracao		
+1	administrador: digita o product number e/ou número serial inválidos e pressiona o botão 'Search'		SYSTEM exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”		
+2	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
 Postcondition:	
 

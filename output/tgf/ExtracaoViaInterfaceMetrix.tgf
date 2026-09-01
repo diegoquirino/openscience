@@ -16,14 +16,13 @@
 16 16
 17 17
 18 18
-19 19
 #
-1 2 [s] administrador inicia o SAFF Extractor e se autentica
+1 2 [s] operador inicia o SAFF Extractor e se autentica
 2 3 [e] system exibe tela de coleta automatica
-3 4 [s] administrador seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'
+3 4 [s] operador seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'
 4 5 [e] system bloqueia todos os botoes, com excecao do botao 'Stop'
-5 6 [s] clock a cada 10 segundos
-6 7 [e] system verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada
-7 8 [s] administrador pressiona botao 'Stop'
+5 6 [s] clock a cada 30 segundos
+6 7 [e] system envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada
+7 8 [s] operador pressiona botao 'Stop'
 8 9 [e] system desbloqueia todos os botoes e para de escutar a pasta indicada
 9 10 [c] As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'

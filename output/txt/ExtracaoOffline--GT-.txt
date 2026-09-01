@@ -6,37 +6,32 @@ Test Case ID:	TC1	Priority (low,medium,high):		Executed by:
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre extrator		SYSTEM exibe tela de login		
-2	administrador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
+1	administrador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Offline sempre			Execution Date:	
+Description:	Alternative Flow 1: Pressiona NO			Execution Date:	
 Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre extrator		SYSTEM exibe tela de login		
-2	administrador: define que o sistema sempre fará extrações offline		SYSTEM exibe tela inicial 'SAFF extraction'		
-3	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+1	administrador: Não deseja entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
 Postcondition:	
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Cai conexão e usuario quer entrar em modo offline 			Execution Date:	
+Description:	Alternative Flow 2: Offline sempre			Execution Date:	
 Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre extrator		SYSTEM exibe tela de login		
-2	administrador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
-3	administrador: confirma que quer entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
-4	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
-5	administrador: reastabelece conexão		SYSTEM envia extrações locais para o servidor e as apaga da pasta local		
-6	administrador: loga no servidor e vai até a página de extrações		SYSTEM exibe lista com extrações realizada no modo offline no topo		
-Postcondition:	Flow interrupted due to exception / error
+1	administrador: define que o sistema sempre fará extrações offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+2	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Cai conexão e usuario quer entrar em modo offline 			Execution Date:	
+Description:	Exception Flow 1: Cai conexão 			Execution Date:	
 Precondition:	Usuário está logado no servidor
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre extrator		SYSTEM exibe tela de login		
-2	administrador: loga no extrator		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
-3	administrador: não deseja entrar em modo offline		SYSTEM processes action successfully		
+1	administrador: loga no extrator		SYSTEM processes action successfully		
+2	administrador: confirma que quer entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+4	administrador: reastabelece conexão		SYSTEM envia extrações locais para o servidor e as apaga da pasta local		
+5	administrador: loga no servidor e vai até a página de extrações		SYSTEM exibe lista com extrações realizada no modo offline no topo		
 Postcondition:	Flow interrupted due to exception / error
 

@@ -16,9 +16,7 @@ ALTS_SPECIFICATION "Login no servidor como Administrador" {
     S_AF2_1 [flow: "alternative_2", description: "Número de tentativas inválidas é 3", actor: "administrador", action: "digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login"]
     S_AF2_2 [flow: "alternative_2", description: "Número de tentativas inválidas é 3", actor: "system", action: "exibe mensagem de alerta", returns_to_bf: 1]
     S_AF3_1 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "administrador", action: "digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login"]
-    S_AF3_2 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "system", action: "bloqueia a sessão"]
-    S_AF3_3 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "administrador", action: "digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login"]
-    S_AF3_4 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "system", action: "informa que usuário está bloqueado"]
+    S_AF3_2 [flow: "alternative_3", description: "Número de tentativas inválidas é 5", actor: "system", action: "bloqueia a sessão", returns_to_bf: 1]
     S_END [terminal, guard: ""]
   }
 
@@ -34,8 +32,6 @@ ALTS_SPECIFICATION "Login no servidor como Administrador" {
     S_AF2_1 -> S_AF2_2 [event: "system: exibe mensagem de alerta"]
     S_AF2_2 -> S_BF_1 [resume_basic_flow: 1]
     S_AF3_1 -> S_AF3_2 [event: "system: bloqueia a sessão"]
-    S_AF3_2 -> S_AF3_3 [event: "administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login"]
-    S_AF3_3 -> S_AF3_4 [event: "system: informa que usuário está bloqueado"]
-    S_AF3_4 -> S_END [event: "Complete"]
+    S_AF3_2 -> S_BF_1 [resume_basic_flow: 1]
   }
 }

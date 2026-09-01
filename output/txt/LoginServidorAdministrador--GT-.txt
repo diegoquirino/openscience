@@ -30,6 +30,6 @@ Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Executi
 Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
-2	administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login		SYSTEM informa que usuário está bloqueado		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
 Postcondition:	
 

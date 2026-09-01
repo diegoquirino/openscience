@@ -7,7 +7,7 @@ Description:	Basic Flow (Happy Path)			Execution Date:
 Precondition:	Estar logado como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
-2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+2	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
@@ -19,7 +19,7 @@ Description:	Alternative Flow 1: Campo fora da formatação esperada, e.g., 'ddd
 Precondition:	Estar logado como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
-2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+2	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 3	superAdmin: preenche incorretamente os campos 'Name', 'Key File' e/ou 'Country' e pressiona o botão 'Create' 		SYSTEM exibe mensagem informando que os dados não correspondem a formatação esperada		
 4	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 5	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
@@ -32,9 +32,9 @@ Description:	Alternative Flow 2: Cancela criação			Execution Date:
 Precondition:	Estar logado como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
-2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+2	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 3	superAdmin: Cancela criação		SYSTEM exibe lista de clientes		
-4	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+4	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 5	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 6	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 7	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
@@ -46,13 +46,13 @@ Description:	Alternative Flow 3: Edita dados			Execution Date:
 Precondition:	Estar logado como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
-2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+2	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
 6	superAdmin: clica no botão 'Edit'		SYSTEM exibe campos do cliente com valores atuais que podem ser editados		
 7	superAdmin: preenche os novos valores e pressiona o botão 'Update		SYSTEM exibe lista de clientes		
-8	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+8	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 9	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 10	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 11	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
@@ -64,13 +64,13 @@ Description:	Alternative Flow 4: Deleta cliente			Execution Date:
 Precondition:	Estar logado como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
-2	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+2	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 3	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 4	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 5	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		
 6	superAdmin: clica no botão 'Delete'		SYSTEM exibe mensagem solicitando confirmação		
 7	superAdmin: pressiona o botao OK		SYSTEM exibe lista de clientes		
-8	superAdmin: seleciona o botão 'Create Customer'		SYSTEM exibe página com campos de cadastro de novo cliente		
+8	superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela		SYSTEM exibe página com campos de cadastro de novo cliente		
 9	superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create' 		SYSTEM exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado		
 10	superAdmin: seleciona opção 'Customers' no menu Settings		SYSTEM exibe lista de clientes		
 11	superAdmin: clica no nome de um cliente		SYSTEM exibe dados do cliente		

@@ -13,119 +13,89 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: abre extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: loga no extrator]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Offline sempre">
+  <testcase name="TC2 - Alternative Flow 1: Pressiona NO">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
+    <summary><![CDATA[Alternative Flow 1: Pressiona NO]]></summary>
     <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: abre extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: Não deseja entrar em modo offline]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Offline sempre">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Offline sempre]]></summary>
+    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
       <step>
-        <step_number><![CDATA[2]]></step_number>
+        <step_number><![CDATA[1]]></step_number>
         <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[3]]></step_number>
+        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
         <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ">
-    <node_order><![CDATA[3]]></node_order>
-    <externalid><![CDATA[TC3]]></externalid>
+  <testcase name="TC4 - Exception Flow 1: Cai conexão ">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ]]></summary>
+    <summary><![CDATA[Exception Flow 1: Cai conexão ]]></summary>
     <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: abre extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: loga no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
         <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[administrador: reastabelece conexão]]></actions>
         <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[6]]></step_number>
+        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC4 - Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 2: Cai conexão e usuario quer entrar em modo offline ]]></summary>
-    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: abre extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: loga no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: não deseja entrar em modo offline]]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

@@ -11,7 +11,7 @@ ALTS_SPECIFICATION "CRUD Cliente" {
     S_INIT [initial, guard: "Estar logado como super administrador"]
     S_BF_1 [flow: "basic", actor: "superAdmin", action: "seleciona opção 'Customers' no menu Settings"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe lista de clientes"]
-    S_BF_3 [flow: "basic", actor: "superAdmin", action: "seleciona o botão 'Create Customer'"]
+    S_BF_3 [flow: "basic", actor: "superAdmin", action: "seleciona o botão 'Create Customer', situado no lado direito inferior da tela"]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe página com campos de cadastro de novo cliente"]
     S_BF_5 [flow: "basic", actor: "superAdmin", action: "preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create'", branches_af: [1, 2]]
     S_BF_6 [flow: "basic", actor: "system", action: "exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado"]
@@ -36,7 +36,7 @@ ALTS_SPECIFICATION "CRUD Cliente" {
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
     S_BF_1 -> S_BF_2 [event: "system: exibe lista de clientes"]
-    S_BF_2 -> S_BF_3 [event: "superAdmin: seleciona o botão 'Create Customer'"]
+    S_BF_2 -> S_BF_3 [event: "superAdmin: seleciona o botão 'Create Customer', situado no lado direito inferior da tela"]
     S_BF_3 -> S_BF_4 [event: "system: exibe página com campos de cadastro de novo cliente"]
     S_BF_4 -> S_BF_5 [event: "superAdmin: preenche corretamente os campos 'Name', 'Key File' e 'Country' e pressiona o botão 'Create'"]
     S_BF_5 -> S_BF_6 [event: "system: exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado"]
