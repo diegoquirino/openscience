@@ -270,6 +270,12 @@ class GitHubManager:
 
     def add_commit_push(self, repo_dir: Path, branch: str, commit_message: str) -> bool:
         """Stage all changes, commit, and push to the specified branch."""
+        # Ensure directory is a git repository
+        if not (repo_dir / ".git").exists():
+            self.run_git(["init"], cwd=repo_dir)
+            remote_url = f"https://github.com/{self.repo}.git"
+            self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
+
         # Ensure branch exists and is checked out
         self.run_git(["checkout", "-B", branch], cwd=repo_dir)
         self.run_git(["add", "-A"], cwd=repo_dir)
@@ -399,58 +405,103 @@ class ClaretTranslator:
 
     def __init__(self, target_locale: str = "en-us"):
         self.target_locale = target_locale.lower()
-        self.pt_to_en_lexicon = {
-            "Estar logado como super administrador": "Be logged in as super administrator",
-            "Estar logado como administrador": "Be logged in as administrator",
-            "Estar logado no sistema": "Be logged in the system",
-            "Super administrador": "Super administrator",
-            "Administrador": "Administrator",
-            "Usuário": "User",
-            "exibe lista de clientes": "displays customer list",
-            "exibe página com campos de cadastro de novo cliente": "displays page with new customer registration fields",
-            "exibe página com campos de cadastro de notvo cliente": "displays page with new customer registration fields",
-            "exibe página com dados do novo cliente e mensagem que um novo cliente foi adicionado": "displays page with new customer data and confirmation message",
-            "exibe página com dados do notvo cliente e mensagem que um notvo cliente foi adicionado": "displays page with new customer data and confirmation message",
-            "clica no nome de um cliente": "clicks on a customer name",
-            "clica not notme de um cliente": "clicks on a customer name",
-            "exibe dados do cliente": "displays customer data",
-            "retorna a lista de clientes": "returns to customer list",
-            "Cancela criação": "Cancel creation",
-            "Edita dados": "Edit data",
-            "exibe campos do cliente com valores atuais que podem ser editados": "displays customer fields with current values that can be edited",
-            "preenche os novos valores e clicks the button 'Update": "fills in new values and clicks the button 'Update'",
-            "preenche os notvos valores e clicks the button 'Update": "fills in new values and clicks the button 'Update'",
-            "Deleta cliente": "Delete customer",
-            "exibe mensagem solicitando confirmação": "displays confirmation message",
-            "preenche corretamente os campos": "correctly fills in fields",
-        }
+        self.dictionary: Dict[str, str] = {}
+        
+        # Load external translation mapping if available
+        dict_candidates = [
+            Path(__file__).resolve().parent / "full_saff_translations.json",
+            Path(__file__).resolve().parent.parent / "full_saff_translations.json",
+            Path("full_saff_translations.json")
+        ]
+        for candidate in dict_candidates:
+            if candidate.exists():
+                try:
+                    self.dictionary = json.loads(candidate.read_text(encoding="utf-8"))
+                    logger.debug(f"Loaded {len(self.dictionary)} translations from {candidate}")
+                    break
+                except Exception as e:
+                    logger.warning(f"Failed to load translation dictionary from {candidate}: {e}")
+
+    def clean_garbled(self, text: str) -> str:
+        """Clean garbled fragments caused by previous partial replacements."""
+        t = text
+        subs = [
+            ("notme", "nome"), ("notvo", "novo"), ("notva", "nova"), ("notvamente", "novamente"),
+            ("diagnotstico", "diagnostico"), ("Diagnotstic", "Diagnostic"), ("not ", "no "),
+            ("Not ", "No "), ("menots", "menos"), ("Espanotl", "Espanhol"), ("Españotl", "Español"),
+            ("Nao ", "Não "), ("nao ", "não "), ("ja ", "já "), ("usuario", "usuário"),
+            ("Usuario", "Usuário"), ("extracao", "extração"), ("extracoes", "extrações"),
+            ("Extracao", "Extração"), ("Extracoes", "Extrações"), ("secao", "seção"),
+            ("secoes", "seções"), ("Secao", "Seção"), ("Secoes", "Seções"),
+            ("criacao", "criação"), ("Criacao", "Criação"), ("edicao", "edição"),
+            ("Edicao", "Edição"), ("delecao", "deleção"), ("Delecao", "Deleção")
+        ]
+        for pt, en in subs:
+            t = t.replace(pt, en)
+        return t
 
     def translate_text(self, text: str) -> str:
         """Translate a single natural language string chunk."""
         cleaned = text.strip()
-        if cleaned in self.pt_to_en_lexicon:
-            return self.pt_to_en_lexicon[cleaned]
+        if not cleaned:
+            return text
 
-        # Simple substitution dictionary pass for common phrases
-        result = text
-        for pt, en in self.pt_to_en_lexicon.items():
+        # 1. Exact match in dictionary
+        if cleaned in self.dictionary:
+            return self.dictionary[cleaned]
+
+        cleaned_fixed = self.clean_garbled(cleaned)
+        if cleaned_fixed in self.dictionary:
+            return self.dictionary[cleaned_fixed]
+
+        # 2. Heuristic word/phrase substitutions
+        result = cleaned_fixed
+        word_subs = [
+            ("exibe ", "displays "), ("Exibe ", "Displays "), ("apresenta ", "displays "),
+            ("Apresenta ", "Displays "), ("solicitando confirmação", "requesting confirmation"),
+            ("retorna à ", "returns to "), ("retorna a ", "returns to "), ("preenche ", "fills "),
+            ("Preenche ", "Fills "), ("clica ", "clicks "), ("Clica ", "Clicks "),
+            ("seleciona ", "selects "), ("Seleciona ", "Selects "), ("cancela ", "cancels "),
+            ("Cancela ", "Cancels "), ("edita ", "edits "), ("Edita ", "Edits "),
+            ("deleta ", "deletes "), ("Deleta ", "Deletes "), ("cria ", "creates "),
+            ("Cria ", "Creates "), ("salva ", "saves "), ("Salva ", "Saves "),
+            ("mensagem ", "message "), ("Mensagem ", "Message "), ("botão ", "button "),
+            ("botões ", "buttons "), ("usuário", "user"), ("usuários", "users"),
+            ("Usuário", "User"), ("Usuários", "Users"), ("cliente", "customer"),
+            ("clientes", "customers"), ("Cliente", "Customer"), ("Clientes", "Customers"),
+            ("documento", "document"), ("documentos", "documents"), ("Documento", "Document"),
+            ("Documentos", "Documents"), ("laboratório", "laboratory"), ("laboratórios", "laboratories"),
+            ("Laboratório", "Laboratory"), ("Laboratórios", "Laboratories"), ("diagnóstico", "diagnostic"),
+            ("diagnósticos", "diagnostics"), ("Diagnóstico", "Diagnostic"), ("Diagnósticos", "Diagnostics"),
+            ("seção", "section"), ("seções", "sections"), ("Seção", "Section"),
+            ("Seções", "Sections"), ("extração", "extraction"), ("extrações", "extractions"),
+            ("Extração", "Extraction"), ("Extrações", "Extractions"), ("servidor", "server"),
+            ("Servidor", "Server"), ("extrator", "extractor"), ("Extrator", "Extractor"),
+            ("relatório", "report"), ("relatórios", "reports"), ("Relatório", "Report"),
+            ("Relatórios", "Reports"), ("gráfico", "graph"), ("gráficos", "graphs"),
+            ("Gráfico", "Graph"), ("Gráficos", "Graphs"), ("estatística", "statistic"),
+            ("estatísticas", "statistics"), ("Estatística", "Statistic"), ("Estatísticas", "Statistics"),
+            ("filtro", "filter"), ("filtros", "filters"), ("Filtro", "Filter"),
+            ("Filtros", "Filters"), ("configuração", "setting"), ("configurações", "settings"),
+            ("Configuração", "Setting"), ("Configurações", "Settings"), ("não existe ", "there is no "),
+            ("Não existe ", "There is no "), ("inválido", "invalid"), ("inválidos", "invalid"),
+            ("inválida", "invalid"), ("inválidas", "invalid"), ("válido", "valid"),
+            ("válidos", "valid"), ("válida", "valid"), ("válidas", "valid"),
+            (" e ", " and "), (" ou ", " or "), (" com ", " with "), (" para ", " for "),
+            (" de ", " of "), (" da ", " of the "), (" do ", " of the "), (" das ", " of the "),
+            (" dos ", " of the "), (" no ", " in the "), (" na ", " in the "),
+            (" nos ", " in the "), (" nas ", " in the "), (" por ", " by "),
+            (" pelo ", " by the "), (" pela ", " by the "), (" após ", " after "),
+            (" antes ", " before "), (" sem ", " without "), (" todos ", " all "),
+            (" todas ", " all "), (" tela ", " page "), (" página ", " page "),
+            (" campo ", " field "), (" campos ", " fields "), (" pasta ", " folder "),
+            (" pastas ", " folders "), (" arquivo ", " file "), (" arquivos ", " files "),
+            (" lista ", " list "), (" dados ", " data "), (" erro ", " error "),
+            (" sucesso ", " success "), (" realizado ", " completed "), (" realizada ", " completed "),
+            (" realizadas ", " completed "), (" realizados ", " completed ")
+        ]
+        for pt, en in word_subs:
             result = result.replace(pt, en)
-        
-        # Replace remaining typical PT phrases if translating to EN
-        if "en" in self.target_locale:
-            replacements = [
-                ("exibe ", "displays "),
-                ("solicitando confirmação", "requesting confirmation"),
-                ("retorna a ", "returns to "),
-                ("preenche ", "fills "),
-                ("Cancela ", "Cancels "),
-                ("Edita ", "Edits "),
-                ("Deleta ", "Deletes "),
-                ("Cria ", "Creates "),
-                ("Salva ", "Saves "),
-            ]
-            for pt, en in replacements:
-                result = result.replace(pt, en)
 
         return result
 

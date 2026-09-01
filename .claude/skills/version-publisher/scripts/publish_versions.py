@@ -8,6 +8,7 @@ runs claret-generator.jar, commits/pushes to GitHub branch, creates tag and rele
 """
 
 import os
+import re
 import sys
 import argparse
 import shutil
