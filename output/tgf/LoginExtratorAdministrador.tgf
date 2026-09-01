@@ -21,11 +21,9 @@
 21 21
 22 22
 23 23
-24 24
 #
-1 2 [c] Deve existir um usuario cadastrado com perfil administrador
-2 3 [s] administrador abre modulo de extracao
-3 4 [e] system exibe tela de login
-4 5 [s] administrador digita o user e a password de um usuário administrador e pressiona o botao Login
-5 6 [e] system exibe tela de extracao por dispositivo
-6 7 [c] O usuario deve estar logado
+1 2 [c] Usuário deve estar logado no servidor como super administrador
+2 3 [s] administrador abre módulo de extração
+3 4 [e] system exibe página inicial do módulo de extração
+4 5 [s] administrador digita um login de usuário administrador e password e pressiona Login
+5 6 [e] system exibe tela “SAFF Extractor”

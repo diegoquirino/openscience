@@ -20,13 +20,7 @@
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina 'Search extraction']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado]]></actions>
-        <expectedresults><![CDATA[SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe pagina “Search extraction”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -49,19 +43,13 @@
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem “Invalid user or password” na pagina de login]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina 'Search extraction']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado]]></actions>
-        <expectedresults><![CDATA[SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe pagina “Search extraction”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -84,28 +72,22 @@
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem de usuario ou senha incorretos na pagina de login; informa o numero de tentativas restantes ate que o usuario seja bloqueado]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” na página de login]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe pagina 'Search extraction']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado]]></actions>
-        <expectedresults><![CDATA[SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe pagina “Search extraction”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Numero de tentativas invalidas e 5">
+  <testcase name="TC4 - Alternative Flow 3: Número de tentativas invalidas e 5">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Numero de tentativas invalidas e 5]]></summary>
+    <summary><![CDATA[Alternative Flow 3: Número de tentativas invalidas e 5]]></summary>
     <preconditions><![CDATA[Deve existir um usuario cadastrado com perfil administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
@@ -118,14 +100,14 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: digita o user correte e o password invalido pela sexta vez e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado]]></expectedresults>
+        <actions><![CDATA[administrador: digita o user de um usuario administrador corretamente, digita uma password inválida pela sexta vez e pressiona o botao Login]]></actions>
+        <expectedresults><![CDATA[SYSTEM bloqueia o usuario]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem informando usuario esta bloqueado]]></expectedresults>
+        <actions><![CDATA[system: SYSTEM: exibe a mensagem “This user has been blocked.”]]></actions>
+        <expectedresults><![CDATA[exibe a mensagem “This user has been blocked.”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -171,7 +153,7 @@
       <step>
         <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[administrador: digita o user e a password de um usuario administrador e pressiona o botao Login]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe mensagem indicando que usuario foi bloqueado]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe a mensagem “This user has been blocked.”]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

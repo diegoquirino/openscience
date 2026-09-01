@@ -1,6 +1,89 @@
 System:	SAFF Extractor
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 82 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 88 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Offline sempre			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: define que o sistema sempre fara extracoes offline		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: realiza uma serie de extracoes		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Terminal nao se encontra em modo LLT			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: conecta terminal em porta USB e o coloca em modo LLT		SYSTEM (terminal) entra em modo LLT		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Uso do leitor de codigo de barras			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: le (via leitor de codigo de barras) um product number e serial number validos		SYSTEM processes action successfully		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Product number e/ou serial number invalidos			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: digita um product number e/ou serial number invalidos		SYSTEM marca campo em vermelho alertando do erro		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe tela para entrada em modo offline		
+Postcondition:	extracoes foram realizadas (tempo de cada extracao deve ser o momento que esta foi feita em modo offline)
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmacao se usuario quer entrar em modo offline		
+4	operador: confirma que quer entrar em modo offline		SYSTEM exibe pagina que requisita dados do terminal		
+5	operador: realiza uma serie de extracoes sequenciais		SYSTEM salva as extracoes na pasta local 'OfflineExtraction'		
+6	operador: reastabelece conexao		SYSTEM envia extracoes locais para o servidor e as apaga da pasta local 'OfflineExtraction'		
+7	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista com extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline 			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe pagina que requisita dados do terminal		
+2	operador: escolhe opcao Pre_Test para tipo de teste		SYSTEM apresenta a marcacao da opcao escolhida		
+3	operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)		SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline		
+4	operador: nao deseja entrar em modo offline		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Cai conexao novamente			Execution Date:	
+Precondition:	 
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: mantem informacao das extracoes nao enviadas a tempo na pasta local		mantem informacao das extracoes nao enviadas a tempo na pasta local		
+2	operador: reastabelece conexao		SYSTEM envia extracoes restantes da pasta local para o servidor e as apaga da pasta 'OfflineExtraction'		
+3	operador: loga no servidor e vai ate a pagina de extracoes		SYSTEM exibe lista que contem as extracoes realizadas no modo offline		
+Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Extracao via Interface Metrix	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -15,7 +98,7 @@ Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e t
 
 Use Case:	Extracao via Interface Metrix	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Altera a pasta C\:\\Collect para uma pasta vazia			Execution Date:	
+Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
@@ -71,7 +154,7 @@ Postcondition:	Flow interrupted due to exception / error
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
@@ -80,7 +163,7 @@ Postcondition:
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
@@ -89,8 +172,8 @@ Postcondition:
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Numero de tentativas invalidas é 3			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
@@ -99,8 +182,8 @@ Postcondition:
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Numero de tentativas invalidas é 5			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia usuário		
@@ -110,7 +193,7 @@ Postcondition:
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
@@ -121,78 +204,54 @@ Postcondition:	Flow interrupted due to exception / error
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
 2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
 3	administrador: pressiona No		SYSTEM fecha a janela pop-up		
 Postcondition:	Flow interrupted due to exception / error
 
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Usuario inativo por 90 dias			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como super administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM infoma que usuario esta bloqueado por inatividade		
-3	administrador: executa programa externo que reinicia senha de super admin		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
-Postcondition:	O usuario deve estar logado
+1	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: User invalido			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe mensagem “Invalid user or password” na pagina de login		
-3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
-Postcondition:	O usuario deve estar logado
+1	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Password invalida			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login		SYSTEM exibe mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” na página de login		
-3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
-Postcondition:	O usuario deve estar logado
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Número de tentativas invalidas e 5			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuario		
-3	system: SYSTEM: exibe a mensagem “This user has been blocked.”		exibe a mensagem “This user has been blocked.”		
-Postcondition:	O usuario deve estar logado
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
+2	administrador: digita o login e pasword válidos do usuário bloqueado e pressiona o botão Login		SYSTEM informa que usuário está bloqueado		
+Postcondition:	
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Usuario inativo por 30 minutos			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Exception Flow 3: Usuario inativo por 30 minutos			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM finaliza sessão do usuario e retorna a pagina de login ao receber alguma requisicao do usuario		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Login no servidor como Administrador	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Usuario inativo por 90 dias			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe a mensagem “This user has been blocked.”		
+1	system: SYSTEM: finaliza sessao do usuario e retorna a pagina de login		finaliza sessao do usuario e retorna a pagina de login		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
@@ -535,19 +594,19 @@ Precondition:
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
 2	administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline		
+3	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada		
 4	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
 Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
 
 Use Case:	Extracao via Interface Metrix	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Altera a pasta C:\\Collect para uma pasta vazia			Execution Date:	
+Description:	Alternative Flow 1: Altera a pasta C\:\\Collect para uma pasta vazia			Execution Date:	
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
 2	administrador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
 3	administrador: adiciona extracao a pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-4	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline		
+4	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada		
 5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
 Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
 
@@ -558,9 +617,9 @@ Precondition:
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
 2	administrador: seleciona uma pasta contendo varias extrações, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline		
+3	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada		
 4	administrador: adiciona novas extracoes na pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-5	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline		
+5	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada		
 6	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
 Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
 
@@ -570,7 +629,7 @@ Description:	Alternative Flow 3: Modifica o intervalo do temporizador			Executio
 Precondition:	 
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: modifica o valor da propriedade AUTO_COLLECT_WAIT_TIME para 60 (o valor é em segundos)		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-2	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada, verifica se existe conexão com o servidor para enviar as extrações offline		
+2	clock: a cada 10 segundos		SYSTEM verifica se existem diretórios de serial number no formato correto e que foram criados a X ou mais tempo definido na propriedade AUTO_COLLECT_WAIT_TIME no arquivo conf.properties e então: envia as extracoes com essas restricoes para o servidor, transfere essas extrações(somente a pasta de serial number) para a pasta 'AUTO_COLLECT_READ_DIR/PRODUCTNUMBER'(onde o PRODUCTNUMBER é referente a cada SERIALNUMBER), atualiza o contador de extrações realizadas/enviadas e fica em espera por novas extracoes com essas mesmas restricoes na pasta indicada		
 3	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
 Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
 
@@ -685,72 +744,70 @@ Postcondition:
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
-Postcondition:	O usuario deve estar logado
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: User invalido			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user de um usuário inválido, digita uma password e pressiona o botao Login		SYSTEM exibe mensagem “Invalid user or password” na tela de login		
-3	system: SYSTEM: exibe tela de login		exibe tela de login		
-4	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
-Postcondition:	O usuario deve estar logado
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
+3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Password invalida			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 2: Numero de tentativas invalidas é 3			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user de um usuário administrador corretamente, digita uma password invalida e pressiona o botao Login		SYSTEM abre um pop-up e exibe a mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” em um pop-up		
-3	administrador: pressiona o botao Ok		SYSTEM fecha a janela pop-up		
-4	system: SYSTEM: exibe tela de login		exibe tela de login		
-5	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe tela de extracao por dispositivo		
-Postcondition:	O usuario deve estar logado
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
+3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Numero de tentativas invalidas e 5			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Alternative Flow 3: Numero de tentativas invalidas é 5			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user de um usuario administrador corretamente, digita uma password invalida pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuário e exibe a mensagem 'This user has been blocked'		
-3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos		SYSTEM exibe mensagem informando usuario está bloqueado		
-Postcondition:	O usuario deve estar logado
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia usuário		
+3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados válidos		SYSTEM exibe mensagem que usuário está bloqueado		
+Postcondition:	
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Sem conexao com o servidor e usuario deseja fazer extracao offline			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe pop-up questionando se o usuqrio deseja fazer extracoes offline		
-3	administrador: pressiona o botao Yes		SYSTEM fecha a janela pop-up e exibe tela de extracao por dispositivo em modo offline		
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
+3	administrador: pressiona Yes		SYSTEM fecha a janela pop-up		
+4	system: SYSTEM: exibe tela “SAFF Extractor” em modo offline		exibe tela “SAFF Extractor” em modo offline		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Sem conexao com o servidor e usuário nao deseja fazer extração offline			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Description:	Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe pop-up questionando se o usuário deveja fazer extracoes offline		
-3	administrador: pressiona o botao No		SYSTEM fecha a janela pop-up		
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
+3	administrador: pressiona No		SYSTEM fecha a janela pop-up		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Login no extrator como Administrador	Version:	1.0
 Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 3: Usuario inativo por 90 dias			Execution Date:	
-Precondition:	Deve existir um usuario cadastrado com perfil administrador
+Precondition:	Usuário deve estar logado no servidor como super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre modulo de extracao		SYSTEM exibe tela de login		
-2	administrador: digita o user e a password de um usuário administrador e pressiona o botao Login		SYSTEM exibe a mensagem 'This user has been blocked'		
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM infoma que usuario esta bloqueado por inatividade		
 3	administrador: executa programa externo que reinicia senha de super admin		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
@@ -760,9 +817,8 @@ Description:	Basic Flow (Happy Path)			Execution Date:
 Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
-3	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
-Postcondition:	
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
+Postcondition:	O usuario deve estar logado
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
@@ -770,10 +826,9 @@ Description:	Alternative Flow 1: User invalido			Execution Date:
 Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe na pagina de login uma mensagem de usuario ou senha incorretos		
-3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
-4	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
-Postcondition:	
+2	administrador: digita o user de um usuário invalido, digita uma password e pressiona o botao Login		SYSTEM exibe mensagem “Invalid user or password” na pagina de login		
+3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
+Postcondition:	O usuario deve estar logado
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
@@ -781,20 +836,19 @@ Description:	Alternative Flow 2: Password invalida			Execution Date:
 Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login		SYSTEM exibe mensagem de usuario ou senha incorretos na pagina de login; informa o numero de tentativas restantes ate que o usuario seja bloqueado		
-3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina 'Search extraction'		
-4	administrador: abre outro navegador na pagina de login e insere user e password do usuario ja logado		SYSTEM desloga o usuario na pagina anterior e continua sua sessao na nova pagina		
-Postcondition:	
+2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida e pressiona o botão Login		SYSTEM exibe mensagem “User or Password incorrect. Attempts remaining until the account lockout: #tentativas restantes#” na página de login		
+3	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe pagina “Search extraction”		
+Postcondition:	O usuario deve estar logado
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Numero de tentativas invalidas e 5			Execution Date:	
+Description:	Alternative Flow 3: Número de tentativas invalidas e 5			Execution Date:	
 Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user correte e o password invalido pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuario e exibe uma mensagem informando que o usuario foi bloqueado		
-3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados validos		SYSTEM exibe mensagem informando usuario esta bloqueado		
-Postcondition:	
+2	administrador: digita o user de um usuario administrador corretamente, digita uma password inválida pela sexta vez e pressiona o botao Login		SYSTEM bloqueia o usuario		
+3	system: SYSTEM: exibe a mensagem “This user has been blocked.”		exibe a mensagem “This user has been blocked.”		
+Postcondition:	O usuario deve estar logado
 
 Use Case:	Login no servidor como Administrador	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
@@ -811,7 +865,7 @@ Description:	Exception Flow 2: Usuario inativo por 90 dias			Execution Date:
 Precondition:	Deve existir um usuario cadastrado com perfil administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: acessa o sistema		SYSTEM exibe pagina de login		
-2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe mensagem indicando que usuario foi bloqueado		
+2	administrador: digita o user e a password de um usuario administrador e pressiona o botao Login		SYSTEM exibe a mensagem “This user has been blocked.”		
 Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Pesquisar por extracao	Version:	1.0

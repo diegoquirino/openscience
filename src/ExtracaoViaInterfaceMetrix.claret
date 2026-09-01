@@ -25,7 +25,7 @@ system "SAFF Extractor", {
             step 8, system, "desbloqueia todos os botoes e para de escutar a pasta indicada"
         }
 
-        alternative 1, "Altera a pasta C\:\\Collect para uma pasta vazia", {
+        alternative 1, "Seleciona pasta vazia", {
             step 1, administrador, "seleciona pasta vazia, e pressiona botao 'Start'"
             step 2, system, "fica em espera ate que alguma extracao seja adicionada na pasta indicada"
             step 3, administrador, "adiciona extracao a pasta indicada" , bfs:4
