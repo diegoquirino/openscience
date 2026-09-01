@@ -1,7 +1,7 @@
 # CLARET Version Control System
-### Cross-Agent Skills Suite for MBT Specification Versioning, Translation, and Test Suite Diffing
+### Cross-Agent Skills Suite for MBT Specification Versioning and Test Suite Diffing
 
-**CLARET Version Control System** is an agentic tool suite designed for managing the evolutionary lifecycle of **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing*) and DSL specifications. Built natively for **Claude Code** and interchangeable with **Google Antigravity** and **Cursor IDE**, this project automates specification compilation, GitHub release versioning, token-safe translation, and diff extraction for Model-Based Testing (MBT) studies.
+**CLARET Version Control System** is an agentic tool suite designed for managing the evolutionary lifecycle of **CLARET** (*CentraL Artifact for Requirement Engineering and model-based Testing*) and DSL specifications. Built natively for **Claude Code** and interchangeable with **Google Antigravity** and **Cursor IDE**, this project automates specification compilation, GitHub release versioning, and diff extraction for Model-Based Testing (MBT) studies.
 
 ---
 
@@ -28,7 +28,6 @@ graph TD
         ENGINE["scripts/claret_engine.py<br/>(Shared Engine)"]
         JAR["bin/claret-generator.jar<br/>(Java 26 Fat JAR)"]
         GH_API["GitHub REST API<br/>(PyGithub / Git CLI)"]
-        LLM["LLM Translators<br/>(Gemini / Claude APIs)"]
     end
 
     CLAUDE --> SYNC
@@ -39,25 +38,22 @@ graph TD
     AGY & CUR & CLAUDE_CLI --> ENGINE
     ENGINE --> JAR
     ENGINE --> GH_API
-    ENGINE --> LLM
 ```
 
 ### 2. Evolutionary Study Execution Pathways & Convergence
 ```mermaid
 graph TD
-    subgraph TrackA ["Track A: Local Raw Specs -> Translation -> Version Publication"]
+    subgraph TrackA ["Track A: Local Specs -> Version Publication"]
         A1["Raw .claret / .dsl Specs<br/>(Local Version Dirs)"]
-        A2["<b>spec-translator</b><br/>(/translate-specs)<br/>Translate to target locale"]
-        A3["<b>version-publisher</b><br/>(/publish-versions)<br/>PascalCase + MBT Compile + Push + Tag & Release"]
-        A1 --> A2 --> A3
+        A2["<b>version-publisher</b><br/>(/publish-versions)<br/>PascalCase + MBT Compile + Push + Tag & Release"]
+        A1 --> A2
     end
 
-    subgraph TrackB ["Track B: GitHub Releases -> Local Download -> Translation -> Test Generation"]
+    subgraph TrackB ["Track B: GitHub Releases -> Local Download -> Test Generation"]
         B1["Existing GitHub Releases / Tags<br/>(Remote openscience Repo)"]
         B2["<b>release-downloader</b><br/>(/download-releases)<br/>Fetch src/ trees"]
-        B3["<b>spec-translator</b><br/>(/translate-specs)<br/>Translate to target locale"]
-        B4["<b>test-generator</b><br/>(/generate-tests)<br/>Batch compile into output/"]
-        B1 --> B2 --> B3 --> B4
+        B3["<b>test-generator</b><br/>(/generate-tests)<br/>Batch compile into output/"]
+        B1 --> B2 --> B3
     end
 
     subgraph GitHubBranch ["Published GitHub Branch & Tags"]
@@ -72,9 +68,9 @@ graph TD
         CSV2["<b>output_diffs.csv</b><br/>Normalized test case mutations"]
     end
 
-    A3 --> GH
+    A2 --> GH
     B1 -.-> GH
-    B4 -.-> DiffAnalysis
+    B3 -.-> DiffAnalysis
 
     GH --> D1
     GH --> D2
@@ -109,13 +105,10 @@ claret-version-control-system/
 │   ├── release-downloader/               <-- Feature 3: Download src/ from specific tags/releases
 │   │   ├── SKILL.md
 │   │   └── scripts/download_releases.py
-│   ├── spec-translator/                  <-- Feature 4: Translate .claret specs preserving DSL grammar
-│   │   ├── SKILL.md
-│   │   └── scripts/translate_specs.py
-│   ├── src-diff-analyzer/                <-- Feature 5: Adjacent tag diff for src/ .claret files (CSV)
+│   ├── src-diff-analyzer/                <-- Feature 4: Adjacent tag diff for src/ .claret files (CSV)
 │   │   ├── SKILL.md
 │   │   └── scripts/diff_src.py
-│   └── output-diff-analyzer/             <-- Feature 6: Adjacent tag diff for output/ test cases (CSV)
+│   └── output-diff-analyzer/             <-- Feature 5: Adjacent tag diff for output/ test cases (CSV)
 │       ├── SKILL.md
 │       └── scripts/diff_output.py
 │
@@ -155,7 +148,7 @@ git checkout -b claret-version-control-system origin/claret-version-control-syst
 ### 2.2 Prerequisites & System Requirements
 
 Ensure the host environment meets the following runtime prerequisites:
-- **Python 3.10+** (Tested on Python 3.10, 3.11, 3.12, 3.14): Used for executing the agent skills suite, diff analyzers, translator, and synchronizer scripts.
+- **Python 3.10+** (Tested on Python 3.10, 3.11, 3.12, 3.14): Used for executing the agent skills suite, diff analyzers, and synchronizer scripts.
 - **Java Runtime Environment (JRE/JDK 21+ or 26)**: Required for executing the standalone `claret-generator.jar`.
 - **Git 2.x+**: Required for local staging, branch management, committing, and tagging.
 - **GitHub Personal Access Token (PAT)**: Required for REST API operations (creating releases, inspecting trees, and downloading release blobs).
@@ -219,7 +212,6 @@ copy .env.example .env  # Windows PowerShell/CMD
 | **`GITHUB_BRANCH`** | Optional | `claret-version-control-system` | Default integration/merging branch name used for publication. |
 | **`CLARET_JAR_PATH`** | Optional | `bin/claret-generator.jar` | Path to the `claret-generator.jar` standalone executable. Defaults automatically to `bin/claret-generator.jar` or sibling `../claret-generator/target/claret-generator.jar`. |
 | **`JAVA_CMD`** | Optional | `java` | Command or absolute binary path to the Java executable (Java 26 automatically detected). |
-| **`DEFAULT_TARGET_LOCALE`** | Optional | `en-us` | Default target locale for the `spec-translator` skill (`en-us`, `pt-br`, `es-es`, etc.). |
 | **`LOG_LEVEL`** | Optional | `INFO` | Logging verbosity level (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
 
 > [!IMPORTANT]
@@ -252,11 +244,10 @@ pip install -r requirements.txt
 - **`PyGithub` & `requests`**: GitHub REST API client for tags, releases, commits, and tree extraction.
 - **`openpyxl`**: Processing and diffing Excel (`.xlsx`) test suite artifacts.
 - **`pydantic`**: Data validation and schema parsing.
-- **`google-genai`**: SDK integration for Gemini API.
 
 ---
 
-### 2.6 Cross-Agent Skills Mirrors & Symbolic Links
+### 2.6 Cross-Agent Skills Mirrors & Synchronization
 
 The source of truth for agent skills is `.claude/skills/`. To expose these skills interchangeably across IDEs and agents:
 
@@ -269,19 +260,6 @@ This automatically updates:
 - `.agent/skills/` (Google Antigravity mirror)
 - `.cursor/skills/` (Cursor IDE mirror)
 - `.cursor/commands/` (Cursor slash `/` menu wrappers derived from `.agent/workflows/`)
-
-#### Alternative: Directory Symlinks / Junctions:
-If you prefer direct directory links without running the script:
-```bash
-# Linux / macOS:
-ln -s ../.claude/skills .agent/skills
-ln -s ../.claude/skills .cursor/skills
-
-# Windows (PowerShell / CMD Junction):
-cmd /c mklink /J .agent\skills .claude\skills
-cmd /c mklink /J .cursor\skills .claude\skills
-```
-*(Note: `scripts/sync_agents.py` is still recommended because it dynamically generates README headers and converts workflow path targets for Cursor).*
 
 ---
 
@@ -345,16 +323,7 @@ python .claude/skills/release-downloader/scripts/download_releases.py \
   --output-dir ./downloads
 ```
 
-### 4. `spec-translator` (`/translate-specs`)
-Translates natural language inside `.claret` specifications across directories to a target locale (e.g. `en-us`, `pt-br`) while strictly preserving DSL tokens and grammar.
-
-```bash
-python .claude/skills/spec-translator/scripts/translate_specs.py \
-  --dirs 20150617 20150618 \
-  --locale en-us
-```
-
-### 5. `src-diff-analyzer` (`/diff-src`)
+### 4. `src-diff-analyzer` (`/diff-src`)
 Extracts diffs between adjacent tags/releases for `.claret` files in `src/` and exports a normalized CSV report:
 `| # | file | system | source_version | source_content | target_version | target_content |`
 
@@ -364,7 +333,7 @@ python .claude/skills/src-diff-analyzer/scripts/diff_src.py \
   --output-csv ./reports/src_diffs.csv
 ```
 
-### 6. `output-diff-analyzer` (`/diff-output`)
+### 5. `output-diff-analyzer` (`/diff-output`)
 Extracts diffs between adjacent tags/releases for generated test cases in `output/` (filtering by format, scope `all_usecases` vs `all`, and coverage criteria like `GT`, `GTP`, `ART`) and exports a normalized CSV report.
 
 ```bash

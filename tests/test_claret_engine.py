@@ -18,8 +18,7 @@ from claret_engine import (
     format_version,
     format_branch_title,
     normalize_content,
-    extract_system_name,
-    ClaretTranslator
+    extract_system_name
 )
 
 class TestClaretEngine(unittest.TestCase):
@@ -60,35 +59,6 @@ class TestClaretEngine(unittest.TestCase):
     def test_extract_system_name(self):
         content = 'system "SAFF", {\n    usecase "Login" {\n    }\n}'
         self.assertEqual(extract_system_name(content), "SAFF")
-
-    def test_token_safe_translation(self):
-        sample_claret = '''system "SAFF", {
-    usecase "Customer Management", {
-        version "1.0", type:"Creation", user:"Everton", date:"20/03/2015"
-        actor superAdmin, "Super administrador"
-        preCondition "Estar logado como super administrador"
-        basicFlow {
-            step 1, superAdmin, "selects option 'Customers' not menu Settings"
-            step 2, system, "exibe lista de clientes"
-            step 3, superAdmin, "clicks the button 'Cancel'", af:[1]
-        }
-        alternative 1, "Cancela criação", {
-            step 1, superAdmin, "Cancela criação", bfs:2
-        }
-    }
-}'''
-        translator = ClaretTranslator(target_locale="en-us")
-        translated = translator.translate_claret_content(sample_claret)
-
-        # Ensure DSL grammar tokens are strictly preserved
-        self.assertIn('system "SAFF"', translated)
-        self.assertIn('version "1.0"', translated)
-        self.assertIn('type:"Creation"', translated)
-        self.assertIn('actor superAdmin, "Super administrator"', translated)
-        self.assertIn('preCondition "Be logged in as super administrator"', translated)
-        self.assertIn('step 2, system, "displays customer list"', translated)
-        self.assertIn('af:[1]', translated)
-        self.assertIn('bfs:2', translated)
 
 if __name__ == "__main__":
     unittest.main()

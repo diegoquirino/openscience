@@ -2,7 +2,7 @@
 
 > Universal cross-tool agent instructions read natively by Claude Code, Google Antigravity, Cursor, and any LLM agent adhering to the `AGENTS.md` standard.
 
-This project implements the **CLARET Version Control System** agentic skills suite for Model-Based Testing (MBT) specification lifecycle management, translation, versioning, and test suite diff analysis.
+This project implements the **CLARET Version Control System** agentic skills suite for Model-Based Testing (MBT) specification lifecycle management, versioning, and test suite diff analysis.
 
 ---
 
@@ -10,7 +10,7 @@ This project implements the **CLARET Version Control System** agentic skills sui
 
 1. **Security & Secrets**: Never commit `.env` or hardcode tokens. All secrets (`GITHUB_TOKEN`, etc.) are resolved through `.env`. Use `.env.example` as a template.
 2. **Branch Isolation**: Never push directly to `main`. All operations target dedicated integration branches (e.g. `claret-version-control-system` or study-specific branches).
-3. **DSL Keyword Protection**: Never translate reserved tokens in `.claret` / `.dsl` files (`system`, `usecase`, `version`, `actor`, `step`, `af:`, `ef:`, `bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
+3. **DSL Keyword Protection**: Never alter reserved tokens in `.claret` / `.dsl` files (`system`, `usecase`, `version`, `actor`, `step`, `af:`, `ef:`, `bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
 
 ---
 
@@ -21,7 +21,6 @@ This project implements the **CLARET Version Control System** agentic skills sui
 | **test-generator** | `.claude/skills/test-generator` | `/generate-tests` | `/generate-tests` |
 | **version-publisher** | `.claude/skills/version-publisher` | `/publish-versions` | `/publish-versions` |
 | **release-downloader** | `.claude/skills/release-downloader` | `/download-releases` | `/download-releases` |
-| **spec-translator** | `.claude/skills/spec-translator` | `/translate-specs` | `/translate-specs` |
 | **src-diff-analyzer** | `.claude/skills/src-diff-analyzer` | `/diff-src` | `/diff-src` |
 | **output-diff-analyzer** | `.claude/skills/output-diff-analyzer` | `/diff-output` | `/diff-output` |
 
