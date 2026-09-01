@@ -10,6 +10,134 @@
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Offline sempre">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Cai conexão e usuario quer entrar em modo offline ]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: reastabelece conexão]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline ">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Cai conexão e usuario nao quer entrar em modo offline ]]></summary>
+      <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: abre extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: loga no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: não deseja entrar em modo offline]]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
       <preconditions><![CDATA[ ]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
@@ -35,7 +163,7 @@
       </steps>
     </testcase>
     <testcase name="TC2 - Alternative Flow 1: Offline sempre">
-      <node_order><![CDATA[2]]></node_order>
+      <node_order><![CDATA[6]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
@@ -70,7 +198,7 @@
       </steps>
     </testcase>
     <testcase name="TC3 - Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline ">
-      <node_order><![CDATA[3]]></node_order>
+      <node_order><![CDATA[7]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline ]]></summary>
@@ -123,7 +251,7 @@
       </steps>
     </testcase>
     <testcase name="TC4 - Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline ">
-      <node_order><![CDATA[4]]></node_order>
+      <node_order><![CDATA[8]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline ]]></summary>
@@ -158,299 +286,8 @@
       </steps>
     </testcase>
     <testcase name="TC5 - Exception Flow 3: Cai conexao novamente">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 3: Cai conexao novamente]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[system: SYSTEM: mantem informacao das extracoes nao enviadas a tempo na pasta local]]></actions>
-          <expectedresults><![CDATA[mantem informacao das extracoes nao enviadas a tempo na pasta local]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: reastabelece conexao]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes restantes da pasta local para o servidor e as apaga da pasta 'OfflineExtraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe lista que contem as extracoes realizadas no modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela para entrada em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Offline sempre">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Offline sempre]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: define que o sistema sempre fara extracoes offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: realiza uma serie de extracoes]]></actions>
-          <expectedresults><![CDATA[SYSTEM salva as extracoes na pasta local 'OfflineExtraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Terminal nao se encontra em modo LLT">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Terminal nao se encontra em modo LLT]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: conecta terminal em porta USB e o coloca em modo LLT]]></actions>
-          <expectedresults><![CDATA[SYSTEM (terminal) entra em modo LLT]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela para entrada em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 4: Uso do leitor de codigo de barras">
       <node_order><![CDATA[9]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Uso do leitor de codigo de barras]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: le (via leitor de codigo de barras) um product number e serial number validos]]></actions>
-          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 5: Product number e/ou serial number invalidos">
-      <node_order><![CDATA[10]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Product number e/ou serial number invalidos]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: digita um product number e/ou serial number invalidos]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca campo em vermelho alertando do erro]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela para entrada em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Alternative Flow 6: Product number e serial number que nao casam">
-      <node_order><![CDATA[11]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 6: Product number e serial number que nao casam]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos mas nao referentes a mesma familia e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta mensagem de erro]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela para entrada em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC8 - Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline ">
-      <node_order><![CDATA[12]]></node_order>
-      <externalid><![CDATA[TC8]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Sem conexao e usuario deseja entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmacao se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: confirma que quer entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[operador: realiza uma serie de extracoes sequenciais]]></actions>
-          <expectedresults><![CDATA[SYSTEM salva as extracoes na pasta local 'OfflineExtraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[operador: reastabelece conexao]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes locais para o servidor e as apaga da pasta local 'OfflineExtraction']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[operador: loga no servidor e vai ate a pagina de extracoes]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe lista com extracoes realizadas no modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC9 - Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline ">
-      <node_order><![CDATA[13]]></node_order>
-      <externalid><![CDATA[TC9]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: Sem conexao e usuario nao deseja entrar em modo offline ]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe pagina que requisita dados do terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: escolhe opcao Pre_Test para tipo de teste]]></actions>
-          <expectedresults><![CDATA[SYSTEM apresenta a marcacao da opcao escolhida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: digita um product number e serial number validos e pressiona Extract (terminal em modo LLT)]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando confirmação se usuario quer entrar em modo offline]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: nao deseja entrar em modo offline]]></actions>
-          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC10 - Exception Flow 3: Cai conexao novamente">
-      <node_order><![CDATA[14]]></node_order>
-      <externalid><![CDATA[TC10]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 3: Cai conexao novamente]]></summary>
       <preconditions><![CDATA[ ]]></preconditions>
