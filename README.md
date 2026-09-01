@@ -52,14 +52,17 @@ sequenceDiagram
     participant Git as GitHub (Branch / Tags / Releases)
     participant Down as /download-releases
     participant Trans as /translate-specs
+    participant TestGen as /generate-tests
     participant DiffSrc as /diff-src
     participant DiffOut as /diff-output
 
     rect rgb(240, 248, 255)
-        Note over Dev,Git: Phase 1: Iterative Version Publication & MBT Suite Generation
+        Note over Dev,Git: Track A: Translation, Version Publication & MBT Suite Generation
+        Dev->>Trans: /translate-specs --dirs 1.0 1.1 --locale en-us
+        Trans-->>Dev: Translated .claret specifications (preserving DSL keywords)
         Dev->>Pub: /publish-versions --version-dirs 1.0 1.1 ... 2.9 --branch saff-study
         loop For each sequential version folder
-            Pub->>Pub: Scan and merge .claret/.dsl files into branch folder (PascalCase)
+            Pub->>Pub: Merge .claret/.dsl files into branch folder (PascalCase)
             Pub->>JAR: Execute JAR (-i saff-study -o output/ -c gt -f all)
             JAR-->>Pub: Produce src/ and generated output/ test suites
             Pub->>Git: Commit & Push ("feat(saff-study): publish vX.Y")
@@ -68,16 +71,19 @@ sequenceDiagram
     end
 
     rect rgb(255, 248, 240)
-        Note over Dev,Trans: Phase 2: Downstream Asset Retrieval & Multilingual Translation
+        Note over Dev,TestGen: Track B: Remote Retrieval, Translation & Local Test Generation
         Dev->>Down: /download-releases --tags saff-study_v1.0 saff-study_v2.0
         Down->>Git: Fetch source trees (src/)
         Down-->>Dev: Downloaded segregated local folders
-        Dev->>Trans: /translate-specs --dirs downloads/v1.0 --locale en-us
-        Trans-->>Dev: DSL Token-Preserved Translated Specifications
+        Dev->>Trans: /translate-specs --dirs downloads/1.0 downloads/2.0 --locale en-us
+        Trans-->>Dev: Translated specifications in local folders
+        Dev->>TestGen: /generate-tests --dirs downloads/1.0 downloads/2.0 --coverage gt
+        TestGen->>JAR: Batch execute claret-generator.jar
+        TestGen-->>Dev: Generated output/ test suites across all target directories
     end
 
     rect rgb(240, 255, 240)
-        Note over Dev,DiffOut: Phase 3: Evolutionary Diff & Empirical Study Analysis
+        Note over Dev,DiffOut: Convergence: Evolutionary Diff & Empirical Study Analysis
         Dev->>DiffSrc: /diff-src --tags saff-study_v1.0 saff-study_v2.0 saff-study_v3.0
         DiffSrc->>Git: Compute adjacent Git diffs on src/ (.claret)
         DiffSrc-->>Dev: Normalized CSV Report (src_diffs.csv)
@@ -86,6 +92,47 @@ sequenceDiagram
         DiffOut->>Git: Compute adjacent diffs on output/ test cases (GT, ART, etc.)
         DiffOut-->>Dev: Normalized CSV Report (output_diffs.csv)
     end
+```
+
+### 3. Evolutionary Study Execution Pathways & Convergence
+```mermaid
+graph TD
+    subgraph TrackA ["Track A: Local Raw Specs -> Translation -> Version Publication"]
+        A1["Raw .claret / .dsl Specs<br/>(Local Version Dirs)"]
+        A2["<b>spec-translator</b><br/>(/translate-specs)<br/>Translate to target locale"]
+        A3["<b>version-publisher</b><br/>(/publish-versions)<br/>PascalCase + MBT Compile + Push + Tag & Release"]
+        A1 --> A2 --> A3
+    end
+
+    subgraph TrackB ["Track B: GitHub Releases -> Local Download -> Translation -> Test Generation"]
+        B1["Existing GitHub Releases / Tags<br/>(Remote openscience Repo)"]
+        B2["<b>release-downloader</b><br/>(/download-releases)<br/>Fetch src/ trees"]
+        B3["<b>spec-translator</b><br/>(/translate-specs)<br/>Translate to target locale"]
+        B4["<b>test-generator</b><br/>(/generate-tests)<br/>Batch compile into output/"]
+        B1 --> B2 --> B3 --> B4
+    end
+
+    subgraph GitHubBranch ["Published GitHub Branch & Tags"]
+        GH["GitHub Integration Branch<br/>(e.g., saff-study_v1.0 ... saff-study_v2.9)"]
+    end
+
+    subgraph DiffAnalysis ["Convergence: Empirical Study & Evolution Diff Analysis"]
+        D1["<b>src-diff-analyzer</b><br/>(/diff-src)<br/>Adjacent Git Diffs on src/"]
+        D2["<b>output-diff-analyzer</b><br/>(/diff-output)<br/>Adjacent Diffs on output/"]
+        
+        CSV1["<b>src_diffs.csv</b><br/>Normalized specification changes"]
+        CSV2["<b>output_diffs.csv</b><br/>Normalized test case mutations"]
+    end
+
+    A3 --> GH
+    B1 -.-> GH
+    B4 -.-> DiffAnalysis
+
+    GH --> D1
+    GH --> D2
+
+    D1 --> CSV1
+    D2 --> CSV2
 ```
 
 ---
