@@ -1,530 +1,86 @@
-System:	SAFF Extractor
-Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 48 test case(s)	Creation Date:	01/09/2026
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
-4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
-4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Insere novas extracoes na pasta			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
-4	clock: a cada 30 segundos		SYSTEM processes action successfully		
-5	administrador: adiciona novas extracoes na pasta indicada		SYSTEM processes action successfully		
-Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Falha no envio ao servidor			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
-4	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
-5	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
-3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
-4	administrador: faz logout		SYSTEM exibe página de login		
-5	administrador: faz login como operador e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
-6	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-7	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
-8	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
-9	administrador: faz logout		SYSTEM exibe página de login		
-10	administrador: faz login como administrador e vai para a página “Extractions”		SYSTEM exibe uma lista com duas entradas		
-Postcondition:	
-
-Use Case:	Delecao de Extracoes	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
-2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
-3	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
-Postcondition:	
-
-Use Case:	Delecao de Extracoes	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Cancela deleção			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
-2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
-3	administrador: cancela deleção		SYSTEM fecha janela pop-up		
-4	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
-5	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
-6	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
-Postcondition:	
-
-Use Case:	Delecao de Extracoes	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Realiza Filtro e deleção			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
-2	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
-3	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca todas extrações após o filtro com um tick		
-4	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
-5	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 96 entradas		
-Postcondition:	
-
-Use Case:	Delecao de Extracoes	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Deleta todas extrações			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca o check box com um tick		
-2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up indicando que não existem extrações para serem deletadas		
-Postcondition:	
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
-2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
-3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
-4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM realiza a extração		
-Postcondition:	
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Não existe porta USB cadastrada			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM exibe mensagem solicitando informando não existe porta USB cadastrada		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Falha no envio para servidor e Usuário deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
-2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
-3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
-4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline		
-5	administrador: responde Yes		SYSTEM exibe página que requisita dados do terminal		
-6	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
-7	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM salva extração em pasta local		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 4: Dados de terminal inválidos			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
-2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
-3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
-4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando que dados do terminal estão incorretos		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 5: Não existe terminal conectado			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM exibe mensagem informando que não conseguiu se conectar ao terminal		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao em modo LLT	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 6: Falha no envio para servidor e Usuário não deseja fazer extração offline			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
-2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
-3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
-4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline		
-5	administrador: responde No		SYSTEM fecha janela e retorna a página de inserção de dados		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao Offline	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário está logado no servidor
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
-Postcondition:	
-
-Use Case:	Extracao Offline	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Pressiona NO			Execution Date:	
-Precondition:	Usuário está logado no servidor
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: Não deseja entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
-Postcondition:	
-
-Use Case:	Extracao Offline	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Offline sempre			Execution Date:	
-Precondition:	Usuário está logado no servidor
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: define que o sistema sempre fará extrações offline		SYSTEM exibe tela inicial 'SAFF extraction'		
-2	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
-Postcondition:	
-
-Use Case:	Extracao Offline	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Cai conexão 			Execution Date:	
-Precondition:	Usuário está logado no servidor
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: loga no extrator		SYSTEM processes action successfully		
-2	administrador: confirma que quer entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
-3	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
-4	administrador: reastabelece conexão		SYSTEM envia extrações locais para o servidor e as apaga da pasta local		
-5	administrador: loga no servidor e vai até a página de extrações		SYSTEM exibe lista com extrações realizada no modo offline no topo		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
-4	administrador: adiciona extracao a pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-5	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-6	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Insere novas extracoes na pasta			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-5	administrador: adiciona novas extracoes na pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-6	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-7	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
-
-Use Case:	Extracao via Interface Matrix	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Falha no envio ao servidor			Execution Date:	
-Precondition:	Usuario deve estar logado como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
-2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
-3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-4	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
-5	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 8: Estouro de limite de tempo			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução passou de 5 segundos		SYSTEM exibe mensagem solicitando que o usuário aguarde		
-4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Filtro default			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-7	administrador: seleciona opção default no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 705 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Filtro “Ingenico Brazil”			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-7	administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 673 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Filtro state			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-6	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
-7	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Filtro “Alert Interruption”			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona opção “Alert Interruption” no campo de filtro “State”		SYSTEM atualiza página mostrando 97 extrações		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Filtro “Mockup”			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona opção “Mockup” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 6: Filtro “Error”			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona opção “Error” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
-Postcondition:	
-
-Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 7: Extrações Sequenciais			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-4	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-5	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
-6	clock: verifica se o tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-7	administrador: acessa página “Extractions”		SYSTEM exibe uma lista com 1510		
-Postcondition:	
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
-Postcondition:	
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
-3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
-Postcondition:	
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
-3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
-Postcondition:	
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia usuário		
-3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados válidos		SYSTEM exibe mensagem que usuário está bloqueado		
-Postcondition:	
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
-3	administrador: pressiona Yes		SYSTEM fecha a janela pop-up		
-4	system: SYSTEM: exibe tela “SAFF Extractor” em modo offline		exibe tela “SAFF Extractor” em modo offline		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Login no extrator como Administrador	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
-2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
-3	administrador: pressiona No		SYSTEM fecha a janela pop-up		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Login no servidor como Administrador	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
-Postcondition:	
-
-Use Case:	Login no servidor como Administrador	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
-2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
-Postcondition:	
-
-Use Case:	Login no servidor como Administrador	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
-2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
-Postcondition:	
-
-Use Case:	Login no servidor como Administrador	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
-Precondition:	Deve existir um usuário cadastrado com perfil administrador
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
-2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
-Postcondition:	
-
-Use Case:	Pesquisar por extracao	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
-Postcondition:	
-
-Use Case:	Pesquisar por extracao	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Product Number ou Serial Number inválidos			Execution Date:	
-Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: digita o product number e/ou número serial inválidos e pressiona o botão 'Search'		SYSTEM exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”		
-2	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
-Postcondition:	
-
-Use Case:	Settings	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
-2	administrador: seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português		
-Postcondition:	
-
-Use Case:	Settings	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Linguagem Espanhol			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
-2	administrador: seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
-Postcondition:	
-
-Use Case:	Settings	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Visible Test Type			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
-2	administrador: seleciona somente opção 'Pre test' no campo 'Visible Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opção de teste.		
-Postcondition:	
-
-Use Case:	Settings	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Default Test Type			Execution Date:	
-Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
-2	administrador: seleciona somente opção 'Pre test' no campo 'Default Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' está marcado.		
-Postcondition:	
-
-
-================================================================================
-
 System:	SAFF
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 70 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 78 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe tela principal		exibe tela principal		
+2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+3	system: SYSTEM: exibe página com campos de cadastro do usuário		exibe página com campos de cadastro do usuário		
+4	system: SYSTEM: exibe mensagem indicando que novo usuário foi criado		exibe mensagem indicando que novo usuário foi criado		
+5	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+6	system: SYSTEM: exibe dados do usuário		exibe dados do usuário		
+7	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuário com login repetido			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem informando que os este usuários já existe		exibe mensagem informando que os este usuários já existe		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Edita dados			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+2	system: SYSTEM: exibe novos dados do usuários		exibe novos dados do usuários		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Edita dados e altera linguagem			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe novos dados do usuários		exibe novos dados do usuários		
+2	system: SYSTEM: é apresentado na nova linguagem		é apresentado na nova linguagem		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Reseta senha			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
+2	system: SYSTEM: exibe lista completa de usuários		exibe lista completa de usuários		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Bloqueio de usuário			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
+2	system: SYSTEM: exibe mensagem confirmando bloqueio de usuário		exibe mensagem confirmando bloqueio de usuário		
+3	system: SYSTEM: exibe lista completa de usuários onde o usuário atualizado é sinalizado como bloqueado		exibe lista completa de usuários onde o usuário atualizado é sinalizado como bloqueado		
+4	system: SYSTEM: exibe dados do usuário		exibe dados do usuário		
+5	system: SYSTEM: exibe campos do documento com valores atuais que podem ser editados		exibe campos do documento com valores atuais que podem ser editados		
+6	system: SYSTEM: exibe mensagem pedindo confirmação		exibe mensagem pedindo confirmação		
+7	system: SYSTEM: exibe mensagem confirmando desbloqueio de usuário		exibe mensagem confirmando desbloqueio de usuário		
+8	system: SYSTEM: exibe lista completa de usuários onde o usuário atualizado não é sinalizado como bloqueado		exibe lista completa de usuários onde o usuário atualizado não é sinalizado como bloqueado		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Test de bloqueio			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem que usuário está bloqueado		exibe mensagem que usuário está bloqueado		
+Postcondition:	
+
+Use Case:	CRUD Users	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Deleta usuário			Execution Date:	
+Precondition:	Deve existir pelo menos um usuário cadastrado
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	system: SYSTEM: exibe mensagem solicitando confirmação		exibe mensagem solicitando confirmação		
+Postcondition:	
 
 Use Case:	CRUD Cliente	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -1337,5 +893,610 @@ Description:	Alternative Flow 4: Novo Password fora dos padrões (uppercase, low
 Precondition:	Usuário deve estar logado no sistema ; administrador ou super administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	system: SYSTEM: exibe mensagem infrmando que o Password fornecido não está conforme o exigido		exibe mensagem infrmando que o Password fornecido não está conforme o exigido		
+Postcondition:	
+
+
+================================================================================
+
+System:	SAFF Extractor
+Use Case:	All Use Cases
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 55 test case(s)	Creation Date:	01/09/2026
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+4	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+5	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Pressiona NO			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão No		SYSTEM Fecha janela de mensagem		
+3	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+4	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+5	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+6	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+7	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Test 1			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Test 1' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+4	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+5	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Test 2			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Test 2' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+4	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+5	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: QA			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number', 'Serial number', tipo de teste 'QA' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+4	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+5	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Product number ou serial number inválidos			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number' ou 'Serial number' inválidos e pressiona 'Extract'		SYSTEM exibe mensagem solicitando informando que o product number ou serial number são inválidos		
+4	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+5	administrador: loga no servidor		SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local		
+6	administrador: vai até a página de extrações		SYSTEM exibe lista com a extração realizada no modo offline no topo		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Cai conexão com servidor			Execution Date:	
+Precondition:	Usuário não está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline		
+2	administrador: pressiona botão Yes		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract'		SYSTEM adiciona nova extração a pasta local'		
+4	administrador: loga no servidor		SYSTEM exibe mensagem informando quantas extrações foram transferidas para o servidor com sucesso e deleta da pasta local as extrações enviadas com sucesso		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e no extrator como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator		SYSTEM exibe tela inicial do extrator		
+2	administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'		SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'		
+3	clock: a cada 30 segundos		SYSTEM envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada		
+4	administrador: pressiona botao 'Stop'		SYSTEM retorna para tela incial		
+5	administrador: vai para pagina de visualizacao de extracoes no servidor		SYSTEM exibe tela de visualização de extracoes com extracoes recentes no topo		
+Postcondition:	
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e no extrator como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator		SYSTEM exibe tela inicial do extrator		
+2	administrador: seleciona pasta vazia, e pressiona botão 'Start'		SYSTEM fica em espera ate que usuario insira alguma extracao na pasta indicada		
+Postcondition:	
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Insere novas extracoes na pasta			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e no extrator como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator		SYSTEM exibe tela inicial do extrator		
+2	administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'		SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'		
+3	clock: a cada 30 segundos		SYSTEM processes action successfully		
+4	administrador: adiciona novas extracoes na pasta indicada		SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'		
+5	clock: a cada 30 segundos		SYSTEM envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada		
+6	administrador: pressiona botao 'Stop'		SYSTEM retorna para tela incial		
+7	administrador: vai para pagina de visualizacao de extracoes no servidor		SYSTEM exibe tela de visualização de extracoes com extracoes recentes no topo		
+Postcondition:	
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Falha no envio ao servidor			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e no extrator como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator		SYSTEM exibe tela inicial do extrator		
+2	administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'		SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'		
+3	clock: a cada 30 segundos		SYSTEM mantem informacao de quais extracoes foram enviadas; fica em espera ate que a conexao seja reestabelecida		
+4	clock: a cada 30 segundos		SYSTEM tenta enviar extracoes restantes para o servidor		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Combinando extracoes com diferente perfis	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Deve existir um usuário cadastrado com perfil de operador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
+3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
+4	administrador: faz logout		SYSTEM exibe página de login		
+5	administrador: faz login como operador e vai para a página “Extractions”		SYSTEM exibe uma lista vazia		
+6	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+7	administrador: seleciona pasta “Ext1”, que contém um único conjunto de arquivos para a família “IPP320-01T1220A”, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que uma extração foi realizada		
+8	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com somente um elemento		
+9	administrador: faz logout		SYSTEM exibe página de login		
+10	administrador: faz login como administrador e vai para a página “Extractions”		SYSTEM exibe uma lista com duas entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+3	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela deleção			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+3	administrador: cancela deleção		SYSTEM fecha janela pop-up		
+4	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+5	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+6	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Realiza Filtro e deleção			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+2	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
+3	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca todas extrações após o filtro com um tick		
+4	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+5	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 96 entradas		
+Postcondition:	
+
+Use Case:	Delecao de Extracoes	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Deleta todas extrações			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca o check box com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up indicando que não existem extrações para serem deletadas		
+Postcondition:	
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
+2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
+3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
+4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM realiza a extração		
+Postcondition:	
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Não existe porta USB cadastrada			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM exibe mensagem solicitando informando não existe porta USB cadastrada		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Falha no envio para servidor e Usuário deseja fazer extração offline			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
+2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
+3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
+4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline		
+5	administrador: responde Yes		SYSTEM exibe página que requisita dados do terminal		
+6	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
+7	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM salva extração em pasta local		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Dados de terminal inválidos			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
+2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
+3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
+4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando que dados do terminal estão incorretos		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Não existe terminal conectado			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM exibe mensagem informando que não conseguiu se conectar ao terminal		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao em modo LLT	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Falha no envio para servidor e Usuário não deseja fazer extração offline			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor como administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT		SYSTEM entra em modo LLT		
+2	administrador: inicia o SAFF Extractor e se autentica		SYSTEM exibe página que requisita dados do terminal		
+3	administrador: digita o product number e serial number válidos e pressiona tecla Tab		SYSTEM muda foco para campo referente ao tipo de teste		
+4	administrador: escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'		SYSTEM exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline		
+5	administrador: responde No		SYSTEM fecha janela e retorna a página de inserção de dados		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM exibe tela inicial 'SAFF extraction'		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Pressiona NO			Execution Date:	
+Precondition:	Usuário está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: Não deseja entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Offline sempre			Execution Date:	
+Precondition:	Usuário está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: define que o sistema sempre fará extrações offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+2	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+Postcondition:	
+
+Use Case:	Extracao Offline	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Cai conexão 			Execution Date:	
+Precondition:	Usuário está logado no servidor
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: loga no extrator		SYSTEM processes action successfully		
+2	administrador: confirma que quer entrar em modo offline		SYSTEM exibe tela inicial 'SAFF extraction'		
+3	administrador: realiza cinco extrações		SYSTEM adiciona novas extrações a pasta local'		
+4	administrador: reastabelece conexão		SYSTEM envia extrações locais para o servidor e as apaga da pasta local		
+5	administrador: loga no servidor e vai até a página de extrações		SYSTEM exibe lista com extrações realizada no modo offline no topo		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario deve estar logado como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
+4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
+Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
+Precondition:	Usuario deve estar logado como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
+4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
+Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Insere novas extracoes na pasta			Execution Date:	
+Precondition:	Usuario deve estar logado como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
+4	clock: a cada 30 segundos		SYSTEM processes action successfully		
+5	administrador: adiciona novas extracoes na pasta indicada		SYSTEM processes action successfully		
+Postcondition:	As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
+
+Use Case:	Extracao via Interface Matrix	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Falha no envio ao servidor			Execution Date:	
+Precondition:	Usuario deve estar logado como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM processes action successfully		
+4	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
+5	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Estouro de limite de tempo			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução passou de 5 segundos		SYSTEM exibe mensagem solicitando que o usuário aguarde		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Filtro default			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção default no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 705 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Filtro “Ingenico Brazil”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 673 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Filtro state			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+7	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Filtro “Alert Interruption”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opção “Alert Interruption” no campo de filtro “State”		SYSTEM atualiza página mostrando 97 extrações		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtro “Mockup”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opção “Mockup” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Filtro “Error”			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: seleciona opção “Error” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
+Postcondition:	
+
+Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Extrações Sequenciais			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+5	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+6	clock: verifica se o tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+7	administrador: acessa página “Extractions”		SYSTEM exibe uma lista com 1510		
+Postcondition:	
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
+3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
+3	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe tela “SAFF Extractor”		
+Postcondition:	
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia usuário		
+3	administrador: tenta mais uma vez logar na conta do usuário, agora com dados válidos		SYSTEM exibe mensagem que usuário está bloqueado		
+Postcondition:	
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Sem conexão com o servidor e usuário deseja fazer extração offline			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
+3	administrador: pressiona Yes		SYSTEM fecha a janela pop-up		
+4	system: SYSTEM: exibe tela “SAFF Extractor” em modo offline		exibe tela “SAFF Extractor” em modo offline		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login no extrator como Administrador	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Sem conexão com o servidor e usuário não deseja fazer extração offline			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador ; Usuário deve estar logado no servidor como administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: abre módulo de extração		SYSTEM exibe página inicial do módulo de extração		
+2	administrador: digita um login de usuário administrador e password e pressiona Login		SYSTEM exibe pop-up questionanado se o usuário deveja fazer uma extração offline		
+3	administrador: pressiona No		SYSTEM fecha a janela pop-up		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Login ou Password inválidos			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos e pressiona Login		SYSTEM exibe mensagem “Invalid username or password” na tela de login		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Número de tentativas inválidas é 3			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela terceira vez e pressiona Login		SYSTEM exibe mensagem de alerta		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Login no servidor como Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Número de tentativas inválidas é 5			Execution Date:	
+Precondition:	Deve existir um usuário cadastrado com perfil administrador
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita um login de usuário administrador e/ou password invalidos pela quinta vez e pressiona Login		SYSTEM bloqueia a sessão		
+2	administrador: digita um login e pasword de usuário administrador e pressiona o botão Login		SYSTEM exibe tela “Search extraction”		
+Postcondition:	
+
+Use Case:	Pesquisar por extracao	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
+Postcondition:	
+
+Use Case:	Pesquisar por extracao	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Product Number ou Serial Number inválidos			Execution Date:	
+Precondition:	Usuário deve estar logado com perfil de administrador ; Deve existir ao menos uma extração cadastrada
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: digita o product number e/ou número serial inválidos e pressiona o botão 'Search'		SYSTEM exibe mensagem “No extraction found. Please, insert a Serial Number to search for the last extraction.”		
+2	administrador: digita no campo “Product Number” o número de produto e o número serial correspondente e pressiona o botão 'Search'		SYSTEM exibe tela correspondente a extração		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona a opção 'Português' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' tualizada com todos os campos em português		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Linguagem Espanhol			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona a opção 'Español' no campo 'Language' e pressiona botão 'Save'		SYSTEM exibe tela inicial 'SAFF extraction' atualizada com todos os campos em espanhol		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Visible Test Type			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona somente opção 'Pre test' no campo 'Visible Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo somente 'Pre test' como opção de teste.		
+Postcondition:	
+
+Use Case:	Settings	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Default Test Type			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; Sistema está configurado para inglês
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona botão 'Settings'		SYSTEM exibe a janela de configurações		
+2	administrador: seleciona somente opção 'Pre test' no campo 'Default Test Type' e pressiona botão 'Save'		SYSTEM atualiza tela inicial 'SAFF extraction' exibindo e tipo de teste 'Pre test' está marcado.		
 Postcondition:	
 

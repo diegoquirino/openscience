@@ -11,7 +11,7 @@ system "SAFF", {
             step 2, system, "exibe tela principal"
             step 3, usuário, "seleciona opção 'Users' no menu Settings"
             step 4, system, "exibe lista completa de usuários"
-            step 5, usuário, "seleciona o botão 'Create User'"
+            step 5, usuário, "seleciona o botão 'Create User', situado no lado direito inferior da tela"
             step 6, system, "exibe página com campos de cadastro do usuário"
             step 7, usuário, "preenche corretamente os campos 'Name', 'Login', 'Password', 'Confirm Password', escolhe uma opção para os campos 'Type', 'Laboratory', 'Language', e pressiona o botão 'Create' ", af:[1,2]
             step 8, system, "exibe mensagem indicando que novo usuário foi criado"

@@ -26,7 +26,7 @@
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
@@ -72,18 +72,12 @@
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[administrador: adiciona extracao a pasta indicada]]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[clock: a cada 30 segundos]]></actions>
         <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[6]]></step_number>
+        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
         <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
@@ -114,31 +108,19 @@
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[administrador: adiciona novas extracoes na pasta indicada]]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
-        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -167,7 +149,7 @@
       <step>
         <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
