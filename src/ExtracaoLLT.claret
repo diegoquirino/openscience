@@ -10,7 +10,7 @@ system "SAFF Extractor", {
             step 1, administrador, "conecta um terminal em uma porta USB previamente cadastrada e o coloca em modo LLT"
             step 2, system, "entra em modo LLT", ef:[1,5]
             step 3, administrador, "inicia o SAFF Extractor e se autentica"
-            step 4, system, "exibe página que requisita dados do terminal"
+            step 4, system, "exibe página que requisita dados do terminal", ef:[2]
             step 5, administrador, "digita o product number e serial number válidos e pressiona tecla Tab"
             step 6, system, "muda foco para campo referente ao tipo de teste"
             step 7, administrador, "escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'"
@@ -21,14 +21,14 @@ system "SAFF Extractor", {
             step 1, system, "exibe mensagem solicitando informando não existe porta USB cadastrada", bfs:1
         }
 
+        exception 2, "Login ou senha incorretos", {
+            step 1, system, "exibe mensagem informando que login ou senha estão incorretos", bfs:3
+        }
+
         exception 3, "Falha no envio para servidor e Usuário deseja fazer extração offline", {
             step 1, system, "exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline"
             step 2, administrador, "responde Yes"
-            step 3, system, "exibe página que requisita dados do terminal"
-            step 4, administrador, "digita o product number e serial number válidos e pressiona tecla Tab"
-            step 5, system, "muda foco para campo referente ao tipo de teste"
-            step 6, administrador, "escolhe opção Test1 para tipo de teste e pressiona botão 'Extract'"
-            step 7, system, "salva extração em pasta local"
+            step 3, system, "realiza extração em modo offline"
         }
 
         exception 4, "Dados de terminal inválidos", {
@@ -39,7 +39,7 @@ system "SAFF Extractor", {
             step 1, system, "exibe mensagem informando que não conseguiu se conectar ao terminal", bfs:1
         } 
 
-
+    
     	exception 6, "Falha no envio para servidor e Usuário não deseja fazer extração offline", {
             step 1, system, "exibe mensagem informando houve erro na conexão com o servidor e pergunta se usuário deseja fazer a extração em modo offline"
             step 2, administrador, "responde No"

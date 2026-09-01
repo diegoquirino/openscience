@@ -1,7 +1,7 @@
 ALTS_SPECIFICATION "Extracao via Interface Matrix" {
   VERSION: "1.0"
-  PRE_CONDITION: "Usuario deve estar logado como administrador"
-  POST_CONDITION: "As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'"
+  PRE_CONDITION: "Usuário deve estar logado no servidor e no extrator como administrador"
+  POST_CONDITION: ""
 
   ACTORS {
     administrador: "Administrador do sistema"
@@ -9,44 +9,46 @@ ALTS_SPECIFICATION "Extracao via Interface Matrix" {
   }
 
   STATES {
-    S_INIT [initial, guard: "Usuario deve estar logado como administrador"]
-    S_BF_1 [flow: "basic", actor: "administrador", action: "configura o extrator para iniciar em modo 'Automatic Collection'"]
-    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela de login"]
-    S_BF_3 [flow: "basic", actor: "administrador", action: "faz login no extrator"]
-    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela de coleta automatica"]
-    S_BF_5 [flow: "basic", actor: "administrador", action: "seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", branches_af: [1]]
-    S_BF_7 [flow: "basic", actor: "clock", action: "a cada 30 segundos"]
-    S_BF_8 [flow: "basic", actor: "system", action: "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", branches_af: [2], branches_ef: [1]]
-    S_BF_9 [flow: "basic", actor: "administrador", action: "pressiona botao 'Stop'"]
-    S_BF_10 [flow: "basic", actor: "system", action: "desbloqueia todos os botoes e para de escutar a pasta indicada"]
-    S_AF1_1 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "administrador", action: "seleciona pasta vazia, e pressiona botao 'Start'"]
-    S_AF1_2 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "system", action: "fica em espera ate que alguma extracao seja adicionada na pasta indicada", returns_to_bf: 7]
-    S_AF2_1 [flow: "alternative_2", description: "Insere novas extracoes na pasta", actor: "administrador", action: "adiciona novas extracoes na pasta indicada", returns_to_bf: 6]
-    S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida"]
+    S_INIT [initial, guard: "Usuário deve estar logado no servidor e no extrator como administrador"]
+    S_BF_1 [flow: "basic", actor: "administrador", action: "seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do extrator"]
+    S_BF_3 [flow: "basic", actor: "administrador", action: "seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'", branches_af: [1]]
+    S_BF_4 [flow: "basic", actor: "system", action: "renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'"]
+    S_BF_5 [flow: "basic", actor: "clock", action: "a cada 30 segundos"]
+    S_BF_6 [flow: "basic", actor: "system", action: "envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada", branches_af: [2], branches_ef: [1]]
+    S_BF_5 [flow: "basic", actor: "administrador", action: "pressiona botao 'Stop'"]
+    S_BF_6 [flow: "basic", actor: "system", action: "retorna para tela incial"]
+    S_BF_5 [flow: "basic", actor: "administrador", action: "vai para pagina de visualizacao de extracoes no servidor"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe tela de visualização de extracoes com extracoes recentes no topo"]
+    S_AF1_1 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "administrador", action: "seleciona pasta vazia, e pressiona botão 'Start'"]
+    S_AF1_2 [flow: "alternative_1", description: "Seleciona pasta vazia", actor: "system", action: "fica em espera ate que usuario insira alguma extracao na pasta indicada"]
+    S_AF2_2 [flow: "alternative_2", description: "Insere novas extracoes na pasta", actor: "administrador", action: "adiciona novas extracoes na pasta indicada", returns_to_bf: 4]
+    S_EF1_1 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "mantem informacao de quais extracoes foram enviadas; fica em espera ate que a conexao seja reestabelecida"]
     S_EF1_2 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "clock", action: "a cada 30 segundos"]
-    S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "tenta enviar extrações restantes para o servidor"]
-    S_END [terminal, guard: "As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'"]
+    S_EF1_3 [flow: "exception_1", description: "Falha no envio ao servidor", actor: "system", action: "tenta enviar extracoes restantes para o servidor"]
+    S_END [terminal, guard: ""]
   }
 
   TRANSITIONS {
     S_INIT -> S_BF_1 [trigger: "Start"]
-    S_BF_1 -> S_BF_2 [event: "system: exibe tela de login"]
-    S_BF_2 -> S_BF_3 [event: "administrador: faz login no extrator"]
-    S_BF_3 -> S_BF_4 [event: "system: exibe tela de coleta automatica"]
-    S_BF_4 -> S_BF_5 [event: "administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'"]
-    S_BF_5 -> S_BF_7 [event: "clock: a cada 30 segundos"]
-    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Seleciona pasta vazia"]
-    S_BF_7 -> S_BF_8 [event: "system: envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada"]
-    S_BF_8 -> S_BF_9 [event: "administrador: pressiona botao 'Stop'"]
-    S_BF_8 -> S_AF2_1 [branch: "AF_2 - Insere novas extracoes na pasta"]
-    S_BF_8 -> S_EF1_1 [branch: "EF_1 - Falha no envio ao servidor"]
-    S_BF_9 -> S_BF_10 [event: "system: desbloqueia todos os botoes e para de escutar a pasta indicada"]
-    S_BF_10 -> S_END [event: "Complete"]
-    S_AF1_1 -> S_AF1_2 [event: "system: fica em espera ate que alguma extracao seja adicionada na pasta indicada"]
-    S_AF1_2 -> S_BF_7 [resume_basic_flow: 7]
-    S_AF2_1 -> S_BF_6 [resume_basic_flow: 6]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do extrator"]
+    S_BF_2 -> S_BF_3 [event: "administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'"]
+    S_BF_3 -> S_BF_4 [event: "system: renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Seleciona pasta vazia"]
+    S_BF_4 -> S_BF_5 [event: "clock: a cada 30 segundos"]
+    S_BF_5 -> S_BF_6 [event: "system: envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada"]
+    S_BF_6 -> S_BF_5 [event: "administrador: pressiona botao 'Stop'"]
+    S_BF_6 -> S_AF2_2 [branch: "AF_2 - Insere novas extracoes na pasta"]
+    S_BF_6 -> S_EF1_1 [branch: "EF_1 - Falha no envio ao servidor"]
+    S_BF_5 -> S_BF_6 [event: "system: retorna para tela incial"]
+    S_BF_6 -> S_BF_5 [event: "administrador: vai para pagina de visualizacao de extracoes no servidor"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe tela de visualização de extracoes com extracoes recentes no topo"]
+    S_BF_6 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_AF1_2 [event: "system: fica em espera ate que usuario insira alguma extracao na pasta indicada"]
+    S_AF1_2 -> S_END [event: "Complete"]
+    S_AF2_2 -> S_BF_4 [resume_basic_flow: 4]
     S_EF1_1 -> S_EF1_2 [event: "clock: a cada 30 segundos"]
-    S_EF1_2 -> S_EF1_3 [event: "system: tenta enviar extrações restantes para o servidor"]
+    S_EF1_2 -> S_EF1_3 [event: "system: tenta enviar extracoes restantes para o servidor"]
     S_EF1_3 -> S_END [event: "ErrorExit"]
   }
 }

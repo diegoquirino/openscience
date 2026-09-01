@@ -15,7 +15,18 @@
 15 15
 16 16
 17 17
+18 18
+19 19
+20 20
 #
-1 2 [c] Usuário está logado no servidor
+1 2 [c] Usuário não está logado no servidor
 2 3 [s] administrador loga no extrator
-3 4 [e] system exibe tela inicial 'SAFF extraction'
+3 4 [e] system exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline
+4 5 [s] administrador pressiona botão Yes
+5 6 [e] system exibe tela inicial 'SAFF extraction'
+6 7 [s] administrador insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract'
+7 8 [e] system adiciona nova extração a pasta local'
+8 9 [s] administrador loga no servidor
+9 10 [e] system envia extrações da pasta local para o servidor e as deleta da máquina local
+10 11 [s] administrador vai até a página de extrações
+11 12 [e] system exibe lista com a extração realizada no modo offline no topo

@@ -7,14 +7,38 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
         <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -24,78 +48,255 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Pressiona NO]]></summary>
-    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: Não deseja entrar em modo offline]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Offline sempre">
-    <node_order><![CDATA[3]]></node_order>
-    <externalid><![CDATA[TC3]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Offline sempre]]></summary>
-    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: define que o sistema sempre fará extrações offline]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-        <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC4 - Exception Flow 1: Cai conexão ">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 1: Cai conexão ]]></summary>
-    <preconditions><![CDATA[Usuário está logado no servidor]]></preconditions>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
         <actions><![CDATA[administrador: loga no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: confirma que quer entrar em modo offline]]></actions>
+        <actions><![CDATA[administrador: pressiona botão No]]></actions>
+        <expectedresults><![CDATA[SYSTEM Fecha janela de mensagem]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Test 1">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Test 1]]></summary>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: realiza cinco extrações]]></actions>
-        <expectedresults><![CDATA[SYSTEM adiciona novas extrações a pasta local']]></expectedresults>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Test 1' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[administrador: reastabelece conexão]]></actions>
-        <expectedresults><![CDATA[SYSTEM envia extrações locais para o servidor e as apaga da pasta local]]></expectedresults>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Test 2">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Test 2]]></summary>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Test 2' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: QA">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: QA]]></summary>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'QA' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Product number ou serial number inválidos">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Product number ou serial number inválidos]]></summary>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number' ou 'Serial number' inválidos e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando informando que o product number ou serial number são inválidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extrações da pasta local para o servidor e as deleta da máquina local]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[administrador: vai até a página de extrações]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista com a extração realizada no modo offline no topo]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Exception Flow 2: Cai conexão com servidor">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Cai conexão com servidor]]></summary>
+    <preconditions><![CDATA[Usuário não está logado no servidor]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[administrador: loga no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe exibe mensagem perguntando se o usuário deseja entrar em modo offline]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[administrador: pressiona botão Yes]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial 'SAFF extraction']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[administrador: insere um 'Product number', 'Serial number', tipo de teste 'Pre_test' e pressiona 'Extract']]></actions>
+        <expectedresults><![CDATA[SYSTEM adiciona nova extração a pasta local']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[administrador: loga no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe mensagem informando quantas extrações foram transferidas para o servidor com sucesso e deleta da pasta local as extrações enviadas com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

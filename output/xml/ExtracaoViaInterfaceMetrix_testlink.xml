@@ -7,38 +7,38 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no servidor e no extrator como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do extrator]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: faz login no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <actions><![CDATA[administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna para tela incial]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
-        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <actions><![CDATA[administrador: vai para pagina de visualizacao de extracoes no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de visualização de extracoes com extracoes recentes no topo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -48,38 +48,20 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Seleciona pasta vazia]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no servidor e no extrator como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do extrator]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: faz login no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: seleciona pasta vazia, e pressiona botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
-        <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
+        <actions><![CDATA[administrador: seleciona pasta vazia, e pressiona botão 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM fica em espera ate que usuario insira alguma extracao na pasta indicada]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -89,38 +71,50 @@
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no servidor e no extrator como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do extrator]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: faz login no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <actions><![CDATA[administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[clock: a cada 30 segundos]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[administrador: adiciona novas extracoes na pasta indicada]]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+        <expectedresults><![CDATA[SYSTEM retorna para tela incial]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[administrador: vai para pagina de visualizacao de extracoes no servidor]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de visualização de extracoes com extracoes recentes no topo]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -130,38 +124,32 @@
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
-    <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
+    <preconditions><![CDATA[Usuário deve estar logado no servidor e no extrator como administrador]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
+        <actions><![CDATA[administrador: seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do extrator]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[administrador: faz login no extrator]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+        <actions><![CDATA[administrador: seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start']]></actions>
+        <expectedresults><![CDATA[SYSTEM renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+        <expectedresults><![CDATA[SYSTEM mantem informacao de quais extracoes foram enviadas; fica em espera ate que a conexao seja reestabelecida]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-        <expectedresults><![CDATA[SYSTEM tenta enviar extrações restantes para o servidor]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM tenta enviar extracoes restantes para o servidor]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

@@ -15,15 +15,16 @@
 15 15
 16 16
 17 17
+18 18
 #
-1 2 [c] Usuario deve estar logado como administrador
-2 3 [s] administrador configura o extrator para iniciar em modo 'Automatic Collection'
-3 4 [e] system exibe tela de login
-4 5 [s] administrador faz login no extrator
-5 6 [e] system exibe tela de coleta automatica
-6 7 [s] administrador seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'
-7 8 [s] clock a cada 30 segundos
-8 9 [e] system envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada
-9 10 [s] administrador pressiona botao 'Stop'
-10 11 [e] system desbloqueia todos os botoes e para de escutar a pasta indicada
-11 12 [c] As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'
+1 2 [c] Usuário deve estar logado no servidor e no extrator como administrador
+2 3 [s] administrador seta o extrator para iniciar em modo 'Automatic Collection' e faz login no extrator
+3 4 [e] system exibe tela inicial do extrator
+4 5 [s] administrador seleciona pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botão 'Start'
+5 6 [e] system renomeia e transfere extracoes para uma pasta temporaria; atualiza contador de extracoes realizadas; demais botoes estao todos bloqueados, com excecao do botao 'Stop'
+6 7 [s] clock a cada 30 segundos
+7 8 [e] system envia extracoes da pasta temporaria para o servidor e fica em espera por novas extracoes na pasta indicada
+8 9 [s] administrador pressiona botao 'Stop'
+9 10 [e] system retorna para tela incial
+10 11 [s] administrador vai para pagina de visualizacao de extracoes no servidor
+11 12 [e] system exibe tela de visualização de extracoes com extracoes recentes no topo
