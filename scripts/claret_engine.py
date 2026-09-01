@@ -67,6 +67,33 @@ def get_default_branch() -> str:
     """Retrieve default working branch."""
     return os.getenv("GITHUB_BRANCH", "claret-version-control-system")
 
+def get_java_cmd() -> str:
+    """Resolve Java 26+ runtime command, prioritizing explicitly configured modern JDKs."""
+    java_env = os.getenv("JAVA_CMD")
+    if java_env and java_env.strip() != "java" and Path(java_env).exists():
+        return java_env
+
+    # Search for modern JDKs (Java 26 / 21) before falling back to system PATH
+    common_jdk_paths = [
+        Path(r"C:\Program Files\Java\jdk-26.0.1\bin\java.exe"),
+        Path(r"C:\Program Files\Java\latest\bin\java.exe"),
+        Path(r"C:\Program Files\Java\jdk-26\bin\java.exe"),
+        Path(r"C:\Program Files\Eclipse Adoptium\jdk-21.0.12.101-hotspot\bin\java.exe"),
+        Path("/usr/lib/jvm/java-26-openjdk/bin/java"),
+        Path("/usr/lib/jvm/java-21-openjdk/bin/java"),
+    ]
+    for p in common_jdk_paths:
+        if p.exists() and p.is_file():
+            return str(p)
+
+    java_home = os.getenv("JAVA_HOME")
+    if java_home:
+        candidate = Path(java_home) / "bin" / ("java.exe" if sys.platform == "win32" else "java")
+        if candidate.exists():
+            return str(candidate)
+
+    return java_env if java_env else "java"
+
 def get_claret_jar_path() -> Path:
     """Resolve the path to claret-generator.jar."""
     jar_env = os.getenv("CLARET_JAR_PATH")
@@ -178,7 +205,8 @@ def run_claret_generator(
     output_dir: Optional[Path] = None,
     formats: str = "all",
     coverage: str = "gt",
-    java_cmd: str = "java",
+    flat: bool = False,
+    java_cmd: Optional[str] = None,
     jar_path: Optional[Path] = None
 ) -> Tuple[bool, str]:
     """
@@ -191,11 +219,12 @@ def run_claret_generator(
         logger.error(msg)
         return False, msg
 
+    resolved_java = java_cmd or get_java_cmd()
     if output_dir is None:
         output_dir = input_dir / "output"
 
     cmd = [
-        java_cmd,
+        resolved_java,
         "-jar",
         str(resolved_jar),
         "-i",
@@ -207,6 +236,8 @@ def run_claret_generator(
         "-c",
         coverage
     ]
+    if flat:
+        cmd.append("--flat")
 
     logger.info(f"Executing: {' '.join(cmd)}")
     try:

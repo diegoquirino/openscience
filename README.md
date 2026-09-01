@@ -105,19 +105,22 @@ claret-version-control-system/
 │   └── sync-agents.sh                    <-- Bash synchronizer wrapper
 │
 ├── .claude/skills/                       <-- SOURCE OF TRUTH FOR SKILLS
-│   ├── version-publisher/                <-- Feature 1: Process, generate test suite, commit, tag & release
+│   ├── test-generator/                   <-- Feature 1: Batch generate output/ from specs in --dirs
+│   │   ├── SKILL.md
+│   │   └── scripts/generate_tests.py
+│   ├── version-publisher/                <-- Feature 2: Process, generate test suite, commit, tag & release
 │   │   ├── SKILL.md
 │   │   └── scripts/publish_versions.py
-│   ├── release-downloader/               <-- Feature 2: Download src/ from specific tags/releases
+│   ├── release-downloader/               <-- Feature 3: Download src/ from specific tags/releases
 │   │   ├── SKILL.md
 │   │   └── scripts/download_releases.py
-│   ├── spec-translator/                  <-- Feature 3: Translate .claret specs preserving DSL grammar
+│   ├── spec-translator/                  <-- Feature 4: Translate .claret specs preserving DSL grammar
 │   │   ├── SKILL.md
 │   │   └── scripts/translate_specs.py
-│   ├── src-diff-analyzer/                <-- Feature 4: Adjacent tag diff for src/ .claret files (CSV)
+│   ├── src-diff-analyzer/                <-- Feature 5: Adjacent tag diff for src/ .claret files (CSV)
 │   │   ├── SKILL.md
 │   │   └── scripts/diff_src.py
-│   └── output-diff-analyzer/             <-- Feature 5: Adjacent tag diff for output/ test cases (CSV)
+│   └── output-diff-analyzer/             <-- Feature 6: Adjacent tag diff for output/ test cases (CSV)
 │       ├── SKILL.md
 │       └── scripts/diff_output.py
 │
@@ -322,7 +325,17 @@ python scripts/sync_agents.py --check
 
 ## 3. Skills Matrix & Usage
 
-### 1. `version-publisher` (`/publish-versions`)
+### 1. `test-generator` (`/generate-tests`)
+Batch executes `claret-generator.jar` across an array of version directories passed via `--dirs`, parsing `.claret` / `.dsl` files in `src/` (or root) and producing complete test suites, spreadsheets, models, and reports into their respective `output/` folders.
+
+```bash
+python .claude/skills/test-generator/scripts/generate_tests.py \
+  --dirs 1.0 1.1 1.2 \
+  --coverage gt \
+  --formats all
+```
+
+### 2. `version-publisher` (`/publish-versions`)
 Iteratively **merges** an array of version directories into the main integrator directory (named after the target branch), renames files to PascalCase (preserving acronyms), executes `claret-generator.jar` (organizing `src/` and `output/`), pushes the incremental diff to the branch, creates tag (`<branch>_vX.Y`), and creates release (`<Branch Title> vX.Y`).
 
 ```bash
@@ -331,7 +344,7 @@ python .claude/skills/version-publisher/scripts/publish_versions.py \
   --branch saff-study
 ```
 
-### 2. `release-downloader` (`/download-releases`)
+### 3. `release-downloader` (`/download-releases`)
 Downloads exclusively the `src/` directory from a list of tags or releases into local segregated folders.
 
 ```bash
@@ -340,7 +353,7 @@ python .claude/skills/release-downloader/scripts/download_releases.py \
   --output-dir ./downloads
 ```
 
-### 3. `spec-translator` (`/translate-specs`)
+### 4. `spec-translator` (`/translate-specs`)
 Translates natural language inside `.claret` specifications across directories to a target locale (e.g. `en-us`, `pt-br`) while strictly preserving DSL tokens and grammar.
 
 ```bash
@@ -349,7 +362,7 @@ python .claude/skills/spec-translator/scripts/translate_specs.py \
   --locale en-us
 ```
 
-### 4. `src-diff-analyzer` (`/diff-src`)
+### 5. `src-diff-analyzer` (`/diff-src`)
 Extracts diffs between adjacent tags/releases for `.claret` files in `src/` and exports a normalized CSV report:
 `| # | file | system | source_version | source_content | target_version | target_content |`
 
@@ -359,7 +372,7 @@ python .claude/skills/src-diff-analyzer/scripts/diff_src.py \
   --output-csv ./reports/src_diffs.csv
 ```
 
-### 5. `output-diff-analyzer` (`/diff-output`)
+### 6. `output-diff-analyzer` (`/diff-output`)
 Extracts diffs between adjacent tags/releases for generated test cases in `output/` (filtering by format, scope `all_usecases` vs `all`, and coverage criteria like `GT`, `GTP`, `ART`) and exports a normalized CSV report.
 
 ```bash

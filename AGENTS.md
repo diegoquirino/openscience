@@ -18,6 +18,7 @@ This project implements the **CLARET Version Control System** agentic skills sui
 
 | Skill Name | Claude Skill Path | Antigravity Workflow | Cursor Slash Command |
 |---|---|---|---|
+| **test-generator** | `.claude/skills/test-generator` | `/generate-tests` | `/generate-tests` |
 | **version-publisher** | `.claude/skills/version-publisher` | `/publish-versions` | `/publish-versions` |
 | **release-downloader** | `.claude/skills/release-downloader` | `/download-releases` | `/download-releases` |
 | **spec-translator** | `.claude/skills/spec-translator` | `/translate-specs` | `/translate-specs` |
