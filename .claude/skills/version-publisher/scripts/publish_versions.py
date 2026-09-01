@@ -15,8 +15,16 @@ from pathlib import Path
 
 # Add project root scripts to sys.path
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parents[2]
-sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+PROJECT_ROOT = SCRIPT_DIR
+for parent in [SCRIPT_DIR] + list(SCRIPT_DIR.parents):
+    if (parent / "scripts" / "claret_engine.py").exists():
+        sys.path.insert(0, str(parent / "scripts"))
+        PROJECT_ROOT = parent
+        break
+    elif (parent / "claret-version-control-system" / "scripts" / "claret_engine.py").exists():
+        sys.path.insert(0, str(parent / "claret-version-control-system" / "scripts"))
+        PROJECT_ROOT = parent / "claret-version-control-system"
+        break
 
 from claret_engine import (
     to_pascal_case_with_acronyms,
