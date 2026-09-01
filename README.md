@@ -7,6 +7,83 @@ The **`claret-generator`** project operates as a **100% Standalone (Fat JAR / CL
 
 ---
 
+## ⚙️ Workflow & Architecture Diagrams
+
+### 1. Generation Engine & Multi-Format Exporter Pipeline
+```mermaid
+graph TD
+    subgraph Inputs ["Input Specifications"]
+        A1[".claret Files<br/>(Xtext Syntax)"]
+        A2[".dsl Files<br/>(Alternative Syntax)"]
+    end
+
+    subgraph ParserEngine ["Parsing & Domain Modeling"]
+        B["ClaretParser"]
+        C["ClaretSystem / UseCase Model<br/>(Steps, af:, ef:, bfs:)"]
+        D["Labeled Transition System (LTS)<br/>State Graph Construction"]
+    end
+
+    subgraph CoverageCriteria ["MBT Coverage & Reduction Engine"]
+        E1["<b>GT</b>: Greedy Transition"]
+        E2["<b>GTP</b>: Greedy Transition Pair"]
+        E3["<b>ART</b>: Adaptive Random Testing (Jaccard)"]
+        E4["<b>Complete</b>: All Paths Exploration"]
+        E5["<b>Basic-Only</b>: Happy Path Smoke"]
+        E6["<b>All-Branches</b>: Decision Branches"]
+    end
+
+    subgraph OutputReorganization ["Directory Restructuring"]
+        SRC["<b>src/</b><br/>Processed Specs (.claret/.dsl)"]
+        OUT["<b>output/</b><br/>Structured Test Suites & Models"]
+    end
+
+    subgraph Exporters ["Multi-Format Output Generators"]
+        O1["<b>xlsx/</b> Spreadsheets (.xlsx)"]
+        O2["<b>txt/</b> Tabulated Specs (.txt)"]
+        O3["<b>docx/</b> Word Documents (.docx)"]
+        O4["<b>odt/</b> OpenDocument Reports (.odt)"]
+        O5["<b>tgf/</b> Graph Models (.tgf)"]
+        O6["<b>alts/</b> Formal States (.alts)"]
+        O7["<b>xml/</b> TestLink Suites (.xml)"]
+    end
+
+    A1 --> B
+    A2 --> B
+    B --> C
+    C --> D
+    D --> E1 & E2 & E3 & E4 & E5 & E6
+
+    E1 & E2 & E3 & E4 & E5 & E6 --> SRC
+    E1 & E2 & E3 & E4 & E5 & E6 --> OUT
+
+    OUT --> O1 & O2 & O3 & O4 & O5 & O6 & O7
+```
+
+### 2. Standalone CLI Execution Flow
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as User / CI / Agent
+    participant CLI as Main (CLI Entrypoint)
+    participant Parser as ClaretParser
+    participant Engine as ClaretProcessor
+    participant Exporter as Generators (XLSX, TXT, DOCX, XML, etc.)
+    participant FS as File System (src/ & output/)
+
+    User->>CLI: Execute JAR (-i &lt;dir&gt; -o &lt;dir/output&gt; -c gt -f all)
+    CLI->>FS: Scan directory for *.claret and *.dsl files
+    CLI->>Parser: Parse specification files into System & UseCase AST
+    Parser-->>CLI: Return parsed ClaretSystem domain models
+    CLI->>Engine: Build LTS graph and apply coverage criteria (e.g. GT / ART)
+    Engine-->>CLI: Return optimized test case suites (TestCase objects)
+    CLI->>Exporter: Generate requested formats (XLSX, TXT, DOCX, TGF, XML)
+    Exporter->>FS: Write artifacts into output/ subdirectories
+    CLI->>FS: Move processed .claret/.dsl files into sibling src/ folder
+    CLI-->>User: Process completed successfully
+```
+
+---
+
 ## 1. Project Directory Structure
 
 ```text
