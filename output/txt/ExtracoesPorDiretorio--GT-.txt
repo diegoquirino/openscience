@@ -1,84 +1,103 @@
 System:	SAFF Extractor
 Use Case:	Realizacao Extracoes em modo diretorio e aplicando filtros	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	01/09/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 9 test case(s)	Creation Date:	01/09/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-4	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-6	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Estouro de limite de tempo			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução passou de 5 segundos		SYSTEM exibe mensagem solicitando que o usuário aguarde		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção “Ingenico” no campo de filtro “Customer”		SYSTEM atualiza a página mostrando somente 32 extrações		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Filtro default			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-4	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-6	administrador: seleciona opção default no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 705 extrações		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção default no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 705 extrações		
 Postcondition:	
 
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Filtro “Ingenico Brazil”			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-4	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-5	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
-6	administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 673 extrações		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona o combo box referente ao filtro por “Customer”		SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”		
+7	administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”		SYSTEM atualiza a página mostrando todas 673 extrações		
 Postcondition:	
 
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Filtro state			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-3	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
-4	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
-5	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
-6	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: acessa página “Extractions”		SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463		
+5	administrador: seleciona opção para mostrar 100 entradas por página		SYSTEM exibe a lista de extrações com as 100 últimas entradas.		
+6	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+7	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
 Postcondition:	
 
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 4: Filtro “Alert Interruption”			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: seleciona opção “Alert Interruption” no campo de filtro “State”		SYSTEM atualiza página mostrando 97 extrações		
 Postcondition:	
 
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 5: Filtro “Mockup”			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: seleciona opção “Mockup” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
 Postcondition:	
 
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 6: Filtro “Error”			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona opção “Error” no campo de filtro “State”		SYSTEM atualiza página mostrando extrações associadas aos estados 'Alert Interruption' e 'Mockup'		
+1	administrador: seleciona opção “Error” no campo de filtro “State”		SYSTEM atualiza página mostrando lista vazia		
 Postcondition:	
 
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 7: Extrações Sequenciais			Execution Date:	
 Precondition:	Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-3	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
-4	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
-5	administrador: acessa página “Extractions”		SYSTEM exibe uma lista com 1510		
+2	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+3	clock: tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+4	administrador: pressiona opção “Extract from dicrtory”		SYSTEM exibe tela de extração por diretório		
+5	administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”		SYSTEM realiza extrações		
+6	clock: verifica se o tempo de execução não passou de 5 segundos		SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas		
+7	administrador: acessa página “Extractions”		SYSTEM exibe uma lista com 1510		
 Postcondition:	
 

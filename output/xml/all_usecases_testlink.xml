@@ -2,295 +2,175 @@
 <testsuite name="Consolidated Test Suite">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
-  <testsuite name="Delecao de Extracoes">
+  <testsuite name="Extracao via Interface Matrix">
     <node_order><![CDATA[1]]></node_order>
-    <details><![CDATA[Use case: Delecao de Extracoes]]></details>
+    <details><![CDATA[Use case: Extracao via Interface Matrix]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <actions><![CDATA[administrador: faz login no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 704 entradas]]></expectedresults>
+          <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Cancela deleção">
+    <testcase name="TC2 - Alternative Flow 1: Seleciona pasta vazia">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Cancela deleção]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <summary><![CDATA[Alternative Flow 1: Seleciona pasta vazia]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <actions><![CDATA[administrador: faz login no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: cancela deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
+          <actions><![CDATA[administrador: seleciona pasta vazia, e pressiona botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: confirma deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 704 entradas]]></expectedresults>
+          <actions><![CDATA[administrador: pressiona botao 'Stop']]></actions>
+          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e deleção">
+    <testcase name="TC3 - Alternative Flow 2: Insere novas extracoes na pasta">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e deleção]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
+          <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 608 extrações]]></expectedresults>
+          <actions><![CDATA[administrador: faz login no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extrações para deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca todas extrações após o filtro com um tick]]></expectedresults>
+          <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: confirma deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 96 entradas]]></expectedresults>
+          <actions><![CDATA[administrador: adiciona novas extracoes na pasta indicada]]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Deleta todas extrações">
+    <testcase name="TC4 - Exception Flow 1: Falha no envio ao servidor">
       <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Deleta todas extrações]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
+      <preconditions><![CDATA[Usuario deve estar logado como administrador]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extrações para deleção]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
+          <actions><![CDATA[administrador: configura o extrator para iniciar em modo 'Automatic Collection']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de login]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
         <step>
           <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que não existem extrações para serem deletadas]]></expectedresults>
+          <actions><![CDATA[administrador: faz login no extrator]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM tenta enviar extrações restantes para o servidor]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Cancela delecao">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Cancela delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: cancela delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca selecao com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 704 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e delecao">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e delecao]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona opcao “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza pagina mostrando 608 extracoes]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca todas extracoes após o filtro com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: confirma delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extracoes com 96 entradas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Deleta todas extracoes">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Deleta todas extracoes]]></summary>
-      <preconditions><![CDATA[Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona o check box que marca todas extracoes para delecao]]></actions>
-          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: pressiona o botao “Delete extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Extracao via Interface Matrix">
-    <node_order><![CDATA[2]]></node_order>
-    <details><![CDATA[Use case: Extracao via Interface Matrix]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
@@ -331,7 +211,7 @@
       </steps>
     </testcase>
     <testcase name="TC2 - Alternative Flow 1: Seleciona pasta vazia">
-      <node_order><![CDATA[2]]></node_order>
+      <node_order><![CDATA[6]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 1: Seleciona pasta vazia]]></summary>
@@ -378,7 +258,7 @@
       </steps>
     </testcase>
     <testcase name="TC3 - Alternative Flow 2: Insere novas extracoes na pasta">
-      <node_order><![CDATA[3]]></node_order>
+      <node_order><![CDATA[7]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
@@ -431,7 +311,7 @@
       </steps>
     </testcase>
     <testcase name="TC4 - Exception Flow 1: Falha no envio ao servidor">
-      <node_order><![CDATA[4]]></node_order>
+      <node_order><![CDATA[8]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
@@ -471,820 +351,9 @@
         </step>
       </steps>
     </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
-          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Seleciona pasta vazia">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Seleciona pasta vazia]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: seleciona pasta vazia, e pressiona botao 'Start']]></actions>
-          <expectedresults><![CDATA[SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[operador: adiciona extracao a pasta indicada]]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
-          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Insere novas extracoes na pasta">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Insere novas extracoes na pasta]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[operador: adiciona novas extracoes na pasta indicada]]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[operador: pressiona botao 'Stop']]></actions>
-          <expectedresults><![CDATA[SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Exception Flow 1: Falha no envio ao servidor">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Falha no envio ao servidor]]></summary>
-      <preconditions><![CDATA[ ]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[operador: inicia o SAFF Extractor e se autentica]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de coleta automatica]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start']]></actions>
-          <expectedresults><![CDATA[SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[clock: a cada 30 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM tenta enviar extrações restantes para o servidor]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Realizacao Extracoes em modo diretorio e aplicando filtros">
-    <node_order><![CDATA[3]]></node_order>
-    <details><![CDATA[Use case: Realizacao Extracoes em modo diretorio e aplicando filtros]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Ingenico” no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando somente 32 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 8: Estouro de limite de tempo">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 8: Estouro de limite de tempo]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando que o usuário aguarde]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Ingenico” no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando somente 32 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 1: Filtro default">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Filtro default]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção default no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 705 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 2: Filtro “Ingenico Brazil”">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Filtro “Ingenico Brazil”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 673 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 3: Filtro state">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Filtro state]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 608 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 4: Filtro “Alert Interruption”">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Filtro “Alert Interruption”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Alert Interruption” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 97 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Alternative Flow 5: Filtro “Mockup”">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Filtro “Mockup”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Mockup” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando lista vazia]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC8 - Alternative Flow 6: Filtro “Error”">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC8]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 6: Filtro “Error”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Error” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando lista vazia]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC9 - Alternative Flow 7: Extrações Sequenciais">
-      <node_order><![CDATA[9]]></node_order>
-      <externalid><![CDATA[TC9]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 7: Extrações Sequenciais]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[clock: verifica se o tempo de execução não passou de 5 segundos]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[7]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com 1510]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[10]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Ingenico” no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando somente 32 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Filtro default">
-      <node_order><![CDATA[11]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Filtro default]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção default no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 705 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Filtro “Ingenico Brazil”">
-      <node_order><![CDATA[12]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Filtro “Ingenico Brazil”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 673 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Filtro state">
-      <node_order><![CDATA[13]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Filtro state]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[6]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Activated” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 608 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 4: Filtro “Alert Interruption”">
-      <node_order><![CDATA[14]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Filtro “Alert Interruption”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Alert Interruption” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 97 extrações]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 5: Filtro “Mockup”">
-      <node_order><![CDATA[15]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Filtro “Mockup”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Mockup” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando lista vazia]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Alternative Flow 6: Filtro “Error”">
-      <node_order><![CDATA[16]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 6: Filtro “Error”]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: seleciona opção “Error” no campo de filtro “State”]]></actions>
-          <expectedresults><![CDATA[SYSTEM atualiza página mostrando extrações associadas aos estados 'Alert Interruption' e 'Mockup']]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC8 - Alternative Flow 7: Extrações Sequenciais">
-      <node_order><![CDATA[17]]></node_order>
-      <externalid><![CDATA[TC8]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 7: Extrações Sequenciais]]></summary>
-      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com 1510]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
   </testsuite>
   <testsuite name="Combinando extracoes com diferente perfis">
-    <node_order><![CDATA[4]]></node_order>
+    <node_order><![CDATA[2]]></node_order>
     <details><![CDATA[Use case: Combinando extracoes com diferente perfis]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1359,7 +428,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Cliente">
-    <node_order><![CDATA[5]]></node_order>
+    <node_order><![CDATA[3]]></node_order>
     <details><![CDATA[Use case: CRUD Cliente]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1688,7 +757,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Diagnosticos">
-    <node_order><![CDATA[6]]></node_order>
+    <node_order><![CDATA[4]]></node_order>
     <details><![CDATA[Use case: CRUD Diagnosticos]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1830,7 +899,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Documents">
-    <node_order><![CDATA[7]]></node_order>
+    <node_order><![CDATA[5]]></node_order>
     <details><![CDATA[Use case: CRUD Documents]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2031,7 +1100,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Laboratorios">
-    <node_order><![CDATA[8]]></node_order>
+    <node_order><![CDATA[6]]></node_order>
     <details><![CDATA[Use case: CRUD Laboratorios]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2413,7 +1482,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Secoes">
-    <node_order><![CDATA[9]]></node_order>
+    <node_order><![CDATA[7]]></node_order>
     <details><![CDATA[Use case: CRUD Secoes]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2499,7 +1568,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Secu Infos">
-    <node_order><![CDATA[10]]></node_order>
+    <node_order><![CDATA[8]]></node_order>
     <details><![CDATA[Use case: CRUD Secu Infos]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2828,7 +1897,7 @@
     </testcase>
   </testsuite>
   <testsuite name="CRUD Users">
-    <node_order><![CDATA[11]]></node_order>
+    <node_order><![CDATA[9]]></node_order>
     <details><![CDATA[Use case: CRUD Users]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3063,8 +2132,152 @@
       </steps>
     </testcase>
   </testsuite>
+  <testsuite name="Delecao de Extracoes">
+    <node_order><![CDATA[10]]></node_order>
+    <details><![CDATA[Use case: Delecao de Extracoes]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: confirma deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Cancela deleção">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Cancela deleção]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: cancela deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM fecha janela pop-up]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca seleção com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: confirma deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 704 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Realiza Filtro e deleção">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Realiza Filtro e deleção]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Activated” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 608 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extrações para deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca todas extrações após o filtro com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: confirma deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com 96 entradas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Deleta todas extrações">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Deleta todas extrações]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona o check box que marca todas extrações para deleção]]></actions>
+          <expectedresults><![CDATA[SYSTEM marca o check box com um tick]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: pressiona o botão “Delete extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma mensagem pop-up indicando que não existem extrações para serem deletadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
   <testsuite name="Estatisticas">
-    <node_order><![CDATA[12]]></node_order>
+    <node_order><![CDATA[11]]></node_order>
     <details><![CDATA[Use case: Estatisticas]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3231,7 +2444,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Extracao em modo LLT">
-    <node_order><![CDATA[13]]></node_order>
+    <node_order><![CDATA[12]]></node_order>
     <details><![CDATA[Use case: Extracao em modo LLT]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3433,7 +2646,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Extracao Offline">
-    <node_order><![CDATA[14]]></node_order>
+    <node_order><![CDATA[13]]></node_order>
     <details><![CDATA[Use case: Extracao Offline]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3529,6 +2742,379 @@
           <step_number><![CDATA[5]]></step_number>
           <actions><![CDATA[administrador: loga no servidor e vai até a página de extrações]]></actions>
           <expectedresults><![CDATA[SYSTEM exibe lista com extrações realizada no modo offline no topo]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Realizacao Extracoes em modo diretorio e aplicando filtros">
+    <node_order><![CDATA[14]]></node_order>
+    <details><![CDATA[Use case: Realizacao Extracoes em modo diretorio e aplicando filtros]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Ingenico” no campo de filtro “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando somente 32 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 8: Estouro de limite de tempo">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 8: Estouro de limite de tempo]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe mensagem solicitando que o usuário aguarde]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Ingenico” no campo de filtro “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando somente 32 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 1: Filtro default">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Filtro default]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção default no campo de filtro “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 705 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 2: Filtro “Ingenico Brazil”">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Filtro “Ingenico Brazil”]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: seleciona o combo box referente ao filtro por “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe as opções “Ingenico Brazil” e “Ingenico”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção Ingenico Brazil no campo de filtro “Customer”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza a página mostrando todas 673 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 3: Filtro state">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Filtro state]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 50 últimas entradas. Entrada 1: 14170PP30289943. Entrada 50: 12328PP30166463]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção para mostrar 100 entradas por página]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe a lista de extrações com as 100 últimas entradas.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[administrador: seleciona combo box referente ao filtro por “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Activated” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 608 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 4: Filtro “Alert Interruption”">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Filtro “Alert Interruption”]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Alert Interruption” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza página mostrando 97 extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 5: Filtro “Mockup”">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Filtro “Mockup”]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Mockup” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza página mostrando lista vazia]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC8 - Alternative Flow 6: Filtro “Error”">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC8]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Filtro “Error”]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: seleciona opção “Error” no campo de filtro “State”]]></actions>
+          <expectedresults><![CDATA[SYSTEM atualiza página mostrando lista vazia]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC9 - Alternative Flow 7: Extrações Sequenciais">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC9]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 7: Extrações Sequenciais]]></summary>
+      <preconditions><![CDATA[Usuário deve estar logado no servidor e extrator com administrador ; Não existem extrações cadastradas no banco de dados]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[clock: tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[administrador: pressiona opção “Extract from dicrtory”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de extração por diretório]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[administrador: seleciona pasta “EXTRACT_FILE_IPP320_AKIRA”, que contém 705 extrações para diversas família, e pressiona o botão “Extract”]]></actions>
+          <expectedresults><![CDATA[SYSTEM realiza extrações]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[6]]></step_number>
+          <actions><![CDATA[clock: verifica se o tempo de execução não passou de 5 segundos]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe na parte inferior da tela uma mensagem indicando que 705 extrações foram realizadas]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[7]]></step_number>
+          <actions><![CDATA[administrador: acessa página “Extractions”]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com 1510]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>

@@ -15,17 +15,16 @@ system "SAFF Extractor", {
             step 3, administrador, "faz login no extrator"
             step 4, system, "exibe tela de coleta automatica"
             step 5, administrador, "seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'", af:[1]
-            step 6, system, "bloqueia todos os botoes, com excecao do botao 'Stop'"
+            step 6: system, "bloqueia todos os botoes, com excecao do botao 'Stop'"
             step 7, clock, "a cada 30 segundos"
-            step 8, system, "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", ef:[1]
-            step 9, administrador, "pressiona botao 'Stop'", af:[2]
+            step 8, system, "envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada", ef:[1], af:[2]
+            step 9, administrador, "pressiona botao 'Stop'"
             step 10, system, "desbloqueia todos os botoes e para de escutar a pasta indicada"
         }
 
         alternative 1, "Seleciona pasta vazia", {
             step 1, administrador, "seleciona pasta vazia, e pressiona botao 'Start'"
-            step 2, system, "fica em espera ate que alguma extracao seja adicionada na pasta indicada"
-            step 3, administrador, "adiciona extracao a pasta indicada" , bfs:6
+            step 2, system, "fica em espera ate que alguma extracao seja adicionada na pasta indicada", bfs:7
         }
 
 
@@ -39,6 +38,6 @@ system "SAFF Extractor", {
             step 3, system, "tenta enviar extrações restantes para o servidor", bfs:7
         }
 
-        postCondition "As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'"
+        postCondition "As extracoes da pasta indicada deve ter sido enviadas para o servidor e transferidas para a pasta 'read'"
     }
 }

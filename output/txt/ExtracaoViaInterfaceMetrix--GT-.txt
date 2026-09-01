@@ -4,44 +4,48 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	 
+Precondition:	Usuario deve estar logado como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
-2	operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-4	operador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
+4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+5	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
+Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Seleciona pasta vazia			Execution Date:	
-Precondition:	 
+Precondition:	Usuario deve estar logado como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
-2	operador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
-3	operador: adiciona extracao a pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-5	operador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona pasta vazia, e pressiona botao 'Start'		SYSTEM fica em espera ate que alguma extracao seja adicionada na pasta indicada		
+4	administrador: adiciona extracao a pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
+5	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+6	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
+Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Insere novas extracoes na pasta			Execution Date:	
-Precondition:	 
+Precondition:	Usuario deve estar logado como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
-2	operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-4	operador: adiciona novas extracoes na pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-5	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
-6	operador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
-Postcondition:	As extracoes da pasta indicada foram enviadas para o servidor e transferidas para a pasta 'read'
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
+4	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+5	administrador: adiciona novas extracoes na pasta indicada		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
+6	clock: a cada 30 segundos		SYSTEM envia extracoes para o servidor, transfere essas extrações para a pasta 'read', atualiza o contador de extrações realizadas e fica em espera por novas extracoes na pasta indicada		
+7	administrador: pressiona botao 'Stop'		SYSTEM desbloqueia todos os botoes e para de escutar a pasta indicada		
+Postcondition:	As extracoes da pasta indicada devem ter sido enviadas para o servidor e transferidas para a pasta 'read'
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Falha no envio ao servidor			Execution Date:	
-Precondition:	 
+Precondition:	Usuario deve estar logado como administrador
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	operador: inicia o SAFF Extractor e se autentica		SYSTEM exibe tela de coleta automatica		
-2	operador: seleciona uma pasta contendo varias extracoes, fornece as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
-3	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
-4	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
+1	administrador: configura o extrator para iniciar em modo 'Automatic Collection'		SYSTEM exibe tela de login		
+2	administrador: faz login no extrator		SYSTEM exibe tela de coleta automatica		
+3	administrador: seleciona uma pasta contendo varias extracoes, seta as informacoes solicitadas na tela inicial e pressiona o botao 'Start'		SYSTEM bloqueia todos os botoes, com excecao do botao 'Stop'		
+4	clock: a cada 30 segundos		SYSTEM mantem a informacao de quais extracoes foram enviadas para o servidor; fica em espera ate que a conexao seja reestabelecida		
+5	clock: a cada 30 segundos		SYSTEM tenta enviar extrações restantes para o servidor		
 Postcondition:	Flow interrupted due to exception / error
 

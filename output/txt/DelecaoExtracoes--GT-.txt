@@ -4,41 +4,41 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
-2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
-3	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 704 entradas		
+1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+3	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
 Postcondition:	
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Cancela delecao			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+Description:	Alternative Flow 1: Cancela deleção			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
-2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
-3	administrador: cancela delecao		SYSTEM fecha janela pop-up		
-4	administrador: seleciona o check box referente a extracao referente ao numero serial 12311PP30154516”		SYSTEM marca selecao com um tick		
-5	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da delecao		
-6	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 704 entradas		
+1	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+3	administrador: cancela deleção		SYSTEM fecha janela pop-up		
+4	administrador: seleciona o check box referente a extração referente ao número serial 12311PP30154516”		SYSTEM marca seleção com um tick		
+5	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+6	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 704 entradas		
 Postcondition:	
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Realiza Filtro e delecao			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+Description:	Alternative Flow 2: Realiza Filtro e deleção			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opcoes “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
-2	administrador: seleciona opcao “Activated” no campo de filtro “State”		SYSTEM atualiza pagina mostrando 608 extracoes		
-3	administrador: seleciona o check box que marca todas extracoes para delecao		SYSTEM marca todas extracoes após o filtro com um tick		
-4	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmacao da delecao		
-5	administrador: confirma delecao		SYSTEM exibe a lista de extracoes com 96 entradas		
+1	administrador: seleciona combo box referente ao filtro por “State”		SYSTEM exibe opções “Activated”, “Alert Interruption”, “Deactivated”, “Mockup” e “Error”		
+2	administrador: seleciona opção “Activated” no campo de filtro “State”		SYSTEM atualiza página mostrando 608 extrações		
+3	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca todas extrações após o filtro com um tick		
+4	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up solicitando a confirmação da deleção		
+5	administrador: confirma deleção		SYSTEM exibe a lista de extrações com 96 entradas		
 Postcondition:	
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Deleta todas extracoes			Execution Date:	
-Precondition:	Usuario deve estar logado no servidor e extrator como administrador ; 705 extracoes ja foram realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
+Description:	Alternative Flow 3: Deleta todas extrações			Execution Date:	
+Precondition:	Usuário deve estar logado no servidor e extrator como administrador ; 705 extrações já realizadas (pasta “EXTRACT_FILE_IPP320_AKIRA”)
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	administrador: seleciona o check box que marca todas extracoes para delecao		SYSTEM marca o check box com um tick		
-2	administrador: pressiona o botao “Delete extractions”		SYSTEM exibe uma mensagem pop-up indicando que nao existem extracoes para serem deletadas		
+1	administrador: seleciona o check box que marca todas extrações para deleção		SYSTEM marca o check box com um tick		
+2	administrador: pressiona o botão “Delete extractions”		SYSTEM exibe uma mensagem pop-up indicando que não existem extrações para serem deletadas		
 Postcondition:	
 
