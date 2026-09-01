@@ -42,59 +42,7 @@ graph TD
     ENGINE --> LLM
 ```
 
-### 2. End-to-End Specification Lifecycle Workflow
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Dev as Researcher / Agent
-    participant Pub as /publish-versions
-    participant JAR as claret-generator.jar
-    participant Git as GitHub (Branch / Tags / Releases)
-    participant Down as /download-releases
-    participant Trans as /translate-specs
-    participant TestGen as /generate-tests
-    participant DiffSrc as /diff-src
-    participant DiffOut as /diff-output
-
-    rect rgb(240, 248, 255)
-        Note over Dev,Git: Track A: Translation, Version Publication & MBT Suite Generation
-        Dev->>Trans: /translate-specs --dirs 1.0 1.1 --locale en-us
-        Trans-->>Dev: Translated .claret specifications (preserving DSL keywords)
-        Dev->>Pub: /publish-versions --version-dirs 1.0 1.1 ... 2.9 --branch saff-study
-        loop For each sequential version folder
-            Pub->>Pub: Merge .claret/.dsl files into branch folder (PascalCase)
-            Pub->>JAR: Execute JAR (-i saff-study -o output/ -c gt -f all)
-            JAR-->>Pub: Produce src/ and generated output/ test suites
-            Pub->>Git: Commit & Push ("feat(saff-study): publish vX.Y")
-            Pub->>Git: Push Tag (saff-study_vX.Y) & Create Release ("SAFF Study vX.Y")
-        end
-    end
-
-    rect rgb(255, 248, 240)
-        Note over Dev,TestGen: Track B: Remote Retrieval, Translation & Local Test Generation
-        Dev->>Down: /download-releases --tags saff-study_v1.0 saff-study_v2.0
-        Down->>Git: Fetch source trees (src/)
-        Down-->>Dev: Downloaded segregated local folders
-        Dev->>Trans: /translate-specs --dirs downloads/1.0 downloads/2.0 --locale en-us
-        Trans-->>Dev: Translated specifications in local folders
-        Dev->>TestGen: /generate-tests --dirs downloads/1.0 downloads/2.0 --coverage gt
-        TestGen->>JAR: Batch execute claret-generator.jar
-        TestGen-->>Dev: Generated output/ test suites across all target directories
-    end
-
-    rect rgb(240, 255, 240)
-        Note over Dev,DiffOut: Convergence: Evolutionary Diff & Empirical Study Analysis
-        Dev->>DiffSrc: /diff-src --tags saff-study_v1.0 saff-study_v2.0 saff-study_v3.0
-        DiffSrc->>Git: Compute adjacent Git diffs on src/ (.claret)
-        DiffSrc-->>Dev: Normalized CSV Report (src_diffs.csv)
-
-        Dev->>DiffOut: /diff-output --tags saff-study_v1.0 saff-study_v2.0 --formats txt xlsx
-        DiffOut->>Git: Compute adjacent diffs on output/ test cases (GT, ART, etc.)
-        DiffOut-->>Dev: Normalized CSV Report (output_diffs.csv)
-    end
-```
-
-### 3. Evolutionary Study Execution Pathways & Convergence
+### 2. Evolutionary Study Execution Pathways & Convergence
 ```mermaid
 graph TD
     subgraph TrackA ["Track A: Local Raw Specs -> Translation -> Version Publication"]
