@@ -45,8 +45,9 @@ graph TD
 graph TD
     subgraph TrackA ["Track A: Local Specs -> Version Publication"]
         A1["Raw .claret / .dsl Specs<br/>(Local Version Dirs)"]
-        A2["<b>version-publisher</b><br/>(/publish-versions)<br/>PascalCase + MBT Compile + Push + Tag & Release"]
-        A1 --> A2
+        A2["<b>test-generator</b><br/>(/generate-tests)<br/>Batch compile local specs into output/"]
+        A3["<b>version-publisher</b><br/>(/publish-versions)<br/>PascalCase + MBT Compile + Push + Tag & Release"]
+        A1 --> A2 --> A3
     end
 
     subgraph TrackB ["Track B: GitHub Releases -> Local Download -> Test Generation"]
@@ -68,7 +69,7 @@ graph TD
         CSV2["<b>output_diffs.csv</b><br/>Normalized test case mutations"]
     end
 
-    A2 --> GH
+    A3 --> GH
     B1 -.-> GH
     B3 -.-> DiffAnalysis
 
@@ -324,8 +325,8 @@ python .claude/skills/release-downloader/scripts/download_releases.py \
 ```
 
 ### 4. `src-diff-analyzer` (`/diff-src`)
-Extracts diffs between adjacent tags/releases for `.claret` files in `src/` and exports a normalized CSV report:
-`| # | file | system | source_version | source_content | target_version | target_content |`
+Extracts granular diffs between adjacent tags/releases for `.claret` files in `src/` and exports a normalized CSV report:
+`| # | file | system | origin_version | origin_content | target_version | target_content |`
 
 ```bash
 python .claude/skills/src-diff-analyzer/scripts/diff_src.py \

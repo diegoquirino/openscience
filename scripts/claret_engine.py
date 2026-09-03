@@ -257,16 +257,60 @@ def run_claret_generator(
 class GitHubManager:
     """Manages Git operations and GitHub REST API interactions."""
 
-    def __init__(self, repo: Optional[str] = None, token: Optional[str] = None):
+    def __init__(self, repo: Optional[str] = None, token: Optional[str] = None, repo_dir: Optional[Path] = None):
         self.token = token or get_github_token()
         self.repo = repo or get_default_repo()
+        self.repo_dir = Path(repo_dir).resolve() if repo_dir else self._discover_local_repo()
+        self._cache: Dict[Tuple[str, str], Optional[str]] = {}
+        self._tree_cache: Dict[Tuple[str, str], List[str]] = {}
+        self._session = None
+
+    def _discover_local_repo(self) -> Optional[Path]:
+        branch = os.getenv("GITHUB_BRANCH", "saff-study")
+        candidates = [
+            Path.cwd() / branch,
+            Path.cwd(),
+            Path(__file__).resolve().parents[2] / branch,
+            Path(__file__).resolve().parents[1] / branch
+        ]
+        for c in candidates:
+            if (c / ".git").is_dir():
+                return c
+        return None
+
+    def _local_repo_has_ref(self, ref: str) -> bool:
+        if not self.repo_dir or not (self.repo_dir / ".git").is_dir():
+            return False
+        code, out, _ = self.run_git(["tag", "-l", ref], cwd=self.repo_dir)
+        if code == 0 and out.strip() == ref:
+            return True
+        code, out, _ = self.run_git(["rev-parse", "--verify", f"refs/tags/{ref}"], cwd=self.repo_dir)
+        if code == 0:
+            return True
+        code, out, _ = self.run_git(["rev-parse", "--verify", ref], cwd=self.repo_dir)
+        return code == 0
+
+    def _get_session(self):
+        if self._session is None:
+            import requests
+            from requests.adapters import HTTPAdapter
+            from urllib3.util import Retry
+            s = requests.Session()
+            retries = Retry(total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504], raise_on_status=False)
+            adapter = HTTPAdapter(max_retries=retries, pool_connections=10, pool_maxsize=20)
+            s.mount("https://", adapter)
+            s.mount("http://", adapter)
+            self._session = s
+        return self._session
 
     def run_git(self, args: List[str], cwd: Optional[Path] = None) -> Tuple[int, str, str]:
         """Run a git command in the specified working directory."""
         cmd = ["git"] + args
         logger.debug(f"Git command: {' '.join(cmd)} (cwd={cwd})")
-        res = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
-        return res.returncode, res.stdout.strip(), res.stderr.strip()
+        res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=cwd)
+        stdout = res.stdout.strip() if res.stdout else ""
+        stderr = res.stderr.strip() if res.stderr else ""
+        return res.returncode, stdout, stderr
 
     def add_commit_push(self, repo_dir: Path, branch: str, commit_message: str) -> bool:
         """Stage all changes, commit, and push to the specified branch."""
@@ -274,7 +318,10 @@ class GitHubManager:
         rc, _, _ = self.run_git(["rev-parse", "--is-inside-work-tree"], cwd=repo_dir)
         if rc != 0:
             self.run_git(["init"], cwd=repo_dir)
-            remote_url = f"https://github.com/{self.repo}.git"
+            if self.token:
+                remote_url = f"https://x-access-token:{self.token}@github.com/{self.repo}.git"
+            else:
+                remote_url = f"https://github.com/{self.repo}.git"
             self.run_git(["remote", "remove", "origin"], cwd=repo_dir)
             self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
 
@@ -345,51 +392,91 @@ class GitHubManager:
             return False
 
     def fetch_file_content_at_ref(self, ref: str, file_path: str) -> Optional[str]:
-        """Fetch file content from GitHub repository at a specific tag or ref."""
-        if not self.token:
-            # Fallback to public raw content
-            import requests
-            url = f"https://raw.githubusercontent.com/{self.repo}/{ref}/{file_path}"
-            resp = requests.get(url)
-            return resp.text if resp.status_code == 200 else None
+        """Fetch file content from GitHub repository or local git tree at a specific tag or ref."""
+        cache_key = (ref, file_path)
+        if cache_key in self._cache:
+            return self._cache[cache_key]
 
-        import requests
-        url = f"https://api.github.com/repos/{self.repo}/contents/{file_path}?ref={ref}"
-        headers = {
-            "Authorization": f"token {self.token}",
-            "Accept": "application/vnd.github.v3.raw"
-        }
-        resp = requests.get(url, headers=headers)
-        if resp.status_code == 200:
-            return resp.text
-        return None
+        # 1. Try local git repository if available
+        if self._local_repo_has_ref(ref):
+            code, out, _ = self.run_git(["show", f"{ref}:{file_path}"], cwd=self.repo_dir)
+            if code == 0:
+                self._cache[cache_key] = out
+                return out
+
+        # 2. Remote GitHub fetch with session & retries
+        session = self._get_session()
+        content = None
+        if self.token:
+            url = f"https://api.github.com/repos/{self.repo}/contents/{file_path}?ref={ref}"
+            headers = {
+                "Authorization": f"token {self.token}",
+                "Accept": "application/vnd.github.v3.raw"
+            }
+            try:
+                resp = session.get(url, headers=headers, timeout=30)
+                if resp.status_code == 200:
+                    content = resp.text
+            except Exception as e:
+                logger.warning(f"Error fetching {file_path} at {ref} via API: {e}")
+
+        if content is None:
+            # Fallback to public raw content
+            url = f"https://raw.githubusercontent.com/{self.repo}/{ref}/{file_path}"
+            try:
+                resp = session.get(url, timeout=30)
+                if resp.status_code == 200:
+                    content = resp.text
+            except Exception as e:
+                logger.warning(f"Error fetching {file_path} at {ref} via raw URL: {e}")
+
+        self._cache[cache_key] = content
+        return content
 
     def list_tree_at_ref(self, ref: str, path_prefix: str = "src") -> List[str]:
         """List all file paths under path_prefix at a given ref/tag."""
+        cache_key = (ref, path_prefix)
+        if cache_key in self._tree_cache:
+            return self._tree_cache[cache_key]
+
+        # 1. Try local git repository if available
+        if self._local_repo_has_ref(ref):
+            code, out, _ = self.run_git(["ls-tree", "-r", "--name-only", ref, path_prefix], cwd=self.repo_dir)
+            if code == 0 and out:
+                files = [line.strip().replace("\\", "/") for line in out.splitlines() if line.strip()]
+                self._tree_cache[cache_key] = files
+                return files
+
+        # 2. Remote GitHub REST API with session & retries
         if not self.token:
-            logger.warning("GITHUB_TOKEN missing; cannot inspect remote git tree via API.")
+            logger.warning("GITHUB_TOKEN missing and ref not in local git; cannot inspect remote git tree via API.")
             return []
 
-        import requests
+        session = self._get_session()
         url = f"https://api.github.com/repos/{self.repo}/git/trees/{ref}?recursive=1"
         headers = {
             "Authorization": f"token {self.token}",
             "Accept": "application/vnd.github.v3+json"
         }
-        resp = requests.get(url, headers=headers)
-        if resp.status_code != 200:
-            logger.error(f"Error fetching tree for ref {ref}: {resp.status_code}")
-            return []
+        try:
+            resp = session.get(url, headers=headers, timeout=30)
+            if resp.status_code != 200:
+                logger.error(f"Error fetching tree for ref {ref}: {resp.status_code}")
+                return []
 
-        data = resp.json()
-        tree = data.get("tree", [])
-        files = []
-        for item in tree:
-            if item.get("type") == "blob":
-                p = item.get("path", "")
-                if p.startswith(path_prefix):
-                    files.append(p)
-        return files
+            data = resp.json()
+            tree = data.get("tree", [])
+            files = []
+            for item in tree:
+                if item.get("type") == "blob":
+                    p = item.get("path", "")
+                    if p.startswith(path_prefix):
+                        files.append(p)
+            self._tree_cache[cache_key] = files
+            return files
+        except Exception as e:
+            logger.error(f"Network error fetching tree for ref {ref}: {e}")
+            return []
 
 # ------------------------------------------------------------------------------
 # 4. CLARET DSL Token-Safe Translator
@@ -570,16 +657,146 @@ def extract_system_name(content: str) -> str:
         return m.group(1)
     return "UnknownSystem"
 
+def get_clause_type(line: str) -> str:
+    """Classifies a .claret line by its primary semantic clause keyword."""
+    l = line.strip().lower()
+    for kw in ["actor ", "precondition ", "postcondition ", "step ", "alternative ", "exception ", "version ", "usecase ", "system ", "basicflow"]:
+        if l.startswith(kw):
+            return kw.strip()
+    return "other"
+
+def split_heterogeneous_chunks(src_lines: List[str], tgt_lines: List[str]) -> List[Tuple[List[str], List[str]]]:
+    """
+    Partitions a replace hunk containing multiple distinct DSL clause types
+    (e.g., actor series followed by preCondition) into separate clause-specific chunks.
+    """
+    src_types = [get_clause_type(l) for l in src_lines]
+    tgt_types = [get_clause_type(l) for l in tgt_lines]
+
+    common_types = set(src_types).intersection(set(tgt_types)) - {"other"}
+    if len(common_types) > 1:
+        ordered_common = []
+        for t in src_types:
+            if t in common_types and (not ordered_common or ordered_common[-1] != t):
+                ordered_common.append(t)
+
+        tgt_order = []
+        for t in tgt_types:
+            if t in common_types and (not tgt_order or tgt_order[-1] != t):
+                tgt_order.append(t)
+
+        if ordered_common == tgt_order and len(ordered_common) > 1:
+            sub_chunks = []
+            s_idx = 0
+            t_idx = 0
+            for ct in ordered_common:
+                s_part = []
+                while s_idx < len(src_lines) and src_types[s_idx] == ct:
+                    s_part.append(src_lines[s_idx])
+                    s_idx += 1
+                t_part = []
+                while t_idx < len(tgt_lines) and tgt_types[t_idx] == ct:
+                    t_part.append(tgt_lines[t_idx])
+                    t_idx += 1
+                if s_part or t_part:
+                    sub_chunks.append((s_part, t_part))
+            if s_idx < len(src_lines) or t_idx < len(tgt_lines):
+                sub_chunks.append((src_lines[s_idx:], tgt_lines[t_idx:]))
+            return sub_chunks
+
+    return [(src_lines, tgt_lines)]
+
+def extract_granular_diffs(
+    raw_src: Optional[str],
+    raw_tgt: Optional[str],
+    origin_version: str,
+    target_version: str,
+    file_name: str,
+    system_name: str,
+    is_dsl: bool = True
+) -> List[Dict[str, Any]]:
+    """
+    Extracts fine-grained diff chunks between two versions of a specification or test case file.
+    Instead of serializing the entire file, each added, deleted, or modified block forms a record.
+    """
+    import difflib
+    norm_src = normalize_content(raw_src)
+    norm_tgt = normalize_content(raw_tgt)
+
+    if norm_src == norm_tgt:
+        return []
+
+    records = []
+
+    # Case 1: Added file
+    if not norm_src and norm_tgt:
+        records.append({
+            "file": file_name,
+            "system": system_name,
+            "origin_version": origin_version,
+            "origin_content": "",
+            "target_version": target_version,
+            "target_content": norm_tgt
+        })
+        return records
+
+    # Case 2: Deleted file
+    if norm_src and not norm_tgt:
+        records.append({
+            "file": file_name,
+            "system": system_name,
+            "origin_version": origin_version,
+            "origin_content": norm_src,
+            "target_version": target_version,
+            "target_content": ""
+        })
+        return records
+
+    src_lines = norm_src.splitlines()
+    tgt_lines = norm_tgt.splitlines()
+
+    sm = difflib.SequenceMatcher(None, src_lines, tgt_lines)
+
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "equal":
+            continue
+
+        s_chunk = src_lines[i1:i2]
+        t_chunk = tgt_lines[j1:j2]
+
+        if tag == "replace" and is_dsl:
+            sub_chunks = split_heterogeneous_chunks(s_chunk, t_chunk)
+            for s_sub, t_sub in sub_chunks:
+                records.append({
+                    "file": file_name,
+                    "system": system_name,
+                    "origin_version": origin_version,
+                    "origin_content": "\n".join(s_sub) if s_sub else "",
+                    "target_version": target_version,
+                    "target_content": "\n".join(t_sub) if t_sub else ""
+                })
+        else:
+            records.append({
+                "file": file_name,
+                "system": system_name,
+                "origin_version": origin_version,
+                "origin_content": "\n".join(s_chunk) if s_chunk else "",
+                "target_version": target_version,
+                "target_content": "\n".join(t_chunk) if t_chunk else ""
+            })
+
+    return records
+
 def generate_diff_csv(
     diff_records: List[Dict[str, Any]],
     output_csv_path: Path
 ) -> Path:
     """
     Writes diff records to CSV matching the format:
-    | # | file | system | source_version | source_content | target_version | target_content |
+    | # | file | system | origin_version | origin_content | target_version | target_content |
     """
     output_csv_path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = ["#", "file", "system", "source_version", "source_content", "target_version", "target_content"]
+    fieldnames = ["#", "file", "system", "origin_version", "origin_content", "target_version", "target_content"]
 
     with open(output_csv_path, mode="w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -589,8 +806,8 @@ def generate_diff_csv(
                 "#": idx,
                 "file": rec.get("file", ""),
                 "system": rec.get("system", ""),
-                "source_version": rec.get("source_version", ""),
-                "source_content": rec.get("source_content", ""),
+                "origin_version": rec.get("origin_version") or rec.get("source_version", ""),
+                "origin_content": rec.get("origin_content") or rec.get("source_content", ""),
                 "target_version": rec.get("target_version", ""),
                 "target_content": rec.get("target_content", "")
             })

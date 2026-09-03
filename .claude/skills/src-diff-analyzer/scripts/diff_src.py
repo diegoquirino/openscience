@@ -10,6 +10,8 @@ import sys
 import argparse
 from pathlib import Path
 
+from typing import Optional
+
 # Add project root scripts to sys.path
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR
@@ -27,19 +29,20 @@ from claret_engine import (
     GitHubManager,
     normalize_content,
     extract_system_name,
+    extract_granular_diffs,
     generate_diff_csv,
     get_default_repo,
     logger
 )
 
-def compute_src_diffs(tags: list, output_csv: Path, repo: str):
-    gh = GitHubManager(repo=repo)
+def compute_src_diffs(tags: list, output_csv: Path, repo: str, repo_dir: Optional[Path] = None):
+    gh = GitHubManager(repo=repo, repo_dir=repo_dir)
     if len(tags) < 2:
         logger.error("At least 2 tags or releases are required to compute adjacent diffs.")
         return
 
     records = []
-    logger.info(f"Computing src diffs across {len(tags) - 1} adjacent tag pairs from '{repo}'.")
+    logger.info(f"Computing granular src diffs across {len(tags) - 1} adjacent tag pairs from '{repo}'.")
 
     for i in range(len(tags) - 1):
         v_source = tags[i].strip()
@@ -57,39 +60,35 @@ def compute_src_diffs(tags: list, output_csv: Path, repo: str):
             raw_src = gh.fetch_file_content_at_ref(v_source, fpath)
             raw_tgt = gh.fetch_file_content_at_ref(v_target, fpath)
 
-            norm_src = normalize_content(raw_src)
-            norm_tgt = normalize_content(raw_tgt)
-
-            # Skip if identical
-            if norm_src == norm_tgt:
-                continue
-
-            # Extract system name
             system_name = extract_system_name(raw_tgt or raw_src or "")
             file_name = Path(fpath).name
 
-            records.append({
-                "file": file_name,
-                "system": system_name,
-                "source_version": v_source,
-                "source_content": norm_src,
-                "target_version": v_target,
-                "target_content": norm_tgt
-            })
+            diff_chunks = extract_granular_diffs(
+                raw_src=raw_src,
+                raw_tgt=raw_tgt,
+                origin_version=v_source,
+                target_version=v_target,
+                file_name=file_name,
+                system_name=system_name,
+                is_dsl=True
+            )
+            records.extend(diff_chunks)
 
     generate_diff_csv(records, output_csv)
 
 def main():
-    parser = argparse.ArgumentParser(description="Analyze diffs of src/ specifications between adjacent tags.")
+    parser = argparse.ArgumentParser(description="Analyze granular diffs of src/ specifications between adjacent tags.")
     parser.add_argument("--tags", nargs="+", required=True, help="Ordered list of tags or releases")
     parser.add_argument("--output-csv", default="./reports/src_diffs.csv", help="Output CSV filepath")
     parser.add_argument("--repo", default=get_default_repo(), help="GitHub repository (owner/repo)")
+    parser.add_argument("--repo-dir", default=None, help="Local git repository directory for offline/fast analysis")
 
     args = parser.parse_args()
     compute_src_diffs(
         tags=args.tags,
         output_csv=Path(args.output_csv),
-        repo=args.repo
+        repo=args.repo,
+        repo_dir=Path(args.repo_dir) if args.repo_dir else None
     )
 
 if __name__ == "__main__":
