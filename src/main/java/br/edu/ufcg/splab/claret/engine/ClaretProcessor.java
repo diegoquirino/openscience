@@ -269,14 +269,21 @@ public class ClaretProcessor {
                 targetTestSteps.add(new TestStep(
                     stepNum++,
                     "system",
-                    "SYSTEM: " + current.getAction(),
+                    current.getAction(),
                     current.getAction()
                 ));
                 i++;
             } else {
                 String expected = "SYSTEM processes action successfully";
                 if (i + 1 < steps.size() && "system".equalsIgnoreCase(steps.get(i + 1).getActor())) {
-                    expected = "SYSTEM " + steps.get(i + 1).getAction();
+                    String sysAction = steps.get(i + 1).getAction().trim();
+                    if (sysAction.toLowerCase().startsWith("system ")) {
+                        expected = "SYSTEM " + sysAction.substring(7).trim();
+                    } else if (sysAction.toLowerCase().startsWith("system: ")) {
+                        expected = "SYSTEM " + sysAction.substring(8).trim();
+                    } else {
+                        expected = "SYSTEM " + sysAction;
+                    }
                     targetTestSteps.add(new TestStep(
                         stepNum++,
                         current.getActor(),

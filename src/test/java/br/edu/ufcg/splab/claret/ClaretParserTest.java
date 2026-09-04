@@ -166,4 +166,45 @@ class ClaretParserTest {
         assertEquals(1, uc.getAlternatives().size());
         assertEquals(2, uc.getAlternatives().get(0).getSteps().get(0).getBasicFlowStepReturn());
     }
+
+    @Test
+    @DisplayName("Should parse accented actors (e.g. usuário) and step numbers with colons")
+    void testParseAccentedActorAndColonFormat() {
+        String claretWithAccent = "system \"SAFF\", {\n" +
+                "    usecase \"CRUD Diagnosticos\", {\n" +
+                "        version \"1.0\", type:\"Creation\", user:\"Everton\", date:\"20/03/2015\"\n" +
+                "        actor usuário, \"Usuario super administrador\"\n" +
+                "        preCondition \" \"\n" +
+                "        basicFlow {\n" +
+                "            step 1, usuário, \"loga no sistema com perfil de super administrador\", af:[1]\n" +
+                "            step 2, system, \"exibe tela principal\"\n" +
+                "            step 3: usuário, \"seleciona opcao no menu\"\n" +
+                "            step 4: system, \"exibe lista\"\n" +
+                "        }\n" +
+                "        alternative 1, \"Cancela\", {\n" +
+                "            step 1, usuário, \"Cancela criacao\", bfs:4\n" +
+                "        }\n" +
+                "        postCondition \" \"\n" +
+                "    }\n" +
+                "}";
+
+        ClaretSystem system = ClaretParser.parseString(claretWithAccent);
+        assertNotNull(system);
+        UseCase uc = system.getUseCases().get(0);
+        assertEquals("CRUD Diagnosticos", uc.getName());
+        assertEquals(1, uc.getActors().size());
+        assertTrue(uc.getActors().containsKey("usuário"));
+        assertEquals("Usuario super administrador", uc.getActors().get("usuário").getDescription());
+
+        assertEquals(4, uc.getBasicFlow().size());
+        assertEquals("usuário", uc.getBasicFlow().get(0).getActor());
+        assertEquals("system", uc.getBasicFlow().get(1).getActor());
+        assertEquals("usuário", uc.getBasicFlow().get(2).getActor());
+        assertEquals("system", uc.getBasicFlow().get(3).getActor());
+
+        assertEquals(1, uc.getAlternatives().size());
+        assertEquals(1, uc.getAlternatives().get(0).getSteps().size());
+        assertEquals("usuário", uc.getAlternatives().get(0).getSteps().get(0).getActor());
+        assertEquals(4, uc.getAlternatives().get(0).getSteps().get(0).getBasicFlowStepReturn());
+    }
 }

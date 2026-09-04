@@ -80,7 +80,7 @@ public class ClaretParser {
         }
 
         // Actors
-        Pattern actorPattern = Pattern.compile("actor\\s+([a-zA-Z0-9_]+)\\s*,?\\s*\"([^\"]+)\"");
+        Pattern actorPattern = Pattern.compile("actor\\s+([^,\\s\":]+)\\s*[:=,]?\\s*\"([^\"]+)\"");
         Matcher actorMatcher = actorPattern.matcher(body);
         while (actorMatcher.find()) {
             String actorId = actorMatcher.group(1);
@@ -162,7 +162,7 @@ public class ClaretParser {
         // step 1 emailUser "selects a suggested user name, types password and click on the submit button" bs 4
         // step 5, superAdmin, "preenche os campos", af:[1]
         Pattern stepRegex = Pattern.compile(
-            "step\\s+([0-9]+)\\s*,?\\s*([a-zA-Z0-9_]+)\\s*,?\\s*\"([^\"]+)\"(?:\\s*,?\\s*(.*))?"
+            "step\\s+([0-9]+)\\s*[:=,]?\\s*([^,\\s\":]+)\\s*,?\\s*\"([^\"]+)\"(?:\\s*,?\\s*(.*))?"
         );
 
         for (String line : lines) {
