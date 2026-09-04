@@ -35,14 +35,20 @@ from claret_engine import (
     logger
 )
 
-def compute_src_diffs(tags: list, output_csv: Path, repo: str, repo_dir: Optional[Path] = None):
-    gh = GitHubManager(repo=repo, repo_dir=repo_dir)
+def compute_src_diffs(
+    tags: list,
+    output_csv: Path,
+    repo: str,
+    repo_dir: Optional[Path] = None,
+    downloads_dir: Optional[Path] = None
+):
+    gh = GitHubManager(repo=repo, repo_dir=repo_dir, downloads_dir=downloads_dir)
     if len(tags) < 2:
         logger.error("At least 2 tags or releases are required to compute adjacent diffs.")
         return
 
     records = []
-    logger.info(f"Computing granular src diffs across {len(tags) - 1} adjacent tag pairs from '{repo}'.")
+    logger.info(f"Computing granular src diffs across {len(tags) - 1} adjacent tag pairs (Repo: '{repo}', Downloads: '{gh.downloads_dir}').")
 
     for i in range(len(tags) - 1):
         v_source = tags[i].strip()
@@ -82,13 +88,15 @@ def main():
     parser.add_argument("--output-csv", default="./reports/src_diffs.csv", help="Output CSV filepath")
     parser.add_argument("--repo", default=get_default_repo(), help="GitHub repository (owner/repo)")
     parser.add_argument("--repo-dir", default=None, help="Local git repository directory for offline/fast analysis")
+    parser.add_argument("--downloads-dir", default=None, help="Local downloads directory containing pre-downloaded versions")
 
     args = parser.parse_args()
     compute_src_diffs(
         tags=args.tags,
         output_csv=Path(args.output_csv),
         repo=args.repo,
-        repo_dir=Path(args.repo_dir) if args.repo_dir else None
+        repo_dir=Path(args.repo_dir) if args.repo_dir else None,
+        downloads_dir=Path(args.downloads_dir) if args.downloads_dir else None
     )
 
 if __name__ == "__main__":

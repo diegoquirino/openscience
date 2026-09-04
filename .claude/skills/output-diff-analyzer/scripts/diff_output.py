@@ -67,15 +67,16 @@ def compute_output_diffs(
     formats: list,
     scope: str,
     coverage: str,
-    repo_dir: Optional[Path] = None
+    repo_dir: Optional[Path] = None,
+    downloads_dir: Optional[Path] = None
 ):
-    gh = GitHubManager(repo=repo, repo_dir=repo_dir)
+    gh = GitHubManager(repo=repo, repo_dir=repo_dir, downloads_dir=downloads_dir)
     if len(tags) < 2:
         logger.error("At least 2 tags or releases are required to compute adjacent diffs.")
         return
 
     records = []
-    logger.info(f"Computing granular output diffs across {len(tags) - 1} adjacent pairs from '{repo}' (Formats: {formats}, Scope: {scope}, Coverage: {coverage}).")
+    logger.info(f"Computing granular output diffs across {len(tags) - 1} adjacent pairs (Repo: '{repo}', Downloads: '{gh.downloads_dir}', Formats: {formats}, Scope: {scope}, Coverage: {coverage}).")
 
     for i in range(len(tags) - 1):
         v_source = tags[i].strip()
@@ -118,6 +119,7 @@ def main():
     parser.add_argument("--output-csv", default="./reports/output_diffs.csv", help="Output CSV filepath")
     parser.add_argument("--repo", default=get_default_repo(), help="GitHub repository (owner/repo)")
     parser.add_argument("--repo-dir", default=None, help="Local git repository directory for offline/fast analysis")
+    parser.add_argument("--downloads-dir", default=None, help="Local downloads directory containing pre-downloaded versions")
 
     args = parser.parse_args()
     compute_output_diffs(
@@ -127,7 +129,8 @@ def main():
         formats=[f.lower() for f in args.formats],
         scope=args.scope,
         coverage=args.coverage,
-        repo_dir=Path(args.repo_dir) if args.repo_dir else None
+        repo_dir=Path(args.repo_dir) if args.repo_dir else None,
+        downloads_dir=Path(args.downloads_dir) if args.downloads_dir else None
     )
 
 if __name__ == "__main__":

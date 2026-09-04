@@ -47,3 +47,4 @@ Parameters:
 - `--tags`: (Required) Ordered list of tags or release names.
 - `--output-csv`: (Optional) Output CSV file path. Default: `./reports/src_diffs.csv`.
 - `--repo`: (Optional) GitHub repository (`owner/repo`). Defaults to `GITHUB_REPO` from `.env`.
+- `--downloads-dir`: (Optional) Path to local directory containing pre-downloaded versions (e.g. `./downloads`). Defaults to automatic discovery.

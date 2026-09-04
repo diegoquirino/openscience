@@ -21,6 +21,7 @@ import shutil
 import logging
 import zipfile
 import tempfile
+import unicodedata
 import subprocess
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional, Any
@@ -257,10 +258,17 @@ def run_claret_generator(
 class GitHubManager:
     """Manages Git operations and GitHub REST API interactions."""
 
-    def __init__(self, repo: Optional[str] = None, token: Optional[str] = None, repo_dir: Optional[Path] = None):
+    def __init__(
+        self,
+        repo: Optional[str] = None,
+        token: Optional[str] = None,
+        repo_dir: Optional[Path] = None,
+        downloads_dir: Optional[Path] = None
+    ):
         self.token = token or get_github_token()
         self.repo = repo or get_default_repo()
         self.repo_dir = Path(repo_dir).resolve() if repo_dir else self._discover_local_repo()
+        self.downloads_dir = Path(downloads_dir).resolve() if downloads_dir else self._discover_downloads_dir()
         self._cache: Dict[Tuple[str, str], Optional[str]] = {}
         self._tree_cache: Dict[Tuple[str, str], List[str]] = {}
         self._session = None
@@ -277,6 +285,97 @@ class GitHubManager:
             if (c / ".git").is_dir():
                 return c
         return None
+
+    def _discover_downloads_dir(self) -> Optional[Path]:
+        dl_env = os.getenv("DOWNLOADS_DIR")
+        if dl_env and Path(dl_env).is_dir():
+            return Path(dl_env).resolve()
+        candidates = [
+            Path.cwd() / "downloads",
+            Path(__file__).resolve().parents[1] / "downloads",
+            Path(__file__).resolve().parents[2] / "downloads"
+        ]
+        for c in candidates:
+            if c.is_dir():
+                return c.resolve()
+        return None
+
+    def _find_downloads_ref_dir(self, ref: str) -> Optional[Path]:
+        """Locates downloaded version folder corresponding to a tag or version name."""
+        if not self.downloads_dir or not self.downloads_dir.is_dir():
+            return None
+
+        # 1. Exact match
+        exact = self.downloads_dir / ref
+        if exact.is_dir():
+            return exact
+
+        ref_clean = ref.strip()
+        ref_lower = ref_clean.lower()
+        subdirs = [d for d in self.downloads_dir.iterdir() if d.is_dir()]
+
+        # 2. Case-insensitive exact match
+        for d in subdirs:
+            if d.name.lower() == ref_lower:
+                return d
+
+        # 3. Suffix or stripped matching (e.g. saff-study_v1.0 <-> v1.0 <-> 1.0)
+        for d in subdirs:
+            d_lower = d.name.lower()
+            if d_lower.endswith(f"_{ref_lower}") or d_lower.endswith(f"-{ref_lower}"):
+                return d
+            if not ref_lower.startswith("v") and (d_lower.endswith(f"_v{ref_lower}") or d_lower.endswith(f"-v{ref_lower}")):
+                return d
+            if "_" in ref_lower:
+                suffix = ref_lower.split("_")[-1]
+                if d_lower == suffix or d_lower == suffix.lstrip("v"):
+                    return d
+            if "-" in ref_lower:
+                suffix = ref_lower.split("-")[-1]
+                if d_lower == suffix or d_lower == suffix.lstrip("v"):
+                    return d
+
+        return None
+
+    @staticmethod
+    def read_xlsx_as_text(source) -> str:
+        """Extracts textual row-by-row representation from an XLSX file path or bytes for diffing."""
+        try:
+            import io
+            import openpyxl
+            if isinstance(source, (bytes, bytearray)):
+                wb = openpyxl.load_workbook(io.BytesIO(source), data_only=True)
+            else:
+                wb = openpyxl.load_workbook(source, data_only=True)
+            lines = []
+            for sheet in wb.worksheets:
+                lines.append(f"[Sheet: {sheet.title}]")
+                for row in sheet.iter_rows(values_only=True):
+                    row_vals = [str(v).strip() for v in row if v is not None and str(v).strip()]
+                    if row_vals:
+                        lines.append("\t".join(row_vals))
+            return "\n".join(lines)
+        except Exception as e:
+            logger.warning(f"Failed to parse xlsx text: {e}")
+            return ""
+
+    @staticmethod
+    def read_docx_as_text(source) -> str:
+        """Extracts textual representation from a DOCX file path or bytes."""
+        try:
+            import io
+            import zipfile
+            zfile = io.BytesIO(source) if isinstance(source, (bytes, bytearray)) else source
+            if zipfile.is_zipfile(zfile):
+                with zipfile.ZipFile(zfile) as z:
+                    if "word/document.xml" in z.namelist():
+                        xml_data = z.read("word/document.xml").decode("utf-8", errors="ignore")
+                        cleaned = re.sub(r'<[^>]+>', ' ', xml_data)
+                        return re.sub(r'[ \t]+', ' ', cleaned).strip()
+            return ""
+        except Exception as e:
+            logger.warning(f"Failed to parse docx text: {e}")
+            return ""
 
     def _local_repo_has_ref(self, ref: str) -> bool:
         if not self.repo_dir or not (self.repo_dir / ".git").is_dir():
@@ -392,21 +491,54 @@ class GitHubManager:
             return False
 
     def fetch_file_content_at_ref(self, ref: str, file_path: str) -> Optional[str]:
-        """Fetch file content from GitHub repository or local git tree at a specific tag or ref."""
+        """Fetch file content from local downloads directory, local git tree, or GitHub repository at a specific tag or ref."""
         cache_key = (ref, file_path)
         if cache_key in self._cache:
             return self._cache[cache_key]
 
-        # 1. Try local git repository if available
-        if self._local_repo_has_ref(ref):
-            code, out, _ = self.run_git(["show", f"{ref}:{file_path}"], cwd=self.repo_dir)
-            if code == 0:
-                self._cache[cache_key] = out
-                return out
+        # 1. Try local downloads directory first (if pre-downloaded or generated)
+        ref_dir = self._find_downloads_ref_dir(ref)
+        if ref_dir:
+            local_file = ref_dir / file_path
+            if local_file.is_file():
+                ext = local_file.suffix.lower()
+                if ext == ".xlsx":
+                    content = self.read_xlsx_as_text(local_file)
+                elif ext == ".docx":
+                    content = self.read_docx_as_text(local_file)
+                else:
+                    try:
+                        content = local_file.read_text(encoding="utf-8", errors="replace")
+                    except Exception as e:
+                        logger.warning(f"Error reading local file {local_file}: {e}")
+                        content = None
+                if content is not None:
+                    self._cache[cache_key] = content
+                    return content
 
-        # 2. Remote GitHub fetch with session & retries
+        # 2. Try local git repository if available
+        if self._local_repo_has_ref(ref):
+            if file_path.lower().endswith(".xlsx") or file_path.lower().endswith(".docx"):
+                cmd = ["git", "show", f"{ref}:{file_path}"]
+                res = subprocess.run(cmd, capture_output=True, cwd=self.repo_dir)
+                if res.returncode == 0:
+                    if file_path.lower().endswith(".xlsx"):
+                        content = self.read_xlsx_as_text(res.stdout)
+                    else:
+                        content = self.read_docx_as_text(res.stdout)
+                    self._cache[cache_key] = content
+                    return content
+            else:
+                code, out, _ = self.run_git(["show", f"{ref}:{file_path}"], cwd=self.repo_dir)
+                if code == 0:
+                    self._cache[cache_key] = out
+                    return out
+
+        # 3. Remote GitHub fetch with session & retries
         session = self._get_session()
         content = None
+        is_binary = file_path.lower().endswith(".xlsx") or file_path.lower().endswith(".docx")
+
         if self.token:
             url = f"https://api.github.com/repos/{self.repo}/contents/{file_path}?ref={ref}"
             headers = {
@@ -416,7 +548,10 @@ class GitHubManager:
             try:
                 resp = session.get(url, headers=headers, timeout=30)
                 if resp.status_code == 200:
-                    content = resp.text
+                    if is_binary:
+                        content = self.read_xlsx_as_text(resp.content) if file_path.lower().endswith(".xlsx") else self.read_docx_as_text(resp.content)
+                    else:
+                        content = resp.text
             except Exception as e:
                 logger.warning(f"Error fetching {file_path} at {ref} via API: {e}")
 
@@ -426,7 +561,10 @@ class GitHubManager:
             try:
                 resp = session.get(url, timeout=30)
                 if resp.status_code == 200:
-                    content = resp.text
+                    if is_binary:
+                        content = self.read_xlsx_as_text(resp.content) if file_path.lower().endswith(".xlsx") else self.read_docx_as_text(resp.content)
+                    else:
+                        content = resp.text
             except Exception as e:
                 logger.warning(f"Error fetching {file_path} at {ref} via raw URL: {e}")
 
@@ -439,7 +577,22 @@ class GitHubManager:
         if cache_key in self._tree_cache:
             return self._tree_cache[cache_key]
 
-        # 1. Try local git repository if available
+        # 1. Try local downloads directory first
+        ref_dir = self._find_downloads_ref_dir(ref)
+        if ref_dir:
+            target_prefix_dir = ref_dir / path_prefix
+            if target_prefix_dir.is_dir():
+                files = [
+                    p.relative_to(ref_dir).as_posix()
+                    for p in target_prefix_dir.rglob("*")
+                    if p.is_file()
+                ]
+                if files:
+                    logger.info(f"Loaded {len(files)} files for ref '{ref}' from local downloads ({ref_dir.name}/{path_prefix})")
+                    self._tree_cache[cache_key] = sorted(files)
+                    return sorted(files)
+
+        # 2. Try local git repository if available
         if self._local_repo_has_ref(ref):
             code, out, _ = self.run_git(["ls-tree", "-r", "--name-only", ref, path_prefix], cwd=self.repo_dir)
             if code == 0 and out:
@@ -447,9 +600,9 @@ class GitHubManager:
                 self._tree_cache[cache_key] = files
                 return files
 
-        # 2. Remote GitHub REST API with session & retries
+        # 3. Remote GitHub REST API with session & retries
         if not self.token:
-            logger.warning("GITHUB_TOKEN missing and ref not in local git; cannot inspect remote git tree via API.")
+            logger.warning("GITHUB_TOKEN missing and ref not in local git/downloads; cannot inspect remote git tree via API.")
             return []
 
         session = self._get_session()
@@ -651,10 +804,13 @@ def normalize_content(content: Optional[str]) -> str:
     return "\n".join(normalized_lines)
 
 def extract_system_name(content: str) -> str:
-    """Extract system name from .claret file content."""
+    """Extract system name from .claret file content or generated output test suite artifacts."""
     m = re.search(r'system\s+"([^"]+)"', content, re.IGNORECASE)
     if m:
         return m.group(1)
+    m2 = re.search(r'system:\s*([^\t\r\n]+)', content, re.IGNORECASE)
+    if m2:
+        return m2.group(1).strip()
     return "UnknownSystem"
 
 def get_clause_type(line: str) -> str:
@@ -813,3 +969,461 @@ def generate_diff_csv(
             })
     logger.info(f"Diff CSV generated at: {output_csv_path} with {len(diff_records)} records.")
     return output_csv_path
+
+# ------------------------------------------------------------------------------
+# 6. Change Impact Analysis (CIA) Engine: src/ -> output/ (.txt)
+# ------------------------------------------------------------------------------
+def parse_txt_test_suite(source: Any) -> Dict[str, Any]:
+    """
+    Parses a generated MBT test suite in .txt format (file Path or raw string) into:
+    - system
+    - usecase
+    - testcases: list of dicts with tc_id, description, flow_type, flow_number, steps, raw_block
+    """
+    if isinstance(source, Path):
+        if not source.exists() or not source.is_file():
+            return {"system": "", "usecase": "", "testcases": []}
+        content = source.read_text(encoding="utf-8", errors="replace")
+    elif isinstance(source, str):
+        content = source
+    else:
+        return {"system": "", "usecase": "", "testcases": []}
+
+    system = ""
+    usecase = ""
+    m_sys = re.search(r'System:\s*([^\t\r\n]+)', content)
+    if m_sys:
+        system = m_sys.group(1).strip()
+    m_uc = re.search(r'Use Case:\s*([^\t\r\n]+)', content)
+    if m_uc:
+        usecase = m_uc.group(1).strip()
+
+    tc_blocks = re.split(r'(?=Test Case ID:\s*TC\d+)', content)
+    testcases = []
+
+    for block in tc_blocks:
+        m_id = re.search(r'Test Case ID:\s*(TC\d+)', block)
+        if not m_id:
+            continue
+        tc_id = m_id.group(1)
+
+        desc = ""
+        m_desc = re.search(r'Description:\s*([^\t\r\n]+)', block)
+        if m_desc:
+            desc = m_desc.group(1).strip()
+
+        flow_type = "basic"
+        flow_number = 0
+        desc_lower = desc.lower()
+        if "alternative flow" in desc_lower:
+            flow_type = "alternative"
+            m_num = re.search(r'alternative\s+flow\s+(\d+)', desc_lower)
+            if m_num:
+                flow_number = int(m_num.group(1))
+        elif "exception flow" in desc_lower:
+            flow_type = "exception"
+            m_num = re.search(r'exception\s+flow\s+(\d+)', desc_lower)
+            if m_num:
+                flow_number = int(m_num.group(1))
+
+        steps = []
+        for line in block.splitlines():
+            parts = line.split("\t")
+            if len(parts) >= 4 and parts[0].strip().isdigit():
+                step_num = int(parts[0].strip())
+                action = parts[1].strip()
+                expected = parts[3].strip() if len(parts) > 3 else ""
+                steps.append({
+                    "step_num": step_num,
+                    "action": action,
+                    "expected": expected,
+                    "raw": line.strip()
+                })
+
+        testcases.append({
+            "tc_id": tc_id,
+            "description": desc,
+            "flow_type": flow_type,
+            "flow_number": flow_number,
+            "steps": steps,
+            "raw_block": block
+        })
+
+    return {
+        "system": system,
+        "usecase": usecase,
+        "testcases": testcases
+    }
+
+def strip_accents(s: str) -> str:
+    """Removes diacritics / accents from text for canonical semantic comparison."""
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+
+def normalize_text_for_search(text: str) -> str:
+    """Normalizes text by removing accents, special characters, and collapsing whitespace."""
+    s = strip_accents(text.lower())
+    s = re.sub(r'[^\w\s]', ' ', s)
+    return re.sub(r'\s+', ' ', s).strip()
+
+def find_enclosing_flow_in_claret(claret_content: str, search_snippet: str) -> Tuple[str, Optional[int], Optional[str]]:
+    """
+    Finds whether a snippet belongs to basicFlow, alternative <N>, or exception <N>.
+    Returns (flow_type, flow_number, flow_name).
+    """
+    if not claret_content or not search_snippet:
+        return ("unknown", None, None)
+
+    norm_snippet = normalize_text_for_search(search_snippet)
+    if not norm_snippet:
+        return ("unknown", None, None)
+
+    lines = claret_content.splitlines()
+    current_flow = "unknown"
+    current_num = None
+    current_name = None
+
+    for line in lines:
+        l_strip = line.strip()
+        m_alt = re.match(r'alternative\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I)
+        if m_alt:
+            current_flow = "alternative"
+            current_num = int(m_alt.group(1))
+            current_name = m_alt.group(2)
+        elif re.match(r'exception\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I):
+            m_exc = re.match(r'exception\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I)
+            current_flow = "exception"
+            current_num = int(m_exc.group(1))
+            current_name = m_exc.group(2)
+        elif re.match(r'basicFlow\s*\{?', l_strip, re.I):
+            current_flow = "basic"
+            current_num = 0
+            current_name = "Basic Flow"
+
+        norm_line = normalize_text_for_search(line)
+        if norm_line and (norm_snippet in norm_line or (len(norm_line) >= 10 and norm_line in norm_snippet)):
+            return (current_flow, current_num, current_name)
+
+    return ("unknown", None, None)
+
+def analyze_diff_impact(
+    diff_row: Dict[str, Any],
+    gh_manager: GitHubManager
+) -> Dict[str, Any]:
+    """
+    Performs Thesis-Aligned Change Impact Analysis (CIA) based on Chapter 1 of the doctoral thesis:
+    - 2x2 Matrix Classification:
+        * Low actual / Low predicted   -> True Positive  (retain/minor updates)
+        * Low actual / High predicted  -> False Negative (needless deletion of good test)
+        * High actual / Low predicted  -> False Positive (major change mistaken as minor -> reused test no longer valid)
+        * High actual / High predicted -> True Negative  (Yes, discard / major update)
+    - 8-Operation Taxonomy: Keep, Update, Remove, Create, Merge, Split, Reassign, Flag
+    - 4-Primitive Taxonomy: Retain, Modify, Create, Discard
+    """
+    file_name = diff_row.get("file", "")
+    stem = Path(file_name).stem
+    orig_ver = str(diff_row.get("origin_version", "")).strip()
+    tgt_ver = str(diff_row.get("target_version", "")).strip()
+    orig_content = str(diff_row.get("origin_content", "") or "").strip()
+    tgt_content = str(diff_row.get("target_content", "") or "").strip()
+
+    # Retrieve output test suites (.txt) for origin and target versions
+    raw_orig_txt = gh_manager.fetch_file_content_at_ref(orig_ver, f"output/txt/{stem}--GT-.txt")
+    raw_tgt_txt = gh_manager.fetch_file_content_at_ref(tgt_ver, f"output/txt/{stem}--GT-.txt")
+
+    orig_suite = parse_txt_test_suite(raw_orig_txt or "")
+    tgt_suite = parse_txt_test_suite(raw_tgt_txt or "")
+
+    usecase_name = tgt_suite["usecase"] or orig_suite["usecase"] or stem
+    combined_content = (orig_content + "\n" + tgt_content).lower()
+    o_norm = normalize_text_for_search(orig_content)
+    t_norm = normalize_text_for_search(tgt_content)
+
+    # 1. Identify enclosing flow and model element
+    is_metadata = all(
+        re.match(r'^(?:version\s+|type\s*:|user\s*:|date\s*:|actor\s+)', l.strip(), re.I)
+        for l in (orig_content + "\n" + tgt_content).splitlines() if l.strip()
+    )
+    is_uc_decl = bool(re.search(r'^\s*usecase\s+"', orig_content, re.M) or re.search(r'^\s*usecase\s+"', tgt_content, re.M))
+
+    m_alt = re.search(r'alternative\s+(\d+)', combined_content)
+    m_exc = re.search(r'exception\s+(\d+)', combined_content)
+    alt_nums = [int(x) for x in re.findall(r'alternative\s+(\d+)', combined_content)]
+    exc_nums = [int(x) for x in re.findall(r'exception\s+(\d+)', combined_content)]
+    m_alt_hdr = bool(re.search(r'^\s*alternative\s+\d+', orig_content, re.M) or re.search(r'^\s*alternative\s+\d+', tgt_content, re.M))
+    m_exc_hdr = bool(re.search(r'^\s*exception\s+\d+', orig_content, re.M) or re.search(r'^\s*exception\s+\d+', tgt_content, re.M))
+    flow_type = None
+    flow_num = None
+
+    if alt_nums:
+        flow_type = "alternative"
+        flow_num = alt_nums[0]
+    elif exc_nums:
+        flow_type = "exception"
+        flow_num = exc_nums[0]
+
+    if not flow_type and ("precondition" not in combined_content and "postcondition" not in combined_content) and not is_uc_decl and not is_metadata:
+        raw_orig_claret = gh_manager.fetch_file_content_at_ref(orig_ver, f"src/{file_name}") or ""
+        raw_tgt_claret = gh_manager.fetch_file_content_at_ref(tgt_ver, f"src/{file_name}") or ""
+        search_sample_orig = orig_content.splitlines()[0] if orig_content else ""
+        search_sample_tgt = tgt_content.splitlines()[0] if tgt_content else ""
+
+        enc_flow = "unknown"
+        enc_num = None
+        if search_sample_orig:
+            enc_flow, enc_num, _ = find_enclosing_flow_in_claret(raw_orig_claret, search_sample_orig)
+        if enc_flow == "unknown" and search_sample_tgt:
+            enc_flow, enc_num, _ = find_enclosing_flow_in_claret(raw_tgt_claret, search_sample_tgt)
+
+        if enc_flow in ["alternative", "exception"]:
+            flow_type = enc_flow
+            flow_num = enc_num
+            if enc_flow == "alternative" and enc_num is not None and enc_num not in alt_nums:
+                alt_nums.append(enc_num)
+            elif enc_flow == "exception" and enc_num is not None and enc_num not in exc_nums:
+                exc_nums.append(enc_num)
+        elif enc_flow == "basic":
+            flow_type = "basic"
+            flow_num = 0
+
+    # Branching changes detection (af, ef, bfs)
+    af_o = re.findall(r'af:\s*\[([^\]]*)\]', orig_content)
+    af_t = re.findall(r'af:\s*\[([^\]]*)\]', tgt_content)
+    ef_o = re.findall(r'ef:\s*\[([^\]]*)\]', orig_content)
+    ef_t = re.findall(r'ef:\s*\[([^\]]*)\]', tgt_content)
+    bfs_o = re.findall(r'bfs:\s*(\d+)', orig_content)
+    bfs_t = re.findall(r'bfs:\s*(\d+)', tgt_content)
+    branch_changed = bool((af_o != af_t) or (ef_o != ef_t) or (bfs_o != bfs_t))
+
+    # Step actor change detection
+    m_act_o = re.search(r'step\s+\d+\s*,\s*([^,]+)\s*,', orig_content)
+    m_act_t = re.search(r'step\s+\d+\s*,\s*([^,]+)\s*,', tgt_content)
+    actor_changed = bool(m_act_o and m_act_t and m_act_o.group(1).strip().lower() != m_act_t.group(1).strip().lower())
+
+    # 2. Determine Model Element Category
+    if is_metadata and combined_content:
+        model_element = "MODEL_METADATA"
+    elif not orig_content or not tgt_content:
+        if is_uc_decl:
+            model_element = "USECASE_LIFECYCLE"
+        elif "precondition" in combined_content or "postcondition" in combined_content:
+            model_element = "PRE_POST_CONDITION"
+        elif flow_type == "alternative":
+            model_element = "ALTERNATIVE_FLOW"
+        elif flow_type == "exception":
+            model_element = "EXCEPTION_FLOW"
+        else:
+            model_element = "USECASE_LIFECYCLE"
+    elif is_uc_decl:
+        model_element = "USECASE_DECLARATION"
+    elif "precondition" in combined_content or "postcondition" in combined_content:
+        model_element = "PRE_POST_CONDITION"
+    elif branch_changed:
+        model_element = "BRANCHING_CONDITION"
+    elif actor_changed:
+        model_element = "STEP_ACTOR"
+    elif flow_type == "basic":
+        model_element = "BASIC_FLOW_STEP"
+    elif flow_type == "alternative":
+        model_element = "ALTERNATIVE_FLOW" if m_alt_hdr else "ALTERNATIVE_FLOW_STEP"
+    elif flow_type == "exception":
+        model_element = "EXCEPTION_FLOW" if m_exc_hdr else "EXCEPTION_FLOW_STEP"
+    else:
+        model_element = "OTHER"
+
+    # 3. Determine affected test cases
+    affected_orig_cts = []
+    affected_tgt_cts = []
+    affected_flows_set = set()
+
+    if model_element == "MODEL_METADATA":
+        pass
+    elif model_element in ["PRE_POST_CONDITION", "USECASE_DECLARATION", "USECASE_LIFECYCLE"]:
+        affected_orig_cts = [tc["tc_id"] for tc in orig_suite["testcases"]]
+        affected_tgt_cts = [tc["tc_id"] for tc in tgt_suite["testcases"]]
+        affected_flows_set.add("All Flows")
+    elif flow_type == "alternative":
+        nums_to_check = alt_nums if alt_nums else ([flow_num] if flow_num is not None else [])
+        for num in nums_to_check:
+            affected_flows_set.add(f"Alternative Flow {num}")
+        affected_orig_cts = [tc["tc_id"] for tc in orig_suite["testcases"] if tc["flow_type"] == "alternative" and tc["flow_number"] in nums_to_check]
+        affected_tgt_cts = [tc["tc_id"] for tc in tgt_suite["testcases"] if tc["flow_type"] == "alternative" and tc["flow_number"] in nums_to_check]
+    elif flow_type == "exception":
+        nums_to_check = exc_nums if exc_nums else ([flow_num] if flow_num is not None else [])
+        for num in nums_to_check:
+            affected_flows_set.add(f"Exception Flow {num}")
+        affected_orig_cts = [tc["tc_id"] for tc in orig_suite["testcases"] if tc["flow_type"] == "exception" and tc["flow_number"] in nums_to_check]
+        affected_tgt_cts = [tc["tc_id"] for tc in tgt_suite["testcases"] if tc["flow_type"] == "exception" and tc["flow_number"] in nums_to_check]
+    elif flow_type == "basic":
+        actions_to_search = []
+        for l in (orig_content + "\n" + tgt_content).splitlines():
+            m_act = re.search(r'\"([^\"]+)\"', l)
+            if m_act:
+                actions_to_search.append(m_act.group(1))
+
+        for tc in orig_suite["testcases"]:
+            if tc["flow_type"] == "basic":
+                affected_orig_cts.append(tc["tc_id"])
+                affected_flows_set.add("Basic Flow")
+            else:
+                tc_text = tc["raw_block"].lower()
+                if any(normalize_text_for_search(act) in normalize_text_for_search(tc_text) for act in actions_to_search):
+                    affected_orig_cts.append(tc["tc_id"])
+                    affected_flows_set.add(tc["description"].split(":")[0].strip())
+
+        for tc in tgt_suite["testcases"]:
+            if tc["flow_type"] == "basic":
+                affected_tgt_cts.append(tc["tc_id"])
+                affected_flows_set.add("Basic Flow")
+            else:
+                tc_text = tc["raw_block"].lower()
+                if any(normalize_text_for_search(act) in normalize_text_for_search(tc_text) for act in actions_to_search):
+                    affected_tgt_cts.append(tc["tc_id"])
+                    affected_flows_set.add(tc["description"].split(":")[0].strip())
+    else:
+        if not orig_content and tgt_content:
+            affected_tgt_cts = [tc["tc_id"] for tc in tgt_suite["testcases"]]
+            affected_flows_set.add("All Flows")
+        elif orig_content and not tgt_content:
+            affected_orig_cts = [tc["tc_id"] for tc in orig_suite["testcases"]]
+            affected_flows_set.add("All Flows")
+
+    # Total test cases in this usecase across both versions
+    all_uc_cts = sorted(list(set([tc["tc_id"] for tc in orig_suite.get("testcases", [])] + [tc["tc_id"] for tc in tgt_suite.get("testcases", [])])), key=lambda x: int(re.sub(r'\D', '', x) or 0))
+    total_cts = sorted(list(set(affected_orig_cts + affected_tgt_cts)), key=lambda x: int(re.sub(r'\D', '', x) or 0))
+    not_affected_cts_list = [ct for ct in all_uc_cts if ct not in total_cts]
+    flows_str = "; ".join(sorted(affected_flows_set)) if affected_flows_set else "N/A"
+
+    # 4. Semantic vs Syntactic Ground Truth Impact Determination
+    if is_metadata or (orig_content and tgt_content and o_norm == t_norm):
+        actual_impact = "Low"
+        tcm_op = "Keep"
+        prim_op = "Retain"
+
+        if is_metadata:
+            rationale = "Metadados de documentação/versão alterados sem impacto comportamental. O teste deve ser mantido (Keep / Retain), evitando descarte desnecessário."
+        else:
+            rationale = f"Alteração puramente cosmética/ortográfica que preserva o significado semântico (Exemplo 1 da Tese). O caso de teste deve ser mantido (Keep / Retain): {', '.join(total_cts) if total_cts else 'Nenhum CT afetado'}."
+
+    else:
+        actual_impact = "High"
+
+        # Check for specific operations from the 8-operation taxonomy:
+        vague_patterns = [r'\bapropriad\w*', r'\bconforme necess\w*', r'\badequad\w*', r'\ba definir\b', r'\bposteriormente\b']
+        orig_step_lines = [l for l in orig_content.splitlines() if "step " in l]
+        tgt_step_lines = [l for l in tgt_content.splitlines() if "step " in l]
+
+        # 1. Flag (Ambiguity / vague qualifiers introduced - Example 6)
+        if any(re.search(pat, tgt_content, re.I) for pat in vague_patterns):
+            tcm_op = "Flag"
+            prim_op = "Retain"
+            rationale = f"Introdução de qualificador vago ou requisito ambíguo (Exemplo 6 da Tese); casos de teste marcados para revisão humana (Flag / Retain pendente): {', '.join(total_cts)}."
+
+        # 2. Reassign (Branching destination bfs changed - Example 5)
+        elif "bfs:" in orig_content and "bfs:" in tgt_content and re.search(r'bfs:\s*(\d+)', orig_content) and re.search(r'bfs:\s*(\d+)', tgt_content) and re.search(r'bfs:\s*(\d+)', orig_content).group(1) != re.search(r'bfs:\s*(\d+)', tgt_content).group(1):
+            bfs_orig = re.search(r'bfs:\s*(\d+)', orig_content).group(1)
+            bfs_tgt = re.search(r'bfs:\s*(\d+)', tgt_content).group(1)
+            tcm_op = "Reassign"
+            prim_op = "Modify"
+            rationale = f"Destino de ramificação alterado de bfs:{bfs_orig} para bfs:{bfs_tgt} (Exemplo 5 da Tese); requer reatribuição de rastreabilidade do fluxo (Reassign / Modify): {', '.join(total_cts)}."
+
+        # 3. Merge (Consolidation of multiple steps/rules into single step - Example 3)
+        elif len(orig_step_lines) >= 2 and len(tgt_step_lines) == 1:
+            tcm_op = "Merge"
+            prim_op = "Modify"
+            rationale = f"Múltiplos passos/regras prévios consolidados em um único passo unificado (Exemplo 3 da Tese); casos de teste devem ser unificados (Merge / Modify): {', '.join(total_cts)}."
+
+        # 4. Split (Single step expanded into multiple distinct verifiable steps - Example 4)
+        elif len(orig_step_lines) == 1 and len(tgt_step_lines) >= 2:
+            tcm_op = "Split"
+            prim_op = "Create"
+            rationale = f"Passo expandido em múltiplos comportamentos independentemente verificáveis (Exemplo 4 da Tese); requer decomposição em novos testes focados (Split / Create)."
+
+        # 5. Create (Addition of new flow, alternative, or usecase)
+        elif not orig_content and tgt_content:
+            tcm_op = "Create"
+            prim_op = "Create"
+            rationale = f"Novo fluxo ou elemento comportamental introduzido na especificação (Exemplo 2 da Tese); requer criação de novos casos de teste (Create / Create): {', '.join(total_cts)}."
+
+        # 6. Remove (Deletion of flow, alternative, or usecase)
+        elif orig_content and not tgt_content:
+            tcm_op = "Remove"
+            prim_op = "Discard"
+            rationale = f"Fluxo ou comportamento descontinuado na especificação (Exemplo 2 da Tese); casos de teste obsoletos devem ser descartados (Remove / Discard): {', '.join(total_cts)}."
+
+        # 7. Update (Default behavioral semantic modification)
+        else:
+            tcm_op = "Update"
+            prim_op = "Modify"
+            if model_element == "PRE_POST_CONDITION":
+                rationale = f"Pré/Pós-condição alterada semanticamente; impacta o estado inicial/final e requer atualização de todos os casos de teste do caso de uso (Update / Modify): {', '.join(total_cts)}."
+            elif model_element == "BRANCHING_CONDITION":
+                rationale = f"Condição/referência de desvio alterada; modifica a navegação do grafo de fluxos e caminhos de teste associados (Update / Modify): {', '.join(total_cts)}."
+            elif model_element == "STEP_ACTOR":
+                rationale = f"Ator executor do passo alterado; modifica o contexto de papéis e permissões do teste (Update / Modify): {', '.join(total_cts)}."
+            elif model_element == "USECASE_DECLARATION":
+                rationale = f"Declaração/nome do caso de uso alterado; impacta a identificação de todos os casos de teste da suíte (Update / Modify): {', '.join(total_cts)}."
+            else:
+                rationale = f"Modificação semântica comportamental no passo/fluxo (Exemplo 2 da Tese); requer atualização dos casos de teste impactados para refletir o novo comportamento (Update / Modify): {', '.join(total_cts)}."
+
+    return {
+        "usecase": usecase_name,
+        "actual_change_impact": actual_impact,
+        "model_element": model_element,
+        "tcm_operation": tcm_op,
+        "primitive_operation": prim_op,
+        "affected_cts_count": len(total_cts),
+        "affected_cts": ", ".join(total_cts),
+        "not_affected_cts_count": len(not_affected_cts_list),
+        "not_affected_cts": ", ".join(not_affected_cts_list),
+        "affected_flows": flows_str,
+        "semantic_rationale": rationale
+    }
+
+def generate_cia_csv(
+    cia_records: List[Dict[str, Any]],
+    output_csv_path: Path
+) -> Path:
+    """
+    Writes the Truth Table Change Impact Analysis (CIA) CSV:
+    | # | file | system | origin_version | origin_content | target_version | target_content |
+      usecase | actual_change_impact | model_element | tcm_operation | primitive_operation |
+      affected_cts_count | affected_cts | not_affected_cts_count | not_affected_cts |
+      affected_flows | semantic_rationale |
+    """
+    output_csv_path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "#", "file", "system", "origin_version", "origin_content", "target_version", "target_content",
+        "usecase", "actual_change_impact", "model_element", "tcm_operation", "primitive_operation",
+        "affected_cts_count", "affected_cts", "not_affected_cts_count", "not_affected_cts",
+        "affected_flows", "semantic_rationale"
+    ]
+
+    with open(output_csv_path, mode="w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for idx, rec in enumerate(cia_records, start=1):
+            writer.writerow({
+                "#": idx,
+                "file": rec.get("file", ""),
+                "system": rec.get("system", ""),
+                "origin_version": rec.get("origin_version") or rec.get("source_version", ""),
+                "origin_content": rec.get("origin_content") or rec.get("source_content", ""),
+                "target_version": rec.get("target_version", ""),
+                "target_content": rec.get("target_content", ""),
+                "usecase": rec.get("usecase", ""),
+                "actual_change_impact": rec.get("actual_change_impact", ""),
+                "model_element": rec.get("model_element", ""),
+                "tcm_operation": rec.get("tcm_operation", ""),
+                "primitive_operation": rec.get("primitive_operation", ""),
+                "affected_cts_count": rec.get("affected_cts_count", 0),
+                "affected_cts": rec.get("affected_cts", ""),
+                "not_affected_cts_count": rec.get("not_affected_cts_count", 0),
+                "not_affected_cts": rec.get("not_affected_cts", ""),
+                "affected_flows": rec.get("affected_flows", ""),
+                "semantic_rationale": rec.get("semantic_rationale", "")
+            })
+
+    logger.info(f"Truth table CIA CSV successfully generated at: {output_csv_path} with {len(cia_records)} records.")
+    return output_csv_path
+
+

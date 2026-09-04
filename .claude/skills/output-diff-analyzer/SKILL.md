@@ -53,3 +53,4 @@ Parameters:
 - `--coverage`: (Optional) Coverage criteria suffix filter (`gt`, `gtp`, `art`, `complete`, `basic`, `branches`, `all`). Default: `all`.
 - `--output-csv`: (Optional) Output CSV file path. Default: `./reports/output_diffs.csv`.
 - `--repo`: (Optional) GitHub repository (`owner/repo`). Defaults to `GITHUB_REPO` from `.env`.
+- `--downloads-dir`: (Optional) Path to local directory containing pre-downloaded versions (e.g. `./downloads`). Defaults to automatic discovery.
