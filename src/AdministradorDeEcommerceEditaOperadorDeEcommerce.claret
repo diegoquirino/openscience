@@ -10,22 +10,16 @@ system "Bazooca", {
         preCondition "Administrador logado no sistema; Operadores de Ecommerce cadastrados."
 
         basicFlow {
-            step 1, AdminEcommerce,  "abre tela inicial do sistema"
-            step 2, system,          "exibe tela inicial do sistema"
-            step 3, AdminEcommerce,  "seleciona a opcao 'Meu Ecommerce' no menu da tela principal" 
-            step 4, system,          "abre a tela de edicao do Ecommerce"
-            step 5, AdminEcommerce,  "seleciona o operador na lista de operadores", af:[2]
-            step 6, system,          "abre os campos de edicao do Operador"
-            step 7, AdminEcommerce,  "adiciona os novos dados do Operador e clica no botao 'Atualizar'", af:[1]
-            step 8, system,          "salva o novo operador com os novos dados", ef:[1,2,3,4,5,6]
+            step 1, AdminEcommerce,  "seleciona a opcao 'Meu Ecommerce' no menu da tela principal" 
+            step 2, system,          "abre a tela de edicao do Ecommerce"
+            step 3, AdminEcommerce,  "seleciona o operador na lista de operadores"
+            step 4, system,          "abre os campos de edicao do Operador"
+            step 5, AdminEcommerce,  "adiciona os novos dados do Operador e clica no botao 'Atualizar'", af:[1]
+            step 6, system,          "salva o novo operador com os novos dados", ef:[1,2,3,4,5,6]
         }
 
         alternative 1, "Cancela edicao de operador", {
-            step 1, AdminEcommerce, "clica no botao Cancelar", bfs:4
-        }
-
-        alternative 2, "Volta para tela inicial do sistema", {
-            step 1, AdminEcommerce, "clica no botao 'Voltar'", bfs:2
+            step 1, AdminEcommerce, "clica no botao Cancelar", bfs:2
         }
 
         exception 1, "Dado obrigatorio'", { 

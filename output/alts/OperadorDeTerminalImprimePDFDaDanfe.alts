@@ -1,0 +1,55 @@
+ALTS_SPECIFICATION "Operador De Terminal Imprime Pdf Da Danfe" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas."
+  POST_CONDITION: ""
+
+  ACTORS {
+    OpTerminal: "Usuario Operador de Terminal"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas."]
+    S_BF_1 [flow: "basic", actor: "OpTerminal", action: "entra na tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "OpTerminal", action: "clica na opcao 'Dashboard de Terminal' no menu da tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com o Dashboard do Terminal do Operador"]
+    S_BF_5 [flow: "basic", actor: "OpTerminal", action: "clica no contador de 'Notas para Entrada'", branches_af: [3, 4]]
+    S_BF_6 [flow: "basic", actor: "system", action: "abre uma tela com a lista de 'Pedidos' ou 'Notas'"]
+    S_BF_7 [flow: "basic", actor: "OpTerminal", action: "seleciona alguma 'Nota' da lista", branches_af: [1]]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe os dados da 'Nota'"]
+    S_BF_9 [flow: "basic", actor: "OpTerminal", action: "clica no botao de 'Imprimir Danfe'"]
+    S_BF_10 [flow: "basic", actor: "system", action: "abre uma nova aba com a versao da Danfe em PDF"]
+    S_BF_11 [flow: "basic", actor: "OpTerminal", action: "clica no botao 'Imprimir'", branches_af: [2]]
+    S_BF_12 [flow: "basic", actor: "system", action: "envia documento para impressora e exibe Dashboard de Terminal"]
+    S_AF1_1 [flow: "alternative_1", description: "volta para tela inicial do sistema", actor: "OpTerminal", action: "clica no botao 'Voltar'", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "cancela impressao de danfe", actor: "OpTerminal", action: "clica no botao 'Cancelar'", returns_to_bf: 8]
+    S_AF3_1 [flow: "alternative_3", description: "seleciona notas de saida", actor: "OpTerminal", action: "clica em botao 'Notas para Saida'", returns_to_bf: 6]
+    S_AF4_1 [flow: "alternative_4", description: "seleciona historico de notas", actor: "OpTerminal", action: "clica em botao 'Historico de Mercadorias'", returns_to_bf: 6]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe tela com o Dashboard do Terminal do Operador"]
+    S_BF_4 -> S_BF_5 [event: "OpTerminal: clica no contador de 'Notas para Entrada'"]
+    S_BF_5 -> S_BF_6 [event: "system: abre uma tela com a lista de 'Pedidos' ou 'Notas'"]
+    S_BF_5 -> S_AF3_1 [branch: "AF_3 - seleciona notas de saida"]
+    S_BF_5 -> S_AF4_1 [branch: "AF_4 - seleciona historico de notas"]
+    S_BF_6 -> S_BF_7 [event: "OpTerminal: seleciona alguma 'Nota' da lista"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe os dados da 'Nota'"]
+    S_BF_7 -> S_AF1_1 [branch: "AF_1 - volta para tela inicial do sistema"]
+    S_BF_8 -> S_BF_9 [event: "OpTerminal: clica no botao de 'Imprimir Danfe'"]
+    S_BF_9 -> S_BF_10 [event: "system: abre uma nova aba com a versao da Danfe em PDF"]
+    S_BF_10 -> S_BF_11 [event: "OpTerminal: clica no botao 'Imprimir'"]
+    S_BF_11 -> S_BF_12 [event: "system: envia documento para impressora e exibe Dashboard de Terminal"]
+    S_BF_11 -> S_AF2_1 [branch: "AF_2 - cancela impressao de danfe"]
+    S_BF_12 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_8 [resume_basic_flow: 8]
+    S_AF3_1 -> S_BF_6 [resume_basic_flow: 6]
+    S_AF4_1 -> S_BF_6 [resume_basic_flow: 6]
+  }
+}

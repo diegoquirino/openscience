@@ -1,6 +1,6 @@
 System:	Bazooca
 Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -12,27 +12,6 @@ Precondition:	Usuario Administrador esta logado no sistema.
 Postcondition:	A nova Compatibilidade esta adicionada ao banco.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para listagem de Compatibilidades			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-2	Administrador: clica no botao Voltar		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso		
-Postcondition:	A nova Compatibilidade esta adicionada ao banco.
-
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancelar registro de nova Compatibilidade			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-2	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-3	Administrador: clica no botao Cancelar		SYSTEM exibe a tela de listagem das Compatibilidades		
-4	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-5	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso		
-Postcondition:	A nova Compatibilidade esta adicionada ao banco.
-
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -42,7 +21,7 @@ Precondition:	Usuario Administrador esta logado no sistema.
 4	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Usuario insere Tipo de Mercadoria invalido			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -52,7 +31,7 @@ Precondition:	Usuario Administrador esta logado no sistema.
 4	Administrador: preenche um Tipo de Mercadoria valido e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 3: Usuario insere NCM invalido			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result

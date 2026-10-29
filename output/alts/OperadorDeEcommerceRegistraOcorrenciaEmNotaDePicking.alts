@@ -14,7 +14,7 @@ ALTS_SPECIFICATION "Operador De Ecommerce Registra Ocorrencia Em Nota De Picking
     S_BF_2 [flow: "basic", actor: "system", action: "mostra a tela com Picking para o dia"]
     S_BF_3 [flow: "basic", actor: "Operador", action: "clica em botao 'Iniciar Picking'", branches_af: [2]]
     S_BF_4 [flow: "basic", actor: "system", action: "mostra tela com dados de Picking"]
-    S_BF_5 [flow: "basic", actor: "Operador", action: "clica no botao 'Registrar Ocorrencia' para uma determinada nota"]
+    S_BF_5 [flow: "basic", actor: "Operador", action: "clica no botao 'Registrar Ocorrencia'"]
     S_BF_6 [flow: "basic", actor: "system", action: "abre a janela de registro da Ocorrencia"]
     S_BF_7 [flow: "basic", actor: "Operador", action: "entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'", branches_af: [1]]
     S_BF_8 [flow: "basic", actor: "system", action: "cadastra a Ocorrencia e volta para tela de Picking", branches_ef: [1]]
@@ -22,9 +22,9 @@ ALTS_SPECIFICATION "Operador De Ecommerce Registra Ocorrencia Em Nota De Picking
     S_AF2_1 [flow: "alternative_2", description: "registra ocorrencia apos visualizar lista de veiculos", actor: "Operador", action: "clica em botao 'Consultar Veiculos'"]
     S_AF2_2 [flow: "alternative_2", description: "registra ocorrencia apos visualizar lista de veiculos", actor: "system", action: "exibe lista de veiculos para picking"]
     S_AF2_3 [flow: "alternative_2", description: "registra ocorrencia apos visualizar lista de veiculos", actor: "Operador", action: "clica em botao 'Iniciar Picking'", returns_to_bf: 4]
-    S_EF1_1 [flow: "exception_1", description: "Nao insere a descricao da ocorrencia'", actor: "Operador", action: "nao insere a descricao da ocorrencia e clica no botao de 'Registrar'"]
+    S_EF1_1 [flow: "exception_1", description: "Nao insere a descricao da ocorrencia'", actor: "Operador", action: "nao insere a descricao da ocorrencia e clica no botao de 'Salvar'"]
     S_EF1_2 [flow: "exception_1", description: "Nao insere a descricao da ocorrencia'", actor: "system", action: "informa que a mensagem da ocorrencia nao pode ser vazia"]
-    S_EF1_3 [flow: "exception_1", description: "Nao insere a descricao da ocorrencia'", actor: "Operador", action: "insere descricao valida para Ocorrencia e clica no botao 'Registrar'"]
+    S_EF1_3 [flow: "exception_1", description: "Nao insere a descricao da ocorrencia'", actor: "Operador", action: "insere descricao valida para Ocorrencia e clica no botao 'Salvar'"]
     S_END [terminal, guard: "O sistema tem uma nova ocorrencia cadastrada para aquela nota."]
   }
 
@@ -34,7 +34,7 @@ ALTS_SPECIFICATION "Operador De Ecommerce Registra Ocorrencia Em Nota De Picking
     S_BF_2 -> S_BF_3 [event: "Operador: clica em botao 'Iniciar Picking'"]
     S_BF_3 -> S_BF_4 [event: "system: mostra tela com dados de Picking"]
     S_BF_3 -> S_AF2_1 [branch: "AF_2 - registra ocorrencia apos visualizar lista de veiculos"]
-    S_BF_4 -> S_BF_5 [event: "Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota"]
+    S_BF_4 -> S_BF_5 [event: "Operador: clica no botao 'Registrar Ocorrencia'"]
     S_BF_5 -> S_BF_6 [event: "system: abre a janela de registro da Ocorrencia"]
     S_BF_6 -> S_BF_7 [event: "Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'"]
     S_BF_7 -> S_BF_8 [event: "system: cadastra a Ocorrencia e volta para tela de Picking"]
@@ -46,7 +46,7 @@ ALTS_SPECIFICATION "Operador De Ecommerce Registra Ocorrencia Em Nota De Picking
     S_AF2_2 -> S_AF2_3 [event: "Operador: clica em botao 'Iniciar Picking'"]
     S_AF2_3 -> S_BF_4 [resume_basic_flow: 4]
     S_EF1_1 -> S_EF1_2 [event: "system: informa que a mensagem da ocorrencia nao pode ser vazia"]
-    S_EF1_2 -> S_EF1_3 [event: "Operador: insere descricao valida para Ocorrencia e clica no botao 'Registrar'"]
+    S_EF1_2 -> S_EF1_3 [event: "Operador: insere descricao valida para Ocorrencia e clica no botao 'Salvar'"]
     S_EF1_3 -> S_END [event: "ErrorExit"]
   }
 }

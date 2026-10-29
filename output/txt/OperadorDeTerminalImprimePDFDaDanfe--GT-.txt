@@ -1,0 +1,69 @@
+System:	Bazooca
+Use Case:	Operador De Terminal Imprime Pdf Da Danfe	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+3	OpTerminal: clica no contador de 'Notas para Entrada'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+4	OpTerminal: seleciona alguma 'Nota' da lista		SYSTEM exibe os dados da 'Nota'		
+5	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	OpTerminal: clica no botao 'Imprimir'		SYSTEM envia documento para impressora e exibe Dashboard de Terminal		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+3	OpTerminal: clica no contador de 'Notas para Entrada'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+4	OpTerminal: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+5	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+6	OpTerminal: clica no contador de 'Notas para Entrada'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+7	OpTerminal: seleciona alguma 'Nota' da lista		SYSTEM exibe os dados da 'Nota'		
+8	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+9	OpTerminal: clica no botao 'Imprimir'		SYSTEM envia documento para impressora e exibe Dashboard de Terminal		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: cancela impressao de danfe			Execution Date:	
+Precondition:	Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+3	OpTerminal: clica no contador de 'Notas para Entrada'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+4	OpTerminal: seleciona alguma 'Nota' da lista		SYSTEM exibe os dados da 'Nota'		
+5	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	OpTerminal: clica no botao 'Cancelar'		SYSTEM exibe os dados da 'Nota'		
+7	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+8	OpTerminal: clica no botao 'Imprimir'		SYSTEM envia documento para impressora e exibe Dashboard de Terminal		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: seleciona notas de saida			Execution Date:	
+Precondition:	Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+3	OpTerminal: clica em botao 'Notas para Saida'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+4	OpTerminal: seleciona alguma 'Nota' da lista		SYSTEM exibe os dados da 'Nota'		
+5	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	OpTerminal: clica no botao 'Imprimir'		SYSTEM envia documento para impressora e exibe Dashboard de Terminal		
+Postcondition:	
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: seleciona historico de notas			Execution Date:	
+Precondition:	Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal		SYSTEM exibe tela com o Dashboard do Terminal do Operador		
+3	OpTerminal: clica em botao 'Historico de Mercadorias'		SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas'		
+4	OpTerminal: seleciona alguma 'Nota' da lista		SYSTEM exibe os dados da 'Nota'		
+5	OpTerminal: clica no botao de 'Imprimir Danfe'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	OpTerminal: clica no botao 'Imprimir'		SYSTEM envia documento para impressora e exibe Dashboard de Terminal		
+Postcondition:	
+
