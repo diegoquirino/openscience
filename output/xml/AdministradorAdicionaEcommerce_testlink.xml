@@ -19,7 +19,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -54,19 +54,19 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -101,7 +101,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -113,7 +113,7 @@
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
+        <actions><![CDATA[Administrador: clica no botao Cancelar]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -131,11 +131,40 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Exception Flow 1: Nao preenche algum campo obrigatorio">
+  <testcase name="TC4 - Alternative Flow 3: Navega pela lista de Ecommerce">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 1: Nao preenche algum campo obrigatorio]]></summary>
+    <summary><![CDATA[Alternative Flow 3: Navega pela lista de Ecommerce]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de paginacao]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 1: Nao preencher campos obrigatorios">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Nao preencher campos obrigatorios]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
@@ -148,7 +177,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -172,9 +201,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC5 - Exception Flow 2: Conflito de CNPJ">
-    <node_order><![CDATA[5]]></node_order>
-    <externalid><![CDATA[TC5]]></externalid>
+  <testcase name="TC6 - Exception Flow 2: Conflito de CNPJ">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 2: Conflito de CNPJ]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
@@ -189,7 +218,7 @@
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>

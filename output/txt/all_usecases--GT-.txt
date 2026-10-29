@@ -1,6 +1,436 @@
 System:	Bazooca
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 307 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 273 test case(s)	Creation Date:	29/10/2026
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+4	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: seleciona outra pagina		SYSTEM exibe lista de Ecommerces registrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+5	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Clica no botao 'Voltar'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: clica no botao 'Voltar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+5	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Ordena os Ecommerces			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: ordena os Ecommerces por alguma coluna		SYSTEM exibe lista de Ecommerces registrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+5	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Filtra coletas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: filtra as coletas por algum campo		SYSTEM exibe lista de Ecommerces registrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+5	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Imprime Lista De Produtos De Picking	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Cancela impressao de documento			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+4	Administrador: clica em botao cancelar		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+5	Administrador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de Produtos do Picking		
+6	Administrador: clica no botao de 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona contador de 'Aguardando Picking'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Aguardando Picking' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Seleciona contador de 'Aceitas'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Seleciona contador de 'Recusadas'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Recusadas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Seleciona contador de 'A Caminho'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'A Caminho' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Coletas'		
+4	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+5	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Clica no botao 'Voltar'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
+4	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+5	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Ordena Coletas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: ordena as Coletas por alguma coluna		SYSTEM abre uma tela com as listas das 'Coletas'		
+4	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+5	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Cancela registro de ocorrencia			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Volta para lista de Coletas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao 'Voltar'		SYSTEM abre uma tela com as listas das 'Coletas'		
+5	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Filtra coletas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: filtra as coletas por algum campo		SYSTEM abre uma tela com as listas das 'Coletas'		
+4	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+5	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Operador De Ecommerce Imprime Lista De Produtos Do Picking	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+4	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+
+Use Case:	Operador De Ecommerce Imprime Lista De Produtos Do Picking	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: desiste de imprimir lista de produtos			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+4	Operador: clica bo botao 'Cancelar'		SYSTEM mostra tela com dados de Picking		
+5	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+6	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+
+Use Case:	Operador De Ecommerce Imprime Lista De Produtos Do Picking	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: imprime lista de produtos sem iniciar picking			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+3	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+
+Use Case:	Operador De Ecommerce Registra Ocorrencia Em Nota De Picking	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Use Case:	Operador De Ecommerce Registra Ocorrencia Em Nota De Picking	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Clicar no botao 'Cancelar'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: desiste de salvar uma ocorrencia e clica bo botao 'Cancelar'		SYSTEM mostra tela com dados de Picking		
+5	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+6	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Use Case:	Operador De Ecommerce Registra Ocorrencia Em Nota De Picking	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: registra ocorrencia apos visualizar lista de veiculos			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
+3	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+4	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+5	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Use Case:	Operador De Ecommerce Registra Ocorrencia Em Nota De Picking	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere a descricao da ocorrencia'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM processes action successfully		
+5	Operador: nao insere a descricao da ocorrencia e clica no botao de 'Registrar'		SYSTEM informa que a mensagem da ocorrencia nao pode ser vazia		
+6	Operador: insere descricao valida para Ocorrencia e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que Email e invalido		
+5	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que senhas estao diferentes		
+5	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+5	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Terminais			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Beneficio de Terminal			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: clica no botao Cancelar		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Adicionar Beneficio'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -287,893 +717,6 @@ Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
 Precondition:	Usuario Administrador deve ter feito login e obtido autorizacao do sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-5	Administrador: adiciona os dados obrigatorios e clica no botao 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Seleciona contador de 'Conferência'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Conferência' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Seleciona contador de 'Picking'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Seleciona contador de 'Atrasos'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Seleciona contador de 'Retornos'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Seleciona contador de 'Ocorrências'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Ocorrências' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 7: Clica no botao voltar			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe de dashboard do sistema		
-4	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-3	Administrador: ordenas as notas por alguma coluna		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-Postcondition:	
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-4	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: seleciona outra pagina		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Clica no botao 'Voltar'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica no botao 'Voltar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Ordena os Ecommerces			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: ordena os Ecommerces por alguma coluna		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Filtra coletas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: filtra as coletas por algum campo		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Cancela realizacao de Picking			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-3	Administrador: clica em botao 'Cancelar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-4	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-5	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-6	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 7: Clica no botao 'Proximo Picking'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-4	Administrador: clica no botao 'Proximo Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 8: realiza picking depois de consultar veiculos			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
-3	Administrador: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
-4	Administrador: clica em botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
-5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
-Postcondition:	O Picking diario foi realizado para o Ecommerce
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Seleciona contador de 'Engine'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Seleciona contador de 'Conferencia'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Seleciona contador de 'Picking'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Seleciona contador de 'Atrasos'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Seleciona contador de 'Retornos'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Pedidos'		
-4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 7: Clica no botao Voltar			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
-4	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-5	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Pedidos'		
-4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 9: Cancela registro de ocorrencia			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 10: Filtra pedidos da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: filtra os pedidos por algum campo		SYSTEM abre uma tela com a lista de 'Pedidos'		
-4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 11: Volta para lista de pedidos			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
-3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-4	Administrador: clica em botão Voltar		SYSTEM abre uma tela com a lista de 'Pedidos'		
-5	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
-7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Clica no botao Voltar			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
-4	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
-5	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-6	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-7	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Ordena Notas			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Cancela resolucao de ocorrencia			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Nota		
-3	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-4	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Filtra notas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: filtra as notas por algum campo		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 6: Volta para lista de notas			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
-3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica em botao 'Voltar'		SYSTEM abre uma tela com a lista de 'Notas'		
-5	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
-6	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
-7	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
-Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
-Postcondition:	O Administrador foi adicionado com sucesso.
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
-Postcondition:	O Administrador foi adicionado com sucesso.
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela registro de Administrador			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
-Postcondition:	O Administrador foi adicionado com sucesso.
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-5	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Email invalido			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que Email e invalido		
-5	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que senhas estao diferentes		
-5	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Administrador	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 4: Sem Permissao			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
-4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
-5	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
-Postcondition:	Beneficio de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para listagem de Terminais			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
-6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
-Postcondition:	Beneficio de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela registro de Beneficio de Terminal			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: clica no botao Cancelar		SYSTEM mostra a lista de Terminais do sistema		
-5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
-6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
-Postcondition:	Beneficio de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-5	Administrador: adiciona os dados obrigatorios e clica no botao 'Adicionar Beneficio'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso		
-Postcondition:	A nova Compatibilidade esta adicionada ao banco.
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para listagem de Compatibilidades			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe a tela de listagem das Compatibilidades		
-4	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-5	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso		
-Postcondition:	A nova Compatibilidade esta adicionada ao banco.
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela registro de nova Compatibilidade			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe tela inicial do sistema		
-5	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-6	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-7	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso		
-Postcondition:	A nova Compatibilidade esta adicionada ao banco.
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-5	Administrador: preenche dados obrigatorios e clica em 'Atualizar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Usuario insere Tipo de Mercadoria invalido			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM alerta que Tipo de Mercadoria e invalido		
-5	Administrador: preenche um Tipo de Mercadoria valido e clica em 'Atualizar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Usuario insere NCM invalido			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM alerta que NCM e invalido		
-5	Administrador: preenche um NCM valido e clica em 'Atualizar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para tela inicial do sistema			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela registro de Ecommerce			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Nao preenche algum campo obrigatorio			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta ao usuario que os campos obrigatorios devem ser preenchidos		
-5	Administrador: informa os campos obrigatorios e clica no botao de 'Cadastrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Conflito de CNPJ			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta que ja existe um E-commerce cadastrado com o CNPJ		
-5	Administrador: preenche o CNPJ correto e clica no botão 'Cadastrar'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
-Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: procura o E-commerce navegando pelas paginas da lista		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
-Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Volta para listagem de Ecommerce			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica no botao Voltar		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
-Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Cancela registro de novo operador de Ecommerce			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: clica no botao Cancelar de registro de operador		SYSTEM exibe tela com informacões de E-commerce		
-4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
-Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Clica no botao voltar			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: clica no botao voltar		SYSTEM exibe tela de Dashboard		
-Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Campos obrigatorios			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta ao usuario que o campo deve ser preenchido		
-4	Administrador: informa os campos obrigatorios e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Nome de Usuario ja cadastrado			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
-4	Administrador: informa um novo Nome de Usuario e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 3: Email ja cadastrado			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
-4	Administrador: informa um novo Email e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 4: Email invalido			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
-4	Administrador: informa um novo Email valido e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 5: Cpf ja cadastrado			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
-4	Administrador: informa um novo Cpf e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
-Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 6: Senhas nao coincidem			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-2	Administrador: clica em um dos E-commerces listados		SYSTEM exibe tela com informacões de E-commerce		
-3	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que as senhas informadas nao coincidem		
-4	Administrador: informa senhas iguais e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM salva o novo Operador e incrementa lista de Operadores		
-Postcondition:	Operador de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-5	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM salva o novo Operador e incrementa lista de Operadores		
-Postcondition:	Operador de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela registro de Operador de Terminal			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-4	Administrador: clica no botao Cancelar		SYSTEM mostra a lista de Terminais do sistema		
-5	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM salva o novo Operador e incrementa lista de Operadores		
-Postcondition:	Operador de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Volta para listagem de Terminal			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
-3	Administrador: clica no botao 'Voltar'		SYSTEM mostra a lista de Terminais do sistema		
-4	Administrador: seleciona o Terminal em que sera adicionado o Operador		SYSTEM abre a tela de edicao do Terminal		
-5	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM salva o novo Operador e incrementa lista de Operadores		
-Postcondition:	Operador de Terminal salvo no sistema
-
-Use Case:	Administrador Adiciona Operador De Terminal	Version:	1.0
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
 2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
@@ -2458,141 +2001,108 @@ Precondition:	Usuario Administrador esta logado no sistema
 4	Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar'		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Seleciona contador de 'Conferencia'			Execution Date:	
+Description:	Alternative Flow 1: Seleciona contador de 'Conferência'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Conferencia' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Conferência' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Seleciona contador de 'Picking'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Seleciona contador de 'Atrasos'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 4: Seleciona contador de 'Retornos'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Seleciona contador de 'Ocorrencias'			Execution Date:	
+Description:	Alternative Flow 5: Seleciona contador de 'Ocorrências'			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Ocorrências' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+4	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Notas'		
-5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 7: Clica no botao voltar			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: clica no botao 'Voltar'		SYSTEM exibe dashboard do sistema		
-5	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-6	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe de dashboard do sistema		
+4	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
+6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+Postcondition:	
 
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Use Case:	Administrador Visualiza PDF Da Danfe	Version:	1.0
 Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: ordenas as notas por alguma coluna		SYSTEM abre uma tela com as listas das 'Notas'		
-5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
-6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
-
-Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
-Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 9: Cancela impressao de Danfe			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
-3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
-4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+1	Administrador: clica na opcao 'Dashboard' no menu da tela principal		SYSTEM exibe de dashboard do sistema		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+3	Administrador: ordenas as notas por alguma coluna		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados das notas		
 5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-6	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da nota selecionada		
-7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
-8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
-Postcondition:	A Danfe esta impressa
+Postcondition:	
 
 Use Case:	Administrador Imprime Pdf De CTe NFSe	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -2866,10 +2376,10 @@ Postcondition:	A ocorrencia esta registrada
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 4	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2877,11 +2387,11 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: seleciona outra pagina		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2889,11 +2399,11 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Clica no botao 'Voltar'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: clica no botao 'Voltar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2901,11 +2411,11 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Ordena os Ecommerces			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: ordena os Ecommerces por alguma coluna		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2913,11 +2423,11 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 4: Filtra coletas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: filtra as coletas por algum campo		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2925,12 +2435,12 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 5: Cancela realizacao de Picking			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica em botao 'Cancelar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-4	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 5	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 6	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
@@ -2938,10 +2448,10 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 7: Clica no botao 'Proximo Picking'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 4	Administrador: clica no botao 'Proximo Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
@@ -2950,10 +2460,10 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 Use Case:	Administrador Realiza Picking De Ecommerce	Version:	1.0
 Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 8: realiza picking depois de consultar veiculos			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
 4	Administrador: clica em botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
@@ -3093,10 +2603,10 @@ Description:	Basic Flow (Happy Path)			Execution Date:
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3105,10 +2615,10 @@ Description:	Alternative Flow 1: Seleciona contador de 'Engine'			Execution Date
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3117,10 +2627,10 @@ Description:	Alternative Flow 2: Seleciona contador de 'Conferencia'			Execution
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3129,10 +2639,10 @@ Description:	Alternative Flow 3: Seleciona contador de 'Picking'			Execution Dat
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3141,10 +2651,10 @@ Description:	Alternative Flow 4: Seleciona contador de 'Atrasos'			Execution Dat
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3153,10 +2663,10 @@ Description:	Alternative Flow 5: Seleciona contador de 'Retornos'			Execution Da
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3165,11 +2675,11 @@ Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Pedidos'		
+4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3178,12 +2688,12 @@ Description:	Alternative Flow 7: Clica no botao Voltar			Execution Date:
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
 3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
-4	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-5	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+4	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+5	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3192,11 +2702,11 @@ Description:	Alternative Flow 8: Ordena Notas			Execution Date:
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Pedidos'		
+4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
@@ -3205,51 +2715,39 @@ Description:	Alternative Flow 9: Cancela registro de ocorrencia			Execution Date
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
 Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 10: Filtra notas da lista			Execution Date:	
+Description:	Alternative Flow 10: Filtra pedidos da lista			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: filtra as notas por algum campo		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: filtra os pedidos por algum campo		SYSTEM abre uma tela com a lista de 'Pedidos'		
+4	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
 Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 11: Volta para lista de notas			Execution Date:	
+Description:	Alternative Flow 11: Volta para lista de pedidos			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica em botão 'Voltar'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-5	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
-Postcondition:	A ocorrencia esta registrada
-
-Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
-Test Case ID:	TC13	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 12: Seleciona contador de 'Ocorrencias'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
-2	Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
-3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
-4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
-5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+2	Administrador: clica em tab 'Pedidos'		SYSTEM abre uma tela com a lista de 'Pedidos'		
+3	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+4	Administrador: clica em botão Voltar		SYSTEM abre uma tela com a lista de 'Pedidos'		
+5	Administrador: seleciona algum Pedido (NFe) da lista		SYSTEM exibe os dados da nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada
 
 Use Case:	Administrador Registra Ocorrencia Em Nota De Coleta	Version:	1.0
@@ -3392,6 +2890,93 @@ Precondition:	Usuario Administrador esta logado no sistema.
 5	Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota		SYSTEM abre modal para digitacao da ocorrencia		
 6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
 Postcondition:	A ocorrencia esta registrada e nota esta com status de ocorrencia registrada
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Clica no botao Voltar			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
+4	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
+5	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+6	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+7	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Ordena Notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela resolucao de ocorrencia			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Nota		
+3	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+4	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra notas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: filtra as notas por algum campo		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+5	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
+
+Use Case:	Administrador Resolve Ocorrencia De Nota	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Volta para lista de notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias'		SYSTEM abre uma tela com a lista de 'Notas'		
+3	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica em botao 'Voltar'		SYSTEM abre uma tela com a lista de 'Notas'		
+5	Administrador: seleciona alguma Nota da lista		SYSTEM exibe os dados da Nota		
+6	Administrador: clica no botao de 'Resolver'		SYSTEM abre modal para detalhamento de 'Contato'		
+7	Administrador: digita detalhamento de Contato e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi resolvida com sucesso		
+Postcondition:	A ocorrencia esta resolvida e nota possui estado de ocorrencia resolvida
 
 Use Case:	Operador De Terminal Adiciona Beneficio Ao Terminal	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -3599,42 +3184,6 @@ Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
 3	Operador: modifica os dados existentes e clica no botao de 'Atualizar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
 Postcondition:	Flow interrupted due to exception / error
 
-Use Case:	Login De Usuario	Version:	1.0
-Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
-Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Acesso ao Browser; Acesso a internet.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
-2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM mostra uma mensagem de usuário logado com sucesso		
-Postcondition:	Usuario logado no sistema.
-
-Use Case:	Login De Usuario	Version:	1.0
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Um ou mais username são apresentados			Execution Date:	
-Precondition:	Acesso ao Browser; Acesso a internet.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
-2	bazoocaUser: seleciona um dos usernames sugeridos, digita um password e clica no botão de submeter		SYSTEM mostra uma mensagem de usuário logado com sucesso		
-Postcondition:	Usuario logado no sistema.
-
-Use Case:	Login De Usuario	Version:	1.0
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Usuário não existe no banco de dados			Execution Date:	
-Precondition:	Acesso ao Browser; Acesso a internet.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
-2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM alerta que usuário não existe		
-Postcondition:	Flow interrupted due to exception / error
-
-Use Case:	Login De Usuario	Version:	1.0
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 2: Combinação de username/password incorreta			Execution Date:	
-Precondition:	Acesso ao Browser; Acesso a internet.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
-2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM alerta que username e/ou password estão incorretos		
-Postcondition:	Flow interrupted due to exception / error
-
 Use Case:	Usuario Desloga	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -3691,6 +3240,42 @@ Precondition:	Usuario esta logado no sistema
 1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
 2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
 3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM alerta que username e/ou password estao incorretos		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login De Usuario	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
+2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM mostra uma mensagem de usuário logado com sucesso		
+Postcondition:	Usuario logado no sistema.
+
+Use Case:	Login De Usuario	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Um ou mais username são apresentados			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
+2	bazoocaUser: seleciona um dos usernames sugeridos, digita um password e clica no botão de submeter		SYSTEM mostra uma mensagem de usuário logado com sucesso		
+Postcondition:	Usuario logado no sistema.
+
+Use Case:	Login De Usuario	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuário não existe no banco de dados			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
+2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM alerta que usuário não existe		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Login De Usuario	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Combinação de username/password incorreta			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: Entra na tela de login		SYSTEM apresenta um form com os campos username e password e um botão de submissão		
+2	bazoocaUser: preenche os campos de username e password e clica no botão de submissão		SYSTEM alerta que username e/ou password estão incorretos		
 Postcondition:	Flow interrupted due to exception / error
 
 

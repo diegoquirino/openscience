@@ -1,6 +1,6 @@
 ALTS_SPECIFICATION "Administrador Realiza Picking De Ecommerce" {
   VERSION: "1.0"
-  PRE_CONDITION: "Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia"
+  PRE_CONDITION: "Usuario Administrador esta logado no sistema."
   POST_CONDITION: "O Picking diario foi realizado para o Ecommerce"
 
   ACTORS {
@@ -9,11 +9,11 @@ ALTS_SPECIFICATION "Administrador Realiza Picking De Ecommerce" {
   }
 
   STATES {
-    S_INIT [initial, guard: "Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia"]
+    S_INIT [initial, guard: "Usuario Administrador esta logado no sistema."]
     S_BF_1 [flow: "basic", actor: "Administrador", action: "clica na opcao 'Picking' no menu da tela principal"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe lista de Ecommerces registrados no sistema"]
     S_BF_3 [flow: "basic", actor: "Administrador", action: "clica em algum dos Ecommerces listados", branches_af: [1, 2, 3, 4]]
-    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com o Picking diario para aquele Ecommerce selecionado"]
+    S_BF_4 [flow: "basic", actor: "system", action: "abre uma tela com o Picking diario para aquele Ecommerce selecionado"]
     S_BF_5 [flow: "basic", actor: "Administrador", action: "clica no botao 'Iniciar Picking'", branches_af: [5, 6, 8]]
     S_BF_6 [flow: "basic", actor: "system", action: "exibe os dados do Picking"]
     S_BF_7 [flow: "basic", actor: "Administrador", action: "clica no botao de 'Finalizar Picking'", branches_af: [7]]
@@ -35,7 +35,7 @@ ALTS_SPECIFICATION "Administrador Realiza Picking De Ecommerce" {
     S_INIT -> S_BF_1 [trigger: "Start"]
     S_BF_1 -> S_BF_2 [event: "system: exibe lista de Ecommerces registrados no sistema"]
     S_BF_2 -> S_BF_3 [event: "Administrador: clica em algum dos Ecommerces listados"]
-    S_BF_3 -> S_BF_4 [event: "system: exibe tela com o Picking diario para aquele Ecommerce selecionado"]
+    S_BF_3 -> S_BF_4 [event: "system: abre uma tela com o Picking diario para aquele Ecommerce selecionado"]
     S_BF_3 -> S_AF1_1 [branch: "AF_1 - Navega pelas paginas da lista"]
     S_BF_3 -> S_AF2_1 [branch: "AF_2 - Clica no botao 'Voltar'"]
     S_BF_3 -> S_AF3_1 [branch: "AF_3 - Ordena os Ecommerces"]

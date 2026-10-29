@@ -7,7 +7,7 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.]]></preconditions>
+    <preconditions><![CDATA[Usuario Administrador deve ter feito login e obtido autorizacao do sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -42,7 +42,7 @@
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 1: Volta para tela inicial de sistema]]></summary>
-    <preconditions><![CDATA[Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.]]></preconditions>
+    <preconditions><![CDATA[Usuario Administrador deve ter feito login e obtido autorizacao do sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -89,7 +89,7 @@
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 2: Cancela registro de Operador de Terminal]]></summary>
-    <preconditions><![CDATA[Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.]]></preconditions>
+    <preconditions><![CDATA[Usuario Administrador deve ter feito login e obtido autorizacao do sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -131,12 +131,12 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Volta para listagem de Terminal">
+  <testcase name="TC4 - Alternative Flow 3: Navega na lista de Terminais">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Volta para listagem de Terminal]]></summary>
-    <preconditions><![CDATA[Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.]]></preconditions>
+    <summary><![CDATA[Alternative Flow 3: Navega na lista de Terminais]]></summary>
+    <preconditions><![CDATA[Usuario Administrador deve ter feito login e obtido autorizacao do sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
@@ -154,7 +154,7 @@
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <actions><![CDATA[Administrador: clica no botao de paginacao]]></actions>
         <expectedresults><![CDATA[SYSTEM mostra a lista de Terminais do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -177,7 +177,7 @@
     <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Nao insere algum dado obrigatorio']]></summary>
-    <preconditions><![CDATA[Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.]]></preconditions>
+    <preconditions><![CDATA[Usuario Administrador deve ter feito login e obtido autorizacao do sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Administrador Adiciona Operador De Ecommerce">
+<testsuite name="Administrador Adiciona Operador de Ecommerce">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
   <testcase name="TC1 - Basic Flow (Happy Path)">
@@ -66,79 +66,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Volta para listagem de Ecommerce">
+  <testcase name="TC3 - Alternative Flow 3: Clica no botao voltar">
     <node_order><![CDATA[3]]></node_order>
     <externalid><![CDATA[TC3]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Volta para listagem de Ecommerce]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em um dos E-commerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela com informacões de E-commerce]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador']]></actions>
-        <expectedresults><![CDATA[SYSTEM mostra operador adicionado em tabela na tela de cadastro]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Cancela registro de novo operador de Ecommerce">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Cancela registro de novo operador de Ecommerce]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em um dos E-commerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela com informacões de E-commerce]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao Cancelar de registro de operador]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela com informacões de E-commerce]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador']]></actions>
-        <expectedresults><![CDATA[SYSTEM mostra operador adicionado em tabela na tela de cadastro]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC5 - Alternative Flow 3: Clica no botao voltar">
-    <node_order><![CDATA[5]]></node_order>
-    <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Alternative Flow 3: Clica no botao voltar]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -147,27 +77,15 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica no opcao 'E-commerces' no menu principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em um dos E-commerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela com informacões de E-commerce]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica no botao voltar]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe tela de Dashboard]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC6 - Exception Flow 1: Campos obrigatorios">
-    <node_order><![CDATA[6]]></node_order>
-    <externalid><![CDATA[TC6]]></externalid>
+  <testcase name="TC4 - Exception Flow 1: Campos obrigatorios">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Campos obrigatorios]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -200,9 +118,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC7 - Exception Flow 2: Nome de Usuario ja cadastrado">
-    <node_order><![CDATA[7]]></node_order>
-    <externalid><![CDATA[TC7]]></externalid>
+  <testcase name="TC5 - Exception Flow 2: Nome de Usuario ja cadastrado">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 2: Nome de Usuario ja cadastrado]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -235,9 +153,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC8 - Exception Flow 3: Email ja cadastrado">
-    <node_order><![CDATA[8]]></node_order>
-    <externalid><![CDATA[TC8]]></externalid>
+  <testcase name="TC6 - Exception Flow 3: Email ja cadastrado">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 3: Email ja cadastrado]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -270,9 +188,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC9 - Exception Flow 4: Email invalido">
-    <node_order><![CDATA[9]]></node_order>
-    <externalid><![CDATA[TC9]]></externalid>
+  <testcase name="TC7 - Exception Flow 4: Email invalido">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 4: Email invalido]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -305,9 +223,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC10 - Exception Flow 5: Cpf ja cadastrado">
-    <node_order><![CDATA[10]]></node_order>
-    <externalid><![CDATA[TC10]]></externalid>
+  <testcase name="TC8 - Exception Flow 5: Cpf ja cadastrado">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 5: Cpf ja cadastrado]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>
@@ -340,9 +258,9 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC11 - Exception Flow 6: Senhas nao coincidem">
-    <node_order><![CDATA[11]]></node_order>
-    <externalid><![CDATA[TC11]]></externalid>
+  <testcase name="TC9 - Exception Flow 6: Senhas nao coincidem">
+    <node_order><![CDATA[9]]></node_order>
+    <externalid><![CDATA[TC9]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 6: Senhas nao coincidem]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.]]></preconditions>

@@ -1,0 +1,35 @@
+System:	Bazooca
+Use Case:	Operador De Ecommerce Imprime Lista De Produtos Do Picking	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+4	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: desiste de imprimir lista de produtos			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+4	Operador: clica bo botao 'Cancelar'		SYSTEM mostra tela com dados de Picking		
+5	Operador: clica no botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+6	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: imprime lista de produtos sem iniciar picking			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Imprimir Lista'		SYSTEM exibe pdf com lista de produtos		
+3	Operador: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e volta para tela de Picking		
+Postcondition:	
+

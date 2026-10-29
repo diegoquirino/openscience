@@ -1,4 +1,4 @@
-ALTS_SPECIFICATION "Administrador Adiciona Operador De Ecommerce" {
+ALTS_SPECIFICATION "Administrador Adiciona Operador de Ecommerce" {
   VERSION: "1.0"
   PRE_CONDITION: "Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado."
   POST_CONDITION: "O novo Operador de Ecommerce esta salvo no sistema."
@@ -12,13 +12,11 @@ ALTS_SPECIFICATION "Administrador Adiciona Operador De Ecommerce" {
     S_INIT [initial, guard: "Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado."]
     S_BF_1 [flow: "basic", actor: "Administrador", action: "clica no opcao 'E-commerces' no menu principal"]
     S_BF_2 [flow: "basic", actor: "system", action: "exibe a tela com a lista de E-commerces cadastrados no sistema"]
-    S_BF_3 [flow: "basic", actor: "Administrador", action: "clica em um dos E-commerces listados", branches_af: [1, 2]]
+    S_BF_3 [flow: "basic", actor: "Administrador", action: "clica em um dos E-commerces listados", branches_af: [1]]
     S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com informacões de E-commerce"]
-    S_BF_5 [flow: "basic", actor: "Administrador", action: "adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'", branches_af: [3]]
+    S_BF_5 [flow: "basic", actor: "Administrador", action: "adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'"]
     S_BF_6 [flow: "basic", actor: "system", action: "mostra operador adicionado em tabela na tela de cadastro", branches_ef: [1, 2, 3, 4, 5, 6]]
     S_AF1_1 [flow: "alternative_1", description: "Navega pelas paginas da lista", actor: "Administrador", action: "procura o E-commerce navegando pelas paginas da lista", returns_to_bf: 2]
-    S_AF2_1 [flow: "alternative_2", description: "Volta para listagem de Ecommerce", actor: "Administrador", action: "clica no botao Voltar", returns_to_bf: 2]
-    S_AF3_1 [flow: "alternative_3", description: "Cancela registro de novo operador de Ecommerce", actor: "Administrador", action: "clica no botao Cancelar de registro de operador", returns_to_bf: 4]
     S_AF3_1 [flow: "alternative_3", description: "Clica no botao voltar", actor: "Administrador", action: "clica no botao voltar"]
     S_AF3_2 [flow: "alternative_3", description: "Clica no botao voltar", actor: "system", action: "exibe tela de Dashboard"]
     S_EF1_1 [flow: "exception_1", description: "Campos obrigatorios", actor: "system", action: "alerta ao usuario que o campo deve ser preenchido"]
@@ -42,10 +40,8 @@ ALTS_SPECIFICATION "Administrador Adiciona Operador De Ecommerce" {
     S_BF_2 -> S_BF_3 [event: "Administrador: clica em um dos E-commerces listados"]
     S_BF_3 -> S_BF_4 [event: "system: exibe tela com informacões de E-commerce"]
     S_BF_3 -> S_AF1_1 [branch: "AF_1 - Navega pelas paginas da lista"]
-    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Volta para listagem de Ecommerce"]
     S_BF_4 -> S_BF_5 [event: "Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'"]
     S_BF_5 -> S_BF_6 [event: "system: mostra operador adicionado em tabela na tela de cadastro"]
-    S_BF_5 -> S_AF3_1 [branch: "AF_3 - Cancela registro de novo operador de Ecommerce"]
     S_BF_6 -> S_END [event: "Complete"]
     S_BF_6 -> S_EF1_1 [branch: "EF_1 - Campos obrigatorios"]
     S_BF_6 -> S_EF2_1 [branch: "EF_2 - Nome de Usuario ja cadastrado"]
@@ -54,8 +50,6 @@ ALTS_SPECIFICATION "Administrador Adiciona Operador De Ecommerce" {
     S_BF_6 -> S_EF5_1 [branch: "EF_5 - Cpf ja cadastrado"]
     S_BF_6 -> S_EF6_1 [branch: "EF_6 - Senhas nao coincidem"]
     S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
-    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
-    S_AF3_1 -> S_BF_4 [resume_basic_flow: 4]
     S_AF3_1 -> S_AF3_2 [event: "system: exibe tela de Dashboard"]
     S_AF3_2 -> S_END [event: "Complete"]
     S_EF1_1 -> S_EF1_2 [event: "Administrador: informa os campos obrigatorios e clica no botao de 'Adicionar Operador'"]

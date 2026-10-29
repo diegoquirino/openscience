@@ -13,24 +13,18 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[3]]></step_number>
+        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
@@ -48,83 +42,65 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Cancela registro de nova Compatibilidade">
+  <testcase name="TC3 - Alternative Flow 2: Cancelar registro de nova Compatibilidade">
     <node_order><![CDATA[3]]></node_order>
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Cancela registro de nova Compatibilidade]]></summary>
+    <summary><![CDATA[Alternative Flow 2: Cancelar registro de nova Compatibilidade]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: clica no botao Cancelar]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[6]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[7]]></step_number>
+        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
@@ -142,31 +118,25 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[3]]></step_number>
+        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em 'Atualizar']]></actions>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -183,31 +153,25 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[3]]></step_number>
+        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM alerta que Tipo de Mercadoria e invalido]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: preenche um Tipo de Mercadoria valido e clica em 'Atualizar']]></actions>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: preenche um Tipo de Mercadoria valido e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -224,31 +188,25 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidade' no menu da tela principal]]></actions>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibilidade' no menu da tela principal]]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[3]]></step_number>
+        <step_number><![CDATA[2]]></step_number>
         <actions><![CDATA[Administrador: clica em 'Adicionar Compatibilidade']]></actions>
         <expectedresults><![CDATA[SYSTEM exibe a tela de cadastro de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar']]></actions>
         <expectedresults><![CDATA[SYSTEM alerta que NCM e invalido]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: preenche um NCM valido e clica em 'Atualizar']]></actions>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: preenche um NCM valido e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>

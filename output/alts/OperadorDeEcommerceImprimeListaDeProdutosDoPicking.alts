@@ -1,0 +1,41 @@
+ALTS_SPECIFICATION "Operador De Ecommerce Imprime Lista De Produtos Do Picking" {
+  VERSION: "1.0"
+  PRE_CONDITION: "O Operador logado; Operador pertence Ecommerce alvo."
+  POST_CONDITION: ""
+
+  ACTORS {
+    Operador: "Operador do Ecommerce"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "O Operador logado; Operador pertence Ecommerce alvo."]
+    S_BF_1 [flow: "basic", actor: "Operador", action: "seleciona a opcao 'Picking' no menu da tela principal"]
+    S_BF_2 [flow: "basic", actor: "system", action: "mostra a tela com Picking para o dia"]
+    S_BF_3 [flow: "basic", actor: "Operador", action: "clica em botao 'Iniciar Picking'", branches_af: [2]]
+    S_BF_4 [flow: "basic", actor: "system", action: "mostra tela com dados de Picking"]
+    S_BF_5 [flow: "basic", actor: "Operador", action: "clica no botao 'Imprimir Lista'"]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe pdf com lista de produtos"]
+    S_BF_7 [flow: "basic", actor: "Operador", action: "clica em botao 'Imprimir'", branches_af: [1]]
+    S_BF_8 [flow: "basic", actor: "system", action: "envia documento para impressora e volta para tela de Picking"]
+    S_AF1_1 [flow: "alternative_1", description: "desiste de imprimir lista de produtos", actor: "Operador", action: "clica bo botao 'Cancelar'", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "imprime lista de produtos sem iniciar picking", actor: "Operador", action: "clica em botao 'Imprimir Lista'", returns_to_bf: 6]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: mostra a tela com Picking para o dia"]
+    S_BF_2 -> S_BF_3 [event: "Operador: clica em botao 'Iniciar Picking'"]
+    S_BF_3 -> S_BF_4 [event: "system: mostra tela com dados de Picking"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - imprime lista de produtos sem iniciar picking"]
+    S_BF_4 -> S_BF_5 [event: "Operador: clica no botao 'Imprimir Lista'"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe pdf com lista de produtos"]
+    S_BF_6 -> S_BF_7 [event: "Operador: clica em botao 'Imprimir'"]
+    S_BF_7 -> S_BF_8 [event: "system: envia documento para impressora e volta para tela de Picking"]
+    S_BF_7 -> S_AF1_1 [branch: "AF_1 - desiste de imprimir lista de produtos"]
+    S_BF_8 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF2_1 -> S_BF_6 [resume_basic_flow: 6]
+  }
+}

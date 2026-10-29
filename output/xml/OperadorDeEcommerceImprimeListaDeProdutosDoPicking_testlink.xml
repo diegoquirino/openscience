@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Operador De Ecommerce Imprime Lista De Produtos Do Picking">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence Ecommerce alvo.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Operador: seleciona a opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela com Picking para o dia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Iniciar Picking']]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra tela com dados de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Operador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de produtos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e volta para tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: desiste de imprimir lista de produtos">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: desiste de imprimir lista de produtos]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence Ecommerce alvo.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Operador: seleciona a opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela com Picking para o dia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Iniciar Picking']]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra tela com dados de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Operador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de produtos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Operador: clica bo botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra tela com dados de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Operador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de produtos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e volta para tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: imprime lista de produtos sem iniciar picking">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: imprime lista de produtos sem iniciar picking]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence Ecommerce alvo.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Operador: seleciona a opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela com Picking para o dia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de produtos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Operador: clica em botao 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e volta para tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

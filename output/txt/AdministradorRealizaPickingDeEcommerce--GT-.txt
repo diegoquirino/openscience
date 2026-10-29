@@ -4,76 +4,76 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 4	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: seleciona outra pagina		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Clica no botao 'Voltar'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: clica no botao 'Voltar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Ordena os Ecommerces			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: ordena os Ecommerces por alguma coluna		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 4: Filtra coletas da lista			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
 2	Administrador: filtra as coletas por algum campo		SYSTEM exibe lista de Ecommerces registrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 4	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 5: Cancela realizacao de Picking			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica em botao 'Cancelar'		SYSTEM exibe lista de Ecommerces registrados no sistema		
-4	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+4	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 5	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 6	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
 Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 7: Clica no botao 'Proximo Picking'			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 4	Administrador: clica no botao 'Proximo Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		
@@ -81,10 +81,10 @@ Postcondition:	O Picking diario foi realizado para o Ecommerce
 
 Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 8: realiza picking depois de consultar veiculos			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia
+Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe lista de Ecommerces registrados no sistema		
-2	Administrador: clica em algum dos Ecommerces listados		SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado		
+2	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado		
 3	Administrador: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
 4	Administrador: clica em botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
 5	Administrador: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema		

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Imprime Lista De Produtos De Picking">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Navega pelas paginas da lista">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Navega pelas paginas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Clica no botao &apos;Voltar&apos;">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Clica no botao 'Voltar']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Ordena os Ecommerces">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Ordena os Ecommerces]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: ordena os Ecommerces por alguma coluna]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Filtra coletas da lista">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Filtra coletas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: filtra as coletas por algum campo]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Cancela impressao de documento">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Cancela impressao de documento]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em botao cancelar]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Imprimir Lista']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe pdf com lista de Produtos do Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Imprimir']]></actions>
+        <expectedresults><![CDATA[SYSTEM envia documento para impressora e exibe tela de Picking]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

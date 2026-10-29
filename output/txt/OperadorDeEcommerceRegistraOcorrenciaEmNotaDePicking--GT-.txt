@@ -1,0 +1,49 @@
+System:	Bazooca
+Use Case:	Operador De Ecommerce Registra Ocorrencia Em Nota De Picking	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Clicar no botao 'Cancelar'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: desiste de salvar uma ocorrencia e clica bo botao 'Cancelar'		SYSTEM mostra tela com dados de Picking		
+5	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+6	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: registra ocorrencia apos visualizar lista de veiculos			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
+3	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+4	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+5	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM cadastra a Ocorrencia e volta para tela de Picking		
+Postcondition:	O sistema tem uma nova ocorrencia cadastrada para aquela nota.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere a descricao da ocorrencia'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: seleciona a opcao 'Picking' no menu da tela principal		SYSTEM mostra a tela com Picking para o dia		
+2	Operador: clica em botao 'Iniciar Picking'		SYSTEM mostra tela com dados de Picking		
+3	Operador: clica no botao 'Registrar Ocorrencia' para uma determinada nota		SYSTEM abre a janela de registro da Ocorrencia		
+4	Operador: entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'		SYSTEM processes action successfully		
+5	Operador: nao insere a descricao da ocorrencia e clica no botao de 'Registrar'		SYSTEM informa que a mensagem da ocorrencia nao pode ser vazia		
+6	Operador: insere descricao valida para Ocorrencia e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

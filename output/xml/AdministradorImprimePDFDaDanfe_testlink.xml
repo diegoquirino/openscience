@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Administrador Imprime Pdf Da Danfe">
+<testsuite name="Administrador Visualiza PDF Da Danfe">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
   <testcase name="TC1 - Basic Flow (Happy Path)">
@@ -13,85 +13,61 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Seleciona contador de &apos;Conferencia&apos;">
+  <testcase name="TC2 - Alternative Flow 1: Seleciona contador de &apos;Conferência&apos;">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Seleciona contador de 'Conferencia']]></summary>
+    <summary><![CDATA[Alternative Flow 1: Seleciona contador de 'Conferência']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum contador de 'Conferencia' na secao de 'Notas']]></actions>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Conferência' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -107,38 +83,26 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Picking' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -154,38 +118,26 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -201,85 +153,61 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Retornos' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
     </steps>
   </testcase>
-  <testcase name="TC6 - Alternative Flow 5: Seleciona contador de &apos;Ocorrencias&apos;">
+  <testcase name="TC6 - Alternative Flow 5: Seleciona contador de &apos;Ocorrências&apos;">
     <node_order><![CDATA[6]]></node_order>
     <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 5: Seleciona contador de 'Ocorrencias']]></summary>
+    <summary><![CDATA[Alternative Flow 5: Seleciona contador de 'Ocorrências']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas']]></actions>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Ocorrências' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -295,44 +223,32 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[6]]></step_number>
+        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -348,50 +264,38 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[6]]></step_number>
+        <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[7]]></step_number>
+        <step_number><![CDATA[6]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[8]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -407,103 +311,32 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Dashboard' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe de dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
+        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: ordenas as notas por alguma coluna]]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC10 - Alternative Flow 9: Cancela impressao de Danfe">
-    <node_order><![CDATA[10]]></node_order>
-    <externalid><![CDATA[TC10]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 9: Cancela impressao de Danfe]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe dashboard do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum contador de 'Engine' na secao de 'Notas']]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Notas']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
         <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: seleciona alguma Nota na lista]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM exibe os dados das notas]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
         <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica em botao 'Cancelar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados da nota selecionada]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Visualizar DANFE']]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma nova aba com a versao da Danfe em PDF]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[8]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Imprimir']]></actions>
-        <expectedresults><![CDATA[SYSTEM envia documento para impressora]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

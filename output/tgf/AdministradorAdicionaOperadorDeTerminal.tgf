@@ -14,7 +14,7 @@
 14 14
 15 15
 #
-1 2 [c] Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado.
+1 2 [c] Usuario Administrador deve ter feito login e obtido autorizacao do sistema.
 2 3 [s] Administrador abre tela inicial do sistema
 3 4 [e] system exibe tela inicial do sistema
 4 5 [s] Administrador seleciona a opcao 'Terminais' no menu da tela principal
@@ -23,4 +23,4 @@
 7 8 [e] system abre a tela de edicao do Terminal
 8 9 [s] Administrador adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'
 9 10 [e] system salva o novo Operador e incrementa lista de Operadores
-10 11 [c] Operador de Terminal salvo no sistema
+10 11 [c] Operador salvo no sistema

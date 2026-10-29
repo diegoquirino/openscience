@@ -1,58 +1,67 @@
 System:	Bazooca
 Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
 4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
+Postcondition:	O novo E-commerce salvo no sistema.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Volta para tela inicial do sistema			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
-3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
 6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
+Postcondition:	O novo E-commerce salvo no sistema.
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Cancela registro de Ecommerce			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+4	Administrador: clica no botao Cancelar		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
 6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
-Postcondition:	O novo E-commerce esta salvo no sistema.
+Postcondition:	O novo E-commerce salvo no sistema.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: Nao preenche algum campo obrigatorio			Execution Date:	
+Description:	Alternative Flow 3: Navega pela lista de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica no botao de paginacao		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+3	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM mostra uma mensagem de cadastro de E-commerce com sucesso		
+Postcondition:	O novo E-commerce salvo no sistema.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao preencher campos obrigatorios			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
 4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta ao usuario que os campos obrigatorios devem ser preenchidos		
 5	Administrador: informa os campos obrigatorios e clica no botao de 'Cadastrar'		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Conflito de CNPJ			Execution Date:	
 Precondition:	Usuario Administrador esta logado no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+2	Administrador: clica no opcao 'E-commerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
 3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
 4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta que ja existe um E-commerce cadastrado com o CNPJ		
 5	Administrador: preenche o CNPJ correto e clica no botão 'Cadastrar'		SYSTEM processes action successfully		
