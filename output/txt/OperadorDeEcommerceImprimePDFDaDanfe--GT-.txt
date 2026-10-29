@@ -1,0 +1,58 @@
+System:	Bazooca
+Use Case:	Operador De Ecommerce Imprime Pdf Da Danfe	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe tela com detalhes de Picking		
+4	OpEcommerce: clica em uma das Notas do Picking		SYSTEM exibe detalhes da Nota		
+5	OpEcommerce: clica em botao 'Imprimir Danfe'		SYSTEM exibe pdf com Danfe de Nota		
+6	OpEcommerce: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+5	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe tela com detalhes de Picking		
+6	OpEcommerce: clica em uma das Notas do Picking		SYSTEM exibe detalhes da Nota		
+7	OpEcommerce: clica em botao 'Imprimir Danfe'		SYSTEM exibe pdf com Danfe de Nota		
+8	OpEcommerce: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: cancela impressao			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe tela com detalhes de Picking		
+4	OpEcommerce: clica em uma das Notas do Picking		SYSTEM exibe detalhes da Nota		
+5	OpEcommerce: clica em botao 'Imprimir Danfe'		SYSTEM exibe pdf com Danfe de Nota		
+6	OpEcommerce: clica no botao 'Cancelar'		SYSTEM exibe tela com detalhes de Picking		
+7	OpEcommerce: clica em uma das Notas do Picking		SYSTEM exibe detalhes da Nota		
+8	OpEcommerce: clica em botao 'Imprimir Danfe'		SYSTEM exibe pdf com Danfe de Nota		
+9	OpEcommerce: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: realiza picking depois de consultar veiculos			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
+4	OpEcommerce: clica em botao 'Iniciar Picking'		SYSTEM exibe tela com detalhes de Picking		
+5	OpEcommerce: clica em uma das Notas do Picking		SYSTEM exibe detalhes da Nota		
+6	OpEcommerce: clica em botao 'Imprimir Danfe'		SYSTEM exibe pdf com Danfe de Nota		
+7	OpEcommerce: clica em botao 'Imprimir'		SYSTEM envia documento para impressora e exibe tela de Picking		
+Postcondition:	
+

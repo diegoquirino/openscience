@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Administrador Realiza Picking De Ecommerce">
+<testsuite name="Administrador Registra Ocorrencia Em Nota De Coleta">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
   <testcase name="TC1 - Basic Flow (Happy Path)">
@@ -13,319 +13,496 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Navega pelas paginas da lista">
+  <testcase name="TC2 - Alternative Flow 1: Seleciona contador de &apos;Aguardando Picking&apos;">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Navega pelas paginas da lista]]></summary>
+    <summary><![CDATA[Alternative Flow 1: Seleciona contador de 'Aguardando Picking']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Aguardando Picking' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Clica no botao &apos;Voltar&apos;">
+  <testcase name="TC3 - Alternative Flow 2: Seleciona contador de &apos;Aceitas&apos;">
     <node_order><![CDATA[3]]></node_order>
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Clica no botao 'Voltar']]></summary>
+    <summary><![CDATA[Alternative Flow 2: Seleciona contador de 'Aceitas']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Aceitas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Ordena os Ecommerces">
+  <testcase name="TC4 - Alternative Flow 3: Seleciona contador de &apos;Recusadas&apos;">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Ordena os Ecommerces]]></summary>
+    <summary><![CDATA[Alternative Flow 3: Seleciona contador de 'Recusadas']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: ordena os Ecommerces por alguma coluna]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Recusadas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC5 - Alternative Flow 4: Filtra coletas da lista">
+  <testcase name="TC5 - Alternative Flow 4: Seleciona contador de &apos;A Caminho&apos;">
     <node_order><![CDATA[5]]></node_order>
     <externalid><![CDATA[TC5]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 4: Filtra coletas da lista]]></summary>
+    <summary><![CDATA[Alternative Flow 4: Seleciona contador de 'A Caminho']]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: filtra as coletas por algum campo]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em algum contador de 'A Caminho' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC6 - Alternative Flow 5: Cancela realizacao de Picking">
+  <testcase name="TC6 - Alternative Flow 5: Navega pelas paginas da lista">
     <node_order><![CDATA[6]]></node_order>
     <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 5: Cancela realizacao de Picking]]></summary>
+    <summary><![CDATA[Alternative Flow 5: Navega pelas paginas da lista]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em botao 'Cancelar']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC8 - Alternative Flow 7: Clica no botao &apos;Proximo Picking&apos;">
+  <testcase name="TC7 - Alternative Flow 6: Clica no botao &apos;Voltar&apos;">
     <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Clica no botao 'Voltar']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Alternative Flow 7: Ordena Coletas">
+    <node_order><![CDATA[8]]></node_order>
     <externalid><![CDATA[TC8]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 7: Clica no botao 'Proximo Picking']]></summary>
+    <summary><![CDATA[Alternative Flow 7: Ordena Coletas]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: ordena as Coletas por alguma coluna]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Proximo Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC9 - Alternative Flow 8: realiza picking depois de consultar veiculos">
-    <node_order><![CDATA[8]]></node_order>
+  <testcase name="TC9 - Alternative Flow 8: Cancela registro de ocorrencia">
+    <node_order><![CDATA[9]]></node_order>
     <externalid><![CDATA[TC9]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 8: realiza picking depois de consultar veiculos]]></summary>
+    <summary><![CDATA[Alternative Flow 8: Cancela registro de ocorrencia]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Picking' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de Ecommerces registrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Ecommerces listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre uma tela com o Picking diario para aquele Ecommerce selecionado]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em botao 'Consultar Veiculos']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe lista de veiculos para picking]]></expectedresults>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica em botao 'Iniciar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe os dados do Picking]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Finalizar Picking']]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC10 - Alternative Flow 9: Volta para lista de Coletas">
+    <node_order><![CDATA[10]]></node_order>
+    <externalid><![CDATA[TC10]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 9: Volta para lista de Coletas]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC11 - Alternative Flow 10: Filtra coletas da lista">
+    <node_order><![CDATA[11]]></node_order>
+    <externalid><![CDATA[TC11]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 10: Filtra coletas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: filtra as coletas por algum campo]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' associado a qualquer item da nota]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

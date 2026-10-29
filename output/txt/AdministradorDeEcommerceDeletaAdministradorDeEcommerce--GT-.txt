@@ -1,0 +1,48 @@
+System:	Bazooca
+Use Case:	Administrador De Ecommerce Deleta Administrador De Ecommerce	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica na opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM exibe tela com Detalhes de Ecommerce		
+3	AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+4	AdminEcommerce: confirma delecao		SYSTEM notifica que o Administrador de Ecommerce foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+3	AdminEcommerce: clica na opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM exibe tela com Detalhes de Ecommerce		
+4	AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	AdminEcommerce: confirma delecao		SYSTEM notifica que o Administrador de Ecommerce foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Administrador de Ecommerce			Execution Date:	
+Precondition:	Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica na opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM exibe tela com Detalhes de Ecommerce		
+3	AdminEcommerce: clica no botao 'Cancelar'		SYSTEM exibe tela com Detalhes de Ecommerce		
+4	AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	AdminEcommerce: confirma delecao		SYSTEM notifica que o Administrador de Ecommerce foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica na opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM exibe tela com Detalhes de Ecommerce		
+3	AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+4	AdminEcommerce: clica no botao 'Cancelar' do popup		SYSTEM exibe tela com Detalhes de Ecommerce		
+5	AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+6	AdminEcommerce: confirma delecao		SYSTEM notifica que o Administrador de Ecommerce foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+

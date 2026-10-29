@@ -1,0 +1,44 @@
+ALTS_SPECIFICATION "Administrador De Ecommerce Deleta Administrador De Ecommerce" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo"
+  POST_CONDITION: "O Administrador foi excluido com sucesso."
+
+  ACTORS {
+    AdminEcommerce: "Usuario Administrador de Ecommerce"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario esta logado no sistema. Existe mais de um usuario Administrador no Ecommerce alvo"]
+    S_BF_1 [flow: "basic", actor: "AdminEcommerce", action: "abre tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "AdminEcommerce", action: "clica na opcao 'Meu Ecommerce' no menu da tela principal", branches_af: [1]]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com Detalhes de Ecommerce"]
+    S_BF_5 [flow: "basic", actor: "AdminEcommerce", action: "clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados", branches_af: [2]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe popup pedindo Confirmacao de delecao"]
+    S_BF_7 [flow: "basic", actor: "AdminEcommerce", action: "confirma delecao", branches_af: [3]]
+    S_BF_8 [flow: "basic", actor: "system", action: "notifica que o Administrador de Ecommerce foi excluido com sucesso"]
+    S_AF1_1 [flow: "alternative_1", description: "Volta para tela inicial de sistema", actor: "AdminEcommerce", action: "clica no botao Voltar", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Cancela delecao de Administrador de Ecommerce", actor: "AdminEcommerce", action: "clica no botao 'Cancelar'", returns_to_bf: 4]
+    S_AF3_1 [flow: "alternative_3", description: "Fecha popup de confirmacao de delecao", actor: "AdminEcommerce", action: "clica no botao 'Cancelar' do popup", returns_to_bf: 4]
+    S_END [terminal, guard: "O Administrador foi excluido com sucesso."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "AdminEcommerce: clica na opcao 'Meu Ecommerce' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe tela com Detalhes de Ecommerce"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Volta para tela inicial de sistema"]
+    S_BF_4 -> S_BF_5 [event: "AdminEcommerce: clica em botao 'Excluir' de algum dos Administradores de Ecommerce listados"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe popup pedindo Confirmacao de delecao"]
+    S_BF_5 -> S_AF2_1 [branch: "AF_2 - Cancela delecao de Administrador de Ecommerce"]
+    S_BF_6 -> S_BF_7 [event: "AdminEcommerce: confirma delecao"]
+    S_BF_7 -> S_BF_8 [event: "system: notifica que o Administrador de Ecommerce foi excluido com sucesso"]
+    S_BF_7 -> S_AF3_1 [branch: "AF_3 - Fecha popup de confirmacao de delecao"]
+    S_BF_8 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF3_1 -> S_BF_4 [resume_basic_flow: 4]
+  }
+}

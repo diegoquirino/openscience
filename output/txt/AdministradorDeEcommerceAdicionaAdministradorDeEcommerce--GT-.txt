@@ -1,0 +1,94 @@
+System:	Bazooca
+Use Case:	Administrador De Ecommerce Adiciona Administrador De Ecommerce	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 9 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM mostra Administrador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Administrador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela registro de novo Administrador de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: clica no botao 'Cancelar' de registro de Administrador		SYSTEM exibe tela com informacoes de Ecommerce		
+4	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM mostra Administrador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Administrador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: clica no botao 'Voltar' do form de Ecommerce		SYSTEM exibe tela inicial do sistema		
+4	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+5	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM mostra Administrador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Administrador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Campos obrigatorios			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta ao usuario que o campo deve ser preenchido		
+4	AdminEcommerce: informa os campos obrigatorios e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome de Usuario ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta que ja existe um Administrador cadastrado com o nome de usuario informado		
+4	AdminEcommerce: informa um novo Nome de Usuario e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta que ja existe um Administrador cadastrado com o email informado		
+4	AdminEcommerce: informa um novo Email e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta que ja existe um Administrador cadastrado com o email informado		
+4	AdminEcommerce: informa um novo Email valido e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta que ja existe um Administrador cadastrado com o cpf informado		
+4	AdminEcommerce: informa um novo Cpf e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas nao coincidem			Execution Date:	
+Precondition:	Usuario Administrador de Ecommerce esta logado no sistema; Usuario pertence ao Ecommerce alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: clica no opcao 'Meu Ecommerce' no menu principal		SYSTEM exibe tela com informacoes de Ecommerce		
+3	AdminEcommerce: adiciona os dados do novo Administrador na secao 'Administradores' e clica no botao 'Adicionar Administrador'		SYSTEM alerta que as senhas informadas nao coincidem		
+4	AdminEcommerce: informa senhas iguais e clica no botao de 'Adicionar Administrador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

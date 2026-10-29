@@ -1,0 +1,38 @@
+System:	Bazooca
+Use Case:	Operador De Terminal Deleta Beneficio De Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	OpTerminal: clica em botao 'Excluir' de Beneficio a ser excluido		SYSTEM exibe popup pedindo Confirmacao de delecao		
+4	OpTerminal: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	Beneficio de Terminal foi excluido com sucesso.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: cancela delecao de Beneficio de Terminal			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	OpTerminal: clica em botao 'Excluir' de Beneficio a ser excluido		SYSTEM exibe popup pedindo Confirmacao de delecao		
+4	OpTerminal: clica em botao 'Cancelar' de popup		SYSTEM mostra a tela de Detalhes do Terminal		
+5	OpTerminal: clica em botao 'Excluir' de Beneficio a ser excluido		SYSTEM exibe popup pedindo Confirmacao de delecao		
+6	OpTerminal: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	Beneficio de Terminal foi excluido com sucesso.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpTerminal: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	OpTerminal: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+5	OpTerminal: clica em botao 'Excluir' de Beneficio a ser excluido		SYSTEM exibe popup pedindo Confirmacao de delecao		
+6	OpTerminal: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	Beneficio de Terminal foi excluido com sucesso.
+

@@ -1,0 +1,64 @@
+System:	Bazooca
+Use Case:	Administrador De Ecommerce Edita Ecommerce	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Ecommerce foi atualizado com sucesso.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Cancela registro de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: clica no botao Cancelar		SYSTEM exibe tela inicial do sistema		
+4	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+5	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Ecommerce foi atualizado com sucesso.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+4	AdminEcommerce: preenche os dados orbigatorios e clica no botao 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM alerta usuario de que Email e invalido		
+4	AdminEcommerce: insere um Email valido e clica no botao 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM alerta usuario de que senhas estao diferentes		
+4	AdminEcommerce: insere Senhas iguais e clica no botao 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	AdminEcommerce: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal		SYSTEM abre a tela de edicao do Ecommerce		
+3	AdminEcommerce: preenche os novos dados do Ecommerce e clica no botao 'Atualizar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+4	AdminEcommerce: insere uma permissao e clica no botao 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

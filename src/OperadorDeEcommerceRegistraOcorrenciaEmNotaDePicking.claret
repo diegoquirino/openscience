@@ -14,7 +14,7 @@ system "Bazooca", {
 			step 2, system, 	"mostra a tela com Picking para o dia"
 			step 3, Operador, 	"clica em botao 'Iniciar Picking'", af:[2]
 			step 4, system, 	"mostra tela com dados de Picking"
-			step 5, Operador, 	"clica no botao 'Registrar Ocorrencia' para uma determinada nota" 
+			step 5, Operador, 	"clica no botao 'Registrar Ocorrencia'" 
 			step 6, system, 	"abre a janela de registro da Ocorrencia"
 			step 7, Operador, 	"entra com o texto descrevendo sua Ocorrencia e clica no botao 'Registrar'", af:[1]
 			step 8, system, 	"cadastra a Ocorrencia e volta para tela de Picking", ef:[1]
@@ -31,9 +31,9 @@ system "Bazooca", {
 		}
 
 		exception 1, "Nao insere a descricao da ocorrencia'", { 
-			step 1, Operador, 	"nao insere a descricao da ocorrencia e clica no botao de 'Registrar'"
+			step 1, Operador, 	"nao insere a descricao da ocorrencia e clica no botao de 'Salvar'"
 			step 2, system, 	"informa que a mensagem da ocorrencia nao pode ser vazia"
-			step 3, Operador, 	"insere descricao valida para Ocorrencia e clica no botao 'Registrar'", bfs:4
+			step 3, Operador, 	"insere descricao valida para Ocorrencia e clica no botao 'Salvar'", bfs:4
 		} 
 		
 		postCondition "O sistema tem uma nova ocorrencia cadastrada para aquela nota." 

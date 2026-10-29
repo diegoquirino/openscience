@@ -1,0 +1,41 @@
+ALTS_SPECIFICATION "Operador De Terminal Deleta Beneficio De Terminal" {
+  VERSION: "1.0"
+  PRE_CONDITION: "O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado."
+  POST_CONDITION: "Beneficio de Terminal foi excluido com sucesso."
+
+  ACTORS {
+    OpTerminal: "Operador do Terminal"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado."]
+    S_BF_1 [flow: "basic", actor: "OpTerminal", action: "abre tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "OpTerminal", action: "seleciona a opção 'Meu Terminal' no menu da tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "mostra a tela de Detalhes do Terminal"]
+    S_BF_5 [flow: "basic", actor: "OpTerminal", action: "clica em botao 'Excluir' de Beneficio a ser excluido", branches_af: [2]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe popup pedindo Confirmacao de delecao"]
+    S_BF_7 [flow: "basic", actor: "OpTerminal", action: "confirma delecao", branches_af: [1]]
+    S_BF_8 [flow: "basic", actor: "system", action: "notifica que o Beneficio de Terminal foi excluido com sucesso"]
+    S_AF1_1 [flow: "alternative_1", description: "cancela delecao de Beneficio de Terminal", actor: "OpTerminal", action: "clica em botao 'Cancelar' de popup", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "Volta para tela inicial de sistema", actor: "OpTerminal", action: "clica no botao Voltar", returns_to_bf: 2]
+    S_END [terminal, guard: "Beneficio de Terminal foi excluido com sucesso."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: mostra a tela de Detalhes do Terminal"]
+    S_BF_4 -> S_BF_5 [event: "OpTerminal: clica em botao 'Excluir' de Beneficio a ser excluido"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe popup pedindo Confirmacao de delecao"]
+    S_BF_5 -> S_AF2_1 [branch: "AF_2 - Volta para tela inicial de sistema"]
+    S_BF_6 -> S_BF_7 [event: "OpTerminal: confirma delecao"]
+    S_BF_7 -> S_BF_8 [event: "system: notifica que o Beneficio de Terminal foi excluido com sucesso"]
+    S_BF_7 -> S_AF1_1 [branch: "AF_1 - cancela delecao de Beneficio de Terminal"]
+    S_BF_8 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

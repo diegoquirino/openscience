@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Operador De Terminal Edita Beneficio De Terminal">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela de Detalhes do Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona Beneficio a ser editado]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe form de edicao de dados de Beneficio]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: modifica os dados existentes e clica no botao de 'Salvar' do form de Beneficio]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Beneficio de Terminal foi atualizado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: cancela atualizacao de dados de Beneficio de Terminal">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: cancela atualizacao de dados de Beneficio de Terminal]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela de Detalhes do Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona Beneficio a ser editado]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe form de edicao de dados de Beneficio]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: clica em botao 'Cancelar' de form de dados de Beneficio]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela de Detalhes do Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona Beneficio a ser editado]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe form de edicao de dados de Beneficio]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[OpTerminal: modifica os dados existentes e clica no botao de 'Salvar' do form de Beneficio]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Beneficio de Terminal foi atualizado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 1: insere algum dado invalido">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: insere algum dado invalido]]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela de Detalhes do Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona Beneficio a ser editado]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe form de edicao de dados de Beneficio]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: modifica os dados existentes e clica no botao de 'Salvar' do form de Beneficio]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que determinado dado esta invalido]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 2: Nao insere algum dado obrigatorio&apos;">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Nao insere algum dado obrigatorio']]></summary>
+    <preconditions><![CDATA[O Operador logado; Operador pertence ao Terminal alvo. Terminal alvo tem pelo menos um Beneficio registrado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona a opção 'Meu Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra a tela de Detalhes do Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona Beneficio a ser editado]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe form de edicao de dados de Beneficio]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: modifica os dados existentes e clica no botao de 'Salvar' do form de Beneficio]]></actions>
+        <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

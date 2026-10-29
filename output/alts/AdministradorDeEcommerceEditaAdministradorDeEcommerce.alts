@@ -1,0 +1,64 @@
+ALTS_SPECIFICATION "Administrador De Ecommerce Edita Administrador De Ecommerce" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Administrador logado no sistema; mais de um Administrador de Ecommerce cadastrados."
+  POST_CONDITION: "Administrador de Ecommerce modificado no sistema."
+
+  ACTORS {
+    AdminEcommerce: "Usuario Administrador"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Administrador logado no sistema; mais de um Administrador de Ecommerce cadastrados."]
+    S_BF_1 [flow: "basic", actor: "AdminEcommerce", action: "seleciona a opcao 'Meu Ecommerce' no menu da tela principal"]
+    S_BF_2 [flow: "basic", actor: "system", action: "abre a tela de edicao do Ecommerce"]
+    S_BF_3 [flow: "basic", actor: "AdminEcommerce", action: "seleciona o Administrador na lista de Administrador"]
+    S_BF_4 [flow: "basic", actor: "system", action: "abre os campos de edicao do Administrador"]
+    S_BF_5 [flow: "basic", actor: "AdminEcommerce", action: "adiciona os novos dados do Administrador e clica no botao 'Atualizar'", branches_af: [1]]
+    S_BF_6 [flow: "basic", actor: "system", action: "salva o novo Administrador com os novos dados", branches_ef: [1, 2, 3, 4, 5, 6]]
+    S_AF1_1 [flow: "alternative_1", description: "Cancela edicao de Administrador", actor: "AdminEcommerce", action: "clica no botao Cancelar", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Dado obrigatorio'", actor: "system", action: "informa que os dados obrigatorios devem ser preenchidos"]
+    S_EF1_2 [flow: "exception_1", description: "Dado obrigatorio'", actor: "AdminEcommerce", action: "adiciona os dados obrigatorios e clica no botao 'Atualizar'"]
+    S_EF2_1 [flow: "exception_2", description: "Nome cadastrado", actor: "system", action: "alerta que ja existe um Administrador cadastrado com o nome de usuario informado"]
+    S_EF2_2 [flow: "exception_2", description: "Nome cadastrado", actor: "AdminEcommerce", action: "corrige o nome para o Administrador e clica no botao 'Atualizar'"]
+    S_EF3_1 [flow: "exception_3", description: "Email cadastrado", actor: "system", action: "alerta que ja existe um Administrador cadastrado com o email informado"]
+    S_EF3_2 [flow: "exception_3", description: "Email cadastrado", actor: "AdminEcommerce", action: "corrige o email e clica no botao 'Atualizar'"]
+    S_EF4_1 [flow: "exception_4", description: "Email invalido", actor: "system", action: "alerta que ja existe um Administrador cadastrado com o email informado"]
+    S_EF4_2 [flow: "exception_4", description: "Email invalido", actor: "AdminEcommerce", action: "corrige o email e clica no botao 'Atualizar'"]
+    S_EF5_1 [flow: "exception_5", description: "Cpf cadastrado", actor: "system", action: "alerta que ja existe um Administrador cadastrado com o cpf informado"]
+    S_EF5_2 [flow: "exception_5", description: "Cpf cadastrado", actor: "AdminEcommerce", action: "corrige o cpf e clica no botao 'Atualizar'"]
+    S_EF6_1 [flow: "exception_6", description: "Senhas diferentes", actor: "system", action: "alerta que as senhas informadas nao coincidem"]
+    S_EF6_2 [flow: "exception_6", description: "Senhas diferentes", actor: "AdminEcommerce", action: "corrige as senhas e clica no botao 'Atualizar'"]
+    S_END [terminal, guard: "Administrador de Ecommerce modificado no sistema."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: abre a tela de edicao do Ecommerce"]
+    S_BF_2 -> S_BF_3 [event: "AdminEcommerce: seleciona o Administrador na lista de Administrador"]
+    S_BF_3 -> S_BF_4 [event: "system: abre os campos de edicao do Administrador"]
+    S_BF_4 -> S_BF_5 [event: "AdminEcommerce: adiciona os novos dados do Administrador e clica no botao 'Atualizar'"]
+    S_BF_5 -> S_BF_6 [event: "system: salva o novo Administrador com os novos dados"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Cancela edicao de Administrador"]
+    S_BF_6 -> S_END [event: "Complete"]
+    S_BF_6 -> S_EF1_1 [branch: "EF_1 - Dado obrigatorio'"]
+    S_BF_6 -> S_EF2_1 [branch: "EF_2 - Nome cadastrado"]
+    S_BF_6 -> S_EF3_1 [branch: "EF_3 - Email cadastrado"]
+    S_BF_6 -> S_EF4_1 [branch: "EF_4 - Email invalido"]
+    S_BF_6 -> S_EF5_1 [branch: "EF_5 - Cpf cadastrado"]
+    S_BF_6 -> S_EF6_1 [branch: "EF_6 - Senhas diferentes"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_EF1_2 [event: "AdminEcommerce: adiciona os dados obrigatorios e clica no botao 'Atualizar'"]
+    S_EF1_2 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_EF2_2 [event: "AdminEcommerce: corrige o nome para o Administrador e clica no botao 'Atualizar'"]
+    S_EF2_2 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_EF3_2 [event: "AdminEcommerce: corrige o email e clica no botao 'Atualizar'"]
+    S_EF3_2 -> S_END [event: "ErrorExit"]
+    S_EF4_1 -> S_EF4_2 [event: "AdminEcommerce: corrige o email e clica no botao 'Atualizar'"]
+    S_EF4_2 -> S_END [event: "ErrorExit"]
+    S_EF5_1 -> S_EF5_2 [event: "AdminEcommerce: corrige o cpf e clica no botao 'Atualizar'"]
+    S_EF5_2 -> S_END [event: "ErrorExit"]
+    S_EF6_1 -> S_EF6_2 [event: "AdminEcommerce: corrige as senhas e clica no botao 'Atualizar'"]
+    S_EF6_2 -> S_END [event: "ErrorExit"]
+  }
+}

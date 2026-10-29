@@ -1,0 +1,48 @@
+System:	Bazooca
+Use Case:	Operador De Ecommerce Realiza Picking De Ecommerce	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
+4	OpEcommerce: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe tela inicial de sistema		
+Postcondition:	O Picking diario foi realizado para o Ecommerce
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Clica no botao 'Voltar'			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+5	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
+6	OpEcommerce: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe tela inicial de sistema		
+Postcondition:	O Picking diario foi realizado para o Ecommerce
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Clica no botao 'Proximo Picking'			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica no botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
+4	OpEcommerce: clica no botao 'Proximo Picking'		SYSTEM exibe os dados do Picking		
+5	OpEcommerce: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe tela inicial de sistema		
+Postcondition:	O Picking diario foi realizado para o Ecommerce
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: realiza picking depois de consultar veiculos			Execution Date:	
+Precondition:	Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	OpEcommerce: entra na tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	OpEcommerce: clica na opcao 'Picking' no menu da tela principal		SYSTEM exibe tela com o Picking diario para o Ecommerce do Operador		
+3	OpEcommerce: clica em botao 'Consultar Veiculos'		SYSTEM exibe lista de veiculos para picking		
+4	OpEcommerce: clica em botao 'Iniciar Picking'		SYSTEM exibe os dados do Picking		
+5	OpEcommerce: clica no botao de 'Finalizar Picking'		SYSTEM notifica que Picking foi finalizado com sucesso e exibe tela inicial de sistema		
+Postcondition:	O Picking diario foi realizado para o Ecommerce
+

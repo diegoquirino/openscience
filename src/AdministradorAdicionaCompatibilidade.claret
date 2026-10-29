@@ -12,18 +12,10 @@ system "Bazooca",{
         basicFlow {
             step 1, Administrador,  "Clicar na opcao 'Compatibilidade' no menu da tela principal"
             step 2, system,         "exibe a tela de listagem das Compatibilidades"
-            step 3, Administrador,  "clica em 'Adicionar Compatibilidade'", af:[1]
+            step 3, Administrador,  "clica em 'Adicionar Compatibilidade'"
             step 4, system,         "exibe a tela de cadastro de Compatibilidade"
-            step 5, Administrador,  "preenche os dados da Compatibilidade e clica em botao 'Registrar'", af:[2]
+            step 5, Administrador,  "preenche os dados da Compatibilidade e clica em botao 'Registrar'"
             step 6, system,         "notifica usuario que os nova Compatibilidade foi adicionada com sucesso", ef:[1,2,3]
-        }
-
-        alternative 1, "Volta para listagem de Compatibilidades", {
-            step 1, Administrador, "clica no botao Voltar", bfs:2
-        }
-
-        alternative 2, "Cancelar registro de nova Compatibilidade", {
-            step 1, Administrador, "clica no botao Cancelar", bfs:2
         }
 
         exception 1, "Nao insere algum dado obrigatorio'", { 

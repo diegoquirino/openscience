@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador De Ecommerce Edita Operador De Ecommerce">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM salva o novo operador com os novos dados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Cancela edicao de operador">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Cancela edicao de operador]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: clica no botao Cancelar]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM salva o novo operador com os novos dados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Volta para tela inicial do sistema">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Volta para tela inicial do sistema]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM salva o novo operador com os novos dados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 1: Dado obrigatorio&apos;">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Dado obrigatorio']]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os dados obrigatorios e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 2: Nome cadastrado">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Nome cadastrado]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: corrige o nome para o Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 3: Email cadastrado">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: Email cadastrado]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que ja existe um Operador cadastrado com o email informado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: corrige o email e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Exception Flow 5: Cpf cadastrado">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 5: Cpf cadastrado]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: corrige o cpf e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC9 - Exception Flow 6: Senhas diferentes">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC9]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 6: Senhas diferentes]]></summary>
+    <preconditions><![CDATA[Administrador logado no sistema; Operadores de Ecommerce cadastrados.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[AdminEcommerce: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona a opcao 'Meu Ecommerce' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao do Ecommerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[AdminEcommerce: seleciona o operador na lista de operadores]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre os campos de edicao do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[AdminEcommerce: adiciona os novos dados do Operador e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que as senhas informadas nao coincidem]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[AdminEcommerce: corrige as senhas e clica no botao 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

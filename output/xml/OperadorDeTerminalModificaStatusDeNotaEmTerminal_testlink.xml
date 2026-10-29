@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Operador De Terminal Modifica Status De Nota Em Terminal">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: entra na tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Dashboard do Terminal do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no contador de 'Notas para Entrada']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona alguma 'Nota' da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da 'Nota']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao de 'Alterar Status']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre drop list para selecao de novo Status]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona novo Status e clica em 'Alterar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Status da Nota foi alterado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: volta para tela inicial do sistema">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: volta para tela inicial do sistema]]></summary>
+    <preconditions><![CDATA[Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: entra na tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Dashboard do Terminal do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no contador de 'Notas para Entrada']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Dashboard do Terminal do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no contador de 'Notas para Entrada']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona alguma 'Nota' da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da 'Nota']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao de 'Alterar Status']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre drop list para selecao de novo Status]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[9]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona novo Status e clica em 'Alterar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Status da Nota foi alterado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: cancela modificacao de status">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: cancela modificacao de status]]></summary>
+    <preconditions><![CDATA[Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: entra na tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Dashboard do Terminal do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no contador de 'Notas para Entrada']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona alguma 'Nota' da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da 'Nota']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao de 'Alterar Status']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre drop list para selecao de novo Status]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona alguma 'Nota' da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da 'Nota']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao de 'Alterar Status']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre drop list para selecao de novo Status]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[9]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona novo Status e clica em 'Alterar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Status da Nota foi alterado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: seleciona notas de saida">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: seleciona notas de saida]]></summary>
+    <preconditions><![CDATA[Usuario Operador de Terminal esta logado no sistema. Existe um Terminal com Notas registradas.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[OpTerminal: entra na tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[OpTerminal: clica na opcao 'Dashboard de Terminal' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela com o Dashboard do Terminal do Operador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[OpTerminal: clica em botao 'Notas para Saida']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Pedidos' ou 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona alguma 'Nota' da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da 'Nota']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[OpTerminal: clica no botao de 'Alterar Status']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre drop list para selecao de novo Status]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[OpTerminal: seleciona novo Status e clica em 'Alterar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Status da Nota foi alterado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

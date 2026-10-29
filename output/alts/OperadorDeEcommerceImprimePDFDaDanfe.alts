@@ -1,0 +1,56 @@
+ALTS_SPECIFICATION "Operador De Ecommerce Imprime Pdf Da Danfe" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia"
+  POST_CONDITION: ""
+
+  ACTORS {
+    OpEcommerce: "Usuario Operador de Ecommerce"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario Operador de Ecommerce esta logado no sistema. Existe um Ecommerce com picking para o dia"]
+    S_BF_1 [flow: "basic", actor: "OpEcommerce", action: "entra na tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "OpEcommerce", action: "clica na opcao 'Picking' no menu da tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com o Picking diario para o Ecommerce do Operador"]
+    S_BF_5 [flow: "basic", actor: "OpEcommerce", action: "clica no botao 'Iniciar Picking'", branches_af: [1, 3]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe tela com detalhes de Picking"]
+    S_BF_7 [flow: "basic", actor: "OpEcommerce", action: "clica em uma das Notas do Picking"]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe detalhes da Nota"]
+    S_BF_9 [flow: "basic", actor: "OpEcommerce", action: "clica em botao 'Imprimir Danfe'"]
+    S_BF_10 [flow: "basic", actor: "system", action: "exibe pdf com Danfe de Nota"]
+    S_BF_11 [flow: "basic", actor: "OpEcommerce", action: "clica em botao 'Imprimir'", branches_af: [2]]
+    S_BF_12 [flow: "basic", actor: "system", action: "envia documento para impressora e exibe tela de Picking"]
+    S_AF1_1 [flow: "alternative_1", description: "volta para tela inicial do sistema", actor: "OpEcommerce", action: "clica no botao 'Voltar'", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "cancela impressao", actor: "OpEcommerce", action: "clica no botao 'Cancelar'", returns_to_bf: 6]
+    S_AF3_1 [flow: "alternative_3", description: "realiza picking depois de consultar veiculos", actor: "OpEcommerce", action: "clica em botao 'Consultar Veiculos'"]
+    S_AF3_2 [flow: "alternative_3", description: "realiza picking depois de consultar veiculos", actor: "system", action: "exibe lista de veiculos para picking"]
+    S_AF3_3 [flow: "alternative_3", description: "realiza picking depois de consultar veiculos", actor: "OpEcommerce", action: "clica em botao 'Iniciar Picking'", returns_to_bf: 6]
+    S_END [terminal, guard: ""]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "OpEcommerce: clica na opcao 'Picking' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe tela com o Picking diario para o Ecommerce do Operador"]
+    S_BF_4 -> S_BF_5 [event: "OpEcommerce: clica no botao 'Iniciar Picking'"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe tela com detalhes de Picking"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - volta para tela inicial do sistema"]
+    S_BF_5 -> S_AF3_1 [branch: "AF_3 - realiza picking depois de consultar veiculos"]
+    S_BF_6 -> S_BF_7 [event: "OpEcommerce: clica em uma das Notas do Picking"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe detalhes da Nota"]
+    S_BF_8 -> S_BF_9 [event: "OpEcommerce: clica em botao 'Imprimir Danfe'"]
+    S_BF_9 -> S_BF_10 [event: "system: exibe pdf com Danfe de Nota"]
+    S_BF_10 -> S_BF_11 [event: "OpEcommerce: clica em botao 'Imprimir'"]
+    S_BF_11 -> S_BF_12 [event: "system: envia documento para impressora e exibe tela de Picking"]
+    S_BF_11 -> S_AF2_1 [branch: "AF_2 - cancela impressao"]
+    S_BF_12 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_6 [resume_basic_flow: 6]
+    S_AF3_1 -> S_AF3_2 [event: "system: exibe lista de veiculos para picking"]
+    S_AF3_2 -> S_AF3_3 [event: "OpEcommerce: clica em botao 'Iniciar Picking'"]
+    S_AF3_3 -> S_BF_6 [resume_basic_flow: 6]
+  }
+}
