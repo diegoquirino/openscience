@@ -2,8 +2,537 @@
 <testsuite name="Consolidated Test Suite">
   <node_order><![CDATA[0]]></node_order>
   <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
-  <testsuite name="Administrador Adiciona Administrador">
+  <testsuite name="Administrador Edita Terminal">
     <node_order><![CDATA[1]]></node_order>
+    <details><![CDATA[Use case: Administrador Edita Terminal]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Ordena lista de Terminais">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Ordena lista de Terminais]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: ordena lista dos Terminais por alguma coluna]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Adiciona Beneficio associado a Terminal">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Adiciona Beneficio associado a Terminal]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio']]></actions>
+          <expectedresults><![CDATA[SYSTEM incrementa o a lista de beneficio do Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: clica em Atualizar]]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Cancela edicao">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Cancela edicao]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica no botao de 'Cancelar']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: Navega por paginas de tabela">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Navega por paginas de tabela]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em botao de navegacao de paginas de tabela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: Filtra lista de Terminais">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Filtra lista de Terminais]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: preenche campos de filtragem]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 6: Volta para tela inicial de sistema">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Volta para tela inicial de sistema]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC8 - Exception Flow 1: Usuario nao preenche algum campo obrigatorio">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC8]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Usuario nao preenche algum campo obrigatorio]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM informa que o campo e obrigatorio]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Ordena lista de Terminais">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Ordena lista de Terminais]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: ordena lista dos Terminais por alguma coluna]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Adiciona Beneficio associado a Terminal">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Adiciona Beneficio associado a Terminal]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio']]></actions>
+          <expectedresults><![CDATA[SYSTEM incrementa o a lista de beneficio do Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: clica em Atualizar]]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Cancela edicao">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Cancela edicao]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica no botao de 'Cancelar']]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[5]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: Navega por paginas de tabela">
+      <node_order><![CDATA[13]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Navega por paginas de tabela]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em botao de navegacao de paginas de tabela]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: Filtra lista de Terminais">
+      <node_order><![CDATA[14]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Filtra lista de Terminais]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: preenche campos de filtragem]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Exception Flow 1: Usuario nao preenche algum campo obrigatorio">
+      <node_order><![CDATA[15]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Usuario nao preenche algum campo obrigatorio]]></summary>
+      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[2]]></step_number>
+          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[3]]></step_number>
+          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM informa que o campo e obrigatorio]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+        <step>
+          <step_number><![CDATA[4]]></step_number>
+          <actions><![CDATA[Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar']]></actions>
+          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="Administrador Adiciona Administrador">
+    <node_order><![CDATA[2]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Administrador]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -300,7 +829,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Adiciona Beneficio Ao Terminal">
-    <node_order><![CDATA[2]]></node_order>
+    <node_order><![CDATA[3]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Beneficio Ao Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -474,7 +1003,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Adiciona Compatibilidade">
-    <node_order><![CDATA[3]]></node_order>
+    <node_order><![CDATA[4]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Compatibilidade]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -730,7 +1259,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Adiciona Ecommerce">
-    <node_order><![CDATA[4]]></node_order>
+    <node_order><![CDATA[5]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -945,7 +1474,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Adiciona Operador De Ecommerce">
-    <node_order><![CDATA[5]]></node_order>
+    <node_order><![CDATA[6]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Operador De Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1365,7 +1894,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Adiciona Terminal">
-    <node_order><![CDATA[6]]></node_order>
+    <node_order><![CDATA[7]]></node_order>
     <details><![CDATA[Use case: Administrador Adiciona Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1580,7 +2109,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Administrador">
-    <node_order><![CDATA[7]]></node_order>
+    <node_order><![CDATA[8]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Administrador]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1784,7 +2313,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Beneficio de Terminal">
-    <node_order><![CDATA[8]]></node_order>
+    <node_order><![CDATA[9]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Beneficio de Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1988,7 +2517,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Compatibilidade">
-    <node_order><![CDATA[9]]></node_order>
+    <node_order><![CDATA[10]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Compatibilidade]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2192,7 +2721,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Ecommerce">
-    <node_order><![CDATA[10]]></node_order>
+    <node_order><![CDATA[11]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2396,7 +2925,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Operador De Ecommerce">
-    <node_order><![CDATA[11]]></node_order>
+    <node_order><![CDATA[12]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Operador De Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2600,7 +3129,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Operador De Terminal">
-    <node_order><![CDATA[12]]></node_order>
+    <node_order><![CDATA[13]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Operador De Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2804,7 +3333,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Deleta Terminal">
-    <node_order><![CDATA[13]]></node_order>
+    <node_order><![CDATA[14]]></node_order>
     <details><![CDATA[Use case: Administrador Deleta Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3008,7 +3537,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Administrador">
-    <node_order><![CDATA[14]]></node_order>
+    <node_order><![CDATA[15]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Administrador]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3428,7 +3957,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Beneficio De Terminal">
-    <node_order><![CDATA[15]]></node_order>
+    <node_order><![CDATA[16]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Beneficio De Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3712,7 +4241,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Compatibilidade">
-    <node_order><![CDATA[16]]></node_order>
+    <node_order><![CDATA[17]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Compatibilidade]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4031,7 +4560,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Ecommerce">
-    <node_order><![CDATA[17]]></node_order>
+    <node_order><![CDATA[18]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4369,7 +4898,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Operador De Ecommerce">
-    <node_order><![CDATA[18]]></node_order>
+    <node_order><![CDATA[19]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Operador De Ecommerce]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -4818,7 +5347,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Operador De Terminal">
-    <node_order><![CDATA[19]]></node_order>
+    <node_order><![CDATA[20]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Operador De Terminal]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -5267,7 +5796,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Parametros do Engine">
-    <node_order><![CDATA[20]]></node_order>
+    <node_order><![CDATA[21]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Parametros do Engine]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -5441,7 +5970,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Parametros do NFe Reader">
-    <node_order><![CDATA[21]]></node_order>
+    <node_order><![CDATA[22]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Parametros do NFe Reader]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -5615,7 +6144,7 @@
     </testcase>
   </testsuite>
   <testsuite name="Administrador Edita Pedido">
-    <node_order><![CDATA[22]]></node_order>
+    <node_order><![CDATA[23]]></node_order>
     <details><![CDATA[Use case: Administrador Edita Pedido]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -5994,255 +6523,6 @@
         <step>
           <step_number><![CDATA[6]]></step_number>
           <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
-          <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="Administrador Edita Terminal">
-    <node_order><![CDATA[23]]></node_order>
-    <details><![CDATA[Use case: Administrador Edita Terminal]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Ordena lista de Terminais">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Ordena lista de Terminais]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: ordena lista dos Terminais por alguma coluna]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Adiciona Beneficio associado a Terminal">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Adiciona Beneficio associado a Terminal]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio']]></actions>
-          <expectedresults><![CDATA[SYSTEM incrementa o a lista de beneficio do Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: clica em Atualizar]]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Cancela edicao">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Cancela edicao]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: clica no botao de 'Cancelar']]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[5]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 4: Navega por paginas de tabela">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Navega por paginas de tabela]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: clica em botao de navegacao de paginas de tabela]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 5: Filtra lista de Terminais">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Filtra lista de Terminais]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: preenche campos de filtragem]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Exception Flow 1: Usuario nao preenche algum campo obrigatorio">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Usuario nao preenche algum campo obrigatorio]]></summary>
-      <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[2]]></step_number>
-          <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
-          <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[3]]></step_number>
-          <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
-          <expectedresults><![CDATA[SYSTEM informa que o campo e obrigatorio]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-        <step>
-          <step_number><![CDATA[4]]></step_number>
-          <actions><![CDATA[Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar']]></actions>
           <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>

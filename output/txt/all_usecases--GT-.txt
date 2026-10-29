@@ -1,6 +1,94 @@
 System:	Bazooca
 Use Case:	All Use Cases
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 160 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 168 test case(s)	Creation Date:	29/10/2026
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Ordena lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: ordena lista dos Terminais por alguma coluna		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Adiciona Beneficio associado a Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio'		SYSTEM incrementa o a lista de beneficio do Terminal		
+4	Administrador: clica em Atualizar		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Cancela edicao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: clica no botao de 'Cancelar'		SYSTEM exibe uma lista com os Terminais cadastrados		
+4	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+5	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Navega por paginas de tabela			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: preenche campos de filtragem		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica no botao Voltar		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuario nao preenche algum campo obrigatorio			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM informa que o campo e obrigatorio		
+4	Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
 
 Use Case:	Administrador Adiciona Administrador	Version:	1.0
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
