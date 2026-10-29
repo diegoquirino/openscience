@@ -212,9 +212,44 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC7 - Exception Flow 1: Usuario nao preenche algum campo obrigatorio">
+  <testcase name="TC7 - Alternative Flow 6: Volta para tela inicial de sistema">
     <node_order><![CDATA[7]]></node_order>
     <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Volta para tela inicial de sistema]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: Entra na tela de Listagem de Terminais]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe uma lista com os Terminais cadastrados]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em um dos terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: altera dados do terminal e clica no botao de 'Atualizar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario de que Terminal foi atualizado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Exception Flow 1: Usuario nao preenche algum campo obrigatorio">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Usuario nao preenche algum campo obrigatorio]]></summary>
     <preconditions><![CDATA[Usuario Administrador esta logado no sistema]]></preconditions>

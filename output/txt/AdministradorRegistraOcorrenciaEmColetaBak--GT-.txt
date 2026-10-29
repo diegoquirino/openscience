@@ -1,0 +1,122 @@
+System:	Bazooca
+Use Case:	Administrador Registra Ocorrencia Em Coleta	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 10 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona contador de 'Aguardando Picking'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Aguardando Picking' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Seleciona contador de 'Aceitas'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Seleciona contador de 'Recusadas'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Recusadas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Seleciona contador de 'A Caminho'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'A Caminho' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Coletas'		
+4	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+5	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Clica no botao Voltar			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
+4	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+5	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Ordena Coletas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: ordena as coletas por alguma coluna		SYSTEM abre uma tela com as listas das 'Coletas'		
+4	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+5	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+6	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Cancela registro de ocorrencia			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Volta para lista de Coletas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Geradas' na secao de 'Coletas'		SYSTEM abre uma tela com as listas das 'Coletas'		
+3	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+4	Administrador: clica em botao 'Voltar'		SYSTEM abre uma tela com as listas das 'Coletas'		
+5	Administrador: seleciona alguma Coleta da lista		SYSTEM exibe os dados da Coleta		
+6	Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada para todas as notas da coleta
+

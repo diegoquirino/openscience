@@ -1,4 +1,4 @@
-	system "Bazooca", {
+system "Bazooca", {
 
 	usecase "Administrador Edita Pedido", {
 
@@ -10,38 +10,32 @@
 		preCondition "Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema."
 
 		basicFlow {
-			step 1, Administrador,  "abre tela inicial do sistema"
-			step 2, system,         "exibe tela inicial do sistema"
-			step 3, Administrador, 	"clica na opcao 'Pedidos' no menu da tela principal"
-			step 4, system, 		"exibe a tela de listagem de Pedidos"
-			step 5, Administrador, 	"clica em um Pedido existente", af:[1,2,3,5]
-			step 6, system, 		"exibe a tela de edicao de Pedido"
-			step 7, Administrador, 	"preenche os dados de novo CEP"
-			step 8, system, 		"preenche demais campos de Endereco exceto Numero e Complemento", ef:[1]
-			step 9, Administrador, 	"preenche demais campos de Endereco e clica em Atualizar", af:[4]
-			step 10, system, 		"notifica usuario que o Pedido foi atualizado com sucesso", ef:[2]
+			step 1, Administrador, 	"Clicar na opcao 'Pedidos' no menu da tela principal"
+			step 2, system, 		"exibe a tela de listagem de Pedidos"
+			step 3, Administrador, 	"clica em um Pedido existente", af:[1,2,3]
+			step 4, system, 		"exibe a tela de edicao de Pedido"
+			step 5, Administrador, 	"preenche os dados de novo CEP"
+			step 6, system, 		"preenche demais campos de Endereco exceto Numero e Complemento", ef:[1]
+			step 7, Administrador, 	"preenche demais campos de Endereco e clica em Atualizar", af:[4]
+			step 8, system, 		"notifica usuario que o Pedido foi atualizado com sucesso", ef:[2]
 		}
 
 		
-		alternative 1, "ordena lista de Pedidos",  {
-			step 1, Administrador, "clica em um dos botões de ordenacao associada a uma coluna da tabela", bfs:4
+		alternative 1, "Usuario ordena lista de Pedidos",  {
+			step 1, Administrador, "clica em um dos botões de ordenacao associada a uma coluna da tabela", bfs:2
 		}
 
-		alternative 2, "filtra lista de Pedidos", {
-			step 1, Administrador, "preenche campos de filtragem", bfs:4
+		alternative 2, "Usuario filtra lista de Pedidos", {
+			step 1, Administrador, "preenche campos de filtragem", bfs:2
 		}
 
-		alternative 3, "navega por paginas de tabela", {
-			step 1, Administrador, "clica em botao de navegacao de paginas de tabela", bfs:4
+		alternative 3, "Usuario navega por paginas de tabela", {
+			step 1, Administrador, "clica em botao de navegacao de paginas de tabela", bfs:2
 		}
 
-		alternative 4, "cancela atualizacao de Pedido", {
-			step 1, Administrador, "clica no botao Cancelar", bfs:4
-		}
-
-		alternative 5, "volta para tela inicial de sistema", {
+		alternative 4, "Usuario cancela atualizacao de Pedido", {
 			step 1, Administrador, "clica no botao Cancelar", bfs:2
-		}		
+		}
 
 
 		exception 1, "Usuario insere CEP invalido", {

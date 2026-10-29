@@ -19,7 +19,7 @@ system "Bazooca", {
             step 7,  Administrador,  "clica no botao de 'Excluir'", af:[2]
             step 8,  system,         "exibe popup pedindo Confirmacao de delecao"
             step 9,  Administrador,  "confirma delecao", af:[3]
-            step 10, system,         "notifica que o Administrador foi excluido com sucesso"
+            step 10, system,         "notifica que o Administrador foi adicionado com sucesso", ef:[1,2,3,4]
         }
 
         alternative 1, "Volta para tela inicial de sistema", {
@@ -27,13 +27,33 @@ system "Bazooca", {
         }
 
         alternative 2, "Cancela delecao de Administrador", {
-            step 1, Administrador, "clica no botao 'Cancelar'", bfs:4
+            step 1, Administrador, "clica no botao Cancelar", bfs:4
         }
 
         alternative 3, "Fecha popup de confirmacao de delecao", {
             step 1, Administrador, "clica no botao 'Cancelar' do popup", bfs:6
-        }        
+        }
 
-        postCondition "O Administrador foi excluido com sucesso."
+        exception 1, "Dados obrigatorios'", { 
+            step 1, system,         "informa que os dados obrigatorios devem ser preenchidos"
+            step 2, Administrador,  "preenche os dados orbigatorios e clica no botao 'Registrar'", bfs:8
+        } 
+
+        exception 2, "Email invalido", {
+            step 1, system,         "alerta usuario de que Email e invalido"
+            step 2, Administrador,  "insere um Email valido e clica no botao 'Registrar'", bfs:8
+        }
+
+        exception 3, "Senha e Confirmacao diferentes", {
+            step 1, system,         "alerta usuario de que senhas estao diferentes"
+            step 2, Administrador,  "insere Senhas iguais e clica no botao 'Registrar'", bfs:8
+        }
+
+        exception 4, "Sem Permissao", {
+            step 1, system,         "alerta usuario que Administrador nao esta com nenhuma Permissao"
+            step 2, Administrador,  "insere uma permissao e clica no botao 'Registrar'", bfs:8
+        }
+
+        postCondition "O Administrador foi adicionado com sucesso."
     }
 }

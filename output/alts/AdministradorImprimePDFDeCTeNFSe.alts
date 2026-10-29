@@ -1,0 +1,65 @@
+ALTS_SPECIFICATION "Administrador Imprime Pdf De CTe NFSe" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia"
+  POST_CONDITION: "O Picking diario foi realizado para o Ecommerce"
+
+  ACTORS {
+    Administrador: "Usuario Administrador"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia"]
+    S_BF_1 [flow: "basic", actor: "Administrador", action: "clica na opcao 'Picking' no menu da tela principal"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe lista de Ecommerces registrados no sistema"]
+    S_BF_3 [flow: "basic", actor: "Administrador", action: "clica em algum dos Ecommerces listados", branches_af: [1, 2, 3, 4]]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe tela com o Picking diario para aquele Ecommerce selecionado"]
+    S_BF_5 [flow: "basic", actor: "Administrador", action: "clica no botao 'Iniciar Picking'", branches_af: [5, 6, 8]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe os dados do Picking"]
+    S_BF_7 [flow: "basic", actor: "Administrador", action: "clica no botao de 'Imprimir CT-e/NFS-e'", branches_af: [7]]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe pdf com CT-e/NFS-e da ?????"]
+    S_BF_8 [flow: "basic", actor: "system", action: "notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema"]
+    S_AF1_1 [flow: "alternative_1", description: "Navega pelas paginas da lista", actor: "Administrador", action: "seleciona outra pagina", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Clica no botao 'Voltar'", actor: "Administrador", action: "clica no botao 'Voltar'", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "Ordena os Ecommerces", actor: "Administrador", action: "ordena os Ecommerces por alguma coluna", returns_to_bf: 2]
+    S_AF4_1 [flow: "alternative_4", description: "Filtra coletas da lista", actor: "Administrador", action: "filtra as coletas por algum campo", returns_to_bf: 2]
+    S_AF5_1 [flow: "alternative_5", description: "Cancela realizacao de Picking", actor: "Administrador", action: "clica em botao 'Cancelar'", returns_to_bf: 2]
+    S_AF6_1 [flow: "alternative_6", description: "Volta para lista de Ecommerces", actor: "Administrador", action: "clica no botao 'Voltar'", returns_to_bf: 2]
+    S_AF7_1 [flow: "alternative_7", description: "Clica no botao 'Proximo Picking'", actor: "Administrador", action: "clica no botao 'Proximo Picking'", returns_to_bf: 6]
+    S_AF8_1 [flow: "alternative_8", description: "realiza picking depois de consultar veiculos", actor: "Administrador", action: "clica em botao 'Consultar Veiculos'"]
+    S_AF8_2 [flow: "alternative_8", description: "realiza picking depois de consultar veiculos", actor: "system", action: "exibe lista de veiculos para picking"]
+    S_AF8_3 [flow: "alternative_8", description: "realiza picking depois de consultar veiculos", actor: "Administrador", action: "clica em botao 'Iniciar Picking'", returns_to_bf: 6]
+    S_END [terminal, guard: "O Picking diario foi realizado para o Ecommerce"]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe lista de Ecommerces registrados no sistema"]
+    S_BF_2 -> S_BF_3 [event: "Administrador: clica em algum dos Ecommerces listados"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe tela com o Picking diario para aquele Ecommerce selecionado"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Navega pelas paginas da lista"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Clica no botao 'Voltar'"]
+    S_BF_3 -> S_AF3_1 [branch: "AF_3 - Ordena os Ecommerces"]
+    S_BF_3 -> S_AF4_1 [branch: "AF_4 - Filtra coletas da lista"]
+    S_BF_4 -> S_BF_5 [event: "Administrador: clica no botao 'Iniciar Picking'"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe os dados do Picking"]
+    S_BF_5 -> S_AF5_1 [branch: "AF_5 - Cancela realizacao de Picking"]
+    S_BF_5 -> S_AF6_1 [branch: "AF_6 - Volta para lista de Ecommerces"]
+    S_BF_5 -> S_AF8_1 [branch: "AF_8 - realiza picking depois de consultar veiculos"]
+    S_BF_6 -> S_BF_7 [event: "Administrador: clica no botao de 'Imprimir CT-e/NFS-e'"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe pdf com CT-e/NFS-e da ?????"]
+    S_BF_7 -> S_AF7_1 [branch: "AF_7 - Clica no botao 'Proximo Picking'"]
+    S_BF_8 -> S_BF_8 [event: "system: notifica que Picking foi finalizado com sucesso e exibe Dashboard de sistema"]
+    S_BF_8 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF4_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF5_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF6_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF7_1 -> S_BF_6 [resume_basic_flow: 6]
+    S_AF8_1 -> S_AF8_2 [event: "system: exibe lista de veiculos para picking"]
+    S_AF8_2 -> S_AF8_3 [event: "Administrador: clica em botao 'Iniciar Picking'"]
+    S_AF8_3 -> S_BF_6 [resume_basic_flow: 6]
+  }
+}

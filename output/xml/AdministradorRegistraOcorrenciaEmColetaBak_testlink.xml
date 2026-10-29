@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Registra Ocorrencia Em Coleta">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Seleciona contador de &apos;Aguardando Picking&apos;">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Seleciona contador de 'Aguardando Picking']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Aguardando Picking' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Seleciona contador de &apos;Aceitas&apos;">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Seleciona contador de 'Aceitas']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Aceitas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Seleciona contador de &apos;Recusadas&apos;">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Seleciona contador de 'Recusadas']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum contador de 'Recusadas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Seleciona contador de &apos;A Caminho&apos;">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Seleciona contador de 'A Caminho']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum contador de 'A Caminho' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Navega pelas paginas da lista">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Navega pelas paginas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Clica no botao Voltar">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Clica no botao Voltar]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Alternative Flow 7: Ordena Coletas">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 7: Ordena Coletas]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: ordena as coletas por alguma coluna]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC9 - Alternative Flow 8: Cancela registro de ocorrencia">
+    <node_order><![CDATA[9]]></node_order>
+    <externalid><![CDATA[TC9]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 8: Cancela registro de ocorrencia]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica em botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC10 - Alternative Flow 9: Volta para lista de Coletas">
+    <node_order><![CDATA[10]]></node_order>
+    <externalid><![CDATA[TC10]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 9: Volta para lista de Coletas]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador 'Geradas' na secao de 'Coletas']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com as listas das 'Coletas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Coleta da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Coleta]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Registrar Ocorrencia' para coleta inteira]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para digitacao da Ocorrencia]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita ocorrencia e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi registrada com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

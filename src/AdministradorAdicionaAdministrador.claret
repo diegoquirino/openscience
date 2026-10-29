@@ -17,7 +17,7 @@ system "Bazooca", {
             step 5, Administrador,  "clica no botao 'Adicionar Administrador'", af:[1]
             step 6, system,         "abre a tela de cadastro de Administradores"
             step 7, Administrador,  "preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'", af:[2]
-            step 8, system,         "notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores", ef:[1,2,3,4]
+            step 8, system,         "notifica que o Administrador foi adicionado com sucesso", ef:[1,2,3,4]
         }
 
         alternative 1, "Volta para tela inicial de sistema", {

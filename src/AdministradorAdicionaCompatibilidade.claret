@@ -17,7 +17,7 @@ system "Bazooca", {
             step 5, Administrador,  "clica em 'Adicionar Compatibilidade'", af:[1]
             step 6, system,         "exibe a tela de cadastro de Compatibilidade"
             step 7, Administrador,  "preenche os dados da Compatibilidade e clica em botao 'Registrar'", af:[2]
-            step 8, system,         "notifica usuario que os nova Compatibilidade foi adicionada com sucesso e exibe lista de Compatibilidades", ef:[1,2,3]
+            step 8, system,         "notifica usuario que os nova Compatibilidade foi adicionada com sucesso", ef:[1,2,3]
         }
 
         alternative 1, "Volta para listagem de Compatibilidades", {

@@ -1,0 +1,42 @@
+System:	Bazooca
+Use Case:	Operador De Terminal Edita Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opcao 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: modifica os dados existentes e clica no botao de 'Atualizar'		SYSTEM notifica que o Terminal foi atualizado com sucesso		
+Postcondition:	Terminal com dados atualizados no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: cancela atualizacao de Terminal			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opcao 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica em botao 'Cancelar'		SYSTEM exibe tela inicial do sistema		
+4	Operador: seleciona a opcao 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+5	Operador: modifica os dados existentes e clica no botao de 'Atualizar'		SYSTEM notifica que o Terminal foi atualizado com sucesso		
+Postcondition:	Terminal com dados atualizados no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Cnpj ja existe no sistema			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opcao 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: modifica os dados existentes e clica no botao de 'Atualizar'		SYSTEM alerta que ja existe um Terminal de mesmo Cnpj existente no sistema		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opcao 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: modifica os dados existentes e clica no botao de 'Atualizar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+Postcondition:	Flow interrupted due to exception / error
+

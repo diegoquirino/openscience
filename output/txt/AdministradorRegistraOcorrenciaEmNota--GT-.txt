@@ -1,0 +1,156 @@
+System:	Bazooca
+Use Case:	Administrador Registra Ocorrencia Em Nota	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 13 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona contador de 'Engine'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Seleciona contador de 'Conferencia'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Aceitas' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Seleciona contador de 'Picking'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Seleciona contador de 'Atrasos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Seleciona contador de 'Retornos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona outra pagina		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Clica no botao Voltar			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe Dashboard do sistema		
+4	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+5	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: ordenas as coletas por alguma coluna		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Cancela registro de ocorrencia			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da Nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 10: Filtra notas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: filtra as notas por algum campo		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+4	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+5	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+6	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 11: Volta para lista de notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em contador 'Outros'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica em botão 'Voltar'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+5	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+6	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+7	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+
+Test Case ID:	TC13	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 12: Seleciona contador de 'Ocorrencias'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe Dashboard do sistema		
+2	Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas'		SYSTEM abre uma tela com a lista de 'Pedidos' ou Notas		
+3	Administrador: seleciona algum Pedido ou Nota da lista		SYSTEM exibe os dados da Nota		
+4	Administrador: clica no botao de 'Registrar Ocorrencia'		SYSTEM abre modal para digitacao da Ocorrencia		
+5	Administrador: digita Ocorrencia e clica em 'Confirmar'		SYSTEM notifica que Ocorrencia foi registrada com sucesso		
+Postcondition:	A ocorrencia esta registrada
+

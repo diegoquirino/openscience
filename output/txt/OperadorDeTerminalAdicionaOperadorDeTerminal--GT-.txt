@@ -1,0 +1,58 @@
+System:	Bazooca
+Use Case:	Operador De Terminal Adiciona Operador De Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+4	Operador: clica no botao de 'Adicionar' do form de adicao de operador		SYSTEM notifica que o operador de Terminal foi inserido com sucesso		
+Postcondition:	Operador de Terminal com dados atualizados no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: cancela insercao de Operador de Terminal			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+4	Operador: clica em botao 'Cancelar' de form de dados de Operador		SYSTEM mostra a tela de Detalhes do Terminal		
+5	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+6	Operador: clica no botao de 'Adicionar' do form de adicao de operador		SYSTEM notifica que o operador de Terminal foi inserido com sucesso		
+Postcondition:	Operador de Terminal com dados atualizados no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: volta para tela inicial do sistema			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+5	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+6	Operador: clica no botao de 'Adicionar' do form de adicao de operador		SYSTEM notifica que o operador de Terminal foi inserido com sucesso		
+Postcondition:	Operador de Terminal com dados atualizados no sistema.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: insere algum dado invalido			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+4	Operador: clica no botao de 'Adicionar' do form de adicao de operador		SYSTEM alerta que determinado dado esta invalido		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	O Operador logado; Operador pertence ao Terminal alvo.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Operador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Operador: seleciona a opção 'Meu Terminal' no menu da tela principal		SYSTEM mostra a tela de Detalhes do Terminal		
+3	Operador: clica eno botao 'Adicionar Operador'		SYSTEM exibe form de adicao de dados de Operador		
+4	Operador: clica no botao de 'Adicionar' do form de adicao de operador		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+Postcondition:	Flow interrupted due to exception / error
+
