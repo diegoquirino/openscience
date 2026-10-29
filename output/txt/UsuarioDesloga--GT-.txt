@@ -1,0 +1,57 @@
+System:	Bazooca
+Use Case:	Usuario Desloga	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+4	bazoocaUser: clica no botao 'Deslogar'		SYSTEM exibe homepage do sistema		
+Postcondition:	Usuario esta logado no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Um ou mais username sao apresentados			Execution Date:	
+Precondition:	Usuario esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: seleciona um dos usernames sugeridos, digita um password e clica no botao de submeter		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+4	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+5	bazoocaUser: clica no botao 'Deslogar'		SYSTEM exibe homepage do sistema		
+Postcondition:	Usuario esta logado no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: esqueceu credenciais			Execution Date:	
+Precondition:	Usuario esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: clica no botao 'Esqueceu sua senha?'		SYSTEM pede para usuario inserir email de cadastro		
+4	bazoocaUser: usuario clica em botao 'Confirmar'		SYSTEM processes action successfully		
+5	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+6	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+7	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+8	bazoocaUser: clica no botao 'Deslogar'		SYSTEM exibe homepage do sistema		
+Postcondition:	Usuario esta logado no sistema.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: usuario nao existe no banco de dados			Execution Date:	
+Precondition:	Usuario esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM alerta que usuario nao existe		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: combinacao de username/password incorreta			Execution Date:	
+Precondition:	Usuario esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM alerta que username e/ou password estao incorretos		
+Postcondition:	Flow interrupted due to exception / error
+

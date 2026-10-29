@@ -4,51 +4,45 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Precondition:	Administrador logado; Existe ao menos um Terminal cadastrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
-4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
-5	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
-Postcondition:	O Terminal foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+2	Administrador: clica em um dos terminais listados		SYSTEM apresenta tela de edicao de Terminal		
+3	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+4	Administrador: confirma clicando no botao 'Sim'		SYSTEM noficica usuario de que Terminal foi deletado com sucesso.		
+Postcondition:	Terminal foi deletado.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Administrador logado; Existe ao menos um Terminal cadastrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
-6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
-Postcondition:	O Terminal foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+2	Administrador: navega nas paginas da lista		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+3	Administrador: clica em um dos terminais listados		SYSTEM apresenta tela de edicao de Terminal		
+4	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+5	Administrador: confirma clicando no botao 'Sim'		SYSTEM noficica usuario de que Terminal foi deletado com sucesso.		
+Postcondition:	Terminal foi deletado.
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela delecao de Terminal			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 2: Usuario ordena lista de Terminais			Execution Date:	
+Precondition:	Administrador logado; Existe ao menos um Terminal cadastrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
-6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
-Postcondition:	O Terminal foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+2	Administrador: ordena os terminais por seus atributos		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+3	Administrador: clica em um dos terminais listados		SYSTEM apresenta tela de edicao de Terminal		
+4	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+5	Administrador: confirma clicando no botao 'Sim'		SYSTEM noficica usuario de que Terminal foi deletado com sucesso.		
+Postcondition:	Terminal foi deletado.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 3: Cancela delecao do Terinal			Execution Date:	
+Precondition:	Administrador logado; Existe ao menos um Terminal cadastrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
-3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
-4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
-5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Terminal		
-6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
-Postcondition:	O Terminal foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM lista o conjunto de termianis cadastrados no sistema		
+2	Administrador: clica em um dos terminais listados		SYSTEM apresenta tela de edicao de Terminal		
+3	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+4	Administrador: clica no botao 'Não' do popup		SYSTEM apresenta tela de edicao de Terminal		
+5	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+6	Administrador: confirma clicando no botao 'Sim'		SYSTEM noficica usuario de que Terminal foi deletado com sucesso.		
+Postcondition:	Terminal foi deletado.
 

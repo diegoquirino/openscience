@@ -7,13 +7,13 @@ system "Bazooca", {
 		actor Administrador, "Usuario Administrador"
 		actor system, "Bazooca"
 
-		preCondition "Usuario Administrador esta logado no sistema. Existe um Ecommerce com picking para o dia"
+		preCondition "Usuario Administrador esta logado no sistema."
 
 		basicFlow {
 			step 1, Administrador, 	"clica na opcao 'Picking' no menu da tela principal"
 			step 2, system, 		"exibe lista de Ecommerces registrados no sistema"
 			step 3, Administrador, 	"clica em algum dos Ecommerces listados", af:[1,2,3,4]
-			step 4, system, 		"exibe tela com o Picking diario para aquele Ecommerce selecionado"
+			step 4, system, 		"abre uma tela com o Picking diario para aquele Ecommerce selecionado"
 			step 5, Administrador, 	"clica no botao 'Iniciar Picking'", af:[5,6,8]
 			step 6, system, 		"exibe os dados do Picking"
 			step 7, Administrador, 	"clica no botao de 'Finalizar Picking'", af:[7]

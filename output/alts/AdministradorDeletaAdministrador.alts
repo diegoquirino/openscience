@@ -1,7 +1,7 @@
 ALTS_SPECIFICATION "Administrador Deleta Administrador" {
   VERSION: "1.0"
   PRE_CONDITION: "Usuario Administrador esta logado no sistema."
-  POST_CONDITION: "O Administrador foi excluido com sucesso."
+  POST_CONDITION: "O Administrador foi adicionado com sucesso."
 
   ACTORS {
     Administrador: "Usuario Administrador"
@@ -19,11 +19,19 @@ ALTS_SPECIFICATION "Administrador Deleta Administrador" {
     S_BF_7 [flow: "basic", actor: "Administrador", action: "clica no botao de 'Excluir'", branches_af: [2]]
     S_BF_8 [flow: "basic", actor: "system", action: "exibe popup pedindo Confirmacao de delecao"]
     S_BF_9 [flow: "basic", actor: "Administrador", action: "confirma delecao", branches_af: [3]]
-    S_BF_10 [flow: "basic", actor: "system", action: "notifica que o Administrador foi excluido com sucesso"]
+    S_BF_10 [flow: "basic", actor: "system", action: "notifica que o Administrador foi adicionado com sucesso", branches_ef: [1, 2, 3, 4]]
     S_AF1_1 [flow: "alternative_1", description: "Volta para tela inicial de sistema", actor: "Administrador", action: "clica no botao Voltar", returns_to_bf: 2]
-    S_AF2_1 [flow: "alternative_2", description: "Cancela delecao de Administrador", actor: "Administrador", action: "clica no botao 'Cancelar'", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "Cancela delecao de Administrador", actor: "Administrador", action: "clica no botao Cancelar", returns_to_bf: 4]
     S_AF3_1 [flow: "alternative_3", description: "Fecha popup de confirmacao de delecao", actor: "Administrador", action: "clica no botao 'Cancelar' do popup", returns_to_bf: 6]
-    S_END [terminal, guard: "O Administrador foi excluido com sucesso."]
+    S_EF1_1 [flow: "exception_1", description: "Dados obrigatorios'", actor: "system", action: "informa que os dados obrigatorios devem ser preenchidos"]
+    S_EF1_2 [flow: "exception_1", description: "Dados obrigatorios'", actor: "Administrador", action: "preenche os dados orbigatorios e clica no botao 'Registrar'"]
+    S_EF2_1 [flow: "exception_2", description: "Email invalido", actor: "system", action: "alerta usuario de que Email e invalido"]
+    S_EF2_2 [flow: "exception_2", description: "Email invalido", actor: "Administrador", action: "insere um Email valido e clica no botao 'Registrar'"]
+    S_EF3_1 [flow: "exception_3", description: "Senha e Confirmacao diferentes", actor: "system", action: "alerta usuario de que senhas estao diferentes"]
+    S_EF3_2 [flow: "exception_3", description: "Senha e Confirmacao diferentes", actor: "Administrador", action: "insere Senhas iguais e clica no botao 'Registrar'"]
+    S_EF4_1 [flow: "exception_4", description: "Sem Permissao", actor: "system", action: "alerta usuario que Administrador nao esta com nenhuma Permissao"]
+    S_EF4_2 [flow: "exception_4", description: "Sem Permissao", actor: "Administrador", action: "insere uma permissao e clica no botao 'Registrar'"]
+    S_END [terminal, guard: "O Administrador foi adicionado com sucesso."]
   }
 
   TRANSITIONS {
@@ -38,11 +46,23 @@ ALTS_SPECIFICATION "Administrador Deleta Administrador" {
     S_BF_7 -> S_BF_8 [event: "system: exibe popup pedindo Confirmacao de delecao"]
     S_BF_7 -> S_AF2_1 [branch: "AF_2 - Cancela delecao de Administrador"]
     S_BF_8 -> S_BF_9 [event: "Administrador: confirma delecao"]
-    S_BF_9 -> S_BF_10 [event: "system: notifica que o Administrador foi excluido com sucesso"]
+    S_BF_9 -> S_BF_10 [event: "system: notifica que o Administrador foi adicionado com sucesso"]
     S_BF_9 -> S_AF3_1 [branch: "AF_3 - Fecha popup de confirmacao de delecao"]
     S_BF_10 -> S_END [event: "Complete"]
+    S_BF_10 -> S_EF1_1 [branch: "EF_1 - Dados obrigatorios'"]
+    S_BF_10 -> S_EF2_1 [branch: "EF_2 - Email invalido"]
+    S_BF_10 -> S_EF3_1 [branch: "EF_3 - Senha e Confirmacao diferentes"]
+    S_BF_10 -> S_EF4_1 [branch: "EF_4 - Sem Permissao"]
     S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
     S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
     S_AF3_1 -> S_BF_6 [resume_basic_flow: 6]
+    S_EF1_1 -> S_EF1_2 [event: "Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'"]
+    S_EF1_2 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_EF2_2 [event: "Administrador: insere um Email valido e clica no botao 'Registrar'"]
+    S_EF2_2 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_EF3_2 [event: "Administrador: insere Senhas iguais e clica no botao 'Registrar'"]
+    S_EF3_2 -> S_END [event: "ErrorExit"]
+    S_EF4_1 -> S_EF4_2 [event: "Administrador: insere uma permissao e clica no botao 'Registrar'"]
+    S_EF4_2 -> S_END [event: "ErrorExit"]
   }
 }

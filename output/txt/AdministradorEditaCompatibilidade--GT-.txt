@@ -1,6 +1,6 @@
 System:	Bazooca
 Use Case:	Administrador Edita Compatibilidade	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 9 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -12,7 +12,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 Postcondition:	A nova Compatibilidade esta atualizada no banco.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Ordena lista de Compatibilidades			Execution Date:	
+Description:	Alternative Flow 1: Usuario ordena lista de Compatibilidades			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
@@ -22,7 +22,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 Postcondition:	A nova Compatibilidade esta atualizada no banco.
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Filtra lista de Compatibilidades			Execution Date:	
+Description:	Alternative Flow 2: Usuario filtra lista de Compatibilidades			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
@@ -32,7 +32,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 Postcondition:	A nova Compatibilidade esta atualizada no banco.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Navega por paginas de tabela			Execution Date:	
+Description:	Alternative Flow 3: Usuario navega por paginas de tabela			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
@@ -42,7 +42,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 Postcondition:	A nova Compatibilidade esta atualizada no banco.
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: Cancela atualizacao de Compatibilidade			Execution Date:	
+Description:	Alternative Flow 4: Usuario cancela atualizacao de Compatibilidade			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
@@ -53,16 +53,6 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 Postcondition:	A nova Compatibilidade esta atualizada no banco.
 
 Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: Volta para tela inicial de sistema			Execution Date:	
-Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
-2	Administrador: clica no botao Voltar		SYSTEM exibe a tela de listagem das Compatibilidades		
-3	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
-4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
-Postcondition:	A nova Compatibilidade esta atualizada no banco.
-
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -72,7 +62,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 4	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Usuario insere Tipo de Mercadoria invalido			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
@@ -82,7 +72,7 @@ Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema
 4	Administrador: preenche um Tipo de Mercadoria valida e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 3: Usuario insere NCM invalido			Execution Date:	
 Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result

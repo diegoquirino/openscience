@@ -1,6 +1,6 @@
 System:	Bazooca
 Use Case:	Administrador Deleta Administrador	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -10,8 +10,8 @@ Precondition:	Usuario Administrador esta logado no sistema.
 2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
 3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
 4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-5	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
-Postcondition:	O Administrador foi excluido com sucesso.
+5	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
@@ -23,8 +23,8 @@ Precondition:	Usuario Administrador esta logado no sistema.
 4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
 5	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
 6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
-Postcondition:	O Administrador foi excluido com sucesso.
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 2: Cancela delecao de Administrador			Execution Date:	
@@ -33,11 +33,11 @@ Precondition:	Usuario Administrador esta logado no sistema.
 1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
 2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
 3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
 5	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
 6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
-Postcondition:	O Administrador foi excluido com sucesso.
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
 Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
@@ -49,6 +49,54 @@ Precondition:	Usuario Administrador esta logado no sistema.
 4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
 5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Administrador		
 6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
-Postcondition:	O Administrador foi excluido com sucesso.
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+6	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM alerta usuario de que Email e invalido		
+6	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM alerta usuario de que senhas estao diferentes		
+6	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+6	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
 

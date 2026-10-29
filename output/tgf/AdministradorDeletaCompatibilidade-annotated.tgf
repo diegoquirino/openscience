@@ -11,18 +11,14 @@
 11 11
 12 12
 13 13
-14 14
-15 15
 #
-1 2 [c] Usuario Administrador esta logado no sistema.
-2 3 [s] Administrador abre tela inicial do sistema
-3 4 [e] system exibe tela inicial do sistema
-4 5 [s] Administrador clica na opcao 'Compatibilidades' no menu da tela principal
-5 6 [e] system apresenta uma listagem dos Compatibilidades cadastrados no sistema
-6 7 [s] Administrador clica em algum dos Compatibilidades listados
-7 8 [e] system abre a tela de edicao de Compatibilidade
-8 9 [s] Administrador clica no botao de 'Excluir'
-9 10 [e] system exibe popup pedindo Confirmacao de delecao
-10 11 [s] Administrador confirma delecao
-11 12 [e] system notifica que o Compatibilidade foi excluido com sucesso
-12 13 [c] O Compatibilidade foi excluida com sucesso.
+1 2 [c] Usuario Administrador deve estar logado no sistema.
+2 3 [s] Administrador Clicar na opcao 'Compatibildiade' no menu da tela principal
+3 4 [e] system exibe a tela de listagem das Compatibilidades
+4 5 [s] Administrador clica em Compatibilidade listada
+5 6 [e] system exibe a tela de edicao de Compatibilidade
+6 7 [s] Administrador clica em botao 'Deletar'
+7 8 [e] system abre popup de confirmacao de delecao
+8 9 [s] Administrador confirma que deseja deletar clicando em 'Sim'
+9 10 [e] system notifica usuario que os nova Compatibilidade foi deletada com sucesso
+10 11 [c] Compatibilidade foi deletada.

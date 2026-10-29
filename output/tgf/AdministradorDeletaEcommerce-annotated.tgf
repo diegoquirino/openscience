@@ -11,18 +11,14 @@
 11 11
 12 12
 13 13
-14 14
-15 15
 #
-1 2 [c] Usuario Administrador esta logado no sistema.
-2 3 [s] Administrador abre tela inicial do sistema
-3 4 [e] system exibe tela inicial do sistema
-4 5 [s] Administrador clica na opcao 'Ecommerces' no menu da tela principal
-5 6 [e] system apresenta uma listagem dos Ecommerces cadastrados no sistema
-6 7 [s] Administrador clica em algum dos Ecommerces listados
-7 8 [e] system abre a tela de edicao de Ecommerce
-8 9 [s] Administrador clica no botao de 'Excluir'
-9 10 [e] system exibe popup pedindo Confirmacao de delecao
-10 11 [s] Administrador confirma delecao
-11 12 [e] system notifica que o Ecommerce foi excluido com sucesso
-12 13 [c] O Ecommerce foi excluido com sucesso.
+1 2 [c] Usuario Administrador esta logado no sistem; Existe pelo menos um Ecommerce registrado.
+2 3 [s] Administrador Entra na tela de Listagem de Ecommerce
+3 4 [e] system lista o conjunto de ecommerce cadastrados no sistema
+4 5 [s] Administrador clica em um dos ecommerce listados
+5 6 [e] system apresenta tela de edicao de Ecommerce
+6 7 [s] Administrador clica em botao de 'Remover' na tela de edicao
+7 8 [e] system exibe popup de confirmacao
+8 9 [s] Administrador confirma delecao de Ecommerce
+9 10 [e] system noficica usuario de que Ecommerce foi deletado com sucesso.
+10 11 [c] Ecommerce deletado do banco de dados.

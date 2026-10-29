@@ -4,51 +4,45 @@ Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Precondition:	Usuario Administrador esta logado no sistem; Existe pelo menos um Ecommerce registrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
-4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-5	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
-Postcondition:	O Ecommerce foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Ecommerce		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+2	Administrador: clica em um dos ecommerce listados		SYSTEM apresenta tela de edicao de Ecommerce		
+3	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+4	Administrador: confirma delecao de Ecommerce		SYSTEM noficica usuario de que Ecommerce foi deletado com sucesso.		
+Postcondition:	Ecommerce deletado do banco de dados.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 1: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistem; Existe pelo menos um Ecommerce registrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
-6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
-Postcondition:	O Ecommerce foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Ecommerce		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+2	Administrador: navega nas paginas da lista		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+3	Administrador: clica em um dos ecommerce listados		SYSTEM apresenta tela de edicao de Ecommerce		
+4	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+5	Administrador: confirma delecao de Ecommerce		SYSTEM noficica usuario de que Ecommerce foi deletado com sucesso.		
+Postcondition:	Ecommerce deletado do banco de dados.
 
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: Cancela delecao de Ecommerce			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 2: Usuario ordena lista de ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistem; Existe pelo menos um Ecommerce registrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
-4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
-6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
-Postcondition:	O Ecommerce foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Ecommerce		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+2	Administrador: ordena os ecommerce por seus atributos		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+3	Administrador: clica em um dos ecommerce listados		SYSTEM apresenta tela de edicao de Ecommerce		
+4	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+5	Administrador: confirma delecao de Ecommerce		SYSTEM noficica usuario de que Ecommerce foi deletado com sucesso.		
+Postcondition:	Ecommerce deletado do banco de dados.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
-Precondition:	Usuario Administrador esta logado no sistema.
+Description:	Alternative Flow 3: Cancela delecao do Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistem; Existe pelo menos um Ecommerce registrado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
-3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
-4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Ecommerce		
-6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
-7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
-Postcondition:	O Ecommerce foi excluido com sucesso.
+1	Administrador: Entra na tela de Listagem de Ecommerce		SYSTEM lista o conjunto de ecommerce cadastrados no sistema		
+2	Administrador: clica em um dos ecommerce listados		SYSTEM apresenta tela de edicao de Ecommerce		
+3	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+4	Administrador: clica no botao 'Cancelar' do popup		SYSTEM apresenta tela de edicao de Ecommerce		
+5	Administrador: clica em botao de 'Remover' na tela de edicao		SYSTEM exibe popup de confirmacao		
+6	Administrador: confirma delecao de Ecommerce		SYSTEM noficica usuario de que Ecommerce foi deletado com sucesso.		
+Postcondition:	Ecommerce deletado do banco de dados.
 

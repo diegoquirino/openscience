@@ -7,197 +7,161 @@
     <externalid><![CDATA[TC1]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <preconditions><![CDATA[Usuario Administrador deve estar logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidades' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em Compatibilidade listada]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de edicao de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Compatibilidades listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Deletar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre popup de confirmacao de delecao]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Compatibilidade foi excluido com sucesso]]></expectedresults>
+        <actions><![CDATA[Administrador: confirma que deseja deletar clicando em 'Sim']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi deletada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: Volta para tela inicial de sistema">
+  <testcase name="TC2 - Alternative Flow 1: Navega pelas paginas da lista">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: Volta para tela inicial de sistema]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <summary><![CDATA[Alternative Flow 1: Navega pelas paginas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador deve estar logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidades' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: navega nas paginas da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em Compatibilidade listada]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de edicao de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidades' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Deletar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre popup de confirmacao de delecao]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Compatibilidades listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Compatibilidade foi excluido com sucesso]]></expectedresults>
+        <actions><![CDATA[Administrador: confirma que deseja deletar clicando em 'Sim']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi deletada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC3 - Alternative Flow 2: Cancela delecao de Compatibilidade">
+  <testcase name="TC3 - Alternative Flow 2: Usuario ordena lista de Compatibilidades">
     <node_order><![CDATA[3]]></node_order>
     <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 2: Cancela delecao de Compatibilidade]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <summary><![CDATA[Alternative Flow 2: Usuario ordena lista de Compatibilidades]]></summary>
+    <preconditions><![CDATA[Usuario Administrador deve estar logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidades' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: ordenas as Compatibilidades por seus atributos]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Compatibilidades listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em Compatibilidade listada]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de edicao de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Deletar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre popup de confirmacao de delecao]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Compatibilidades listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Compatibilidade foi excluido com sucesso]]></expectedresults>
+        <actions><![CDATA[Administrador: confirma que deseja deletar clicando em 'Sim']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi deletada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Alternative Flow 3: Fecha popup de confirmacao de delecao">
+  <testcase name="TC4 - Alternative Flow 3: Cancela delecao">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 3: Fecha popup de confirmacao de delecao]]></summary>
-    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <summary><![CDATA[Alternative Flow 3: Cancela delecao]]></summary>
+    <preconditions><![CDATA[Usuario Administrador deve estar logado no sistema.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de listagem das Compatibilidades]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: clica na opcao 'Compatibilidades' no menu da tela principal]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em Compatibilidade listada]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de edicao de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: clica em algum dos Compatibilidades listados]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Deletar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre popup de confirmacao de delecao]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <actions><![CDATA[Administrador: clica no botao 'Cancelar' de popup]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela de edicao de Compatibilidade]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Cancelar' do popup]]></actions>
-        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Compatibilidade]]></expectedresults>
+        <actions><![CDATA[Administrador: clica em botao 'Deletar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre popup de confirmacao de delecao]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[6]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Compatibilidade foi excluido com sucesso]]></expectedresults>
+        <actions><![CDATA[Administrador: confirma que deseja deletar clicando em 'Sim']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os nova Compatibilidade foi deletada com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

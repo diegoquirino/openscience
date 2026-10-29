@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Usuario Desloga">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[bazoocaUser: preenche os campos de username e password e clica no botao de submissao]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra uma mensagem de usuario logado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Deslogar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Um ou mais username sao apresentados">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Um ou mais username sao apresentados]]></summary>
+    <preconditions><![CDATA[Usuario esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[bazoocaUser: seleciona um dos usernames sugeridos, digita um password e clica no botao de submeter]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[bazoocaUser: preenche os campos de username e password e clica no botao de submissao]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra uma mensagem de usuario logado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Deslogar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: esqueceu credenciais">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: esqueceu credenciais]]></summary>
+    <preconditions><![CDATA[Usuario esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Esqueceu sua senha?']]></actions>
+        <expectedresults><![CDATA[SYSTEM pede para usuario inserir email de cadastro]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[bazoocaUser: usuario clica em botao 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[bazoocaUser: preenche os campos de username e password e clica no botao de submissao]]></actions>
+        <expectedresults><![CDATA[SYSTEM mostra uma mensagem de usuario logado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[8]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Deslogar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 1: usuario nao existe no banco de dados">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: usuario nao existe no banco de dados]]></summary>
+    <preconditions><![CDATA[Usuario esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[bazoocaUser: preenche os campos de username e password e clica no botao de submissao]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que usuario nao existe]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 2: combinacao de username/password incorreta">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: combinacao de username/password incorreta]]></summary>
+    <preconditions><![CDATA[Usuario esta logado no sistema]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[bazoocaUser: entra na homepage do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe homepage]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[bazoocaUser: clica no botao 'Login']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta um form com os campos username e password e um botao de submissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[bazoocaUser: preenche os campos de username e password e clica no botao de submissao]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que username e/ou password estao incorretos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

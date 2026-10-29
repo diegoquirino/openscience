@@ -38,7 +38,7 @@
       <step>
         <step_number><![CDATA[5]]></step_number>
         <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi excluido com sucesso]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi adicionado com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -91,7 +91,7 @@
       <step>
         <step_number><![CDATA[7]]></step_number>
         <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi excluido com sucesso]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi adicionado com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -125,7 +125,7 @@
       </step>
       <step>
         <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
+        <actions><![CDATA[Administrador: clica no botao Cancelar]]></actions>
         <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
@@ -144,7 +144,7 @@
       <step>
         <step_number><![CDATA[7]]></step_number>
         <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi excluido com sucesso]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi adicionado com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
@@ -197,7 +197,195 @@
       <step>
         <step_number><![CDATA[7]]></step_number>
         <actions><![CDATA[Administrador: confirma delecao]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi excluido com sucesso]]></expectedresults>
+        <expectedresults><![CDATA[SYSTEM notifica que o Administrador foi adicionado com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 1: Dados obrigatorios&apos;">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Dados obrigatorios']]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Administrador' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Administradores listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Administrador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: preenche os dados orbigatorios e clica no botao 'Registrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 2: Email invalido">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Email invalido]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Administrador' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Administradores listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Administrador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta usuario de que Email e invalido]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: insere um Email valido e clica no botao 'Registrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Exception Flow 3: Senha e Confirmacao diferentes">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: Senha e Confirmacao diferentes]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Administrador' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Administradores listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Administrador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta usuario de que senhas estao diferentes]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: insere Senhas iguais e clica no botao 'Registrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC8 - Exception Flow 4: Sem Permissao">
+    <node_order><![CDATA[8]]></node_order>
+    <externalid><![CDATA[TC8]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 4: Sem Permissao]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Administrador' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Administradores listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Administrador]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: insere uma permissao e clica no botao 'Registrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>

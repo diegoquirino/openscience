@@ -13,127 +13,62 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Entra na tela de Edicao de Parametros do NFe Reader]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parâmetros do NFe Reader com os valores atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: escolhe dia de Parametros do NFe Reader]]></actions>
         <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de parâmetros e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC2 - Alternative Flow 1: cancela edicao de Parametros">
+  <testcase name="TC2 - Exception Flow 1: Nao insere algum dado obrigatorio&apos;">
     <node_order><![CDATA[2]]></node_order>
     <externalid><![CDATA[TC2]]></externalid>
     <version><![CDATA[1]]></version>
-    <summary><![CDATA[Alternative Flow 1: cancela edicao de Parametros]]></summary>
+    <summary><![CDATA[Exception Flow 1: Nao insere algum dado obrigatorio']]></summary>
     <preconditions><![CDATA[Administrador logado.]]></preconditions>
     <execution_type><![CDATA[1]]></execution_type>
     <importance><![CDATA[2]]></importance>
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Entra na tela de Edicao de Parametros do NFe Reader]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parâmetros do NFe Reader com os valores atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[system: clica no botao de 'Cancelar']]></actions>
-        <expectedresults><![CDATA[clica no botao de 'Cancelar']]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[system: exibe tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[6]]></step_number>
         <actions><![CDATA[Administrador: escolhe dia de Parametros do NFe Reader]]></actions>
         <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[7]]></step_number>
-        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
-        <expectedresults><![CDATA[SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
-  <testcase name="TC3 - Exception Flow 1: Não insere algum dado obrigatorio&apos;">
-    <node_order><![CDATA[3]]></node_order>
-    <externalid><![CDATA[TC3]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 1: Não insere algum dado obrigatorio']]></summary>
-    <preconditions><![CDATA[Administrador logado.]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
         <step_number><![CDATA[3]]></step_number>
-        <actions><![CDATA[Administrador: escolhe dia de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <actions><![CDATA[Administrador: modifica valores de parâmetros e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
+        <step_number><![CDATA[4]]></step_number>
         <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Exception Flow 2: Usuario insere algum dado invalido">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
+  <testcase name="TC3 - Exception Flow 2: Usuario insere algum dado invalido">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 2: Usuario insere algum dado invalido]]></summary>
     <preconditions><![CDATA[Administrador logado.]]></preconditions>
@@ -142,31 +77,25 @@
     <steps>
       <step>
         <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
-        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <actions><![CDATA[Administrador: Entra na tela de Edicao de Parametros do NFe Reader]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parâmetros do NFe Reader com os valores atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
         <step_number><![CDATA[2]]></step_number>
-        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do NFe Reader]]></actions>
-        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-      <step>
-        <step_number><![CDATA[3]]></step_number>
         <actions><![CDATA[Administrador: escolhe dia de Parametros do NFe Reader]]></actions>
         <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[4]]></step_number>
-        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de parâmetros e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM alerta que dado e invalido]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>
       <step>
-        <step_number><![CDATA[5]]></step_number>
-        <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: preenche dados validos e clica em Atualizar]]></actions>
         <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
         <execution_type><![CDATA[1]]></execution_type>
       </step>

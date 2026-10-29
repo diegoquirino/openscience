@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Resolve Ocorrencia De Nota">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Navega pelas paginas da lista">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Navega pelas paginas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: seleciona outra pagina]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Clica no botao Voltar">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Clica no botao Voltar]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Ordena Notas">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Ordena Notas]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: ordenas as coletas por alguma coluna]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Cancela resolucao de ocorrencia">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Cancela resolucao de ocorrencia]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Alternative Flow 5: Filtra notas da lista">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 5: Filtra notas da lista]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: filtra as notas por algum campo]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC7 - Alternative Flow 6: Volta para lista de notas">
+    <node_order><![CDATA[7]]></node_order>
+    <externalid><![CDATA[TC7]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 6: Volta para lista de notas]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema. Existe pelo meno uma nota com ocorrencia registrada.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe Dashboard do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica em contador de 'Notas Pendentes' no card de 'Ocorrencias']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica em botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre uma tela com a lista de 'Notas']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: seleciona alguma Nota da lista]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe os dados da Nota]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Resolver']]></actions>
+        <expectedresults><![CDATA[SYSTEM abre modal para detalhamento de 'Contato']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: digita detalhamento de Contato e clica em 'Confirmar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que Ocorrencia foi resolvida com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

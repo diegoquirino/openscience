@@ -11,18 +11,14 @@
 11 11
 12 12
 13 13
-14 14
-15 15
 #
-1 2 [c] Usuario Administrador esta logado no sistema.
-2 3 [s] Administrador abre tela inicial do sistema
-3 4 [e] system exibe tela inicial do sistema
-4 5 [s] Administrador clica na opcao 'Terminais' no menu da tela principal
-5 6 [e] system apresenta uma listagem dos Terminais cadastrados no sistema
-6 7 [s] Administrador clica em algum dos Terminais listados
-7 8 [e] system abre a tela de edicao de Terminal
-8 9 [s] Administrador clica no botao de 'Excluir' do Terminal
-9 10 [e] system exibe popup pedindo Confirmacao de delecao
-10 11 [s] Administrador confirma delecao
-11 12 [e] system notifica que o Terminal foi excluido com sucesso
-12 13 [c] O Terminal foi excluido com sucesso.
+1 2 [c] Administrador logado; Existe ao menos um Terminal cadastrado.
+2 3 [s] Administrador Entra na tela de Listagem de Terminais
+3 4 [e] system lista o conjunto de termianis cadastrados no sistema
+4 5 [s] Administrador clica em um dos terminais listados
+5 6 [e] system apresenta tela de edicao de Terminal
+6 7 [s] Administrador clica em botao de 'Remover' na tela de edicao
+7 8 [e] system exibe popup de confirmacao
+8 9 [s] Administrador confirma clicando no botao 'Sim'
+9 10 [e] system noficica usuario de que Terminal foi deletado com sucesso.
+10 11 [c] Terminal foi deletado.

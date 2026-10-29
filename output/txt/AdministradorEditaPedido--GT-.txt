@@ -1,101 +1,81 @@
 System:	Bazooca
 Use Case:	Administrador Edita Pedido	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 8 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+3	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+4	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuario ordena lista de Pedidos			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em um dos botões de ordenacao associada a uma coluna da tabela		SYSTEM exibe a tela de listagem de Pedidos		
 3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
 4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
 5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
 Postcondition:	O Pedido esta atualizado no banco.
 
-Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: ordena lista de Pedidos			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica em um dos botões de ordenacao associada a uma coluna da tabela		SYSTEM exibe a tela de listagem de Pedidos		
-4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
-Postcondition:	O Pedido esta atualizado no banco.
-
 Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 2: filtra lista de Pedidos			Execution Date:	
+Description:	Alternative Flow 2: Usuario filtra lista de Pedidos			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: preenche campos de filtragem		SYSTEM exibe a tela de listagem de Pedidos		
-4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: preenche campos de filtragem		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
 Postcondition:	O Pedido esta atualizado no banco.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 3: navega por paginas de tabela			Execution Date:	
+Description:	Alternative Flow 3: Usuario navega por paginas de tabela			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe a tela de listagem de Pedidos		
-4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
 Postcondition:	O Pedido esta atualizado no banco.
 
 Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 4: cancela atualizacao de Pedido			Execution Date:	
+Description:	Alternative Flow 4: Usuario cancela atualizacao de Pedido			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-5	Administrador: clica no botao Cancelar		SYSTEM exibe a tela de listagem de Pedidos		
-6	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-7	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-8	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
-Postcondition:	O Pedido esta atualizado no banco.
-
-Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 5: volta para tela inicial de sistema			Execution Date:	
-Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica no botao Cancelar		SYSTEM exibe tela inicial do sistema		
-4	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+3	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+4	Administrador: clica no botao Cancelar		SYSTEM exibe a tela de listagem de Pedidos		
 5	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
 6	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
 7	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
 Postcondition:	O Pedido esta atualizado no banco.
 
-Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Usuario insere CEP invalido			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-4	Administrador: preenche os dados de novo CEP		SYSTEM alerta que CEP é invalido		
-5	Administrador: preenche um cpf valido e clica em Atualizar		SYSTEM processes action successfully		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+3	Administrador: preenche os dados de novo CEP		SYSTEM alerta que CEP é invalido		
+4	Administrador: preenche um cpf valido e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Nao insere algum dado obrigatorio'			Execution Date:	
 Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
-3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
-4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
-5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-6	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+1	Administrador: Clicar na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+2	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+3	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+4	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 

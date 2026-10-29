@@ -8,7 +8,7 @@ system "Bazooca", {
         actor system, "Bazooca"
 
 
-        preCondition "Usuario Administrador logado no sistema; Existe pelo menos um Terminal registrado."
+        preCondition "Usuario Administrador deve ter feito login e obtido autorizacao do sistema."
 
         basicFlow {
             step 1, Administrador,  "abre tela inicial do sistema"
@@ -29,8 +29,8 @@ system "Bazooca", {
             step 1, Administrador, "clica no botao Cancelar", bfs:4
         }
 
-        alternative 3, "Volta para listagem de Terminal", {
-            step 1, Administrador, "clica no botao 'Voltar'", bfs:4
+        alternative 3, "Navega na lista de Terminais", {
+            step 1, Administrador, "clica no botao de paginacao", bfs:4
         }
 
         exception 1, "Nao insere algum dado obrigatorio'", { 
@@ -38,6 +38,6 @@ system "Bazooca", {
             step 2, Administrador,  "adiciona os dados obrigatorios e clica no botao 'Adicionar Operador'", bfs:6
         } 
 
-        postCondition "Operador de Terminal salvo no sistema" 
+        postCondition "Operador salvo no sistema" 
     }   
 }

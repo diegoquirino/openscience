@@ -1,49 +1,33 @@
 System:	Bazooca
 Use Case:	Administrador Edita Parametros do Engine	Version:	1.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	29/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
 Precondition:	Administrador logado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
-3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
-4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
+1	Administrador: Entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parâmetros do Engine com os valores atuais		
+2	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+3	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
 Postcondition:	Os Parametros do Engine devem estar atualizados.
 
 Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
-Description:	Alternative Flow 1: cancela edicao de Parametros			Execution Date:	
-Precondition:	Administrador logado.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
-3	system: clica no botao de 'Cancelar'		clica no botao de 'Cancelar'		
-4	system: exibe tela inicial do sistema		exibe tela inicial do sistema		
-5	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
-6	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
-7	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
-Postcondition:	Os Parametros do Engine devem estar atualizados.
-
-Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Não insere algum dado obrigatorio'			Execution Date:	
 Precondition:	Administrador logado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
-3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
-4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
-5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+1	Administrador: Entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parâmetros do Engine com os valores atuais		
+2	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+3	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+4	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 2: Usuario insere algum dado invalido			Execution Date:	
 Precondition:	Administrador logado.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
-2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
-3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
-4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM alerta que dado e invalido		
-5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+1	Administrador: Entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parâmetros do Engine com os valores atuais		
+2	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+3	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM alerta que dado e invalido		
+4	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
 Postcondition:	Flow interrupted due to exception / error
 
