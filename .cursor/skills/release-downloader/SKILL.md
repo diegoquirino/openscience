@@ -1,11 +1,11 @@
 ---
 name: release-downloader
-description: Downloads the specification source directory (src/ containing .claret/.dsl files) from a list of GitHub tags or releases into segregated local folders per tag/release.
+description: Downloads the specification source directory (src/ containing .claret/.dsl files) and the generated test suite directory (output/) from a list of GitHub tags or releases into segregated local folders per tag/release. Supports auto-discovery of all tags for a branch via --branch.
 ---
 
 # release-downloader — GitHub Release & Tag Source Downloader
 
-Fetches and isolates the `src/` directory containing `.claret` / `.dsl` specification files for a given set of tags or releases from a GitHub repository into clean local folders.
+Fetches and isolates the `src/` and `output/` directories for a given set of tags or releases from a GitHub repository into clean local folders under `downloads/<tag>/`.
 
 ---
 
@@ -13,29 +13,36 @@ Fetches and isolates the `src/` directory containing `.claret` / `.dsl` specific
 
 When an LLM agent (Antigravity, Claude Code, Cursor) executes `/download-releases` or downloads specification releases:
 
-1. **Inspect Tags / Releases**:
-   - Resolve target tags (e.g. `saff-study_v1.0` ... `saff-study_v2.9`) using `git tag -l` or GitHub CLI / API.
-2. **Extract `src/` Specifications**:
-   - Extract specifications directly from local/remote git history (`git archive <tag> src/` or `git checkout <tag> -- src/`) or download from GitHub release tarball.
-   - Isolate into segregated folders: `<output_dir>/<version_or_tag>/src/`.
+1. **Resolve Tags**:
+   - Explicit list via `--tags`, or auto-discover all `<branch>_v*` tags via `--branch`.
+2. **Extract `src/` and `output/` Trees**:
+   - Downloads each prefix into `<output_dir>/<tag>/src/` and `<output_dir>/<tag>/output/`.
 3. **Verify Integrity**:
-   - Confirm that all `.claret` / `.dsl` files for each tag are present and uncorrupted.
+   - Confirms all `.claret` / `.dsl` files and test suite files for each tag are present.
 
 ---
 
 ## 2. Standalone CLI Invocation (Automated / Headless)
 
-For terminal scripts or CI/CD pipelines:
-
 ```bash
-# Download src/ for specific tags or releases
+# Auto-discover and download all tags for a branch (src/ + output/)
 python .claude/skills/release-downloader/scripts/download_releases.py \
-  --tags saff-study_v1.0 saff-study_v1.1 \
+  --branch viceri-study \
   --output-dir ./downloads \
+  --repo diegoquirino/openscience
+
+# Explicit tags, only src/
+python .claude/skills/release-downloader/scripts/download_releases.py \
+  --tags viceri-study_v1.0 viceri-study_v1.1 \
+  --output-dir ./downloads \
+  --prefixes src \
   --repo diegoquirino/openscience
 ```
 
 Parameters:
-- `--tags`: (Required) List of tag names or release names to download.
+- `--tags`: Explicit ordered list of tag names (mutually exclusive with `--branch`).
+- `--branch`: Auto-discover all tags matching `<branch>_v*` from GitHub (mutually exclusive with `--tags`).
 - `--output-dir`: (Optional) Base output directory. Default: `./downloads`.
+- `--prefixes`: (Optional) Directory prefixes to download per tag. Default: `src output`.
 - `--repo`: (Optional) GitHub `owner/repo`. Defaults to `GITHUB_REPO` from `.env`.
+

@@ -417,12 +417,13 @@ class GitHubManager:
         rc, _, _ = self.run_git(["rev-parse", "--is-inside-work-tree"], cwd=repo_dir)
         if rc != 0:
             self.run_git(["init"], cwd=repo_dir)
-            if self.token:
-                remote_url = f"https://x-access-token:{self.token}@github.com/{self.repo}.git"
-            else:
-                remote_url = f"https://github.com/{self.repo}.git"
-            self.run_git(["remote", "remove", "origin"], cwd=repo_dir)
-            self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
+
+        if self.token:
+            remote_url = f"https://x-access-token:{self.token}@github.com/{self.repo}.git"
+        else:
+            remote_url = f"https://github.com/{self.repo}.git"
+        self.run_git(["remote", "remove", "origin"], cwd=repo_dir)
+        self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
 
         # Ensure branch exists and is checked out
         self.run_git(["checkout", "-B", branch], cwd=repo_dir)
