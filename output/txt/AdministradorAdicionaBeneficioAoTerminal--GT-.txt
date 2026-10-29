@@ -1,0 +1,49 @@
+System:	Bazooca
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Terminais			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Beneficio de Terminal			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: clica no botao Cancelar		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Adicionar Beneficio'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

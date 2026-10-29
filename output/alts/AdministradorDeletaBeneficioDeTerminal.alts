@@ -1,0 +1,48 @@
+ALTS_SPECIFICATION "Administrador Deleta Beneficio de Terminal" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario Administrador esta logado no sistema."
+  POST_CONDITION: "O Beneficio de Terminal foi excluida com sucesso."
+
+  ACTORS {
+    Administrador: "Usuario Administrador"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario Administrador esta logado no sistema."]
+    S_BF_1 [flow: "basic", actor: "Administrador", action: "abre tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "Administrador", action: "clica na opcao 'Terminais' no menu da tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "apresenta uma listagem dos Terminais cadastrados no sistema"]
+    S_BF_5 [flow: "basic", actor: "Administrador", action: "clica em algum dos Terminais listados", branches_af: [1]]
+    S_BF_6 [flow: "basic", actor: "system", action: "abre a tela de edicao de Terminal"]
+    S_BF_7 [flow: "basic", actor: "Administrador", action: "clica no botao de 'Excluir' de algum dos beneficios listados", branches_af: [2]]
+    S_BF_8 [flow: "basic", actor: "system", action: "exibe popup pedindo Confirmacao de delecao"]
+    S_BF_9 [flow: "basic", actor: "Administrador", action: "confirma delecao", branches_af: [3]]
+    S_BF_10 [flow: "basic", actor: "system", action: "notifica que o Beneficio de Terminal foi excluido com sucesso"]
+    S_AF1_1 [flow: "alternative_1", description: "Volta para tela inicial de sistema", actor: "Administrador", action: "clica no botao Voltar", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Cancela delecao de Beneficio de Terminal", actor: "Administrador", action: "clica no botao 'Cancelar'", returns_to_bf: 4]
+    S_AF3_1 [flow: "alternative_3", description: "Fecha popup de confirmacao de delecao", actor: "Administrador", action: "clica no botao 'Cancelar' do popup", returns_to_bf: 6]
+    S_END [terminal, guard: "O Beneficio de Terminal foi excluida com sucesso."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "Administrador: clica na opcao 'Terminais' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: apresenta uma listagem dos Terminais cadastrados no sistema"]
+    S_BF_4 -> S_BF_5 [event: "Administrador: clica em algum dos Terminais listados"]
+    S_BF_5 -> S_BF_6 [event: "system: abre a tela de edicao de Terminal"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Volta para tela inicial de sistema"]
+    S_BF_6 -> S_BF_7 [event: "Administrador: clica no botao de 'Excluir' de algum dos beneficios listados"]
+    S_BF_7 -> S_BF_8 [event: "system: exibe popup pedindo Confirmacao de delecao"]
+    S_BF_7 -> S_AF2_1 [branch: "AF_2 - Cancela delecao de Beneficio de Terminal"]
+    S_BF_8 -> S_BF_9 [event: "Administrador: confirma delecao"]
+    S_BF_9 -> S_BF_10 [event: "system: notifica que o Beneficio de Terminal foi excluido com sucesso"]
+    S_BF_9 -> S_AF3_1 [branch: "AF_3 - Fecha popup de confirmacao de delecao"]
+    S_BF_10 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF3_1 -> S_BF_6 [resume_basic_flow: 6]
+  }
+}

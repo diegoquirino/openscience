@@ -1,0 +1,64 @@
+ALTS_SPECIFICATION "Administrador Edita Pedido" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema."
+  POST_CONDITION: "O Pedido esta atualizado no banco."
+
+  ACTORS {
+    Administrador: "Usuario Administrador"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema."]
+    S_BF_1 [flow: "basic", actor: "Administrador", action: "abre tela inicial do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe tela inicial do sistema"]
+    S_BF_3 [flow: "basic", actor: "Administrador", action: "clica na opcao 'Pedidos' no menu da tela principal"]
+    S_BF_4 [flow: "basic", actor: "system", action: "exibe a tela de listagem de Pedidos"]
+    S_BF_5 [flow: "basic", actor: "Administrador", action: "clica em um Pedido existente", branches_af: [1, 2, 3, 5]]
+    S_BF_6 [flow: "basic", actor: "system", action: "exibe a tela de edicao de Pedido"]
+    S_BF_7 [flow: "basic", actor: "Administrador", action: "preenche os dados de novo CEP"]
+    S_BF_8 [flow: "basic", actor: "system", action: "preenche demais campos de Endereco exceto Numero e Complemento", branches_ef: [1]]
+    S_BF_9 [flow: "basic", actor: "Administrador", action: "preenche demais campos de Endereco e clica em Atualizar", branches_af: [4]]
+    S_BF_10 [flow: "basic", actor: "system", action: "notifica usuario que o Pedido foi atualizado com sucesso", branches_ef: [2]]
+    S_AF1_1 [flow: "alternative_1", description: "ordena lista de Pedidos", actor: "Administrador", action: "clica em um dos botões de ordenacao associada a uma coluna da tabela", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "filtra lista de Pedidos", actor: "Administrador", action: "preenche campos de filtragem", returns_to_bf: 4]
+    S_AF3_1 [flow: "alternative_3", description: "navega por paginas de tabela", actor: "Administrador", action: "clica em botao de navegacao de paginas de tabela", returns_to_bf: 4]
+    S_AF4_1 [flow: "alternative_4", description: "cancela atualizacao de Pedido", actor: "Administrador", action: "clica no botao Cancelar", returns_to_bf: 4]
+    S_AF5_1 [flow: "alternative_5", description: "volta para tela inicial de sistema", actor: "Administrador", action: "clica no botao Cancelar", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Usuario insere CEP invalido", actor: "system", action: "alerta que CEP é invalido"]
+    S_EF1_2 [flow: "exception_1", description: "Usuario insere CEP invalido", actor: "Administrador", action: "preenche um cpf valido e clica em Atualizar"]
+    S_EF2_1 [flow: "exception_2", description: "Nao insere algum dado obrigatorio'", actor: "system", action: "informa que os dados obrigatorios devem ser preenchidos"]
+    S_EF2_2 [flow: "exception_2", description: "Nao insere algum dado obrigatorio'", actor: "Administrador", action: "preenche dados obrigatorios e clica em Atualizar"]
+    S_END [terminal, guard: "O Pedido esta atualizado no banco."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe tela inicial do sistema"]
+    S_BF_2 -> S_BF_3 [event: "Administrador: clica na opcao 'Pedidos' no menu da tela principal"]
+    S_BF_3 -> S_BF_4 [event: "system: exibe a tela de listagem de Pedidos"]
+    S_BF_4 -> S_BF_5 [event: "Administrador: clica em um Pedido existente"]
+    S_BF_5 -> S_BF_6 [event: "system: exibe a tela de edicao de Pedido"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - ordena lista de Pedidos"]
+    S_BF_5 -> S_AF2_1 [branch: "AF_2 - filtra lista de Pedidos"]
+    S_BF_5 -> S_AF3_1 [branch: "AF_3 - navega por paginas de tabela"]
+    S_BF_5 -> S_AF5_1 [branch: "AF_5 - volta para tela inicial de sistema"]
+    S_BF_6 -> S_BF_7 [event: "Administrador: preenche os dados de novo CEP"]
+    S_BF_7 -> S_BF_8 [event: "system: preenche demais campos de Endereco exceto Numero e Complemento"]
+    S_BF_8 -> S_BF_9 [event: "Administrador: preenche demais campos de Endereco e clica em Atualizar"]
+    S_BF_8 -> S_EF1_1 [branch: "EF_1 - Usuario insere CEP invalido"]
+    S_BF_9 -> S_BF_10 [event: "system: notifica usuario que o Pedido foi atualizado com sucesso"]
+    S_BF_9 -> S_AF4_1 [branch: "AF_4 - cancela atualizacao de Pedido"]
+    S_BF_10 -> S_END [event: "Complete"]
+    S_BF_10 -> S_EF2_1 [branch: "EF_2 - Nao insere algum dado obrigatorio'"]
+    S_AF1_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF2_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF3_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF4_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF5_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_EF1_2 [event: "Administrador: preenche um cpf valido e clica em Atualizar"]
+    S_EF1_2 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_EF2_2 [event: "Administrador: preenche dados obrigatorios e clica em Atualizar"]
+    S_EF2_2 -> S_END [event: "ErrorExit"]
+  }
+}

@@ -1,0 +1,2006 @@
+System:	Bazooca
+Use Case:	All Use Cases
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 160 test case(s)	Creation Date:	29/10/2026
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que Email e invalido		
+5	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que senhas estao diferentes		
+5	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+5	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Terminais			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Beneficio de Terminal			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: clica no botao Cancelar		SYSTEM mostra a lista de Terminais do sistema		
+5	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+6	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM notifica usuario que o novo Beneficio foi salvo e incrementa lista de Beneficios		
+Postcondition:	Beneficio de Terminal salvo no sistema
+
+Use Case:	Administrador Adiciona Beneficio Ao Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema. De existir pelo menos um terminal registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal em que sera adicionado o Beneficio		SYSTEM abre a tela de edicao do Terminal		
+4	Administrador: adiciona os dados do novo Beneficio na secao 'Beneficios' e clica no botao 'Adicionar Beneficio'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Adicionar Beneficio'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso e exibe lista de Compatibilidades		
+Postcondition:	A nova Compatibilidade esta adicionada ao banco.
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Compatibilidades			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe a tela de listagem das Compatibilidades		
+4	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+5	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso e exibe lista de Compatibilidades		
+Postcondition:	A nova Compatibilidade esta adicionada ao banco.
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de nova Compatibilidade			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe tela inicial do sistema		
+5	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+6	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+7	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM notifica usuario que os nova Compatibilidade foi adicionada com sucesso e exibe lista de Compatibilidades		
+Postcondition:	A nova Compatibilidade esta adicionada ao banco.
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche dados obrigatorios e clica em 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario insere Tipo de Mercadoria invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM alerta que Tipo de Mercadoria e invalido		
+5	Administrador: preenche um Tipo de Mercadoria valido e clica em 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Compatibilidade	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Usuario insere NCM invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em 'Adicionar Compatibilidade'		SYSTEM exibe a tela de cadastro de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Registrar'		SYSTEM alerta que NCM e invalido		
+5	Administrador: preenche um NCM valido e clica em 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces		
+Postcondition:	O novo E-commerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces		
+Postcondition:	O novo E-commerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+6	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces		
+Postcondition:	O novo E-commerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao preenche algum campo obrigatorio			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta ao usuario que os campos obrigatorios devem ser preenchidos		
+5	Administrador: informa os campos obrigatorios e clica no botao de 'Cadastrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Ecommerce	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Conflito de CNPJ			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar E-commerce'		SYSTEM exibe tela de cadastro de E-commerce		
+4	Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar'		SYSTEM alerta que ja existe um E-commerce cadastrado com o CNPJ		
+5	Administrador: preenche o CNPJ correto e clica no botão 'Cadastrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: clica no botao 'Voltar'		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+5	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de novo operador de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: clica no botao 'Cancelar' de registro de operador		SYSTEM exibe tela com informacões de Ecommerce		
+5	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar' do form de Ecommerce		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+5	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Campos obrigatorios			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta ao usuario que o campo deve ser preenchido		
+5	Administrador: informa os campos obrigatorios e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome de Usuario ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
+5	Administrador: informa um novo Nome de Usuario e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: informa um novo Email e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: informa um novo Email valido e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
+5	Administrador: informa um novo Cpf e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas nao coincidem			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que as senhas informadas nao coincidem		
+5	Administrador: informa senhas iguais e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+4	Administrador: insere os dados de cadastro do Terminal e clica no botao 'Cadastrar'		SYSTEM notifica usuario de que Terminal foi cadastrado com sucesso e exibe lista de Terminais		
+Postcondition:	O novo Terminal esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+6	Administrador: insere os dados de cadastro do Terminal e clica no botao 'Cadastrar'		SYSTEM notifica usuario de que Terminal foi cadastrado com sucesso e exibe lista de Terminais		
+Postcondition:	O novo Terminal esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+6	Administrador: insere os dados de cadastro do Terminal e clica no botao 'Cadastrar'		SYSTEM notifica usuario de que Terminal foi cadastrado com sucesso e exibe lista de Terminais		
+Postcondition:	O novo Terminal esta salvo no sistema.
+
+Use Case:	Administrador Adiciona Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao preenche algum campo obrigatorio			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+4	Administrador: insere os dados de cadastro do Terminal e clica no botao 'Cadastrar'		SYSTEM alerta ao usuario que os campos obrigatorios devem ser preenchidos		
+5	Administrador: informa os campos obrigatorios e clica no botao de 'Cadastrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Adiciona Terminal	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Conflito de CNPJ			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Terminais' no menu principal		SYSTEM exibe a tela com a lista de Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Terminal'		SYSTEM exibe tela de cadastro de Terminal		
+4	Administrador: insere os dados de cadastro do Terminal e clica no botao 'Cadastrar'		SYSTEM alerta que ja existe um Terminal cadastrado com o CNPJ		
+5	Administrador: preenche o CNPJ correto e clica no botão 'Cadastrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Deleta Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica em algum dos Administradores listados		SYSTEM abre a tela de edicao de Administrador		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Administrador		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Administrador foi excluido com sucesso		
+Postcondition:	O Administrador foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Beneficio de Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' de algum dos beneficios listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	O Beneficio de Terminal foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Beneficio de Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos beneficios listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	O Beneficio de Terminal foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Beneficio de Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Beneficio de Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos beneficios listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	O Beneficio de Terminal foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Beneficio de Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' de algum dos beneficios listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos beneficios listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Beneficio de Terminal foi excluido com sucesso		
+Postcondition:	O Beneficio de Terminal foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Compatibilidade	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidades' no menu da tela principal		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+3	Administrador: clica em algum dos Compatibilidades listados		SYSTEM abre a tela de edicao de Compatibilidade		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Compatibilidade foi excluido com sucesso		
+Postcondition:	O Compatibilidade foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Compatibilidade	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidades' no menu da tela principal		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Compatibilidades' no menu da tela principal		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+5	Administrador: clica em algum dos Compatibilidades listados		SYSTEM abre a tela de edicao de Compatibilidade		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Compatibilidade foi excluido com sucesso		
+Postcondition:	O Compatibilidade foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Compatibilidade	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Compatibilidade			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidades' no menu da tela principal		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+3	Administrador: clica em algum dos Compatibilidades listados		SYSTEM abre a tela de edicao de Compatibilidade		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+5	Administrador: clica em algum dos Compatibilidades listados		SYSTEM abre a tela de edicao de Compatibilidade		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Compatibilidade foi excluido com sucesso		
+Postcondition:	O Compatibilidade foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Compatibilidade	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Compatibilidades' no menu da tela principal		SYSTEM apresenta uma listagem dos Compatibilidades cadastrados no sistema		
+3	Administrador: clica em algum dos Compatibilidades listados		SYSTEM abre a tela de edicao de Compatibilidade		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Compatibilidade		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Compatibilidade foi excluido com sucesso		
+Postcondition:	O Compatibilidade foi excluida com sucesso.
+
+Use Case:	Administrador Deleta Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
+Postcondition:	O Ecommerce foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
+Postcondition:	O Ecommerce foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
+Postcondition:	O Ecommerce foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir'		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Ecommerce foi excluido com sucesso		
+Postcondition:	O Ecommerce foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Operador de Ecommerce foi excluido com sucesso		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Ecommerce foi excluido com sucesso		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Operador de Ecommerce			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+5	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Ecommerce foi excluido com sucesso		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Ecommerces' no menu da tela principal		SYSTEM apresenta uma listagem dos Ecommerces cadastrados no sistema		
+3	Administrador: clica em algum dos Ecommerces listados		SYSTEM abre a tela de edicao de Ecommerce		
+4	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Ecommerce		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Ecommerce foi excluido com sucesso		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Operador de Terminal foi excluido com sucesso		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar'		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Terminal foi excluido com sucesso		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Operador de Terminal			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Terminal foi excluido com sucesso		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Deleta Operador De Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' de algum dos operadores listados		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Operador de Terminal foi excluido com sucesso		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Deleta Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Use Case:	Administrador Deleta Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Navega em lista de Administradores			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao de paginacao		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+4	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+5	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Filtra lista de Administradores			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: filtra lista de Administradores por algum campo		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+4	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+5	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Ordena lista de Administradores			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: ordena lista de Administradores por algum campo		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+4	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+5	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que Email e invalido		
+5	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que senhas estao diferentes		
+5	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Administrador	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+5	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Ordena lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: ordena lista dos Terminais por alguma coluna		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Adiciona Beneficio associado a Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio'		SYSTEM incrementa o a lista de beneficio do Terminal		
+4	Administrador: clica em Atualizar		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Cancela edicao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: clica no botao de 'Cancelar'		SYSTEM exibe uma lista com os Terminais cadastrados		
+4	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+5	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Navega por paginas de tabela			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: preenche campos de filtragem		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM notifica usuario de que Beneficio de Terminal foi atualizado com sucesso		
+Postcondition:	O Beneficio de Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuario nao preenche algum campo obrigatorio			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM informa que o campo e obrigatorio		
+4	Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Beneficio De Terminal	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: insere beneficio de tipo ja existente			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema. Existe um terminal com beneficio registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do Beneficio de Terminal e clica no botao de 'Salvar'		SYSTEM informa que beneficio ja esta cadastrado		
+4	Administrador: modifica tipo de beneficio e clica em 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+3	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Ordena lista de Compatibilidades			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em um dos botões de ordenacao associada a uma coluna da tabela		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Filtra lista de Compatibilidades			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: preenche campos de filtragem		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Navega por paginas de tabela			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela atualizacao de Compatibilidade			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+3	Administrador: clica no botao Cancelar		SYSTEM exibe a tela de listagem das Compatibilidades		
+4	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+5	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica no botao Voltar		SYSTEM exibe a tela de listagem das Compatibilidades		
+3	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+4	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM notifica usuario que os nova Compatibilidade foi atualizado com sucesso		
+Postcondition:	A nova Compatibilidade esta atualizada no banco.
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+3	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+4	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario insere Tipo de Mercadoria invalido			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+3	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM alerta que Horario de Inicio é invalido		
+4	Administrador: preenche um Tipo de Mercadoria valida e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Compatibilidade	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Usuario insere NCM invalido			Execution Date:	
+Precondition:	Administrador logado; Existe Compatibilidade registrada no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Clicar na opcao 'Compatibildiade' no menu da tela principal		SYSTEM exibe a tela de listagem das Compatibilidades		
+2	Administrador: clica em uma Compatibilidade existente'		SYSTEM exibe a tela de edicao de Compatibilidade		
+3	Administrador: preenche os dados da Compatibilidade e clica em botao 'Atualizar'		SYSTEM alerta que NCM é invalido		
+4	Administrador: preenche um NCM valido e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+4	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Ordena lista de Ecommerce			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: clica em um dos botões de ordenacao associada a uma coluna da tabela		SYSTEM mostra a tela de detalhes do ecommerce		
+3	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+5	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Navega por paginas de tabela			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM mostra a tela de detalhes do ecommerce		
+3	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+5	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Filtra lista de Ecommerce			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: preenche campos de filtragem		SYSTEM mostra a tela de detalhes do ecommerce		
+3	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+5	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela atualizacao de Ecommerce			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: clica no botao Cancelar		SYSTEM mostra a tela de detalhes do ecommerce		
+3	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+5	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+4	Administrador: clica no botao Voltar		SYSTEM mostra a tela de detalhes do ecommerce		
+5	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+6	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+7	Administrador: clica no botao de atualizar		SYSTEM notifica usuario de que o Ecommerce foi atualizado com sucesso		
+Postcondition:	Ecommerce esta com dados atualizados no sistema.
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Nao insere algum dado obrigatório'			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+4	Administrador: clica no botao de atualizar		SYSTEM informa que os dados obrigatórios devem ser preenchidos		
+5	Administrador: adiciona dados corretos e clica em 'Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Ecommerce	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario insere algum dado invalido			Execution Date:	
+Precondition:	Administrador logado; Algum E-commerce salvo no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'E-commerce' no menu da tela principal		SYSTEM mostra a tela de detalhes do ecommerce		
+2	Administrador: seleciona um E-commerce na lista		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: modifica os dados existentes		SYSTEM valida os dados cadastrais do ecommerce		
+4	Administrador: clica no botao de atualizar		SYSTEM alerta que o dado esta invalido e pede nova entrada		
+5	Administrador: corrige os dados invalidos e clica em 'Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Navega pelas listas			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: procura o E-commerce navegando pelas paginas da lista		SYSTEM mostra a lista de Ecommerces do sistema		
+3	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Ordena lista de Ecommerce			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: ordena os E-commerces por algum atributo		SYSTEM mostra a lista de Ecommerces do sistema		
+3	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: clica no botao Voltar		SYSTEM mostra a lista de Ecommerces do sistema		
+3	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela edicao de operador			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: clica no botao Cancelar		SYSTEM abre a tela de edicao do Ecommerce		
+5	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+6	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Ecommerce			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: filtra lista de Ecommerce por algum campo		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Ecommerce modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
+5	Administrador: corrige o nome para o Operador e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: corrige o email e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
+5	Administrador: corrige o cpf e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Ecommerce	Version:	1.0
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas diferentes			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Ecommerce cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Ecommerces' no menu da tela principal		SYSTEM mostra a lista de Ecommerces do sistema		
+2	Administrador: seleciona o E-commerce do operador		SYSTEM abre a tela de edicao do Ecommerce		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que as senhas informadas nao coincidem		
+5	Administrador: corrige as senhas e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Navega pelas listas			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: procura o E-commerce navegando pelas paginas da lista		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Ordena lista de Terminal			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: ordena os E-commerces por algum atributo		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: clica no botao Voltar		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela edicao de operador			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: clica no botao Cancelar		SYSTEM abre a tela de edicao do Terminais		
+5	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+6	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Terminal			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: filtra lista de Terminal por algum campo		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
+5	Administrador: corrige o nome para o Operador e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: corrige o email e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
+5	Administrador: corrige o cpf e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas diferentes			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que as senhas informadas nao coincidem		
+5	Administrador: corrige as senhas e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Parametros do Engine	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
+3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
+Postcondition:	Os Parametros do Engine devem estar atualizados.
+
+Use Case:	Administrador Edita Parametros do Engine	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: cancela edicao de Parametros			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
+3	system: clica no botao de 'Cancelar'		clica no botao de 'Cancelar'		
+4	system: exibe tela inicial do sistema		exibe tela inicial do sistema		
+5	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
+6	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+7	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
+Postcondition:	Os Parametros do Engine devem estar atualizados.
+
+Use Case:	Administrador Edita Parametros do Engine	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Não insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
+3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Parametros do Engine	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario insere algum dado invalido			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do Engine		SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais		
+3	Administrador: escolhe dia de Parametros do Engine		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM alerta que dado e invalido		
+5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Parametros do NFe Reader	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do NFe Reader		SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais		
+3	Administrador: escolhe dia de Parametros do NFe Reader		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
+Postcondition:	Os Parametros do NFe Reader devem estar atualizados.
+
+Use Case:	Administrador Edita Parametros do NFe Reader	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: cancela edicao de Parametros			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do NFe Reader		SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais		
+3	system: clica no botao de 'Cancelar'		clica no botao de 'Cancelar'		
+4	system: exibe tela inicial do sistema		exibe tela inicial do sistema		
+5	Administrador: entra na tela de Edição de Parametros do NFe Reader		SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais		
+6	Administrador: escolhe dia de Parametros do NFe Reader		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+7	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso		
+Postcondition:	Os Parametros do NFe Reader devem estar atualizados.
+
+Use Case:	Administrador Edita Parametros do NFe Reader	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Não insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do NFe Reader		SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais		
+3	Administrador: escolhe dia de Parametros do NFe Reader		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Parametros do NFe Reader	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Usuario insere algum dado invalido			Execution Date:	
+Precondition:	Administrador logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: entra na tela de Edição de Parametros do NFe Reader		SYSTEM apresenta uma tela com os Parametros do NFe Reader com os valores atuais		
+3	Administrador: escolhe dia de Parametros do NFe Reader		SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais		
+4	Administrador: modifica valores de paremetros e clica em Atualizar		SYSTEM alerta que dado e invalido		
+5	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: ordena lista de Pedidos			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um dos botões de ordenacao associada a uma coluna da tabela		SYSTEM exibe a tela de listagem de Pedidos		
+4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: filtra lista de Pedidos			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: preenche campos de filtragem		SYSTEM exibe a tela de listagem de Pedidos		
+4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: navega por paginas de tabela			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe a tela de listagem de Pedidos		
+4	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+5	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+6	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: cancela atualizacao de Pedido			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+5	Administrador: clica no botao Cancelar		SYSTEM exibe a tela de listagem de Pedidos		
+6	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+7	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+8	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica no botao Cancelar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+5	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+6	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+7	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM notifica usuario que o Pedido foi atualizado com sucesso		
+Postcondition:	O Pedido esta atualizado no banco.
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuario insere CEP invalido			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM alerta que CEP é invalido		
+5	Administrador: preenche um cpf valido e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Pedido	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nao insere algum dado obrigatorio'			Execution Date:	
+Precondition:	Usuario Administrador logado no sistema; Existem Pedidos registrados no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Pedidos' no menu da tela principal		SYSTEM exibe a tela de listagem de Pedidos		
+3	Administrador: clica em um Pedido existente		SYSTEM exibe a tela de edicao de Pedido		
+4	Administrador: preenche os dados de novo CEP		SYSTEM preenche demais campos de Endereco exceto Numero e Complemento		
+5	Administrador: preenche demais campos de Endereco e clica em Atualizar		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+6	Administrador: preenche dados obrigatorios e clica em Atualizar		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Ordena lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: ordena lista dos Terminais por alguma coluna		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Adiciona Beneficio associado a Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: preenche os dados do novo beneficio e clica no botao 'Adicionar Benficio'		SYSTEM incrementa o a lista de beneficio do Terminal		
+4	Administrador: clica em Atualizar		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Cancela edicao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: clica no botao de 'Cancelar'		SYSTEM exibe uma lista com os Terminais cadastrados		
+4	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+5	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Navega por paginas de tabela			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em botao de navegacao de paginas de tabela		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Terminais			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: preenche campos de filtragem		SYSTEM exibe uma lista com os Terminais cadastrados		
+3	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+4	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM notifica usuario de que Terminal foi atualizado com sucesso		
+Postcondition:	O Terminal foi atualizado com sucesso.
+
+Use Case:	Administrador Edita Terminal	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Usuario nao preenche algum campo obrigatorio			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: Entra na tela de Listagem de Terminais		SYSTEM exibe uma lista com os Terminais cadastrados		
+2	Administrador: clica em um dos terminais listados		SYSTEM exibe tela de edicao de Terminal		
+3	Administrador: altera dados do terminal e clica no botao de 'Atualizar'		SYSTEM informa que o campo e obrigatorio		
+4	Administrador: preenche o campo obrigatorio e clica no botao de 'Atualizar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona contador de 'Conferencia'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Conferencia' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Seleciona contador de 'Picking'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Seleciona contador de 'Atrasos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Seleciona contador de 'Retornos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Seleciona contador de 'Ocorrencias'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Notas'		
+5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Clica no botao voltar			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: clica no botao 'Voltar'		SYSTEM exibe dashboard do sistema		
+5	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+6	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: ordenas as notas por alguma coluna		SYSTEM abre uma tela com as listas das 'Notas'		
+5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Cancela impressao de Danfe			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da nota selecionada		
+7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Use Case:	Usuario Loga	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+Postcondition:	Usuario esta logado no sistema.
+
+Use Case:	Usuario Loga	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Um ou mais username sao apresentados			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: seleciona um dos usernames sugeridos, digita um password e clica no botao de submeter		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+4	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+Postcondition:	Usuario esta logado no sistema.
+
+Use Case:	Usuario Loga	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: esqueceu credenciais			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: clica no botao 'Esqueceu sua senha?'		SYSTEM pede para usuario inserir email de cadastro		
+4	bazoocaUser: usuario clica em botao 'Confirmar'		SYSTEM processes action successfully		
+5	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+6	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+7	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM mostra uma mensagem de usuario logado com sucesso		
+Postcondition:	Usuario esta logado no sistema.
+
+Use Case:	Usuario Loga	Version:	1.0
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: usuario nao existe no banco de dados			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM alerta que usuario nao existe		
+Postcondition:	Flow interrupted due to exception / error
+
+Use Case:	Usuario Loga	Version:	1.0
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: combinacao de username/password incorreta			Execution Date:	
+Precondition:	Acesso ao Browser; Acesso a internet.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	bazoocaUser: entra na homepage do sistema		SYSTEM exibe homepage		
+2	bazoocaUser: clica no botao 'Login'		SYSTEM apresenta um form com os campos username e password e um botao de submissao		
+3	bazoocaUser: preenche os campos de username e password e clica no botao de submissao		SYSTEM alerta que username e/ou password estao incorretos		
+Postcondition:	Flow interrupted due to exception / error
+
+
+================================================================================
+
+System:	Bazooca Test Project
+Use Case:	All Use Cases
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	29/10/2026
+
+Use Case:	Parceiro Imprime CTe NFSe	Version:	1.0
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+
+Use Case:	Parceiro Imprime CTe NFSe	Version:	1.0
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuario ordena lista de CT-e/NFS-e			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: clica no botão de ordenação associado a uma das colunas		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+3	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+
+Use Case:	Parceiro Imprime CTe NFSe	Version:	1.0
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Usuario filtra lista de CT-e/NFS-e			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: insere conteúdo em um ou mais campos de filtragem		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+3	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+

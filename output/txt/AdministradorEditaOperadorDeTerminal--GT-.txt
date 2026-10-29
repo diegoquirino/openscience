@@ -1,0 +1,124 @@
+System:	Bazooca
+Use Case:	Administrador Edita Operador De Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 11 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Navega pelas listas			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: procura o E-commerce navegando pelas paginas da lista		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Ordena lista de Terminal			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: ordena os E-commerces por algum atributo		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: clica no botao Voltar		SYSTEM mostra a lista de Terminais do sistema		
+3	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+4	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+5	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Cancela edicao de operador			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: clica no botao Cancelar		SYSTEM abre a tela de edicao do Terminais		
+5	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+6	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Filtra lista de Terminal			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: filtra lista de Terminal por algum campo		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM salva o novo operador com os novos dados		
+Postcondition:	Operador de Terminal modificado no sistema.
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dado obrigatorio'			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: adiciona os dados obrigatorios e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
+5	Administrador: corrige o nome para o Operador e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: corrige o email e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC11	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf cadastrado			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
+5	Administrador: corrige o cpf e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC12	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas diferentes			Execution Date:	
+Precondition:	Administrador logado no sistema; Operadores de Terminal cadastrados.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: seleciona a opcao 'Terminais' no menu da tela principal		SYSTEM mostra a lista de Terminais do sistema		
+2	Administrador: seleciona o Terminal do operador		SYSTEM abre a tela de edicao do Terminais		
+3	Administrador: seleciona o operador na lista de operadores		SYSTEM abre os campos de edicao do Operador		
+4	Administrador: adiciona os novos dados do Operador e clica no botao 'Salvar'		SYSTEM alerta que as senhas informadas nao coincidem		
+5	Administrador: corrige as senhas e clica no botao 'Salvar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

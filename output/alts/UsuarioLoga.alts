@@ -1,0 +1,47 @@
+ALTS_SPECIFICATION "Usuario Loga" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Acesso ao Browser; Acesso a internet."
+  POST_CONDITION: "Usuario esta logado no sistema."
+
+  ACTORS {
+    bazoocaUser: "Usuario Bazooca"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Acesso ao Browser; Acesso a internet."]
+    S_BF_1 [flow: "basic", actor: "bazoocaUser", action: "entra na homepage do sistema"]
+    S_BF_2 [flow: "basic", actor: "system", action: "exibe homepage"]
+    S_BF_3 [flow: "basic", actor: "bazoocaUser", action: "clica no botao 'Login'"]
+    S_BF_4 [flow: "basic", actor: "system", action: "apresenta um form com os campos username e password e um botao de submissao"]
+    S_BF_5 [flow: "basic", actor: "bazoocaUser", action: "preenche os campos de username e password e clica no botao de submissao", branches_af: [1, 2]]
+    S_BF_6 [flow: "basic", actor: "system", action: "mostra uma mensagem de usuario logado com sucesso", branches_ef: [1, 2]]
+    S_AF1_1 [flow: "alternative_1", description: "Um ou mais username sao apresentados", actor: "bazoocaUser", action: "seleciona um dos usernames sugeridos, digita um password e clica no botao de submeter", returns_to_bf: 4]
+    S_AF2_1 [flow: "alternative_2", description: "esqueceu credenciais", actor: "bazoocaUser", action: "clica no botao 'Esqueceu sua senha?'"]
+    S_AF2_2 [flow: "alternative_2", description: "esqueceu credenciais", actor: "system", action: "pede para usuario inserir email de cadastro"]
+    S_AF2_3 [flow: "alternative_2", description: "esqueceu credenciais", actor: "bazoocaUser", action: "usuario clica em botao 'Confirmar'", returns_to_bf: 1]
+    S_EF1_1 [flow: "exception_1", description: "usuario nao existe no banco de dados", actor: "system", action: "alerta que usuario nao existe"]
+    S_EF2_1 [flow: "exception_2", description: "combinacao de username/password incorreta", actor: "system", action: "alerta que username e/ou password estao incorretos"]
+    S_END [terminal, guard: "Usuario esta logado no sistema."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: exibe homepage"]
+    S_BF_2 -> S_BF_3 [event: "bazoocaUser: clica no botao 'Login'"]
+    S_BF_3 -> S_BF_4 [event: "system: apresenta um form com os campos username e password e um botao de submissao"]
+    S_BF_4 -> S_BF_5 [event: "bazoocaUser: preenche os campos de username e password e clica no botao de submissao"]
+    S_BF_5 -> S_BF_6 [event: "system: mostra uma mensagem de usuario logado com sucesso"]
+    S_BF_5 -> S_AF1_1 [branch: "AF_1 - Um ou mais username sao apresentados"]
+    S_BF_5 -> S_AF2_1 [branch: "AF_2 - esqueceu credenciais"]
+    S_BF_6 -> S_END [event: "Complete"]
+    S_BF_6 -> S_EF1_1 [branch: "EF_1 - usuario nao existe no banco de dados"]
+    S_BF_6 -> S_EF2_1 [branch: "EF_2 - combinacao de username/password incorreta"]
+    S_AF1_1 -> S_BF_4 [resume_basic_flow: 4]
+    S_AF2_1 -> S_AF2_2 [event: "system: pede para usuario inserir email de cadastro"]
+    S_AF2_2 -> S_AF2_3 [event: "bazoocaUser: usuario clica em botao 'Confirmar'"]
+    S_AF2_3 -> S_BF_1 [resume_basic_flow: 1]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

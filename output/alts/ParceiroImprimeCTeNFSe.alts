@@ -1,0 +1,33 @@
+ALTS_SPECIFICATION "Parceiro Imprime CTe NFSe" {
+  VERSION: "1.0"
+  PRE_CONDITION: "Usuário Parceiro logado."
+  POST_CONDITION: "Lista de CTe NFSe impressa."
+
+  ACTORS {
+    Parceiro: "Usuário Parceiro"
+    system: "Bazooca"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "Usuário Parceiro logado."]
+    S_BF_1 [flow: "basic", actor: "Parceiro", action: "Clica na opção CT-e/NFS-e no menu principal"]
+    S_BF_2 [flow: "basic", actor: "system", action: "apresenta uma lista com as CT-e/NFS-e disponíveis"]
+    S_BF_3 [flow: "basic", actor: "Parceiro", action: "clica no botão de Imprimir de uma das CTe/NFSe", branches_af: [1, 2]]
+    S_BF_4 [flow: "basic", actor: "system", action: "apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada"]
+    S_AF1_1 [flow: "alternative_1", description: "Usuario ordena lista de CT-e/NFS-e", actor: "Parceiro", action: "clica no botão de ordenação associado a uma das colunas", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Usuario filtra lista de CT-e/NFS-e", actor: "Parceiro", action: "insere conteúdo em um ou mais campos de filtragem", returns_to_bf: 2]
+    S_END [terminal, guard: "Lista de CTe NFSe impressa."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: apresenta uma lista com as CT-e/NFS-e disponíveis"]
+    S_BF_2 -> S_BF_3 [event: "Parceiro: clica no botão de Imprimir de uma das CTe/NFSe"]
+    S_BF_3 -> S_BF_4 [event: "system: apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada"]
+    S_BF_3 -> S_AF1_1 [branch: "AF_1 - Usuario ordena lista de CT-e/NFS-e"]
+    S_BF_3 -> S_AF2_1 [branch: "AF_2 - Usuario filtra lista de CT-e/NFS-e"]
+    S_BF_4 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Adiciona Ecommerce">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Volta para tela inicial do sistema">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Volta para tela inicial do sistema]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Voltar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Cancela registro de Ecommerce">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Cancela registro de Ecommerce]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que E-commerce foi cadastrado com sucesso e exibe lista de Ecommerces]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 1: Nao preenche algum campo obrigatorio">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Nao preenche algum campo obrigatorio]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta ao usuario que os campos obrigatorios devem ser preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: informa os campos obrigatorios e clica no botao de 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 2: Conflito de CNPJ">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Conflito de CNPJ]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica no opcao 'Ecommerces' no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe a tela com a lista de E-commerces cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Adicionar E-commerce']]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela de cadastro de E-commerce]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: insere os dados de cadastro do E-commerce e clica no botao 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que ja existe um E-commerce cadastrado com o CNPJ]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: preenche o CNPJ correto e clica no botão 'Cadastrar']]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

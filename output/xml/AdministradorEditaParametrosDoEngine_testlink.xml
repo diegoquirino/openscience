@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Edita Parametros do Engine">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Administrador logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: escolhe dia de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: cancela edicao de Parametros">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: cancela edicao de Parametros]]></summary>
+    <preconditions><![CDATA[Administrador logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[system: clica no botao de 'Cancelar']]></actions>
+        <expectedresults><![CDATA[clica no botao de 'Cancelar']]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[system: exibe tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: escolhe dia de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica usuario que os Parâmetros foram atualizados com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 1: Não insere algum dado obrigatorio&apos;">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Não insere algum dado obrigatorio']]></summary>
+    <preconditions><![CDATA[Administrador logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: escolhe dia de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM informa que os dados obrigatorios devem ser preenchidos]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 2: Usuario insere algum dado invalido">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Usuario insere algum dado invalido]]></summary>
+    <preconditions><![CDATA[Administrador logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: entra na tela de Edição de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os Parametros do Engine com os valores atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: escolhe dia de Parametros do Engine]]></actions>
+        <expectedresults><![CDATA[SYSTEM insere automaticamente Horario de Inicio, Horario de Termino, Periodicidade e Raio atuais]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: modifica valores de paremetros e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerta que dado e invalido]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: preenche dados obrigatorios e clica em Atualizar]]></actions>
+        <expectedresults><![CDATA[SYSTEM processes action successfully]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

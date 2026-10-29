@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Administrador Deleta Terminal">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Terminais' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir' do Terminal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Terminal foi excluido com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Volta para tela inicial de sistema">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Volta para tela inicial de sistema]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Terminais' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao Voltar]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Terminais' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir' do Terminal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Terminal foi excluido com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Cancela delecao de Terminal">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Cancela delecao de Terminal]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Terminais' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Cancelar']]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir' do Terminal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Terminal foi excluido com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Fecha popup de confirmacao de delecao">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Fecha popup de confirmacao de delecao]]></summary>
+    <preconditions><![CDATA[Usuario Administrador esta logado no sistema.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Administrador: abre tela inicial do sistema]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe tela inicial do sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Administrador: clica na opcao 'Terminais' no menu da tela principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Administrador: clica em algum dos Terminais listados]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[4]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir' do Terminal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[5]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao 'Cancelar' do popup]]></actions>
+        <expectedresults><![CDATA[SYSTEM abre a tela de edicao de Terminal]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[6]]></step_number>
+        <actions><![CDATA[Administrador: clica no botao de 'Excluir' do Terminal]]></actions>
+        <expectedresults><![CDATA[SYSTEM exibe popup pedindo Confirmacao de delecao]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[7]]></step_number>
+        <actions><![CDATA[Administrador: confirma delecao]]></actions>
+        <expectedresults><![CDATA[SYSTEM notifica que o Terminal foi excluido com sucesso]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

@@ -1,0 +1,82 @@
+System:	Bazooca
+Use Case:	Administrador Adiciona Administrador	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de Administrador			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: clica no botao Cancelar		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+5	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+6	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM notifica que o Administrador foi adicionado com sucesso e exibe lista de Administradores		
+Postcondition:	O Administrador foi adicionado com sucesso.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Dados obrigatorios'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM informa que os dados obrigatorios devem ser preenchidos		
+5	Administrador: preenche os dados orbigatorios e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que Email e invalido		
+5	Administrador: insere um Email valido e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Senha e Confirmacao diferentes			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario de que senhas estao diferentes		
+5	Administrador: insere Senhas iguais e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Sem Permissao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Administrador' no menu da tela principal		SYSTEM apresenta uma listagem dos Administradores cadastrados no sistema		
+3	Administrador: clica no botao 'Adicionar Administrador'		SYSTEM abre a tela de cadastro de Administradores		
+4	Administrador: preenche os dados do Administrador, seleciona suas permissoes e clica no botao 'Registrar'		SYSTEM alerta usuario que Administrador nao esta com nenhuma Permissao		
+5	Administrador: insere uma permissao e clica no botao 'Registrar'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+

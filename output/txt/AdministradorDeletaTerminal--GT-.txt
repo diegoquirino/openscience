@@ -1,0 +1,54 @@
+System:	Bazooca
+Use Case:	Administrador Deleta Terminal	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para tela inicial de sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica no botao Voltar		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela delecao de Terminal			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao 'Cancelar'		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+5	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Fecha popup de confirmacao de delecao			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Terminais' no menu da tela principal		SYSTEM apresenta uma listagem dos Terminais cadastrados no sistema		
+3	Administrador: clica em algum dos Terminais listados		SYSTEM abre a tela de edicao de Terminal		
+4	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+5	Administrador: clica no botao 'Cancelar' do popup		SYSTEM abre a tela de edicao de Terminal		
+6	Administrador: clica no botao de 'Excluir' do Terminal		SYSTEM exibe popup pedindo Confirmacao de delecao		
+7	Administrador: confirma delecao		SYSTEM notifica que o Terminal foi excluido com sucesso		
+Postcondition:	O Terminal foi excluido com sucesso.
+

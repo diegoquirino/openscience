@@ -1,0 +1,130 @@
+System:	Bazooca
+Use Case:	Administrador Imprime Pdf Da Danfe	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 10 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Seleciona contador de 'Conferencia'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Conferencia' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Seleciona contador de 'Picking'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Picking' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Seleciona contador de 'Atrasos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Atrasos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Seleciona contador de 'Retornos'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Retornos' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Seleciona contador de 'Ocorrencias'			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Ocorrencias' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Navega pelas paginas da lista			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona outra pagina		SYSTEM abre uma tela com as listas das 'Notas'		
+5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Clica no botao voltar			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: clica no botao 'Voltar'		SYSTEM exibe dashboard do sistema		
+5	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+6	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 8: Ordena Notas			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: ordenas as notas por alguma coluna		SYSTEM abre uma tela com as listas das 'Notas'		
+5	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+6	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+7	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 9: Cancela impressao de Danfe			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica na opcao 'Central de Operacoes' no menu da tela principal		SYSTEM exibe dashboard do sistema		
+3	Administrador: clica em algum contador de 'Engine' na secao de 'Notas'		SYSTEM abre uma tela com as listas das 'Notas'		
+4	Administrador: seleciona alguma Nota na lista		SYSTEM exibe os dados da nota selecionada		
+5	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+6	Administrador: clica em botao 'Cancelar'		SYSTEM exibe os dados da nota selecionada		
+7	Administrador: clica no botao de 'Visualizar DANFE'		SYSTEM abre uma nova aba com a versao da Danfe em PDF		
+8	Administrador: clica no botao 'Imprimir'		SYSTEM envia documento para impressora		
+Postcondition:	A Danfe esta impressa
+

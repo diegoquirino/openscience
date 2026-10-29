@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Parceiro Imprime CTe NFSe">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[Usuário Parceiro logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Parceiro: Clica na opção CT-e/NFS-e no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Parceiro: clica no botão de Imprimir de uma das CTe/NFSe]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Usuario ordena lista de CT-e/NFS-e">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Usuario ordena lista de CT-e/NFS-e]]></summary>
+    <preconditions><![CDATA[Usuário Parceiro logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Parceiro: Clica na opção CT-e/NFS-e no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Parceiro: clica no botão de ordenação associado a uma das colunas]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Parceiro: clica no botão de Imprimir de uma das CTe/NFSe]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Usuario filtra lista de CT-e/NFS-e">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Usuario filtra lista de CT-e/NFS-e]]></summary>
+    <preconditions><![CDATA[Usuário Parceiro logado.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[Parceiro: Clica na opção CT-e/NFS-e no menu principal]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[2]]></step_number>
+        <actions><![CDATA[Parceiro: insere conteúdo em um ou mais campos de filtragem]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+      <step>
+        <step_number><![CDATA[3]]></step_number>
+        <actions><![CDATA[Parceiro: clica no botão de Imprimir de uma das CTe/NFSe]]></actions>
+        <expectedresults><![CDATA[SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

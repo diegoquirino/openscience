@@ -1,0 +1,30 @@
+System:	Bazooca Test Project
+Use Case:	Parceiro Imprime CTe NFSe	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Usuario ordena lista de CT-e/NFS-e			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: clica no botão de ordenação associado a uma das colunas		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+3	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Usuario filtra lista de CT-e/NFS-e			Execution Date:	
+Precondition:	Usuário Parceiro logado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Parceiro: Clica na opção CT-e/NFS-e no menu principal		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+2	Parceiro: insere conteúdo em um ou mais campos de filtragem		SYSTEM apresenta uma lista com as CT-e/NFS-e disponíveis		
+3	Parceiro: clica no botão de Imprimir de uma das CTe/NFSe		SYSTEM apresenta uma tela com os dados em um pdf da CT-e/NFS-e selecionada		
+Postcondition:	Lista de CTe NFSe impressa.
+

@@ -1,0 +1,115 @@
+System:	Bazooca
+Use Case:	Administrador Adiciona Operador De Ecommerce	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 10 test case(s)	Creation Date:	29/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Volta para listagem de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: clica no botao 'Voltar'		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+5	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Cancela registro de novo operador de Ecommerce			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: clica no botao 'Cancelar' de registro de operador		SYSTEM exibe tela com informacões de Ecommerce		
+5	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Volta para tela inicial do sistema			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica no botao 'Voltar' do form de Ecommerce		SYSTEM exibe tela inicial do sistema		
+4	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+5	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+6	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM mostra operador adicionado em tabela na tela de cadastro		
+Postcondition:	O novo Operador de Ecommerce esta salvo no sistema.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Campos obrigatorios			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta ao usuario que o campo deve ser preenchido		
+5	Administrador: informa os campos obrigatorios e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Nome de Usuario ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o nome de usuario informado		
+5	Administrador: informa um novo Nome de Usuario e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Email ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: informa um novo Email e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Email invalido			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o email informado		
+5	Administrador: informa um novo Email valido e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: Cpf ja cadastrado			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que ja existe um Operador cadastrado com o cpf informado		
+5	Administrador: informa um novo Cpf e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 6: Senhas nao coincidem			Execution Date:	
+Precondition:	Usuario Administrador esta logado no sistema; Existe pelo menos um Ecommerce registrado.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	Administrador: abre tela inicial do sistema		SYSTEM exibe tela inicial do sistema		
+2	Administrador: clica no opcao 'Ecommerces' no menu principal		SYSTEM exibe a tela com a lista de Ecommerces cadastrados no sistema		
+3	Administrador: clica em um dos Ecommerces listados		SYSTEM exibe tela com informacões de Ecommerce		
+4	Administrador: adiciona os dados do novo Operador na secao 'Operadores' e clica no botao 'Adicionar Operador'		SYSTEM alerta que as senhas informadas nao coincidem		
+5	Administrador: informa senhas iguais e clica no botao de 'Adicionar Operador'		SYSTEM processes action successfully		
+Postcondition:	Flow interrupted due to exception / error
+
