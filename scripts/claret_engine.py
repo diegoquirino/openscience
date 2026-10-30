@@ -636,9 +636,9 @@ class GitHubManager:
 # 4. CLARET DSL Token-Safe Translator
 # ------------------------------------------------------------------------------
 CLARET_RESERVED_KEYWORDS = [
-    "system", "usecase", "version", "type", "user", "date", "Creation", "Modification",
-    "actor", "preCondition", "basicFlow", "step", "af", "ef", "bfs", "alternative",
-    "exception", "postCondition"
+    "system", "systemName", "usecase", "version", "type", "user", "date", "Creation", "Modification",
+    "requirements", "actor", "preCondition", "basic", "basicFlow", "step", "af", "ef", "bs", "bfs",
+    "alternative", "exception", "postCondition"
 ]
 
 class ClaretTranslator:
@@ -804,9 +804,58 @@ def normalize_content(content: Optional[str]) -> str:
 
     return "\n".join(normalized_lines)
 
+# ------------------------------------------------------------------------------
+# CLARET syntax: both forms accepted by claret-generator (ClaretParser.java)
+#   step 3 user "..." af[1]          step 3, user, "...", af:[1]
+#   bs 4                             bfs: 4
+#   basic { ... }                    basicFlow { ... }
+#   alternative 1 "..." { ... }      alternative 1, "...", { ... }
+# ------------------------------------------------------------------------------
+CLARET_AF_RE = re.compile(r'\baf\s*[:=]?\s*\[([0-9,\s]*)\]', re.I)
+CLARET_EF_RE = re.compile(r'\bef\s*[:=]?\s*\[([0-9,\s]*)\]', re.I)
+CLARET_BS_RE = re.compile(r'\b(?:bfs|bs)\s*[:=]?\s*(\d+)', re.I)
+CLARET_STEP_RE = re.compile(r'\bstep\s+(\d+)\s*[:=,]?\s*([^,\s":]+)\s*,?\s*"', re.I)
+CLARET_FLOW_HEADER_RE = re.compile(r'^\s*(alternative|exception)\s+(\d+)\s*,?\s*"([^"]*)"', re.I)
+CLARET_BASIC_HEADER_RE = re.compile(r'^\s*(?:basicflow|basic)\b\s*[:,]?\s*(?:\{|$)', re.I)
+CLARET_METADATA_RE = re.compile(r'^\s*(?:version\s+|(?:type|user|date)\s*[:=]?\s*"|actor\s+)', re.I)
+
+
+def strip_quoted(text: str) -> str:
+    """Removes quoted texts, so annotations are only read from the DSL tokens."""
+    return re.sub(r'"[^"]*"', '""', text or "")
+
+
+def _int_set(group: str) -> Tuple[int, ...]:
+    return tuple(sorted({int(p) for p in group.split(",") if p.strip()}))
+
+
+def branch_annotations(text: str) -> Dict[str, List[Tuple[int, ...]]]:
+    """af/ef/bs annotations of a .claret excerpt, in either syntax.
+
+    Values are comparable across syntaxes: `af[1, 2]` and `af:[2,1]` both give (1, 2).
+    """
+    bare = strip_quoted(text)
+    return {
+        "af": [_int_set(g) for g in CLARET_AF_RE.findall(bare)],
+        "ef": [_int_set(g) for g in CLARET_EF_RE.findall(bare)],
+        "bs": [(int(g),) for g in CLARET_BS_RE.findall(bare)],
+    }
+
+
+def step_actor(text: str) -> Optional[str]:
+    """Actor of the first step of a .claret excerpt, in either syntax."""
+    m = CLARET_STEP_RE.search(text or "")
+    return m.group(2).strip().lower() if m else None
+
+
 def extract_system_name(content: str) -> str:
     """Extract system name from .claret file content or generated output test suite artifacts."""
-    m = re.search(r'system\s+"([^"]+)"', content, re.IGNORECASE)
+    m = re.search(r'systemName\s*[:=,]?\s*"([^"]+)"', content, re.IGNORECASE)
+    if m:
+        return m.group(1)
+    # `system "X"` only as a declaration at the start of a line, never the
+    # actor of a step (`step 2 system "displays ..."`).
+    m = re.search(r'^\s*system\s*[:=,]?\s*"([^"]+)"', content, re.IGNORECASE | re.MULTILINE)
     if m:
         return m.group(1)
     m2 = re.search(r'system:\s*([^\t\r\n]+)', content, re.IGNORECASE)
@@ -817,7 +866,8 @@ def extract_system_name(content: str) -> str:
 def get_clause_type(line: str) -> str:
     """Classifies a .claret line by its primary semantic clause keyword."""
     l = line.strip().lower()
-    for kw in ["actor ", "precondition ", "postcondition ", "step ", "alternative ", "exception ", "version ", "usecase ", "system ", "basicflow"]:
+    for kw in ["actor ", "precondition ", "postcondition ", "step ", "alternative ", "exception ", "version ",
+               "usecase ", "systemname ", "system ", "requirements ", "basicflow", "basic"]:
         if l.startswith(kw):
             return kw.strip()
     return "other"
@@ -1084,18 +1134,12 @@ def find_enclosing_flow_in_claret(claret_content: str, search_snippet: str) -> T
     current_name = None
 
     for line in lines:
-        l_strip = line.strip()
-        m_alt = re.match(r'alternative\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I)
-        if m_alt:
-            current_flow = "alternative"
-            current_num = int(m_alt.group(1))
-            current_name = m_alt.group(2)
-        elif re.match(r'exception\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I):
-            m_exc = re.match(r'exception\s+(\d+)\s*,\s*\"([^\"]*)\"', l_strip, re.I)
-            current_flow = "exception"
-            current_num = int(m_exc.group(1))
-            current_name = m_exc.group(2)
-        elif re.match(r'basicFlow\s*\{?', l_strip, re.I):
+        m_flow = CLARET_FLOW_HEADER_RE.match(line)
+        if m_flow:
+            current_flow = m_flow.group(1).lower()
+            current_num = int(m_flow.group(2))
+            current_name = m_flow.group(3)
+        elif CLARET_BASIC_HEADER_RE.match(line):
             current_flow = "basic"
             current_num = 0
             current_name = "Basic Flow"
@@ -1141,7 +1185,7 @@ def analyze_diff_impact(
 
     # 1. Identify enclosing flow and model element
     is_metadata = all(
-        re.match(r'^(?:version\s+|type\s*:|user\s*:|date\s*:|actor\s+)', l.strip(), re.I)
+        CLARET_METADATA_RE.match(l)
         for l in (orig_content + "\n" + tgt_content).splitlines() if l.strip()
     )
     is_uc_decl = bool(re.search(r'^\s*usecase\s+"', orig_content, re.M) or re.search(r'^\s*usecase\s+"', tgt_content, re.M))
@@ -1186,19 +1230,14 @@ def analyze_diff_impact(
             flow_type = "basic"
             flow_num = 0
 
-    # Branching changes detection (af, ef, bfs)
-    af_o = re.findall(r'af:\s*\[([^\]]*)\]', orig_content)
-    af_t = re.findall(r'af:\s*\[([^\]]*)\]', tgt_content)
-    ef_o = re.findall(r'ef:\s*\[([^\]]*)\]', orig_content)
-    ef_t = re.findall(r'ef:\s*\[([^\]]*)\]', tgt_content)
-    bfs_o = re.findall(r'bfs:\s*(\d+)', orig_content)
-    bfs_t = re.findall(r'bfs:\s*(\d+)', tgt_content)
-    branch_changed = bool((af_o != af_t) or (ef_o != ef_t) or (bfs_o != bfs_t))
+    # Branching changes detection (af/af:, ef/ef:, bs/bfs:), syntax-independent
+    branches_o = branch_annotations(orig_content)
+    branches_t = branch_annotations(tgt_content)
+    branch_changed = branches_o != branches_t
 
-    # Step actor change detection
-    m_act_o = re.search(r'step\s+\d+\s*,\s*([^,]+)\s*,', orig_content)
-    m_act_t = re.search(r'step\s+\d+\s*,\s*([^,]+)\s*,', tgt_content)
-    actor_changed = bool(m_act_o and m_act_t and m_act_o.group(1).strip().lower() != m_act_t.group(1).strip().lower())
+    # Step actor change detection (both step syntaxes)
+    act_o, act_t = step_actor(orig_content), step_actor(tgt_content)
+    actor_changed = bool(act_o and act_t and act_o != act_t)
 
     # 2. Determine Model Element Category
     if is_metadata and combined_content:
@@ -1319,13 +1358,12 @@ def analyze_diff_impact(
             prim_op = "Retain"
             rationale = f"Introdução de qualificador vago ou requisito ambíguo (Exemplo 6 da Tese); casos de teste marcados para revisão humana (Flag / Retain pendente): {', '.join(total_cts)}."
 
-        # 2. Reassign (Branching destination bfs changed - Example 5)
-        elif "bfs:" in orig_content and "bfs:" in tgt_content and re.search(r'bfs:\s*(\d+)', orig_content) and re.search(r'bfs:\s*(\d+)', tgt_content) and re.search(r'bfs:\s*(\d+)', orig_content).group(1) != re.search(r'bfs:\s*(\d+)', tgt_content).group(1):
-            bfs_orig = re.search(r'bfs:\s*(\d+)', orig_content).group(1)
-            bfs_tgt = re.search(r'bfs:\s*(\d+)', tgt_content).group(1)
+        # 2. Reassign (Branching destination bs/bfs changed - Example 5)
+        elif branches_o["bs"] and branches_t["bs"] and branches_o["bs"][0] != branches_t["bs"][0]:
+            bfs_orig, bfs_tgt = branches_o["bs"][0][0], branches_t["bs"][0][0]
             tcm_op = "Reassign"
             prim_op = "Modify"
-            rationale = f"Destino de ramificação alterado de bfs:{bfs_orig} para bfs:{bfs_tgt} (Exemplo 5 da Tese); requer reatribuição de rastreabilidade do fluxo (Reassign / Modify): {', '.join(total_cts)}."
+            rationale = f"Destino de ramificação alterado de bs/bfs {bfs_orig} para bs/bfs {bfs_tgt} (Exemplo 5 da Tese); requer reatribuição de rastreabilidade do fluxo (Reassign / Modify): {', '.join(total_cts)}."
 
         # 3. Merge (Consolidation of multiple steps/rules into single step - Example 3)
         elif len(orig_step_lines) >= 2 and len(tgt_step_lines) == 1:

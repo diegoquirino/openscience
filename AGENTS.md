@@ -10,7 +10,8 @@ This project implements the **CLARET Version Control System** agentic skills sui
 
 1. **Security & Secrets**: Never commit `.env` or hardcode tokens. All secrets (`GITHUB_TOKEN`, etc.) are resolved through `.env`. Use `.env.example` as a template.
 2. **Branch Isolation**: Never push directly to `main`. All operations target dedicated integration branches (e.g. `claret-version-control-system` or study-specific branches).
-3. **DSL Keyword Protection**: Never alter reserved tokens in `.claret` / `.dsl` files (`system`, `usecase`, `version`, `actor`, `step`, `af:`, `ef:`, `bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
+3. **DSL Keyword Protection**: Never alter reserved tokens in `.claret` / `.dsl` files (`system`/`systemName`, `usecase`, `version`, `requirements`, `actor`, `basic`/`basicFlow`, `step`, `af[]`/`af:[]`, `ef[]`/`ef:[]`, `bs`/`bfs:`, `alternative`, `exception`, `preCondition`, `postCondition`).
+4. **Both CLARET Syntaxes**: The engine accepts the two syntaxes of `claret-generator` as equivalent: `step 3 user "..." af[1]` / `bs 4` / `alternative 1 "..." {` and `step 3, user, "...", af:[1]` / `bfs:4` / `alternative 1, "...", {`. Use the helpers in `scripts/claret_engine.py` (`branch_annotations`, `step_actor`, `CLARET_*_RE`) instead of new syntax-specific regexes; a change of syntax alone is not a behavioral change.
 
 ---
 
