@@ -1,0 +1,31 @@
+ALTS_SPECIFICATION "UC13 View Access Logs" {
+  VERSION: "2.0"
+  PRE_CONDITION: "A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2)."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2)."]
+    S_BF_1 [flow: "basic", actor: "user", action: "When the user logs in, their landing screen displays the ten most recent events.", branches_af: [1, 2]]
+    S_BF_2 [flow: "basic", actor: "system", action: "When the user logs in, their landing screen displays the ten most recent events.", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "By default, upon browsing to", actor: "user", action: "By default, upon browsing to the new page, the user is presented with a list of all entries sorted by dates, most recent access first.", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "May enter a date range", actor: "user", action: "The user may enter a date range to view all entries within the range.", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Enters an invalid date, or enters", actor: "system", action: "alerts that The user enters an invalid date, or enters an end date that is before the start date. No events are shown and the user has the opportunity to select different dates."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: When the user logs in, their landing screen displays the ten most recent events."]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - By default, upon browsing to"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - May enter a date range"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Enters an invalid date, or enters"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

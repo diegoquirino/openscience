@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC13 View Access Logs">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: When the user logs in, their landing screen displays the ten most recent events.]]></actions>
+        <expectedresults><![CDATA[SYSTEM When the user logs in, their landing screen displays the ten most recent events.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: By default, upon browsing to">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: By default, upon browsing to]]></summary>
+    <preconditions><![CDATA[A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: By default, upon browsing to the new page, the user is presented with a list of all entries sorted by dates, most recent access first.]]></actions>
+        <expectedresults><![CDATA[SYSTEM When the user logs in, their landing screen displays the ten most recent events.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: May enter a date range">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: May enter a date range]]></summary>
+    <preconditions><![CDATA[A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: The user may enter a date range to view all entries within the range.]]></actions>
+        <expectedresults><![CDATA[SYSTEM When the user logs in, their landing screen displays the ten most recent events.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 1: Enters an invalid date, or enters">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Enters an invalid date, or enters]]></summary>
+    <preconditions><![CDATA[A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: When the user logs in, their landing screen displays the ten most recent events.]]></actions>
+        <expectedresults><![CDATA[SYSTEM alerts that The user enters an invalid date, or enters an end date that is before the start date. No events are shown and the user has the opportunity to select different dates.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC13 View Access Logs	Version:	2.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: When the user logs in, their landing screen displays the ten most recent events.		SYSTEM When the user logs in, their landing screen displays the ten most recent events.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: By default, upon browsing to			Execution Date:	
+Precondition:	A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: By default, upon browsing to the new page, the user is presented with a list of all entries sorted by dates, most recent access first.		SYSTEM When the user logs in, their landing screen displays the ten most recent events.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: May enter a date range			Execution Date:	
+Precondition:	A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The user may enter a date range to view all entries within the range.		SYSTEM When the user logs in, their landing screen displays the ten most recent events.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Enters an invalid date, or enters			Execution Date:	
+Precondition:	A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: When the user logs in, their landing screen displays the ten most recent events.		SYSTEM alerts that The user enters an invalid date, or enters an end date that is before the start date. No events are shown and the user has the opportunity to select different dates.		
+Postcondition:	Flow interrupted due to exception / error
+

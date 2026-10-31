@@ -1,0 +1,20 @@
+systemName "iTrust2"
+usecase "UC13 View Access Logs" {
+  version "2.0" type "Creation" user "Admin" date "30/10/2026"
+  actor user "User"
+  preCondition "A user is a registered user of the iTrust2 Medical Records system (UC1). The user has authenticated himself or herself in the iTrust2 Medical Records system (UC2)."
+  basic {
+    step 1 user "When the user logs in, their landing screen displays the ten most recent events." af[1, 2]
+    step 2 system "When the user logs in, their landing screen displays the ten most recent events." ef[1]
+  }
+  alternative 1 "By default, upon browsing to" {
+    step 1 user "By default, upon browsing to the new page, the user is presented with a list of all entries sorted by dates, most recent access first." bs 2
+  }
+  alternative 2 "May enter a date range" {
+    step 1 user "The user may enter a date range to view all entries within the range." bs 2
+  }
+  exception 1 "Enters an invalid date, or enters" {
+    step 1 system "alerts that The user enters an invalid date, or enters an end date that is before the start date. No events are shown and the user has the opportunity to select different dates."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}
