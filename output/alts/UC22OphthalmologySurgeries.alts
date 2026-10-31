@@ -1,0 +1,31 @@
+ALTS_SPECIFICATION "UC22 Ophthalmology Surgeries" {
+  VERSION: "4.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.", branches_af: [1, 2, 3]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction"]
+    S_AF1_1 [flow: "alternative_1", description: "The ophthalmologist selects to document", actor: "patient", action: "The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "A single ophthalmologist surgery appointment", actor: "patient", action: "A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "The ophthalmologist selects to edit", actor: "patient", action: "The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.", returns_to_bf: 2]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - The ophthalmologist selects to document"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - A single ophthalmologist surgery appointment"]
+    S_BF_1 -> S_AF3_1 [branch: "AF_3 - The ophthalmologist selects to edit"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

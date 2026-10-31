@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC22 Ophthalmology Surgeries	Version:	4.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: The ophthalmologist selects to document			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: A single ophthalmologist surgery appointment			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: The ophthalmologist selects to edit			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+

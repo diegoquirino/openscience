@@ -804,8 +804,912 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC1 User Functionality">
+  <testsuite name="UC15 Emergency Health Records">
     <node_order><![CDATA[6]]></node_order>
+    <details><![CDATA[Use case: UC15 Emergency Health Records]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: The approved user enters the">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: The approved user enters the]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Record for">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Record for]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first).]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 2: No users are displayed if a">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: No users are displayed if a]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 3: No users are displayed if a">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: No users are displayed if a]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: The approved user enters the">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: The approved user enters the]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Record for">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Record for]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first).]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 2: No users are displayed if a">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: No users are displayed if a]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 3: No users are displayed if a">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: No users are displayed if a]]></summary>
+      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC16 Personal Representatives">
+    <node_order><![CDATA[7]]></node_order>
+    <details><![CDATA[Use case: UC16 Personal Representatives]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: An error message is shown that">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: An error message is shown that]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is shown that the user is not found or the action was not completed successfully. User is returned to form to try again]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: An error message is shown that">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: An error message is shown that]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is shown that the user is not found or the action was not completed successfully. User is returned to form to try again]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC17 Lab Procedures">
+    <node_order><![CDATA[8]]></node_order>
+    <details><![CDATA[Use case: UC17 Lab Procedures]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Edit procedure">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Edit procedure]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit .]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Delete it">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Delete it]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator presses the Delete button associated with a LOINC procedure to delete it.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Add procedure">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Add procedure]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: View assigned procedures">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: View assigned procedures]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: View an office">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: View an office]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Edit procedure">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Edit procedure]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit .]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Delete it">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Delete it]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator presses the Delete button associated with a LOINC procedure to delete it.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: Add procedure">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: Add procedure]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: View assigned procedures">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: View assigned procedures]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: View an office">
+      <node_order><![CDATA[13]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: View an office]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[14]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC18 Vaccinations">
+    <node_order><![CDATA[9]]></node_order>
+    <details><![CDATA[Use case: UC18 Vaccinations]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Is taken to a page">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed. The admin selects a vaccine to edit and clicks the Edit Vaccine button. The fields of the vaccine are displayed, and the admin can update a field.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Is taken to a page">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: When documenting an office visit">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: When documenting an office visit]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: When documenting an office visit, an HCP can select zero or more vaccines from a list of all vaccines to add to the office visit. The vaccination will be added to the office visit in the patient's records.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: Or hcp selects an office">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Or hcp selects an office]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient or HCP selects an office visit to view. They can see all of the vaccinations that pertain to that office visit. The patient cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: Is taken to a page">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient is taken to a page where a list of all of their vaccinations are displayed. They can view all of the information pertaining to each vaccination record. The patient cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 6: Can look up a patient">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Can look up a patient]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: An HCP can look up a patient by name and view their vaccination record. A list of all of the vaccinations administered to that patient are displayed, and all information pertaining to each vaccination record is displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC8 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC8]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 18.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Is taken to a page">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed. The admin selects a vaccine to edit and clicks the Edit Vaccine button. The fields of the vaccine are displayed, and the admin can update a field.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: Is taken to a page">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: When documenting an office visit">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: When documenting an office visit]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: When documenting an office visit, an HCP can select zero or more vaccines from a list of all vaccines to add to the office visit. The vaccination will be added to the office visit in the patient's records.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: Or hcp selects an office">
+      <node_order><![CDATA[13]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: Or hcp selects an office]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient or HCP selects an office visit to view. They can see all of the vaccinations that pertain to that office visit. The patient cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Alternative Flow 5: Is taken to a page">
+      <node_order><![CDATA[14]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 5: Is taken to a page]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient is taken to a page where a list of all of their vaccinations are displayed. They can view all of the information pertaining to each vaccination record. The patient cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC7 - Alternative Flow 6: Can look up a patient">
+      <node_order><![CDATA[15]]></node_order>
+      <externalid><![CDATA[TC7]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 6: Can look up a patient]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: An HCP can look up a patient by name and view their vaccination record. A list of all of the vaccinations administered to that patient are displayed, and all information pertaining to each vaccination record is displayed.]]></actions>
+          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC8 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[16]]></node_order>
+      <externalid><![CDATA[TC8]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 18.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC19 Food Diary">
+    <node_order><![CDATA[10]]></node_order>
+    <details><![CDATA[Use case: UC19 Food Diary]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If there are no food diary">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If there are no food diary]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no Food Diary Entries for the patient, a message is displayed that there are none.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: Invalid inputs are flagged and an">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Invalid inputs are flagged and an]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If there are no food diary">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If there are no food diary]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no Food Diary Entries for the patient, a message is displayed that there are none.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: Invalid inputs are flagged and an">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Invalid inputs are flagged and an]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC1 User Functionality">
+    <node_order><![CDATA[11]]></node_order>
     <details><![CDATA[Use case: UC1 User Functionality]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -818,7 +1722,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -852,7 +1756,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 1.6.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -869,7 +1773,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts that The password and repeated password must match or an error is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -886,7 +1790,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -920,7 +1824,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 1.6.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -937,7 +1841,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts that The password and repeated password must match or an error is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -945,7 +1849,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC2 Authenticate Users">
-    <node_order><![CDATA[7]]></node_order>
+    <node_order><![CDATA[12]]></node_order>
     <details><![CDATA[Use case: UC2 Authenticate Users]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1051,7 +1955,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC3 Log Transactions">
-    <node_order><![CDATA[8]]></node_order>
+    <node_order><![CDATA[13]]></node_order>
     <details><![CDATA[Use case: UC3 Log Transactions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1123,7 +2027,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC4 Demographics">
-    <node_order><![CDATA[9]]></node_order>
+    <node_order><![CDATA[14]]></node_order>
     <details><![CDATA[Use case: UC4 Demographics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1176,76 +2080,8 @@
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Exception Flow 1: Invalid data field format">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient may enter or edit their own demographic information. Details about the data format for demographic information is in Section 4.6 .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 4.6.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient may enter or edit their own demographic information. Details about the data format for demographic information is in Section 4.6 .]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Must enter the mid of">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Must enter the mid of]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: HCP must enter the MID of a patient and then enter or edit demographic information .]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: May enter or edit their">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: May enter or edit their]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: An HCP may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
     <testcase name="TC4 - Alternative Flow 3: An er may enter or">
-      <node_order><![CDATA[8]]></node_order>
+      <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 3: An er may enter or]]></summary>
@@ -1262,7 +2098,7 @@
       </steps>
     </testcase>
     <testcase name="TC5 - Alternative Flow 4: A lab tech may enter">
-      <node_order><![CDATA[9]]></node_order>
+      <node_order><![CDATA[5]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Alternative Flow 4: A lab tech may enter]]></summary>
@@ -1279,7 +2115,109 @@
       </steps>
     </testcase>
     <testcase name="TC6 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient may enter or edit their own demographic information. Details about the data format for demographic information is in Section 4.6 .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 4.6.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient may enter or edit their own demographic information. Details about the data format for demographic information is in Section 4.6 .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Must enter the mid of">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Must enter the mid of]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: HCP must enter the MID of a patient and then enter or edit demographic information .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: May enter or edit their">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: May enter or edit their]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: An HCP may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: An er may enter or">
       <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: An er may enter or]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: An ER may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Alternative Flow 4: A lab tech may enter">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 4: A lab tech may enter]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A Lab Tech may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[12]]></node_order>
       <externalid><![CDATA[TC6]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
@@ -1297,7 +2235,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC5 Hospitals">
-    <node_order><![CDATA[10]]></node_order>
+    <node_order><![CDATA[15]]></node_order>
     <details><![CDATA[Use case: UC5 Hospitals]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1403,7 +2341,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC6 Appointments">
-    <node_order><![CDATA[11]]></node_order>
+    <node_order><![CDATA[16]]></node_order>
     <details><![CDATA[Use case: UC6 Appointments]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1577,7 +2515,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC7 Office Visit">
-    <node_order><![CDATA[12]]></node_order>
+    <node_order><![CDATA[17]]></node_order>
     <details><![CDATA[Use case: UC7 Office Visit]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1717,7 +2655,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC8 Basic Health Metrics">
-    <node_order><![CDATA[13]]></node_order>
+    <node_order><![CDATA[18]]></node_order>
     <details><![CDATA[Use case: UC8 Basic Health Metrics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1925,7 +2863,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC9 Prescriptions">
-    <node_order><![CDATA[14]]></node_order>
+    <node_order><![CDATA[19]]></node_order>
     <details><![CDATA[Use case: UC9 Prescriptions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2268,416 +3206,208 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC15 Emergency Health Records">
-    <node_order><![CDATA[15]]></node_order>
-    <details><![CDATA[Use case: UC15 Emergency Health Records]]></details>
+  <testsuite name="UC20 Ophthalmology Appointment Requests">
+    <node_order><![CDATA[20]]></node_order>
+    <details><![CDATA[Use case: UC20 Ophthalmology Appointment Requests]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: The approved user enters the">
+    <testcase name="TC2 - Alternative Flow 1: Views their appointment request">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: The approved user enters the]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <summary><![CDATA[Alternative Flow 1: Views their appointment request]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <actions><![CDATA[patient: The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Record for">
+    <testcase name="TC3 - Alternative Flow 2: The ophthalmologist hcp views appointment requests">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Record for]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <summary><![CDATA[Alternative Flow 2: The ophthalmologist hcp views appointment requests]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first).]]></actions>
+          <actions><![CDATA[hcp: The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist hcp view upcoming appointments">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist hcp view upcoming appointments]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The ophthalmologist HCP view upcoming appointments.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC21 Ophthalmologist Appointment">
+    <node_order><![CDATA[21]]></node_order>
+    <details><![CDATA[Use case: UC21 Ophthalmologist Appointment]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma.]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Exception Flow 1: Invalid data field format">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
+    <testcase name="TC2 - Alternative Flow 1: After the appointment, ophthalmologist and">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
+      <summary><![CDATA[Alternative Flow 1: After the appointment, ophthalmologist and]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Exception Flow 2: No users are displayed if a">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: No users are displayed if a]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Exception Flow 3: No users are displayed if a">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 3: No users are displayed if a]]></summary>
-      <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="UC16 Personal Representatives">
-    <node_order><![CDATA[16]]></node_order>
-    <details><![CDATA[Use case: UC16 Personal Representatives]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+          <actions><![CDATA[hcp: After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit.]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Exception Flow 1: An error message is shown that">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: An error message is shown that]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that An error message is shown that the user is not found or the action was not completed successfully. User is returned to form to try again]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
   </testsuite>
-  <testsuite name="UC17 Lab Procedures">
-    <node_order><![CDATA[17]]></node_order>
-    <details><![CDATA[Use case: UC17 Lab Procedures]]></details>
+  <testsuite name="UC22 Ophthalmology Surgeries">
+    <node_order><![CDATA[22]]></node_order>
+    <details><![CDATA[Use case: UC22 Ophthalmology Surgeries]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <actions><![CDATA[patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Edit procedure">
+    <testcase name="TC2 - Alternative Flow 1: The ophthalmologist selects to document">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Edit procedure]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <summary><![CDATA[Alternative Flow 1: The ophthalmologist selects to document]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit .]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <actions><![CDATA[patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Delete it">
+    <testcase name="TC3 - Alternative Flow 2: A single ophthalmologist surgery appointment">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Delete it]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <summary><![CDATA[Alternative Flow 2: A single ophthalmologist surgery appointment]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The administrator presses the Delete button associated with a LOINC procedure to delete it.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
+          <actions><![CDATA[patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Alternative Flow 3: Add procedure">
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist selects to edit">
       <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: Add procedure]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist selects to edit]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 4: View assigned procedures">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: View assigned procedures]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 5: View an office">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: View an office]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message shows if the procedure was entered correctly.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Exception Flow 1: Invalid data field format">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again.]]></expectedresults>
+          <actions><![CDATA[patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC18 Vaccinations">
-    <node_order><![CDATA[18]]></node_order>
-    <details><![CDATA[Use case: UC18 Vaccinations]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Is taken to a page">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Is taken to a page]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed. The admin selects a vaccine to edit and clicks the Edit Vaccine button. The fields of the vaccine are displayed, and the admin can update a field.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: Is taken to a page">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: Is taken to a page]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccine are displayed.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: When documenting an office visit">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: When documenting an office visit]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: When documenting an office visit, an HCP can select zero or more vaccines from a list of all vaccines to add to the office visit. The vaccination will be added to the office visit in the patient's records.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC5 - Alternative Flow 4: Or hcp selects an office">
-      <node_order><![CDATA[5]]></node_order>
-      <externalid><![CDATA[TC5]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 4: Or hcp selects an office]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient or HCP selects an office visit to view. They can see all of the vaccinations that pertain to that office visit. The patient cannot edit the information.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC6 - Alternative Flow 5: Is taken to a page">
-      <node_order><![CDATA[6]]></node_order>
-      <externalid><![CDATA[TC6]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 5: Is taken to a page]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient is taken to a page where a list of all of their vaccinations are displayed. They can view all of the information pertaining to each vaccination record. The patient cannot edit the information.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC7 - Alternative Flow 6: Can look up a patient">
-      <node_order><![CDATA[7]]></node_order>
-      <externalid><![CDATA[TC7]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 6: Can look up a patient]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: An HCP can look up a patient by name and view their vaccination record. A list of all of the vaccinations administered to that patient are displayed, and all information pertaining to each vaccination record is displayed.]]></actions>
-          <expectedresults><![CDATA[SYSTEM The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC8 - Exception Flow 1: Invalid data field format">
-      <node_order><![CDATA[8]]></node_order>
-      <externalid><![CDATA[TC8]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 18.6. Otherwise, a success message is displayed.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="UC19 Food Diary">
-    <node_order><![CDATA[19]]></node_order>
-    <details><![CDATA[Use case: UC19 Food Diary]]></details>
+  <testsuite name="UC23 Exercise Diary">
+    <node_order><![CDATA[23]]></node_order>
+    <details><![CDATA[Use case: UC23 Exercise Diary]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
@@ -2689,25 +3419,25 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Exception Flow 1: If there are no food diary">
+    <testcase name="TC2 - Exception Flow 1: If there are no exercise diary">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: If there are no food diary]]></summary>
+      <summary><![CDATA[Exception Flow 1: If there are no exercise diary]]></summary>
       <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no Food Diary Entries for the patient, a message is displayed that there are none.]]></expectedresults>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no exercise diary entries for the patient, a message is displayed that there are none.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
@@ -2723,7 +3453,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .]]></actions>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>

@@ -1,5 +1,5 @@
 ALTS_SPECIFICATION "UC1 User Functionality" {
-  VERSION: "3.0"
+  VERSION: "4.0"
   PRE_CONDITION: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3."
   POST_CONDITION: "A success message is displayed and the action is logged."
 
@@ -9,7 +9,7 @@ ALTS_SPECIFICATION "UC1 User Functionality" {
 
   STATES {
     S_INIT [initial, guard: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3."]
-    S_BF_1 [flow: "basic", actor: "admin", action: "An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech", branches_af: [1]]
+    S_BF_1 [flow: "basic", actor: "admin", action: "An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech", branches_af: [1]]
     S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2]]
     S_AF1_1 [flow: "alternative_1", description: "Delete user", actor: "admin", action: "An Admin selects a user from the list of possible users, confirms the delete, and presses the button to delete the user.", returns_to_bf: 2]
     S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 1.6."]

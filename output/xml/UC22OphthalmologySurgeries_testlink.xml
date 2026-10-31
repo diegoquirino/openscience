@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC22 Ophthalmology Surgeries">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: The ophthalmologist selects to document">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: The ophthalmologist selects to document]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: A single ophthalmologist surgery appointment">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: A single ophthalmologist surgery appointment]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: The ophthalmologist selects to edit">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: The ophthalmologist selects to edit]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

@@ -1,0 +1,24 @@
+systemName "iTrust2"
+usecase "UC20 Ophthalmology Appointment Requests" {
+  version "4.0" type "Creation" user "Admin" date "30/10/2026"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system."
+  basic {
+    step 1 patient "The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type" af[1, 2, 3]
+    step 2 system "A message confirms the request." ef[1]
+  }
+  alternative 1 "Views their appointment request" {
+    step 1 patient "The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request." bs 2
+  }
+  alternative 2 "The ophthalmologist hcp views appointment requests" {
+    step 1 hcp "The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view." bs 2
+  }
+  alternative 3 "The ophthalmologist hcp view upcoming appointments" {
+    step 1 hcp "The ophthalmologist HCP view upcoming appointments." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

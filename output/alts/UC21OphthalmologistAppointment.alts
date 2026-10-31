@@ -1,0 +1,25 @@
+ALTS_SPECIFICATION "UC21 Ophthalmologist Appointment" {
+  VERSION: "4.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Hcp"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system."]
+    S_BF_1 [flow: "basic", actor: "hcp", action: "When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma.", branches_af: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction"]
+    S_AF1_1 [flow: "alternative_1", description: "After the appointment, ophthalmologist and", actor: "hcp", action: "After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit.", returns_to_bf: 2]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - After the appointment, ophthalmologist and"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}

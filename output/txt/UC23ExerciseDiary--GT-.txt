@@ -1,0 +1,25 @@
+System:	iTrust2
+Use Case:	UC23 Exercise Diary	Version:	4.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: If there are no exercise diary			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.		SYSTEM prompts that If there are no exercise diary entries for the patient, a message is displayed that there are none.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Invalid inputs are flagged and an			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.		SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.		
+Postcondition:	Flow interrupted due to exception / error
+

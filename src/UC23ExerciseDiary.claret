@@ -1,0 +1,17 @@
+systemName "iTrust2"
+usecase "UC23 Exercise Diary" {
+  version "4.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  basic {
+    step 1 patient "Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged."
+    step 2 system "displays a success message and logs transaction" ef[1, 2]
+  }
+  exception 1 "If there are no exercise diary" {
+    step 1 system "prompts that If there are no exercise diary entries for the patient, a message is displayed that there are none."
+  }
+  exception 2 "Invalid inputs are flagged and an" {
+    step 1 system "prompts that Invalid inputs are flagged and an error message appropriate to the input is printed."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

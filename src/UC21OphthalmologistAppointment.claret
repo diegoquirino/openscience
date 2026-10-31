@@ -1,0 +1,14 @@
+systemName "iTrust2"
+usecase "UC21 Ophthalmologist Appointment" {
+  version "4.0" type "Creation" user "Admin" date "30/10/2026"
+  actor hcp "Hcp"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system."
+  basic {
+    step 1 hcp "When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma." af[1]
+    step 2 system "displays a success message and logs transaction"
+  }
+  alternative 1 "After the appointment, ophthalmologist and" {
+    step 1 hcp "After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit." bs 2
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

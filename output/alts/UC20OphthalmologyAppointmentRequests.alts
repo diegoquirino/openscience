@@ -1,0 +1,35 @@
+ALTS_SPECIFICATION "UC20 Ophthalmology Appointment Requests" {
+  VERSION: "4.0"
+  PRE_CONDITION: "A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type", branches_af: [1, 2, 3]]
+    S_BF_2 [flow: "basic", actor: "system", action: "A message confirms the request.", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "Views their appointment request", actor: "patient", action: "The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request.", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "The ophthalmologist hcp views appointment requests", actor: "hcp", action: "The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "The ophthalmologist hcp view upcoming appointments", actor: "hcp", action: "The ophthalmologist HCP view upcoming appointments.", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: A message confirms the request."]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Views their appointment request"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - The ophthalmologist hcp views appointment requests"]
+    S_BF_1 -> S_AF3_1 [branch: "AF_3 - The ophthalmologist hcp view upcoming appointments"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

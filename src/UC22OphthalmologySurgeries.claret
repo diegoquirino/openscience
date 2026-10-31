@@ -1,0 +1,20 @@
+systemName "iTrust2"
+usecase "UC22 Ophthalmology Surgeries" {
+  version "4.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist."
+  basic {
+    step 1 patient "The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information." af[1, 2, 3]
+    step 2 system "displays a success message and logs transaction"
+  }
+  alternative 1 "The ophthalmologist selects to document" {
+    step 1 patient "The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit." bs 2
+  }
+  alternative 2 "A single ophthalmologist surgery appointment" {
+    step 1 patient "A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes" bs 2
+  }
+  alternative 3 "The ophthalmologist selects to edit" {
+    step 1 patient "The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit." bs 2
+  }
+  postCondition "System processes request successfully and logs transaction."
+}
