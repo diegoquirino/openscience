@@ -1,21 +1,18 @@
 systemName "iTrust2"
 usecase "UC14 Alert Users by Email" {
-  version "4.0" type "Creation" user "Admin" date "30/10/2026"
+  version "8.0" type "Creation" user "Admin" date "30/10/2026"
   actor hcp "Health Care Provider (HCP)"
   actor user "User"
   preCondition "There is an active authenticated session."
   basic {
     step 1 user "The user has successfully changed his/her password (UC11, S1/S2). An email informing the user of the password change is sent to the user including the MID but not the password." af[1, 2]
-    step 2 system "displays a success message and logs transaction" ef[1]
+    step 2 system "displays a success message and logs transaction"
   }
   alternative 1 "The status of an appointment" {
     step 1 hcp "The status of an appointment request has been changed by the HCP involved in the request (UC6, S3). An email informing the patient of their appointment status is sent." bs 2
   }
   alternative 2 "Account has been locked out" {
     step 1 user "A user account has been locked out, either temporarily or permanently, due to too many failed logins. An email informing the user of their lockout is sent." bs 2
-  }
-  exception 1 "No valid email associated with account" {
-    step 1 system "prompts that If the user does not have an email address on file, no email is sent and the failure is logged."
   }
   postCondition "System processes request successfully and logs transaction."
 }

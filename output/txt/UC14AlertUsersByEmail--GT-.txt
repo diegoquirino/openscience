@@ -1,6 +1,6 @@
 System:	iTrust2
-Use Case:	UC14 Alert Users by Email	Version:	7.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+Use Case:	UC14 Alert Users by Email	Version:	8.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -22,11 +22,4 @@ Precondition:	There is an active authenticated session.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
 1	user: A user account has been locked out, either temporarily or permanently, due to too many failed logins. An email informing the user of their lockout is sent.		SYSTEM displays a success message and logs transaction		
 Postcondition:	System processes request successfully and logs transaction.
-
-Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
-Description:	Exception Flow 1: No valid email associated with account			Execution Date:	
-Precondition:	There is an active authenticated session.
-#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	user: The user has successfully changed his/her password (UC11, S1/S2). An email informing the user of the password change is sent to the user including the MID but not the password.		SYSTEM prompts that If the user does not have an email address on file, no email is sent and the failure is logged.		
-Postcondition:	Flow interrupted due to exception / error
 

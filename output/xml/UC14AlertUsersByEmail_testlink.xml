@@ -53,21 +53,4 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Exception Flow 1: No valid email associated with account">
-    <node_order><![CDATA[4]]></node_order>
-    <externalid><![CDATA[TC4]]></externalid>
-    <version><![CDATA[1]]></version>
-    <summary><![CDATA[Exception Flow 1: No valid email associated with account]]></summary>
-    <preconditions><![CDATA[There is an active authenticated session.]]></preconditions>
-    <execution_type><![CDATA[1]]></execution_type>
-    <importance><![CDATA[2]]></importance>
-    <steps>
-      <step>
-        <step_number><![CDATA[1]]></step_number>
-        <actions><![CDATA[user: The user has successfully changed his/her password (UC11, S1/S2). An email informing the user of the password change is sent to the user including the MID but not the password.]]></actions>
-        <expectedresults><![CDATA[SYSTEM prompts that If the user does not have an email address on file, no email is sent and the failure is logged.]]></expectedresults>
-        <execution_type><![CDATA[1]]></execution_type>
-      </step>
-    </steps>
-  </testcase>
 </testsuite>

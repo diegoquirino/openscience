@@ -1,5 +1,5 @@
 ALTS_SPECIFICATION "UC14 Alert Users by Email" {
-  VERSION: "7.0"
+  VERSION: "8.0"
   PRE_CONDITION: "There is an active authenticated session."
   POST_CONDITION: "System processes request successfully and logs transaction."
 
@@ -11,10 +11,9 @@ ALTS_SPECIFICATION "UC14 Alert Users by Email" {
   STATES {
     S_INIT [initial, guard: "There is an active authenticated session."]
     S_BF_1 [flow: "basic", actor: "user", action: "The user has successfully changed his/her password (UC11, S1/S2). An email informing the user of the password change is sent to the user including the MID but not the password.", branches_af: [1, 2]]
-    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction"]
     S_AF1_1 [flow: "alternative_1", description: "The status of an appointment", actor: "hcp", action: "The status of an appointment request has been changed by the HCP involved in the request (UC6, S3). An email informing the patient of their appointment status is sent.", returns_to_bf: 2]
     S_AF2_1 [flow: "alternative_2", description: "Account has been locked out", actor: "user", action: "A user account has been locked out, either temporarily or permanently, due to too many failed logins. An email informing the user of their lockout is sent.", returns_to_bf: 2]
-    S_EF1_1 [flow: "exception_1", description: "No valid email associated with account", actor: "system", action: "prompts that If the user does not have an email address on file, no email is sent and the failure is logged."]
     S_END [terminal, guard: "System processes request successfully and logs transaction."]
   }
 
@@ -24,9 +23,7 @@ ALTS_SPECIFICATION "UC14 Alert Users by Email" {
     S_BF_1 -> S_AF1_1 [branch: "AF_1 - The status of an appointment"]
     S_BF_1 -> S_AF2_1 [branch: "AF_2 - Account has been locked out"]
     S_BF_2 -> S_END [event: "Complete"]
-    S_BF_2 -> S_EF1_1 [branch: "EF_1 - No valid email associated with account"]
     S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
     S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
-    S_EF1_1 -> S_END [event: "ErrorExit"]
   }
 }
