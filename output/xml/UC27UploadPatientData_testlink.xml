@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC27 Upload Patient Data">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+        <expectedresults><![CDATA[SYSTEM A success message is displayed and the event is logged.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: An error message, &apos;**error: the file">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: An error message, '**error: the file]]></summary>
+    <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that An error message, '**Error: The file _ is an incorrect file extension.**' is displayed if the user uploads a file that is not a CSV.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 2: Invalid data field format">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Invalid data field format]]></summary>
+    <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that An error message, '**Error: Could not upload contacts**' is displayed if the user uploads a CSV file that does not contain the proper data format for the CSV file.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 3: If 1 or more passengers were">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: If 1 or more passengers were]]></summary>
+    <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If 1 or more Passengers were skipped in the upload, this flow is taken. A message, '___ duplicate Passengers were not added.' is displayed with the number of skipped Passengers in the place of the blank space.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

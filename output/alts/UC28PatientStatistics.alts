@@ -1,0 +1,25 @@
+ALTS_SPECIFICATION "UC28 Patient Statistics" {
+  VERSION: "7.0"
+  PRE_CONDITION: "- A Virologist has authenticated themselves within iTrust2. UC2"
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "- A Virologist has authenticated themselves within iTrust2. UC2"]
+    S_BF_1 [flow: "basic", actor: "hcp", action: "A Virologist, a type HCP, uploads a list of passenger data . The Virologist can select between various plot or graph options representing the dataset . An error message will be displayed if a list of passenger data has not yet been uploaded ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_EF1_1 [flow: "exception_1", description: "No records or data available", actor: "system", action: "prompts that If the Virologist attempts to view a plot or graph when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view statistics."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - No records or data available"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

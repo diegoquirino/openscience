@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC29 Track Previous Contacts">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: No records or data available">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: No records or data available]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If the Virologist attempts to search passenger contacts when passenger data has not been uploaded into the iTrust2 system, an error message appears saying, 'No passenger data is found.' The Virologist is advised to upload passenger data before attempting to track passenger contacts.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 2: Invalid file">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Invalid file]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If the Virologist upload failed or the file was invalid, an error message is displayed saying, 'Invalid File'. The Virologist may re-attempt the upload. The existing data (if any) is not replaced.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 3: Had not uploaded passenger data prior">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: Had not uploaded passenger data prior]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If the user had not uploaded passenger data prior to uploading contacts, a message is displayed saying, 'No passenger contact data is found.' The Virologist may re-attempt the upload. The existing data (if any) is not replaced.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 4: Clicking the submit button will submit">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 4: Clicking the submit button will submit]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that Clicking the submit button will submit the form if any fields are missing or invalid. Error messages will display beneath missing or invalid input fields.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 5: If there are no contacts the">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 5: If there are no contacts the]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If there are no contacts the report for the given search, a message of 'No contacts found' is displayed.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

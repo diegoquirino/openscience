@@ -1,0 +1,20 @@
+systemName "iTrust2"
+usecase "UC27 Upload Patient Data" {
+  version "7.0" type "Creation" user "Admin" date "30/10/2026"
+  actor user "User"
+  preCondition "The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist."
+  basic {
+    step 1 user "A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients."
+    step 2 system "A success message is displayed and the event is logged." ef[1, 2, 3]
+  }
+  exception 1 "An error message, '**error: the file" {
+    step 1 system "prompts that An error message, '**Error: The file _ is an incorrect file extension.**' is displayed if the user uploads a file that is not a CSV."
+  }
+  exception 2 "Invalid data field format" {
+    step 1 system "prompts that An error message, '**Error: Could not upload contacts**' is displayed if the user uploads a CSV file that does not contain the proper data format for the CSV file."
+  }
+  exception 3 "If 1 or more passengers were" {
+    step 1 system "prompts that If 1 or more Passengers were skipped in the upload, this flow is taken. A message, '___ duplicate Passengers were not added.' is displayed with the number of skipped Passengers in the place of the blank space."
+  }
+  postCondition "A success message is displayed and the event is logged."
+}

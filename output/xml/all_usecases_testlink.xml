@@ -2289,8 +2289,602 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC2 Authenticate Users">
+  <testsuite name="UC23 Office Visit Satisfaction Survey">
     <node_order><![CDATA[16]]></node_order>
+    <details><![CDATA[Use case: UC23 Office Visit Satisfaction Survey]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 3: If there are no office visits">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: If there are no office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 3: If there are no office visits">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: If there are no office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC24 Diabetes Testing">
+    <node_order><![CDATA[17]]></node_order>
+    <details><![CDATA[Use case: UC24 Diabetes Testing]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Clicks on view office visits">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Clicks on view office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 1: When confirming a diagnosis, an error">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: When confirming a diagnosis, an error]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 2: When reporting results, an error message">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: When reporting results, an error message]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Clicks on view office visits">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Clicks on view office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 1: When confirming a diagnosis, an error">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: When confirming a diagnosis, an error]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 2: When reporting results, an error message">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: When reporting results, an error message]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC25 Blood Sugar Tracking">
+    <node_order><![CDATA[18]]></node_order>
+    <details><![CDATA[Use case: UC25 Blood Sugar Tracking]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If the csv is not formatted">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If the csv is not formatted]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 3: If there are no entries for">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: If there are no entries for]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 4: If there are no matching patients">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 4: If there are no matching patients]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching patients, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 5: If a limit is entered invalidly">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 5: If a limit is entered invalidly]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If the csv is not formatted">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If the csv is not formatted]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 3: If there are no entries for">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: If there are no entries for]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 4: If there are no matching patients">
+      <node_order><![CDATA[11]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 4: If there are no matching patients]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching patients, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 5: If a limit is entered invalidly">
+      <node_order><![CDATA[12]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 5: If a limit is entered invalidly]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC26 Find an Expert">
+    <node_order><![CDATA[19]]></node_order>
+    <details><![CDATA[Use case: UC26 Find an Expert]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC2 Authenticate Users">
+    <node_order><![CDATA[20]]></node_order>
     <details><![CDATA[Use case: UC2 Authenticate Users]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2396,7 +2990,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC3 Log Transactions">
-    <node_order><![CDATA[17]]></node_order>
+    <node_order><![CDATA[21]]></node_order>
     <details><![CDATA[Use case: UC3 Log Transactions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2468,7 +3062,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC4 Demographics">
-    <node_order><![CDATA[18]]></node_order>
+    <node_order><![CDATA[22]]></node_order>
     <details><![CDATA[Use case: UC4 Demographics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2676,7 +3270,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC5 Hospitals">
-    <node_order><![CDATA[19]]></node_order>
+    <node_order><![CDATA[23]]></node_order>
     <details><![CDATA[Use case: UC5 Hospitals]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2782,7 +3376,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC6 Appointments">
-    <node_order><![CDATA[20]]></node_order>
+    <node_order><![CDATA[24]]></node_order>
     <details><![CDATA[Use case: UC6 Appointments]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2956,7 +3550,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC7 Office Visit">
-    <node_order><![CDATA[21]]></node_order>
+    <node_order><![CDATA[25]]></node_order>
     <details><![CDATA[Use case: UC7 Office Visit]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3003,7 +3597,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)]]></actions>
+          <actions><![CDATA[hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8) [Ophthalmology Office Visit](uc21) [Ophthalmology Surgeries](uc22)]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -3096,7 +3690,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC8 Basic Health Metrics">
-    <node_order><![CDATA[22]]></node_order>
+    <node_order><![CDATA[26]]></node_order>
     <details><![CDATA[Use case: UC8 Basic Health Metrics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3304,7 +3898,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC9 Prescriptions">
-    <node_order><![CDATA[23]]></node_order>
+    <node_order><![CDATA[27]]></node_order>
     <details><![CDATA[Use case: UC9 Prescriptions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3647,306 +4241,255 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC23 Office Visit Satisfaction Survey">
-    <node_order><![CDATA[24]]></node_order>
-    <details><![CDATA[Use case: UC23 Office Visit Satisfaction Survey]]></details>
+  <testsuite name="UC27 Upload Patient Data">
+    <node_order><![CDATA[28]]></node_order>
+    <details><![CDATA[Use case: UC27 Upload Patient Data]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A success message is displayed and the event is logged.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+    <testcase name="TC2 - Exception Flow 1: An error message, &apos;**error: the file">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: An error message, '**error: the file]]></summary>
+      <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again.]]></expectedresults>
+          <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message, '**Error: The file _ is an incorrect file extension.**' is displayed if the user uploads a file that is not a CSV.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+    <testcase name="TC3 - Exception Flow 2: Invalid data field format">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 2: Invalid data field format]]></summary>
+      <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message, '**Error: Could not upload contacts**' is displayed if the user uploads a CSV file that does not contain the proper data format for the CSV file.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Exception Flow 3: If there are no office visits">
+    <testcase name="TC4 - Exception Flow 3: If 1 or more passengers were">
       <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 3: If there are no office visits]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 3: If 1 or more passengers were]]></summary>
+      <preconditions><![CDATA[The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'.]]></expectedresults>
+          <actions><![CDATA[user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If 1 or more Passengers were skipped in the upload, this flow is taken. A message, '___ duplicate Passengers were not added.' is displayed with the number of skipped Passengers in the place of the blank space.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC24 Diabetes Testing">
-    <node_order><![CDATA[25]]></node_order>
-    <details><![CDATA[Use case: UC24 Diabetes Testing]]></details>
+  <testsuite name="UC28 Patient Statistics">
+    <node_order><![CDATA[29]]></node_order>
+    <details><![CDATA[Use case: UC28 Patient Statistics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can select between various plot or graph options representing the dataset . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Clicks on view office visits">
+    <testcase name="TC2 - Exception Flow 1: No records or data available">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Clicks on view office visits]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: No records or data available]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Exception Flow 1: When confirming a diagnosis, an error">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: When confirming a diagnosis, an error]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Exception Flow 2: When reporting results, an error message">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: When reporting results, an error message]]></summary>
-      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can select between various plot or graph options representing the dataset . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the Virologist attempts to view a plot or graph when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view statistics.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC25 Blood Sugar Tracking">
-    <node_order><![CDATA[26]]></node_order>
-    <details><![CDATA[Use case: UC25 Blood Sugar Tracking]]></details>
+  <testsuite name="UC29 Track Previous Contacts">
+    <node_order><![CDATA[30]]></node_order>
+    <details><![CDATA[Use case: UC29 Track Previous Contacts]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+    <testcase name="TC2 - Exception Flow 1: No records or data available">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: No records or data available]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the Virologist attempts to search passenger contacts when passenger data has not been uploaded into the iTrust2 system, an error message appears saying, 'No passenger data is found.' The Virologist is advised to upload passenger data before attempting to track passenger contacts.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Exception Flow 2: If the csv is not formatted">
+    <testcase name="TC3 - Exception Flow 2: Invalid file">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: If the csv is not formatted]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 2: Invalid file]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the Virologist upload failed or the file was invalid, an error message is displayed saying, 'Invalid File'. The Virologist may re-attempt the upload. The existing data (if any) is not replaced.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Exception Flow 3: If there are no entries for">
+    <testcase name="TC4 - Exception Flow 3: Had not uploaded passenger data prior">
       <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 3: If there are no entries for]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 3: Had not uploaded passenger data prior]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the user had not uploaded passenger data prior to uploading contacts, a message is displayed saying, 'No passenger contact data is found.' The Virologist may re-attempt the upload. The existing data (if any) is not replaced.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC5 - Exception Flow 4: If there are no matching patients">
+    <testcase name="TC5 - Exception Flow 4: Clicking the submit button will submit">
       <node_order><![CDATA[5]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 4: If there are no matching patients]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 4: Clicking the submit button will submit]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching patients, a message is displayed.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that Clicking the submit button will submit the form if any fields are missing or invalid. Error messages will display beneath missing or invalid input fields.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC6 - Exception Flow 5: If a limit is entered invalidly">
+    <testcase name="TC6 - Exception Flow 5: If there are no contacts the">
       <node_order><![CDATA[6]]></node_order>
       <externalid><![CDATA[TC6]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 5: If a limit is entered invalidly]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 5: If there are no contacts the]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no contacts the report for the given search, a message of 'No contacts found' is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC26 Find an Expert">
-    <node_order><![CDATA[27]]></node_order>
-    <details><![CDATA[Use case: UC26 Find an Expert]]></details>
+  <testsuite name="UC30 COVID-19&apos;s Reproductive Number (R0)">
+    <node_order><![CDATA[31]]></node_order>
+    <details><![CDATA[Use case: UC30 COVID-19's Reproductive Number (R0)]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can view the R0 value of the COVID-19 outbreak on the Analytics page associated with UC28, calculated from the uploaded passenger data . A classification for the outbreak will be displayed based off the actual R0 value . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Exception Flow 1: Invalid data field format">
+    <testcase name="TC2 - Exception Flow 1: No records or data available">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: No records or data available]]></summary>
+      <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+          <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can view the R0 value of the COVID-19 outbreak on the Analytics page associated with UC28, calculated from the uploaded passenger data . A classification for the outbreak will be displayed based off the actual R0 value . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the Virologist attempts to view the R0 value when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view it or receive a classification of the outbreak.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>

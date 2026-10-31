@@ -1,0 +1,46 @@
+System:	iTrust2
+Use Case:	UC29 Track Previous Contacts	Version:	7.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: No records or data available			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM prompts that If the Virologist attempts to search passenger contacts when passenger data has not been uploaded into the iTrust2 system, an error message appears saying, 'No passenger data is found.' The Virologist is advised to upload passenger data before attempting to track passenger contacts.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Invalid file			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM prompts that If the Virologist upload failed or the file was invalid, an error message is displayed saying, 'Invalid File'. The Virologist may re-attempt the upload. The existing data (if any) is not replaced.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: Had not uploaded passenger data prior			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM prompts that If the user had not uploaded passenger data prior to uploading contacts, a message is displayed saying, 'No passenger contact data is found.' The Virologist may re-attempt the upload. The existing data (if any) is not replaced.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: Clicking the submit button will submit			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM prompts that Clicking the submit button will submit the form if any fields are missing or invalid. Error messages will display beneath missing or invalid input fields.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: If there are no contacts the			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time .		SYSTEM prompts that If there are no contacts the report for the given search, a message of 'No contacts found' is displayed.		
+Postcondition:	Flow interrupted due to exception / error
+

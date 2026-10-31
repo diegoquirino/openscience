@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC30 COVID-19&apos;s Reproductive Number (R0)">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can view the R0 value of the COVID-19 outbreak on the Analytics page associated with UC28, calculated from the uploaded passenger data . A classification for the outbreak will be displayed based off the actual R0 value . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: No records or data available">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: No records or data available]]></summary>
+    <preconditions><![CDATA[- A Virologist has authenticated themselves within iTrust2. UC2]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can view the R0 value of the COVID-19 outbreak on the Analytics page associated with UC28, calculated from the uploaded passenger data . A classification for the outbreak will be displayed based off the actual R0 value . An error message will be displayed if a list of passenger data has not yet been uploaded .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If the Virologist attempts to view the R0 value when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view it or receive a classification of the outbreak.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

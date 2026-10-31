@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC27 Upload Patient Data	Version:	7.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.		SYSTEM A success message is displayed and the event is logged.		
+Postcondition:	A success message is displayed and the event is logged.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: An error message, '**error: the file			Execution Date:	
+Precondition:	The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.		SYSTEM prompts that An error message, '**Error: The file _ is an incorrect file extension.**' is displayed if the user uploads a file that is not a CSV.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Invalid data field format			Execution Date:	
+Precondition:	The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.		SYSTEM prompts that An error message, '**Error: Could not upload contacts**' is displayed if the user uploads a CSV file that does not contain the proper data format for the CSV file.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: If 1 or more passengers were			Execution Date:	
+Precondition:	The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients.		SYSTEM prompts that If 1 or more Passengers were skipped in the upload, this flow is taken. A message, '___ duplicate Passengers were not added.' is displayed with the number of skipped Passengers in the place of the blank space.		
+Postcondition:	Flow interrupted due to exception / error
+

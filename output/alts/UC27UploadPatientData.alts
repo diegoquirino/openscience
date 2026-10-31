@@ -1,0 +1,31 @@
+ALTS_SPECIFICATION "UC27 Upload Patient Data" {
+  VERSION: "7.0"
+  PRE_CONDITION: "The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist."
+  POST_CONDITION: "A success message is displayed and the event is logged."
+
+  ACTORS {
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust user has authenticated themselves in iTrust2 (UC2) as a Virologist."]
+    S_BF_1 [flow: "basic", actor: "user", action: "A Virologist needs to be able to upload Passenger data in CSV format . The system needs to protect against the Virologist uploading the same data twice (no duplicates) . If the Virologist would like to clear the data in the database, they have the option to reset what has been uploaded . All Passengers are considered as patients."]
+    S_BF_2 [flow: "basic", actor: "system", action: "A success message is displayed and the event is logged.", branches_ef: [1, 2, 3]]
+    S_EF1_1 [flow: "exception_1", description: "An error message, '**error: the file", actor: "system", action: "prompts that An error message, '**Error: The file _ is an incorrect file extension.**' is displayed if the user uploads a file that is not a CSV."]
+    S_EF2_1 [flow: "exception_2", description: "Invalid data field format", actor: "system", action: "prompts that An error message, '**Error: Could not upload contacts**' is displayed if the user uploads a CSV file that does not contain the proper data format for the CSV file."]
+    S_EF3_1 [flow: "exception_3", description: "If 1 or more passengers were", actor: "system", action: "prompts that If 1 or more Passengers were skipped in the upload, this flow is taken. A message, '___ duplicate Passengers were not added.' is displayed with the number of skipped Passengers in the place of the blank space."]
+    S_END [terminal, guard: "A success message is displayed and the event is logged."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: A success message is displayed and the event is logged."]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - An error message, '**error: the file"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - Invalid data field format"]
+    S_BF_2 -> S_EF3_1 [branch: "EF_3 - If 1 or more passengers were"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_END [event: "ErrorExit"]
+  }
+}

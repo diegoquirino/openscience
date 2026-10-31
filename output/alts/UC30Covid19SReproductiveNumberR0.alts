@@ -1,0 +1,25 @@
+ALTS_SPECIFICATION "UC30 COVID-19's Reproductive Number (R0)" {
+  VERSION: "7.0"
+  PRE_CONDITION: "- A Virologist has authenticated themselves within iTrust2. UC2"
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "- A Virologist has authenticated themselves within iTrust2. UC2"]
+    S_BF_1 [flow: "basic", actor: "hcp", action: "A Virologist, a type HCP, uploads a list of passenger data . The Virologist can view the R0 value of the COVID-19 outbreak on the Analytics page associated with UC28, calculated from the uploaded passenger data . A classification for the outbreak will be displayed based off the actual R0 value . An error message will be displayed if a list of passenger data has not yet been uploaded ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_EF1_1 [flow: "exception_1", description: "No records or data available", actor: "system", action: "prompts that If the Virologist attempts to view the R0 value when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view it or receive a classification of the outbreak."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - No records or data available"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

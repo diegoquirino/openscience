@@ -1,0 +1,37 @@
+ALTS_SPECIFICATION "UC29 Track Previous Contacts" {
+  VERSION: "7.0"
+  PRE_CONDITION: "- A Virologist has authenticated themselves within iTrust2. UC2"
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "- A Virologist has authenticated themselves within iTrust2. UC2"]
+    S_BF_1 [flow: "basic", actor: "hcp", action: "A Virologist, a type of HCP, uploads a list of contact data . At any point, the Virologist is still able to re-upload a contact list . Once a list of contact lists has been successfully uploaded, the Virologist may search for n-depth contacts of a source patient and view a list of these contacts along with the contacts' symptom severity level at an indicated time ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2, 3, 4, 5]]
+    S_EF1_1 [flow: "exception_1", description: "No records or data available", actor: "system", action: "prompts that If the Virologist attempts to search passenger contacts when passenger data has not been uploaded into the iTrust2 system, an error message appears saying, 'No passenger data is found.' The Virologist is advised to upload passenger data before attempting to track passenger contacts."]
+    S_EF2_1 [flow: "exception_2", description: "Invalid file", actor: "system", action: "prompts that If the Virologist upload failed or the file was invalid, an error message is displayed saying, 'Invalid File'. The Virologist may re-attempt the upload. The existing data (if any) is not replaced."]
+    S_EF3_1 [flow: "exception_3", description: "Had not uploaded passenger data prior", actor: "system", action: "prompts that If the user had not uploaded passenger data prior to uploading contacts, a message is displayed saying, 'No passenger contact data is found.' The Virologist may re-attempt the upload. The existing data (if any) is not replaced."]
+    S_EF4_1 [flow: "exception_4", description: "Clicking the submit button will submit", actor: "system", action: "prompts that Clicking the submit button will submit the form if any fields are missing or invalid. Error messages will display beneath missing or invalid input fields."]
+    S_EF5_1 [flow: "exception_5", description: "If there are no contacts the", actor: "system", action: "prompts that If there are no contacts the report for the given search, a message of 'No contacts found' is displayed."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - No records or data available"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - Invalid file"]
+    S_BF_2 -> S_EF3_1 [branch: "EF_3 - Had not uploaded passenger data prior"]
+    S_BF_2 -> S_EF4_1 [branch: "EF_4 - Clicking the submit button will submit"]
+    S_BF_2 -> S_EF5_1 [branch: "EF_5 - If there are no contacts the"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_END [event: "ErrorExit"]
+    S_EF4_1 -> S_END [event: "ErrorExit"]
+    S_EF5_1 -> S_END [event: "ErrorExit"]
+  }
+}

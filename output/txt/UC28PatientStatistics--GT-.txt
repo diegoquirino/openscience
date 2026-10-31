@@ -1,0 +1,18 @@
+System:	iTrust2
+Use Case:	UC28 Patient Statistics	Version:	7.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 2 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can select between various plot or graph options representing the dataset . An error message will be displayed if a list of passenger data has not yet been uploaded .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: No records or data available			Execution Date:	
+Precondition:	- A Virologist has authenticated themselves within iTrust2. UC2
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: A Virologist, a type HCP, uploads a list of passenger data . The Virologist can select between various plot or graph options representing the dataset . An error message will be displayed if a list of passenger data has not yet been uploaded .		SYSTEM prompts that If the Virologist attempts to view a plot or graph when data has not been uploaded into the iTrust2 system, an error message appears and the Virologist is advised to upload data before attempting to view statistics.		
+Postcondition:	Flow interrupted due to exception / error
+
