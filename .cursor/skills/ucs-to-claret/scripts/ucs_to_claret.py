@@ -348,7 +348,7 @@ class ClaretModelGenerator:
         for tag, text in sorted(self.ucs.alt_flows.items()):
             if tag.startswith("E") or "error" in text.lower() or "prompt" in text.lower() or "fail" in text.lower() or "must match" in text.lower():
                 clean_exc = clean_step_text(text)
-                title = self._derive_flow_title(clean_exc, f"Exception {ef_id}")
+                title = self._derive_exception_title(clean_exc, f"Exception {ef_id}")
                 ef_flow = ParsedFlow(flow_id=ef_id, title=title)
 
                 # Exception step 1 must be system action
@@ -389,7 +389,7 @@ class ClaretModelGenerator:
                     sub_actor_parts.append(s_clean)
 
             af_action = " ".join(sub_actor_parts) if sub_actor_parts else clean_step_text(sub_sentences[0])
-            title = self._derive_flow_title(af_action, f"Alternative {af_id}")
+            title = self._derive_alternative_title(af_action, f"Alternative {af_id}")
             af_flow = ParsedFlow(flow_id=af_id, title=title)
 
             # Step 1 in alternative flow: Actor action returning to basic step 2 (system confirmation)
@@ -404,14 +404,133 @@ class ClaretModelGenerator:
         if af_list:
             self.basic_steps[0].af_refs = af_list
 
-    def _derive_flow_title(self, text: str, fallback: str) -> str:
-        """Derives a concise, clean title for a flow."""
+    def _derive_exception_title(self, text: str, fallback: str) -> str:
+        """Derives a concise, highly contextual title for an exception flow without ellipsis."""
         clean = clean_step_text(text)
+        lower = clean.lower()
+
+        # Specific domain and semantic checks
+        if "identical to" in lower and "current password" in lower:
+            return "New password identical to current password"
+        if "repeated password must match" in lower or "two different values" in lower or "password mismatch" in lower or ("password" in lower and "match" in lower):
+            return "Password confirmation mismatch"
+        if "temporary password has expired" in lower or "password has expired" in lower:
+            return "Temporary password expired"
+        if "no valid email" in lower or "no email" in lower or "unable to reset this account" in lower:
+            return "No valid email associated with account"
+        if "unrecognized username" in lower or "no user found" in lower:
+            return "User not found"
+        if "unsaved changes" in lower:
+            return "Unsaved changes warning"
+        if "banned" in lower:
+            return "User or IP address banned"
+        if "lock out" in lower or "locked out" in lower:
+            return "Account lockout after failed attempts"
+        if "data format" in lower or "correct the format" in lower or "conform to appropriate data format" in lower:
+            return "Invalid data field format"
+        if "incorrect or invalid" in lower or "fields that are incorrect" in lower or "enters invalid data" in lower or "invalid data" in lower:
+            return "Invalid data entered"
+        if "upload fails" in lower or "file is rejected" in lower or "failed to upload" in lower:
+            return "File upload failure"
+        if "no current or past" in lower or "no data is in the system" in lower or "cannot be calculated without" in lower or "data has not been uploaded" in lower:
+            return "No records or data available"
+        if "inactivity" in lower or ("session" in lower and "terminate" in lower):
+            return "Session timeout due to inactivity"
+
+        # Quoted message check
+        quoted = re.search(r"['\"]([^'\"]{4,40})['\"]", clean)
+        if quoted and any(w in quoted.group(1).lower() for w in ["must", "error", "invalid", "unable", "not found", "failed", "cannot", "expired"]):
+            return quoted.group(1).capitalize().rstrip(".")
+
+        # Structural extraction
+        s = clean.split('.')[0].strip()
+        s = s.split(' because ')[0].strip()
+        s = re.sub(r'^(?:if\s+)?(?:(?:the|an?)\s+)?(?:user|admin|patient|hcp)\s+attempts\s+to\s+', '', s, flags=re.I)
+        s = re.sub(r'^(?:if\s+)?(?:(?:the|an?)\s+)?(?:user|admin|patient|hcp)\s+is\s+attempting\s+to\s+', '', s, flags=re.I)
+        s = re.sub(r'^(?:if\s+)?(?:(?:the|an?)\s+)?(?:user|admin|patient|hcp)\s+', '', s, flags=re.I)
+        s = re.sub(r'^(?:an\s+)?error\s+(?:message\s+)?(?:is\s+displayed|appears|is\s+thrown)(?:\s+(?:stating|saying|describing))?\s*', '', s, flags=re.I)
+        s = re.sub(r'^(?:the\s+)?system\s+prompts\s+(?:the\s+)?(?:user|admin|patient|hcp)\s+to\s+', '', s, flags=re.I)
+        s = re.sub(r'\s+or\s+(?:an\s+)?error\s+is\s+(?:displayed|shown).*$', '', s, flags=re.I)
+
+        words = s.split()
+        if len(words) > 7:
+            s = ' '.join(words[:6])
+        s = s.strip(' ,;:-')
+        return s.capitalize() if len(s) > 3 else fallback
+
+    def _derive_alternative_title(self, text: str, fallback: str) -> str:
+        """Derives a concise, highly contextual title for an alternative flow without ellipsis."""
+        clean = clean_step_text(text)
+        lower = clean.lower()
+
+        # Delete confirmation / deletion action
+        del_match = re.search(r'(?:confirms\s+the\s+delete.*?delete\s+(?:the\s+)?(\w+)|to\s+delete\s+(?:the\s+)?(\w+))', clean, re.I)
+        if del_match:
+            obj = del_match.group(1) or del_match.group(2)
+            return f"Delete {obj.lower()}"
+
+        # Button presses
+        btn_match = re.search(r'press(?:es)?\s+(?:the\s+)?(?:button\s+to\s+)?(add|delete|save|edit|update|submit|cancel|remove)\s+(?:the\s+)?(\w+)', clean, re.I)
+        if btn_match:
+            act, obj = btn_match.group(1), btn_match.group(2)
+            if obj.lower() != "button":
+                return f"{act.capitalize()} {obj.lower()}"
+
+        # Option selection
+        opt_action = re.search(r'selects\s+(?:an?\s+option\s+to\s+)?(add|create|delete|edit|view|modify|update|remove)\s+(?:a|an|the)?\s*([a-zA-Z0-9\s_-]+?)(?:\.|\s+and|\s+button|$)', clean, re.I)
+        if opt_action:
+            act, obj = opt_action.group(1), opt_action.group(2).strip()
+            words = obj.split()
+            if len(words) > 3:
+                obj = " ".join(words[:3])
+            return f"{act.capitalize()} {obj.lower()}"
+
+        # Selects existing to action
+        obj_action = re.search(r'selects\s+(?:an?\s+)?existing\s+(\w+)\s+to\s+(\w+)', clean, re.I)
+        if obj_action:
+            obj, act = obj_action.group(1), obj_action.group(2)
+            return f"{act.capitalize()} existing {obj.lower()}"
+
+        # View actions
+        view_match = re.search(r'selects\s+to\s+view\s+(?:their\s+)?(\w+(?:\s+\w+)?)', clean, re.I)
+        if view_match:
+            return f"View {view_match.group(1).lower()}"
+
+        if "reset their password" in lower or "reset password" in lower:
+            return "Reset password"
+
+        # Data entry actions
+        enter_match = re.search(r'(?:enters|provides|records|modifies|updates|submits)\s+(?:the\s+)?([a-zA-Z0-9\s_-]+?)(?:\s+(?:in|for|of|from|that)|\.|$)', clean, re.I)
+        if enter_match:
+            verb = re.search(r'(enters|provides|records|modifies|updates|submits)', clean, re.I).group(1)
+            obj = enter_match.group(1).strip()
+            words = obj.split()
+            if len(words) > 4:
+                obj = " ".join(words[:3])
+            v_map = {"enters": "Enter", "provides": "Provide", "records": "Record", "modifies": "Modify", "updates": "Update", "submits": "Submit"}
+            v_title = v_map.get(verb.lower(), verb.capitalize())
+            return f"{v_title} {obj.lower()}"
+
+        # Condition checks
+        if_match = re.search(r'if\s+(?:the\s+)?patient\s+is\s+([^,.]+)', clean, re.I)
+        if if_match:
+            cond = if_match.group(1).strip()
+            return f"Patient is {cond.lower()}"
+
+        sel_match = re.search(r'selected\s+for\s+([^,.]+)', clean, re.I)
+        if sel_match:
+            field = sel_match.group(1).strip()
+            return f"Select {field.lower()}"
+
+        # Clean fallback
         first_clause = clean.split('.')[0].strip()
         first_clause = first_clause.split(' because ')[0].strip()
-        if len(first_clause) > 60:
-            first_clause = first_clause[:57] + "..."
-        return first_clause if first_clause else fallback
+        first_clause = re.sub(r'^(?:(?:the|an?)\s+)?(?:admin|administrator|user|patient|hcp|doctor)\s+', '', first_clause, flags=re.I)
+        words = first_clause.split()
+        if len(words) > 6:
+            first_clause = ' '.join(words[:5])
+        first_clause = first_clause.strip(' ,;:-')
+        return first_clause.capitalize() if len(first_clause) > 3 else fallback
 
     def _ensure_golden_rule(self):
         """Verifies and strictly enforces Golden Rule alternation across all flows."""
