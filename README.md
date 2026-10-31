@@ -109,9 +109,12 @@ claret-version-control-system/
 │   ├── src-diff-analyzer/                <-- Feature 4: Adjacent tag diff for src/ .claret files (CSV)
 │   │   ├── SKILL.md
 │   │   └── scripts/diff_src.py
-│   └── output-diff-analyzer/             <-- Feature 5: Adjacent tag diff for output/ test cases (CSV)
+│   ├── output-diff-analyzer/             <-- Feature 5: Adjacent tag diff for output/ test cases (CSV)
+│   │   ├── SKILL.md
+│   │   └── scripts/diff_output.py
+│   └── ucs-to-claret/                    <-- Feature 6: Natural language UCS to CLARET translator
 │       ├── SKILL.md
-│       └── scripts/diff_output.py
+│       └── scripts/ucs_to_claret.py
 │
 ├── .agent/                               <-- GOOGLE ANTIGRAVITY MIRROR (Auto-generated)
 │   ├── skills/                           <-- Mirrored from .claude/skills/
@@ -344,6 +347,16 @@ python .claude/skills/output-diff-analyzer/scripts/diff_output.py \
   --scope all_usecases \
   --coverage gt \
   --output-csv ./reports/output_diffs.csv
+```
+
+### 6. `ucs-to-claret` (`/ucs-to-claret`)
+Translates natural language Use Case Specifications (UCS) located across directories (`d1, ..., dx`) into formal `.claret` specifications. Preserves verbatim step prose, enforces the Golden Rule (strict actor-system alternation), maps business rules to alternative and exception flows, and outputs files flatly into `claret_src/`.
+
+```bash
+python .claude/skills/ucs-to-claret/scripts/ucs_to_claret.py \
+  --dirs v1/docs \
+  --output-dir claret_src \
+  --system-name iTrust2
 ```
 
 ---

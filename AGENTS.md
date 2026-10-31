@@ -25,6 +25,7 @@ This project implements the **CLARET Version Control System** agentic skills sui
 | **src-diff-analyzer** | `.claude/skills/src-diff-analyzer` | `/diff-src` | `/diff-src` |
 | **output-diff-analyzer** | `.claude/skills/output-diff-analyzer` | `/diff-output` | `/diff-output` |
 | **cia-analyzer** | `.claude/skills/cia-analyzer` | `/cia` | `/cia` |
+| **ucs-to-claret** | `.claude/skills/ucs-to-claret` | `/ucs-to-claret` | `/ucs-to-claret` |
 
 ---
 
