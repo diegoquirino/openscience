@@ -1,0 +1,32 @@
+ALTS_SPECIFICATION "UC4 Demographics" {
+  VERSION: "1.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "A patient may enter or edit their own demographic information. Details about the data format for demographic information is in Section 4.6 .", branches_af: [1, 2]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "Must enter the mid of", actor: "patient", action: "HCP must enter the MID of a patient and then enter or edit demographic information .", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "May enter or edit their", actor: "hcp", action: "An HCP may enter or edit their own demographic information according to the data format in Section 4.6 .", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 4.6."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Must enter the mid of"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - May enter or edit their"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

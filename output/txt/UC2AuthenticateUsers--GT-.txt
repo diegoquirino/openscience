@@ -1,0 +1,25 @@
+System:	iTrust2
+Use Case:	UC2 Authenticate Users	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	A User has been created in iTrust2 UC1.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Account lockout after failed attempts			Execution Date:	
+Precondition:	A User has been created in iTrust2 UC1.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes.		SYSTEM alerts that The user may try three times. After three failed attempts with a user id, lock out that username for 60 minutes. If the last 6 login attempts from a given IP address fail, across any number of users or non-existent usernames, that IP address will be locked out for 60 minutes. After the 60 minute lockout-period, a user gets 3 more attempts, and an IP address gets 6 more attempts.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: User or IP address banned			Execution Date:	
+Precondition:	A User has been created in iTrust2 UC1.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes.		SYSTEM prompts that If a user or IP address is locked out 3 times in a 24-hour period, the offending user or IP address will be banned from the system until re-authorized by a system administrator.		
+Postcondition:	Flow interrupted due to exception / error
+

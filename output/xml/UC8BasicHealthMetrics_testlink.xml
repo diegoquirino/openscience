@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC8 Basic Health Metrics">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: If the patient is under three calendar years of age, the HCP enters the length, weight, head circumference, and household smoking status .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Patient is three calendar years of age or older and under 12 calendar years of age">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Patient is three calendar years of age or older and under 12 calendar years of age]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: If the patient is three calendar years of age or older and under 12 calendar years of age, the HCP enters the height, weight, blood pressure, and household smoking status .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Alternative Flow 2: Patient is 12 calendar years of age or older">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 2: Patient is 12 calendar years of age or older]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: If the patient is 12 calendar years of age or older, the HCP enters the height, weight, blood pressure, household smoking status , patient smoking status , high density lipoproteins (HDL) cholesterol, low density lipoproteins (LDL) cholesterol, and triglycerides .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Alternative Flow 3: Selects one of the following">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: Selects one of the following]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: The HCP selects one of the following menu options to specify the smoking status of household members: 1 - non-smoking household, 2 - outdoor smokers, 3 - indoor smokers.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: Selects one of the following">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: Selects one of the following]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: The HCP selects one of the following menu options to specify the smoking status of the patient: 1 - Never smoker; 2 - Former smoker; 3 - Current some days smoker; 4 - Current every day smoker; 5 - Smoker, current status unknown; 9 - unknown if ever smoked.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 1: Invalid data field format">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: If the patient is under three calendar years of age, the HCP enters the length, weight, head circumference, and household smoking status .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed describing what entries do not conform to appropriate data formats.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

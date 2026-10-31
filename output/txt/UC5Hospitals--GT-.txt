@@ -1,0 +1,25 @@
+System:	iTrust2
+Use Case:	UC5 Hospitals	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The administrator has authenticated themselves in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator enters the following information about the hospital that conforms to the data formats in Section 5.6 and presses the Add Hospital button: Name Address State Zip		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Delete hospital			Execution Date:	
+Precondition:	The administrator has authenticated themselves in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: An Admin selects a hospital from the list of possible hospitals, confirms the delete, and presses the button to delete the hospital.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	The administrator has authenticated themselves in the iTrust2 Medical Records system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator enters the following information about the hospital that conforms to the data formats in Section 5.6 and presses the Add Hospital button: Name Address State Zip		SYSTEM prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 5.6.		
+Postcondition:	Flow interrupted due to exception / error
+

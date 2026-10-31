@@ -1,0 +1,32 @@
+ALTS_SPECIFICATION "UC7 Office Visit" {
+  VERSION: "1.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 UC2."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 UC2."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "The patient selects to view an office visit. They see all information the HCP recorded for the office visit. They cannot edit the information.", branches_af: [1, 2]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "Submit office", actor: "hcp", action: "The HCP selects to document an office visit by recording if the office visit was prescheduled, any notes about the visit, the patient, appointment type, hospital the patient was seen at, the date, and time of the visit. They fill out a form and press Submit Office Visit .", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Provide additional details about the", actor: "hcp", action: "The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts the HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 7.7 for the office visit data or for any other collected data ."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Submit office"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - Provide additional details about the"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

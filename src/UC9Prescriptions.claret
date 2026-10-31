@@ -1,0 +1,40 @@
+systemName "iTrust2"
+usecase "UC9 Prescriptions" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor admin "Admin"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit."
+  basic {
+    step 1 hcp "The HCP selects the name of the prescription from a list. There is no option to enter names not tracked by the system." af[1, 2, 3, 4, 5, 6, 7]
+    step 2 system "displays a success message and logs transaction" ef[1, 2]
+  }
+  alternative 1 "Enter prescription dosage" {
+    step 1 hcp "The HCP enters the prescription dosage in milligrams." bs 2
+  }
+  alternative 2 "Enter start date" {
+    step 1 hcp "The HCP enters the start date for the prescription." bs 2
+  }
+  alternative 3 "Enter end date" {
+    step 1 hcp "The HCP enters the end date for the prescription." bs 2
+  }
+  alternative 4 "Enter number" {
+    step 1 hcp "The HCP enters the number of renewals that can be made during the prescription period." bs 2
+  }
+  alternative 5 "Views a table containing current" {
+    step 1 patient "The patient views a table containing current and past prescriptions." bs 2
+  }
+  alternative 6 "Add new drug" {
+    step 1 admin "The administrator selects an option to add a new drug. The administrator enters a NDC, a name, and a description." bs 2
+  }
+  alternative 7 "Edit existing drug" {
+    step 1 admin "The administrator selects an existing drug to edit. The administrator modifies the existing information and presses submit." bs 2
+  }
+  exception 1 "Invalid data entered" {
+    step 1 system "prompts that An error message is displayed if the HCP or administrator enters invalid data."
+  }
+  exception 2 "No records or data available" {
+    step 1 system "prompts that If the patient has no current or past prescriptions, the system displays a error message."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

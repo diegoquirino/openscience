@@ -1,0 +1,21 @@
+systemName "iTrust2"
+usecase "UC7 Office Visit" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 UC2."
+  basic {
+    step 1 patient "The patient selects to view an office visit. They see all information the HCP recorded for the office visit. They cannot edit the information." af[1, 2]
+    step 2 system "displays a success message and logs transaction" ef[1]
+  }
+  alternative 1 "Submit office" {
+    step 1 hcp "The HCP selects to document an office visit by recording if the office visit was prescheduled, any notes about the visit, the patient, appointment type, hospital the patient was seen at, the date, and time of the visit. They fill out a form and press Submit Office Visit ." bs 2
+  }
+  alternative 2 "Provide additional details about the" {
+    step 1 hcp "The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)" bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts the HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 7.7 for the office visit data or for any other collected data ."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

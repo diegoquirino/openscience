@@ -1,0 +1,17 @@
+systemName "iTrust2"
+usecase "UC2 Authenticate Users" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor user "User"
+  preCondition "A User has been created in iTrust2 UC1."
+  basic {
+    step 1 user "Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes."
+    step 2 system "displays a success message and logs transaction" ef[1, 2]
+  }
+  exception 1 "Account lockout after failed attempts" {
+    step 1 system "alerts that The user may try three times. After three failed attempts with a user id, lock out that username for 60 minutes. If the last 6 login attempts from a given IP address fail, across any number of users or non-existent usernames, that IP address will be locked out for 60 minutes. After the 60 minute lockout-period, a user gets 3 more attempts, and an IP address gets 6 more attempts."
+  }
+  exception 2 "User or IP address banned" {
+    step 1 system "prompts that If a user or IP address is locked out 3 times in a 24-hour period, the offending user or IP address will be banned from the system until re-authorized by a system administrator."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

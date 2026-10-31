@@ -1,0 +1,28 @@
+ALTS_SPECIFICATION "UC12 HCP Edit Demographics" {
+  VERSION: "1.0"
+  PRE_CONDITION: "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2)."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2)."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "A message shows if the data entered is valid .", branches_ef: [1, 2]]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data entered", actor: "system", action: "identifies fields that are incorrect or invalid, and prompts the HCP to correct them. The data must match the requirements specified in [Section 4.6](https://github.ncsu.edu/engr-csc326-staff/iTrust2-v1/wiki/uc4#46-data-format)."]
+    S_EF2_1 [flow: "exception_2", description: "Unsaved changes warning", actor: "system", action: "prompts that A warning is shown about unsaved changes that will be lost. If they repeat the action, the new patient's data is loaded ."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: A message shows if the data entered is valid ."]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data entered"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - Unsaved changes warning"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

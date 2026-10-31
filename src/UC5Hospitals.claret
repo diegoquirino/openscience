@@ -1,0 +1,17 @@
+systemName "iTrust2"
+usecase "UC5 Hospitals" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor admin "Admin"
+  preCondition "The administrator has authenticated themselves in the iTrust2 Medical Records system (UC2)."
+  basic {
+    step 1 admin "The administrator enters the following information about the hospital that conforms to the data formats in Section 5.6 and presses the Add Hospital button: Name Address State Zip" af[1]
+    step 2 system "displays a success message and logs transaction" ef[1]
+  }
+  alternative 1 "Delete hospital" {
+    step 1 admin "An Admin selects a hospital from the list of possible hospitals, confirms the delete, and presses the button to delete the hospital." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 5.6."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

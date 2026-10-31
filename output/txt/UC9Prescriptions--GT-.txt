@@ -1,0 +1,74 @@
+System:	iTrust2
+Use Case:	UC9 Prescriptions	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 10 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP selects the name of the prescription from a list. There is no option to enter names not tracked by the system.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Enter prescription dosage			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP enters the prescription dosage in milligrams.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Enter start date			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP enters the start date for the prescription.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Enter end date			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP enters the end date for the prescription.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: Enter number			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP enters the number of renewals that can be made during the prescription period.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: Views a table containing current			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient views a table containing current and past prescriptions.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 6: Add new drug			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator selects an option to add a new drug. The administrator enters a NDC, a name, and a description.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC8	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 7: Edit existing drug			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator selects an existing drug to edit. The administrator modifies the existing information and presses submit.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC9	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data entered			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP selects the name of the prescription from a list. There is no option to enter names not tracked by the system.		SYSTEM prompts that An error message is displayed if the HCP or administrator enters invalid data.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC10	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: No records or data available			Execution Date:	
+Precondition:	An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system. The HCP must have begun documenting an office visit.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP selects the name of the prescription from a list. There is no option to enter names not tracked by the system.		SYSTEM prompts that If the patient has no current or past prescriptions, the system displays a error message.		
+Postcondition:	Flow interrupted due to exception / error
+

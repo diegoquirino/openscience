@@ -1,0 +1,25 @@
+System:	iTrust2
+Use Case:	UC12 HCP Edit Demographics	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .		SYSTEM A message shows if the data entered is valid .		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data entered			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .		SYSTEM identifies fields that are incorrect or invalid, and prompts the HCP to correct them. The data must match the requirements specified in [Section 4.6](https://github.ncsu.edu/engr-csc326-staff/iTrust2-v1/wiki/uc4#46-data-format).		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Unsaved changes warning			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .		SYSTEM prompts that A warning is shown about unsaved changes that will be lost. If they repeat the action, the new patient's data is loaded .		
+Postcondition:	Flow interrupted due to exception / error
+

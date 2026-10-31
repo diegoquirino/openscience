@@ -1,0 +1,38 @@
+ALTS_SPECIFICATION "UC8 Basic Health Metrics" {
+  VERSION: "1.0"
+  PRE_CONDITION: "An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7)."
+  POST_CONDITION: "A success message is displayed and the HCP sees the saved information."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7)."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "If the patient is under three calendar years of age, the HCP enters the length, weight, head circumference, and household smoking status .", branches_af: [1, 2, 3, 4]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "Patient is three calendar years of age or older and under 12 calendar years of age", actor: "patient", action: "If the patient is three calendar years of age or older and under 12 calendar years of age, the HCP enters the height, weight, blood pressure, and household smoking status .", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Patient is 12 calendar years of age or older", actor: "patient", action: "If the patient is 12 calendar years of age or older, the HCP enters the height, weight, blood pressure, household smoking status , patient smoking status , high density lipoproteins (HDL) cholesterol, low density lipoproteins (LDL) cholesterol, and triglycerides .", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "Selects one of the following", actor: "hcp", action: "The HCP selects one of the following menu options to specify the smoking status of household members: 1 - non-smoking household, 2 - outdoor smokers, 3 - indoor smokers.", returns_to_bf: 2]
+    S_AF4_1 [flow: "alternative_4", description: "Selects one of the following", actor: "hcp", action: "The HCP selects one of the following menu options to specify the smoking status of the patient: 1 - Never smoker; 2 - Former smoker; 3 - Current some days smoker; 4 - Current every day smoker; 5 - Smoker, current status unknown; 9 - unknown if ever smoked.", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts that An error message is displayed describing what entries do not conform to appropriate data formats."]
+    S_END [terminal, guard: "A success message is displayed and the HCP sees the saved information."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Patient is three calendar years of age or older and under 12 calendar years of age"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - Patient is 12 calendar years of age or older"]
+    S_BF_1 -> S_AF3_1 [branch: "AF_3 - Selects one of the following"]
+    S_BF_1 -> S_AF4_1 [branch: "AF_4 - Selects one of the following"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF4_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC12 HCP Edit Demographics">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .]]></actions>
+        <expectedresults><![CDATA[SYSTEM A message shows if the data entered is valid .]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: Invalid data entered">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Invalid data entered]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .]]></actions>
+        <expectedresults><![CDATA[SYSTEM identifies fields that are incorrect or invalid, and prompts the HCP to correct them. The data must match the requirements specified in [Section 4.6](https://github.ncsu.edu/engr-csc326-staff/iTrust2-v1/wiki/uc4#46-data-format).]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 2: Unsaved changes warning">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: Unsaved changes warning]]></summary>
+    <preconditions><![CDATA[An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that A warning is shown about unsaved changes that will be lost. If they repeat the action, the new patient's data is loaded .]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

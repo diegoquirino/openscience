@@ -1,0 +1,27 @@
+systemName "iTrust2"
+usecase "UC8 Basic Health Metrics" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2). The HCP has started documenting an office visit for the patient (UC7)."
+  basic {
+    step 1 patient "If the patient is under three calendar years of age, the HCP enters the length, weight, head circumference, and household smoking status ." af[1, 2, 3, 4]
+    step 2 system "displays a success message and logs transaction" ef[1]
+  }
+  alternative 1 "Patient is three calendar years of age or older and under 12 calendar years of age" {
+    step 1 patient "If the patient is three calendar years of age or older and under 12 calendar years of age, the HCP enters the height, weight, blood pressure, and household smoking status ." bs 2
+  }
+  alternative 2 "Patient is 12 calendar years of age or older" {
+    step 1 patient "If the patient is 12 calendar years of age or older, the HCP enters the height, weight, blood pressure, household smoking status , patient smoking status , high density lipoproteins (HDL) cholesterol, low density lipoproteins (LDL) cholesterol, and triglycerides ." bs 2
+  }
+  alternative 3 "Selects one of the following" {
+    step 1 hcp "The HCP selects one of the following menu options to specify the smoking status of household members: 1 - non-smoking household, 2 - outdoor smokers, 3 - indoor smokers." bs 2
+  }
+  alternative 4 "Selects one of the following" {
+    step 1 hcp "The HCP selects one of the following menu options to specify the smoking status of the patient: 1 - Never smoker; 2 - Former smoker; 3 - Current some days smoker; 4 - Current every day smoker; 5 - Smoker, current status unknown; 9 - unknown if ever smoked." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that An error message is displayed describing what entries do not conform to appropriate data formats."
+  }
+  postCondition "A success message is displayed and the HCP sees the saved information."
+}

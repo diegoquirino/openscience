@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC7 Office Visit	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient selects to view an office visit. They see all information the HCP recorded for the office visit. They cannot edit the information.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Submit office			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP selects to document an office visit by recording if the office visit was prescheduled, any notes about the visit, the patient, appointment type, hospital the patient was seen at, the date, and time of the visit. They fill out a form and press Submit Office Visit .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Provide additional details about the			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient selects to view an office visit. They see all information the HCP recorded for the office visit. They cannot edit the information.		SYSTEM prompts the HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 7.7 for the office visit data or for any other collected data .		
+Postcondition:	Flow interrupted due to exception / error
+

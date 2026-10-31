@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC1 User Functionality	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin		SYSTEM displays a success message and logs transaction		
+Postcondition:	A success message is displayed and the action is logged.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Delete user			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: An Admin selects a user from the list of possible users, confirms the delete, and presses the button to delete the user.		SYSTEM displays a success message and logs transaction		
+Postcondition:	A success message is displayed and the action is logged.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin		SYSTEM prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 1.6.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Password confirmation mismatch			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin		SYSTEM prompts that The password and repeated password must match or an error is displayed.		
+Postcondition:	Flow interrupted due to exception / error
+

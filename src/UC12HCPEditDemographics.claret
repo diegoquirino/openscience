@@ -1,0 +1,17 @@
+systemName "iTrust2"
+usecase "UC12 HCP Edit Demographics" {
+  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2)."
+  basic {
+    step 1 patient "The HCP selects a patient to edit from the list of patients. The selected patient's current demographics fill the form. The HCP makes any desired edits and press the Submit button. If they select a different patient after editing, but before submitting, a warning is shown ."
+    step 2 system "A message shows if the data entered is valid ." ef[1, 2]
+  }
+  exception 1 "Invalid data entered" {
+    step 1 system "identifies fields that are incorrect or invalid, and prompts the HCP to correct them. The data must match the requirements specified in [Section 4.6](https://github.ncsu.edu/engr-csc326-staff/iTrust2-v1/wiki/uc4#46-data-format)."
+  }
+  exception 2 "Unsaved changes warning" {
+    step 1 system "prompts that A warning is shown about unsaved changes that will be lost. If they repeat the action, the new patient's data is loaded ."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

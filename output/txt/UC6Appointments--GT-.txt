@@ -1,0 +1,39 @@
+System:	iTrust2
+Use Case:	UC6 Appointments	Version:	1.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 5 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient enters information about the appointment request and presses the Submit Request button . HCP Date Time Comments Type		SYSTEM A message confirms the request.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Views their appointment request			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient views their appointment request. The patient can select a request and delete the request.		SYSTEM A message confirms the request.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Views appointment requests			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.		SYSTEM A message confirms the request.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: View upcoming appointments			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP view upcoming appointments.		SYSTEM A message confirms the request.		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient enters information about the appointment request and presses the Submit Request button . HCP Date Time Comments Type		SYSTEM prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in Section 6.6.		
+Postcondition:	Flow interrupted due to exception / error
+

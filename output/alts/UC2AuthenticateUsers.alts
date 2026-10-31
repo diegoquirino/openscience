@@ -1,0 +1,28 @@
+ALTS_SPECIFICATION "UC2 Authenticate Users" {
+  VERSION: "1.0"
+  PRE_CONDITION: "A User has been created in iTrust2 UC1."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "A User has been created in iTrust2 UC1."]
+    S_BF_1 [flow: "basic", actor: "user", action: "Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2]]
+    S_EF1_1 [flow: "exception_1", description: "Account lockout after failed attempts", actor: "system", action: "alerts that The user may try three times. After three failed attempts with a user id, lock out that username for 60 minutes. If the last 6 login attempts from a given IP address fail, across any number of users or non-existent usernames, that IP address will be locked out for 60 minutes. After the 60 minute lockout-period, a user gets 3 more attempts, and an IP address gets 6 more attempts."]
+    S_EF2_1 [flow: "exception_2", description: "User or IP address banned", actor: "system", action: "prompts that If a user or IP address is locked out 3 times in a 24-hour period, the offending user or IP address will be banned from the system until re-authorized by a system administrator."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Account lockout after failed attempts"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - User or IP address banned"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

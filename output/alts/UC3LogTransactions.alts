@@ -1,0 +1,25 @@
+ALTS_SPECIFICATION "UC3 Log Transactions" {
+  VERSION: "1.0"
+  PRE_CONDITION: "None"
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "None"]
+    S_BF_1 [flow: "basic", actor: "user", action: "For creating, viewing, modifying, or deleting information, the following information is recorded: the MID of the logged in user, any appropriate secondary MID of the user whose information is being accessed, a transaction type corresponding to the given action, and the current timestamp. Individual audit codes related to specific use cases are presented within each Use Case description. The subflow and transaction values are based on Use Case. For example, any in the range of 100-199 are for UC1, any in the range of 300-399 are in UC3, etc. The exception is for authentication .", branches_af: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction"]
+    S_AF1_1 [flow: "alternative_1", description: "The values from range 1-99", actor: "user", action: "The values from range 1-99 are logging events which do not exist in any use case but are concerned with the system as a whole. Logging associated with authentication is also in this range. Miscellaneous transaction codes 1-99 are presented in Section 3.5 below.", returns_to_bf: 2]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - The values from range 1-99"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+  }
+}
