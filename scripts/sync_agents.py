@@ -42,11 +42,11 @@ def sync_directory_mirror(src: Path, dst: Path, platform_name: str, tool_name: s
 
     # Copy tree
     for item in src.iterdir():
-        if item.name == "README.md":
+        if item.name == "README.md" or item.name == "__pycache__":
             continue
         dst_item = dst / item.name
         if item.is_dir():
-            shutil.copytree(item, dst_item)
+            shutil.copytree(item, dst_item, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
         else:
             shutil.copy2(item, dst_item)
 
@@ -120,7 +120,7 @@ def check_sync() -> bool:
             continue
         # Compare files
         for src_file in SRC_SKILLS.rglob("*"):
-            if src_file.name == "README.md" or src_file.is_dir():
+            if src_file.name == "README.md" or src_file.is_dir() or "__pycache__" in src_file.parts or src_file.suffix == ".pyc":
                 continue
             rel = src_file.relative_to(SRC_SKILLS)
             dst_file = dst / rel
