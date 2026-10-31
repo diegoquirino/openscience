@@ -111,10 +111,11 @@ def identify_actor(text: str, default_actor: str = "user") -> Tuple[str, str]:
     return (default_actor, default_actor.capitalize())
 
 def clean_step_text(text: str) -> str:
-    """Cleans citation brackets like [S1], [E1] while strictly preserving verbatim prose."""
+    """Cleans citation brackets like [S1], [E1] and html tags while strictly preserving verbatim prose."""
     cleaned = re.sub(r'\[\s*[SEEA]\d+\s*\]', '', text)
     cleaned = re.sub(r'\[\s*UC\d+\s*\](?:\([^)]*\))?', '', cleaned, flags=re.I)
     cleaned = re.sub(r'\[\s*\([^)]*\)\s*\]', '', cleaned)
+    cleaned = re.sub(r'<[^>]+>', '', cleaned)
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
     cleaned = cleaned.replace('"', "'")
     return cleaned
@@ -180,7 +181,7 @@ class UCSParser:
         title_match = re.search(r'^#\s*(UC\d+)?\s*(.*?)$', content, re.M)
         if title_match:
             raw_id = title_match.group(1) or ""
-            raw_title = title_match.group(2).strip()
+            raw_title = clean_step_text(title_match.group(2)).strip()
             if not raw_id:
                 id_m = re.match(r'(UC\d+)', path.stem, re.I)
                 raw_id = id_m.group(1).upper() if id_m else path.stem
