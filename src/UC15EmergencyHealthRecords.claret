@@ -1,0 +1,27 @@
+systemName "iTrust2"
+usecase "UC15 Emergency Health Records" {
+  version "3.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  actor user "User"
+  preCondition "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2)."
+  basic {
+    step 1 user "The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown." af[1, 2]
+    step 2 system "displays a success message and logs transaction" ef[1, 2, 3]
+  }
+  alternative 1 "The approved user enters the" {
+    step 1 user "The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed." bs 2
+  }
+  alternative 2 "Record for" {
+    step 1 patient "The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first)." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6."
+  }
+  exception 2 "No users are displayed if a" {
+    step 1 system "prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not."
+  }
+  exception 3 "No users are displayed if a" {
+    step 1 system "prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

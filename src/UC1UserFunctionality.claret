@@ -1,10 +1,10 @@
 systemName "iTrust2"
 usecase "UC1 User Functionality" {
-  version "1.0" type "Creation" user "Admin" date "30/10/2026"
+  version "3.0" type "Creation" user "Admin" date "30/10/2026"
   actor admin "Admin"
   preCondition "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system UC3."
   basic {
-    step 1 admin "An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin" af[1]
+    step 1 admin "An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech" af[1]
     step 2 system "displays a success message and logs transaction" ef[1, 2]
   }
   alternative 1 "Delete user" {

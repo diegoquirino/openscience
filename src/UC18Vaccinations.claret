@@ -1,0 +1,37 @@
+systemName "iTrust2"
+usecase "UC18 Vaccinations" {
+  version "3.0" type "Creation" user "Admin" date "30/10/2026"
+  actor admin "Admin"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "An HCP, a patient, and an administrator are all registered in the iTrust2 system. An iTrust2 user is logged into the system."
+  basic {
+    step 1 admin "The admin is taken to a page where a list of all vaccines are displayed. The admin clicks the Add Vaccine button." af[1, 2, 3, 4, 5, 6]
+    step 2 system "The admin is taken to a page where they can enter the information for the vaccine, including: Name of vaccination Abbreviation CPT Code Comments The admin presses the Submit Vaccine button , and a message is displayed." ef[1, 2]
+  }
+  alternative 1 "Is taken to a page" {
+    step 1 admin "The admin is taken to a page where a list of all vaccine are displayed. The admin selects a vaccine to edit and clicks the Edit Vaccine button. The fields of the vaccine are displayed, and the admin can update a field." bs 2
+  }
+  alternative 2 "Is taken to a page" {
+    step 1 admin "The admin is taken to a page where a list of all vaccine are displayed." bs 2
+  }
+  alternative 3 "When documenting an office visit" {
+    step 1 hcp "When documenting an office visit, an HCP can select zero or more vaccines from a list of all vaccines to add to the office visit. The vaccination will be added to the office visit in the patient's records." bs 2
+  }
+  alternative 4 "Or hcp selects an office" {
+    step 1 patient "The patient or HCP selects an office visit to view. They can see all of the vaccinations that pertain to that office visit. The patient cannot edit the information." bs 2
+  }
+  alternative 5 "Is taken to a page" {
+    step 1 patient "The patient is taken to a page where a list of all of their vaccinations are displayed. They can view all of the information pertaining to each vaccination record. The patient cannot edit the information." bs 2
+  }
+  alternative 6 "Can look up a patient" {
+    step 1 patient "An HCP can look up a patient by name and view their vaccination record. A list of all of the vaccinations administered to that patient are displayed, and all information pertaining to each vaccination record is displayed." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that An error message is displayed if the entered information does not fit the data formats specified in 18.6. Otherwise, a success message is displayed."
+  }
+  exception 2 "Invalid data field format" {
+    step 1 system "prompts that An error message is displayed if the entered information does not fit the data formats specified in 18.6. Otherwise, a success message is displayed."
+  }
+  postCondition "A success message is displayed and the action is logged."
+}

@@ -1,0 +1,38 @@
+ALTS_SPECIFICATION "UC15 Emergency Health Records" {
+  VERSION: "3.0"
+  PRE_CONDITION: "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2)."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2)."]
+    S_BF_1 [flow: "basic", actor: "user", action: "The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.", branches_af: [1, 2]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2, 3]]
+    S_AF1_1 [flow: "alternative_1", description: "The approved user enters the", actor: "user", action: "The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed.", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Record for", actor: "patient", action: "The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first).", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6."]
+    S_EF2_1 [flow: "exception_2", description: "No users are displayed if a", actor: "system", action: "prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not."]
+    S_EF3_1 [flow: "exception_3", description: "No users are displayed if a", actor: "system", action: "prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - The approved user enters the"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - Record for"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - No users are displayed if a"]
+    S_BF_2 -> S_EF3_1 [branch: "EF_3 - No users are displayed if a"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_END [event: "ErrorExit"]
+  }
+}

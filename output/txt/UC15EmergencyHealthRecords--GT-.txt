@@ -1,0 +1,46 @@
+System:	iTrust2
+Use Case:	UC15 Emergency Health Records	Version:	3.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: The approved user enters the			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The approved user enters the desired patients MID (username), or a correct substring of it, in the search box. The patient/s matching the MID/MID substring are displayed.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Record for			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The approved user selects the patient they wish to see the Emergency Health Records for. The patients Emergency Health Records page is pulled up. The patients name, age, date of birth, gender, and blood type are neatly displayed, followed by a list of all diagnosis codes for short-term diagnoses within the last 60 days (sorted by most recent first). Lastly, a list of all prescriptions the patient has received in the last 90 days is shown (sorted by most recent first).		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.		SYSTEM prompts that No users are displayed if the input does not conform to appropriate data formats as specified in 15.6.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: No users are displayed if a			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.		SYSTEM prompts that No users are displayed if a user with the provided first and/or last name substring does not exist. (Note the name can be partial, but it must be correct. 'Ale' would match 'Alex' as a first name, but 'Ael' would not.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: No users are displayed if a			Execution Date:	
+Precondition:	An HCP is a registered user of the iTrust2 system (UC1). The HCP has authenticated in the system (UC2). An Emergency Responder is a registered user of the iTrust2 system (UC1). The Emergency Responder has authenticated in the system (UC2).
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: The approved user enters the desired patients First and/or Last Name (or a correct substring of either/both) into the search box. The patients with first/last names containing the substring(s) provided are shown.		SYSTEM prompts that No users are displayed if a user with the provided MID/Username does not exist or if the provided MID substring is not found in any existing MIDs.		
+Postcondition:	Flow interrupted due to exception / error
+

@@ -1,0 +1,25 @@
+System:	iTrust2
+Use Case:	UC19 Food Diary	Version:	3.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 3 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: If there are no food diary			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .		SYSTEM prompts that If there are no Food Diary Entries for the patient, a message is displayed that there are none.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: Invalid inputs are flagged and an			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would .		SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.		
+Postcondition:	Flow interrupted due to exception / error
+

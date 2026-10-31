@@ -1,6 +1,6 @@
 System:	iTrust2
-Use Case:	UC4 Demographics	Version:	2.0
-Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+Use Case:	UC4 Demographics	Version:	3.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	31/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
 Description:	Basic Flow (Happy Path)			Execution Date:	
@@ -24,6 +24,20 @@ Precondition:	The iTrust2 user has authenticated themselves in the iTrust2 Medic
 Postcondition:	System processes request successfully and logs transaction.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: An er may enter or			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: An ER may enter or edit their own demographic information according to the data format in Section 4.6 .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: A lab tech may enter			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A Lab Tech may enter or edit their own demographic information according to the data format in Section 4.6 .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
 Description:	Exception Flow 1: Invalid data field format			Execution Date:	
 Precondition:	The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result

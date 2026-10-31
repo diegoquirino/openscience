@@ -1,0 +1,28 @@
+ALTS_SPECIFICATION "UC19 Food Diary" {
+  VERSION: "3.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "Any patient may select to either view their food diary or add a new diary entry. If the patient selects to view their food diary, every diary entry is displayed with the information contained in with the most recent entries (by date of the entry in the food diary) being displayed first and calculates totals with . If patient selects to add a new diary entry, they enter the required information into the form . The patient submits the form and is sent to the page to view their food diary. Any HCP may view food diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a food diary displayed exactly as the patient would ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2]]
+    S_EF1_1 [flow: "exception_1", description: "If there are no food diary", actor: "system", action: "prompts that If there are no Food Diary Entries for the patient, a message is displayed that there are none."]
+    S_EF2_1 [flow: "exception_2", description: "Invalid inputs are flagged and an", actor: "system", action: "prompts that Invalid inputs are flagged and an error message appropriate to the input is printed."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - If there are no food diary"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - Invalid inputs are flagged and an"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

@@ -1,0 +1,14 @@
+systemName "iTrust2"
+usecase "UC16 Personal Representatives" {
+  version "3.0" type "Creation" user "Admin" date "30/10/2026"
+  actor user "User"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2)."
+  basic {
+    step 1 user "Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees ."
+    step 2 system "displays a success message and logs transaction" ef[1]
+  }
+  exception 1 "An error message is shown that" {
+    step 1 system "prompts that An error message is shown that the user is not found or the action was not completed successfully. User is returned to form to try again"
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

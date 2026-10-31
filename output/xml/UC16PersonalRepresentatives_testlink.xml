@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC16 Personal Representatives">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: An error message is shown that">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: An error message is shown that]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2). as a patient Another patient is a registered user of the iTrust2 Medical Records system . The patient has authenticated themselves in the iTrust2 Medical Records system (UC1).. An HCP is a registered user of the iTrust2 Medical Records system (UC1). The HCP has authenticated themselves in the iTrust2 Medical Records system (UC2).]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: Patients have the ability to view the list of people they are a PR for and who they have assigned as a PR . The patient can declare and un-declare other users as personal representatives of themselves , as well as un-declare themselves as a personal representative as someone . HCPs can assign one patient as a PR for another and view their assigned PRs and assignees .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that An error message is shown that the user is not found or the action was not completed successfully. User is returned to form to try again]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

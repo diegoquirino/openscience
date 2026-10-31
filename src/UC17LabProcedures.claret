@@ -1,0 +1,31 @@
+systemName "iTrust2"
+usecase "UC17 Lab Procedures" {
+  version "3.0" type "Creation" user "Admin" date "30/10/2026"
+  actor admin "Admin"
+  actor hcp "Health Care Provider (HCP)"
+  actor patient "Patient"
+  preCondition "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8]."
+  basic {
+    step 1 admin "The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure ." af[1, 2, 3, 4, 5]
+    step 2 system "A message shows if the procedure was entered correctly." ef[1]
+  }
+  alternative 1 "Edit procedure" {
+    step 1 admin "The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit ." bs 2
+  }
+  alternative 2 "Delete it" {
+    step 1 admin "The administrator presses the Delete button associated with a LOINC procedure to delete it." bs 2
+  }
+  alternative 3 "Add procedure" {
+    step 1 hcp "The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button." bs 2
+  }
+  alternative 4 "View assigned procedures" {
+    step 1 admin "The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them." bs 2
+  }
+  alternative 5 "View an office" {
+    step 1 patient "The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned." bs 2
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again."
+  }
+  postCondition "A success message is displayed and the HCP sees the saved information."
+}

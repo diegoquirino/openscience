@@ -1,0 +1,42 @@
+ALTS_SPECIFICATION "UC17 Lab Procedures" {
+  VERSION: "3.0"
+  PRE_CONDITION: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8]."
+  POST_CONDITION: "A success message is displayed and the HCP sees the saved information."
+
+  ACTORS {
+    admin: "Admin"
+    hcp: "Health Care Provider (HCP)"
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8]."]
+    S_BF_1 [flow: "basic", actor: "admin", action: "The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .", branches_af: [1, 2, 3, 4, 5]]
+    S_BF_2 [flow: "basic", actor: "system", action: "A message shows if the procedure was entered correctly.", branches_ef: [1]]
+    S_AF1_1 [flow: "alternative_1", description: "Edit procedure", actor: "admin", action: "The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit .", returns_to_bf: 2]
+    S_AF2_1 [flow: "alternative_2", description: "Delete it", actor: "admin", action: "The administrator presses the Delete button associated with a LOINC procedure to delete it.", returns_to_bf: 2]
+    S_AF3_1 [flow: "alternative_3", description: "Add procedure", actor: "hcp", action: "The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button.", returns_to_bf: 2]
+    S_AF4_1 [flow: "alternative_4", description: "View assigned procedures", actor: "admin", action: "The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them.", returns_to_bf: 2]
+    S_AF5_1 [flow: "alternative_5", description: "View an office", actor: "patient", action: "The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned.", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again."]
+    S_END [terminal, guard: "A success message is displayed and the HCP sees the saved information."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: A message shows if the procedure was entered correctly."]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Edit procedure"]
+    S_BF_1 -> S_AF2_1 [branch: "AF_2 - Delete it"]
+    S_BF_1 -> S_AF3_1 [branch: "AF_3 - Add procedure"]
+    S_BF_1 -> S_AF4_1 [branch: "AF_4 - View assigned procedures"]
+    S_BF_1 -> S_AF5_1 [branch: "AF_5 - View an office"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF2_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF3_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF4_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_AF5_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+  }
+}

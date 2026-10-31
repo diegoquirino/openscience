@@ -53,9 +53,43 @@
       </step>
     </steps>
   </testcase>
-  <testcase name="TC4 - Exception Flow 1: Invalid data field format">
+  <testcase name="TC4 - Alternative Flow 3: An er may enter or">
     <node_order><![CDATA[4]]></node_order>
     <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 3: An er may enter or]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: An ER may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Alternative Flow 4: A lab tech may enter">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 4: A lab tech may enter]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A Lab Tech may enter or edit their own demographic information according to the data format in Section 4.6 .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 1: Invalid data field format">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
     <version><![CDATA[1]]></version>
     <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
     <preconditions><![CDATA[The iTrust2 user has authenticated themselves in the iTrust2 Medical Records system UC2.]]></preconditions>

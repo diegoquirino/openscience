@@ -1,0 +1,53 @@
+System:	iTrust2
+Use Case:	UC17 Lab Procedures	Version:	3.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 7 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Edit procedure			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator selects a procedure from the list of possible procedure, and presses Edit Procedure to edit the procedure. They can then change the LOINC code, common name, property, and description of the procedure. They press Submit .		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 2: Delete it			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator presses the Delete button associated with a LOINC procedure to delete it.		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 3: Add procedure			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP selects the correct procedure from the menu of procedure options labeled by their LOINC codes and descriptions. They enter the following additional information about the procedure: the priority from 1 to 4 (1 being highest), the lab tech who will perform the procedure, and any comments. They press the Add Procedure button.		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 4: View assigned procedures			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The lab tech selects to view their assigned procedures and data corresponding to the procedure. They can update the current status of the procedure. They can edit the current comment on the procedure, if they change the status to Completed. They can also select another lab tech, and assign the procedure to them.		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 5: View an office			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: The patient or HCP selects to view an office visit. They see all information pertaining to any procedures associated with the office visit, including LOINC code, priority, date, comment, and status. The patient cannot edit the information. The HCP can delete any procedure with a status of Assigned.		SYSTEM A message shows if the procedure was entered correctly.		
+Postcondition:	A success message is displayed and the HCP sees the saved information.
+
+Test Case ID:	TC7	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: Invalid data field format			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system . The HCP has started documenting an office visit, including basic health metrics, for the patient [UC7 & UC8].
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	admin: The administrator enters the LOINC code, Long Common Name, Component, and Property of the procedure. They press Add Procedure .		SYSTEM prompts that An error message is displayed describing what entries do not conform to appropriate data formats as specified in 17.6. The user may make changes to the form and try to submit again.		
+Postcondition:	Flow interrupted due to exception / error
+
