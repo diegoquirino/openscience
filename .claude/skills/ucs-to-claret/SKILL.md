@@ -1,6 +1,6 @@
 ---
 name: ucs-to-claret
-description: Locates natural language Use Case Specifications (UCS) across a set of directories (d1, ..., dx), transforms them into valid .claret specifications while strictly preserving the exact textual wording of each step and adhering to CLARET notation grammar and Golden Rule alternation (with business rules mapped to alternative and exception flows), and outputs them flatly into claret_src/ without subdirectories.
+description: Locates natural language Use Case Specifications (UCS) across a set of directories (d1, ..., dx), transforms them into valid .claret specifications while strictly preserving the exact textual wording of each step and adhering to CLARET notation grammar and Golden Rule alternation (with business rules mapped to alternative and exception flows), and outputs them into claret_src/ organized in subdirectories respective to their version (e.g. claret_src/v1/, claret_src/v2/).
 ---
 
 # ucs-to-claret — Natural Language UCS to CLARET Specification Translator
@@ -29,9 +29,9 @@ graph TD
     end
 
     subgraph OutputDestination ["Target Repository Structure"]
-        FLAT["claret_src/<br/>(Flat output folder - zero subdirectories)"]
+        VERSIONED["claret_src/<br/>(Subdirectories per version: v1/, v2/, ...)"]
         SPEC["PascalCase .claret Files<br/>(e.g. UC1UserFunctionality.claret)"]
-        FLAT --> SPEC
+        VERSIONED --> SPEC
     end
 
     subgraph ValidationEngine ["MBT Compiler & Validator"]
@@ -41,7 +41,7 @@ graph TD
     end
 
     MD --> TranslatorEngine
-    GOLDEN --> FLAT
+    GOLDEN --> VERSIONED
     SPEC --> JAR
 ```
 
@@ -70,8 +70,8 @@ graph TD
    - Rules specifying error conditions, format validation (e.g. Section Data Format), timeouts, or lockouts are mapped to **`exception` flows** (`ef[...]`).
    - Rules specifying alternate user choices (e.g. deleting instead of adding, choosing another mode) are mapped to **`alternative` flows** (`af[...]`).
 
-4. **Flat Output Structure**:
-   - All translated `.claret` files are saved directly in `claret_src/` without subdirectories.
+4. **Versioned Subdirectory Output Structure**:
+   - Translated `.claret` files are saved into version-specific subdirectories under `claret_src/` (e.g. `claret_src/v1/`, `claret_src/v2/`), ensuring isolation across releases.
    - Files are named in PascalCase with technical acronym preservation (e.g. `UC1UserFunctionality.claret`, `UC2AuthenticateUsers.claret`).
 
 ---
@@ -94,7 +94,7 @@ When an LLM agent executes this skill:
    ```
 
 3. **Verify Generated `.claret` Files**:
-   - Verify that all `.claret` files reside in `claret_src/` with zero subfolders.
+   - Verify that `.claret` files reside in `claret_src/<version>/` (e.g. `claret_src/v1/`, `claret_src/v2/`).
    - Confirm that the validator compiled all specifications with `claret-generator.jar` without syntax errors.
 
 ---
@@ -108,7 +108,7 @@ python claret-version-control-system/.claude/skills/ucs-to-claret/scripts/ucs_to
   --output-dir claret_src \
   --system-name iTrust2
 
-# Translate multiple version directories
+# Translate multiple version directories into versioned subdirectories
 python claret-version-control-system/.claude/skills/ucs-to-claret/scripts/ucs_to_claret.py \
   --dirs v1/docs v2/docs v3/docs \
   --output-dir claret_src \
@@ -118,9 +118,9 @@ python claret-version-control-system/.claude/skills/ucs-to-claret/scripts/ucs_to
 ### Parameters
 
 - `--dirs`: (Required) One or more directory paths or file paths containing natural language UCS files.
-- `--output-dir`: (Optional) Output directory. Defaults to `claret_src`. Files are saved flatly without subdirectories.
+- `--output-dir`: (Optional) Output directory. Defaults to `claret_src`. Files are saved into versioned subdirectories (e.g. `claret_src/v1/`).
 - `--system-name`: (Optional) System identifier for `systemName` clause. Defaults to `iTrust2`.
-- `--version`: (Optional) Version string for use case metadata (defaults to `1.0`).
+- `--version`: (Optional) Version string for use case metadata (defaults to `1.0`, or auto-inferred from version directory).
 - `--no-validate`: (Optional) Skip compilation verification via `claret-generator.jar`.
 - `--clean`: (Optional) Clean target `output-dir` before generation.
 

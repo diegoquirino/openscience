@@ -350,7 +350,7 @@ python .claude/skills/output-diff-analyzer/scripts/diff_output.py \
 ```
 
 ### 6. `ucs-to-claret` (`/ucs-to-claret`)
-Translates natural language Use Case Specifications (UCS) located across directories (`d1, ..., dx`) into formal `.claret` specifications. Preserves verbatim step prose, enforces the Golden Rule (strict actor-system alternation), maps business rules to alternative and exception flows, and outputs files flatly into `claret_src/`.
+Translates natural language Use Case Specifications (UCS) located across directories (`d1, ..., dx`) into formal `.claret` specifications. Preserves verbatim step prose, enforces the Golden Rule (strict actor-system alternation), maps business rules to alternative and exception flows, and outputs files into `claret_src/` organized by version subdirectories (e.g. `claret_src/v1/`, `claret_src/v2/`).
 
 ```bash
 python .claude/skills/ucs-to-claret/scripts/ucs_to_claret.py \

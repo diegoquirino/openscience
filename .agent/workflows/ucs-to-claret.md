@@ -14,6 +14,6 @@ Executes the **ucs-to-claret** skill: read `.agent/skills/ucs-to-claret/SKILL.md
    ```bash
    python .agent/skills/ucs-to-claret/scripts/ucs_to_claret.py $ARGUMENTS
    ```
-3. Verify that translated `.claret` files are placed flatly inside `claret_src/` with zero subdirectories.
+3. Verify that translated `.claret` files are placed inside `claret_src/` organized by version subdirectories (e.g. `claret_src/v1/`).
 4. Report the generated specifications, extracted actors, and validation results to the user.
 

@@ -10,7 +10,7 @@ Key Features & Behavioral Guarantees:
 - Enforces strict CLARET notation grammar and Golden Rule alternation (Actor <-> System).
 - Transforms business rules and format constraints into alternative and exception flows.
 - Automatically links deviation points (af, ef) and return steps (bs).
-- Outputs translated .claret files flatly into claret_src/ without subdirectories.
+- Outputs translated .claret files into claret_src/ organized into subdirectories by version.
 - Validates generated .claret files using claret-generator.jar (Java 26 runtime).
 
 Usage:
@@ -479,8 +479,24 @@ class UCSToClaretTranslator:
             pass
         return False
 
+    def _extract_version_subfolder(self, p: Path) -> Optional[str]:
+        """Identifies version folder for p (e.g. 'v1', 'v2', 'v1.0') if applicable."""
+        for part in reversed(p.parent.parts):
+            if re.match(r'^v\d+(\.\d+)?$', part, re.I):
+                return part.lower()
+        for bd in self.dirs:
+            try:
+                rel = p.relative_to(bd)
+                if re.match(r'^v\d+(\.\d+)?$', bd.name, re.I):
+                    return bd.name.lower()
+                if rel.parts and re.match(r'^v\d+(\.\d+)?$', rel.parts[0], re.I):
+                    return rel.parts[0].lower()
+            except ValueError:
+                pass
+        return None
+
     def translate_all(self, validate: bool = True) -> List[Path]:
-        """Translates all discovered UCS files and outputs them flatly into output_dir."""
+        """Translates all discovered UCS files and outputs them into output_dir (organized by version subfolders)."""
         files = self.discover_ucs_files()
         logger.info(f"Discovered {len(files)} UCS files across {len(self.dirs)} directories.")
 
@@ -493,7 +509,20 @@ class UCSToClaretTranslator:
             if not parsed_ucs:
                 continue
 
-            generator = ClaretModelGenerator(parsed_ucs, version=self.version)
+            ver_sub = self._extract_version_subfolder(p)
+            if ver_sub:
+                target_dir = self.output_dir / ver_sub
+                target_dir.mkdir(parents=True, exist_ok=True)
+                if self.version == "1.0":
+                    v_match = re.search(r'\d+(\.\d+)?', ver_sub)
+                    ver_str = f"{v_match.group(0)}.0" if v_match and "." not in v_match.group(0) else (v_match.group(0) if v_match else self.version)
+                else:
+                    ver_str = self.version
+            else:
+                target_dir = self.output_dir
+                ver_str = self.version
+
+            generator = ClaretModelGenerator(parsed_ucs, version=ver_str)
             claret_content = generator.build_specification()
 
             raw_target_name = f"{parsed_ucs.uc_id}_{parsed_ucs.uc_name.replace(parsed_ucs.uc_id, '').strip()}"
@@ -501,9 +530,9 @@ class UCSToClaretTranslator:
             if not pascal_name.endswith(".claret"):
                 pascal_name += ".claret"
 
-            out_file = self.output_dir / pascal_name
+            out_file = target_dir / pascal_name
             out_file.write_text(claret_content, encoding="utf-8")
-            logger.info(f"  -> Generated: {out_file.name}")
+            logger.info(f"  -> Generated: {out_file.relative_to(self.output_dir)}")
             translated_paths.append(out_file)
 
         if validate and translated_paths:
@@ -512,7 +541,7 @@ class UCSToClaretTranslator:
         return translated_paths
 
     def _validate_output(self):
-        """Runs claret-generator.jar to validate grammar and test generation."""
+        """Runs claret-generator.jar to validate grammar and test generation per version subfolder."""
         logger.info("Validating generated .claret files using claret-generator...")
         java_cmd = get_java_cmd()
         jar_path = get_claret_jar_path()
@@ -522,24 +551,32 @@ class UCSToClaretTranslator:
             return
 
         import tempfile
-        with tempfile.TemporaryDirectory() as tmpdir:
-            tmp_src = Path(tmpdir) / "src"
-            tmp_out = Path(tmpdir) / "output"
-            tmp_src.mkdir(parents=True, exist_ok=True)
-            for f in self.output_dir.glob("*.claret"):
-                shutil.copy2(f, tmp_src / f.name)
+        claret_files = list(self.output_dir.rglob("*.claret"))
+        target_dirs = sorted(list(set(f.parent for f in claret_files)))
+        if not target_dirs:
+            return
 
-            success, output = run_claret_generator(
-                input_dir=Path(tmpdir),
-                output_dir=tmp_out,
-                coverage="gt",
-                java_cmd=java_cmd,
-                jar_path=jar_path
-            )
-            if success:
-                logger.info("Validation successful: All generated .claret files compiled without errors!")
-            else:
-                logger.error(f"Validation encountered warnings or errors:\n{output}")
+        for tdir in target_dirs:
+            rel_name = tdir.relative_to(self.output_dir) if tdir != self.output_dir else "root"
+            logger.info(f"Validating specifications in {rel_name}...")
+            with tempfile.TemporaryDirectory() as tmpdir:
+                tmp_src = Path(tmpdir) / "src"
+                tmp_out = Path(tmpdir) / "output"
+                tmp_src.mkdir(parents=True, exist_ok=True)
+                for f in tdir.glob("*.claret"):
+                    shutil.copy2(f, tmp_src / f.name)
+
+                success, output = run_claret_generator(
+                    input_dir=Path(tmpdir),
+                    output_dir=tmp_out,
+                    coverage="gt",
+                    java_cmd=java_cmd,
+                    jar_path=jar_path
+                )
+                if success:
+                    logger.info(f"Validation successful for {rel_name}: all .claret files compiled without errors!")
+                else:
+                    logger.error(f"Validation encountered warnings or errors in {rel_name}:\n{output}")
 
 # ------------------------------------------------------------------------------
 # CLI Main

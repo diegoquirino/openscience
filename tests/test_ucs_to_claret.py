@@ -116,6 +116,34 @@ class TestUCSToClaret(unittest.TestCase):
             self.assertEqual(results[0].name, "UC1UserFunctionality.claret")
             self.assertTrue((Path(out_dir) / "UC1UserFunctionality.claret").exists())
 
+    def test_batch_translation_version_subdirectories(self):
+        with tempfile.TemporaryDirectory() as base_dir, tempfile.TemporaryDirectory() as out_dir:
+            v1_dir = Path(base_dir) / "v1" / "docs"
+            v2_dir = Path(base_dir) / "v2" / "docs"
+            v1_dir.mkdir(parents=True)
+            v2_dir.mkdir(parents=True)
+
+            (v1_dir / "UC1.md").write_text(SAMPLE_UCS_MD, encoding="utf-8")
+            (v2_dir / "UC1.md").write_text(SAMPLE_UCS_MD, encoding="utf-8")
+
+            translator = UCSToClaretTranslator(
+                dirs=[Path(base_dir) / "v1", Path(base_dir) / "v2"],
+                output_dir=Path(out_dir),
+                system_name="iTrust2"
+            )
+            results = translator.translate_all(validate=False)
+            self.assertEqual(len(results), 2)
+
+            v1_out = Path(out_dir) / "v1" / "UC1UserFunctionality.claret"
+            v2_out = Path(out_dir) / "v2" / "UC1UserFunctionality.claret"
+
+            self.assertTrue(v1_out.exists(), "v1 output file must exist in v1 subfolder")
+            self.assertTrue(v2_out.exists(), "v2 output file must exist in v2 subfolder")
+
+            # Check inferred versions
+            self.assertIn('version "1.0"', v1_out.read_text(encoding="utf-8"))
+            self.assertIn('version "2.0"', v2_out.read_text(encoding="utf-8"))
+
 if __name__ == "__main__":
     unittest.main()
 
