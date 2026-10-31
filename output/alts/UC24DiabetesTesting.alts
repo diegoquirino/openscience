@@ -1,0 +1,32 @@
+ALTS_SPECIFICATION "UC24 Diabetes Testing" {
+  VERSION: "6.0"
+  PRE_CONDITION: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system ."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    hcp: "Health Care Provider (HCP)"
+    user: "User"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system ."]
+    S_BF_1 [flow: "basic", actor: "user", action: "Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.", branches_af: [1]]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2]]
+    S_AF1_1 [flow: "alternative_1", description: "Clicks on view office visits", actor: "hcp", action: "The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .", returns_to_bf: 2]
+    S_EF1_1 [flow: "exception_1", description: "When confirming a diagnosis, an error", actor: "system", action: "prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected."]
+    S_EF2_1 [flow: "exception_2", description: "When reporting results, an error message", actor: "system", action: "prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test"]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_1 -> S_AF1_1 [branch: "AF_1 - Clicks on view office visits"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - When confirming a diagnosis, an error"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - When reporting results, an error message"]
+    S_AF1_1 -> S_BF_2 [resume_basic_flow: 2]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

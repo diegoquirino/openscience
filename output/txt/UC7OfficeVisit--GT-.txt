@@ -1,5 +1,5 @@
 System:	iTrust2
-Use Case:	UC7 Office Visit	Version:	4.0
+Use Case:	UC7 Office Visit	Version:	6.0
 Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
 
 Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
@@ -20,7 +20,7 @@ Test Case ID:	TC3	Priority (low,medium,high):		Executed by:
 Description:	Alternative Flow 2: Provide additional details about the			Execution Date:	
 Precondition:	The iTrust2 user has authenticated themselves in iTrust2 UC2.
 #	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
-1	hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)		SYSTEM displays a success message and logs transaction		
+1	hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8) [Ophthalmology Office Visit](uc21) [Ophthalmology Surgeries](uc22)		SYSTEM displays a success message and logs transaction		
 Postcondition:	System processes request successfully and logs transaction.
 
 Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	

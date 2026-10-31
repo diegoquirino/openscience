@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC24 Diabetes Testing	Version:	6.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Alternative Flow 1: Clicks on view office visits			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: When confirming a diagnosis, an error			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.		SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: When reporting results, an error message			Execution Date:	
+Precondition:	The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.		SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test		
+Postcondition:	Flow interrupted due to exception / error
+

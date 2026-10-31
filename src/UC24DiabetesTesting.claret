@@ -1,0 +1,21 @@
+systemName "iTrust2"
+usecase "UC24 Diabetes Testing" {
+  version "6.0" type "Creation" user "Admin" date "30/10/2026"
+  actor hcp "Health Care Provider (HCP)"
+  actor user "User"
+  preCondition "The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system ."
+  basic {
+    step 1 user "Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis." af[1]
+    step 2 system "displays a success message and logs transaction" ef[1, 2]
+  }
+  alternative 1 "Clicks on view office visits" {
+    step 1 hcp "The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm ." bs 2
+  }
+  exception 1 "When confirming a diagnosis, an error" {
+    step 1 system "prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected."
+  }
+  exception 2 "When reporting results, an error message" {
+    step 1 system "prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test"
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

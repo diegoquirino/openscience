@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC26 Find an Expert">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: Invalid data field format">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

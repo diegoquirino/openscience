@@ -1,0 +1,32 @@
+System:	iTrust2
+Use Case:	UC23 Office Visit Satisfaction Survey	Version:	6.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 4 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: If any invalid information is provided			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .		SYSTEM prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: If there are no matching hcps			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .		SYSTEM prompts that If there are no matching HCPs, a message is displayed.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: If there are no office visits			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .		SYSTEM prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'.		
+Postcondition:	Flow interrupted due to exception / error
+

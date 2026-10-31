@@ -1,0 +1,20 @@
+systemName "iTrust2"
+usecase "UC23 Office Visit Satisfaction Survey" {
+  version "6.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  basic {
+    step 1 patient "A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system ."
+    step 2 system "displays a success message and logs transaction" ef[1, 2, 3]
+  }
+  exception 1 "If any invalid information is provided" {
+    step 1 system "prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again."
+  }
+  exception 2 "If there are no matching hcps" {
+    step 1 system "prompts that If there are no matching HCPs, a message is displayed."
+  }
+  exception 3 "If there are no office visits" {
+    step 1 system "prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

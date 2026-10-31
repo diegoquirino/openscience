@@ -1,0 +1,28 @@
+ALTS_SPECIFICATION "UC26 Find an Expert" {
+  VERSION: "6.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2]]
+    S_EF1_1 [flow: "exception_1", description: "Invalid data field format", actor: "system", action: "prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code."]
+    S_EF2_1 [flow: "exception_2", description: "If there are no matching hcps", actor: "system", action: "prompts that If there are no matching HCPs, a message is displayed."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - Invalid data field format"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - If there are no matching hcps"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+  }
+}

@@ -1,0 +1,26 @@
+systemName "iTrust2"
+usecase "UC25 Blood Sugar Tracking" {
+  version "6.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  basic {
+    step 1 patient "A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits ."
+    step 2 system "displays a success message and logs transaction" ef[1, 2, 3, 4, 5]
+  }
+  exception 1 "If any invalid information is provided" {
+    step 1 system "prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect."
+  }
+  exception 2 "If the csv is not formatted" {
+    step 1 system "prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified."
+  }
+  exception 3 "If there are no entries for" {
+    step 1 system "prompts that If there are no entries for a date, nothing is displayed for that date."
+  }
+  exception 4 "If there are no matching patients" {
+    step 1 system "prompts that If there are no matching patients, a message is displayed."
+  }
+  exception 5 "If a limit is entered invalidly" {
+    step 1 system "prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

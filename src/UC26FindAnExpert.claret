@@ -1,0 +1,17 @@
+systemName "iTrust2"
+usecase "UC26 Find an Expert" {
+  version "6.0" type "Creation" user "Admin" date "30/10/2026"
+  actor patient "Patient"
+  preCondition "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  basic {
+    step 1 patient "The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged."
+    step 2 system "displays a success message and logs transaction" ef[1, 2]
+  }
+  exception 1 "Invalid data field format" {
+    step 1 system "prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code."
+  }
+  exception 2 "If there are no matching hcps" {
+    step 1 system "prompts that If there are no matching HCPs, a message is displayed."
+  }
+  postCondition "System processes request successfully and logs transaction."
+}

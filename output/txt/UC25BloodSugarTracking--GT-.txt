@@ -1,0 +1,46 @@
+System:	iTrust2
+Use Case:	UC25 Blood Sugar Tracking	Version:	6.0
+Suite Type:	Reduced (Greedy Heuristic - Transition Coverage)	Size: 6 test case(s)	Creation Date:	31/10/2026
+
+Test Case ID:	TC1	Priority (low,medium,high):		Executed by:	
+Description:	Basic Flow (Happy Path)			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM displays a success message and logs transaction		
+Postcondition:	System processes request successfully and logs transaction.
+
+Test Case ID:	TC2	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 1: If any invalid information is provided			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC3	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 2: If the csv is not formatted			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC4	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 3: If there are no entries for			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC5	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 4: If there are no matching patients			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM prompts that If there are no matching patients, a message is displayed.		
+Postcondition:	Flow interrupted due to exception / error
+
+Test Case ID:	TC6	Priority (low,medium,high):		Executed by:	
+Description:	Exception Flow 5: If a limit is entered invalidly			Execution Date:	
+Precondition:	The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.
+#	Steps	Test Data	Expected Results	Execution Status (pass/fail/blocked)	Actual Result
+1	patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .		SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.		
+Postcondition:	Flow interrupted due to exception / error
+

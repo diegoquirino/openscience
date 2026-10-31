@@ -1722,7 +1722,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -1756,7 +1756,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts the Admin to correct the format of a required data field because the input of that data field does not match that specified in Section 1.6.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -1773,7 +1773,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Admin Emergency Responder (ER) Lab Tech]]></actions>
+          <actions><![CDATA[admin: An Admin enters a user name, a password, confirm password, the role, and if the user is enabled (or active) in the system. The Admin presses the button to add the user . The user name serves as the User's Medical ID (MID). The possible roles are: Patient Health Care Provider (HCP) Optometrist HCP Ophthalmologist HCP Admin Emergency Responder (ER) Lab Tech]]></actions>
           <expectedresults><![CDATA[SYSTEM prompts that The password and repeated password must match or an error is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -1848,8 +1848,449 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC2 Authenticate Users">
+  <testsuite name="UC20 Ophthalmology Appointment Requests">
     <node_order><![CDATA[12]]></node_order>
+    <details><![CDATA[Use case: UC20 Ophthalmology Appointment Requests]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Views their appointment request">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Views their appointment request]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: The ophthalmologist hcp views appointment requests">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: The ophthalmologist hcp views appointment requests]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist hcp view upcoming appointments">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist hcp view upcoming appointments]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The ophthalmologist HCP view upcoming appointments.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Views their appointment request">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Views their appointment request]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: The ophthalmologist hcp views appointment requests">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: The ophthalmologist hcp views appointment requests]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist hcp view upcoming appointments">
+      <node_order><![CDATA[9]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist hcp view upcoming appointments]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The ophthalmologist HCP view upcoming appointments.]]></actions>
+          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[10]]></node_order>
+      <externalid><![CDATA[TC5]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
+      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC21 Ophthalmologist Appointment">
+    <node_order><![CDATA[13]]></node_order>
+    <details><![CDATA[Use case: UC21 Ophthalmologist Appointment]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: After the appointment, ophthalmologist and">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: After the appointment, ophthalmologist and]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: After the appointment, ophthalmologist and">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: After the appointment, ophthalmologist and]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC22 Ophthalmology Surgeries">
+    <node_order><![CDATA[14]]></node_order>
+    <details><![CDATA[Use case: UC22 Ophthalmology Surgeries]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: The ophthalmologist selects to document">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: The ophthalmologist selects to document]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: A single ophthalmologist surgery appointment">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: A single ophthalmologist surgery appointment]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist selects to edit">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist selects to edit]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[5]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: The ophthalmologist selects to document">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: The ophthalmologist selects to document]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Alternative Flow 2: A single ophthalmologist surgery appointment">
+      <node_order><![CDATA[7]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 2: A single ophthalmologist surgery appointment]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist selects to edit">
+      <node_order><![CDATA[8]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 3: The ophthalmologist selects to edit]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC23 Exercise Diary">
+    <node_order><![CDATA[15]]></node_order>
+    <details><![CDATA[Use case: UC23 Exercise Diary]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If there are no exercise diary">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If there are no exercise diary]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no exercise diary entries for the patient, a message is displayed that there are none.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: Invalid inputs are flagged and an">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: Invalid inputs are flagged and an]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC2 Authenticate Users">
+    <node_order><![CDATA[16]]></node_order>
     <details><![CDATA[Use case: UC2 Authenticate Users]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -1955,7 +2396,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC3 Log Transactions">
-    <node_order><![CDATA[13]]></node_order>
+    <node_order><![CDATA[17]]></node_order>
     <details><![CDATA[Use case: UC3 Log Transactions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2027,7 +2468,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC4 Demographics">
-    <node_order><![CDATA[14]]></node_order>
+    <node_order><![CDATA[18]]></node_order>
     <details><![CDATA[Use case: UC4 Demographics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2235,7 +2676,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC5 Hospitals">
-    <node_order><![CDATA[15]]></node_order>
+    <node_order><![CDATA[19]]></node_order>
     <details><![CDATA[Use case: UC5 Hospitals]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2341,7 +2782,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC6 Appointments">
-    <node_order><![CDATA[16]]></node_order>
+    <node_order><![CDATA[20]]></node_order>
     <details><![CDATA[Use case: UC6 Appointments]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2515,7 +2956,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC7 Office Visit">
-    <node_order><![CDATA[17]]></node_order>
+    <node_order><![CDATA[21]]></node_order>
     <details><![CDATA[Use case: UC7 Office Visit]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2630,7 +3071,7 @@
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8)]]></actions>
+          <actions><![CDATA[hcp: The HCP provides additional details about the office visit as appropriate for the appointment type: General Checkup Basic Health Metrics (uc8) [Ophthalmology Office Visit](uc21) [Ophthalmology Surgeries](uc22)]]></actions>
           <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
@@ -2655,7 +3096,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC8 Basic Health Metrics">
-    <node_order><![CDATA[18]]></node_order>
+    <node_order><![CDATA[22]]></node_order>
     <details><![CDATA[Use case: UC8 Basic Health Metrics]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -2863,7 +3304,7 @@
     </testcase>
   </testsuite>
   <testsuite name="UC9 Prescriptions">
-    <node_order><![CDATA[19]]></node_order>
+    <node_order><![CDATA[23]]></node_order>
     <details><![CDATA[Use case: UC9 Prescriptions]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
@@ -3206,255 +3647,306 @@
       </steps>
     </testcase>
   </testsuite>
-  <testsuite name="UC20 Ophthalmology Appointment Requests">
-    <node_order><![CDATA[20]]></node_order>
-    <details><![CDATA[Use case: UC20 Ophthalmology Appointment Requests]]></details>
+  <testsuite name="UC23 Office Visit Satisfaction Survey">
+    <node_order><![CDATA[24]]></node_order>
+    <details><![CDATA[Use case: UC23 Office Visit Satisfaction Survey]]></details>
     <testcase name="TC1 - Basic Flow (Happy Path)">
       <node_order><![CDATA[1]]></node_order>
       <externalid><![CDATA[TC1]]></externalid>
       <version><![CDATA[1]]></version>
       <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC2 - Alternative Flow 1: Views their appointment request">
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
       <node_order><![CDATA[2]]></node_order>
       <externalid><![CDATA[TC2]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: Views their appointment request]]></summary>
-      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient views their appointment request. The patient can see the statuses of their appointment requests. The patient can select a request and delete the request.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC3 - Alternative Flow 2: The ophthalmologist hcp views appointment requests">
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: The ophthalmologist hcp views appointment requests]]></summary>
-      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The ophthalmologist HCP views appointment requests. The HCP can select to approve or decline the requestion. The appointment will no longer be visible in the patient's appointment request view.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist hcp view upcoming appointments">
+    <testcase name="TC4 - Exception Flow 3: If there are no office visits">
       <node_order><![CDATA[4]]></node_order>
       <externalid><![CDATA[TC4]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: The ophthalmologist hcp view upcoming appointments]]></summary>
-      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <summary><![CDATA[Exception Flow 3: If there are no office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: The ophthalmologist HCP view upcoming appointments.]]></actions>
-          <expectedresults><![CDATA[SYSTEM A message confirms the request.]]></expectedresults>
+          <actions><![CDATA[patient: A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-    <testcase name="TC5 - Exception Flow 1: Invalid data field format">
+  </testsuite>
+  <testsuite name="UC24 Diabetes Testing">
+    <node_order><![CDATA[25]]></node_order>
+    <details><![CDATA[Use case: UC24 Diabetes Testing]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Alternative Flow 1: Clicks on view office visits">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Alternative Flow 1: Clicks on view office visits]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 1: When confirming a diagnosis, an error">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: When confirming a diagnosis, an error]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 2: When reporting results, an error message">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: When reporting results, an error message]]></summary>
+      <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC25 Blood Sugar Tracking">
+    <node_order><![CDATA[26]]></node_order>
+    <details><![CDATA[Use case: UC25 Blood Sugar Tracking]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC3 - Exception Flow 2: If the csv is not formatted">
+      <node_order><![CDATA[3]]></node_order>
+      <externalid><![CDATA[TC3]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 2: If the csv is not formatted]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC4 - Exception Flow 3: If there are no entries for">
+      <node_order><![CDATA[4]]></node_order>
+      <externalid><![CDATA[TC4]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 3: If there are no entries for]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC5 - Exception Flow 4: If there are no matching patients">
       <node_order><![CDATA[5]]></node_order>
       <externalid><![CDATA[TC5]]></externalid>
       <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 4: If there are no matching patients]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching patients, a message is displayed.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC6 - Exception Flow 5: If a limit is entered invalidly">
+      <node_order><![CDATA[6]]></node_order>
+      <externalid><![CDATA[TC6]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Exception Flow 5: If a limit is entered invalidly]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+  </testsuite>
+  <testsuite name="UC26 Find an Expert">
+    <node_order><![CDATA[27]]></node_order>
+    <details><![CDATA[Use case: UC26 Find an Expert]]></details>
+    <testcase name="TC1 - Basic Flow (Happy Path)">
+      <node_order><![CDATA[1]]></node_order>
+      <externalid><![CDATA[TC1]]></externalid>
+      <version><![CDATA[1]]></version>
+      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+      <execution_type><![CDATA[1]]></execution_type>
+      <importance><![CDATA[2]]></importance>
+      <steps>
+        <step>
+          <step_number><![CDATA[1]]></step_number>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+          <execution_type><![CDATA[1]]></execution_type>
+        </step>
+      </steps>
+    </testcase>
+    <testcase name="TC2 - Exception Flow 1: Invalid data field format">
+      <node_order><![CDATA[2]]></node_order>
+      <externalid><![CDATA[TC2]]></externalid>
+      <version><![CDATA[1]]></version>
       <summary><![CDATA[Exception Flow 1: Invalid data field format]]></summary>
-      <preconditions><![CDATA[A patient and an optometrist or ophthalmologist HCP are registered in the iTrust2 system. An iTrust2 patient is logged into the system.]]></preconditions>
+      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient enters information about the appointment request and presses the Submit Request button . Ophthalmologist HCP Date Time Comments Type]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that An error message is displayed if the entered information does not fit the data formats specified in 20.6. Otherwise, a success message is displayed.]]></expectedresults>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that An error message, “Invalid ZIP code” is displayed if the user enters a ZIP code that does not conform to the data format for ZIP code or is not a valid ZIP code.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>
     </testcase>
-  </testsuite>
-  <testsuite name="UC21 Ophthalmologist Appointment">
-    <node_order><![CDATA[21]]></node_order>
-    <details><![CDATA[Use case: UC21 Ophthalmologist Appointment]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: When submitting an overview of the appointment the ophthalmologist or optometrist HCP will enter the following eye health information : The visual acuity results for both the right (OD) and left (OS) eyes, with integer values between 20 and 200. The sphere for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. and optionally: The cylinder for both right (OD) and left (OS) eyes, which can be a floating point number to two digits. Axis for both right (OD) and left (OS) eyes (although the axis is required if cylinder is entered) between 1 and 180 degrees. General visit notes (up to 500 characters) Diseases from the list: cataracts, age-related macular degeneration, amblyopia’ and glaucoma.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: After the appointment, ophthalmologist and">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: After the appointment, ophthalmologist and]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as ophthalmologist or optometrists and one of their patients exists in the system.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[hcp: After the appointment, ophthalmologist and optometrist HCPs are allowed to view or edit the diagnoses of the visit.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="UC22 Ophthalmology Surgeries">
-    <node_order><![CDATA[22]]></node_order>
-    <details><![CDATA[Use case: UC22 Ophthalmology Surgeries]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The patient selects to view an ophthalmology surgery visit. They see all information the ophthalmologist HCP recorded for the surgery visit. They cannot edit the information.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Alternative Flow 1: The ophthalmologist selects to document">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 1: The ophthalmologist selects to document]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The ophthalmologist selects to document an ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Alternative Flow 2: A single ophthalmologist surgery appointment">
+    <testcase name="TC3 - Exception Flow 2: If there are no matching hcps">
       <node_order><![CDATA[3]]></node_order>
       <externalid><![CDATA[TC3]]></externalid>
       <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 2: A single ophthalmologist surgery appointment]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: A single ophthalmologist surgery appointment entry has the following information described in Section 22.6: Date (current date is default) Visual Acuity Results (left and right eye) Sphere (left and right eye) Cylinder (left and right eye) Axis (left and right eye) Surgery Type Notes]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC4 - Alternative Flow 3: The ophthalmologist selects to edit">
-      <node_order><![CDATA[4]]></node_order>
-      <externalid><![CDATA[TC4]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Alternative Flow 3: The ophthalmologist selects to edit]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient, HCP, or ophthalmologist.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: The ophthalmologist selects to edit an existing ophthalmology surgery by recording the patient, the date, and time of the visit.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-  </testsuite>
-  <testsuite name="UC23 Exercise Diary">
-    <node_order><![CDATA[23]]></node_order>
-    <details><![CDATA[Use case: UC23 Exercise Diary]]></details>
-    <testcase name="TC1 - Basic Flow (Happy Path)">
-      <node_order><![CDATA[1]]></node_order>
-      <externalid><![CDATA[TC1]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+      <summary><![CDATA[Exception Flow 2: If there are no matching hcps]]></summary>
       <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
       <execution_type><![CDATA[1]]></execution_type>
       <importance><![CDATA[2]]></importance>
       <steps>
         <step>
           <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
-          <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC2 - Exception Flow 1: If there are no exercise diary">
-      <node_order><![CDATA[2]]></node_order>
-      <externalid><![CDATA[TC2]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 1: If there are no exercise diary]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that If there are no exercise diary entries for the patient, a message is displayed that there are none.]]></expectedresults>
-          <execution_type><![CDATA[1]]></execution_type>
-        </step>
-      </steps>
-    </testcase>
-    <testcase name="TC3 - Exception Flow 2: Invalid inputs are flagged and an">
-      <node_order><![CDATA[3]]></node_order>
-      <externalid><![CDATA[TC3]]></externalid>
-      <version><![CDATA[1]]></version>
-      <summary><![CDATA[Exception Flow 2: Invalid inputs are flagged and an]]></summary>
-      <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
-      <execution_type><![CDATA[1]]></execution_type>
-      <importance><![CDATA[2]]></importance>
-      <steps>
-        <step>
-          <step_number><![CDATA[1]]></step_number>
-          <actions><![CDATA[patient: Any patient may select to either view their exercise diary , add a new exercise diary entry , or edit an existing entry . Any HCP may view exercise diary entries (but may not create them) for a patient in the iTrust2 system. The HCP may search for patients, and upon selecting one, will see a exercise diary displayed exactly as the patient would . All events are logged.]]></actions>
-          <expectedresults><![CDATA[SYSTEM prompts that Invalid inputs are flagged and an error message appropriate to the input is printed.]]></expectedresults>
+          <actions><![CDATA[patient: The patient needs to find an Health Care Provider (HCP) with a particular specialty, and selects that specialty from a drop-down list . An HCP can also search for other HCPs with a certain specialty to provide a recommendation to a patient currently in the office . Cardiologist Dermatologist Medical Geneticist Molecular Pathologist Neurologist Ophthalmologist Pediatrician Psychiatrist Sleep Medicine Urologist A table of all of the hospitals within a specified distance (defaulting to 5 miles) of a patient's stored home ZIP code or of the entered ZIP code that contains an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed . The event is logged.]]></actions>
+          <expectedresults><![CDATA[SYSTEM prompts that If there are no matching HCPs, a message is displayed.]]></expectedresults>
           <execution_type><![CDATA[1]]></execution_type>
         </step>
       </steps>

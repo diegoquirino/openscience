@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC24 Diabetes Testing">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Alternative Flow 1: Clicks on view office visits">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Alternative Flow 1: Clicks on view office visits]]></summary>
+    <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[hcp: The HCP clicks on view office visits and selects the office visit with the associated OGTT procedure that has been carried out. A default diagnosis is selected (refer to 24.6 to see default diagnosis determination). The HCP selects the diagnosis to give to the patient and clicks confirm .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 1: When confirming a diagnosis, an error">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: When confirming a diagnosis, an error]]></summary>
+    <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that When confirming a diagnosis, an error message is displayed to the HCP user if no choice has been selected.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 2: When reporting results, an error message">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: When reporting results, an error message]]></summary>
+    <preconditions><![CDATA[The iTrust2 Admin has authenticated themselves in the iTrust2 Medical Records system . A Patient is a registered user of the iTrust2 Medical Records system . The Patient has authenticated themselves in the iTrust2 Medical Records system . A Lab Tech is a registered user of the iTrust2 Medical Records system . The Lab Tech has authenticated themselves in the iTrust2 Medical Records system . An HCP is a registered user of the iTrust2 Medical Records system . The HCP has authenticated themselves in the iTrust2 Medical Records system .]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[user: Refer to Use Case 17 for lab procedure control flow. This use case explains how an HCP recommends a procedure and the lab technician will go in and record the results for the OGTT. Once the lab technician has entered the results, the HCP is notified and is told to choose and confirm a diagnosis.]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that When reporting results, an error message is displayed to the Lab Tech user if the number entered is outside the limits of results for an Oral Glucose Tolerance Test]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>

@@ -1,0 +1,31 @@
+ALTS_SPECIFICATION "UC23 Office Visit Satisfaction Survey" {
+  VERSION: "6.0"
+  PRE_CONDITION: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."
+  POST_CONDITION: "System processes request successfully and logs transaction."
+
+  ACTORS {
+    patient: "Patient"
+  }
+
+  STATES {
+    S_INIT [initial, guard: "The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP."]
+    S_BF_1 [flow: "basic", actor: "patient", action: "A patient can fill out a satisfaction survey for one of their past office visits , view their previously entered responses , or change any responses they have previously made . A HCP can view the results of satisfaction surveys for their office visits . Patients can view aggregate results for HCPs in the system ."]
+    S_BF_2 [flow: "basic", actor: "system", action: "displays a success message and logs transaction", branches_ef: [1, 2, 3]]
+    S_EF1_1 [flow: "exception_1", description: "If any invalid information is provided", actor: "system", action: "prompts that If any invalid information is provided, the survey is not saved, and the user is shown what is incorrect and instructed to try again."]
+    S_EF2_1 [flow: "exception_2", description: "If there are no matching hcps", actor: "system", action: "prompts that If there are no matching HCPs, a message is displayed."]
+    S_EF3_1 [flow: "exception_3", description: "If there are no office visits", actor: "system", action: "prompts that If there are no office visits for the HCP, the percentage reports 'Undefined'."]
+    S_END [terminal, guard: "System processes request successfully and logs transaction."]
+  }
+
+  TRANSITIONS {
+    S_INIT -> S_BF_1 [trigger: "Start"]
+    S_BF_1 -> S_BF_2 [event: "system: displays a success message and logs transaction"]
+    S_BF_2 -> S_END [event: "Complete"]
+    S_BF_2 -> S_EF1_1 [branch: "EF_1 - If any invalid information is provided"]
+    S_BF_2 -> S_EF2_1 [branch: "EF_2 - If there are no matching hcps"]
+    S_BF_2 -> S_EF3_1 [branch: "EF_3 - If there are no office visits"]
+    S_EF1_1 -> S_END [event: "ErrorExit"]
+    S_EF2_1 -> S_END [event: "ErrorExit"]
+    S_EF3_1 -> S_END [event: "ErrorExit"]
+  }
+}

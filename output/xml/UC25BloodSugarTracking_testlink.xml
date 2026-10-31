@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UC25 Blood Sugar Tracking">
+  <node_order><![CDATA[0]]></node_order>
+  <details><![CDATA[Test suite automatically generated from CLARET specifications (UFCG)]]></details>
+  <testcase name="TC1 - Basic Flow (Happy Path)">
+    <node_order><![CDATA[1]]></node_order>
+    <externalid><![CDATA[TC1]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Basic Flow (Happy Path)]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM displays a success message and logs transaction]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC2 - Exception Flow 1: If any invalid information is provided">
+    <node_order><![CDATA[2]]></node_order>
+    <externalid><![CDATA[TC2]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 1: If any invalid information is provided]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If any invalid information is provided, the entry is not saved, and the user is shown what is incorrect.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC3 - Exception Flow 2: If the csv is not formatted">
+    <node_order><![CDATA[3]]></node_order>
+    <externalid><![CDATA[TC3]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 2: If the csv is not formatted]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If the CSV is not formatted correctly, the data is not saved, and the user is notified.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC4 - Exception Flow 3: If there are no entries for">
+    <node_order><![CDATA[4]]></node_order>
+    <externalid><![CDATA[TC4]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 3: If there are no entries for]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If there are no entries for a date, nothing is displayed for that date.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC5 - Exception Flow 4: If there are no matching patients">
+    <node_order><![CDATA[5]]></node_order>
+    <externalid><![CDATA[TC5]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 4: If there are no matching patients]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If there are no matching patients, a message is displayed.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+  <testcase name="TC6 - Exception Flow 5: If a limit is entered invalidly">
+    <node_order><![CDATA[6]]></node_order>
+    <externalid><![CDATA[TC6]]></externalid>
+    <version><![CDATA[1]]></version>
+    <summary><![CDATA[Exception Flow 5: If a limit is entered invalidly]]></summary>
+    <preconditions><![CDATA[The iTrust2 user has authenticated themselves in iTrust2 (UC2) as a patient or HCP.]]></preconditions>
+    <execution_type><![CDATA[1]]></execution_type>
+    <importance><![CDATA[2]]></importance>
+    <steps>
+      <step>
+        <step_number><![CDATA[1]]></step_number>
+        <actions><![CDATA[patient: A patient can add daily blood sugar entries , upload a CSV containing blood sugar data , or view their blood sugar data . An HCP can search for and view the blood sugar data for any patient , as well as update that patient's upper blood sugar limits .]]></actions>
+        <expectedresults><![CDATA[SYSTEM prompts that If a limit is entered invalidly, a message is displayed and the user cannot update the limits.]]></expectedresults>
+        <execution_type><![CDATA[1]]></execution_type>
+      </step>
+    </steps>
+  </testcase>
+</testsuite>
