@@ -421,7 +421,8 @@ class GitHubManager:
         if self.token:
             remote_url = f"https://x-access-token:{self.token}@github.com/{self.repo}.git"
         else:
-            remote_url = f"https://github.com/{self.repo}.git"
+            owner = self.repo.split("/")[0] if "/" in self.repo else ""
+            remote_url = f"https://{owner}@github.com/{self.repo}.git" if owner else f"https://github.com/{self.repo}.git"
         self.run_git(["remote", "remove", "origin"], cwd=repo_dir)
         self.run_git(["remote", "add", "origin", remote_url], cwd=repo_dir)
 

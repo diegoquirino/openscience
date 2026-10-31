@@ -63,9 +63,9 @@ def process_and_publish_versions(
             elif (PROJECT_ROOT / v_entry).exists():
                 v_path = PROJECT_ROOT / v_entry
 
-        # Resolve version string: prefer semantic folder name (e.g. '1.0', '1.1', '2.9') or sequential index
+        # Resolve version string: prefer semantic folder name (e.g. '1', '1.0', '1.1', '2.9') or sequential index
         raw_name = v_path.name.lstrip("vV")
-        if re.match(r'^\d+(\.\d+)+$', raw_name):
+        if re.match(r'^\d+(\.\d+)*$', raw_name):
             ver_str = format_version(raw_name)
         else:
             ver_str = format_version(idx)
