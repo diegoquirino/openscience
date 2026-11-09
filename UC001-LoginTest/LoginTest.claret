@@ -1,6 +1,6 @@
 systemName "Email"
 usecase "Login User" {
-  version "2.0" type "Maintenance (Remove/Update): two-factor authentication withdrawn" user "Dalton" date "01/01/2018"
+  version "2.1" type "Maintenance (Merge): unknown-user and incorrect-password exceptions unified under a generic alert" user "Dalton" date "01/01/2018"
   requirements "REQ-07, REQ-08, REQ-09"
   actor emailUser "Email User"
   preCondition "There is an active network connection."
@@ -8,7 +8,7 @@ usecase "Login User" {
     step 1 emailUser "launches the authentication screen"
     step 2 system "allows users to authenticate using their username and password through a form with username field, masked password field, and submit button"
     step 3 emailUser "fills out the username and password fields and clicks on the submit button" af[1]
-    step 4 system "confirms successful authentication and grants session access" ef[1,2,3]
+    step 4 system "confirms successful authentication and grants session access" ef[1,2]
     step 5 emailUser "continues into the authenticated session"
     step 6 system "notifies the user via email of the successful login"
     step 7 emailUser "opens the login notification email"
@@ -17,13 +17,10 @@ usecase "Login User" {
   alternative 1 "Username is predicted" {
     step 1 emailUser "chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form" bs 4
   }
-  exception 1 "User does not exist in database" {
-    step 1 system "alerts: user does not exist"
+  exception 1 "Invalid credentials (unknown username or incorrect password)" {
+    step 1 system "alerts: Invalid credentials: unknown username or incorrect password"
   }
-  exception 2 "Incorrect username/password combination" {
-    step 1 system "alerts: username and/or password are incorrect"
-  }
-  exception 3 "Unified password policy (formerly separate length and uppercase checks)" {
+  exception 2 "Unified password policy (formerly separate length and uppercase checks)" {
     step 1 system "alerts: password contains fewer than some characters or no suitable letter"
   }
   postCondition "User successfully authenticated, notified by email, and login recorded in the audit log"
