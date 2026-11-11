@@ -1,6 +1,6 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.3.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.4.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
@@ -72,11 +72,24 @@ O ambiente de testes roda na máquina do pesquisador com Docker Compose (`docker
 | `app` | Imagem construída pelo mesmo `Dockerfile` da produção, perfil Spring `ensaio`, em `http://localhost:8080`; faixa "AMBIENTE DE ENSAIO" na tela |
 | `mysql` | MySQL Community 9.7 (mesma versão do Cloud SQL), volume próprio; o Flyway roda as mesmas migrações na subida |
 | `mailpit` | Servidor de e-mail de teste ([Mailpit](https://mailpit.axllent.org/), código aberto): recebe os códigos de acesso sem enviá-los de verdade; caixa em `http://localhost:8025` |
-| Dados | Só fictícios e os CSV gerados pelo pipeline (spec 002); nada vindo da produção |
+| Dados | Só os itens do Minitest (ver "Dados de ensaio e do piloto"), com participantes fictícios; nada vindo da produção. A importação recusa outro sistema neste perfil |
 | Segredos | Nenhum segredo real é necessário; para testar o envio pelo Gmail, a senha de app vai num `.env` local, ignorado pelo git |
 | Recomeçar do zero | `docker compose --profile ensaio down -v` apaga o volume do banco |
 
 - O teste de 30 participantes simultâneos e os demais testes de integração rodam com Testcontainers, sem depender do Compose.
+
+### Dados de ensaio e do piloto: só o Minitest
+
+O ensaio local, os testes automatizados e o ensaio piloto em produção usam só itens do sistema `minitest` (38 edições, versões 1.0 a 2.2, tags `minitest_v*` deste mesmo repositório público).
+
+| Uso | Dados |
+|---|---|
+| Arquivo de referência | `veredito_minitest.csv` gerado pela spec 002, copiado para `backend/src/test/resources/minitest/` e versionado. Quando o pipeline gerar o arquivo de novo, a cópia é trocada no mesmo commit |
+| Casos de erro | Arquivos derivados do de referência, na mesma pasta, com o nome dizendo o defeito (por exemplo, `minitest_duplicatas.csv`, `minitest_sem_coluna_kind.csv`, `minitest_texto_longo.csv`) |
+| Casos de volume | Gerados em memória pelos testes, repetindo as linhas do Minitest com um sufixo no `edit_key` (`LoginTest\|1\|1#r07`), até 205 ou 500 linhas; não são gravados como arquivo |
+| Participantes | Fictícios, com e-mails do domínio reservado `example.com`; no ensaio local os códigos chegam ao Mailpit |
+| Ensaio local | O pesquisador importa o arquivo de referência pela tela do administrador; o perfil `ensaio` recusa qualquer arquivo com `sistema` diferente de `minitest` |
+| Piloto em produção | A configuração "fase do estudo" começa em `piloto` numa base nova; nessa fase, a importação também recusa outro sistema. Depois do piloto, a base é recriada vazia (de novo em `piloto`), o administrador passa a fase para `coleta`, o que só é aceito sem itens, participantes e respostas na base, e então importa a base real |
 - O ensaio usa a mesma imagem e as mesmas migrações da produção; o que muda são só as variáveis (banco, SMTP, faixa de ensaio).
 
 ## Produção no Google Cloud
@@ -105,7 +118,7 @@ GitHub Actions no branch `Veredito`:
 3. **Produção**: workflow disparado manualmente, informando o commit ensaiado; publica no `veredito` a imagem desse commit já enviada ao Artifact Registry. A URL não muda.
 4. **Autenticação**: Workload Identity Federation entre GitHub e Google Cloud, sem chave de conta de serviço guardada no GitHub.
 5. **Volta atrás**: o Cloud Run mantém as revisões anteriores; basta mandar o tráfego para a anterior. Por isso, toda migração Flyway precisa ser compatível com a versão anterior do código (acrescentar antes, remover depois).
-6. **Fim do piloto**: o piloto com colegas roda na produção; antes da divulgação, o banco `veredito` é apagado e criado de novo no Cloud SQL, e a publicação seguinte o prepara vazio pelo Flyway. O `flyway clean` fica desligado em produção.
+6. **Fim do piloto**: o piloto com colegas roda na produção, só com os itens do Minitest (fase `piloto`). Antes da divulgação, o banco `veredito` é apagado e criado de novo no Cloud SQL, e a publicação seguinte o prepara vazio pelo Flyway. O administrador passa a fase para `coleta` e importa a base real. O `flyway clean` fica desligado em produção.
 
 ## Código por e-mail
 
@@ -215,7 +228,7 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 | Ações proibidas | Para cada estado, o teste confere que a ação não aparece e que a chamada direta ao endereço é recusada (403, 404 ou 409, conforme o caso) |
 | Erros | Respostas de erro validadas contra o esquema JSON de Problem Details (`matchesJsonSchemaInClasspath`) |
 | Sessão e e-mail | O código de acesso é lido do servidor de e-mail de teste, como faria o participante; o cookie de sessão é reaproveitado pelo `RequestSpecification` do perfil |
-| Dados | Cada teste cria os próprios dados (importação de um CSV fictício pela API do administrador) e a base é limpa entre classes |
+| Dados | Cada teste cria os próprios dados importando, pela API do administrador, o CSV do Minitest ou um derivado dele, com participantes fictícios; a base é limpa entre classes |
 | Concorrência | O teste de 30 participantes simultâneos (spec 007) usa REST Assured em 30 threads, cada uma com sua sessão |
 
 ## Limites que importam
@@ -242,7 +255,7 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 - **Máquina compartilhada com MySQL 9.7 no Cloud SQL**: confirmar no plano da spec 003. Se não houver, usar 8.4 no `db-f1-micro` ou 9.7 no `db-g1-small`.
 - **Repositório público**: *secret scanning* e *push protection* do GitHub ativados em 2026-11-11.
 - **E-mail**: a senha de app do Gmail ("Veredito SMTP") já existe e está guardada fora do repositório; entra no Secret Manager no plano da spec 003. O ensaio local não precisa dela (usa o Mailpit).
-- **Piloto na produção**: os colegas do piloto devem saber que as respostas serão descartadas; ao fim, o banco de produção é recriado vazio antes da divulgação.
+- **Piloto na produção**: só com os itens do Minitest; os colegas do piloto devem saber que as respostas serão descartadas; ao fim, o banco de produção é recriado vazio e a fase passa a `coleta` antes da divulgação.
 - **CSV com os casos de uso completos**: especificado em [002-csv-oraculo](../002-csv-oraculo/spec.md).
 - **Concordância entre avaliadores**: ver a seção *Assumptions* da spec. Afeta a análise, não a tecnologia.
 - **LGPD**: os dados ficam no Google Cloud, na região escolhida. Isso precisa constar no termo (TCLE).

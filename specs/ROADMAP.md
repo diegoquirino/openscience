@@ -69,11 +69,11 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 3. **Pronto para classificar** (005, 006, 007 e 008): fluxo completo do participante.
 4. **Ensaio piloto** (009 pronta):
    - no ensaio local, rodar o teste de 30 participantes simultâneos (spec 007, SC-001, teste automático) e um fluxo completo com o tempo de reserva reduzido;
-   - publicar em produção, importar o Minitest e convidar de 3 a 5 colegas, avisando que as respostas do piloto serão descartadas;
+   - publicar em produção (fase `piloto`, que só aceita o Minitest), importar o Minitest e convidar de 3 a 5 colegas, avisando que as respostas do piloto serão descartadas;
    - medir o tempo por bloco (spec 008, SC-002), a partida a frio do Cloud Run e ouvir os colegas sobre a clareza das perguntas;
    - exportar e rodar `agreement` e `oracle-disagreements` sobre os arquivos (spec 009, SC-001);
    - corrigir e ensaiar localmente; **recriar vazio o banco de produção** (apagar e criar de novo o banco `veredito` no Cloud SQL) e publicar, para o Flyway prepará-lo do zero;
-   - publicar o termo definitivo, importar a base real e divulgar.
+   - passar a fase para `coleta` (spec 005), publicar o termo definitivo, importar a base real e divulgar.
 5. **Coleta acompanhada** (010) e **LGPD completa** (011).
 
 ## Cobertura da spec 001
@@ -99,4 +99,4 @@ Para cada spec, na ordem acima:
 2. Rodar `/speckit-plan`, depois `/speckit-tasks` e `/speckit-implement`. Em cada spec do Veredito (003 a 011), o `contracts/` do plano lista os recursos, os métodos e status HTTP, as relações de link e as ações por estado (nível 3 de Richardson), e cada operação nova entra documentada no Swagger.
 3. Rodar no ensaio local (Docker), conferir os critérios de sucesso da spec, publicar em produção e só então seguir para a próxima.
 
-Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.3.0: Angular com Angular Material, Spring Boot com API REST nível 3 documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.
+Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.4.0: Angular com Angular Material, Spring Boot com API REST nível 3 documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker; ensaio, testes e piloto só com itens do Minitest) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.

@@ -1,6 +1,13 @@
 <!--
 Sync Impact Report
-- Version change: 2.2.0 → 2.3.0 (MINOR: testes automatizados da API com REST Assured)
+- Version change: 2.3.0 → 2.4.0 (MINOR: ensaio local, testes e piloto só com itens do Minitest)
+- Modified principles (2.4.0):
+  - IV. Privacidade, LGPD e segredos: ensaio local, testes automatizados e piloto em produção usam
+    só itens do Minitest; importação recusa outro sistema no ensaio e na fase `piloto`
+- Modified sections (2.4.0):
+  - Restrições e fluxo de trabalho: piloto só com o Minitest; depois de recriar a base, a fase
+    passa a `coleta` antes de importar a base real
+- Version change 2.3.0 (2.2.0 → 2.3.0, MINOR: testes automatizados da API com REST Assured)
 - Modified principles (2.3.0):
   - II. Regras de domínio isoladas e testadas: testes da API com REST Assured, por HTTP real numa
     porta aleatória, partindo de `/api` e seguindo os links
@@ -113,8 +120,13 @@ pessoas diferentes, e isso não pode depender só do código da aplicação.
 - A tabela longa e os arquivos do pipeline (`t1_<sistema>_rater*.csv`) NÃO DEVEM conter nome nem
   e-mail.
 - O banco não é exposto à internet; participantes só acessam dados pela aplicação.
-- O ensaio local usa só dados fictícios e os arquivos do pipeline; dumps e exportações da produção
-  NÃO DEVEM ser carregados na máquina de desenvolvimento.
+- O ensaio local, os testes automatizados e o ensaio piloto em produção usam só itens do sistema
+  Minitest: o CSV gerado pela spec 002 e arquivos derivados dele para os casos de erro e de
+  volume. O CSV fica versionado no repositório, porque o Minitest já é público. Os participantes
+  do ensaio local e dos testes são fictícios.
+- A importação DEVE recusar arquivo de outro sistema no ensaio local e, na produção, enquanto a
+  fase do estudo for `piloto`.
+- Dumps e exportações da produção NÃO DEVEM ser carregados na máquina de desenvolvimento.
 
 Razão: o estudo coleta dados pessoais sob termo de consentimento, o pacote de replicação será
 público e o próprio repositório já é público.
@@ -150,8 +162,9 @@ estudante.
   local, em Docker: Docker Compose com a imagem construída pelo mesmo `Dockerfile` da produção, um
   MySQL na mesma versão e um servidor de e-mail de teste. Não existe ensaio na nuvem.
 - Toda mudança DEVE passar pelos testes automáticos e pelo ensaio local antes da produção.
-- O ensaio piloto com colegas acontece na produção, antes da divulgação; ao fim dele, a base de
-  produção é recriada vazia e só então a coleta real começa.
+- O ensaio piloto com colegas acontece na produção, antes da divulgação, só com os itens do
+  Minitest. Ao fim dele, a base de produção é recriada vazia, o administrador passa a fase do
+  estudo para `coleta` e só então importa a base real.
 - A publicação é feita pelo GitHub Actions a partir do branch `Veredito`, sempre no mesmo serviço
   do Cloud Run, para manter a URL.
 - As specs são implementadas uma por vez, na ordem de `specs/ROADMAP.md`. A seguinte só começa
@@ -170,4 +183,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.3.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.4.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
