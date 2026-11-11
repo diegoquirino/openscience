@@ -153,4 +153,5 @@ Um bloco sem atividade por 20 minutos volta à fila na sua posição original.
 
 - A regra de escolha do próximo bloco-papel é testada isoladamente com cenários de fila (spec 003, FR-008) antes de ir ao ar.
 - A tela do item desta spec é propositalmente simples; a spec 008 a substitui sem mudar o que é gravado.
+- Esta spec vem antes da 006 no roteiro. A elegibilidade (FR-012) fica num único ponto do backend que, até a 006 existir, considera elegível todo participante com sessão; a 006 passa a exigir o termo vigente e a triagem nesse ponto, e os cenários de recusa por elegibilidade são testados junto com ela.
 - No ensaio, o tempo de reserva pode ser reduzido para testar o vencimento.

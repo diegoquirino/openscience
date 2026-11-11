@@ -5,7 +5,7 @@
 - Repositório `ISSTA_2027` com o run do Minitest já processado até o S5
   (`src/runs/minitest-piloto/s5_blind/public/requests_T1.jsonl` existe).
 - Python do pesquisador: `C:\Users\diego\AppData\Local\Python\bin\python.exe` com o pacote
-  instalado em modo editável (`pip install -e src[dev]`).
+  instalado em modo editável (`pip install -e .[dev]`).
 
 Todos os comandos rodam em `ISSTA_2027/src`.
 

@@ -1,6 +1,13 @@
 <!--
 Sync Impact Report
-- Version change: 2.5.0 → 2.6.0 (MINOR: vocabulário da rotulagem dos dados)
+- Version change: 2.6.0 → 2.6.1 (PATCH: critério de sucesso conferido numa spec posterior)
+- Modified sections (2.6.1):
+  - Restrições e fluxo de trabalho: um critério que só pode ser conferido numa spec posterior fica
+    para ela, se a spec disser isso (caso do SC-003 da spec 002, conferido na 005)
+- Templates/docs (2.6.1): specs/ROADMAP.md (ordem estritamente sequencial: 002, 003, 004, 005,
+  007, 006, 008, 009, 010, 011; sem colunas de paralelismo); specs 002, 003, 005, 006 e 009
+  (cabeçalhos sem "Pode correr em paralelo"); spec 007 (elegibilidade aberta até a 006)
+- Version change 2.6.0 (2.5.0 → 2.6.0, MINOR: vocabulário da rotulagem dos dados)
 - Modified sections (2.6.0):
   - Restrições e fluxo de trabalho: vocabulário (rotulagem dos dados; "avaliar" em botões e
     mensagens curtas; participante e voluntário; rotulador 1 e 2)
@@ -188,7 +195,8 @@ estudante.
   do Cloud Run, para manter a URL.
 - As specs são implementadas uma por vez, na ordem de `specs/ROADMAP.md`. A seguinte só começa
   quando os critérios de sucesso da anterior forem atendidos no ensaio local (ou na produção, quando
-  o critério for da própria publicação).
+  o critério for da própria publicação). Um critério que só pode ser conferido numa spec posterior
+  fica para ela, se a spec disser isso.
 - Os arquivos exportados DEVEM continuar compatíveis com o pacote `issta_tcm`.
 - Todos os arquivos de texto do projeto DEVEM estar em UTF-8.
 - Vocabulário: a atividade é a **rotulagem dos dados** (títulos, termo, convites, explicações e
@@ -207,4 +215,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.6.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.6.1 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11

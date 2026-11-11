@@ -8,7 +8,7 @@
 
 **Input**: User description: "Gerar, a partir dos dados do pipeline do ISSTA 2027, o arquivo CSV que o Veredito importa (Apêndice D da spec 001), um arquivo por sistema, com o caso de uso completo de cada versão e as linhas editadas marcadas."
 
-**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md) · **Depende de**: nada · **Pode correr em paralelo com**: 003
+**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md) · **Depende de**: nada
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -78,7 +78,7 @@ Ao gerar o arquivo, o pesquisador vê um resumo e é avisado de qualquer linha q
 
 - **SC-001**: O arquivo do Minitest é gerado em menos de 1 minuto.
 - **SC-002**: 100 % das linhas do Minitest têm ao menos uma linha marcada como editada num dos dois casos de uso.
-- **SC-003**: O arquivo do Minitest passa pela prévia da importação do Veredito (spec 005) sem nenhuma linha com erro.
+- **SC-003**: O arquivo do Minitest passa pela prévia da importação do Veredito (spec 005) sem nenhuma linha com erro. Conferido na spec 005; não impede o início da 003.
 
 ## Assumptions
 

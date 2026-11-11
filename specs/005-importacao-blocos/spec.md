@@ -8,7 +8,7 @@
 
 **Input**: User description: "O administrador envia um CSV com as colunas do Apêndice D da spec 001, confere uma prévia e confirma. Na confirmação, os itens novos são divididos em blocos fixos de 10 e cada bloco entra no fim da fila com os papéis de rotulador 1 e 2."
 
-**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 7, FR-011, FR-012 e FR-051 a FR-055 · **Depende de**: 004 · **Pode correr em paralelo com**: 006 e 008 · **Usa como teste**: o arquivo da spec 002
+**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 7, FR-011, FR-012 e FR-051 a FR-055 · **Depende de**: 004 · **Usa como teste**: o arquivo da spec 002
 
 ## User Scenarios & Testing *(mandatory)*
 

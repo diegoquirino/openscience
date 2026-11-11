@@ -26,9 +26,9 @@ description: "Tarefas da spec 002: gerar o CSV de importação do Veredito a par
 
 **Purpose**: confirmar a linha de base e criar os arquivos novos vazios
 
-- [ ] T001 Conferir a linha de base em `ISSTA_2027/src`: `python -m pytest -q` passa (73 testes) e existem `runs/minitest-piloto/s3_diff/edits.csv`, `runs/minitest-piloto/s5_blind/public/requests_T1.jsonl` e `runs/minitest-piloto/s5_blind/_private/edits_index.json`
+- [ ] T001 Conferir a linha de base em `ISSTA_2027/src`: `python -m pytest -q` passa (anotar o total de testes) e existem `runs/minitest-piloto/s3_diff/edits.csv`, `runs/minitest-piloto/s5_blind/public/requests_T1.jsonl` e `runs/minitest-piloto/s5_blind/_private/edits_index.json`
 - [ ] T002 Criar `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py` com docstring do módulo e as constantes: `COLUMNS` (cabeçalho exato `sistema,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase`), `KINDS = ("ADD", "DEL", "MOD", "META")`, `MAX_TEXT = 5000`, `MAX_USECASE = 40000`, `MAX_VERSION = 20`, `MISSING_EN = "(the use case does not exist in this version)"`, `MISSING_PT = "(este caso de uso não existe nesta versão)"`, `EDITED_MARK = "<- edited"`; e a função `output_path(cfg)` que devolve `oracle.oracle_dir(cfg) / f"veredito_{cfg.subject.key}.csv"`
-- [ ] T003 [P] Criar `ISSTA_2027/src/tests/test_veredito_import.py` com uma fixture que monta um run falso em `tmp_path` (`s3_diff/edits.csv`, `s5_blind/_private/edits_index.json` com `E-xxx -> {edit_key, k}`, `s5_blind/public/requests_T1.jsonl` com `request_id` e `context`) e um `Config` apontando para ele via `monkeypatch`, no mesmo estilo de `tests/test_oracle.py`
+- [ ] T003 [P] Criar `ISSTA_2027/src/tests/test_veredito_import.py` com uma fixture que monta um run falso em `tmp_path` (`s3_diff/edits.csv`, `s5_blind/_private/edits_index.json` com `E-xxx -> {edit_key, k}`, `s5_blind/public/requests_T1.jsonl` com `request_id` e `context`) e um `Config("config/experiment-minitest.yaml", {"workdir": <run falso>})`, com `oracle.oracle_dir` desviado para `tmp_path` via `monkeypatch`, no mesmo estilo de `tests/test_oracle.py`; o T014 usa o mesmo run com `cli.main(["oracle-import", "--config", "config/experiment-minitest.yaml", "--set", "workdir=<run falso em formato posix>"])`
 
 ---
 
@@ -61,10 +61,10 @@ description: "Tarefas da spec 002: gerar o CSV de importação do Veredito a par
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Implementar `build_rows(cfg) -> list[dict]` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py`: lê `oracle.edits_csv(cfg)` com `utils.read_csv`; liga `edit_key -> E-xxx` com `oracle._key_to_eid(cfg)` e `E-xxx -> k` com `s5_blind/_private/edits_index.json`; pega o `context` de cada `E-xxx` em `stages.common.requests(cfg, "T1")`; monta cada linha com `oracle._cell` para os campos de `edits.csv`, `version_labels(cfg)[k]` e `split_context(context)`; não lê nenhum `t1_*_rater*.csv` nem grava `E-xxx` no resultado (FR-008)
+- [ ] T009 [US1] Implementar `build_rows(cfg) -> list[dict]` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py`: lê `oracle.edits_csv(cfg)` com `utils.read_csv`; liga `edit_key -> E-xxx` com `oracle._key_to_eid(cfg)` e `E-xxx -> k` com `s5_blind/_private/edits_index.json`; pega o `context` de cada `E-xxx` em `stages.common.requests(cfg, "T1")`; monta cada linha com `oracle._cell` para os campos de `edits.csv`, `version_labels(cfg)[k]` e `split_context(context)`; todo valor da linha é `str`, nunca `None`, porque `utils.fmt` grava `None` como `nan`; não lê nenhum `t1_*_rater*.csv` nem grava `E-xxx` no resultado (FR-008)
 - [ ] T010 [US1] Implementar `write(cfg, rows) -> Path` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py` com `utils.write_csv(output_path(cfg), rows, COLUMNS)`, sobrescrevendo o arquivo existente
-- [ ] T011 [US1] Acrescentar `cmd_oracle_import` e o subcomando `oracle-import` (`parents=[common]`, ajuda "write the Veredito import CSV of a subject") em `ISSTA_2027/src/issta_tcm/cli.py`, seguindo `cmd_oracle_template`; incluir a linha do comando na docstring do topo do arquivo; nesta fase, chama `build_rows` e `write`, imprime o caminho gravado e devolve 0
-- [ ] T012 [US1] Rodar `python -m issta_tcm oracle-import --config config/experiment-minitest.yaml` em `ISSTA_2027/src` e conferir: `inputs/oracle/veredito_minitest.csv` com 38 linhas; colunas `edit_key` a `target` iguais, na mesma ordem, às de `inputs/oracle/t1_minitest_rater1.csv`; edições `|1|` com `v1.0`/`v1.1` e `|12|` com `v2.1`/`v2.2`; alguns casos de uso iguais aos blocos de `inputs/oracle/labeling_sheet_minitest.md`
+- [ ] T011 [US1] Acrescentar `cmd_oracle_import` e o subcomando `oracle-import` (`parents=[common]`, ajuda "write the Veredito import CSV of a subject") em `ISSTA_2027/src/issta_tcm/cli.py`, seguindo `cmd_oracle_template`; incluir a linha do comando na docstring do topo do arquivo; nesta fase, chama `build_rows` e `write`, imprime o caminho gravado e devolve 0. A ajuda fica em inglês, como a dos outros `oracle-*`; as mensagens de erro e o resumo ficam em português, como no contrato
+- [ ] T012 [US1] Rodar `python -m issta_tcm oracle-import --config config/experiment-minitest.yaml` em `ISSTA_2027/src` e conferir: `inputs/oracle/veredito_minitest.csv` com 38 linhas; colunas `edit_key` a `target` iguais, na mesma ordem, às de `inputs/oracle/t1_minitest_rater1.csv`; edições `|1|` com `v1.0`/`v1.1` e `|12|` com `v2.1`/`v2.2`; os casos de uso da primeira e da última linha, e de uma edição `META` de `requirements`, iguais aos blocos de `inputs/oracle/labeling_sheet_minitest.md`; na edição `META`, a linha com `<- edited` é a de vínculo com requisitos (caso de borda da spec)
 
 **Checkpoint**: US1 funciona sozinha; o arquivo do Minitest existe
 
@@ -83,7 +83,7 @@ description: "Tarefas da spec 002: gerar o CSV de importação do Veredito a par
 
 ### Implementation for User Story 2
 
-- [ ] T015 [US2] Implementar a dataclass `Report` (`errors: list[tuple[int, str, str]]`, `warnings: list[str]`, `total`, `by_kind`, `by_field` em ordem alfabética, `max_len` por `origin`, `target`, `origin_usecase`, `target_usecase`) e `validate(rows) -> Report` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py`, com exatamente as regras do contrato e as mensagens em português no formato `<campo> com mais de <limite> caracteres`, `<campo> obrigatório`, `kind inválido: <valor>`, `edit_key repetida no arquivo`
+- [ ] T015 [US2] Implementar a dataclass `Report` (`errors: list[tuple[int, str, str]]`, `warnings: list[str]`, `total`, `by_kind`, `by_field` em ordem alfabética, `max_len` por `origin`, `target`, `origin_usecase`, `target_usecase`) e `validate(rows) -> Report` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py`, com exatamente as regras do contrato e as mensagens em português no formato `<campo> com mais de <limite> caracteres`, `<campo> obrigatório`, `kind inválido: <valor>`, `edit_key repetida no arquivo`; `None` conta como vazio
 - [ ] T016 [US2] Implementar `format_report(report) -> str` em `ISSTA_2027/src/issta_tcm/evaluation/veredito_import.py`: total; contagens por `kind` e por `field`; maiores tamanhos; avisos; e, havendo erros, uma linha `linha N (edit_key): motivo` por erro
 - [ ] T017 [US2] Completar `cmd_oracle_import` em `ISSTA_2027/src/issta_tcm/cli.py`: `build_rows` -> `validate` -> com erros, imprime `format_report` e devolve 1 sem chamar `write`; sem erros, chama `write` e imprime o caminho e o `format_report`; artefato do pipeline ausente (`MissingStageOutput` ou chaves sem pedido T1) devolve 1 com a orientação "rode o S5"
 
@@ -93,8 +93,8 @@ description: "Tarefas da spec 002: gerar o CSV de importação do Veredito a par
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T018 [P] Acrescentar `oracle-import` à lista de comandos do oráculo em `ISSTA_2027/src/README.md`, com uma frase sobre a saída `inputs/oracle/veredito_<sistema>.csv`
-- [ ] T019 Rodar `python -m pytest -q` em `ISSTA_2027/src`: os 73 testes anteriores e os novos passam
+- [ ] T018 [P] Acrescentar `oracle-import` às duas listas do oráculo em `ISSTA_2027/src/README.md`: o bloco de comandos (linhas 61 a 63) e o passo a passo da rotulagem (linha 490 em diante), com uma frase sobre a saída `inputs/oracle/veredito_<sistema>.csv`
+- [ ] T019 Rodar `python -m pytest -q` em `ISSTA_2027/src`: os testes anotados no T001 e os novos passam
 - [ ] T020 Rodar o quickstart (`specs/002-csv-oraculo/quickstart.md`, seções 2 a 4): 38 linhas, código 0, nenhum aviso de linha sem `<- edited` (SC-002), tempo bem abaixo de 1 minuto (SC-001) e o mesmo hash em duas gerações seguidas
 - [ ] T021 Conferir o FR-008 em `ISSTA_2027/src/inputs/oracle/veredito_minitest.csv`: nenhum identificador `E-` seguido de dígitos, nenhuma coluna `change_impact`, `maintenance_operation` ou `comment`, e nenhuma saída de técnica
 

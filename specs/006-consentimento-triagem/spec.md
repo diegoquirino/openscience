@@ -8,8 +8,7 @@
 
 **Input**: User description: "Depois de entrar, o participante aceita o termo da pesquisa (TCLE/LGPD), escolhe sua habilidade profissional numa lista e responde à pergunta de triagem, que o admite ou o exclui do estudo."
 
-**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 2, FR-006 a FR-010, Apêndices B.3 e B.4 · **Depende de**: 004 · **Pode correr em paralelo com**: 005 e 008
-
+**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 2, FR-006 a FR-010, Apêndices B.3 e B.4 · **Depende de**: 004
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Aceitar ou recusar o termo (Priority: P1)

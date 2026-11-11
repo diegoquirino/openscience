@@ -8,7 +8,7 @@
 
 **Input**: User description: "Deixar o Veredito no ar numa URL fixa, com uma página inicial, uma base de dados com todas as tabelas previstas, um ambiente de ensaio separado e uma forma de atualizar o sistema sem mudar a URL."
 
-**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md) · **Depende de**: nada · **Pode correr em paralelo com**: 002
+**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md) · **Depende de**: nada
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -48,7 +48,7 @@ O pesquisador publica uma nova versão e os participantes continuam usando o mes
 
 Na primeira publicação, o sistema cria todas as tabelas previstas na spec 001, com as restrições de integridade e a configuração padrão. A cada nova versão, a estrutura é atualizada automaticamente, sem perder dados.
 
-**Why this priority**: Fixa a estrutura de dados de que dependem todas as specs seguintes, que podem então ser implementadas em paralelo.
+**Why this priority**: Fixa a estrutura de dados de que dependem todas as specs seguintes, que podem então ser implementadas sem refazer tabelas.
 
 **Independent Test**: Publicar numa base vazia, publicar de novo e comparar as estruturas; publicar uma versão com uma mudança de estrutura sobre uma base com registros.
 

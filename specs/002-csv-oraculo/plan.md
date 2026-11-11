@@ -53,7 +53,7 @@ Continuam valendo:
 | Regra | Como o plano atende | Situação |
 |---|---|---|
 | Princípio IV: sem dados de rotuladores nem ids cegos no arquivo | Só as colunas de `edits.csv` (`edit_key` … `target`) e o contexto; os `E-xxx` são usados só em memória para achar o contexto e não vão para o arquivo; nenhum `t1_*_rater*.csv` é lido | Passa |
-| Princípio IV: repositório público | O arquivo fica em `ISSTA_2027/src/inputs/oracle/`, fora do branch `Veredito`; não tem dados pessoais | Passa |
+| Princípio IV: repositório público | O arquivo é gerado em `ISSTA_2027/src/inputs/oracle/` e não tem dados pessoais. Pela constitution (2.4.0 em diante), é o dado de itens do ensaio, dos testes e do piloto; uma cópia fica versionada em `Veredito/backend/src/test/resources/minitest/` a partir das specs 003 e 005 | Passa |
 | UTF-8 | `utils.write_csv` já grava em UTF-8; teste confere o arquivo | Passa |
 | Compatibilidade com a importação do Veredito | Colunas do Apêndice D na ordem; validação espelha FR-052/FR-053; contrato em [contracts/import-csv.md](contracts/import-csv.md) | Passa |
 

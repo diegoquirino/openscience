@@ -8,7 +8,7 @@
 
 **Input**: User description: "O administrador baixa as classificações finais em três formatos: a tabela larga (uma linha por item, com os dois avaliadores), a tabela longa pseudonimizada (uma linha por resposta) e, por sistema, os arquivos rater1 e rater2 que o pacote issta_tcm lê. Rascunhos nunca são exportados."
 
-**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 8, FR-057, FR-058, FR-060 e Apêndice C · **Depende de**: 005 e 007 (pode começar depois da 005, com respostas de teste)
+**Spec geral**: [001-rotulagem-oraculo](../001-rotulagem-oraculo/spec.md), User Story 8, FR-057, FR-058, FR-060 e Apêndice C · **Depende de**: 005 e 007
 
 ## User Scenarios & Testing *(mandatory)*
 
