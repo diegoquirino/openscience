@@ -119,7 +119,7 @@ The participant labels in pt-BR, en-US or es-ES and can switch language in the m
 **Acceptance Scenarios**:
 
 1. **Given** the interface in pt-BR, en-US or es-ES, **When** a block is shown, **Then** the questions, option labels, buttons, counter ("x de 10", "x of 10", "x de 10"), countdown warnings, end messages and refusals appear in that language; the countdown keeps the format minutes:seconds.
-2. **Given** a block in progress, **When** the person switches the language in the header, **Then** the page reloads in the new language on the same item (or on the review), with the same reservation and all saved drafts preserved; choices not yet saved on that item are not part of a draft and are not kept by the switch.
+2. **Given** a block in progress, **When** the person switches the language in the header, **Then** the page reloads in the new language on the same item (or on the review), with the same reservation and all saved drafts preserved; the impact, operation and comment chosen on that item and not saved yet are restored as unsaved choices (spec 001, FR-078), and become a draft only when the person saves them, recording the new language.
 3. **Given** a language switch, **When** the page reloads, **Then** the reservation is not renewed by the switch itself, and the countdown shows the same remaining time computed from the expiry time.
 4. **Given** an item on the screen, **When** shown in any language, **Then** the system, use case, `origin` and `target` appear as captured, without translation, and the comment is stored as typed.
 5. **Given** responses saved in different languages within the same block, **When** the block is submitted, **Then** each final response keeps the language of its last save.
@@ -155,7 +155,7 @@ The participant labels in pt-BR, en-US or es-ES and can switch language in the m
 - **FR-013**: The screen of each item MUST show a countdown, in minutes and seconds, until the reservation expires, computed from the expiry time and the server time; it goes back to the full value at every saved response and warns when it reaches zero.
 - **FR-014**: A task with an expired reservation MUST go back to its original position in the queue; a person holds at most one reserved block, there is no limit of blocks per person in the data collection, and rater 2 may receive the block while rater 1 is still labeling it.
 - **FR-015**: Each saved response MUST record in `language` the interface language in use at the save (`pt-BR`, `en-US` or `es-ES`); a new save of the same draft replaces it, and the submission does not change it.
-- **FR-016**: Switching the interface language in the middle of a block MUST be allowed; it MUST keep the reservation and the saved drafts, return to the same item or to the review, and MUST NOT renew or shorten the reservation by itself.
+- **FR-016**: Switching the interface language in the middle of a block MUST be allowed; it MUST keep the reservation and the saved drafts, restore the unsaved choices and comment of the current item (kept only in the browser tab until saved), return to the same item or to the review, and MUST NOT renew or shorten the reservation by itself.
 - **FR-017**: The countdown, its warnings, the progress counter, the end messages and the refusals MUST be shown in the interface language; the use case data (`system`, use case, `origin`, `target`) MUST be shown as captured, and the comment stored as typed.
 - **FR-018**: The block flow MUST be exposed under `/api/v1` with the resources `/tasks`, `/tasks/reservations`, `/tasks/{id}`, `/tasks/{id}/items/{position}`, `/tasks/{id}/responses/{itemId}` and `/tasks/{id}/submission`, the link relations `vd:next-task`, `vd:reserve` and `vd:save-response` (others following the same kebab-case English pattern), and the JSON fields `reservationExpiresAt` (expiry time) and `reservationMinutes` (configured reservation time).
 
@@ -173,7 +173,7 @@ The participant labels in pt-BR, en-US or es-ES and can switch language in the m
 - **SC-003**: The next item appears in less than 3 seconds 95% of the time.
 - **SC-004**: No draft is lost when the page is reloaded within the reservation time.
 - **SC-005**: The screen countdown differs from the expiry recorded on the server by at most 2 seconds, even with the device clock 5 minutes off.
-- **SC-006**: In a test that switches language in the middle of a block through the three locales, no saved draft is lost, the reservation stays the same, and every response records the language in use at its last save.
+- **SC-006**: In a test that switches language in the middle of a block through the three locales, no saved draft and no unsaved choice of the current item is lost, the reservation stays the same, and every response records the language in use at its last save.
 
 ## Assumptions
 

@@ -86,8 +86,8 @@ Before signing in, the person chooses the language of the interface among Portug
 5. **Given** a person who chose a language, **When** they request an access code, **Then** the e-mail (subject and body) arrives in the language of the interface in use at that moment.
 6. **Given** a participant signing in for the first time, **When** the code is validated, **Then** the language in use is saved in the profile as the preferred language (`preferred_language`).
 7. **Given** a participant whose profile has `es-ES` as preferred language, signing in on a browser that has `en-US` saved (or nothing saved), **When** the code is validated, **Then** the profile wins: the interface reloads in Spanish (Spain) and the browser now keeps `es-ES`.
-8. **Given** any screen, before or after sign-in, **When** the person chooses another language from the header, **Then** the page reloads in the new language on the same screen, responses already saved as drafts are kept, the browser keeps the new language and, if a participant is signed in, `preferred_language` is updated.
-9. **Given** the administrator, **When** they sign in, **Then** the administrative area (menu, screens, messages and the provisional screens) is shown in the chosen language, with the same header language switch.
+8. **Given** any screen, before or after sign-in, **When** the person chooses another language from the header, **Then** the page reloads in the new language on the same screen, responses already saved as drafts are kept, whatever was typed or chosen and not saved yet (for example, name and e-mail on the sign-in screen) is restored, the browser keeps the new language and, if someone is signed in, the profile language is updated (`preferred_language` of the participant, `config.admin_preferred_language` of the administrator).
+9. **Given** the administrator, **When** they sign in, **Then** the administrative area (menu, screens, messages and the provisional screens) is shown in the chosen language, with the same header language switch; the first sign-in saves that language in the administrator profile, and on later sign-ins, from any browser, the profile language wins.
 10. **Given** any message of this spec (invalid field, wrong or expired code, seconds left before resending, hourly limit, daily e-mail limit, sending error), **When** it is shown, **Then** it appears in the language of the interface in use.
 
 ---
@@ -102,7 +102,7 @@ Before signing in, the person chooses the language of the interface among Portug
 - The access-code e-mail uses the language of the interface in use, not the profile's preferred language: the profile is not looked up before sign-in, so the language of the e-mail does not reveal whether the e-mail is registered.
 - Cookie `veredito-lang` with a value that is not one of the three locales: it is ignored and the person sees the language-choice screen.
 - Person who opens an address with a locale prefix directly (for example, an invitation link to `/en-US/`) with no saved language: the interface opens in that language and the browser saves it, without going through the language-choice screen.
-- Language switched from the header while typing a response not yet saved: the warning about leaving the page with unsaved changes appears before the reload.
+- Language switched from the header while typing something not yet saved: no warning; the typed values are kept in the browser tab (`sessionStorage`) and restored, still unsaved, after the reload under the new prefix. A file already selected for import cannot be restored and must be chosen again.
 
 ## Requirements *(mandatory)*
 
@@ -119,8 +119,8 @@ Before signing in, the person chooses the language of the interface among Portug
 - **FR-009**: The system MUST count the e-mails sent in the day, stop at the daily limit of the configuration and say when it is reached.
 - **FR-010**: Before sign-in, the first screen (`/`) MUST be the language choice among pt-BR, en-US and es-ES, each option labeled in its own language, with the browser's preferred language preselected when it is supported (matched by language: Portuguese, English or Spanish) and pt-BR otherwise.
 - **FR-011**: The chosen language MUST be saved in the browser (cookie `veredito-lang`); with a valid saved language, `/` MUST go straight to the home page under that locale's prefix.
-- **FR-012**: When the code is validated, the system MUST save the language in use as `preferred_language` of a participant who does not have one yet; when the participant already has `preferred_language`, the profile MUST win: the interface switches to that language and the browser cookie is updated.
-- **FR-013**: The header MUST offer the language switch on every screen, before and after sign-in, for participants and the administrator; switching MUST reload the same screen under the new prefix, keep the responses already saved as drafts, update the cookie `veredito-lang` and, for a signed-in participant, `preferred_language`.
+- **FR-012**: When the code is validated, the system MUST save the language in use as the profile language of whoever does not have one yet (`preferred_language` of the participant, `config.admin_preferred_language` of the administrator); when the profile already has a language, the profile MUST win: the interface switches to that language and the browser cookie is updated.
+- **FR-013**: The header MUST offer the language switch on every screen, before and after sign-in, for participants and the administrator; switching MUST reload the same screen under the new prefix, keep the responses already saved as drafts, restore what was typed and not saved yet (spec 001, FR-078), update the cookie `veredito-lang` and, when someone is signed in, the profile language (`preferred_language` of the participant, `config.admin_preferred_language` of the administrator).
 - **FR-014**: The access-code e-mail (subject and body) and every message of this spec (screens, validation messages, Problem Details `title` and `detail`) MUST be in the language of the interface in use at the time of the request, in each of the three locales.
 - **FR-015**: The administrative area MUST be fully available in pt-BR, en-US and es-ES, following the same language choice and the same header switch as the participant screens.
 
@@ -129,7 +129,8 @@ Before signing in, the person chooses the language of the interface among Portug
 - **Participant**: person identified by e-mail; name, pseudonym, registration date, preferred language (`preferred_language`).
 - **Access code**: linked to an e-mail; validity, attempts, use.
 - **Access session**: linked to a participant or to the administrator; validity.
-- **Language choice in the browser**: cookie `veredito-lang` with `pt-BR`, `en-US` or `es-ES`; used before sign-in and by the administrator.
+- **Language choice in the browser**: cookie `veredito-lang` with `pt-BR`, `en-US` or `es-ES`; used before sign-in.
+- **Administrator profile language**: `config.admin_preferred_language` (`pt-BR`, `en-US` or `es-ES`), read and changed through `/api/v1/administrator/me` (`vd:me`).
 
 ## Success Criteria *(mandatory)*
 
@@ -150,4 +151,4 @@ Before signing in, the person chooses the language of the interface among Portug
 - The consent form, the profile and the screening (spec 006) come between the sign-in and the participation; until then, the provisional screen takes that place.
 - The routing of the locale prefixes, the serving of the three builds, the message bundles and the CI completeness checks come from spec 003; this spec delivers the language-choice screen and its behaviour.
 - The e-mail texts exist in the three languages; pt-BR is the reference version, as for the consent form approved by the research ethics committee.
-- The administrator is not a participant and has no `preferred_language`; their language choice is kept only in the browser (cookie `veredito-lang`).
+- The administrator is not a participant (no row in `participant`); their profile language is kept in the configuration (`config.admin_preferred_language`), as there is a single administrator.

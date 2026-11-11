@@ -85,7 +85,7 @@ All the texts of the item screen follow the interface language (pt-BR, en-US or 
 3. **Given** a `META` item with `origin` or `target` empty, **When** it is displayed, **Then** the empty side shows pt-BR "(nenhum)", en-US "(none)" or es-ES "(ninguno)", according to the interface language.
 4. **Given** an item whose full use case text of a version (`origin_usecase` or `target_usecase`) holds the pipeline text `(the use case does not exist in this version)`, **When** the person opens the modal of that version, **Then** it shows, without line highlighting, pt-BR "(este caso de uso não existe nesta versão)", en-US "(this use case does not exist in this version)" or es-ES "(este caso de uso no existe en esta versión)", according to the interface language; the stored text does not change.
 5. **Given** a `field` without a translation, **When** the item is displayed in any locale, **Then** the original name appears, the same in every locale.
-6. **Given** an item on the screen, **When** the person switches the language in the header, **Then** the page reloads with the same item in the new language, and the use case texts are unchanged.
+6. **Given** an item on the screen, **When** the person switches the language in the header, **Then** the page reloads with the same item in the new language, the use case texts are unchanged, and the impact, operation and comment chosen but not saved yet are restored (spec 001, FR-078); the option labels change language, the stored codes (`LOW`, `HIGH`, `KEEP`, `UPDATE`, ...) do not.
 
 ---
 
@@ -112,6 +112,7 @@ All the texts of the item screen follow the interface language (pt-BR, en-US or 
 - **FR-008**: All the texts of the item screen MUST be shown in the interface language (pt-BR, en-US or es-ES): the `kind` and `field` labels of Appendix A, the question texts, option labels, explanations and precedence rule of Appendices B.1 and B.2, block titles, buttons, modal titles, countdown warnings and screen reader announcements, taken from spec 001 for that locale.
 - **FR-009**: The use case data (system, use case name, `origin`, `target`, full use case texts) MUST be shown as captured, in every locale, without translation; a `field` without a label in Appendix A MUST be shown with its original name.
 - **FR-010**: When `origin_usecase` or `target_usecase` holds only the pipeline text `(the use case does not exist in this version)`, the screen MUST show instead pt-BR "(este caso de uso não existe nesta versão)", en-US "(this use case does not exist in this version)" or es-ES "(este caso de uso no existe en esta versión)"; the empty side of a `META` edit MUST be shown as pt-BR "(nenhum)", en-US "(none)" or es-ES "(ninguno)". Both follow the interface language and change nothing that is stored.
+- **FR-011**: The option labels MUST be translated, but the values chosen and stored MUST be the fixed English codes (`LOW`/`HIGH`; `KEEP`, `UPDATE`, ... of Appendix B.2), whatever the interface language, as they are analyzed as categories after the collection. A language switch MUST restore the impact, operation and comment chosen on the item and not saved yet (spec 001, FR-078).
 
 ## Success Criteria *(mandatory)*
 

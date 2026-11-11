@@ -73,6 +73,9 @@ Data is never translated: it stays in the language in which it was captured.
 | Language columns in exports | wide: `rater_N_response_language`; long: `response_language`, `participant_preferred_language`, `consent_language`; `rater_N_accepted_research_terms_lgpd` = version, language and timestamp (`v1 pt-BR 2026-11-20T14:03:00-03:00`) | — |
 | Anonymized participant marker in exports | `anonymized` | `anonimizado` |
 | Language cookie | `veredito-lang` | — |
+| Administrator profile language | `config.admin_preferred_language`; resource `/api/v1/administrator/me` (`vd:me`) | — |
+| Unsaved input kept across a language switch | `sessionStorage` key `veredito-unsaved:<route>` | — |
+| Category codes (fixed, English, analyzed after the collection) | `change_impact`: `LOW`, `HIGH`; `maintenance_operation`: `KEEP`, `UPDATE`, `REASSIGN`, `CREATE`, `SPLIT`, `MERGE`, `REMOVE`, `FLAG`; only display labels are translated | `BAIXO`, `ALTO`, `MANTER`, ... |
 | Locales | `pt-BR`, `en-US`, `es-ES` (URL prefixes `/pt-BR/`, `/en-US/`, `/es-ES/`); missing or unsupported language falls back to `pt-BR` | — |
 | Missing use case in the import CSV | the S5 text `(the use case does not exist in this version)`, kept as captured; the item screen shows a localized message instead | `(este caso de uso não existe nesta versão)` |
 

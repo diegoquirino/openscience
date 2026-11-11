@@ -1,7 +1,17 @@
 <!--
 Sync Impact Report
-- Version change: 2.6.1 -> 2.7.0 (MINOR: English everywhere; internationalized UI; data kept in its
-  capture language)
+- Version change: 2.7.0 -> 2.7.1 (PATCH: administrator language in the profile; unsaved input kept
+  across a language switch; category codes stated as fixed English values)
+- Modified sections (2.7.1):
+  - Language and internationalization: the administrator's language is also saved in their profile
+    (`config.admin_preferred_language`); a language switch restores what was typed and not yet
+    saved; category codes are fixed English values, translated only for display, so that they can
+    be analyzed as categories after the collection
+- Templates/docs (2.7.1): specs 001 (FR-072, FR-078, research), 004 (FR-013, FR-016, edge cases),
+  007 (User Story 6, FR-016), 008 (User Story 4, FR-011); specs/GLOSSARY.md
+- Follow-up TODOs (2.7.1): none
+- Version change 2.7.0 (2.6.1 -> 2.7.0, MINOR: English everywhere; internationalized UI; data kept
+  in its capture language)
 - Modified principles (2.7.0):
   - I. Standard, current and open-source stack: `@angular/localize` (official Angular i18n, same
     version as Angular) with one build per locale; Spring MessageSource for backend messages;
@@ -234,8 +244,10 @@ Rationale: fewer pieces mean less to maintain, and a predictable cost fits a stu
   language.
 - The first screen, before sign-in, MUST let the user choose the language among the three
   options, with the browser language preselected when supported (fallback pt-BR). The choice is
-  saved in the browser and, after sign-in, in the participant profile (`preferred_language`); it
-  MUST be possible to change it at any time from the header.
+  saved in the browser and, after sign-in, in the profile (`preferred_language` of the
+  participant; `config.admin_preferred_language` of the administrator); it MUST be possible to
+  change it at any time from the header. A language switch MUST NOT lose what the person typed or
+  chose and has not saved yet: it is kept in the browser tab and restored after the reload.
 - The consent form and the e-mails MUST exist in the three languages. The pt-BR version is the
   reference approved by the research ethics committee (CEP); the en-US and es-ES versions MUST
   state that they are translations and link to the pt-BR version.
@@ -243,8 +255,9 @@ Rationale: fewer pieces mean less to maintain, and a predictable cost fits a stu
   (`language`); the participant's preferred language and the language of the accepted consent form
   are recorded too; exports MUST include them.
 - Codes stored in the database and in exports (`change_impact`, `maintenance_operation`,
-  `professional_skill`, screening answer, study phase) MUST be English identifiers; only their
-  display labels are translated. Every user-facing string MUST exist in the three locales,
+  `professional_skill`, screening answer, study phase) MUST be fixed English identifiers, stored
+  the same whatever the UI language, because they are analyzed as categories after the collection;
+  only their display labels are translated. Every user-facing string MUST exist in the three locales,
   checked automatically in CI (Principle II).
 - Data MUST NEVER be translated: imported use cases and edits, participant comments, names and
   the consent form text each person accepted stay in the language in which they were captured.
@@ -286,4 +299,4 @@ Rationale: fewer pieces mean less to maintain, and a predictable cost fits a stu
   major.minor.patch versioning: major to remove or redefine a principle, minor to add a principle
   or section, patch for wording adjustments.
 
-**Version**: 2.7.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.7.1 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
