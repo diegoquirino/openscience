@@ -112,7 +112,7 @@ O pesquisador testa uma mudança num ambiente de ensaio, com endereço e base de
 - **SC-002**: Em três publicações seguidas, a URL não muda e nenhum registro da base é alterado.
 - **SC-003**: Preparar a base duas vezes resulta na mesma estrutura.
 - **SC-004**: A página inicial abre em menos de 3 segundos, depois que o sistema já está em uso.
-- **SC-005**: O custo mensal do sistema fica abaixo de US$ 15, com alerta automático se passar disso.
+- **SC-005**: O custo mensal do sistema fica abaixo de R$ 200, com alerta automático se passar disso.
 - **SC-006**: Uma busca por senhas e chaves no repositório público não encontra nada.
 
 ## Assumptions

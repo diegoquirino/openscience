@@ -68,7 +68,8 @@ Secret Manager: senha do banco, senha de app do Gmail, chave de sessão
 | Pool de conexões | No máximo 5 por instância do Cloud Run, para caber nas 25 conexões |
 | Segredos | Secret Manager, injetados como variáveis de ambiente do Cloud Run |
 | Imagens | Artifact Registry, mantendo só as 5 imagens mais recentes |
-| Orçamento | Alerta de US$ 15 por mês no projeto |
+| Projeto | `veredito-issta2027`, vinculado à conta de faturamento existente (em reais) |
+| Orçamento | "Veredito mensal": R$ 200 por mês só neste projeto, só alertas, em 50%, 90% e 100% |
 | URL | A padrão do Cloud Run (`https://veredito-….run.app`); domínio próprio é opcional |
 
 **Custo estimado**: cerca de US$ 10 a 13 por mês, quase tudo do Cloud SQL (`db-f1-micro` custa cerca de US$ 7,70 por mês em `us-central1`, mais disco e backup; São Paulo é um pouco mais cara). Cloud Run, Artifact Registry, Secret Manager e GitHub Actions (repositório público) ficam no nível gratuito. Contas novas recebem US$ 300 de crédito por 90 dias.
@@ -150,7 +151,8 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 
 - **Flyway e MySQL 9.7**: a lista de versões certificadas do Flyway vai até a 9.4. Versões mais novas costumam só gerar aviso. Os testes com Testcontainers 9.7 confirmam; se falhar, voltar para MySQL 8.4 LTS.
 - **Máquina compartilhada com MySQL 9.7 no Cloud SQL**: confirmar no plano da spec 003. Se não houver, usar 8.4 no `db-f1-micro` ou 9.7 no `db-g1-small`.
-- **Repositório público**: ativar o *secret scanning* e o *push protection* do GitHub no repositório.
+- **Repositório público**: *secret scanning* e *push protection* do GitHub ativados em 2026-11-11.
+- **E-mail**: a senha de app do Gmail ("Veredito SMTP") já existe e está guardada fora do repositório; entra no Secret Manager no plano da spec 003.
 - **CSV com os casos de uso completos**: especificado em [002-csv-oraculo](../002-csv-oraculo/spec.md).
 - **Concordância entre avaliadores**: ver a seção *Assumptions* da spec. Afeta a análise, não a tecnologia.
 - **LGPD**: os dados ficam no Google Cloud, na região escolhida. Isso precisa constar no termo (TCLE).

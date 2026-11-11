@@ -1,7 +1,9 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 2.0.0 (MAJOR: troca de tecnologia redefine os Princípios I, II e V)
-- Modified principles:
+- Version change: 2.0.0 → 2.0.1 (PATCH: alerta de orçamento do Princípio V passa de US$ 15 para
+  R$ 200 por mês, na moeda da conta de faturamento, com o projeto `veredito-issta2027`)
+- Version change anterior: 1.0.0 → 2.0.0 (MAJOR: troca de tecnologia redefine os Princípios I, II e V)
+- Modified principles (2.0.0):
   - I. Custo zero numa conta Google gratuita → I. Stack padrão, atual e de código aberto
   - II. Regras testáveis sem publicar → II. Regras de domínio isoladas e testadas
   - III. Integridade da coleta (NÃO NEGOCIÁVEL): lock do script → transações e restrições do banco;
@@ -75,7 +77,8 @@ público e o próprio repositório já é público.
 - Um único artefato publicável: o mesmo contêiner serve o Angular compilado e a API.
 - Na produção, só serviços gerenciados do Google Cloud: Cloud Run, Cloud SQL para MySQL, Secret
   Manager e Artifact Registry. Qualquer serviço a mais exige justificativa no plano.
-- O projeto no Google Cloud DEVE ter alerta de orçamento de US$ 15 por mês.
+- O projeto no Google Cloud (`veredito-issta2027`) DEVE ter orçamento mensal de R$ 200, só com
+  alertas (sem limite que suspenda o serviço), avisando em 50%, 90% e 100%.
 - Interface só com componentes do Angular Material, responsiva do celular ao computador.
 - Cada chamada à API DEVE terminar em menos de 2 segundos no uso normal.
 
@@ -113,4 +116,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.0.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.0.1 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
