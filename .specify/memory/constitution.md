@@ -1,218 +1,289 @@
 <!--
 Sync Impact Report
-- Version change: 2.6.0 → 2.6.1 (PATCH: critério de sucesso conferido numa spec posterior)
+- Version change: 2.6.1 -> 2.7.0 (MINOR: English everywhere; internationalized UI; data kept in its
+  capture language)
+- Modified principles (2.7.0):
+  - I. Standard, current and open-source stack: `@angular/localize` (official Angular i18n, same
+    version as Angular) with one build per locale; Spring MessageSource for backend messages;
+    OpenAPI summaries and descriptions in English
+  - II. Isolated and tested domain rules: automated i18n completeness checks (Angular trans-units
+    with pt-BR and es-ES targets; same keys in the three backend message bundles; Problem Details
+    in the requested language)
+  - IV. Privacy, LGPD and secrets: identifiers `staging` (former `ensaio`), study phase `pilot`
+    (former `piloto`); Minitest fixture `backend/src/test/resources/minitest/veredito_minitest.csv`;
+    pipeline files `t1_<system>_rater*.csv`
+- Added sections (2.7.0):
+  - Language and internationalization: everything in the repository in English; UI in pt-BR,
+    en-US and es-ES; language choice before sign-in; consent form and e-mails in three languages
+    (pt-BR is the CEP-approved reference); capture language recorded; English codes in the
+    database and exports; data never translated; vocabulary and identifiers in `specs/GLOSSARY.md`
+- Modified sections (2.7.0):
+  - Scope and exceptions: spec 002 folder is `002-oracle-import-csv`
+  - Restrictions and workflow: profile `staging`, study phase `collection`; the Portuguese
+    vocabulary rule is replaced by a reference to `specs/GLOSSARY.md` (UI vocabulary per locale)
+- Templates/docs (2.7.0): all specs (001 to 011) translated into English; spec folders renamed
+  with git mv (`001-oracle-labeling`, `002-oracle-import-csv`, `003-deployment-foundation`,
+  `004-email-code-access`, `005-block-import`, `006-consent-screening`, `007-block-queue`,
+  `008-item-screen`, `009-exports`, `010-progress-dashboard`, `011-lgpd-withdrawal`);
+  `specs/GLOSSARY.md` added; specs/ROADMAP.md translated (constitution 2.7.0; i18n infrastructure
+  in 003; language-choice screen in 004)
+- Follow-up TODOs (2.7.0): none
+- Version change 2.6.1 (2.6.0 -> 2.6.1, PATCH: success criterion checked in a later spec)
 - Modified sections (2.6.1):
-  - Restrições e fluxo de trabalho: um critério que só pode ser conferido numa spec posterior fica
-    para ela, se a spec disser isso (caso do SC-003 da spec 002, conferido na 005)
-- Templates/docs (2.6.1): specs/ROADMAP.md (ordem estritamente sequencial: 002, 003, 004, 005,
-  007, 006, 008, 009, 010, 011; sem colunas de paralelismo); specs 002, 003, 005, 006 e 009
-  (cabeçalhos sem "Pode correr em paralelo"); spec 007 (elegibilidade aberta até a 006)
-- Version change 2.6.0 (2.5.0 → 2.6.0, MINOR: vocabulário da rotulagem dos dados)
+  - Restrictions and workflow: a criterion that can only be checked in a later spec is left to it,
+    if the spec says so (case of SC-003 of spec 002, checked in 005)
+- Templates/docs (2.6.1): specs/ROADMAP.md (strictly sequential order: 002, 003, 004, 005,
+  007, 006, 008, 009, 010, 011; no parallelism columns); specs 002, 003, 005, 006 and 009
+  (headers without "May run in parallel"); spec 007 (eligibility left open until 006)
+- Version change 2.6.0 (2.5.0 -> 2.6.0, MINOR: data labeling vocabulary)
 - Modified sections (2.6.0):
-  - Restrições e fluxo de trabalho: vocabulário (rotulagem dos dados; "avaliar" em botões e
-    mensagens curtas; participante e voluntário; rotulador 1 e 2)
-  - III. Integridade da coleta (razão): "duas classificações" passa a "dois rótulos"
-  - Escopo e exceções: "dados de avaliadores" passa a "dados de rotuladores"
-- Version change 2.5.0 (2.4.0 → 2.5.0, MINOR: versionamento da API pelo caminho, `/api/v1`)
+  - Restrictions and workflow: vocabulary (data labeling, former "rotulagem dos dados"; "avaliar"
+    in buttons and short messages; participant and volunteer; rater 1 and 2)
+  - III. Data collection integrity (rationale): "two classifications" becomes "two labels"
+  - Scope and exceptions: "evaluator data" becomes "rater data"
+- Version change 2.5.0 (2.4.0 -> 2.5.0, MINOR: API versioning in the path, `/api/v1`)
 - Modified principles (2.5.0):
-  - I. Stack padrão, atual e de código aberto: versão no caminho com o suporte nativo do Spring
-    Framework; versão nova só para mudança incompatível; anterior obsoleta com `Deprecation` e
-    `Sunset` até sair de uso; domínio e banco sem versão; ponto de entrada por versão
-    (`/api/v1`); uma especificação OpenAPI por versão
-  - II. Regras de domínio isoladas e testadas: testes partem de `/api/v1`; cada versão suportada
-    tem seus testes e sua especificação conferida
-- Version change 2.4.0 (2.3.0 → 2.4.0, MINOR: ensaio local, testes e piloto só com itens do Minitest)
+  - I. Standard, current and open-source stack: version in the path with the native support of
+    Spring Framework; a new version only for an incompatible change; the previous one deprecated
+    with `Deprecation` and `Sunset` until it is no longer used; domain and database without
+    version; one entry point per version (`/api/v1`); one OpenAPI specification per version
+  - II. Isolated and tested domain rules: tests start from `/api/v1`; each supported version has
+    its own tests and its checked specification
+- Version change 2.4.0 (2.3.0 -> 2.4.0, MINOR: local staging, tests and pilot only with Minitest
+  items)
 - Modified principles (2.4.0):
-  - IV. Privacidade, LGPD e segredos: ensaio local, testes automatizados e piloto em produção usam
-    só itens do Minitest; importação recusa outro sistema no ensaio e na fase `piloto`
+  - IV. Privacy, LGPD and secrets: local staging, automated tests and the pilot in production use
+    only Minitest items; the import refuses another system in staging and in phase `pilot`
 - Modified sections (2.4.0):
-  - Restrições e fluxo de trabalho: piloto só com o Minitest; depois de recriar a base, a fase
-    passa a `coleta` antes de importar a base real
-- Version change 2.3.0 (2.2.0 → 2.3.0, MINOR: testes automatizados da API com REST Assured)
+  - Restrictions and workflow: pilot only with Minitest; after the database is recreated, the
+    phase switches to `collection` before the real dataset is imported
+- Version change 2.3.0 (2.2.0 -> 2.3.0, MINOR: automated API tests with REST Assured)
 - Modified principles (2.3.0):
-  - II. Regras de domínio isoladas e testadas: testes da API com REST Assured, por HTTP real numa
-    porta aleatória, partindo de `/api` e seguindo os links
-- Templates: nenhum template do Spec Kit cita ferramenta de teste; nada a ajustar
-- Version change 2.2.0 (2.1.0 → 2.2.0, MINOR: API REST no nível 3 de Richardson, "glory of REST", e
-  documentada em OpenAPI/Swagger)
+  - II. Isolated and tested domain rules: API tests with REST Assured, over real HTTP on a random
+    port, starting from `/api` and following the links
+- Templates: no Spec Kit template mentions a test tool; nothing to adjust
+- Version change 2.2.0 (2.1.0 -> 2.2.0, MINOR: REST API at Richardson level 3, "glory of REST", and
+  documented in OpenAPI/Swagger)
 - Modified principles (2.2.0):
-  - I. Stack padrão, atual e de código aberto: regra da API (recursos, verbos e status HTTP,
-    hipermídia HAL-FORMS com Spring HATEOAS, ponto de entrada `/api`, Problem Details) e
-    documentação OpenAPI 3.1 com Swagger UI (springdoc-openapi)
-  - II. Regras de domínio isoladas e testadas: links e ações por estado cobertos por testes da API;
-    teste que barra endpoint sem documentação completa
-- Version change 2.1.0 (2.0.1 → 2.1.0, MINOR: ambientes redefinidos; produção no Google Cloud e ensaio
-  local em Docker, sem ensaio na nuvem)
+  - I. Standard, current and open-source stack: API rule (resources, HTTP verbs and status codes,
+    HAL-FORMS hypermedia with Spring HATEOAS, entry point `/api`, Problem Details) and OpenAPI
+    3.1 documentation with Swagger UI (springdoc-openapi)
+  - II. Isolated and tested domain rules: links and actions per state covered by API tests; a
+    test that blocks an endpoint without complete documentation
+- Version change 2.1.0 (2.0.1 -> 2.1.0, MINOR: environments redefined; production on Google Cloud
+  and local staging in Docker, no cloud staging)
 - Modified sections (2.1.0):
-  - Restrições e fluxo de trabalho: regra de ensaio passa a ser o Docker local; piloto na produção
-    com a base recriada vazia antes da divulgação
-  - IV. Privacidade, LGPD e segredos: ensaio local só com dados fictícios; dados de produção não
-    descem para a máquina
-  - V. Simplicidade e custo controlado: um único serviço e um único banco na nuvem
-- Templates: nenhum template do Spec Kit cita ambientes; nada a ajustar
-- Version change 2.0.1: alerta de orçamento do Princípio V passa de US$ 15 para R$ 200 por mês
-- Version change anterior: 1.0.0 → 2.0.0 (MAJOR: troca de tecnologia redefine os Princípios I, II e V)
+  - Restrictions and workflow: the staging rule becomes local Docker; pilot in production with the
+    database recreated empty before the announcement
+  - IV. Privacy, LGPD and secrets: local staging only with fictitious data; production data never
+    comes down to the machine
+  - V. Simplicity and controlled cost: a single service and a single database in the cloud
+- Templates: no Spec Kit template mentions environments; nothing to adjust
+- Version change 2.0.1: the Principle V budget alert changes from US$ 15 to R$ 200 per month
+- Earlier version change: 1.0.0 -> 2.0.0 (MAJOR: technology change redefines Principles I, II and V)
 - Modified principles (2.0.0):
-  - I. Custo zero numa conta Google gratuita → I. Stack padrão, atual e de código aberto
-  - II. Regras testáveis sem publicar → II. Regras de domínio isoladas e testadas
-  - III. Integridade da coleta (NÃO NEGOCIÁVEL): lock do script → transações e restrições do banco;
-    migrações só pelo Flyway
-  - IV. Privacidade e LGPD → IV. Privacidade, LGPD e segredos (repositório público)
-  - V. Simplicidade dentro dos limites da plataforma → V. Simplicidade e custo controlado
-- Added sections: nenhuma (Escopo e exceções, Restrições e fluxo de trabalho reescritas)
-- Removed sections: nenhuma
-- Follow-up TODOs: nenhum
+  - I. Zero cost on a free Google account -> I. Standard, current and open-source stack
+  - II. Rules testable without deploying -> II. Isolated and tested domain rules
+  - III. Data collection integrity (NON-NEGOTIABLE): script lock -> database transactions and
+    constraints; migrations only through Flyway
+  - IV. Privacy and LGPD -> IV. Privacy, LGPD and secrets (public repository)
+  - V. Simplicity within the platform limits -> V. Simplicity and controlled cost
+- Added sections: none (Scope and exceptions, Restrictions and workflow rewritten)
+- Removed sections: none
+- Follow-up TODOs: none
 -->
 
 # Veredito Constitution
 
 ## Core Principles
 
-### I. Stack padrão, atual e de código aberto
+### I. Standard, current and open-source stack
 
-- Frontend: Angular com Angular Material (Material Design 3), em TypeScript.
-- Backend: Spring Boot sobre Java LTS, em Maven.
-- API: REST no nível 3 do modelo de maturidade de Richardson ("glory of REST"):
-  - recursos identificados por URI;
-  - métodos e códigos de status HTTP com a semântica padrão;
-  - hipermídia com Spring HATEOAS em HAL-FORMS: cada resposta traz os links e as ações
-    permitidas no estado atual do recurso;
-  - versão no caminho (`/api/v1`, `/api/v2`), com o suporte nativo do Spring Framework a
-    versões de API. Só mudança incompatível cria versão nova; a anterior continua no ar,
-    marcada como obsoleta (cabeçalhos `Deprecation` e `Sunset`), até não ter mais uso. A camada
-    de domínio e o banco não têm versão;
-  - um único ponto de entrada por versão, `/api/v1`; o cliente Angular navega pelas relações de
-    link e não monta URLs da API;
-  - erros em Problem Details (RFC 9457).
-- Documentação da API: OpenAPI 3.1 gerada a partir do código (springdoc-openapi), com Swagger UI e
-  uma especificação por versão da API. Todo endpoint DEVE ter:
-  - resumo e descrição em português;
-  - parâmetros, corpo e exemplos;
-  - todas as respostas possíveis, com o esquema de erro;
-  - as relações de link e ações que oferece.
+- Frontend: Angular with Angular Material (Material Design 3), in TypeScript, internationalized
+  with `@angular/localize` (official Angular i18n, same version as Angular): one build per locale
+  (pt-BR, en-US, es-ES).
+- Backend: Spring Boot on Java LTS, with Maven. User-facing backend messages (Problem Details
+  `title`/`detail`, e-mails) come from Spring MessageSource, in the user's language.
+- API: REST at level 3 of the Richardson maturity model ("glory of REST"):
+  - resources identified by URI;
+  - HTTP methods and status codes with their standard semantics;
+  - hypermedia with Spring HATEOAS in HAL-FORMS: each response carries the links and actions
+    allowed in the current state of the resource;
+  - version in the path (`/api/v1`, `/api/v2`), with the native support of Spring Framework for
+    API versions. Only an incompatible change creates a new version; the previous one stays
+    online, marked as deprecated (headers `Deprecation` and `Sunset`), until it is no longer used.
+    The domain layer and the database have no version;
+  - a single entry point per version, `/api/v1`; the Angular client navigates through the link
+    relations and does not build API URLs;
+  - errors in Problem Details (RFC 9457).
+- API documentation: OpenAPI 3.1 generated from the code (springdoc-openapi), with Swagger UI and
+  one specification per API version. Every endpoint MUST have:
+  - a summary and a description in English;
+  - parameters, body and examples;
+  - all possible responses, with the error schema;
+  - the link relations and actions it offers.
 
-  O Swagger UI fica aberto no ensaio local e, na produção, só para o administrador.
-- Banco: MySQL Community, com o esquema versionado pelo Flyway (edição de código aberto).
-- Cada spec DEVE começar com as versões estáveis mais recentes de cada peça (a LTS, quando
-  houver) e registrá-las no seu plano. Atualizações menores e de correção são livres; trocar uma
-  peça por outra tecnologia exige emendar esta constitution.
-- Só edições comunitárias ou de código aberto; nenhuma licença paga.
+  Swagger UI is open in local staging and, in production, only to the administrator.
+- Database: MySQL Community, with the schema versioned by Flyway (open-source edition).
+- Each spec MUST start with the latest stable versions of each piece (the LTS, when there is
+  one) and record them in its plan. Minor and patch updates are free; replacing a piece with
+  another technology requires amending this constitution.
+- Only community or open-source editions; no paid license.
 
-Razão: tecnologias de mercado, conhecidas e bem documentadas dão segurança para manter o sistema
-durante toda a coleta e para quem for reproduzir o estudo.
+Rationale: mainstream, well-known and well-documented technologies give confidence to maintain the
+system throughout the data collection and to whoever reproduces the study.
 
-### II. Regras de domínio isoladas e testadas
+### II. Isolated and tested domain rules
 
-- A validação do CSV, a divisão em blocos, a escolha do próximo bloco e o formato das exportações
-  DEVEM ficar numa camada de domínio em Java puro, sem dependência de Spring, banco ou HTTP, com
-  testes unitários.
-- O acesso ao banco DEVE ter testes de integração contra um MySQL da mesma versão da produção,
-  em contêiner.
-- Os testes automatizados da API DEVEM ser escritos com REST Assured, por HTTP real contra a
-  aplicação numa porta aleatória (Spring Boot Test com MySQL em contêiner). Cada teste parte do
-  ponto de entrada da versão (`/api/v1`) e segue as relações de link, como o cliente Angular; a
-  única URL fixa nos testes é a do ponto de entrada. Cada versão suportada tem os seus testes.
-- Os links e ações que a API oferece em cada estado de um recurso DEVEM ser cobertos por esses
-  testes; uma ação proibida naquele estado não aparece como link e, se chamada, é recusada.
-- Um teste DEVE falhar se algum endpoint da especificação OpenAPI gerada, em qualquer versão
-  suportada, estiver sem resumo, descrição, respostas de erro ou exemplos; o CI guarda a
-  especificação de cada versão (`openapi-v1.json`, ...) de cada commit.
-- Uma regra nova ou alterada DEVE vir acompanhada dos seus testes, no mesmo commit.
+- CSV validation, splitting into blocks, choosing the next block and the export format MUST live
+  in a domain layer in plain Java, without dependencies on Spring, the database or HTTP, with unit
+  tests.
+- Database access MUST have integration tests against a MySQL of the same version as production,
+  in a container.
+- Automated API tests MUST be written with REST Assured, over real HTTP against the application on
+  a random port (Spring Boot Test with MySQL in a container). Each test starts from the entry
+  point of the version (`/api/v1`) and follows the link relations, like the Angular client; the
+  only fixed URL in the tests is the entry point. Each supported version has its own tests.
+- The links and actions the API offers in each state of a resource MUST be covered by these
+  tests; an action forbidden in that state does not appear as a link and, if called, is refused.
+- A test MUST fail if any endpoint of the generated OpenAPI specification, in any supported
+  version, lacks a summary, description, error responses or examples; CI keeps the specification
+  of each version (`openapi-v1.json`, ...) for each commit.
+- Internationalization completeness MUST be checked automatically in CI:
+  - every Angular trans-unit has a pt-BR and an es-ES target (en-US is the source locale);
+  - the three backend message bundles (pt-BR, en-US, es-ES) have the same keys;
+  - API tests check that Problem Details come in the requested language.
+- A new or changed rule MUST come with its tests, in the same commit.
 
-Razão: as regras de alocação são o ponto de maior risco e precisam ser verificadas sem depender do
-ambiente publicado.
+Rationale: the allocation rules are the point of highest risk and must be verified without
+depending on the deployed environment.
 
-### III. Integridade da coleta (NÃO NEGOCIÁVEL)
+### III. Data collection integrity (NON-NEGOTIABLE)
 
-- Pedir bloco, salvar rascunho, enviar bloco e importar DEVEM rodar, cada um, numa única transação
-  do banco, com bloqueio das linhas disputadas.
-- As invariantes DEVEM estar também no banco, como restrições: um participante por bloco (nunca os
-  dois papéis), uma resposta por item e papel, um item por (`sistema`, `edit_key`).
-- Blocos e suas posições na fila NÃO DEVEM mudar depois de criados; respostas finais são imutáveis
-  para o participante.
-- O esquema só muda por migrações versionadas do Flyway; migração já aplicada NUNCA é editada.
+- Requesting a block, saving a draft, submitting a block and importing MUST each run in a single
+  database transaction, locking the contended rows.
+- The invariants MUST also be in the database, as constraints: one participant per block (never
+  both roles), one response per item and role, one item per (`system`, `edit_key`).
+- Blocks and their positions in the queue MUST NOT change after they are created; final responses
+  are immutable for the participant.
+- The schema only changes through versioned Flyway migrations; an already applied migration is
+  NEVER edited.
 
-Razão: o oráculo só tem valor se cada item tiver dois rótulos independentes e completos, de
-pessoas diferentes, e isso não pode depender só do código da aplicação.
+Rationale: the oracle only has value if each item has two independent and complete labels, from
+different people, and this cannot depend only on the application code.
 
-### IV. Privacidade, LGPD e segredos
+### IV. Privacy, LGPD and secrets
 
-- O código fica num repositório público: senhas, chaves, URLs de banco com credenciais, dados de
-  participantes, dumps e exportações NUNCA vão para o git.
-- Segredos de produção ficam no Secret Manager do Google Cloud e, para a publicação, em segredos
-  do GitHub; o acesso do GitHub ao Google Cloud é feito sem chave de longa duração.
-- Códigos de acesso e identificadores de sessão DEVEM ser guardados só em hash; a sessão vai em
-  cookie `HttpOnly`, `Secure` e `SameSite`.
-- A tabela longa e os arquivos do pipeline (`t1_<sistema>_rater*.csv`) NÃO DEVEM conter nome nem
+- The code lives in a public repository: passwords, keys, database URLs with credentials,
+  participant data, dumps and exports NEVER go into git.
+- Production secrets live in Google Cloud Secret Manager and, for deployment, in GitHub secrets;
+  GitHub accesses Google Cloud without a long-lived key.
+- Access codes and session identifiers MUST be stored only as hashes; the session goes in an
+  `HttpOnly`, `Secure` and `SameSite` cookie.
+- The long table and the pipeline files (`t1_<system>_rater*.csv`) MUST NOT contain name or
   e-mail.
-- O banco não é exposto à internet; participantes só acessam dados pela aplicação.
-- O ensaio local, os testes automatizados e o ensaio piloto em produção usam só itens do sistema
-  Minitest: o CSV gerado pela spec 002 e arquivos derivados dele para os casos de erro e de
-  volume. O CSV fica versionado no repositório, porque o Minitest já é público. Os participantes
-  do ensaio local e dos testes são fictícios.
-- A importação DEVE recusar arquivo de outro sistema no ensaio local e, na produção, enquanto a
-  fase do estudo for `piloto`.
-- Dumps e exportações da produção NÃO DEVEM ser carregados na máquina de desenvolvimento.
+- The database is not exposed to the internet; participants only access data through the
+  application.
+- Local staging, the automated tests and the pilot in production use only items of the Minitest
+  system: the CSV generated by spec 002, versioned as the fixture
+  `backend/src/test/resources/minitest/veredito_minitest.csv`, and files derived from it for the
+  error and volume cases. The CSV is versioned in the repository because Minitest is already
+  public. The participants of local staging and of the tests are fictitious.
+- The import MUST refuse a file of another system in local staging and, in production, while the
+  study phase is `pilot`.
+- Production dumps and exports MUST NOT be loaded on the development machine.
 
-Razão: o estudo coleta dados pessoais sob termo de consentimento, o pacote de replicação será
-público e o próprio repositório já é público.
+Rationale: the study collects personal data under a consent form, the replication package will be
+public and the repository itself is already public.
 
-### V. Simplicidade e custo controlado
+### V. Simplicity and controlled cost
 
-- Um único artefato publicável: o mesmo contêiner serve o Angular compilado e a API.
-- Na produção, só serviços gerenciados do Google Cloud: Cloud Run, Cloud SQL para MySQL, Secret
-  Manager e Artifact Registry, com um único serviço do Cloud Run e um único banco. Qualquer
-  serviço a mais exige justificativa no plano.
-- O projeto no Google Cloud (`veredito-issta2027`) DEVE ter orçamento mensal de R$ 200, só com
-  alertas (sem limite que suspenda o serviço), avisando em 50%, 90% e 100%.
-- Interface só com componentes do Angular Material, responsiva do celular ao computador.
-- Cada chamada à API DEVE terminar em menos de 2 segundos no uso normal.
+- A single deployable artifact: the same container serves the compiled Angular app (one build per
+  locale) and the API.
+- In production, only managed Google Cloud services: Cloud Run, Cloud SQL for MySQL, Secret
+  Manager and Artifact Registry, with a single Cloud Run service and a single database. Any
+  additional service requires a justification in the plan.
+- The Google Cloud project (`veredito-issta2027`) MUST have a monthly budget of R$ 200, with
+  alerts only (no limit that suspends the service), warning at 50%, 90% and 100%.
+- Interface only with Angular Material components, responsive from phone to desktop.
+- Each API call MUST finish in less than 2 seconds under normal use.
 
-Razão: menos peças significam menos a manter, e um custo previsível cabe no orçamento de um
-estudante.
+Rationale: fewer pieces mean less to maintain, and a predictable cost fits a student's budget.
 
-## Escopo e exceções
+## Scope and exceptions
 
-- Esta constitution governa o app Veredito, publicado a partir do branch `Veredito` do repositório
-  `diegoquirino/openscience`.
-- **Exceção: spec 002 (`002-csv-oraculo`).** O gerador do CSV de importação é um comando Python do
-  pipeline em `ISSTA_2027` e segue as convenções daquele projeto. Os Princípios I, II, III e V e as
-  regras de publicação não se aplicam a ele. Continuam valendo: a ausência de dados de rotuladores
-  e de identificadores cegos no arquivo gerado (Princípio IV), UTF-8 e a compatibilidade com o
-  formato de importação do Veredito.
+- This constitution governs the Veredito app, deployed from the `Veredito` branch of the
+  `diegoquirino/openscience` repository.
+- **Exception: spec 002 (`002-oracle-import-csv`).** The import CSV generator is a Python command
+  of the pipeline in `ISSTA_2027` and follows that project's conventions. Principles I, II, III and
+  V and the deployment rules do not apply to it. Still in force: no rater data and no blind
+  identifiers in the generated file (Principle IV), UTF-8 and compatibility with the Veredito
+  import format.
 
-## Restrições e fluxo de trabalho
+## Language and internationalization
 
-- O branch `Veredito` é órfão: não compartilha histórico com os demais estudos do repositório.
-- **Ambientes**: a produção é o Google Cloud (projeto `veredito-issta2027`); o ensaio (testes) é
-  local, em Docker: Docker Compose com a imagem construída pelo mesmo `Dockerfile` da produção, um
-  MySQL na mesma versão e um servidor de e-mail de teste. Não existe ensaio na nuvem.
-- Toda mudança DEVE passar pelos testes automáticos e pelo ensaio local antes da produção.
-- O ensaio piloto com colegas acontece na produção, antes da divulgação, só com os itens do
-  Minitest. Ao fim dele, a base de produção é recriada vazia, o administrador passa a fase do
-  estudo para `coleta` e só então importa a base real.
-- A publicação é feita pelo GitHub Actions a partir do branch `Veredito`, sempre no mesmo serviço
-  do Cloud Run, para manter a URL.
-- As specs são implementadas uma por vez, na ordem de `specs/ROADMAP.md`. A seguinte só começa
-  quando os critérios de sucesso da anterior forem atendidos no ensaio local (ou na produção, quando
-  o critério for da própria publicação). Um critério que só pode ser conferido numa spec posterior
-  fica para ela, se a spec disser isso.
-- Os arquivos exportados DEVEM continuar compatíveis com o pacote `issta_tcm`.
-- Todos os arquivos de texto do projeto DEVEM estar em UTF-8.
-- Vocabulário: a atividade é a **rotulagem dos dados** (títulos, termo, convites, explicações e
-  documentação); botões e mensagens curtas usam "avaliar". Quem rotula é "participante" no termo,
-  na LGPD e nos documentos formais, e "voluntário" nos convites e telas; a posição no bloco é
-  rotulador 1 ou 2. Nomes de colunas e arquivos do pipeline (`rater1`, `rater2`) não mudam. A
-  tabela completa fica na seção *Vocabulário* da spec 001.
+- Everything in the repository MUST be in English: folder and file names, identifiers (database
+  schema, REST paths, link relations, configuration keys and values), code, code comments,
+  documentation and commit messages.
+- The vocabulary and identifiers MUST follow `specs/GLOSSARY.md`, which also holds the user
+  interface vocabulary per locale.
+- The user interface MUST be available in pt-BR, en-US and es-ES, with the official Angular i18n
+  (`@angular/localize`): one build per locale, served by the same Spring Boot application under
+  `/pt-BR/`, `/en-US/` and `/es-ES/`; switching language reloads the page. Backend messages
+  (Problem Details `title`/`detail`, e-mails) MUST come from Spring MessageSource in the user's
+  language.
+- The first screen, before sign-in, MUST let the user choose the language among the three
+  options, with the browser language preselected when supported (fallback pt-BR). The choice is
+  saved in the browser and, after sign-in, in the participant profile (`preferred_language`); it
+  MUST be possible to change it at any time from the header.
+- The consent form and the e-mails MUST exist in the three languages. The pt-BR version is the
+  reference approved by the research ethics committee (CEP); the en-US and es-ES versions MUST
+  state that they are translations and link to the pt-BR version.
+- The capture language MUST be recorded: each response records the UI language at save time
+  (`language`); the participant's preferred language and the language of the accepted consent form
+  are recorded too; exports MUST include them.
+- Codes stored in the database and in exports (`change_impact`, `maintenance_operation`,
+  `professional_skill`, screening answer, study phase) MUST be English identifiers; only their
+  display labels are translated. Every user-facing string MUST exist in the three locales,
+  checked automatically in CI (Principle II).
+- Data MUST NEVER be translated: imported use cases and edits, participant comments, names and
+  the consent form text each person accepted stay in the language in which they were captured.
+- A missing use case in the import CSV keeps the pipeline text
+  `(the use case does not exist in this version)` as captured; the item screen MUST show a
+  localized message instead. A META edit may have the origin OR the target empty (not both); the
+  empty side MUST be shown as a localized "(none)".
+
+## Restrictions and workflow
+
+- The `Veredito` branch is orphan: it shares no history with the other studies in the repository.
+- **Environments**: production is Google Cloud (project `veredito-issta2027`); staging (tests) is
+  local, in Docker: Docker Compose with the image built by the same `Dockerfile` as production
+  (profile `staging`), a MySQL of the same version and a test e-mail server. There is no cloud
+  staging.
+- Every change MUST pass the automated tests and local staging before production.
+- The pilot with colleagues happens in production, before the announcement, only with Minitest
+  items (study phase `pilot`). At its end, the production database is recreated empty, the
+  administrator switches the study phase to `collection` and only then imports the real dataset.
+- Deployment is done by GitHub Actions from the `Veredito` branch, always to the same Cloud Run
+  service, to keep the URL.
+- Specs are implemented one at a time, in the order of `specs/ROADMAP.md`. The next one only
+  starts when the success criteria of the previous one are met in local staging (or in
+  production, when the criterion concerns the deployment itself). A criterion that can only be
+  checked in a later spec is left to it, if the spec says so.
+- Exported files MUST remain compatible with the `issta_tcm` package.
+- All text files of the project MUST be in UTF-8.
+- Vocabulary: terms, identifiers and the user interface vocabulary per locale are defined in
+  `specs/GLOSSARY.md` (see *Language and internationalization*). Pipeline column and file names
+  (`rater1`, `rater2`) do not change.
 
 ## Governance
 
-- Esta constitution prevalece sobre outras práticas do projeto. Todo plano (`/speckit-plan`) DEVE
-  conferir a conformidade com ela.
-- Um plano que viole um princípio DEVE justificar a exceção na sua seção de verificação da
-  constitution; sem justificativa aceita, o plano não segue.
-- Emendas são feitas com `/speckit-constitution`, registram a data e seguem versão
-  maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
-  princípio ou seção, correção para ajustes de redação.
+- This constitution prevails over other project practices. Every plan (`/speckit-plan`) MUST
+  check compliance with it.
+- A plan that violates a principle MUST justify the exception in its constitution check section;
+  without an accepted justification, the plan does not proceed.
+- Amendments are made with `/speckit-constitution`, record the date and follow
+  major.minor.patch versioning: major to remove or redefine a principle, minor to add a principle
+  or section, patch for wording adjustments.
 
-**Version**: 2.6.1 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.7.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
