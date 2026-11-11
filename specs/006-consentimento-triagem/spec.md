@@ -16,7 +16,7 @@
 
 Na primeira entrada, o participante lê o termo vigente e escolhe aceitar ou não participar.
 
-**Why this priority**: Exigência ética e da LGPD: nenhuma classificação pode ser registrada sem consentimento.
+**Why this priority**: Exigência ética e da LGPD: nenhum rótulo pode ser registrado sem consentimento.
 
 **Independent Test**: Entrar com um e-mail novo, recusar; entrar com outro, aceitar; publicar nova versão do termo e entrar de novo.
 
@@ -35,7 +35,7 @@ Na primeira entrada, o participante lê o termo vigente e escolhe aceitar ou nã
 
 O participante escolhe uma única opção da lista do Apêndice B.4.
 
-**Why this priority**: Caracteriza a amostra de avaliadores no artigo.
+**Why this priority**: Caracteriza a amostra de rotuladores no artigo.
 
 **Independent Test**: Tentar avançar sem escolher; escolher "Outro" sem descrição; escolher uma opção comum.
 
@@ -51,7 +51,7 @@ O participante escolhe uma única opção da lista do Apêndice B.4.
 
 O participante vê um exemplo curto de caso de uso e de caso de teste e responde se já trabalhou com algo assim.
 
-**Why this priority**: Garante avaliadores com a experiência que o estudo exige.
+**Why this priority**: Garante rotuladores com a experiência que o estudo exige.
 
 **Independent Test**: Responder cada uma das três opções com e-mails diferentes e entrar de novo com cada um.
 
@@ -60,7 +60,7 @@ O participante vê um exemplo curto de caso de uso e de caso de teste e responde
 1. **Dado** a triagem, **Quando** é exibida, **Então** mostra o exemplo de caso de uso com fluxo básico e um fluxo de exceção, um caso de teste derivado dele e a pergunta do Apêndice B.3 com três opções.
 2. **Dado** a triagem, **Quando** a pessoa responde "Sim, na prática profissional" ou "Sim, em estudos, cursos ou pesquisa", **Então** é marcada como elegível e segue para a participação.
 3. **Dado** a triagem, **Quando** a pessoa responde "Não", **Então** o sistema registra a resposta, agradece, explica que o estudo exige essa experiência e encerra a participação.
-4. **Dado** um participante inelegível, **Quando** volta a entrar, **Então** vê a mesma mensagem de encerramento e não pode classificar nem responder a triagem de novo.
+4. **Dado** um participante inelegível, **Quando** volta a entrar, **Então** vê a mesma mensagem de encerramento e não pode participar da rotulagem dos dados nem responder a triagem de novo.
 5. **Dado** um participante elegível com termo vigente aceito, **Quando** volta a entrar, **Então** vai direto para a participação, sem repetir nenhuma etapa.
 
 ---
@@ -77,7 +77,7 @@ O participante vê um exemplo curto de caso de uso e de caso de teste e responde
 ### Functional Requirements
 
 - **FR-001**: O sistema DEVE exibir o termo vigente e registrar aceite ou recusa com data, hora e versão; a recusa encerra o acesso.
-- **FR-002**: Uma nova versão do termo DEVE exigir novo aceite antes de qualquer classificação.
+- **FR-002**: Uma nova versão do termo DEVE exigir novo aceite antes de continuar a rotulagem dos dados.
 - **FR-003**: O participante DEVE escolher uma única habilidade da lista do Apêndice B.4; "Outro" exige descrição de até 100 caracteres.
 - **FR-004**: O participante DEVE responder à triagem do Apêndice B.3; "Não" o torna inelegível de forma permanente para aquele e-mail.
 - **FR-005**: Habilidade e triagem DEVEM ser pedidas uma única vez por participante.

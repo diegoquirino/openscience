@@ -16,7 +16,7 @@
 
 O administrador localiza o participante pelo e-mail e apaga nome e e-mail, mantendo as respostas ligadas só ao pseudônimo.
 
-**Why this priority**: Atende ao direito de eliminação de dados pessoais sem perder classificações já usadas.
+**Why this priority**: Atende ao direito de eliminação de dados pessoais sem perder rótulos já usados.
 
 **Independent Test**: Anonimizar um participante com blocos concluídos e conferir telas e exportações.
 

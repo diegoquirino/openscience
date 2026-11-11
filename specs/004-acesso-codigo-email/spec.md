@@ -49,7 +49,7 @@ O administrador vai para a área administrativa; os demais seguem para o fluxo d
 1. **Dado** o e-mail `diegoquirino@gmail.com`, **Quando** o código é validado, **Então** abre a área administrativa, com o nome do administrador e o menu (Importar, Exportar, Painel, Participantes), cujos itens ainda não entregues aparecem desabilitados.
 2. **Dado** qualquer outro e-mail, **Quando** o código é validado, **Então** a pessoa segue para a próxima etapa da participação (provisoriamente, uma tela "Obrigado por se identificar; a próxima etapa será liberada em breve").
 3. **Dado** uma pessoa que não é o administrador, **Quando** tenta abrir uma tela ou chamar uma função administrativa, **Então** o acesso é negado e a tentativa é registrada.
-4. **Dado** o administrador, **Quando** entra, **Então** não recebe identificador pseudônimo nem pode entrar no fluxo de classificação.
+4. **Dado** o administrador, **Quando** entra, **Então** não recebe identificador pseudônimo nem pode entrar no fluxo de rotulagem.
 
 ---
 
@@ -87,7 +87,7 @@ Quem entrou continua conectado no mesmo navegador por até 24 horas e pode sair 
 - **FR-004**: A sessão DEVE durar no máximo 24 horas ou até a pessoa sair.
 - **FR-005**: O sistema DEVE guardar o nome mais recente informado para um e-mail.
 - **FR-006**: Cada participante novo DEVE receber um identificador pseudônimo sequencial e único.
-- **FR-007**: Somente o e-mail de administrador da configuração DEVE acessar a área administrativa; o administrador não participa da classificação.
+- **FR-007**: Somente o e-mail de administrador da configuração DEVE acessar a área administrativa; o administrador não participa da rotulagem dos dados.
 - **FR-008**: Toda função, exceto pedir e validar código, DEVE exigir sessão válida, e as administrativas, sessão de administrador.
 - **FR-009**: O sistema DEVE contar os e-mails enviados no dia, parar no limite diário da configuração e informar quando ele for atingido.
 

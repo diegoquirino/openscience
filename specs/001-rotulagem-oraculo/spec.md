@@ -12,9 +12,34 @@
 
 ### Session 2026-11-10
 
-- Q: Como o avaliador vê o contexto do caso de uso? → A: Um botão junto do "Antes" abre um modal com o caso de uso completo na versão anterior (ex.: v1.1); outro junto do "Depois" abre o caso de uso completo na versão modificada (ex.: v1.2).
-- Q: Quantos itens por sessão? → A: Blocos fixos de 10 itens consecutivos; o último bloco pode ter menos. A fila é preenchida de cima para baixo, alternando papéis: bloco 1 avaliador 1, bloco 1 avaliador 2, bloco 2 avaliador 1, e assim por diante. As respostas de um bloco só valem quando o avaliador conclui todos os itens dele.
+- Q: Como o rotulador vê o contexto do caso de uso? → A: Um botão junto do "Antes" abre um modal com o caso de uso completo na versão anterior (ex.: v1.1); outro junto do "Depois" abre o caso de uso completo na versão modificada (ex.: v1.2).
+- Q: Quantos itens por sessão? → A: Blocos fixos de 10 itens consecutivos; o último bloco pode ter menos. A fila é preenchida de cima para baixo, alternando papéis: bloco 1 rotulador 1, bloco 1 rotulador 2, bloco 2 rotulador 1, e assim por diante. As respostas de um bloco só valem quando o rotulador conclui todos os itens dele.
 - Q: Qual a primeira coluna do CSV? → A: `sistema`; cada item é identificado por (`sistema`, `edit_key`).
+
+### Session 2026-11-11
+
+- Q: Quanto tempo dura a reserva de um bloco? → A: 20 minutos sem nenhuma resposta salva (valor da configuração); cada resposta salva renova o prazo.
+- Q: O voluntário vê quanto tempo ainda tem? → A: Sim. A tela de cada item mostra um contador regressivo em minutos e segundos até o vencimento da reserva, que volta ao valor cheio quando a pessoa salva a resposta e passa ao próximo item.
+- Q: O que acontece com os rascunhos quando a reserva vence? → A: Se ninguém pegou o bloco, a pessoa retoma ao salvar uma resposta, com os rascunhos; se outra pessoa o recebeu, os rascunhos da primeira são descartados.
+- Q: Onde o bloco abandonado volta na fila? → A: Na sua posição original, à frente dos blocos seguintes.
+- Q: Quantos blocos uma pessoa pode ter reservados ao mesmo tempo? → A: Um.
+- Q: Há limite de blocos por pessoa na coleta? → A: Não. O painel mostra quantos blocos cada pseudônimo fez, e o viés de rotulador é discutido no artigo.
+- Q: O rotulador 2 pode começar antes de o rotulador 1 terminar? → A: Sim, os dois rotulam o mesmo bloco em paralelo, sem ver nada um do outro.
+- Q: Blocos de quem pede retirada (LGPD) com respostas descartadas voltam para onde? → A: Para a mesma posição da fila.
+- Q: Que vocabulário usar? → A: Ver a seção *Vocabulário*.
+
+## Vocabulário
+
+| Onde | Termo |
+|---|---|
+| Nome do sistema | Veredito |
+| Atividade, em títulos, no termo, nos convites, nas explicações e nesta documentação | **rotulagem dos dados** (verbo: rotular; resultado: rótulos) |
+| Botões e mensagens curtas das telas | "avaliar": "Avaliar mais um bloco", "Ainda não há itens para avaliar" |
+| Quem rotula, no termo, na LGPD e nos documentos formais | participante (da pesquisa) |
+| Quem rotula, nos convites e nas telas | voluntário |
+| Posição no bloco | rotulador 1 e rotulador 2 (papel 1 e papel 2 no modelo de dados; `rater1` e `rater2` no pipeline) |
+
+Os nomes de colunas, códigos e arquivos do pipeline (`change_impact`, `maintenance_operation`, `t1_<sistema>_rater1.csv`) não mudam.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -22,7 +47,7 @@
 
 Um voluntário abre o Veredito, informa nome e e-mail, recebe um código de 6 dígitos no e-mail e o digita para entrar. Não há convite nem senha.
 
-**Why this priority**: Sem identificação confiável não é possível garantir que avaliador 1 e avaliador 2 de um bloco sejam pessoas diferentes.
+**Why this priority**: Sem identificação confiável não é possível garantir que rotulador 1 e rotulador 2 de um bloco sejam pessoas diferentes.
 
 **Independent Test**: Informar nome e e-mail, receber o código e entrar; tentar código errado, vencido e reutilizado.
 
@@ -42,7 +67,7 @@ Um voluntário abre o Veredito, informa nome e e-mail, recebe um código de 6 d�
 
 Na primeira entrada, a pessoa lê o termo de consentimento (TCLE/LGPD) e o aceita, escolhe sua habilidade profissional e responde à pergunta de triagem. Quem responde "Não" à triagem é agradecido e sai do estudo.
 
-**Why this priority**: Requisito ético e de LGPD para coletar dados, e o filtro que garante avaliadores qualificados.
+**Why this priority**: Requisito ético e de LGPD para coletar dados, e o filtro que garante rotuladores qualificados.
 
 **Independent Test**: Entrar com um e-mail novo e percorrer as três etapas com cada resposta possível, conferindo o que fica registrado.
 
@@ -50,22 +75,22 @@ Na primeira entrada, a pessoa lê o termo de consentimento (TCLE/LGPD) e o aceit
 
 1. **Dado** um participante que nunca aceitou o termo vigente, **Quando** entra, **Então** vê o texto completo do termo com as opções "Li e aceito participar" e "Não aceito".
 2. **Dado** o termo exibido, **Quando** a pessoa escolhe "Li e aceito participar", **Então** o sistema registra data, hora e versão do termo e segue para a habilidade profissional.
-3. **Dado** o termo exibido, **Quando** a pessoa escolhe "Não aceito", **Então** o sistema agradece, encerra o acesso e não registra nenhuma classificação dela.
+3. **Dado** o termo exibido, **Quando** a pessoa escolhe "Não aceito", **Então** o sistema agradece, encerra o acesso e não registra nenhum rótulo dela.
 4. **Dado** a tela de habilidade profissional, **Quando** a pessoa não escolhe nenhuma opção, **Então** não consegue avançar.
 5. **Dado** a opção "Outro" escolhida, **Quando** a pessoa deixa a descrição em branco, **Então** não consegue avançar.
 6. **Dado** a pergunta de triagem (Apêndice B.3), **Quando** a pessoa responde uma das duas opções "Sim", **Então** é considerada elegível e segue para o primeiro bloco.
 7. **Dado** a pergunta de triagem, **Quando** a pessoa responde "Não", **Então** o sistema registra a resposta, agradece, explica que o estudo exige essa experiência e encerra a participação.
-8. **Dado** um participante já marcado como inelegível, **Quando** volta a entrar com o mesmo e-mail, **Então** vê a mesma mensagem de encerramento e não pode classificar.
+8. **Dado** um participante já marcado como inelegível, **Quando** volta a entrar com o mesmo e-mail, **Então** vê a mesma mensagem de encerramento e não pode participar da rotulagem dos dados.
 9. **Dado** um participante que já aceitou o termo vigente e respondeu habilidade e triagem, **Quando** volta a entrar, **Então** vai direto para o bloco em andamento ou para um novo bloco.
-10. **Dado** que o administrador publicou uma nova versão do termo, **Quando** um participante antigo entra, **Então** precisa aceitar a nova versão antes de classificar.
+10. **Dado** que o administrador publicou uma nova versão do termo, **Quando** um participante antigo entra, **Então** precisa aceitar a nova versão antes de continuar a rotulagem dos dados.
 
 ---
 
 ### User Story 3 - Receber e concluir um bloco fixo de 10 itens, sem colisão com outras pessoas (Priority: P1)
 
-O participante elegível recebe o próximo bloco disponível da fila: 10 itens consecutivos da base num papel (avaliador 1 ou 2); o último bloco de um lote pode ter menos. A fila anda de cima para baixo, alternando os papéis: bloco 1 papel 1, bloco 1 papel 2, bloco 2 papel 1, bloco 2 papel 2… As respostas ficam como rascunho até a pessoa concluir todos os itens do bloco e enviá-lo; só então passam a valer.
+O participante elegível recebe o próximo bloco disponível da fila: 10 itens consecutivos da base num papel (rotulador 1 ou 2); o último bloco de um lote pode ter menos. A fila anda de cima para baixo, alternando os papéis: bloco 1 papel 1, bloco 1 papel 2, bloco 2 papel 1, bloco 2 papel 2… As respostas ficam como rascunho até a pessoa concluir todos os itens do bloco e enviá-lo; só então passam a valer.
 
-**Why this priority**: É o núcleo do estudo: produzir duas classificações independentes e completas por item.
+**Why this priority**: É o núcleo do estudo: produzir dois rótulos independentes e completos por item.
 
 **Independent Test**: Importar 38 itens (blocos de 10, 10, 10 e 8), abrir sessões em paralelo com várias pessoas e conferir que cada item termina com exatamente duas respostas finais de pessoas diferentes.
 
@@ -82,19 +107,21 @@ O participante elegível recebe o próximo bloco disponível da fila: 10 itens c
 9. **Dado** todos os itens do bloco respondidos, **Quando** a pessoa chega ao fim, **Então** vê uma tela de revisão com as escolhas de cada item, pode alterar qualquer uma e só então envia o bloco.
 10. **Dado** a revisão, **Quando** a pessoa envia o bloco, **Então** todas as respostas passam a valer de uma vez, o bloco-papel fica concluído e as respostas não podem mais ser alteradas.
 11. **Dado** um bloco com algum item sem resposta, **Quando** a pessoa tenta enviá-lo, **Então** o envio é recusado e o sistema leva ao primeiro item pendente.
-12. **Dado** um bloco reservado para A, **Quando** A fica 30 minutos sem salvar nenhuma resposta, **Então** a reserva vence e o bloco-papel volta para a fila.
+12. **Dado** um bloco reservado para A, **Quando** A fica 20 minutos sem salvar nenhuma resposta, **Então** a reserva vence e o bloco-papel volta para a fila.
 13. **Dado** que a reserva de A venceu e B pegou o mesmo bloco-papel, **Quando** A tenta salvar ou enviar, **Então** o sistema recusa, explica que o tempo do bloco acabou, descarta os rascunhos de A e oferece um novo bloco.
 14. **Dado** que a reserva de A venceu e ninguém pegou o bloco-papel, **Quando** A volta e salva uma resposta, **Então** a reserva é renovada para A e os rascunhos dela continuam valendo.
 15. **Dado** um item na tela, **Quando** a pessoa salva a mesma resposta duas vezes (clique duplo ou rede lenta), **Então** existe um único rascunho para aquele item.
 16. **Dado** um bloco concluído, **Quando** a pessoa escolhe "Avaliar mais um bloco", **Então** recebe o próximo bloco-papel disponível para ela.
+17. **Dado** um item na tela, **Quando** é exibido, **Então** um contador regressivo em minutos e segundos (por exemplo, "19:42") mostra quanto falta para a reserva vencer; ao salvar a resposta e passar ao próximo item, o contador volta a 20:00.
+18. **Dado** o contador chegando a zero, **Quando** a reserva vence, **Então** a tela avisa que o tempo do bloco acabou e que a pessoa ainda pode continuar se ninguém tiver pegado o bloco; ao salvar, ela retoma (cenário 14) ou recebe a recusa (cenário 13).
 
 ---
 
-### User Story 4 - Entender o que está sendo classificado (Priority: P1)
+### User Story 4 - Entender o que está sendo rotulado (Priority: P1)
 
 A tela do item mostra a edição de um jeito confortável de ler (antes e depois, com as diferenças destacadas), dá acesso ao caso de uso completo em cada versão e traz as duas perguntas com explicação de cada opção. O participante escolhe uma opção em cada pergunta, pode deixar um comentário e segue.
 
-**Why this priority**: A validade do oráculo depende de o avaliador entender a edição, o contexto em que ela ocorre e os conceitos de impacto e de operação.
+**Why this priority**: A validade do oráculo depende de o rotulador entender a edição, o contexto em que ela ocorre e os conceitos de impacto e de operação.
 
 **Independent Test**: Exibir um item de cada `kind` (MOD, ADD, DEL, META), abrir os dois modais e conferir leitura, explicações e gravação dos códigos.
 
@@ -116,7 +143,7 @@ A tela do item mostra a edição de um jeito confortável de ler (antes e depois
 14. **Dado** a pergunta de operação, **Quando** é exibida, **Então** mostra as oito opções com explicação (Apêndice B.2), com escolha única, e a regra de precedência quando mais de uma se aplica.
 15. **Dado** só uma das duas perguntas respondida, **Quando** a pessoa tenta avançar, **Então** o botão continua desabilitado.
 16. **Dado** as duas perguntas respondidas, **Quando** a pessoa avança, **Então** o sistema grava os códigos em inglês (`LOW`/`HIGH` e `KEEP`, `UPDATE`, …) e o comentário opcional (até 1.000 caracteres).
-17. **Dado** um bloco cujo papel 1 está em andamento ou concluído, **Quando** outra pessoa avalia o mesmo bloco no papel 2, **Então** não vê as respostas nem a identidade do avaliador 1.
+17. **Dado** um bloco cujo papel 1 está em andamento ou concluído, **Quando** outra pessoa avalia o mesmo bloco no papel 2, **Então** não vê as respostas nem a identidade do rotulador 1.
 
 ---
 
@@ -131,8 +158,8 @@ Depois de enviar um bloco, ou ao pedir um, a pessoa fica sabendo se ainda há bl
 **Acceptance Scenarios**:
 
 1. **Dado** um bloco enviado e ainda há blocos-papel disponíveis para a pessoa, **Quando** a tela de conclusão aparece, **Então** o sistema agradece e oferece "Avaliar mais um bloco" ou "Sair".
-2. **Dado** que todos os blocos-papel estão concluídos, **Quando** a pessoa envia o último bloco ou pede um novo, **Então** o sistema agradece, informa que a base de classificações foi completamente respondida e encerra a participação.
-3. **Dado** que ainda há blocos-papel não concluídos, mas nenhum disponível para a pessoa (são papéis 2 de blocos em que ela foi avaliadora 1, ou estão reservados por outras pessoas), **Quando** ela pede um bloco, **Então** o sistema agradece e informa que não há mais blocos disponíveis para ela no momento.
+2. **Dado** que todos os blocos-papel estão concluídos, **Quando** a pessoa envia o último bloco ou pede um novo, **Então** o sistema agradece, informa que a rotulagem dos dados foi concluída (toda a base foi avaliada) e encerra a participação.
+3. **Dado** que ainda há blocos-papel não concluídos, mas nenhum disponível para a pessoa (são papéis 2 de blocos em que ela foi rotuladora 1, ou estão reservados por outras pessoas), **Quando** ela pede um bloco, **Então** o sistema agradece e informa que não há mais blocos disponíveis para ela no momento.
 
 ---
 
@@ -140,15 +167,15 @@ Depois de enviar um bloco, ou ao pedir um, a pessoa fica sabendo se ainda há bl
 
 Carlos Diego Quirino Lima entra com `diegoquirino@gmail.com` e o código por e-mail e vai direto para a área administrativa. Ninguém mais tem acesso a ela.
 
-**Why this priority**: Sem a área administrativa não há itens para classificar nem dados para exportar.
+**Why this priority**: Sem a área administrativa não há itens para rotular nem dados para exportar.
 
 **Independent Test**: Entrar com o e-mail do administrador e com outro e-mail; chamar as funções administrativas sem estar autenticado como administrador.
 
 **Acceptance Scenarios**:
 
-1. **Dado** o e-mail `diegoquirino@gmail.com`, **Quando** o código é validado, **Então** o sistema abre a área administrativa, sem termo, triagem nem blocos de classificação.
+1. **Dado** o e-mail `diegoquirino@gmail.com`, **Quando** o código é validado, **Então** o sistema abre a área administrativa, sem termo, triagem nem blocos de rotulagem.
 2. **Dado** qualquer outro e-mail, **Quando** a pessoa tenta abrir uma tela ou função administrativa, **Então** o acesso é negado.
-3. **Dado** o administrador, **Quando** tenta entrar no fluxo de classificação, **Então** não consegue: o administrador não classifica itens.
+3. **Dado** o administrador, **Quando** tenta entrar no fluxo de rotulagem, **Então** não consegue: o administrador não rotula itens.
 
 ---
 
@@ -174,9 +201,9 @@ O administrador envia um CSV com as colunas do Apêndice D, vê uma prévia com 
 
 ---
 
-### User Story 8 - Exportar as classificações (Priority: P1)
+### User Story 8 - Exportar os rótulos (Priority: P1)
 
-O administrador baixa as classificações finais em três formatos: a tabela larga (uma linha por item, com os dois avaliadores), a tabela longa (uma linha por resposta) e os arquivos por sistema que o pacote `issta_tcm` lê. Rascunhos de blocos não concluídos nunca são exportados.
+O administrador baixa os rótulos finais em três formatos: a tabela larga (uma linha por item, com os dois rotuladores), a tabela longa (uma linha por resposta) e os arquivos por sistema que o pacote `issta_tcm` lê. Rascunhos de blocos não concluídos nunca são exportados.
 
 **Why this priority**: É o produto final do estudo.
 
@@ -227,7 +254,7 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 
 ### Edge Cases
 
-- Base vazia: o participante elegível vê "ainda não há itens para classificar" em vez de um bloco vazio.
+- Base vazia: o participante elegível vê "Ainda não há itens para avaliar" em vez de um bloco vazio.
 - Duas abas da mesma pessoa: as duas mostram o mesmo bloco e os mesmos rascunhos; a pessoa nunca segura dois blocos ao mesmo tempo.
 - Pedido de código para o mesmo e-mail em dois dispositivos: vale só o código mais recente.
 - Importação feita durante a coleta: blocos já reservados ou concluídos não mudam, e o bloco final incompleto de um lote anterior não é completado com itens do novo lote.
@@ -252,8 +279,8 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 
 **Termo, perfil e triagem**
 
-- **FR-006**: O sistema DEVE exibir o termo de consentimento vigente e registrar aceite com data, hora e versão; a recusa DEVE encerrar o acesso sem registrar classificações.
-- **FR-007**: Quando o termo mudar de versão, o sistema DEVE pedir novo aceite antes da próxima classificação.
+- **FR-006**: O sistema DEVE exibir o termo de consentimento vigente e registrar aceite com data, hora e versão; a recusa DEVE encerrar o acesso sem registrar rótulos.
+- **FR-007**: Quando o termo mudar de versão, o sistema DEVE pedir novo aceite antes de continuar a rotulagem dos dados.
 - **FR-008**: O participante DEVE escolher uma única habilidade profissional da lista do Apêndice B.4; "Outro" DEVE exigir descrição de até 100 caracteres.
 - **FR-009**: O participante DEVE responder à pergunta de triagem do Apêndice B.3; a resposta "Não" DEVE torná-lo inelegível, de forma permanente para aquele e-mail.
 - **FR-010**: Termo, habilidade e triagem DEVEM ser pedidos uma única vez por participante, salvo nova versão do termo.
@@ -268,7 +295,8 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 
 - **FR-020**: O participante DEVE receber o primeiro bloco-papel livre da fila que ele possa avaliar, um de cada vez; enquanto tiver um bloco reservado, não recebe outro.
 - **FR-021**: O sistema NUNCA DEVE entregar à mesma pessoa os dois papéis de um mesmo bloco, esteja o outro papel reservado para ela ou concluído por ela.
-- **FR-022**: Ao entregar um bloco-papel, o sistema DEVE reservá-lo com exclusividade para a pessoa; a reserva vence após 30 minutos (valor configurável) sem nenhuma resposta salva e é renovada a cada resposta salva.
+- **FR-022**: Ao entregar um bloco-papel, o sistema DEVE reservá-lo com exclusividade para a pessoa; a reserva vence após 20 minutos (valor configurável) sem nenhuma resposta salva e é renovada a cada resposta salva. Um bloco-papel de reserva vencida volta à sua posição original na fila. Cada pessoa tem no máximo um bloco reservado, sem limite de blocos na coleta, e o rotulador 2 pode receber o bloco enquanto o rotulador 1 ainda o rotula.
+- **FR-022a**: A tela de cada item DEVE mostrar um contador regressivo, em minutos e segundos, até o vencimento da reserva, calculado a partir do horário de vencimento informado pelo servidor; o contador volta ao valor cheio a cada resposta salva e, ao chegar a zero, avisa a pessoa conforme a User Story 3.
 - **FR-023**: Entregar, salvar rascunho e enviar o bloco DEVEM ser operações atômicas: dois pedidos simultâneos nunca recebem o mesmo bloco-papel, e rascunhos e envio só são aceitos da pessoa que detém a reserva, ou de reserva vencida que ninguém pegou (o que a renova).
 - **FR-024**: Quando um bloco-papel de reserva vencida for entregue a outra pessoa, os rascunhos da pessoa anterior DEVEM ser descartados.
 - **FR-025**: As respostas de um bloco DEVEM ficar como rascunho, editáveis pela pessoa, até o envio do bloco; o envio só é aceito com todos os itens respondidos e torna todas as respostas finais de uma vez. Respostas finais não podem ser alteradas pelo participante.
@@ -281,17 +309,17 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 - **FR-031**: O sistema DEVE mostrar `origin` e `target` lado a lado, destacando palavra a palavra o que saiu e o que entrou (só `target` para `ADD`, só `origin` para `DEL`), preservando quebras de linha e empilhando os dois blocos em telas estreitas.
 - **FR-032**: As perguntas de impacto e de operação DEVEM trazer a explicação de cada opção (Apêndice B.1 e B.2), com escolha única em cada; avançar só fica disponível com as duas respondidas.
 - **FR-033**: Junto do "Antes", o sistema DEVE oferecer um botão que abre, num modal, o caso de uso completo na versão anterior (`origin_usecase`, rotulado com `origin_version`); junto do "Depois", outro botão que abre o caso de uso completo na versão modificada (`target_usecase`, rotulado com `target_version`). O modal preserva indentação, destaca as linhas marcadas com `<- edited` (sem exibir o marcador), abre rolado até a primeira delas, fecha por botão, Esc ou clique fora e não apaga as escolhas do item.
-- **FR-034**: O sistema NUNCA DEVE mostrar a um avaliador as respostas ou a identidade do outro avaliador do mesmo bloco.
+- **FR-034**: O sistema NUNCA DEVE mostrar a um rotulador as respostas ou a identidade do outro rotulador do mesmo bloco.
 
 **Encerramento**
 
 - **FR-040**: Após o envio de um bloco, o sistema DEVE oferecer avaliar mais um bloco quando houver bloco-papel disponível para a pessoa.
-- **FR-041**: Quando todos os blocos-papel estiverem concluídos, o sistema DEVE agradecer, informar que a base de classificações foi completamente respondida e encerrar a participação.
+- **FR-041**: Quando todos os blocos-papel estiverem concluídos, o sistema DEVE agradecer, informar que a rotulagem dos dados foi concluída (toda a base foi avaliada) e encerrar a participação.
 - **FR-042**: Quando houver blocos-papel não concluídos, mas nenhum disponível para a pessoa, o sistema DEVE agradecer e informar que não há mais blocos disponíveis para ela no momento.
 
 **Administração**
 
-- **FR-050**: Somente `diegoquirino@gmail.com` (Carlos Diego Quirino Lima) DEVE acessar a área administrativa, entrando pelo mesmo código por e-mail; o administrador não classifica itens.
+- **FR-050**: Somente `diegoquirino@gmail.com` (Carlos Diego Quirino Lima) DEVE acessar a área administrativa, entrando pelo mesmo código por e-mail; o administrador não rotula itens.
 - **FR-051**: A importação DEVE aceitar CSV UTF-8 (RFC 4180, inclusive campos com quebra de linha) com as colunas do Apêndice D; colunas extras são ignoradas.
 - **FR-052**: A importação DEVE recusar linhas com `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase` ou `target_usecase` vazios; `kind` fora de `ADD`, `DEL`, `MOD`, `META`; `origin` vazio quando `kind` ≠ `ADD`; `target` vazio quando `kind` ≠ `DEL`; `origin`/`target` com mais de 5.000 caracteres; `origin_usecase`/`target_usecase` com mais de 40.000 caracteres; rótulo de versão com mais de 20 caracteres.
 - **FR-053**: O par (`sistema`, `edit_key`) DEVE ser único; linhas que repetem um item existente DEVEM ser ignoradas sem alterá-lo; repetições dentro do arquivo DEVEM ser recusadas a partir da segunda ocorrência.
@@ -306,7 +334,7 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 ### Key Entities *(include if feature involves data)*
 
 - **Lote de importação**: arquivo, data/hora e contagem de linhas incluídas, ignoradas e com erro; define a ordem dos seus blocos na fila.
-- **Item**: uma edição de caso de uso a classificar; identificado por (`sistema`, `edit_key`); guarda `uc`, `kind`, `field`, `origin`, `target`, as versões e os textos completos do caso de uso antes e depois, o bloco e a posição no bloco.
+- **Item**: uma edição de caso de uso a rotular; identificado por (`sistema`, `edit_key`); guarda `uc`, `kind`, `field`, `origin`, `target`, as versões e os textos completos do caso de uso antes e depois, o bloco e a posição no bloco.
 - **Bloco**: 10 itens consecutivos de um lote (o último pode ter menos); posição fixa na fila.
 - **Bloco-papel (tarefa)**: papel 1 ou 2 de um bloco; está livre, reservado (dono, início, vencimento) ou concluído (dono, início, envio).
 - **Resposta**: escolha de um participante para um item num papel; é rascunho até o envio do bloco e final depois dele.
@@ -334,7 +362,7 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 - Os blocos são formados dentro de cada lote; por isso cada lote pode terminar num bloco menor que 10, mesmo que lotes posteriores sejam importados.
 - Dentro de um bloco, os itens aparecem na ordem do arquivo importado; não há sorteio.
 - Os textos completos do caso de uso vêm prontos no CSV, um por versão, com as linhas editadas marcadas com `<- edited`, no mesmo formato da planilha de rotulagem atual.
-- **Análise de concordância**: como o avaliador 1 e o avaliador 2 variam de bloco para bloco, o κ de Cohen, que supõe os mesmos dois avaliadores em todos os itens e hoje é calculado pelo comando `agreement`, deixa de ser adequado. O artigo deve usar κ de Fleiss ou α de Krippendorff. Isso afeta a análise, não este sistema.
+- **Análise de concordância**: como o rotulador 1 e o rotulador 2 variam de bloco para bloco, o κ de Cohen, que supõe os mesmos dois rotuladores em todos os itens e hoje é calculado pelo comando `agreement`, deixa de ser adequado. O artigo deve usar κ de Fleiss ou α de Krippendorff. Isso afeta a análise, não este sistema.
 
 ## Apêndice A: Tradução de `kind` e `field` para exibição
 

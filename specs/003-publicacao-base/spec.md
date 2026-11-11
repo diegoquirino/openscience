@@ -55,7 +55,7 @@ Na primeira publicação, o sistema cria todas as tabelas previstas na spec 001,
 **Acceptance Scenarios**:
 
 1. **Dado** uma base vazia, **Quando** o sistema é publicado, **Então** existem as tabelas de lotes, itens, blocos, tarefas (bloco-papel), respostas, participantes, códigos de acesso, sessões de acesso, termos e configuração.
-2. **Dado** uma base vazia, **Quando** é preparada, **Então** a configuração recebe os valores padrão: e-mail do administrador `diegoquirino@gmail.com`, reserva de 30 minutos, tamanho de bloco 10, limite diário de 450 e-mails, nenhum termo publicado e fase do estudo `piloto`.
+2. **Dado** uma base vazia, **Quando** é preparada, **Então** a configuração recebe os valores padrão: e-mail do administrador `diegoquirino@gmail.com`, reserva de 20 minutos, tamanho de bloco 10, limite diário de 450 e-mails, nenhum termo publicado e fase do estudo `piloto`.
 3. **Dado** uma base já preparada e com registros, **Quando** a mesma versão é publicada de novo, **Então** nada é duplicado, apagado ou alterado.
 4. **Dado** uma nova versão que muda a estrutura, **Quando** é publicada sobre uma base com registros, **Então** a estrutura é atualizada uma única vez, os registros são preservados e fica registrado qual mudança foi aplicada e quando.
 5. **Dado** a base, **Quando** alguém tenta acessá-la pela internet sem passar pelo sistema, **Então** o acesso é recusado.
@@ -144,7 +144,7 @@ O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa
 
 ## Assumptions
 
-- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.5.0.
+- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.6.0.
 - A base de dados de produção fica no projeto de nuvem do pesquisador (`veredito-issta2027`); nenhum participante tem acesso direto a ela.
 - O ensaio local, os testes automáticos e o ensaio piloto em produção usam só os itens do sistema Minitest (o CSV da spec 002 e arquivos derivados dele); os participantes do ensaio local e dos testes são fictícios; nada da produção é copiado para a máquina. A recusa de outros sistemas na importação é entregue na spec 005.
 - A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso só pode ser medido na produção.

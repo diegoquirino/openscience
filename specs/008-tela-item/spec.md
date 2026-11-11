@@ -14,9 +14,9 @@
 
 ### User Story 1 - Ler a edição com as diferenças destacadas (Priority: P1)
 
-O avaliador vê o que mudou sem precisar comparar os textos de cabeça.
+O rotulador vê o que mudou sem precisar comparar os textos de cabeça.
 
-**Why this priority**: A validade do oráculo depende de o avaliador entender a edição.
+**Why this priority**: A validade do oráculo depende de o rotulador entender a edição.
 
 **Independent Test**: Exibir um item de cada `kind` (MOD, ADD, DEL, META) do Minitest num computador e num celular.
 
@@ -87,6 +87,7 @@ Cada pergunta traz a definição e exemplos de cada opção, e a regra de preced
 - **FR-004**: As perguntas DEVEM trazer a explicação de cada opção (Apêndices B.1 e B.2), com escolha única; avançar só fica disponível com as duas respondidas.
 - **FR-005**: A tela NÃO DEVE mudar o que é gravado em relação à spec 007.
 - **FR-006**: A tela DEVE ser utilizável por teclado e legível em celular.
+- **FR-007**: A tela DEVE manter o contador regressivo da reserva da spec 007, em minutos e segundos, sempre visível junto do progresso do bloco ("x de 10"), inclusive em celular e com um modal de caso de uso aberto; nos últimos 2 minutos, ele muda para a cor de alerta do tema e é anunciado a leitores de tela uma única vez.
 
 ## Success Criteria *(mandatory)*
 
@@ -94,10 +95,10 @@ Cada pergunta traz a definição e exemplos de cada opção, e a regra de preced
 
 - **SC-001**: O modal do caso de uso abre em menos de 1 segundo.
 - **SC-002**: Um bloco de 10 itens é concluído, em média, em menos de 20 minutos no piloto.
-- **SC-003**: No piloto, ao menos 80 % dos avaliadores dizem que entenderam a edição sem ajuda externa.
+- **SC-003**: No piloto, ao menos 80 % dos voluntários dizem que entenderam a edição sem ajuda externa.
 
 ## Assumptions
 
 - Os textos dos Apêndices B.1 e B.2 são fixos no sistema; mudá-los exige nova versão publicada.
 - O destaque de diferenças é calculado na exibição, a partir de `origin` e `target`; nada novo é gravado.
-- O piloto citado nos critérios de sucesso é o ensaio com poucos avaliadores previsto no [ROADMAP](../ROADMAP.md), antes da divulgação.
+- O piloto citado nos critérios de sucesso é o ensaio com poucos voluntários previsto no [ROADMAP](../ROADMAP.md), antes da divulgação.

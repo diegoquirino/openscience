@@ -14,7 +14,7 @@
 
 ### User Story 1 - Ver o andamento da fila (Priority: P1)
 
-O administrador vê quanto da base já foi classificado, por sistema e por lote.
+O administrador vê quanto da base já foi rotulado, por sistema e por lote.
 
 **Why this priority**: Responde à pergunta mais frequente durante a coleta: quanto falta.
 
@@ -54,7 +54,7 @@ O administrador vê quantas pessoas entraram, em que situação estão e quantos
 
 1. **Dado** participantes registrados, **Quando** o painel é aberto, **Então** mostra totais de elegíveis, inelegíveis, que recusaram o termo e que ainda não concluíram as etapas, e a distribuição por habilidade profissional.
 2. **Dado** o painel, **Quando** aberto, **Então** mostra quantos e-mails ainda podem ser enviados hoje, com destaque quando restarem menos de 10.
-3. **Dado** participantes com blocos concluídos, **Quando** o painel é aberto, **Então** mostra quantos blocos cada pseudônimo concluiu.
+3. **Dado** participantes com blocos concluídos, **Quando** o painel é aberto, **Então** mostra quantos blocos cada pseudônimo concluiu e a parcela do total de blocos-papel concluídos que isso representa, do maior para o menor. Como não há limite de blocos por pessoa, é assim que o pesquisador acompanha a concentração da rotulagem dos dados em poucos voluntários.
 
 ---
 
@@ -70,7 +70,7 @@ O administrador vê quantas pessoas entraram, em que situação estão e quantos
 
 - **FR-001**: O painel DEVE mostrar, por sistema e por lote, itens, blocos e tarefas por papel e estado, com percentual concluído.
 - **FR-002**: O painel DEVE listar as reservas em andamento com pseudônimo, bloco, papel, rascunhos e vencimento.
-- **FR-003**: O painel DEVE mostrar totais de participantes por situação e por habilidade, e blocos concluídos por pseudônimo.
+- **FR-003**: O painel DEVE mostrar totais de participantes por situação e por habilidade, e blocos concluídos por pseudônimo, com a parcela de cada um no total concluído.
 - **FR-004**: O painel DEVE mostrar quantos e-mails foram enviados no dia e quantos ainda cabem no limite diário da configuração.
 - **FR-005**: O painel NÃO DEVE mostrar nome nem e-mail de participantes.
 - **FR-006**: Só o administrador DEVE ver o painel.

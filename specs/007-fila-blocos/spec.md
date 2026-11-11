@@ -28,7 +28,7 @@ O participante pede um bloco e recebe o primeiro bloco-papel livre que pode aval
 4. **Dado** que A concluiu B1-P1 e B1-P2 está livre, **Quando** A pede outro bloco, **Então** nunca recebe B1-P2; recebe o próximo bloco-papel livre que pode avaliar.
 5. **Dado** A com um bloco reservado, **Quando** pede outro, **Então** recebe o mesmo bloco, com os rascunhos já salvos.
 6. **Dado** duas pessoas pedindo ao mesmo tempo e um único bloco-papel livre, **Quando** os pedidos chegam, **Então** só uma o recebe e a outra recebe a mensagem adequada da User Story 4.
-7. **Dado** a base sem nenhum item, **Quando** um participante pede um bloco, **Então** vê "Ainda não há itens para classificar".
+7. **Dado** a base sem nenhum item, **Quando** um participante pede um bloco, **Então** vê "Ainda não há itens para avaliar".
 
 ---
 
@@ -49,6 +49,8 @@ Para cada item, o participante escolhe o impacto e a operação, pode comentar e
 5. **Dado** um item já respondido, **Quando** a pessoa volta a ele e muda a resposta, **Então** o rascunho é substituído.
 6. **Dado** a mesma resposta salva duas vezes (clique duplo ou rede lenta), **Quando** processada, **Então** existe um único rascunho para o item.
 7. **Dado** um bloco em que outra pessoa tem o outro papel, **Quando** o item é exibido, **Então** nada da resposta nem da identidade dela aparece.
+8. **Dado** um item na tela, **Quando** é exibido, **Então** um contador regressivo em minutos e segundos (por exemplo, "19:42") mostra quanto falta para a reserva vencer; ao salvar a resposta e passar ao próximo item, ele volta a 20:00 (o tempo da configuração).
+9. **Dado** a revisão do bloco, **Quando** a pessoa altera uma resposta, **Então** o rascunho é salvo e o contador também volta ao valor cheio.
 
 ---
 
@@ -87,7 +89,7 @@ Ao enviar um bloco ou pedir um novo, o participante sabe se há mais blocos para
 
 ### User Story 5 - Liberar blocos abandonados (Priority: P1)
 
-Um bloco sem atividade por 30 minutos volta à fila na sua posição original.
+Um bloco sem atividade por 20 minutos volta à fila na sua posição original.
 
 **Why this priority**: Sem isso, quem abandona um bloco trava a coleta.
 
@@ -95,11 +97,13 @@ Um bloco sem atividade por 30 minutos volta à fila na sua posição original.
 
 **Acceptance Scenarios**:
 
-1. **Dado** um bloco reservado para A, **Quando** A fica 30 minutos sem salvar nenhuma resposta, **Então** a reserva vence e o bloco-papel volta a ser o primeiro livre na sua posição da fila.
+1. **Dado** um bloco reservado para A, **Quando** A fica 20 minutos sem salvar nenhuma resposta, **Então** a reserva vence e o bloco-papel volta a ser o primeiro livre na sua posição da fila.
 2. **Dado** que a reserva de A venceu e B recebeu o bloco-papel, **Quando** B o recebe, **Então** os rascunhos de A são descartados e B começa do primeiro item.
 3. **Dado** o caso anterior, **Quando** A tenta salvar ou enviar, **Então** o sistema recusa, explica que o tempo do bloco acabou e oferece um novo bloco.
 4. **Dado** que a reserva de A venceu e ninguém pegou o bloco-papel, **Quando** A salva uma resposta, **Então** a reserva é renovada para A e os rascunhos continuam valendo.
-5. **Dado** uma resposta salva, **Quando** gravada, **Então** a reserva é renovada por mais 30 minutos.
+5. **Dado** uma resposta salva, **Quando** gravada, **Então** a reserva é renovada por mais 20 minutos.
+6. **Dado** o contador da tela chegando a zero, **Quando** a reserva vence, **Então** a tela avisa "O tempo deste bloco acabou. Se ninguém o tiver pegado, você pode continuar." e mantém as escolhas do item atual; ao salvar, a pessoa retoma (cenário 4) ou recebe a recusa (cenário 3).
+7. **Dado** o relógio do aparelho da pessoa adiantado ou atrasado, **Quando** o contador é exibido, **Então** ele usa o horário de vencimento e o horário do servidor, e não o relógio local, para não mostrar tempo errado.
 
 ---
 
@@ -117,16 +121,18 @@ Um bloco sem atividade por 30 minutos volta à fila na sua posição original.
 
 - **FR-001**: O participante DEVE receber o primeiro bloco-papel livre da fila que possa avaliar, um de cada vez; com um bloco reservado, recebe o mesmo.
 - **FR-002**: O sistema NUNCA DEVE entregar à mesma pessoa os dois papéis de um bloco.
-- **FR-003**: A reserva DEVE ser exclusiva, vencer após o tempo configurado (30 minutos) sem resposta salva e ser renovada a cada resposta salva.
+- **FR-003**: A reserva DEVE ser exclusiva, vencer após o tempo configurado (20 minutos) sem resposta salva e ser renovada a cada resposta salva.
 - **FR-004**: Pedir bloco, salvar rascunho e enviar bloco DEVEM ser atômicos; rascunho e envio só são aceitos de quem detém a reserva ou de reserva vencida que ninguém pegou, o que a renova.
 - **FR-005**: Ao entregar um bloco-papel de reserva vencida a outra pessoa, os rascunhos da anterior DEVEM ser descartados.
 - **FR-006**: As respostas DEVEM ser rascunhos editáveis até o envio; o envio exige todos os itens respondidos e torna todas finais de uma vez; respostas finais não podem ser alteradas pelo participante.
 - **FR-007**: Salvar ou enviar mais de uma vez NÃO DEVE duplicar registros.
 - **FR-008**: Cada resposta DEVE guardar `change_impact`, `maintenance_operation`, comentário opcional (até 1.000 caracteres), participante, bloco, papel e data/hora; a tarefa concluída guarda início e envio.
 - **FR-009**: A tela DEVE mostrar o progresso do bloco ("x de 10" ou "x de n").
-- **FR-010**: O sistema NUNCA DEVE mostrar a um avaliador as respostas ou a identidade do outro avaliador do bloco.
+- **FR-010**: O sistema NUNCA DEVE mostrar a um rotulador as respostas ou a identidade do outro rotulador do bloco.
 - **FR-011**: Ao concluir ou pedir um bloco, o sistema DEVE mostrar a mensagem de fim adequada: há mais blocos, base completa ou nada disponível para a pessoa.
 - **FR-012**: Só participantes elegíveis, com o termo vigente aceito, DEVEM pedir, salvar ou enviar blocos.
+- **FR-013**: A tela de cada item DEVE mostrar um contador regressivo, em minutos e segundos, até o vencimento da reserva, calculado pelo horário de vencimento e pelo horário do servidor; ele volta ao valor cheio a cada resposta salva e avisa quando chega a zero.
+- **FR-014**: Um bloco-papel de reserva vencida DEVE voltar à sua posição original na fila; a pessoa tem no máximo um bloco reservado, não há limite de blocos por pessoa na coleta, e o rotulador 2 pode receber o bloco enquanto o rotulador 1 ainda o rotula.
 
 ### Key Entities
 
@@ -141,6 +147,7 @@ Um bloco sem atividade por 30 minutos volta à fila na sua posição original.
 - **SC-002**: Ao esgotar uma base de teste, todo item tem exatamente duas respostas finais, de pessoas diferentes.
 - **SC-003**: O próximo item aparece em menos de 3 segundos em 95 % das vezes.
 - **SC-004**: Nenhum rascunho é perdido ao recarregar a página dentro do prazo da reserva.
+- **SC-005**: O contador da tela difere do vencimento registrado no servidor em no máximo 2 segundos, mesmo com o relógio do aparelho 5 minutos errado.
 
 ## Assumptions
 

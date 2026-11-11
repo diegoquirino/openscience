@@ -1,6 +1,6 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.5.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.6.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
@@ -96,7 +96,7 @@ O ensaio local, os testes automatizados e o ensaio piloto em produção usam só
 
 | Peça | Configuração |
 |---|---|
-| Região | `southamerica-east1` (São Paulo), perto dos avaliadores; `us-central1` é mais barata se o custo apertar |
+| Região | `southamerica-east1` (São Paulo), perto dos voluntários; `us-central1` é mais barata se o custo apertar |
 | Cloud Run | Um único serviço, `veredito`; mínimo de 0 instâncias, máximo de 4; *startup CPU boost* ligado |
 | Cloud SQL | Uma instância MySQL 9.7, edição Enterprise, a menor máquina compartilhada (`db-f1-micro`, 0,6 GB, 25 conexões); um único banco, `veredito`, com usuário próprio; backup diário automático com retenção de 7 dias |
 | Acesso ao banco | Sem redes autorizadas; só o Cloud Run entra, pelo conector do Cloud SQL com IAM |
@@ -162,6 +162,7 @@ A API atende aos três níveis do modelo de maturidade de Richardson.
   - Participante: `vd:eu`, `vd:termo` e, quando elegível, `vd:proxima-tarefa`.
   - Administrador: `vd:lotes`, `vd:exportacoes`, `vd:painel`, `vd:participantes`.
 - **Relações próprias** com o prefixo CURIE `vd:`, documentadas em `/api/v1/rels/{rel}`. Relações padrão da IANA (`self`, `next`, `prev`, `collection`, `item`) quando cabem.
+- **Reserva na representação da tarefa**: a tarefa reservada traz `reservaVenceEm` (instante em UTC, ISO 8601) e `reservaMinutos`. O Angular calcula o contador regressivo da tela pela diferença entre `reservaVenceEm` e o horário do servidor (cabeçalho `Date` da resposta), corrigindo o relógio do aparelho, e atualiza o vencimento a cada resposta salva (`PUT` da resposta devolve a tarefa com o novo `reservaVenceEm`).
 - **O estado decide os links.** Uma tarefa reservada pela própria pessoa oferece `vd:itens`, `vd:salvar-resposta` e `vd:revisar`, e só oferece `vd:enviar` quando todos os itens têm rascunho. Uma tarefa concluída só tem `self`. Uma ação que não aparece como link é recusada se chamada (`409` ou `403`).
 - **O cliente não monta URLs.** O Angular parte de `/api/v1`, segue as relações e preenche os `_templates`. Um serviço próprio, pequeno e tipado, lê HAL-FORMS, porque não há biblioteca oficial do Angular para isso. Só `/api/v1` fica fixo no código do frontend.
 - **Erros** em Problem Details (RFC 9457, `application/problem+json`), com o tipo do erro e, nas validações, a lista de campos. A mensagem amigável da tela sai do tipo do erro.
@@ -215,7 +216,7 @@ A especificação é gerada do próprio código pelo springdoc-openapi, então n
 
 Cada operação é uma transação curta; as regras de decisão ficam na camada de domínio, e o repositório só carrega e bloqueia as linhas.
 
-1. **Pedir bloco**: se a pessoa tem tarefa reservada e não vencida, devolver essa. Senão, ler pela ordem da `fila` as candidatas livres ou vencidas, fora dos blocos em que ela já tem papel, com `SELECT … FOR UPDATE SKIP LOCKED`, para que pedidos simultâneos peguem tarefas diferentes sem esperar. Reservar a primeira, apagar rascunhos de um dono anterior vencido e gravar `vence_em = agora + 30 min`.
+1. **Pedir bloco**: se a pessoa tem tarefa reservada e não vencida, devolver essa. Senão, ler pela ordem da `fila` as candidatas livres ou vencidas, fora dos blocos em que ela já tem papel, com `SELECT … FOR UPDATE SKIP LOCKED`, para que pedidos simultâneos peguem tarefas diferentes sem esperar. Reservar a primeira, apagar rascunhos de um dono anterior vencido e gravar `vence_em = agora + 20 min` (minutos da configuração).
 2. **Salvar rascunho**: bloquear a tarefa (`FOR UPDATE`), conferir o dono (ou reserva vencida sem novo dono), gravar com `INSERT … ON DUPLICATE KEY UPDATE` na chave (`tarefa_id`, `item_id`) e renovar `vence_em`.
 3. **Enviar bloco**: bloquear a tarefa, conferir o dono e que há rascunho para todos os itens, trocar as respostas para `final` e a tarefa para `concluida`, tudo na mesma transação. Reenviar um bloco já concluído pela pessoa devolve sucesso sem alterar nada.
 4. **Importar**: uma transação por confirmação; a próxima posição da fila é lida com bloqueio, para que duas importações não colidam.
@@ -275,5 +276,5 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 - **E-mail**: a senha de app do Gmail ("Veredito SMTP") já existe e está guardada fora do repositório; entra no Secret Manager no plano da spec 003. O ensaio local não precisa dela (usa o Mailpit).
 - **Piloto na produção**: só com os itens do Minitest; os colegas do piloto devem saber que as respostas serão descartadas; ao fim, o banco de produção é recriado vazio e a fase passa a `coleta` antes da divulgação.
 - **CSV com os casos de uso completos**: especificado em [002-csv-oraculo](../002-csv-oraculo/spec.md).
-- **Concordância entre avaliadores**: ver a seção *Assumptions* da spec. Afeta a análise, não a tecnologia.
+- **Concordância entre rotuladores**: ver a seção *Assumptions* da spec. Afeta a análise, não a tecnologia.
 - **LGPD**: os dados ficam no Google Cloud, na região escolhida. Isso precisa constar no termo (TCLE).

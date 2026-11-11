@@ -66,7 +66,7 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 
 1. **Base no ar** (002 e 003): URL fixa no Google Cloud, base preparada, ensaio local subindo com um comando, CSV do Minitest gerado.
 2. **Acesso** (004): qualquer pessoa entra; o administrador vê a área dele.
-3. **Pronto para classificar** (005, 006, 007 e 008): fluxo completo do participante.
+3. **Pronto para a rotulagem dos dados** (005, 006, 007 e 008): fluxo completo do voluntário.
 4. **Ensaio piloto** (009 pronta):
    - no ensaio local, rodar o teste de 30 participantes simultâneos (spec 007, SC-001, teste automático) e um fluxo completo com o tempo de reserva reduzido;
    - publicar em produção (fase `piloto`, que só aceita o Minitest), importar o Minitest e convidar de 3 a 5 colegas, avisando que as respostas do piloto serão descartadas;
@@ -99,4 +99,4 @@ Para cada spec, na ordem acima:
 2. Rodar `/speckit-plan`, depois `/speckit-tasks` e `/speckit-implement`. Em cada spec do Veredito (003 a 011), o `contracts/` do plano lista os recursos (sob `/api/v1`), os métodos e status HTTP, as relações de link e as ações por estado (nível 3 de Richardson), e cada operação nova entra documentada no Swagger.
 3. Rodar no ensaio local (Docker), conferir os critérios de sucesso da spec, publicar em produção e só então seguir para a próxima.
 
-Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.5.0: Angular com Angular Material, Spring Boot com API REST nível 3 versionada no caminho (`/api/v1`), documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker; ensaio, testes e piloto só com itens do Minitest) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.
+Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.6.0: Angular com Angular Material, Spring Boot com API REST nível 3 versionada no caminho (`/api/v1`), documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker; ensaio, testes e piloto só com itens do Minitest) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.

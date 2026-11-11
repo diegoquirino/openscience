@@ -65,7 +65,7 @@ Ao gerar o arquivo, o pesquisador vê um resumo e é avisado de qualquer linha q
 - **FR-005**: Quando o caso de uso não existir numa das versões, o texto daquela versão DEVE ser um aviso curto, nunca vazio.
 - **FR-006**: O comando DEVE validar cada linha com as regras de importação do Veredito e falhar se alguma for violada, listando linha e motivo.
 - **FR-007**: A geração DEVE ser determinística.
-- **FR-008**: O arquivo NÃO DEVE conter rótulos de avaliadores, saídas das técnicas nem identificadores cegos.
+- **FR-008**: O arquivo NÃO DEVE conter rótulos de rotuladores, saídas das técnicas nem identificadores cegos.
 
 ### Key Entities
 

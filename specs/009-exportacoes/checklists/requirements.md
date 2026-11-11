@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Exportar as classificações
+# Specification Quality Checklist: Exportar os rótulos
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-11-10

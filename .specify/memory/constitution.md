@@ -1,6 +1,12 @@
 <!--
 Sync Impact Report
-- Version change: 2.4.0 → 2.5.0 (MINOR: versionamento da API pelo caminho, `/api/v1`)
+- Version change: 2.5.0 → 2.6.0 (MINOR: vocabulário da rotulagem dos dados)
+- Modified sections (2.6.0):
+  - Restrições e fluxo de trabalho: vocabulário (rotulagem dos dados; "avaliar" em botões e
+    mensagens curtas; participante e voluntário; rotulador 1 e 2)
+  - III. Integridade da coleta (razão): "duas classificações" passa a "dois rótulos"
+  - Escopo e exceções: "dados de avaliadores" passa a "dados de rotuladores"
+- Version change 2.5.0 (2.4.0 → 2.5.0, MINOR: versionamento da API pelo caminho, `/api/v1`)
 - Modified principles (2.5.0):
   - I. Stack padrão, atual e de código aberto: versão no caminho com o suporte nativo do Spring
     Framework; versão nova só para mudança incompatível; anterior obsoleta com `Deprecation` e
@@ -119,7 +125,7 @@ ambiente publicado.
   para o participante.
 - O esquema só muda por migrações versionadas do Flyway; migração já aplicada NUNCA é editada.
 
-Razão: o oráculo só tem valor se cada item tiver duas classificações independentes e completas, de
+Razão: o oráculo só tem valor se cada item tiver dois rótulos independentes e completos, de
 pessoas diferentes, e isso não pode depender só do código da aplicação.
 
 ### IV. Privacidade, LGPD e segredos
@@ -164,7 +170,7 @@ estudante.
   `diegoquirino/openscience`.
 - **Exceção: spec 002 (`002-csv-oraculo`).** O gerador do CSV de importação é um comando Python do
   pipeline em `ISSTA_2027` e segue as convenções daquele projeto. Os Princípios I, II, III e V e as
-  regras de publicação não se aplicam a ele. Continuam valendo: a ausência de dados de avaliadores
+  regras de publicação não se aplicam a ele. Continuam valendo: a ausência de dados de rotuladores
   e de identificadores cegos no arquivo gerado (Princípio IV), UTF-8 e a compatibilidade com o
   formato de importação do Veredito.
 
@@ -185,6 +191,11 @@ estudante.
   o critério for da própria publicação).
 - Os arquivos exportados DEVEM continuar compatíveis com o pacote `issta_tcm`.
 - Todos os arquivos de texto do projeto DEVEM estar em UTF-8.
+- Vocabulário: a atividade é a **rotulagem dos dados** (títulos, termo, convites, explicações e
+  documentação); botões e mensagens curtas usam "avaliar". Quem rotula é "participante" no termo,
+  na LGPD e nos documentos formais, e "voluntário" nos convites e telas; a posição no bloco é
+  rotulador 1 ou 2. Nomes de colunas e arquivos do pipeline (`rater1`, `rater2`) não mudam. A
+  tabela completa fica na seção *Vocabulário* da spec 001.
 
 ## Governance
 
@@ -196,4 +207,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.5.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.6.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11

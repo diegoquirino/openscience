@@ -1,4 +1,4 @@
-# Feature Specification: Exportar as classificações
+# Feature Specification: Exportar os rótulos
 
 **Feature Branch**: `009-exportacoes`
 
@@ -30,7 +30,7 @@ Para cada sistema, o administrador baixa `t1_<sistema>_rater1.csv` e `t1_<sistem
 
 ### User Story 2 - Baixar a tabela larga (Priority: P1)
 
-O administrador baixa uma linha por item, com os dados dos dois avaliadores lado a lado (Apêndice C).
+O administrador baixa uma linha por item, com os dados dos dois rotuladores lado a lado (Apêndice C).
 
 **Why this priority**: É a visão consolidada pedida pelo pesquisador, com identificação, para uso interno.
 
@@ -39,8 +39,8 @@ O administrador baixa uma linha por item, com os dados dos dois avaliadores lado
 **Acceptance Scenarios**:
 
 1. **Dado** blocos concluídos, **Quando** exportada, **Então** a tabela tem o cabeçalho do Apêndice C, uma linha por item de todos os sistemas, na ordem da fila.
-2. **Dado** um papel concluído, **Quando** exportado, **Então** traz nome, e-mail, aceite do termo (versão e data/hora), habilidade, códigos escolhidos e comentário do avaliador daquele papel.
-3. **Dado** um papel não concluído, **Quando** exportado, **Então** os campos daquele avaliador ficam em branco.
+2. **Dado** um papel concluído, **Quando** exportado, **Então** traz nome, e-mail, aceite do termo (versão e data/hora), habilidade, códigos escolhidos e comentário do rotulador daquele papel.
+3. **Dado** um papel não concluído, **Quando** exportado, **Então** os campos daquele rotulador ficam em branco.
 
 ---
 
@@ -48,7 +48,7 @@ O administrador baixa uma linha por item, com os dados dos dois avaliadores lado
 
 O administrador baixa uma linha por resposta final, sem nome nem e-mail, para análise e para o pacote de replicação.
 
-**Why this priority**: Permite calcular a concordância com avaliadores variáveis (κ de Fleiss ou α de Krippendorff) e publicar os dados sem identificar ninguém.
+**Why this priority**: Permite calcular a concordância com rotuladores variáveis (κ de Fleiss ou α de Krippendorff) e publicar os dados sem identificar ninguém.
 
 **Independent Test**: Exportar e conferir que nenhuma coluna traz nome ou e-mail.
 

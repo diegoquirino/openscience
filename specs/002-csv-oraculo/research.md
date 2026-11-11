@@ -50,7 +50,7 @@ versão, de `minitest_v1.0` a `minitest_v2.2`).
   `t1_<sistema>_rater*.csv`. A ordem das linhas é a de `edits.csv`. `sistema` é
   `cfg.subject.key`, o mesmo de `t1_<sistema>_*.csv`.
 - **Rationale**: as respostas exportadas pelo Veredito (`t1_<sistema>_raterN.csv`, FR-057c da 001)
-  precisam casar com as linhas dos arquivos do avaliador. Copiar do mesmo jeito que o
+  precisam casar com as linhas dos arquivos dos rotuladores. Copiar do mesmo jeito que o
   `oracle-template` garante isso. `_cell` só tira espaços nas pontas e troca `nan` por vazio.
 - **Alternatives considered**: ler `edits.json` (tem os mesmos campos, mas o `.csv` é a referência
   do oráculo).

@@ -46,13 +46,13 @@ cerca de 2.200 caracteres (limite do Veredito: 40.000)
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-A constitution 2.5.0 trata a spec 002 como exceção (seção *Escopo e exceções*): o comando segue as
+A constitution 2.6.0 trata a spec 002 como exceção (seção *Escopo e exceções*): o comando segue as
 convenções do `ISSTA_2027`, e os Princípios I, II, III e V e as regras de publicação não se aplicam.
 Continuam valendo:
 
 | Regra | Como o plano atende | Situação |
 |---|---|---|
-| Princípio IV: sem dados de avaliadores nem ids cegos no arquivo | Só as colunas de `edits.csv` (`edit_key` … `target`) e o contexto; os `E-xxx` são usados só em memória para achar o contexto e não vão para o arquivo; nenhum `t1_*_rater*.csv` é lido | Passa |
+| Princípio IV: sem dados de rotuladores nem ids cegos no arquivo | Só as colunas de `edits.csv` (`edit_key` … `target`) e o contexto; os `E-xxx` são usados só em memória para achar o contexto e não vão para o arquivo; nenhum `t1_*_rater*.csv` é lido | Passa |
 | Princípio IV: repositório público | O arquivo fica em `ISSTA_2027/src/inputs/oracle/`, fora do branch `Veredito`; não tem dados pessoais | Passa |
 | UTF-8 | `utils.write_csv` já grava em UTF-8; teste confere o arquivo | Passa |
 | Compatibilidade com a importação do Veredito | Colunas do Apêndice D na ordem; validação espelha FR-052/FR-053; contrato em [contracts/import-csv.md](contracts/import-csv.md) | Passa |
@@ -60,7 +60,7 @@ Continuam valendo:
 Nenhuma violação; *Complexity Tracking* fica vazio.
 
 **Re-check pós-design**: o desenho da fase 1 não acrescenta dependências, não grava fora da pasta do
-oráculo e não lê arquivos de avaliadores. Passa.
+oráculo e não lê arquivos de rotuladores. Passa.
 
 ## Project Structure
 
