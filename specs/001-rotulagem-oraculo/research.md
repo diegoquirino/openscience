@@ -1,6 +1,6 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.1.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.2.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
@@ -20,6 +20,8 @@ Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets)
 | Spring Boot | 4.1.2 | A 4.2.0 está em RC2, com versão final prevista para novembro de 2026; usar a 4.2.x se já tiver saído quando o plano da spec 003 for feito |
 | Maven | 3.9.x ou superior | Via Maven Wrapper |
 | MySQL Community | 9.7 LTS | Também é a versão do contêiner de desenvolvimento e de teste |
+| Spring HATEOAS | gerenciada pelo Spring Boot (`spring-boot-starter-hateoas`) | Hipermídia HAL-FORMS da API |
+| springdoc-openapi | 3.2.0 (`springdoc-openapi-starter-webmvc-ui`, Swagger UI 5.34) | OpenAPI 3.1 e Swagger UI. A 3.2.x é feita para o Spring Boot 4.1.x; com o Spring Boot 4.2, usar a 3.x correspondente. Com o parent do Spring Boot no Maven, o Jackson fica na versão gerenciada pelo Boot |
 | Flyway (código aberto) | 13.12.1 | Com o módulo `flyway-mysql`; sobrepor a versão gerenciada pelo Spring Boot se ela for mais antiga |
 | Testcontainers | gerenciada pelo Spring Boot | MySQL 9.7 em contêiner nos testes de integração |
 
@@ -32,7 +34,7 @@ Navegador (Angular + Angular Material)
 Cloud Run: contêiner único
   Spring Boot 4 (Java 25)
    ├─ /       → arquivos do Angular compilado
-   ├─ /api/** → API REST (JSON)
+   ├─ /api/** → API REST nível 3 (HAL-FORMS, Spring HATEOAS)
    ├─ domínio em Java puro (CSV, blocos, fila, exportações)
    └─ Flyway roda as migrações na subida
         │ conector do Cloud SQL (IAM)           │ SMTP (TLS)
@@ -97,7 +99,7 @@ O ambiente de testes roda na máquina do pesquisador com Docker Compose (`docker
 
 GitHub Actions no branch `Veredito`:
 
-1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers) e do frontend; build da imagem pelo `Dockerfile`; envio ao Artifact Registry com a etiqueta do commit. Nada é publicado.
+1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers, incluindo o teste da documentação da API) e do frontend; `openapi.json` guardado como artefato do workflow; build da imagem pelo `Dockerfile`; envio ao Artifact Registry com a etiqueta do commit. Nada é publicado.
 2. **Ensaio**: o pesquisador roda o mesmo commit no Docker local (seção *Ensaio local*) e confere os critérios de sucesso da spec.
 3. **Produção**: workflow disparado manualmente, informando o commit ensaiado; publica no `veredito` a imagem desse commit já enviada ao Artifact Registry. A URL não muda.
 4. **Autenticação**: Workload Identity Federation entre GitHub e Google Cloud, sem chave de conta de serviço guardada no GitHub.
@@ -129,6 +131,55 @@ A migração inicial (spec 003) cria todas as tabelas; as specs seguintes só ac
 
 A restrição única (`bloco_id`, `participante_id`) é a garantia de banco de que ninguém ocupa os dois papéis de um bloco (o MySQL aceita vários `NULL` nesse índice, então tarefas livres não conflitam). Um caso de uso de até 40.000 caracteres cabe com folga em `MEDIUMTEXT`.
 
+## API REST: nível 3 de Richardson ("glory of REST")
+
+A API atende aos três níveis do modelo de maturidade de Richardson.
+
+| Nível | Como o Veredito atende |
+|---|---|
+| 1. Recursos | Cada coisa do domínio tem URI própria: `/api/participantes/eu`, `/api/tarefas/{id}`, `/api/tarefas/{id}/itens/{posicao}`, `/api/tarefas/{id}/respostas/{itemId}`, `/api/lotes`, `/api/lotes/{id}`, `/api/termos/vigente`, `/api/config`, `/api/exportacoes/{tipo}` |
+| 2. Métodos e status HTTP | `GET` lê sem efeito; `POST` cria (`201 Created` com `Location`); `PUT` grava de forma idempotente; `DELETE` remove ou retira. Códigos: `200`, `201`, `204`, `400`/`422` (validação), `401` (sem sessão), `403` (sem permissão), `404`, `409` (conflito de estado, por exemplo bloco já reservado por outra pessoa ou já enviado), `429` (limite de códigos ou de e-mails) |
+| 3. Hipermídia | Spring HATEOAS com **HAL-FORMS** (`application/prs.hal-forms+json`). Cada resposta traz `_links` (navegação) e `_templates` (ações com método, campos e opções) que valem **no estado atual** do recurso |
+
+**Regras**
+
+- **Ponto de entrada único**: `GET /api` devolve só as relações permitidas a quem chama.
+  - Sem sessão: `vd:pedir-codigo`.
+  - Participante: `vd:eu`, `vd:termo` e, quando elegível, `vd:proxima-tarefa`.
+  - Administrador: `vd:lotes`, `vd:exportacoes`, `vd:painel`, `vd:participantes`.
+- **Relações próprias** com o prefixo CURIE `vd:`, documentadas em `/api/rels/{rel}`. Relações padrão da IANA (`self`, `next`, `prev`, `collection`, `item`) quando cabem.
+- **O estado decide os links.** Uma tarefa reservada pela própria pessoa oferece `vd:itens`, `vd:salvar-resposta` e `vd:revisar`, e só oferece `vd:enviar` quando todos os itens têm rascunho. Uma tarefa concluída só tem `self`. Uma ação que não aparece como link é recusada se chamada (`409` ou `403`).
+- **O cliente não monta URLs.** O Angular parte de `/api`, segue as relações e preenche os `_templates`. Um serviço próprio, pequeno e tipado, lê HAL-FORMS, porque não há biblioteca oficial do Angular para isso. Só `/api` fica fixo no código do frontend.
+- **Erros** em Problem Details (RFC 9457, `application/problem+json`), com o tipo do erro e, nas validações, a lista de campos. A mensagem amigável da tela sai do tipo do erro.
+- **Coleções** paginadas (`PagedModel`, com `next` e `prev`) quando puderem crescer, como lotes, participantes e itens do painel.
+- **Exportações**: `GET /api/exportacoes/{tipo}` com `Accept: text/csv` devolve o arquivo; em HAL, devolve a lista de arquivos disponíveis.
+- **Sem versão na URL.** A API evolui acrescentando campos e relações; o cliente ignora o que não conhece.
+
+### Documentação no Swagger (OpenAPI 3.1)
+
+A especificação é gerada do próprio código pelo springdoc-openapi, então não há documento escrito à mão que possa ficar desatualizado.
+
+| Item | Regra |
+|---|---|
+| Endereços | Swagger UI em `/swagger-ui.html`; especificação em `/v3/api-docs` (JSON) e `/v3/api-docs.yaml` |
+| Acesso | Aberto no ensaio local. Na produção, só com sessão de administrador, pelo mesmo filtro da área administrativa; participantes não veem |
+| Informações gerais | Título "Veredito API", versão do sistema (a mesma do rodapé), descrição do estudo, contato do pesquisador, licença |
+| Grupos (tags) | Entrada (`/api`), Acesso (código e sessão), Participação (termo, habilidade, triagem), Tarefas (blocos e respostas), Administração (lotes, exportações, painel, participantes) |
+| Cada operação | `summary` e `description` em português; parâmetros com descrição e exemplo; corpo com esquema e exemplo; **todas** as respostas possíveis (2xx, 4xx) com exemplo; as respostas de erro usam o esquema Problem Details |
+| Hipermídia | Os esquemas HAL (`_links`, `_templates`) aparecem nas respostas; a descrição de cada operação lista as relações e ações que o recurso oferece **em cada estado** (por exemplo, `vd:enviar` só com todos os itens respondidos); `/api/rels/{rel}` aponta para a operação correspondente no Swagger |
+| Segurança | Esquema de segurança declarado (cookie de sessão `HttpOnly`); operações administrativas marcadas como tal |
+| Esquemas | Cada DTO com `@Schema` (descrição, exemplo, obrigatoriedade, tamanhos máximos iguais aos da validação: 5.000 e 40.000 caracteres, por exemplo) |
+| Qualidade | Um teste de integração lê `/v3/api-docs` e falha se alguma operação estiver sem `summary`, `description`, exemplo ou resposta de erro; o CI guarda o `openapi.json` de cada commit como artefato |
+
+**Operações críticas em HTTP** (a semântica transacional está na seção seguinte)
+
+| Operação | Requisição | Resposta |
+|---|---|---|
+| Pedir bloco | `POST /api/tarefas/reservas` (seguido de `vd:proxima-tarefa`) | `201` com `Location` da tarefa; `200` com a mesma tarefa se a pessoa já tinha uma reserva válida; `204` se não há bloco disponível para ela |
+| Salvar rascunho | `PUT /api/tarefas/{id}/respostas/{itemId}` | `200`; repetir a mesma resposta não cria outra (idempotente) |
+| Enviar bloco | `POST /api/tarefas/{id}/envio` (`vd:enviar`) | `200` com a tarefa concluída; reenviar um bloco já concluído pela pessoa devolve `200` sem alterar nada; reserva vencida ou de outra pessoa devolve `409` |
+| Importar | `POST /api/lotes/previas` (envio do CSV) e `POST /api/lotes` com o id da prévia (`vd:confirmar`) | `201` para a prévia e `201` para o lote |
+
 ## Tratamento de concorrência
 
 Cada operação é uma transação curta; as regras de decisão ficam na camada de domínio, e o repositório só carrega e bloqueia as linhas.
@@ -147,7 +198,8 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 |---|---|
 | Domínio (Java puro) | JUnit, sem Spring |
 | Repositórios, transações, migrações | Spring Boot Test + Testcontainers (MySQL 9.7) |
-| API | Spring Boot Test com MockMvc |
+| API | Spring Boot Test com MockMvc: status, cabeçalhos e, para cada estado do recurso, os links e as ações (`_links`, `_templates`) presentes e ausentes |
+| Documentação da API | Teste que valida a completude de `/v3/api-docs` (resumo, descrição, exemplos, respostas de erro em cada operação) |
 | Frontend | Executor de testes padrão do Angular 22 |
 
 ## Limites que importam

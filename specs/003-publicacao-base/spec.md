@@ -79,6 +79,23 @@ O pesquisador testa uma mudança no ambiente de ensaio, que roda em Docker na pr
 
 ---
 
+### User Story 5 - Consultar a API documentada (Priority: P2)
+
+O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa da API (Swagger) e entende cada operação: para que serve, o que recebe, o que devolve, que erros podem ocorrer e que ações o recurso oferece em cada estado.
+
+**Why this priority**: As specs seguintes acrescentam operações à API; com o ponto de entrada, a documentação e o teste de completude prontos desde a 003, cada operação nova já nasce documentada.
+
+**Independent Test**: Abrir o Swagger no ensaio local, chamar o ponto de entrada sem sessão e conferir os links devolvidos; tentar abrir o Swagger na produção sem ser administrador.
+
+**Acceptance Scenarios**:
+
+1. **Dado** o ensaio local, **Quando** o pesquisador abre a documentação da API, **Então** vê todas as operações agrupadas por área, cada uma com resumo, descrição, exemplos e todas as respostas possíveis, inclusive as de erro.
+2. **Dado** o ponto de entrada da API, **Quando** é chamado sem sessão, **Então** devolve só os links permitidos a um visitante (pedir código de acesso), e nenhum link administrativo.
+3. **Dado** a produção, **Quando** alguém sem sessão de administrador tenta abrir a documentação, **Então** o acesso é recusado.
+4. **Dado** uma operação nova sem resumo, descrição, exemplo ou resposta de erro documentados, **Quando** os testes rodam, **Então** falham, apontando a operação.
+
+---
+
 ### Edge Cases
 
 - Base de dados apagada ou inacessível: a página inicial mostra "Sistema temporariamente indisponível" em vez de um erro técnico.
@@ -100,6 +117,11 @@ O pesquisador testa uma mudança no ambiente de ensaio, que roda em Docker na pr
 - **FR-009**: Erros inesperados DEVEM aparecer ao usuário como mensagem amigável e ficar registrados para o pesquisador.
 - **FR-010**: A cada mudança enviada ao repositório, os testes e a construção da imagem DEVEM rodar automaticamente; a publicação em produção DEVE ser disparada pelo pesquisador, com um único comando, para uma versão já ensaiada localmente, e a produção recebe exatamente essa versão.
 - **FR-011**: Senhas e chaves NÃO DEVEM ficar no repositório de código.
+- **FR-012**: A API DEVE ser REST no nível 3 de Richardson ("glory of REST"). Isso inclui:
+  - um ponto de entrada único que lista só as ações permitidas a quem chama;
+  - respostas que trazem os links e as ações válidas no estado atual do recurso;
+  - erros num formato padronizado.
+- **FR-013**: A API DEVE ter documentação interativa (Swagger), gerada do código, com resumo, descrição, exemplos e todas as respostas possíveis de cada operação. Ela fica aberta no ensaio local e só para o administrador na produção. Um teste automático DEVE falhar quando alguma operação estiver documentada de forma incompleta.
 
 ### Key Entities
 
@@ -116,10 +138,11 @@ O pesquisador testa uma mudança no ambiente de ensaio, que roda em Docker na pr
 - **SC-004**: A página inicial abre em menos de 3 segundos, depois que o sistema já está em uso.
 - **SC-005**: O custo mensal do sistema fica abaixo de R$ 200, com alerta automático se passar disso.
 - **SC-006**: Uma busca por senhas e chaves no repositório público não encontra nada.
+- **SC-007**: 100 % das operações da API aparecem na documentação com resumo, descrição, exemplo e respostas de erro, conferidos por teste automático.
 
 ## Assumptions
 
-- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.1.0.
+- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.2.0.
 - A base de dados de produção fica no projeto de nuvem do pesquisador (`veredito-issta2027`); nenhum participante tem acesso direto a ela.
 - O ensaio local usa só dados fictícios e os arquivos do pipeline; nada da produção é copiado para a máquina.
 - A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso só pode ser medido na produção.

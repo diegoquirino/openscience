@@ -1,6 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 2.0.1 → 2.1.0 (MINOR: ambientes redefinidos; produção no Google Cloud e ensaio
+- Version change: 2.1.0 → 2.2.0 (MINOR: API REST no nível 3 de Richardson, "glory of REST", e
+  documentada em OpenAPI/Swagger)
+- Modified principles (2.2.0):
+  - I. Stack padrão, atual e de código aberto: regra da API (recursos, verbos e status HTTP,
+    hipermídia HAL-FORMS com Spring HATEOAS, ponto de entrada `/api`, Problem Details) e
+    documentação OpenAPI 3.1 com Swagger UI (springdoc-openapi)
+  - II. Regras de domínio isoladas e testadas: links e ações por estado cobertos por testes da API;
+    teste que barra endpoint sem documentação completa
+- Version change 2.1.0 (2.0.1 → 2.1.0, MINOR: ambientes redefinidos; produção no Google Cloud e ensaio
   local em Docker, sem ensaio na nuvem)
 - Modified sections (2.1.0):
   - Restrições e fluxo de trabalho: regra de ensaio passa a ser o Docker local; piloto na produção
@@ -31,6 +39,22 @@ Sync Impact Report
 
 - Frontend: Angular com Angular Material (Material Design 3), em TypeScript.
 - Backend: Spring Boot sobre Java LTS, em Maven.
+- API: REST no nível 3 do modelo de maturidade de Richardson ("glory of REST"):
+  - recursos identificados por URI;
+  - métodos e códigos de status HTTP com a semântica padrão;
+  - hipermídia com Spring HATEOAS em HAL-FORMS: cada resposta traz os links e as ações
+    permitidas no estado atual do recurso;
+  - um único ponto de entrada, `/api`; o cliente Angular navega pelas relações de link e não
+    monta URLs da API;
+  - erros em Problem Details (RFC 9457).
+- Documentação da API: OpenAPI 3.1 gerada a partir do código (springdoc-openapi), com Swagger UI.
+  Todo endpoint DEVE ter:
+  - resumo e descrição em português;
+  - parâmetros, corpo e exemplos;
+  - todas as respostas possíveis, com o esquema de erro;
+  - as relações de link e ações que oferece.
+
+  O Swagger UI fica aberto no ensaio local e, na produção, só para o administrador.
 - Banco: MySQL Community, com o esquema versionado pelo Flyway (edição de código aberto).
 - Cada spec DEVE começar com as versões estáveis mais recentes de cada peça (a LTS, quando
   houver) e registrá-las no seu plano. Atualizações menores e de correção são livres; trocar uma
@@ -47,6 +71,10 @@ durante toda a coleta e para quem for reproduzir o estudo.
   testes unitários.
 - O acesso ao banco DEVE ter testes de integração contra um MySQL da mesma versão da produção,
   em contêiner.
+- Os links e ações que a API oferece em cada estado de um recurso DEVEM ser cobertos por testes da
+  API; uma ação proibida naquele estado não aparece como link e, se chamada, é recusada.
+- Um teste DEVE falhar se algum endpoint da especificação OpenAPI gerada estiver sem resumo,
+  descrição, respostas de erro ou exemplos; o CI guarda o `openapi.json` de cada commit.
 - Uma regra nova ou alterada DEVE vir acompanhada dos seus testes, no mesmo commit.
 
 Razão: as regras de alocação são o ponto de maior risco e precisam ser verificadas sem depender do
@@ -133,4 +161,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.1.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.2.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
