@@ -1,23 +1,23 @@
-# Quickstart: validar o CSV de importaÁ„o
+# Quickstart: validar o CSV de importa√ß√£o
 
-## PrÈ-requisitos
+## Pr√©-requisitos
 
-- RepositÛrio `ISSTA_2027` com o run do Minitest j· processado atÈ o S5
+- Reposit√≥rio `ISSTA_2027` com o run do Minitest j√° processado at√© o S5
   (`src/runs/minitest-piloto/s5_blind/public/requests_T1.jsonl` existe).
 - Python do pesquisador: `C:\Users\diego\AppData\Local\Python\bin\python.exe` com o pacote
-  instalado em modo edit·vel (`pip install -e src[dev]`).
+  instalado em modo edit√°vel (`pip install -e src[dev]`).
 
 Todos os comandos rodam em `ISSTA_2027/src`.
 
-## 1. Testes autom·ticos
+## 1. Testes autom√°ticos
 
 ```powershell
 python -m pytest tests/test_veredito_import.py -q
 ```
 
-Esperado: todos passam, cobrindo a divis„o do contexto, o aviso de caso de uso ausente, os rÛtulos
-de vers„o, a validaÁ„o (cada regra do [contrato](contracts/import-csv.md)), aspas e quebras de linha
-e a geraÁ„o duas vezes igual.
+Esperado: todos passam, cobrindo a divis√£o do contexto, o aviso de caso de uso ausente, os r√≥tulos
+de vers√£o, a valida√ß√£o (cada regra do [contrato](contracts/import-csv.md)), aspas e quebras de linha
+e a gera√ß√£o duas vezes igual.
 
 ## 2. Gerar o arquivo do Minitest (US1, SC-001)
 
@@ -29,18 +29,18 @@ Esperado, em poucos segundos:
 
 - `inputs/oracle/veredito_minitest.csv` gravado;
 - resumo com 38 linhas, contagens por `kind` e `field` e maiores tamanhos;
-- cÛdigo de saÌda 0, sem avisos de linha sem `<- edited` (SC-002).
+- c√≥digo de sa√≠da 0, sem avisos de linha sem `<- edited` (SC-002).
 
-## 3. Conferir contra o pipeline (US1, cen·rios 1 a 3)
+## 3. Conferir contra o pipeline (US1, cen√°rios 1 a 3)
 
-- As colunas `edit_key` Ö `target` batem, linha a linha e na mesma ordem, com
+- As colunas `edit_key` ‚Ä¶ `target` batem, linha a linha e na mesma ordem, com
   `inputs/oracle/t1_minitest_rater1.csv`.
-- Para algumas linhas, `origin_usecase` e `target_usecase` s„o iguais aos dois blocos do item
+- Para algumas linhas, `origin_usecase` e `target_usecase` s√£o iguais aos dois blocos do item
   correspondente em `inputs/oracle/labeling_sheet_minitest.md` (fora o aviso traduzido).
-- `origin_version` e `target_version` seguem os passos da configuraÁ„o: as ediÁıes `|1|` tÍm `v1.0` e
-  `v1.1`, e as `|12|` tÍm `v2.1` e `v2.2`.
+- `origin_version` e `target_version` seguem os passos da configura√ß√£o: as edi√ß√µes `|1|` t√™m `v1.0` e
+  `v1.1`, e as `|12|` t√™m `v2.1` e `v2.2`.
 
-## 4. Determinismo (cen·rio 6)
+## 4. Determinismo (cen√°rio 6)
 
 Gerar de novo e comparar o hash:
 
@@ -50,14 +50,14 @@ python -m issta_tcm oracle-import --config config/experiment-minitest.yaml
 (Get-FileHash inputs/oracle/veredito_minitest.csv).Hash
 ```
 
-Esperado: os dois hashes s„o iguais.
+Esperado: os dois hashes s√£o iguais.
 
-## 5. Falha de validaÁ„o (US2)
+## 5. Falha de valida√ß√£o (US2)
 
-O teste autom·tico com uma ediÁ„o de 5.001 caracteres cobre este caso. Esperado: cÛdigo 1,
+O teste autom√°tico com uma edi√ß√£o de 5.001 caracteres cobre este caso. Esperado: c√≥digo 1,
 `linha N (edit_key): origin com mais de 5000 caracteres` e nenhum arquivo gravado.
 
-## 6. PrÈvia no Veredito (SC-003)
+## 6. Pr√©via no Veredito (SC-003)
 
-Feito na spec 005: importar `veredito_minitest.csv` no ensaio e conferir que a prÈvia mostra 38
-incluÌdos, 0 ignorados e 0 com erro.
+Feito na spec 005: importar `veredito_minitest.csv` no ensaio e conferir que a pr√©via mostra 38
+inclu√≠dos, 0 ignorados e 0 com erro.

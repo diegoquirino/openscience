@@ -1,92 +1,92 @@
-# Research: Gerar o CSV de importaÁ„o a partir do pipeline
+# Research: Gerar o CSV de importa√ß√£o a partir do pipeline
 
-Levantamento feito em 2026-11-11 sobre o run `runs/minitest-piloto` (38 ediÁıes, 12 passos de
-vers„o, de `minitest_v1.0` a `minitest_v2.2`).
+Levantamento feito em 2026-11-11 sobre o run `runs/minitest-piloto` (38 edi√ß√µes, 12 passos de
+vers√£o, de `minitest_v1.0` a `minitest_v2.2`).
 
-## 1. De onde vÍm os casos de uso completos
+## 1. De onde v√™m os casos de uso completos
 
 - **Decision**: usar o campo `context` dos pedidos T1 (`s5_blind/public/requests_T1.jsonl`), que tem
   a forma `### origin version\n<caso de uso>\n### target version\n<caso de uso>`, e dividi-lo no
-  cabeÁalho `### target version`. O pedido de cada ediÁ„o È achado por
-  `edit_key ? E-xxx` em `s5_blind/_private/edits_index.json` (o mesmo caminho de
+  cabe√ßalho `### target version`. O pedido de cada edi√ß√£o √© achado por
+  `edit_key ‚Üí E-xxx` em `s5_blind/_private/edits_index.json` (o mesmo caminho de
   `oracle._key_to_eid`).
-- **Rationale**: È exatamente o texto que a planilha `labeling_sheet_<sistema>.md` mostra e que as
-  tÈcnicas recebem: `claret.render(uc, include_metadata=False, mark=...)`, com `<- edited` nos
-  elementos tocados pela ediÁ„o, em cada vers„o (`s5_blind._context`). Reaproveitar o texto
-  garante o FR-004 sem duplicar a lÛgica de marcaÁ„o. No Minitest, os 38 contextos tÍm exatamente
-  um cabeÁalho `### target version`, todos tÍm ao menos uma linha marcada e o maior lado tem 2.186
+- **Rationale**: √© exatamente o texto que a planilha `labeling_sheet_<sistema>.md` mostra e que as
+  t√©cnicas recebem: `claret.render(uc, include_metadata=False, mark=...)`, com `<- edited` nos
+  elementos tocados pela edi√ß√£o, em cada vers√£o (`s5_blind._context`). Reaproveitar o texto
+  garante o FR-004 sem duplicar a l√≥gica de marca√ß√£o. No Minitest, os 38 contextos t√™m exatamente
+  um cabe√ßalho `### target version`, todos t√™m ao menos uma linha marcada e o maior lado tem 2.186
   caracteres.
 - **Alternatives considered**: renderizar de novo com `claret.render` a partir de
   `s1_version/<tag>/src` (duplicaria `_context` e poderia divergir da planilha); ler a planilha
-  `.md` (formato de apresentaÁ„o, fr·gil para parsing).
+  `.md` (formato de apresenta√ß√£o, fr√°gil para parsing).
 
-## 2. Caso de uso que n„o existe numa das versıes
+## 2. Caso de uso que n√£o existe numa das vers√µes
 
-- **Decision**: o S5 j· escreve `(the use case does not exist in this version)` no lado ausente. O
-  comando troca esse texto exato por `(este caso de uso n„o existe nesta vers„o)`.
-- **Rationale**: atende ao FR-005 (aviso curto, nunca vazio) e a interface do Veredito È em
-  portuguÍs. Os casos de uso em si continuam em inglÍs, como no pipeline.
-- **Alternatives considered**: manter o texto em inglÍs (mistura idiomas no modal do Veredito);
-  deixar vazio (recusado pela importaÁ„o, FR-052).
+- **Decision**: o S5 j√° escreve `(the use case does not exist in this version)` no lado ausente. O
+  comando troca esse texto exato por `(este caso de uso n√£o existe nesta vers√£o)`.
+- **Rationale**: atende ao FR-005 (aviso curto, nunca vazio) e a interface do Veredito √© em
+  portugu√™s. Os casos de uso em si continuam em ingl√™s, como no pipeline.
+- **Alternatives considered**: manter o texto em ingl√™s (mistura idiomas no modal do Veredito);
+  deixar vazio (recusado pela importa√ß√£o, FR-052).
 
-## 3. RÛtulos de vers„o
+## 3. R√≥tulos de vers√£o
 
-- **Decision**: `origin_version = "v" + label` da vers„o anterior e `target_version = "v" + label`
-  da vers„o modificada do passo `k` da ediÁ„o (`cfg.subject.steps()`; `k` vem de
-  `edits_index.json`). No Minitest: `v1.0`Ö`v2.2`.
-- **Rationale**: a vers„o declarada dentro do caso de uso fica atr·s da release. Por exemplo, as
-  releases `v1.1` e `v1.2` ainda declaram `1.0`, e uma ediÁ„o do passo 2 apareceria como
-  `1.0 ? 1.0`. O rÛtulo da release È sempre distinto entre as duas versıes e È o mesmo usado nos
-  nomes de passo do pipeline (`step_label`). AlÈm disso, o S5 remove o metadado `version` do texto
+- **Decision**: `origin_version = "v" + label` da vers√£o anterior e `target_version = "v" + label`
+  da vers√£o modificada do passo `k` da edi√ß√£o (`cfg.subject.steps()`; `k` vem de
+  `edits_index.json`). No Minitest: `v1.0`‚Ä¶`v2.2`.
+- **Rationale**: a vers√£o declarada dentro do caso de uso fica atr√°s da release. Por exemplo, as
+  releases `v1.1` e `v1.2` ainda declaram `1.0`, e uma edi√ß√£o do passo 2 apareceria como
+  `1.0 ‚Üí 1.0`. O r√≥tulo da release √© sempre distinto entre as duas vers√µes e √© o mesmo usado nos
+  nomes de passo do pipeline (`step_label`). Al√©m disso, o S5 remove o metadado `version` do texto
   mostrado.
-- **Alternatives considered**: vers„o declarada no caso de uso, com a release sÛ como reserva
-  (cen·rio 4 original da spec). Foi descartada pelo problema acima. A spec foi ajustada: o cen·rio 4
-  e o caso de borda agora usam o rÛtulo da release.
+- **Alternatives considered**: vers√£o declarada no caso de uso, com a release s√≥ como reserva
+  (cen√°rio 4 original da spec). Foi descartada pelo problema acima. A spec foi ajustada: o cen√°rio 4
+  e o caso de borda agora usam o r√≥tulo da release.
 
 ## 4. Colunas copiadas de `edits.csv`
 
-- **Decision**: `edit_key`, `uc`, `kind`, `field`, `origin` e `target` s„o lidos de
+- **Decision**: `edit_key`, `uc`, `kind`, `field`, `origin` e `target` s√£o lidos de
   `s3_diff/edits.csv` com `oracle._cell`, como em `oracle._items`, que gera os
-  `t1_<sistema>_rater*.csv`. A ordem das linhas È a de `edits.csv`. `sistema` È
+  `t1_<sistema>_rater*.csv`. A ordem das linhas √© a de `edits.csv`. `sistema` √©
   `cfg.subject.key`, o mesmo de `t1_<sistema>_*.csv`.
 - **Rationale**: as respostas exportadas pelo Veredito (`t1_<sistema>_raterN.csv`, FR-057c da 001)
   precisam casar com as linhas dos arquivos do avaliador. Copiar do mesmo jeito que o
-  `oracle-template` garante isso. `_cell` sÛ tira espaÁos nas pontas e troca `nan` por vazio.
-- **Alternatives considered**: ler `edits.json` (tem os mesmos campos, mas o `.csv` È a referÍncia
-  do or·culo).
+  `oracle-template` garante isso. `_cell` s√≥ tira espa√ßos nas pontas e troca `nan` por vazio.
+- **Alternatives considered**: ler `edits.json` (tem os mesmos campos, mas o `.csv` √© a refer√™ncia
+  do or√°culo).
 
-## 5. ValidaÁ„o antes de gravar
+## 5. Valida√ß√£o antes de gravar
 
-- **Decision**: espelhar em Python as regras de recusa da importaÁ„o (FR-052 e FR-053 da 001):
-  - campos obrigatÛrios;
+- **Decision**: espelhar em Python as regras de recusa da importa√ß√£o (FR-052 e FR-053 da 001):
+  - campos obrigat√≥rios;
   - `kind` dentro de `ADD`, `DEL`, `MOD`, `META`;
-  - `origin` obrigatÛrio quando `kind` ? `ADD`, e `target` quando `kind` ? `DEL`;
-  - `origin` e `target` com atÈ 5.000 caracteres;
-  - casos de uso completos com atÈ 40.000 caracteres;
-  - rÛtulos de vers„o com atÈ 20 caracteres;
-  - (`sistema`, `edit_key`) ˙nico no arquivo.
+  - `origin` obrigat√≥rio quando `kind` ‚â† `ADD`, e `target` quando `kind` ‚â† `DEL`;
+  - `origin` e `target` com at√© 5.000 caracteres;
+  - casos de uso completos com at√© 40.000 caracteres;
+  - r√≥tulos de vers√£o com at√© 20 caracteres;
+  - (`sistema`, `edit_key`) √∫nico no arquivo.
 
-  Com erro, o comando n„o grava o arquivo, lista linha e motivo e sai com cÛdigo 1. Uma linha sem
-  `<- edited` nos dois lados gera sÛ um aviso. A contagem de caracteres usa `len()` do Python (pontos
-  de cÛdigo), e o Veredito deve contar igual (`codePointCount` em Java).
-- **Rationale**: atende ‡ US2 e ao FR-006 e evita descobrir o erro sÛ na prÈvia da 005. N„o gravar
-  impede importar por engano um arquivo velho junto com um novo inv·lido.
-- **Alternatives considered**: gravar mesmo com erro e sÛ avisar (o arquivo inv·lido ficaria na
+  Com erro, o comando n√£o grava o arquivo, lista linha e motivo e sai com c√≥digo 1. Uma linha sem
+  `<- edited` nos dois lados gera s√≥ um aviso. A contagem de caracteres usa `len()` do Python (pontos
+  de c√≥digo), e o Veredito deve contar igual (`codePointCount` em Java).
+- **Rationale**: atende √† US2 e ao FR-006 e evita descobrir o erro s√≥ na pr√©via da 005. N√£o gravar
+  impede importar por engano um arquivo velho junto com um novo inv√°lido.
+- **Alternatives considered**: gravar mesmo com erro e s√≥ avisar (o arquivo inv√°lido ficaria na
   pasta).
 
 ## 6. Formato do arquivo
 
 - **Decision**: `utils.write_csv` (`csv.DictWriter`, UTF-8 sem BOM, `newline=""`): registros
-  separados por `\r\n`, aspas sÛ quando preciso, aspas internas duplicadas, `\n` preservado dentro
+  separados por `\r\n`, aspas s√≥ quando preciso, aspas internas duplicadas, `\n` preservado dentro
   dos campos. Nome do arquivo: `veredito_<sistema>.csv`, ao lado dos `t1_*`.
-- **Rationale**: È RFC 4180 (FR-002), È o que o pipeline j· usa e È determinÌstico para a mesma
+- **Rationale**: √© RFC 4180 (FR-002), √© o que o pipeline j√° usa e √© determin√≠stico para a mesma
   entrada (FR-007).
-- **Alternatives considered**: `import_<sistema>.csv` (nome genÈrico demais na pasta do or·culo).
+- **Alternatives considered**: `import_<sistema>.csv` (nome gen√©rico demais na pasta do or√°culo).
 
 ## 7. Riscos
 
 - **Pedidos T1 desatualizados**: se `edits.csv` mudar sem rodar o S5 de novo, alguma `edit_key` fica
   sem pedido. O comando falha com a mensagem "rode o S5" (via `MissingStageOutput` ou com a lista de
   chaves sem contexto).
-- **MudanÁa no cabeÁalho do contexto**: se o S5 mudar `### origin version` ou `### target version`,
-  a divis„o quebra. H· um teste que gera o contexto com o prÛprio `_context` do S5 e confere a divis„o.
+- **Mudan√ßa no cabe√ßalho do contexto**: se o S5 mudar `### origin version` ou `### target version`,
+  a divis√£o quebra. H√° um teste que gera o contexto com o pr√≥prio `_context` do S5 e confere a divis√£o.

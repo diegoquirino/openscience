@@ -1,7 +1,7 @@
-# Contrato: arquivo de importação do Veredito
+# Contrato: arquivo de importaÃ§Ã£o do Veredito
 
-Contrato entre o pipeline (produtor, spec 002) e a importação do Veredito (consumidor, spec 005).
-Fonte das regras: Apêndice D, FR-051, FR-052 e FR-053 da [spec 001](../../001-rotulagem-oraculo/spec.md).
+Contrato entre o pipeline (produtor, spec 002) e a importaÃ§Ã£o do Veredito (consumidor, spec 005).
+Fonte das regras: ApÃªndice D, FR-051, FR-052 e FR-053 da [spec 001](../../001-rotulagem-oraculo/spec.md).
 
 ## Comando
 
@@ -10,56 +10,56 @@ python -m issta_tcm oracle-import [--config <yaml>] [--set chave=valor ...]
 ```
 
 - Executado em `ISSTA_2027/src`, depois do S5 do run configurado.
-- Saída: `<oracle_dir>/veredito_<sistema>.csv`; `oracle_dir` é `stages.s8_evaluate.oracle_dir`
-  (padrão `../inputs/oracle`).
-- Sobrescreve o arquivo existente, porque a saída é determinística.
-- Saída padrão: caminho gravado e resumo (total, por `kind`, por `field`, maiores tamanhos), depois
+- SaÃ­da: `<oracle_dir>/veredito_<sistema>.csv`; `oracle_dir` Ã© `stages.s8_evaluate.oracle_dir`
+  (padrÃ£o `../inputs/oracle`).
+- Sobrescreve o arquivo existente, porque a saÃ­da Ã© determinÃ­stica.
+- SaÃ­da padrÃ£o: caminho gravado e resumo (total, por `kind`, por `field`, maiores tamanhos), depois
   os avisos.
-- Código de saída: `0` gravou; `1` alguma linha seria recusada (nada é gravado; erros listados como
+- CÃ³digo de saÃ­da: `0` gravou; `1` alguma linha seria recusada (nada Ã© gravado; erros listados como
   `linha N (edit_key): motivo`) ou faltam artefatos do pipeline.
 
 ## Arquivo
 
-- UTF-8 sem BOM; RFC 4180; registros separados por `\r\n`; campos com vírgula, aspas ou quebra de
+- UTF-8 sem BOM; RFC 4180; registros separados por `\r\n`; campos com vÃ­rgula, aspas ou quebra de
   linha ficam entre aspas, com aspas internas duplicadas.
-- Cabeçalho exato:
+- CabeÃ§alho exato:
 
 ```text
 sistema,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase
 ```
 
-- Uma linha por edição, na ordem de `s3_diff/edits.csv`. Sem edições, sai só o cabeçalho, com
+- Uma linha por ediÃ§Ã£o, na ordem de `s3_diff/edits.csv`. Sem ediÃ§Ãµes, sai sÃ³ o cabeÃ§alho, com
   aviso.
 
 ## Regras que o produtor garante e o consumidor confere
 
 | Regra | Produtor (002) | Consumidor (005) |
 |---|---|---|
-| Colunas obrigatórias não vazias: `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase`, `target_usecase` | Falha | Recusa a linha |
-| `kind` ? {`ADD`, `DEL`, `MOD`, `META`} | Falha | Recusa |
-| `origin` não vazio se `kind` ? `ADD`; `target` não vazio se `kind` ? `DEL` | Falha | Recusa |
-| `origin`, `target` ? 5.000 caracteres (pontos de código) | Falha | Recusa |
-| `origin_usecase`, `target_usecase` ? 40.000 caracteres | Falha | Recusa |
-| `origin_version`, `target_version` ? 20 caracteres | Falha | Recusa |
-| (`sistema`, `edit_key`) único no arquivo | Falha na 2ª ocorrência | Recusa a partir da 2ª |
-| (`sistema`, `edit_key`) já importado | — | Ignora, sem alterar o item |
+| Colunas obrigatÃ³rias nÃ£o vazias: `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase`, `target_usecase` | Falha | Recusa a linha |
+| `kind` âˆˆ {`ADD`, `DEL`, `MOD`, `META`} | Falha | Recusa |
+| `origin` nÃ£o vazio se `kind` â‰  `ADD`; `target` nÃ£o vazio se `kind` â‰  `DEL` | Falha | Recusa |
+| `origin`, `target` â‰¤ 5.000 caracteres (pontos de cÃ³digo) | Falha | Recusa |
+| `origin_usecase`, `target_usecase` â‰¤ 40.000 caracteres | Falha | Recusa |
+| `origin_version`, `target_version` â‰¤ 20 caracteres | Falha | Recusa |
+| (`sistema`, `edit_key`) Ãºnico no arquivo | Falha na 2Âª ocorrÃªncia | Recusa a partir da 2Âª |
+| (`sistema`, `edit_key`) jÃ¡ importado | â€” | Ignora, sem alterar o item |
 | Nenhuma linha `<- edited` nos dois casos de uso | Aviso | Aceita |
-| Colunas extras | Não gera | Ignora |
+| Colunas extras | NÃ£o gera | Ignora |
 
-## Conteúdo dos casos de uso
+## ConteÃºdo dos casos de uso
 
-- Sintaxe CLARET canônica sem metadados (`claret.render(uc, include_metadata=False, mark=...)`),
-  igual à planilha `labeling_sheet_<sistema>.md`.
-- Linhas tocadas pela edição terminam em `   <- edited`.
-- Caso de uso ausente na versão: `(este caso de uso não existe nesta versão)`.
+- Sintaxe CLARET canÃ´nica sem metadados (`claret.render(uc, include_metadata=False, mark=...)`),
+  igual Ã  planilha `labeling_sheet_<sistema>.md`.
+- Linhas tocadas pela ediÃ§Ã£o terminam em `   <- edited`.
+- Caso de uso ausente na versÃ£o: `(este caso de uso nÃ£o existe nesta versÃ£o)`.
 
 ## Exemplo (abreviado)
 
 ```text
 sistema,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase
-minitest,LoginTest|1|1,LoginTest,MOD,step,"…","…",v1.0,v1.1,"systemName ""Email""
+minitest,LoginTest|1|1,LoginTest,MOD,step,"â€¦","â€¦",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
-  …   <- edited
+  â€¦   <- edited
 }","systemName ""Email""
-…"
+â€¦"
 ```
