@@ -165,7 +165,7 @@ T007/T008 and T013/T014 live in the same test file: in parallel only if each one
 
 ## Notes
 
-- SC-003 (the file goes through the import preview without errors) is only checked in spec 005, in local staging.
+- SC-003 (the file goes through the import preview without errors) is only checked in spec 005 (its SC-005), in local staging.
 - By constitution 2.7.0 (Principle IV), the `veredito_minitest.csv` generated here is the only item data of local staging, of the tests and of the pilot. The copy to `Veredito/backend/src/test/resources/minitest/veredito_minitest.csv` happens in specs 003 and 005, when the backend exists, and is replaced in the same commit whenever the pipeline generates the file again.
 - No task calls models; the sequential execution rule of `ISSTA_2027` does not apply.
 - This task list originally asked for a commit in the `ISSTA_2027` repository at the end of each phase, but the `ISSTA_2027` folder is not a git repository, so there were no commits there.

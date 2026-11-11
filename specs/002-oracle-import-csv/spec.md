@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: Complete (2026-11-11; SC-003 is checked in spec 005, SC-005)
 
 **Input**: User description: "Generate, from the ISSTA 2027 pipeline data, the CSV file that Veredito imports (Appendix D of spec 001), one file per system, with the complete use case of each version and the edited lines marked." (translated from the original Portuguese)
 
@@ -79,7 +79,7 @@ When generating the file, the researcher sees a summary and is warned about any 
 
 - **SC-001**: The Minitest file is generated in less than 1 minute.
 - **SC-002**: 100% of the Minitest rows have at least one line marked as edited in one of the two use cases.
-- **SC-003**: The Minitest file goes through the Veredito import preview (spec 005) without any row in error. Checked in spec 005; it does not block the start of 003.
+- **SC-003**: The Minitest file goes through the Veredito import preview (spec 005) without any row in error. Checked in spec 005 (its SC-005); it does not block the start of 003.
 
 ## Assumptions
 
