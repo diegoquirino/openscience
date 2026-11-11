@@ -22,8 +22,8 @@ Um dicionário com as colunas do Apêndice D da spec 001, nesta ordem:
 | `uc` | `edits.csv` | Obrigatório |
 | `kind` | `edits.csv` | Obrigatório; `ADD`, `DEL`, `MOD` ou `META` |
 | `field` | `edits.csv` | Obrigatório |
-| `origin` | `edits.csv` | Obrigatório se `kind` ≠ `ADD`; até 5.000 caracteres |
-| `target` | `edits.csv` | Obrigatório se `kind` ≠ `DEL`; até 5.000 caracteres |
+| `origin` | `edits.csv` | Obrigatório em `MOD` e `DEL`; em `META`, `origin` ou `target`; até 5.000 caracteres |
+| `target` | `edits.csv` | Obrigatório em `MOD` e `ADD`; em `META`, `origin` ou `target`; até 5.000 caracteres |
 | `origin_version` | `"v" + label` da versão anterior do passo `k` | Obrigatório; até 20 caracteres |
 | `target_version` | `"v" + label` da versão modificada do passo `k` | Obrigatório; até 20 caracteres |
 | `origin_usecase` | Trecho do `context` entre `### origin version` e `### target version` | Obrigatório; até 40.000 caracteres |

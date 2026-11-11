@@ -37,7 +37,7 @@ sistema,edit_key,uc,kind,field,origin,target,origin_version,target_version,origi
 |---|---|---|
 | Colunas obrigatórias não vazias: `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase`, `target_usecase` | Falha | Recusa a linha |
 | `kind` ∈ {`ADD`, `DEL`, `MOD`, `META`} | Falha | Recusa |
-| `origin` não vazio se `kind` ≠ `ADD`; `target` não vazio se `kind` ≠ `DEL` | Falha | Recusa |
+| `origin` não vazio em `MOD` e `DEL`; `target` não vazio em `MOD` e `ADD`; em `META`, ao menos um dos dois | Falha | Recusa |
 | `origin`, `target` ≤ 5.000 caracteres (pontos de código) | Falha | Recusa |
 | `origin_usecase`, `target_usecase` ≤ 40.000 caracteres | Falha | Recusa |
 | `origin_version`, `target_version` ≤ 20 caracteres | Falha | Recusa |

@@ -27,6 +27,7 @@
 - Q: O rotulador 2 pode começar antes de o rotulador 1 terminar? → A: Sim, os dois rotulam o mesmo bloco em paralelo, sem ver nada um do outro.
 - Q: Blocos de quem pede retirada (LGPD) com respostas descartadas voltam para onde? → A: Para a mesma posição da fila.
 - Q: Que vocabulário usar? → A: Ver a seção *Vocabulário*.
+- Q: Um item `META` pode ter `origin` ou `target` vazio? → A: Sim, um dos dois. O pipeline gera `META` com um lado vazio quando um metadado é acrescentado ou retirado (no Minitest, `LoginTest|3|1` passa de nenhum requisito para `REQ-07`). A importação recusa só `META` com os dois lados vazios, e a tela mostra "(nenhum)" no lado vazio.
 
 ## Vocabulário
 
@@ -321,7 +322,7 @@ A pedido de um participante (direito previsto na LGPD), o administrador remove o
 
 - **FR-050**: Somente `diegoquirino@gmail.com` (Carlos Diego Quirino Lima) DEVE acessar a área administrativa, entrando pelo mesmo código por e-mail; o administrador não rotula itens.
 - **FR-051**: A importação DEVE aceitar CSV UTF-8 (RFC 4180, inclusive campos com quebra de linha) com as colunas do Apêndice D; colunas extras são ignoradas.
-- **FR-052**: A importação DEVE recusar linhas com `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase` ou `target_usecase` vazios; `kind` fora de `ADD`, `DEL`, `MOD`, `META`; `origin` vazio quando `kind` ≠ `ADD`; `target` vazio quando `kind` ≠ `DEL`; `origin`/`target` com mais de 5.000 caracteres; `origin_usecase`/`target_usecase` com mais de 40.000 caracteres; rótulo de versão com mais de 20 caracteres.
+- **FR-052**: A importação DEVE recusar linhas com `sistema`, `edit_key`, `uc`, `kind`, `field`, `origin_version`, `target_version`, `origin_usecase` ou `target_usecase` vazios; `kind` fora de `ADD`, `DEL`, `MOD`, `META`; `origin` vazio em `MOD` ou `DEL`; `target` vazio em `MOD` ou `ADD`; `origin` e `target` vazios em `META` (um `META` acrescenta ou retira um metadado, como o primeiro vínculo com requisitos, e por isso pode ter um dos lados vazio); `origin`/`target` com mais de 5.000 caracteres; `origin_usecase`/`target_usecase` com mais de 40.000 caracteres; rótulo de versão com mais de 20 caracteres.
 - **FR-053**: O par (`sistema`, `edit_key`) DEVE ser único; linhas que repetem um item existente DEVEM ser ignoradas sem alterá-lo; repetições dentro do arquivo DEVEM ser recusadas a partir da segunda ocorrência.
 - **FR-054**: A importação DEVE mostrar uma prévia (incluídas, ignoradas, com erro com linha e motivo, e blocos a criar) e só gravar após confirmação; o lote DEVE ser registrado com data, hora e nome do arquivo.
 - **FR-055**: A importação NÃO DEVE alterar itens, blocos nem respostas existentes.
@@ -459,8 +460,8 @@ sistema,edit_key,uc,kind,field,origin,target,rater_1_name,rater_1_email,rater_1_
 | `uc` | sim | Caso de uso, por exemplo `LoginTest` |
 | `kind` | sim | `ADD`, `DEL`, `MOD` ou `META` |
 | `field` | sim | Local da edição (Apêndice A) |
-| `origin` | exceto em `ADD` | Trecho antes da edição |
-| `target` | exceto em `DEL` | Trecho depois da edição |
+| `origin` | em `MOD` e `DEL`; em `META`, `origin` ou `target` | Trecho antes da edição |
+| `target` | em `MOD` e `ADD`; em `META`, `origin` ou `target` | Trecho depois da edição |
 | `origin_version` | sim | Rótulo da versão anterior, por exemplo `v1.1` |
 | `target_version` | sim | Rótulo da versão modificada, por exemplo `v1.2` |
 | `origin_usecase` | sim | Caso de uso completo na versão anterior, linhas editadas marcadas com `<- edited` |

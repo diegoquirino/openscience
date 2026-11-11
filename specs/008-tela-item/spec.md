@@ -25,7 +25,7 @@ O rotulador vê o que mudou sem precisar comparar os textos de cabeça.
 1. **Dado** um item `MOD`, **Quando** é exibido, **Então** "Antes" (origin) e "Depois" (target) aparecem lado a lado, com as palavras removidas riscadas e as incluídas destacadas.
 2. **Dado** um item `ADD`, **Quando** é exibido, **Então** aparece só "Trecho incluído" com o target.
 3. **Dado** um item `DEL`, **Quando** é exibido, **Então** aparece só "Trecho removido" com o origin.
-4. **Dado** um item `META` de `requirements`, **Quando** é exibido, **Então** aparece como "Vínculo com requisitos: antes / depois".
+4. **Dado** um item `META` de `requirements`, **Quando** é exibido, **Então** aparece como "Vínculo com requisitos: antes / depois"; se um dos lados estiver vazio (metadado acrescentado ou retirado), ele aparece como "(nenhum)".
 5. **Dado** qualquer item, **Quando** é exibido, **Então** o cabeçalho mostra sistema, caso de uso e o local da edição em linguagem natural (Apêndice A), por exemplo "Passo de fluxo de exceção · Modificação".
 6. **Dado** um texto com várias linhas ou com mais de 400 caracteres, **Quando** é exibido, **Então** aparece inteiro, com as quebras de linha mantidas.
 7. **Dado** uma tela estreita, **Quando** o item é exibido, **Então** "Antes" e "Depois" ficam um abaixo do outro, sem rolagem horizontal.
@@ -82,7 +82,7 @@ Cada pergunta traz a definição e exemplos de cada opção, e a regra de preced
 ### Functional Requirements
 
 - **FR-001**: O cabeçalho do item DEVE mostrar sistema, caso de uso e o tipo e local da edição em linguagem natural (Apêndice A).
-- **FR-002**: O sistema DEVE mostrar `origin` e `target` lado a lado com destaque palavra a palavra (só `target` em `ADD`, só `origin` em `DEL`), mantendo quebras de linha e empilhando os blocos em telas estreitas.
+- **FR-002**: O sistema DEVE mostrar `origin` e `target` lado a lado com destaque palavra a palavra (só `target` em `ADD`, só `origin` em `DEL`; em `META`, o lado vazio aparece como "(nenhum)"), mantendo quebras de linha e empilhando os blocos em telas estreitas.
 - **FR-003**: O sistema DEVE oferecer os dois botões de caso de uso completo, rotulados com as versões do item, abrindo modais conforme a User Story 2.
 - **FR-004**: As perguntas DEVEM trazer a explicação de cada opção (Apêndices B.1 e B.2), com escolha única; avançar só fica disponível com as duas respondidas.
 - **FR-005**: A tela NÃO DEVE mudar o que é gravado em relação à spec 007.

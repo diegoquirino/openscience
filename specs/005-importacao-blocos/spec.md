@@ -27,7 +27,7 @@ O administrador envia um arquivo e vê, antes de gravar qualquer coisa, o que en
 3. **Dado** campos entre aspas com vírgulas, aspas duplicadas ou quebras de linha, **Quando** o arquivo é lido, **Então** os textos são preservados exatamente.
 4. **Dado** uma linha cujo (`sistema`, `edit_key`) já existe na base, **Quando** a prévia é gerada, **Então** a linha aparece como ignorada.
 5. **Dado** o mesmo (`sistema`, `edit_key`) repetido no arquivo, **Quando** a prévia é gerada, **Então** só a primeira ocorrência entra e as demais aparecem como erro.
-6. **Dado** uma linha com campo obrigatório vazio, `kind` inválido, `origin` vazio fora de `ADD`, `target` vazio fora de `DEL`, `origin`/`target` acima de 5.000 caracteres, caso de uso acima de 40.000 caracteres ou rótulo de versão acima de 20 caracteres, **Quando** a prévia é gerada, **Então** a linha aparece como erro com o motivo.
+6. **Dado** uma linha com campo obrigatório vazio, `kind` inválido, `origin` vazio em `MOD` ou `DEL`, `target` vazio em `MOD` ou `ADD`, `origin` e `target` vazios em `META`, `origin`/`target` acima de 5.000 caracteres, caso de uso acima de 40.000 caracteres ou rótulo de versão acima de 20 caracteres, **Quando** a prévia é gerada, **Então** a linha aparece como erro com o motivo.
 7. **Dado** a prévia, **Quando** o administrador cancela, **Então** nada é gravado.
 8. **Dado** colunas extras no arquivo, **Quando** é lido, **Então** elas são ignoradas e a prévia as lista.
 9. **Dado** o ensaio local, ou a produção na fase `piloto`, **Quando** o administrador envia um arquivo com alguma linha de `sistema` diferente de `minitest`, **Então** o arquivo é recusado inteiro, com a mensagem "Nesta fase só são aceitos itens do Minitest" e as linhas de outro sistema.

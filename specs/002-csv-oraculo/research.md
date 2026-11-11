@@ -60,7 +60,8 @@ versão, de `minitest_v1.0` a `minitest_v2.2`).
 - **Decision**: espelhar em Python as regras de recusa da importação (FR-052 e FR-053 da 001):
   - campos obrigatórios;
   - `kind` dentro de `ADD`, `DEL`, `MOD`, `META`;
-  - `origin` obrigatório quando `kind` ≠ `ADD`, e `target` quando `kind` ≠ `DEL`;
+  - `origin` obrigatório em `MOD` e `DEL`, `target` em `MOD` e `ADD`, e ao menos um dos dois em `META`
+    (o pipeline gera `META` com um lado vazio quando um metadado é acrescentado ou retirado);
   - `origin` e `target` com até 5.000 caracteres;
   - casos de uso completos com até 40.000 caracteres;
   - rótulos de versão com até 20 caracteres;
