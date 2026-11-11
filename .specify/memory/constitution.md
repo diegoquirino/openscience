@@ -1,6 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 2.3.0 → 2.4.0 (MINOR: ensaio local, testes e piloto só com itens do Minitest)
+- Version change: 2.4.0 → 2.5.0 (MINOR: versionamento da API pelo caminho, `/api/v1`)
+- Modified principles (2.5.0):
+  - I. Stack padrão, atual e de código aberto: versão no caminho com o suporte nativo do Spring
+    Framework; versão nova só para mudança incompatível; anterior obsoleta com `Deprecation` e
+    `Sunset` até sair de uso; domínio e banco sem versão; ponto de entrada por versão
+    (`/api/v1`); uma especificação OpenAPI por versão
+  - II. Regras de domínio isoladas e testadas: testes partem de `/api/v1`; cada versão suportada
+    tem seus testes e sua especificação conferida
+- Version change 2.4.0 (2.3.0 → 2.4.0, MINOR: ensaio local, testes e piloto só com itens do Minitest)
 - Modified principles (2.4.0):
   - IV. Privacidade, LGPD e segredos: ensaio local, testes automatizados e piloto em produção usam
     só itens do Minitest; importação recusa outro sistema no ensaio e na fase `piloto`
@@ -56,11 +64,15 @@ Sync Impact Report
   - métodos e códigos de status HTTP com a semântica padrão;
   - hipermídia com Spring HATEOAS em HAL-FORMS: cada resposta traz os links e as ações
     permitidas no estado atual do recurso;
-  - um único ponto de entrada, `/api`; o cliente Angular navega pelas relações de link e não
-    monta URLs da API;
+  - versão no caminho (`/api/v1`, `/api/v2`), com o suporte nativo do Spring Framework a
+    versões de API. Só mudança incompatível cria versão nova; a anterior continua no ar,
+    marcada como obsoleta (cabeçalhos `Deprecation` e `Sunset`), até não ter mais uso. A camada
+    de domínio e o banco não têm versão;
+  - um único ponto de entrada por versão, `/api/v1`; o cliente Angular navega pelas relações de
+    link e não monta URLs da API;
   - erros em Problem Details (RFC 9457).
-- Documentação da API: OpenAPI 3.1 gerada a partir do código (springdoc-openapi), com Swagger UI.
-  Todo endpoint DEVE ter:
+- Documentação da API: OpenAPI 3.1 gerada a partir do código (springdoc-openapi), com Swagger UI e
+  uma especificação por versão da API. Todo endpoint DEVE ter:
   - resumo e descrição em português;
   - parâmetros, corpo e exemplos;
   - todas as respostas possíveis, com o esquema de erro;
@@ -84,13 +96,14 @@ durante toda a coleta e para quem for reproduzir o estudo.
 - O acesso ao banco DEVE ter testes de integração contra um MySQL da mesma versão da produção,
   em contêiner.
 - Os testes automatizados da API DEVEM ser escritos com REST Assured, por HTTP real contra a
-  aplicação numa porta aleatória (Spring Boot Test com MySQL em contêiner). Cada teste parte de
-  `/api` e segue as relações de link, como o cliente Angular; a única URL fixa nos testes é a do
-  ponto de entrada.
+  aplicação numa porta aleatória (Spring Boot Test com MySQL em contêiner). Cada teste parte do
+  ponto de entrada da versão (`/api/v1`) e segue as relações de link, como o cliente Angular; a
+  única URL fixa nos testes é a do ponto de entrada. Cada versão suportada tem os seus testes.
 - Os links e ações que a API oferece em cada estado de um recurso DEVEM ser cobertos por esses
   testes; uma ação proibida naquele estado não aparece como link e, se chamada, é recusada.
-- Um teste DEVE falhar se algum endpoint da especificação OpenAPI gerada estiver sem resumo,
-  descrição, respostas de erro ou exemplos; o CI guarda o `openapi.json` de cada commit.
+- Um teste DEVE falhar se algum endpoint da especificação OpenAPI gerada, em qualquer versão
+  suportada, estiver sem resumo, descrição, respostas de erro ou exemplos; o CI guarda a
+  especificação de cada versão (`openapi-v1.json`, ...) de cada commit.
 - Uma regra nova ou alterada DEVE vir acompanhada dos seus testes, no mesmo commit.
 
 Razão: as regras de alocação são o ponto de maior risco e precisam ser verificadas sem depender do
@@ -183,4 +196,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.4.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.5.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11

@@ -93,6 +93,7 @@ O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa
 2. **Dado** o ponto de entrada da API, **Quando** é chamado sem sessão, **Então** devolve só os links permitidos a um visitante (pedir código de acesso), e nenhum link administrativo.
 3. **Dado** a produção, **Quando** alguém sem sessão de administrador tenta abrir a documentação, **Então** o acesso é recusado.
 4. **Dado** uma operação nova sem resumo, descrição, exemplo ou resposta de erro documentados, **Quando** os testes rodam, **Então** falham, apontando a operação.
+5. **Dado** a API, **Quando** alguém chama uma versão que não existe (por exemplo, `/api/v9`), **Então** recebe um erro padronizado com as versões disponíveis; e o índice `/api` lista as versões suportadas, com o link de entrada de cada uma.
 
 ---
 
@@ -120,7 +121,8 @@ O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa
 - **FR-012**: A API DEVE ser REST no nível 3 de Richardson ("glory of REST"). Isso inclui:
   - um ponto de entrada único que lista só as ações permitidas a quem chama;
   - respostas que trazem os links e as ações válidas no estado atual do recurso;
-  - erros num formato padronizado.
+  - erros num formato padronizado;
+  - versão no endereço (`/api/v1`): uma versão inexistente é recusada com erro padronizado, e uma versão obsoleta continua respondendo, avisando o cliente da data em que sairá do ar.
 - **FR-013**: A API DEVE ter documentação interativa (Swagger), gerada do código, com resumo, descrição, exemplos e todas as respostas possíveis de cada operação. Ela fica aberta no ensaio local e só para o administrador na produção. Um teste automático DEVE falhar quando alguma operação estiver documentada de forma incompleta.
 
 ### Key Entities
@@ -142,7 +144,7 @@ O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa
 
 ## Assumptions
 
-- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.4.0.
+- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.5.0.
 - A base de dados de produção fica no projeto de nuvem do pesquisador (`veredito-issta2027`); nenhum participante tem acesso direto a ela.
 - O ensaio local, os testes automáticos e o ensaio piloto em produção usam só os itens do sistema Minitest (o CSV da spec 002 e arquivos derivados dele); os participantes do ensaio local e dos testes são fictícios; nada da produção é copiado para a máquina. A recusa de outros sistemas na importação é entregue na spec 005.
 - A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso só pode ser medido na produção.

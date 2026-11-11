@@ -1,6 +1,6 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.4.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.5.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
@@ -35,7 +35,7 @@ Navegador (Angular + Angular Material)
 Cloud Run: contêiner único
   Spring Boot 4 (Java 25)
    ├─ /       → arquivos do Angular compilado
-   ├─ /api/** → API REST nível 3 (HAL-FORMS, Spring HATEOAS)
+   ├─ /api/v1/** → API REST nível 3 (HAL-FORMS, Spring HATEOAS), versionada no caminho
    ├─ domínio em Java puro (CSV, blocos, fila, exportações)
    └─ Flyway roda as migrações na subida
         │ conector do Cloud SQL (IAM)           │ SMTP (TLS)
@@ -113,7 +113,7 @@ O ensaio local, os testes automatizados e o ensaio piloto em produção usam só
 
 GitHub Actions no branch `Veredito`:
 
-1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers, incluindo o teste da documentação da API) e do frontend; `openapi.json` guardado como artefato do workflow; build da imagem pelo `Dockerfile`; envio ao Artifact Registry com a etiqueta do commit. Nada é publicado.
+1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers, incluindo o teste da documentação da API) e do frontend; a especificação OpenAPI de cada versão da API (`openapi-v1.json`, ...) guardada como artefato do workflow; build da imagem pelo `Dockerfile`; envio ao Artifact Registry com a etiqueta do commit. Nada é publicado.
 2. **Ensaio**: o pesquisador roda o mesmo commit no Docker local (seção *Ensaio local*) e confere os critérios de sucesso da spec.
 3. **Produção**: workflow disparado manualmente, informando o commit ensaiado; publica no `veredito` a imagem desse commit já enviada ao Artifact Registry. A URL não muda.
 4. **Autenticação**: Workload Identity Federation entre GitHub e Google Cloud, sem chave de conta de serviço guardada no GitHub.
@@ -151,23 +151,39 @@ A API atende aos três níveis do modelo de maturidade de Richardson.
 
 | Nível | Como o Veredito atende |
 |---|---|
-| 1. Recursos | Cada coisa do domínio tem URI própria: `/api/participantes/eu`, `/api/tarefas/{id}`, `/api/tarefas/{id}/itens/{posicao}`, `/api/tarefas/{id}/respostas/{itemId}`, `/api/lotes`, `/api/lotes/{id}`, `/api/termos/vigente`, `/api/config`, `/api/exportacoes/{tipo}` |
+| 1. Recursos | Cada coisa do domínio tem URI própria, sob a versão da API: `/api/v1/participantes/eu`, `/api/v1/tarefas/{id}`, `/api/v1/tarefas/{id}/itens/{posicao}`, `/api/v1/tarefas/{id}/respostas/{itemId}`, `/api/v1/lotes`, `/api/v1/lotes/{id}`, `/api/v1/termos/vigente`, `/api/v1/config`, `/api/v1/exportacoes/{tipo}` |
 | 2. Métodos e status HTTP | `GET` lê sem efeito; `POST` cria (`201 Created` com `Location`); `PUT` grava de forma idempotente; `DELETE` remove ou retira. Códigos: `200`, `201`, `204`, `400`/`422` (validação), `401` (sem sessão), `403` (sem permissão), `404`, `409` (conflito de estado, por exemplo bloco já reservado por outra pessoa ou já enviado), `429` (limite de códigos ou de e-mails) |
 | 3. Hipermídia | Spring HATEOAS com **HAL-FORMS** (`application/prs.hal-forms+json`). Cada resposta traz `_links` (navegação) e `_templates` (ações com método, campos e opções) que valem **no estado atual** do recurso |
 
 **Regras**
 
-- **Ponto de entrada único**: `GET /api` devolve só as relações permitidas a quem chama.
+- **Ponto de entrada único por versão**: `GET /api/v1` devolve só as relações permitidas a quem chama.
   - Sem sessão: `vd:pedir-codigo`.
   - Participante: `vd:eu`, `vd:termo` e, quando elegível, `vd:proxima-tarefa`.
   - Administrador: `vd:lotes`, `vd:exportacoes`, `vd:painel`, `vd:participantes`.
-- **Relações próprias** com o prefixo CURIE `vd:`, documentadas em `/api/rels/{rel}`. Relações padrão da IANA (`self`, `next`, `prev`, `collection`, `item`) quando cabem.
+- **Relações próprias** com o prefixo CURIE `vd:`, documentadas em `/api/v1/rels/{rel}`. Relações padrão da IANA (`self`, `next`, `prev`, `collection`, `item`) quando cabem.
 - **O estado decide os links.** Uma tarefa reservada pela própria pessoa oferece `vd:itens`, `vd:salvar-resposta` e `vd:revisar`, e só oferece `vd:enviar` quando todos os itens têm rascunho. Uma tarefa concluída só tem `self`. Uma ação que não aparece como link é recusada se chamada (`409` ou `403`).
-- **O cliente não monta URLs.** O Angular parte de `/api`, segue as relações e preenche os `_templates`. Um serviço próprio, pequeno e tipado, lê HAL-FORMS, porque não há biblioteca oficial do Angular para isso. Só `/api` fica fixo no código do frontend.
+- **O cliente não monta URLs.** O Angular parte de `/api/v1`, segue as relações e preenche os `_templates`. Um serviço próprio, pequeno e tipado, lê HAL-FORMS, porque não há biblioteca oficial do Angular para isso. Só `/api/v1` fica fixo no código do frontend.
 - **Erros** em Problem Details (RFC 9457, `application/problem+json`), com o tipo do erro e, nas validações, a lista de campos. A mensagem amigável da tela sai do tipo do erro.
 - **Coleções** paginadas (`PagedModel`, com `next` e `prev`) quando puderem crescer, como lotes, participantes e itens do painel.
-- **Exportações**: `GET /api/exportacoes/{tipo}` com `Accept: text/csv` devolve o arquivo; em HAL, devolve a lista de arquivos disponíveis.
-- **Sem versão na URL.** A API evolui acrescentando campos e relações; o cliente ignora o que não conhece.
+- **Exportações**: `GET /api/v1/exportacoes/{tipo}` com `Accept: text/csv` devolve o arquivo; em HAL, devolve a lista de arquivos disponíveis.
+
+### Versionamento pelo caminho (`/api/v1`)
+
+A versão vai no caminho, como segmento logo depois de `/api`, usando o suporte nativo a versões de API do Spring Framework 7 (Spring Boot 4).
+
+| Item | Regra |
+|---|---|
+| Formato | `v` seguido de um inteiro: `/api/v1`, `/api/v2`. Só a versão maior; não há `v1.1` |
+| Configuração | `WebMvcConfigurer.configureApiVersioning`: `usePathSegment(1)`, com um predicado que só trata como versionados os caminhos `/api/v{n}/**`; um `ApiVersionParser` que aceita o prefixo `v`; versões suportadas declaradas explicitamente (`addSupportedVersions("1")`) e detecção automática desligada. Os controladores mapeiam `/api/{version}/...` com o atributo `version` |
+| Versão inexistente | `/api/v9/...` devolve `400` em Problem Details (`InvalidApiVersionException`), com a lista de versões suportadas |
+| Índice de versões | `GET /api` (fora de versão) devolve, em HAL, um link por versão suportada (`vd:v1`, ...), marcando as obsoletas. Não faz parte do contrato de nenhuma versão |
+| Links | Sempre na mesma versão da requisição: uma resposta de `/api/v1` só aponta para `/api/v1/...` |
+| O que muda a versão | Só mudança incompatível: remover ou renomear campo, relação ou ação; mudar o significado ou o tipo de um campo; tornar obrigatório um campo de entrada; mudar o código de status de um caso existente |
+| O que não muda a versão | Acrescentar campo opcional, relação, ação ou recurso. O cliente ignora o que não conhece |
+| Convivência | A versão anterior continua no ar enquanto houver abas abertas com o frontend antigo (o Angular e a API saem no mesmo contêiner): no mínimo 7 dias e até não haver chamadas a ela por 24 horas no log. Nesse período, as respostas dela trazem os cabeçalhos `Deprecation` (RFC 9745) e `Sunset` (RFC 8594), pelo `StandardApiVersionDeprecationHandler`, e o Angular, ao ver `Deprecation`, pede para recarregar a página |
+| Código | Controladores, modelos de representação e montadores de links ficam num pacote por versão (`api.v1`); a camada de domínio, o banco e as regras não têm versão. Uma `v2` reaproveita os serviços e só troca a camada web |
+| Expectativa | A coleta inteira deve rodar na `v1`; a versão é uma garantia para corrigir a API durante a coleta sem quebrar quem está com a página aberta |
 
 ### Documentação no Swagger (OpenAPI 3.1)
 
@@ -175,24 +191,25 @@ A especificação é gerada do próprio código pelo springdoc-openapi, então n
 
 | Item | Regra |
 |---|---|
-| Endereços | Swagger UI em `/swagger-ui.html`; especificação em `/v3/api-docs` (JSON) e `/v3/api-docs.yaml` |
+| Endereços | Swagger UI em `/swagger-ui.html`, com um seletor de versão; uma especificação por versão da API (`GroupedOpenApi` do springdoc, filtrando `/api/v1/**`) em `/v3/api-docs/v1` (JSON) e `/v3/api-docs.yaml/v1`. O `/v3/` desses endereços é a versão do formato OpenAPI usado pelo springdoc, não a da API |
+| Versões | Cada especificação traz no `info.version` a versão da API (`v1`) e, no `info.description`, a versão do sistema (a do rodapé); uma versão obsoleta aparece marcada como tal, com a data do `Sunset` |
 | Acesso | Aberto no ensaio local. Na produção, só com sessão de administrador, pelo mesmo filtro da área administrativa; participantes não veem |
-| Informações gerais | Título "Veredito API", versão do sistema (a mesma do rodapé), descrição do estudo, contato do pesquisador, licença |
-| Grupos (tags) | Entrada (`/api`), Acesso (código e sessão), Participação (termo, habilidade, triagem), Tarefas (blocos e respostas), Administração (lotes, exportações, painel, participantes) |
+| Informações gerais | Título "Veredito API", descrição do estudo, contato do pesquisador, licença |
+| Grupos (tags) | Entrada (`/api/v1`), Acesso (código e sessão), Participação (termo, habilidade, triagem), Tarefas (blocos e respostas), Administração (lotes, exportações, painel, participantes) |
 | Cada operação | `summary` e `description` em português; parâmetros com descrição e exemplo; corpo com esquema e exemplo; **todas** as respostas possíveis (2xx, 4xx) com exemplo; as respostas de erro usam o esquema Problem Details |
-| Hipermídia | Os esquemas HAL (`_links`, `_templates`) aparecem nas respostas; a descrição de cada operação lista as relações e ações que o recurso oferece **em cada estado** (por exemplo, `vd:enviar` só com todos os itens respondidos); `/api/rels/{rel}` aponta para a operação correspondente no Swagger |
+| Hipermídia | Os esquemas HAL (`_links`, `_templates`) aparecem nas respostas; a descrição de cada operação lista as relações e ações que o recurso oferece **em cada estado** (por exemplo, `vd:enviar` só com todos os itens respondidos); `/api/v1/rels/{rel}` aponta para a operação correspondente no Swagger |
 | Segurança | Esquema de segurança declarado (cookie de sessão `HttpOnly`); operações administrativas marcadas como tal |
 | Esquemas | Cada DTO com `@Schema` (descrição, exemplo, obrigatoriedade, tamanhos máximos iguais aos da validação: 5.000 e 40.000 caracteres, por exemplo) |
-| Qualidade | Um teste de integração lê `/v3/api-docs` e falha se alguma operação estiver sem `summary`, `description`, exemplo ou resposta de erro; o CI guarda o `openapi.json` de cada commit como artefato |
+| Qualidade | Um teste de integração lê a especificação de cada versão suportada (`/v3/api-docs/v1`, ...) e falha se alguma operação estiver sem `summary`, `description`, exemplo ou resposta de erro; o CI guarda o `openapi-v1.json` (um arquivo por versão) de cada commit como artefato |
 
 **Operações críticas em HTTP** (a semântica transacional está na seção seguinte)
 
 | Operação | Requisição | Resposta |
 |---|---|---|
-| Pedir bloco | `POST /api/tarefas/reservas` (seguido de `vd:proxima-tarefa`) | `201` com `Location` da tarefa; `200` com a mesma tarefa se a pessoa já tinha uma reserva válida; `204` se não há bloco disponível para ela |
-| Salvar rascunho | `PUT /api/tarefas/{id}/respostas/{itemId}` | `200`; repetir a mesma resposta não cria outra (idempotente) |
-| Enviar bloco | `POST /api/tarefas/{id}/envio` (`vd:enviar`) | `200` com a tarefa concluída; reenviar um bloco já concluído pela pessoa devolve `200` sem alterar nada; reserva vencida ou de outra pessoa devolve `409` |
-| Importar | `POST /api/lotes/previas` (envio do CSV) e `POST /api/lotes` com o id da prévia (`vd:confirmar`) | `201` para a prévia e `201` para o lote |
+| Pedir bloco | `POST /api/v1/tarefas/reservas` (seguido de `vd:proxima-tarefa`) | `201` com `Location` da tarefa; `200` com a mesma tarefa se a pessoa já tinha uma reserva válida; `204` se não há bloco disponível para ela |
+| Salvar rascunho | `PUT /api/v1/tarefas/{id}/respostas/{itemId}` | `200`; repetir a mesma resposta não cria outra (idempotente) |
+| Enviar bloco | `POST /api/v1/tarefas/{id}/envio` (`vd:enviar`) | `200` com a tarefa concluída; reenviar um bloco já concluído pela pessoa devolve `200` sem alterar nada; reserva vencida ou de outra pessoa devolve `409` |
+| Importar | `POST /api/v1/lotes/previas` (envio do CSV) e `POST /api/v1/lotes` com o id da prévia (`vd:confirmar`) | `201` para a prévia e `201` para o lote |
 
 ## Tratamento de concorrência
 
@@ -213,7 +230,7 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 | Domínio (Java puro) | JUnit, sem Spring |
 | Repositórios, transações, migrações | Spring Boot Test + Testcontainers (MySQL 9.7) |
 | API | REST Assured contra a aplicação numa porta aleatória (`@SpringBootTest(webEnvironment = RANDOM_PORT)`), com MySQL e servidor de e-mail de teste em contêiner |
-| Documentação da API | Teste com REST Assured que lê `/v3/api-docs` e valida a completude (resumo, descrição, exemplos, respostas de erro em cada operação) |
+| Documentação da API | Teste com REST Assured que lê a especificação de cada versão (`/v3/api-docs/v1`, ...) e valida a completude (resumo, descrição, exemplos, respostas de erro em cada operação) |
 | Frontend | Executor de testes padrão do Angular 22 |
 
 ### Testes da API com REST Assured
@@ -221,8 +238,9 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 | Item | Regra |
 |---|---|
 | Por que HTTP real | Os testes passam pelos mesmos filtros, cookies de sessão, negociação de conteúdo e tratamento de erros da produção; nada é simulado na camada web |
-| Navegação | Cada teste começa em `GET /api` e segue os links pelo nome da relação (por exemplo, `vd:reservar`), extraindo o `href` da resposta; a única URL fixa é a do ponto de entrada. Isso testa o nível 3: se um link sumir ou mudar, o teste quebra |
-| Especificações comuns | Uma classe base monta o `RequestSpecification` (porta, `Accept: application/prs.hal-forms+json`, log só em falha) e um por perfil: visitante, participante com sessão, administrador |
+| Navegação | Cada teste começa em `GET /api/v1` e segue os links pelo nome da relação (por exemplo, `vd:reservar`), extraindo o `href` da resposta; a única URL fixa é a do ponto de entrada da versão. Isso testa o nível 3: se um link sumir ou mudar, o teste quebra |
+| Versões | Os testes ficam num pacote por versão da API (`api.v1`), como o código. Testes próprios conferem: `GET /api` lista as versões suportadas; `/api/v9/...` devolve `400` em Problem Details; todos os links de uma resposta da `v1` ficam em `/api/v1/...`; uma versão marcada como obsoleta devolve `Deprecation` e `Sunset` |
+| Especificações comuns | Uma classe base monta o `RequestSpecification` (porta, caminho base `/api/v1`, `Accept: application/prs.hal-forms+json`, log só em falha) e um por perfil: visitante, participante com sessão, administrador |
 | Organização | Uma classe de teste por área, na mesma divisão dos grupos do Swagger (Entrada, Acesso, Participação, Tarefas, Administração) |
 | O que cada teste confere | Status HTTP, `Content-Type`, cabeçalhos (`Location` no 201), corpo, e os `_links` e `_templates` presentes **e ausentes** no estado do recurso |
 | Ações proibidas | Para cada estado, o teste confere que a ação não aparece e que a chamada direta ao endereço é recusada (403, 404 ou 409, conforme o caso) |

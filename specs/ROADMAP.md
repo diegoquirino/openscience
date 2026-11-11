@@ -96,7 +96,7 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 Para cada spec, na ordem acima:
 
 1. Apontar `.specify/feature.json` para a pasta da spec (por exemplo, `{"feature_directory":"specs/003-publicacao-base"}`).
-2. Rodar `/speckit-plan`, depois `/speckit-tasks` e `/speckit-implement`. Em cada spec do Veredito (003 a 011), o `contracts/` do plano lista os recursos, os métodos e status HTTP, as relações de link e as ações por estado (nível 3 de Richardson), e cada operação nova entra documentada no Swagger.
+2. Rodar `/speckit-plan`, depois `/speckit-tasks` e `/speckit-implement`. Em cada spec do Veredito (003 a 011), o `contracts/` do plano lista os recursos (sob `/api/v1`), os métodos e status HTTP, as relações de link e as ações por estado (nível 3 de Richardson), e cada operação nova entra documentada no Swagger.
 3. Rodar no ensaio local (Docker), conferir os critérios de sucesso da spec, publicar em produção e só então seguir para a próxima.
 
-Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.4.0: Angular com Angular Material, Spring Boot com API REST nível 3 documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker; ensaio, testes e piloto só com itens do Minitest) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.
+Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.5.0: Angular com Angular Material, Spring Boot com API REST nível 3 versionada no caminho (`/api/v1`), documentada no Swagger e testada com REST Assured, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker; ensaio, testes e piloto só com itens do Minitest) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.
