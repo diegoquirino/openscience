@@ -25,7 +25,7 @@ O pesquisador roda um comando para um sistema já processado pelo pipeline (por 
 1. **Dado** um sistema com as edições já calculadas pelo pipeline, **Quando** o pesquisador gera o arquivo, **Então** recebe um CSV com uma linha por edição, na mesma ordem das edições do pipeline (38 linhas no Minitest), com as colunas do Apêndice D da spec 001, nessa ordem.
 2. **Dado** o arquivo gerado, **Quando** o pesquisador compara uma linha com a edição original, **Então** `edit_key`, `uc`, `kind`, `field`, `origin` e `target` são idênticos aos do pipeline, caractere por caractere, e `sistema` traz o identificador do sistema.
 3. **Dado** uma edição, **Quando** o arquivo é gerado, **Então** `origin_usecase` traz o caso de uso inteiro na versão anterior e `target_usecase` na versão modificada, no mesmo formato da planilha de rotulagem, com `<- edited` só nas linhas tocadas por aquela edição.
-4. **Dado** um caso de uso que declara versão, **Quando** o arquivo é gerado, **Então** `origin_version` e `target_version` trazem esses rótulos (por exemplo, `v1.1` e `v1.2`).
+4. **Dado** uma edição entre duas versões do sistema, **Quando** o arquivo é gerado, **Então** `origin_version` e `target_version` trazem os rótulos dessas versões na configuração do pipeline (por exemplo, `v1.1` e `v1.2`), e não a versão declarada dentro do caso de uso, que pode ficar atrás da versão do sistema.
 5. **Dado** um caso de uso criado na versão modificada (não existia na anterior), **Quando** o arquivo é gerado, **Então** `origin_usecase` traz um aviso curto de que o caso de uso não existia naquela versão; o inverso vale para caso de uso removido.
 6. **Dado** o mesmo sistema, **Quando** o arquivo é gerado duas vezes, **Então** os dois arquivos são idênticos.
 
@@ -50,7 +50,7 @@ Ao gerar o arquivo, o pesquisador vê um resumo e é avisado de qualquer linha q
 ### Edge Cases
 
 - Edição `META` de `requirements`: a linha marcada é a de vínculo com requisitos.
-- Caso de uso sem versão declarada: usa o rótulo da versão do sistema configurada no pipeline.
+- Caso de uso que declara uma versão diferente da versão do sistema (no Minitest, as versões 1.1 e 1.2 ainda declaram 1.0): vale o rótulo da versão do sistema.
 - Texto com vírgulas, aspas ou quebras de linha: fica entre aspas, e as aspas internas são duplicadas.
 - Sistema sem nenhuma edição: o arquivo sai só com o cabeçalho e o comando avisa.
 
