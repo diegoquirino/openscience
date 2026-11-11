@@ -1,12 +1,14 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.0.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.1.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
 ## Decisão
 
 **Angular com Angular Material no frontend, Spring Boot no backend e MySQL Community com Flyway, num único contêiner publicado no Cloud Run, com o banco no Cloud SQL. O código fica no branch órfão `Veredito` do repositório público `diegoquirino/openscience`.**
+
+**Ambientes**: a **produção** é o Google Cloud; o **ensaio** (testes) é **local, em Docker**, na máquina do pesquisador. Não há ensaio na nuvem.
 
 ## Versões (conferidas em 2026-11-11)
 
@@ -36,7 +38,7 @@ Cloud Run: contêiner único
         │ conector do Cloud SQL (IAM)           │ SMTP (TLS)
         ▼                                       ▼
 Cloud SQL para MySQL 9.7                    smtp.gmail.com
-  bancos: veredito, veredito_ensaio         (diegoquirino@gmail.com)
+  banco: veredito                           (diegoquirino@gmail.com)
 Secret Manager: senha do banco, senha de app do Gmail, chave de sessão
 ```
 
@@ -47,8 +49,9 @@ Secret Manager: senha do banco, senha de app do Gmail, chave de sessão
 ├─ backend/             Spring Boot (Maven Wrapper)
 │  └─ src/main/resources/db/migration/   migrações Flyway V1__..., V2__...
 ├─ frontend/            Angular + Angular Material
-├─ compose.yaml         MySQL 9.7 para desenvolvimento local
-├─ Dockerfile           build em estágios: Node 26 → Maven/JDK 25 → JRE 25
+├─ compose.yaml         MySQL 9.7 (desenvolvimento) e, no perfil `ensaio`, app + MySQL + Mailpit
+├─ Dockerfile           build em estágios: Node 26 → Maven/JDK 25 → JRE 25 (o mesmo do ensaio e da produção)
+├─ .env.example         variáveis do ensaio local, sem segredos (o `.env` real é ignorado pelo git)
 ├─ .github/workflows/   testes, imagem e publicação
 ├─ specs/, .specify/, .cursor/
 └─ .gitignore
@@ -57,13 +60,29 @@ Secret Manager: senha do banco, senha de app do Gmail, chave de sessão
 - No desenvolvimento, `ng serve` encaminha `/api` para o Spring Boot em `localhost:8080`, e o suporte do Spring Boot ao Docker Compose sobe o MySQL sozinho.
 - Na imagem, o Angular compilado vai para os recursos estáticos do Spring Boot, que serve tudo pela mesma URL (sem CORS).
 
+## Ensaio local (Docker)
+
+O ambiente de testes roda na máquina do pesquisador com Docker Compose (`docker compose --profile ensaio up --build`):
+
+| Peça | Configuração |
+|---|---|
+| `app` | Imagem construída pelo mesmo `Dockerfile` da produção, perfil Spring `ensaio`, em `http://localhost:8080`; faixa "AMBIENTE DE ENSAIO" na tela |
+| `mysql` | MySQL Community 9.7 (mesma versão do Cloud SQL), volume próprio; o Flyway roda as mesmas migrações na subida |
+| `mailpit` | Servidor de e-mail de teste ([Mailpit](https://mailpit.axllent.org/), código aberto): recebe os códigos de acesso sem enviá-los de verdade; caixa em `http://localhost:8025` |
+| Dados | Só fictícios e os CSV gerados pelo pipeline (spec 002); nada vindo da produção |
+| Segredos | Nenhum segredo real é necessário; para testar o envio pelo Gmail, a senha de app vai num `.env` local, ignorado pelo git |
+| Recomeçar do zero | `docker compose --profile ensaio down -v` apaga o volume do banco |
+
+- O teste de 30 participantes simultâneos e os demais testes de integração rodam com Testcontainers, sem depender do Compose.
+- O ensaio usa a mesma imagem e as mesmas migrações da produção; o que muda são só as variáveis (banco, SMTP, faixa de ensaio).
+
 ## Produção no Google Cloud
 
 | Peça | Configuração |
 |---|---|
 | Região | `southamerica-east1` (São Paulo), perto dos avaliadores; `us-central1` é mais barata se o custo apertar |
-| Cloud Run | Serviço `veredito` (produção) e `veredito-ensaio`; mínimo de 0 instâncias, máximo de 4; *startup CPU boost* ligado |
-| Cloud SQL | Uma instância MySQL 9.7, edição Enterprise, a menor máquina compartilhada (`db-f1-micro`, 0,6 GB, 25 conexões); dois bancos com usuários próprios, `veredito` e `veredito_ensaio`; backup diário automático com retenção de 7 dias |
+| Cloud Run | Um único serviço, `veredito`; mínimo de 0 instâncias, máximo de 4; *startup CPU boost* ligado |
+| Cloud SQL | Uma instância MySQL 9.7, edição Enterprise, a menor máquina compartilhada (`db-f1-micro`, 0,6 GB, 25 conexões); um único banco, `veredito`, com usuário próprio; backup diário automático com retenção de 7 dias |
 | Acesso ao banco | Sem redes autorizadas; só o Cloud Run entra, pelo conector do Cloud SQL com IAM |
 | Pool de conexões | No máximo 5 por instância do Cloud Run, para caber nas 25 conexões |
 | Segredos | Secret Manager, injetados como variáveis de ambiente do Cloud Run |
@@ -78,10 +97,12 @@ Secret Manager: senha do banco, senha de app do Gmail, chave de sessão
 
 GitHub Actions no branch `Veredito`:
 
-1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers) e do frontend; build da imagem; envio ao Artifact Registry; publicação no `veredito-ensaio`.
-2. **Produção**: workflow disparado manualmente, que publica no `veredito` a **mesma imagem** (mesmo *digest*) já aprovada no ensaio. A URL não muda.
-3. **Autenticação**: Workload Identity Federation entre GitHub e Google Cloud, sem chave de conta de serviço guardada no GitHub.
-4. **Volta atrás**: o Cloud Run mantém as revisões anteriores; basta mandar o tráfego para a anterior. Por isso, toda migração Flyway precisa ser compatível com a versão anterior do código (acrescentar antes, remover depois).
+1. **A cada push**: testes do backend (`./mvnw verify`, com Testcontainers) e do frontend; build da imagem pelo `Dockerfile`; envio ao Artifact Registry com a etiqueta do commit. Nada é publicado.
+2. **Ensaio**: o pesquisador roda o mesmo commit no Docker local (seção *Ensaio local*) e confere os critérios de sucesso da spec.
+3. **Produção**: workflow disparado manualmente, informando o commit ensaiado; publica no `veredito` a imagem desse commit já enviada ao Artifact Registry. A URL não muda.
+4. **Autenticação**: Workload Identity Federation entre GitHub e Google Cloud, sem chave de conta de serviço guardada no GitHub.
+5. **Volta atrás**: o Cloud Run mantém as revisões anteriores; basta mandar o tráfego para a anterior. Por isso, toda migração Flyway precisa ser compatível com a versão anterior do código (acrescentar antes, remover depois).
+6. **Fim do piloto**: o piloto com colegas roda na produção; antes da divulgação, o banco `veredito` é apagado e criado de novo no Cloud SQL, e a publicação seguinte o prepara vazio pelo Flyway. O `flyway clean` fica desligado em produção.
 
 ## Código por e-mail
 
@@ -136,7 +157,7 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 | Conexões do `db-f1-micro` | 25 | Pool pequeno e no máximo 4 instâncias do Cloud Run; subir para `db-g1-small` (cerca de US$ 27 por mês) se faltar |
 | `db-f1-micro` sem SLA | — | Aceitável para um estudo; backup diário |
 | E-mails do Gmail | cerca de 500 por dia | Sessão de 24 h, limites de reenvio, contador no painel; reserva: provedor transacional |
-| Partida a frio do Cloud Run | alguns segundos na primeira chamada após inatividade | *Startup CPU boost* e cache AOT do Java; mínimo de 1 instância durante a divulgação, se necessário (custo a medir no ensaio) |
+| Partida a frio do Cloud Run | alguns segundos na primeira chamada após inatividade | *Startup CPU boost* e cache AOT do Java; mínimo de 1 instância durante a divulgação, se necessário (custo a medir na produção, durante o piloto) |
 
 ## Alternativas descartadas
 
@@ -152,7 +173,8 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 - **Flyway e MySQL 9.7**: a lista de versões certificadas do Flyway vai até a 9.4. Versões mais novas costumam só gerar aviso. Os testes com Testcontainers 9.7 confirmam; se falhar, voltar para MySQL 8.4 LTS.
 - **Máquina compartilhada com MySQL 9.7 no Cloud SQL**: confirmar no plano da spec 003. Se não houver, usar 8.4 no `db-f1-micro` ou 9.7 no `db-g1-small`.
 - **Repositório público**: *secret scanning* e *push protection* do GitHub ativados em 2026-11-11.
-- **E-mail**: a senha de app do Gmail ("Veredito SMTP") já existe e está guardada fora do repositório; entra no Secret Manager no plano da spec 003.
+- **E-mail**: a senha de app do Gmail ("Veredito SMTP") já existe e está guardada fora do repositório; entra no Secret Manager no plano da spec 003. O ensaio local não precisa dela (usa o Mailpit).
+- **Piloto na produção**: os colegas do piloto devem saber que as respostas serão descartadas; ao fim, o banco de produção é recriado vazio antes da divulgação.
 - **CSV com os casos de uso completos**: especificado em [002-csv-oraculo](../002-csv-oraculo/spec.md).
 - **Concordância entre avaliadores**: ver a seção *Assumptions* da spec. Afeta a análise, não a tecnologia.
 - **LGPD**: os dados ficam no Google Cloud, na região escolhida. Isso precisa constar no termo (TCLE).

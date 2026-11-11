@@ -2,12 +2,14 @@
 
 A spec [001-rotulagem-oraculo](./001-rotulagem-oraculo/spec.md) é a visão geral e a fonte das regras. As specs 002 a 011 a dividem em fatias que podem ser planejadas (`/speckit-plan`), quebradas em tarefas (`/speckit-tasks`) e implementadas uma de cada vez, cada uma testável e publicável sozinha.
 
+**Ambientes**: a **produção** é o Google Cloud (projeto `veredito-issta2027`); o **ensaio** (testes) é **local, em Docker** (`docker compose --profile ensaio up --build`). Não há ensaio na nuvem. Detalhes em [research.md](./001-rotulagem-oraculo/research.md#ensaio-local-docker).
+
 ## Ordem
 
 | Ordem | Spec | Entrega | Depende de | Pode correr junto com |
 |---|---|---|---|---|
 | 1 | [002-csv-oraculo](./002-csv-oraculo/spec.md) | CSV de importação gerado pelo pipeline | — | 003 |
-| 1 | [003-publicacao-base](./003-publicacao-base/spec.md) | App no ar, base de dados, ensaio, testes das regras | — | 002 |
+| 1 | [003-publicacao-base](./003-publicacao-base/spec.md) | App no ar (Google Cloud), base de dados, ensaio local em Docker, testes das regras | — | 002 |
 | 2 | [004-acesso-codigo-email](./004-acesso-codigo-email/spec.md) | Login por código; administrador separado | 003 | — |
 | 3 | [005-importacao-blocos](./005-importacao-blocos/spec.md) | Importação, prévia, blocos e fila | 004 | 006, 008 |
 | 3 | [006-consentimento-triagem](./006-consentimento-triagem/spec.md) | Termo, habilidade, triagem | 004 | 005, 008 |
@@ -53,7 +55,7 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 
 ## Por que esta ordem
 
-- **002 e 003 primeiro, em paralelo.** Não dependem de nada. A 002 fixa o contrato entre o pipeline e o Veredito e produz um arquivo real (textos longos, aspas, quebras de linha), que serve de teste para a 005 e a 008. A 003 fixa a estrutura de dados e o ambiente de ensaio, o que permite tocar as specs seguintes em paralelo sem refazer tabelas.
+- **002 e 003 primeiro, em paralelo.** Não dependem de nada. A 002 fixa o contrato entre o pipeline e o Veredito e produz um arquivo real (textos longos, aspas, quebras de linha), que serve de teste para a 005 e a 008. A 003 fixa a estrutura de dados, a publicação no Google Cloud e o ensaio local em Docker, o que permite tocar as specs seguintes em paralelo sem refazer tabelas.
 - **004 sozinha.** Todas as telas, de participante e de administrador, dependem de saber quem é a pessoa. É o único gargalo real; por isso vem cedo e isolada.
 - **005, 006 e 008 em paralelo.** A importação só precisa do administrador; o termo e a triagem só precisam do participante; a tela do item só precisa de itens de exemplo.
 - **007 assim que houver blocos.** É a parte de maior risco (concorrência e reserva). A regra de escolha do próximo bloco é uma função testada isoladamente desde a 003, então o risco é atacado antes de a tela existir. A tela simples evita esperar pela 008.
@@ -62,15 +64,16 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 
 ## Marcos
 
-1. **Base no ar** (002 e 003): URL fixa, base preparada, CSV do Minitest gerado.
+1. **Base no ar** (002 e 003): URL fixa no Google Cloud, base preparada, ensaio local subindo com um comando, CSV do Minitest gerado.
 2. **Acesso** (004): qualquer pessoa entra; o administrador vê a área dele.
 3. **Pronto para classificar** (005, 006, 007 e 008): fluxo completo do participante.
 4. **Ensaio piloto** (009 pronta):
-   - no ambiente de ensaio, importar o Minitest e convidar de 3 a 5 colegas;
-   - rodar o teste de 30 participantes simultâneos (spec 007, SC-001) com o tempo de reserva reduzido;
-   - medir o tempo por bloco (spec 008, SC-002) e ouvir os colegas sobre a clareza das perguntas;
+   - no ensaio local, rodar o teste de 30 participantes simultâneos (spec 007, SC-001, teste automático) e um fluxo completo com o tempo de reserva reduzido;
+   - publicar em produção, importar o Minitest e convidar de 3 a 5 colegas, avisando que as respostas do piloto serão descartadas;
+   - medir o tempo por bloco (spec 008, SC-002), a partida a frio do Cloud Run e ouvir os colegas sobre a clareza das perguntas;
    - exportar e rodar `agreement` e `oracle-disagreements` sobre os arquivos (spec 009, SC-001);
-   - corrigir, publicar em produção, importar a base real e divulgar.
+   - corrigir e ensaiar localmente; **recriar vazio o banco de produção** (apagar e criar de novo o banco `veredito` no Cloud SQL) e publicar, para o Flyway prepará-lo do zero;
+   - publicar o termo definitivo, importar a base real e divulgar.
 5. **Coleta acompanhada** (010) e **LGPD completa** (011).
 
 ## Cobertura da spec 001
@@ -78,7 +81,7 @@ Setas cheias são dependências duras; tracejadas, integrações que não bloque
 | Requisitos da 001 | Spec |
 |---|---|
 | Apêndice D (gerar o CSV) | 002 |
-| Publicação, base, ensaio, testes das regras | 003 |
+| Publicação, base, ensaio local, testes das regras | 003 |
 | FR-001 a FR-005, FR-050 (User Stories 1 e 6) | 004 |
 | FR-011, FR-012, FR-051 a FR-055 (User Story 7) | 005 |
 | FR-006 a FR-010 (User Story 2) | 006 |
@@ -94,6 +97,6 @@ Para cada spec, na ordem acima:
 
 1. Apontar `.specify/feature.json` para a pasta da spec (por exemplo, `{"feature_directory":"specs/003-publicacao-base"}`).
 2. Rodar `/speckit-plan`, depois `/speckit-tasks` e `/speckit-implement`.
-3. Publicar no ensaio, conferir os critérios de sucesso da spec e só então seguir para a próxima.
+3. Rodar no ensaio local (Docker), conferir os critérios de sucesso da spec, publicar em produção e só então seguir para a próxima.
 
-Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.0.0: Angular com Angular Material, Spring Boot, MySQL com Flyway, Google Cloud) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.
+Os planos seguem a [constitution](../.specify/memory/constitution.md) (versão 2.1.0: Angular com Angular Material, Spring Boot, MySQL com Flyway; produção no Google Cloud, ensaio local em Docker) e a seleção de tecnologias em [research.md](./001-rotulagem-oraculo/research.md). O código fica no branch órfão `Veredito` de `diegoquirino/openscience`.

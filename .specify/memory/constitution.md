@@ -1,7 +1,15 @@
 <!--
 Sync Impact Report
-- Version change: 2.0.0 → 2.0.1 (PATCH: alerta de orçamento do Princípio V passa de US$ 15 para
-  R$ 200 por mês, na moeda da conta de faturamento, com o projeto `veredito-issta2027`)
+- Version change: 2.0.1 → 2.1.0 (MINOR: ambientes redefinidos; produção no Google Cloud e ensaio
+  local em Docker, sem ensaio na nuvem)
+- Modified sections (2.1.0):
+  - Restrições e fluxo de trabalho: regra de ensaio passa a ser o Docker local; piloto na produção
+    com a base recriada vazia antes da divulgação
+  - IV. Privacidade, LGPD e segredos: ensaio local só com dados fictícios; dados de produção não
+    descem para a máquina
+  - V. Simplicidade e custo controlado: um único serviço e um único banco na nuvem
+- Templates: nenhum template do Spec Kit cita ambientes; nada a ajustar
+- Version change 2.0.1: alerta de orçamento do Princípio V passa de US$ 15 para R$ 200 por mês
 - Version change anterior: 1.0.0 → 2.0.0 (MAJOR: troca de tecnologia redefine os Princípios I, II e V)
 - Modified principles (2.0.0):
   - I. Custo zero numa conta Google gratuita → I. Stack padrão, atual e de código aberto
@@ -68,6 +76,8 @@ pessoas diferentes, e isso não pode depender só do código da aplicação.
 - A tabela longa e os arquivos do pipeline (`t1_<sistema>_rater*.csv`) NÃO DEVEM conter nome nem
   e-mail.
 - O banco não é exposto à internet; participantes só acessam dados pela aplicação.
+- O ensaio local usa só dados fictícios e os arquivos do pipeline; dumps e exportações da produção
+  NÃO DEVEM ser carregados na máquina de desenvolvimento.
 
 Razão: o estudo coleta dados pessoais sob termo de consentimento, o pacote de replicação será
 público e o próprio repositório já é público.
@@ -76,7 +86,8 @@ público e o próprio repositório já é público.
 
 - Um único artefato publicável: o mesmo contêiner serve o Angular compilado e a API.
 - Na produção, só serviços gerenciados do Google Cloud: Cloud Run, Cloud SQL para MySQL, Secret
-  Manager e Artifact Registry. Qualquer serviço a mais exige justificativa no plano.
+  Manager e Artifact Registry, com um único serviço do Cloud Run e um único banco. Qualquer
+  serviço a mais exige justificativa no plano.
 - O projeto no Google Cloud (`veredito-issta2027`) DEVE ter orçamento mensal de R$ 200, só com
   alertas (sem limite que suspenda o serviço), avisando em 50%, 90% e 100%.
 - Interface só com componentes do Angular Material, responsiva do celular ao computador.
@@ -98,11 +109,17 @@ estudante.
 ## Restrições e fluxo de trabalho
 
 - O branch `Veredito` é órfão: não compartilha histórico com os demais estudos do repositório.
-- Toda mudança DEVE passar pelo ambiente de ensaio (serviço e banco próprios) antes da produção.
+- **Ambientes**: a produção é o Google Cloud (projeto `veredito-issta2027`); o ensaio (testes) é
+  local, em Docker: Docker Compose com a imagem construída pelo mesmo `Dockerfile` da produção, um
+  MySQL na mesma versão e um servidor de e-mail de teste. Não existe ensaio na nuvem.
+- Toda mudança DEVE passar pelos testes automáticos e pelo ensaio local antes da produção.
+- O ensaio piloto com colegas acontece na produção, antes da divulgação; ao fim dele, a base de
+  produção é recriada vazia e só então a coleta real começa.
 - A publicação é feita pelo GitHub Actions a partir do branch `Veredito`, sempre no mesmo serviço
   do Cloud Run, para manter a URL.
 - As specs são implementadas uma por vez, na ordem de `specs/ROADMAP.md`. A seguinte só começa
-  quando os critérios de sucesso da anterior forem atendidos no ensaio.
+  quando os critérios de sucesso da anterior forem atendidos no ensaio local (ou na produção, quando
+  o critério for da própria publicação).
 - Os arquivos exportados DEVEM continuar compatíveis com o pacote `issta_tcm`.
 - Todos os arquivos de texto do projeto DEVEM estar em UTF-8.
 
@@ -116,4 +133,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.0.1 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.1.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11

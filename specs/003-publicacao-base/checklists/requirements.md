@@ -31,5 +31,5 @@
 
 ## Notes
 
-- A tecnologia fica em `research.md` da spec 001; a spec só exige URL fixa, base preparada de forma repetível, ensaio separado e regras testáveis sem publicar.
+- A tecnologia fica em `research.md` da spec 001; a spec só exige URL fixa, base preparada de forma repetível, ensaio local em Docker separado da produção no Google Cloud e regras testáveis sem publicar.
 - Validado em 2026-11-10; pronto para `/speckit-plan`.

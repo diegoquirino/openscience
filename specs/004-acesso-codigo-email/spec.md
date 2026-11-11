@@ -109,5 +109,6 @@ Quem entrou continua conectado no mesmo navegador por até 24 horas e pode sair 
 ## Assumptions
 
 - O e-mail do código sai da conta do pesquisador e pode cair no spam.
-- O e-mail sai da conta Gmail do pesquisador, que aceita cerca de 500 destinatários por dia; o limite padrão do sistema é 450, deixando folga (ver research.md da spec 001).
+- Na produção, o e-mail sai da conta Gmail do pesquisador, que aceita cerca de 500 destinatários por dia; o limite padrão do sistema é 450, deixando folga (ver research.md da spec 001).
+- No ensaio local (Docker), os códigos vão para uma caixa de e-mail de teste local e não chegam a ninguém; o limite diário pode ser reduzido para testar a mensagem de cota esgotada.
 - O termo, o perfil e a triagem (spec 006) entram entre o login e a participação; até lá, a tela provisória ocupa esse lugar.

@@ -62,18 +62,20 @@ Na primeira publicação, o sistema cria todas as tabelas previstas na spec 001,
 
 ---
 
-### User Story 4 - Ensaiar antes de publicar (Priority: P2)
+### User Story 4 - Ensaiar localmente antes de publicar (Priority: P2)
 
-O pesquisador testa uma mudança num ambiente de ensaio, com endereço e base de dados próprios, antes de levá-la à produção.
+O pesquisador testa uma mudança no ambiente de ensaio, que roda em Docker na própria máquina, com base de dados e caixa de e-mail de teste locais, antes de levá-la à produção no Google Cloud.
 
-**Why this priority**: Permite corrigir o sistema durante a coleta sem arriscar os dados reais.
+**Why this priority**: Permite corrigir o sistema durante a coleta sem arriscar os dados reais e sem custo de nuvem para testes.
 
-**Independent Test**: Criar registros no ensaio e conferir que a base de produção não muda.
+**Independent Test**: Subir o ensaio local a partir de uma pasta limpa do repositório, criar registros e pedir um código de acesso; conferir que a base e a caixa de e-mail de produção não mudam.
 
 **Acceptance Scenarios**:
 
-1. **Dado** os dois ambientes, **Quando** alguém usa o ensaio, **Então** a página mostra uma faixa "AMBIENTE DE ENSAIO" e todos os registros vão para a base de ensaio.
-2. **Dado** uma mudança aprovada no ensaio, **Quando** o pesquisador a publica em produção, **Então** a produção passa a ter exatamente a mesma versão do código.
+1. **Dado** uma cópia do repositório e o Docker instalado, **Quando** o pesquisador sobe o ensaio com um único comando, **Então** o sistema abre num endereço local, com a base preparada pelas mesmas mudanças de estrutura da produção.
+2. **Dado** o ensaio local, **Quando** alguém o usa, **Então** a página mostra uma faixa "AMBIENTE DE ENSAIO", os registros vão só para a base local e os e-mails ficam numa caixa de teste local, sem chegar a ninguém.
+3. **Dado** uma mudança aprovada no ensaio local, **Quando** o pesquisador a publica em produção, **Então** a produção passa a ter exatamente a mesma versão do código.
+4. **Dado** o ensaio local, **Quando** o pesquisador o apaga e sobe de novo, **Então** a base volta vazia e preparada.
 
 ---
 
@@ -93,22 +95,22 @@ O pesquisador testa uma mudança num ambiente de ensaio, com endereço e base de
 - **FR-004**: A preparação da base DEVE criar todas as tabelas do modelo de dados da spec 001, com as restrições de integridade, e ser segura para repetir; mudanças de estrutura DEVEM ser versionadas, aplicadas automaticamente na publicação e registradas.
 - **FR-005**: A configuração DEVE guardar, no mínimo: e-mail do administrador, minutos de reserva, tamanho do bloco, limite diário de e-mails, versão e texto do termo de consentimento.
 - **FR-006**: A base NÃO DEVE ser acessível pela internet; só o sistema e o pesquisador, com credenciais próprias, a acessam.
-- **FR-007**: DEVE existir um ambiente de ensaio, com URL e base de dados próprias e identificação visível na tela.
+- **FR-007**: DEVE existir um ambiente de ensaio local, em Docker, que suba com um único comando, use a mesma imagem e as mesmas mudanças de estrutura da produção, tenha base de dados e caixa de e-mail de teste próprias e identificação visível na tela. Não há ensaio na nuvem.
 - **FR-008**: As regras do estudo (validação do CSV, formação de blocos, escolha do próximo bloco, formato das exportações) DEVEM poder ser verificadas por testes automáticos sem publicar o sistema.
 - **FR-009**: Erros inesperados DEVEM aparecer ao usuário como mensagem amigável e ficar registrados para o pesquisador.
-- **FR-010**: A publicação DEVE ser automática a partir do repositório: cada mudança aprovada vai primeiro ao ensaio, e a produção recebe exatamente a mesma versão já ensaiada.
+- **FR-010**: A cada mudança enviada ao repositório, os testes e a construção da imagem DEVEM rodar automaticamente; a publicação em produção DEVE ser disparada pelo pesquisador, com um único comando, para uma versão já ensaiada localmente, e a produção recebe exatamente essa versão.
 - **FR-011**: Senhas e chaves NÃO DEVEM ficar no repositório de código.
 
 ### Key Entities
 
 - **Configuração**: parâmetros do estudo que o pesquisador ajusta sem publicar código.
-- **Ambiente**: produção ou ensaio, cada um com sua base.
+- **Ambiente**: produção (Google Cloud) ou ensaio (Docker local), cada um com sua base.
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-- **SC-001**: Uma mudança enviada ao repositório chega ao ensaio em menos de 15 minutos, sem passos manuais.
+- **SC-001**: O ensaio local sobe com um único comando em menos de 10 minutos na primeira vez (com a construção da imagem), e uma versão ensaiada chega à produção em menos de 15 minutos depois de o pesquisador disparar a publicação.
 - **SC-002**: Em três publicações seguidas, a URL não muda e nenhum registro da base é alterado.
 - **SC-003**: Preparar a base duas vezes resulta na mesma estrutura.
 - **SC-004**: A página inicial abre em menos de 3 segundos, depois que o sistema já está em uso.
@@ -117,7 +119,8 @@ O pesquisador testa uma mudança num ambiente de ensaio, com endereço e base de
 
 ## Assumptions
 
-- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.0.0.
-- A base de dados fica no projeto de nuvem do pesquisador; nenhum participante tem acesso direto a ela.
-- A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso é medido no ensaio.
+- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.1.0.
+- A base de dados de produção fica no projeto de nuvem do pesquisador (`veredito-issta2027`); nenhum participante tem acesso direto a ela.
+- O ensaio local usa só dados fictícios e os arquivos do pipeline; nada da produção é copiado para a máquina.
+- A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso só pode ser medido na produção.
 - O botão "Participar" leva a uma tela provisória até a spec 004 ser entregue.

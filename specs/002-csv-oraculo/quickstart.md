@@ -59,5 +59,5 @@ O teste automático com uma edição de 5.001 caracteres cobre este caso. Espera
 
 ## 6. Prévia no Veredito (SC-003)
 
-Feito na spec 005: importar `veredito_minitest.csv` no ensaio e conferir que a prévia mostra 38
+Feito na spec 005: importar `veredito_minitest.csv` no ensaio local (Docker) e conferir que a prévia mostra 38
 incluídos, 0 ignorados e 0 com erro.
