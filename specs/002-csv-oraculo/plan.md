@@ -46,7 +46,7 @@ cerca de 2.200 caracteres (limite do Veredito: 40.000)
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-A constitution 2.2.0 trata a spec 002 como exceção (seção *Escopo e exceções*): o comando segue as
+A constitution 2.3.0 trata a spec 002 como exceção (seção *Escopo e exceções*): o comando segue as
 convenções do `ISSTA_2027`, e os Princípios I, II, III e V e as regras de publicação não se aplicam.
 Continuam valendo:
 

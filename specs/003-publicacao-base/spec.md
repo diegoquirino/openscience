@@ -142,7 +142,7 @@ O pesquisador, ou quem for reproduzir o estudo, abre a documentação interativa
 
 ## Assumptions
 
-- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.2.0.
+- A tecnologia segue a seleção em [research.md](../001-rotulagem-oraculo/research.md) da spec 001 e a constitution 2.3.0.
 - A base de dados de produção fica no projeto de nuvem do pesquisador (`veredito-issta2027`); nenhum participante tem acesso direto a ela.
 - O ensaio local usa só dados fictícios e os arquivos do pipeline; nada da produção é copiado para a máquina.
 - A primeira abertura depois de um período sem uso pode levar alguns segundos a mais; isso só pode ser medido na produção.

@@ -1,6 +1,6 @@
 # Seleção de tecnologias: Veredito
 
-**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.2.0
+**Feature**: `001-rotulagem-oraculo` · **Data**: 2026-11-11 · **Spec**: [spec.md](./spec.md) · **Constitution**: 2.3.0
 
 Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets), descartada por insegurança quanto ao ambiente gratuito.
 
@@ -24,6 +24,7 @@ Esta revisão substitui a decisão de 2026-11-10 (Apps Script com Google Sheets)
 | springdoc-openapi | 3.2.0 (`springdoc-openapi-starter-webmvc-ui`, Swagger UI 5.34) | OpenAPI 3.1 e Swagger UI. A 3.2.x é feita para o Spring Boot 4.1.x; com o Spring Boot 4.2, usar a 3.x correspondente. Com o parent do Spring Boot no Maven, o Jackson fica na versão gerenciada pelo Boot |
 | Flyway (código aberto) | 13.12.1 | Com o módulo `flyway-mysql`; sobrepor a versão gerenciada pelo Spring Boot se ela for mais antiga |
 | Testcontainers | gerenciada pelo Spring Boot | MySQL 9.7 em contêiner nos testes de integração |
+| REST Assured | 6.3.0 (`rest-assured` e `json-schema-validator`, escopo de teste) | Testes da API. Suporta Spring Boot 4, Jackson 3 e JSON Schema 2020-12; sobrepor a versão gerenciada pelo Spring Boot (`rest-assured.version`) se ela for mais antiga |
 
 ## Arquitetura
 
@@ -198,9 +199,24 @@ O teste de 30 participantes simultâneos (spec 007, SC-001) roda como teste de i
 |---|---|
 | Domínio (Java puro) | JUnit, sem Spring |
 | Repositórios, transações, migrações | Spring Boot Test + Testcontainers (MySQL 9.7) |
-| API | Spring Boot Test com MockMvc: status, cabeçalhos e, para cada estado do recurso, os links e as ações (`_links`, `_templates`) presentes e ausentes |
-| Documentação da API | Teste que valida a completude de `/v3/api-docs` (resumo, descrição, exemplos, respostas de erro em cada operação) |
+| API | REST Assured contra a aplicação numa porta aleatória (`@SpringBootTest(webEnvironment = RANDOM_PORT)`), com MySQL e servidor de e-mail de teste em contêiner |
+| Documentação da API | Teste com REST Assured que lê `/v3/api-docs` e valida a completude (resumo, descrição, exemplos, respostas de erro em cada operação) |
 | Frontend | Executor de testes padrão do Angular 22 |
+
+### Testes da API com REST Assured
+
+| Item | Regra |
+|---|---|
+| Por que HTTP real | Os testes passam pelos mesmos filtros, cookies de sessão, negociação de conteúdo e tratamento de erros da produção; nada é simulado na camada web |
+| Navegação | Cada teste começa em `GET /api` e segue os links pelo nome da relação (por exemplo, `vd:reservar`), extraindo o `href` da resposta; a única URL fixa é a do ponto de entrada. Isso testa o nível 3: se um link sumir ou mudar, o teste quebra |
+| Especificações comuns | Uma classe base monta o `RequestSpecification` (porta, `Accept: application/prs.hal-forms+json`, log só em falha) e um por perfil: visitante, participante com sessão, administrador |
+| Organização | Uma classe de teste por área, na mesma divisão dos grupos do Swagger (Entrada, Acesso, Participação, Tarefas, Administração) |
+| O que cada teste confere | Status HTTP, `Content-Type`, cabeçalhos (`Location` no 201), corpo, e os `_links` e `_templates` presentes **e ausentes** no estado do recurso |
+| Ações proibidas | Para cada estado, o teste confere que a ação não aparece e que a chamada direta ao endereço é recusada (403, 404 ou 409, conforme o caso) |
+| Erros | Respostas de erro validadas contra o esquema JSON de Problem Details (`matchesJsonSchemaInClasspath`) |
+| Sessão e e-mail | O código de acesso é lido do servidor de e-mail de teste, como faria o participante; o cookie de sessão é reaproveitado pelo `RequestSpecification` do perfil |
+| Dados | Cada teste cria os próprios dados (importação de um CSV fictício pela API do administrador) e a base é limpa entre classes |
+| Concorrência | O teste de 30 participantes simultâneos (spec 007) usa REST Assured em 30 threads, cada uma com sua sessão |
 
 ## Limites que importam
 

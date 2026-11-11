@@ -1,6 +1,11 @@
 <!--
 Sync Impact Report
-- Version change: 2.1.0 → 2.2.0 (MINOR: API REST no nível 3 de Richardson, "glory of REST", e
+- Version change: 2.2.0 → 2.3.0 (MINOR: testes automatizados da API com REST Assured)
+- Modified principles (2.3.0):
+  - II. Regras de domínio isoladas e testadas: testes da API com REST Assured, por HTTP real numa
+    porta aleatória, partindo de `/api` e seguindo os links
+- Templates: nenhum template do Spec Kit cita ferramenta de teste; nada a ajustar
+- Version change 2.2.0 (2.1.0 → 2.2.0, MINOR: API REST no nível 3 de Richardson, "glory of REST", e
   documentada em OpenAPI/Swagger)
 - Modified principles (2.2.0):
   - I. Stack padrão, atual e de código aberto: regra da API (recursos, verbos e status HTTP,
@@ -71,8 +76,12 @@ durante toda a coleta e para quem for reproduzir o estudo.
   testes unitários.
 - O acesso ao banco DEVE ter testes de integração contra um MySQL da mesma versão da produção,
   em contêiner.
-- Os links e ações que a API oferece em cada estado de um recurso DEVEM ser cobertos por testes da
-  API; uma ação proibida naquele estado não aparece como link e, se chamada, é recusada.
+- Os testes automatizados da API DEVEM ser escritos com REST Assured, por HTTP real contra a
+  aplicação numa porta aleatória (Spring Boot Test com MySQL em contêiner). Cada teste parte de
+  `/api` e segue as relações de link, como o cliente Angular; a única URL fixa nos testes é a do
+  ponto de entrada.
+- Os links e ações que a API oferece em cada estado de um recurso DEVEM ser cobertos por esses
+  testes; uma ação proibida naquele estado não aparece como link e, se chamada, é recusada.
 - Um teste DEVE falhar se algum endpoint da especificação OpenAPI gerada estiver sem resumo,
   descrição, respostas de erro ou exemplos; o CI guarda o `openapi.json` de cada commit.
 - Uma regra nova ou alterada DEVE vir acompanhada dos seus testes, no mesmo commit.
@@ -161,4 +170,4 @@ estudante.
   maior.menor.correção: maior para remover ou redefinir um princípio, menor para acrescentar
   princípio ou seção, correção para ajustes de redação.
 
-**Version**: 2.2.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
+**Version**: 2.3.0 | **Ratified**: 2026-11-10 | **Last Amended**: 2026-11-11
