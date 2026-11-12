@@ -59,9 +59,9 @@ Data is never translated: it stays in the language in which it was captured.
 |---|---|---|
 | Spec folders | `001-oracle-labeling`, `002-oracle-import-csv`, `003-deployment-foundation`, `004-email-code-access`, `005-block-import`, `006-consent-screening`, `007-block-queue`, `008-item-screen`, `009-exports`, `010-progress-dashboard`, `011-lgpd-withdrawal` | `001-rotulagem-oraculo` … `011-retirada-lgpd` |
 | Spring and Docker Compose profile | `staging` | `ensaio` |
-| Study phase values | `pilot`, `collection` (config key `study-phase`) | `piloto`, `coleta` |
+| Study phase values | `pilot`, `collection` (column `config.study_phase`; JSON field `studyPhase`) | `piloto`, `coleta` |
 | CSV and export column | `system` | `sistema` |
-| Tables and columns | `import_batch`, `batch_id`, `block`, `block_id`, `task`, `task_id`, `role`, `participant`, `participant_id`, `response`, `consent_form`, `access_code`, `pseudonym`, `eligible`, `reserved_at`, `expires_at`, `preferred_language`, `language` | `lote`, `lote_id`, `bloco`, `bloco_id`, `tarefa`, `tarefa_id`, `papel`, `participante`, `participante_id`, `resposta`, `termo`, `codigo_acesso`, `pseudonimo`, `elegivel`, `reservada_em`, `vence_em` |
+| Tables and columns | `import_batch`, `batch_id`, `block`, `block_id`, `task`, `task_id`, `role`, `participant`, `participant_id`, `response`, `consent_form`, `access_code`, `access_session`, `config`, `pseudonym`, `eligible`, `reserved_at`, `expires_at`, `preferred_language`, `language` | `lote`, `lote_id`, `bloco`, `bloco_id`, `tarefa`, `tarefa_id`, `papel`, `participante`, `participante_id`, `resposta`, `termo`, `codigo_acesso`, `pseudonimo`, `elegivel`, `reservada_em`, `vence_em` |
 | JSON fields | `reservationExpiresAt`, `reservationMinutes` | `reservaVenceEm`, `reservaMinutos` |
 | REST resources (under `/api/v1`) | `/batches`, `/batches/previews`, `/participants/me`, `/tasks`, `/tasks/reservations`, `/tasks/{id}`, `/tasks/{id}/items/{position}`, `/tasks/{id}/responses/{itemId}`, `/tasks/{id}/submission`, `/consent-forms/current` | `/lotes`, `/lotes/previas`, `/participantes/eu`, `/tarefas`, `/tarefas/reservas`, `/tarefas/{id}`, `/tarefas/{id}/itens/{posicao}`, `/tarefas/{id}/respostas/{itemId}`, `/tarefas/{id}/envio`, `/termos/vigente` |
 | Link relations | `vd:batches`, `vd:dashboard`, `vd:participants`, `vd:request-code`, `vd:next-task`, `vd:reserve`, `vd:save-response`, `vd:consent-form` (others follow the same kebab-case English pattern) | `vd:lotes`, `vd:painel`, `vd:participantes`, `vd:pedir-codigo`, `vd:proxima-tarefa`, `vd:reservar`, `vd:salvar-resposta`, `vd:termo` |
@@ -92,3 +92,6 @@ the run folder `runs/minitest-piloto`) do not change.
 | Person, in invitations and screens | voluntário | volunteer | voluntario |
 | Position in the block | rotulador 1, rotulador 2 | rater 1, rater 2 | etiquetador 1, etiquetador 2 |
 | Language choice | Português (Brasil) | English (US) | Español (España) |
+| Staging banner | AMBIENTE DE ENSAIO | STAGING ENVIRONMENT | ENTORNO DE PRUEBAS |
+| Database unreachable | Sistema temporariamente indisponível | System temporarily unavailable | Sistema temporalmente no disponible |
+| Start button on the home page | Participar | Participate | Participar |

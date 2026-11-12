@@ -95,7 +95,7 @@ Local staging, the automated tests and the pilot in production use only items of
 | Volume cases | Generated in memory by the tests, repeating the Minitest rows with a suffix in `edit_key` (`LoginTest\|1\|1#r07`), up to 205 or 500 rows; not written to a file |
 | Participants | Fictitious, with e-mails in the reserved domain `example.com`; in local staging the codes arrive in Mailpit |
 | Local staging | The researcher imports the reference file through the administrator screen; the `staging` profile refuses any file whose `system` is not `minitest` |
-| Pilot in production | The "study phase" setting (`study-phase`) starts at `pilot` on a new database; in this phase, the import also refuses any other system. After the pilot, the database is recreated empty (again at `pilot`), the administrator switches the phase to `collection`, which is only accepted with no items, participants or responses in the database, and then imports the real dataset |
+| Pilot in production | The "study phase" setting (`config.study_phase`) starts at `pilot` on a new database; in this phase, the import also refuses any other system. After the pilot, the database is recreated empty (again at `pilot`), the administrator switches the phase to `collection`, which is only accepted with no items, participants or responses in the database, and then imports the real dataset |
 
 - Staging uses the same image and the same migrations as production; only the variables change (database, SMTP, staging banner).
 
@@ -183,7 +183,7 @@ GitHub Actions on the `Veredito` branch:
 | Translation completeness | CI step that reads `messages.pt-BR.xlf` and `messages.es-ES.xlf` and fails the build if any unit of the source file has no non-empty `<target>` in either file (in addition to `i18nMissingTranslation: "error"` in the build) |
 | Back-end bundles | Unit test that loads `messages.properties`, `messages_pt_BR.properties` and `messages_es_ES.properties` and fails unless the three have exactly the same keys |
 | Localized errors | REST Assured test that triggers a Problem Details response (for example, an unsupported API version) with `Accept-Language` `pt-BR`, `en-US` and `es-ES` and checks that `title` and `detail` come in each language, with the same `type` |
-| Locale end to end | One end-to-end smoke test per locale: open `/`, choose the language, sign in with a code read from the test mail server and open a block; checks the prefix, the page language and a translated label. The browser automation tool is chosen in the plan for spec 003 |
+| Locale end to end | One end-to-end smoke test per locale: open `/`, choose the language, sign in with a code read from the test mail server and open a block; checks the prefix, the page language and a translated label. Tool: Playwright ([spec 003 research](../003-deployment-foundation/research.md#16-end-to-end-smoke-tests)) |
 
 ## Data model (MySQL)
 
@@ -198,10 +198,10 @@ The initial migration (spec 003) creates all the tables; the following specs onl
 | `response` | item in a role | `task_id`, `item_id`, `participant_id`, `state` (`draft`, `final`), `change_impact`, `maintenance_operation`, `comment`, `language`, `saved_at`; **unique** (`task_id`, `item_id`) |
 | `participant` | person | `pseudonym` (**unique**), `name`, `email` (**unique**), consent form decision, version, language and time, professional skill, screening, `eligible`, `preferred_language`, `anonymized_at` |
 | `access_code` | code sent | `email`, `hash`, `created_at`, `expires_at`, `attempts`, `used_at` |
-| `session` | sign-in session | `token_hash`, `participant_id` or administrator, `expires_at` |
+| `access_session` | sign-in session | `token_hash`, `participant_id` or administrator, `expires_at` |
 | `consent_form` | consent form version | `version`, `reference_language`, `published_at` |
 | `consent_form_text` | consent form version and language | `consent_form_id`, `language`, `text`; **unique** (`consent_form_id`, `language`) |
-| `config` | parameter | administrator e-mail, `admin_preferred_language`, reservation minutes, block size, daily e-mail limit |
+| `config` | single row | administrator e-mail, `admin_preferred_language`, reservation minutes, block size, daily e-mail limit, `study_phase` (column details in [spec 003 data-model.md](../003-deployment-foundation/data-model.md)) |
 
 The unique constraint (`block_id`, `participant_id`) is the database guarantee that nobody takes both roles of a block (MySQL accepts several `NULL`s in this index, so free tasks do not conflict). A use case of up to 40,000 characters fits comfortably in `MEDIUMTEXT`.
 
@@ -333,7 +333,7 @@ The 30-concurrent-participant test (spec 007, SC-001) runs as an integration tes
 ## Risks and open points
 
 - **Flyway and MySQL 9.7**: Flyway's list of certified versions goes up to 9.4. Newer versions usually only produce a warning. The tests with Testcontainers 9.7 confirm it; if it fails, go back to MySQL 8.4 LTS.
-- **Shared-core machine with MySQL 9.7 on Cloud SQL**: confirm in the plan for spec 003. If there is none, use 8.4 on `db-f1-micro` or 9.7 on `db-g1-small`.
+- **Shared-core machine with MySQL 9.7 on Cloud SQL**: resolved in [spec 003 research](../003-deployment-foundation/research.md#2-cloud-sql-edition-and-machine): 9.7 runs on `db-f1-micro` only in the Enterprise edition, which must be given explicitly (9.7 defaults to Enterprise Plus). Fallback: 9.7 on `db-g1-small` or 8.4 on `db-f1-micro`.
 - **Public repository**: GitHub *secret scanning* and *push protection* enabled on 2026-11-11.
 - **E-mail**: the Gmail app password ("Veredito SMTP") already exists and is stored outside the repository; it goes into Secret Manager in the plan for spec 003. Local staging does not need it (it uses Mailpit).
 - **Pilot in production**: only with the Minitest items; the pilot colleagues must know that their responses will be discarded; at the end, the production database is recreated empty and the phase switches to `collection` before the call for volunteers.

@@ -55,7 +55,7 @@ On the first deployment, the system creates all the tables planned in spec 001, 
 **Acceptance Scenarios**:
 
 1. **Given** an empty database, **When** the system is deployed, **Then** the tables for import batches, items, blocks, tasks (block-role), responses, participants, access codes, access sessions, consent forms and configuration exist.
-2. **Given** an empty database, **When** it is prepared, **Then** the configuration receives the default values: administrator e-mail `diegoquirino@gmail.com`, reservation of 20 minutes, block size 10, daily limit of 450 e-mails, no consent form published and study phase (`study-phase`) `pilot`.
+2. **Given** an empty database, **When** it is prepared, **Then** the configuration receives the default values: administrator e-mail `diegoquirino@gmail.com`, reservation of 20 minutes, block size 10, daily limit of 450 e-mails, no consent form published and study phase (`study_phase`) `pilot`.
 3. **Given** a database already prepared and with records, **When** the same version is deployed again, **Then** nothing is duplicated, deleted or changed.
 4. **Given** a new version that changes the structure, **When** it is deployed over a database with records, **Then** the structure is updated only once, the records are preserved and it is recorded which change was applied and when.
 5. **Given** the database, **When** someone tries to access it over the internet without going through the system, **Then** the access is refused.
@@ -135,7 +135,7 @@ The same deployed image serves the interface in Portuguese (Brazil), English (US
 - **FR-002**: Deploying a new version MUST NOT change the URL nor alter existing data.
 - **FR-003**: The footer MUST show the deployed version.
 - **FR-004**: The database preparation MUST create all the tables of the data model of spec 001, with the integrity constraints, and be safe to repeat; structure changes MUST be versioned, applied automatically on deployment and recorded.
-- **FR-005**: The configuration MUST store, at least: administrator e-mail, administrator preferred language (`admin_preferred_language`, empty until the first administrator sign-in in spec 004), reservation minutes (default 20), block size (default 10), daily e-mail limit (default 450), version and texts (one per language) of the consent form, and study phase (`study-phase`: `pilot`, the default, or `collection`).
+- **FR-005**: The configuration MUST store, at least: administrator e-mail, administrator preferred language (`admin_preferred_language`, empty until the first administrator sign-in in spec 004), reservation minutes (default 20), block size (default 10), daily e-mail limit (default 450), version and texts (one per language) of the consent form, and study phase (`study_phase`: `pilot`, the default, or `collection`).
 - **FR-006**: The database MUST NOT be reachable over the internet; only the system and the researcher, with their own credentials, access it.
 - **FR-007**: There MUST be a local staging environment, in Docker (profile `staging`), that starts with a single command, uses the same image and the same structure changes as production, has its own database and test mailbox and a visible identification on screen. There is no cloud staging.
 - **FR-008**: The study rules (CSV validation, block formation, choice of the next block, export format) MUST be verifiable by automated tests without deploying the system.

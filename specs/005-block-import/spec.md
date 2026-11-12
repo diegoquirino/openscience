@@ -110,7 +110,7 @@ After the pilot, with the production database recreated empty, the administrator
 - **FR-008**: The confirmation MUST be atomic with respect to the other operations: it either stores the whole batch or nothing.
 - **FR-009**: The batch MUST be recorded with date, time, file name and counts of included, ignored and error rows.
 - **FR-010**: Only the administrator MUST be able to import.
-- **FR-011**: In local staging, always, and in production, while the study phase (`study-phase`) is `pilot`, the import MUST refuse entirely a file that has any row with `system` different from `minitest`.
+- **FR-011**: In local staging, always, and in production, while the study phase (`study_phase`) is `pilot`, the import MUST refuse entirely a file that has any row with `system` different from `minitest`.
 - **FR-012**: The administrator MUST be able to switch the phase from `pilot` to `collection` only in production and only with the database without items, participants and responses; the change is recorded and cannot be undone through the interface.
 - **FR-013**: The preview, the summary and every error or refusal message of the import (row reasons, missing column, file not CSV or not UTF-8, refusal by study phase, phase switch refused) MUST be shown in the administrator's interface language (pt-BR, en-US or es-ES).
 - **FR-014**: Imported values MUST be stored exactly as in the file, with no translation, whatever the administrator's interface language; the language of the interface MUST NOT affect what is stored.
