@@ -1,0 +1,18 @@
+<header>
+  <mat-toolbar class="toolbar">
+    <a class="brand" routerLink="/" i18n="@@shell.title">Veredito</a>
+  </mat-toolbar>
+</header>
+
+<main class="page">
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <span class="version" i18n="@@shell.version">Version {{ version }}</span>
+  <nav class="languages" i18n-aria-label="@@shell.otherLanguages" aria-label="Other languages">
+    @for (option of otherLocales(); track option.code) {
+      <a [href]="option.href" [attr.lang]="option.code" [attr.hreflang]="option.code">{{ option.label }}</a>
+    }
+  </nav>
+</footer>

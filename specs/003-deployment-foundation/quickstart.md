@@ -17,6 +17,11 @@ All commands run from the root of the `Veredito` branch (the `Veredito` folder),
 
 No secret is needed for local staging.
 
+On Windows, Hyper-V or Docker may reserve a port range that includes 8080
+(`netsh interface ipv4 show excludedportrange protocol=tcp`). If so, start the application with
+another port (`$env:PORT = "8200"`) and run the end-to-end tests with
+`$env:E2E_BASE_URL = "http://localhost:8200"`; the addresses below change accordingly.
+
 ## 1. Automated checks (FR-008, FR-013, FR-016, FR-017, SC-007, SC-008)
 
 ```powershell

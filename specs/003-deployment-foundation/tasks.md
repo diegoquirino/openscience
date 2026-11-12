@@ -162,8 +162,8 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Tests for User Story 1
 
-- [ ] T024 [P] [US1] Component tests (Vitest) in `frontend/src/app/shell/shell.component.spec.ts` (header shows "Veredito"; footer shows `BUILD_VERSION`; footer has links to the other two locales for the current route) and `frontend/src/app/home/home.component.spec.ts` (sentence about the study; "Participate" button navigates to `/participate`)
-- [ ] T025 [P] [US1] Playwright tests in `frontend/e2e/home.spec.ts`, with `frontend/e2e/playwright.config.ts` (`baseURL` from `E2E_BASE_URL`, default `http://localhost:8080`; Chromium; projects `desktop` and `phone` with a 360-pixel-wide viewport).
+- [X] T024 [P] [US1] Component tests (Vitest) in `frontend/src/app/shell/shell.component.spec.ts` (header shows "Veredito"; footer shows `BUILD_VERSION`; footer has links to the other two locales for the current route) and `frontend/src/app/home/home.component.spec.ts` (sentence about the study; "Participate" button navigates to `/participate`)
+- [X] T025 [P] [US1] Playwright tests in `frontend/e2e/home.spec.ts`, with `frontend/e2e/playwright.config.ts` (`baseURL` from `E2E_BASE_URL`, default `http://localhost:8080`; Chromium; projects `desktop` and `phone` with a 360-pixel-wide viewport).
 
   **Root page:** `/` shows "Português (Brasil)", "English (US)" and "Español (España)", each linking to its prefix.
 
@@ -177,14 +177,14 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Implementation for User Story 1
 
-- [ ] T026 [P] [US1] Create the root page `backend/src/main/resources/static/index.html` and `backend/src/main/resources/static/language.css` (plain HTML and CSS, title "Veredito", the three options of `contracts/web-routing.md` section "Root page", each in its own language and with its own `lang` attribute, responsive)
-- [ ] T027 [US1] Create the shell in `frontend/src/app/shell/`:
+- [X] T026 [P] [US1] Create the root page `backend/src/main/resources/static/index.html` and `backend/src/main/resources/static/language.css` (plain HTML and CSS, title "Veredito", the three options of `contracts/web-routing.md` section "Root page", each in its own language and with its own `lang` attribute, responsive)
+- [X] T027 [US1] Create the shell in `frontend/src/app/shell/`:
   - **Header:** `mat-toolbar` with "Veredito".
   - **Main area:** `router-outlet`.
   - **Footer:** the version from `BUILD_VERSION`, and plain `<a href>` links to `/<other locale>/<current route>`, so a click reloads the page under the other prefix. These links are the provisional switch of `contracts/web-routing.md`; spec 004 replaces them.
-- [ ] T028 [P] [US1] Create `frontend/src/app/home/` (one sentence about the study and the "Participate" `mat-flat-button` to `/participate`), `frontend/src/app/participate/` (provisional page saying that sign-in arrives soon) and `frontend/src/app/not-found/`; routes in `frontend/src/app/app.routes.ts`: `''` home, `'participate'`, `'**'` not found
-- [ ] T029 [US1] Layout and theme in `frontend/src/styles.scss` and the components: Material 3 theme, fluid container with `max-width`, no fixed widths, readable at 360 px
-- [ ] T030 [US1] Mark every user-facing text of T027 and T028 with `i18n` / `$localize` and explicit ids (`@@shell.title`, `@@home.intro`, `@@home.participate`, `@@participate.soon`, `@@notFound.title`, ...), run `npm run i18n:extract` and create `frontend/src/locale/messages.pt-BR.xlf` and `frontend/src/locale/messages.es-ES.xlf` with a `<target>` for every unit, using the GLOSSARY vocabulary ("Participar" / "Participate" / "Participar")
+- [X] T028 [P] [US1] Create `frontend/src/app/home/` (one sentence about the study and the "Participate" `mat-flat-button` to `/participate`), `frontend/src/app/participate/` (provisional page saying that sign-in arrives soon) and `frontend/src/app/not-found/`; routes in `frontend/src/app/app.routes.ts`: `''` home, `'participate'`, `'**'` not found
+- [X] T029 [US1] Layout and theme in `frontend/src/styles.scss` and the components: Material 3 theme, fluid container with `max-width`, no fixed widths, readable at 360 px
+- [X] T030 [US1] Mark every user-facing text of T027 and T028 with `i18n` / `$localize` and explicit ids (`@@shell.title`, `@@home.intro`, `@@home.participate`, `@@participate.soon`, `@@notFound.title`, ...), run `npm run i18n:extract` and create `frontend/src/locale/messages.pt-BR.xlf` and `frontend/src/locale/messages.es-ES.xlf` with a `<target>` for every unit, using the GLOSSARY vocabulary ("Participar" / "Participate" / "Participar")
 
 **Checkpoint**: US1 works locally; T024 and T025 pass
 
