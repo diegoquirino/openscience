@@ -1,4 +1,4 @@
-# Segredos e dados de participantes (repositório público)
+# Secrets and participant data (public repository)
 .env
 .env.*
 !.env.example
@@ -16,13 +16,22 @@ backend/target/
 *.class
 hs_err_pid*
 
+# Front-end builds copied into the jar by the Dockerfile
+backend/src/main/resources/static/pt-BR/
+backend/src/main/resources/static/en-US/
+backend/src/main/resources/static/es-ES/
+
 # Angular / Node
 node_modules/
 frontend/dist/
 frontend/.angular/
 frontend/coverage/
+frontend/src/app/build-info.ts
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
 
-# IDE e sistema
+# IDE and operating system
 .idea/
 *.iml
 *.log

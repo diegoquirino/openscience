@@ -12,14 +12,14 @@ that the spec does not fix.
 | Component | Version | Note |
 |---|---|---|
 | Java | 25 LTS (Eclipse Temurin) | Images `eclipse-temurin:25-jdk` (build) and `eclipse-temurin:25-jre` (runtime). The researcher's machine has JDK 17; install Temurin 25 to run `./mvnw` outside Docker |
-| Maven | 3.9.16 through the Maven Wrapper | |
+| Maven | 3.10.0 through the Maven Wrapper 3.3.4 (`only-script`) | Wrapper taken from start.spring.io for Boot 4.1.2 during implementation |
 | Spring Boot | 4.1.2 | 4.2.0 is at RC2 (2026-11-05), GA due on 2026-11-19. Start on 4.1.2; moving to 4.2.x is a minor update (allowed by Principle I) and is done before the first production deployment if 4.2.0 is out. Neither `RestTemplate` nor `TestRestTemplate` is used, so the 4.2 deprecations do not affect the plan |
 | Spring HATEOAS, Spring JDBC, Spring Mail, Testcontainers, Jackson | managed by Spring Boot | |
 | springdoc-openapi | 3.2.0 (`springdoc-openapi-starter-webmvc-ui`, Swagger UI 5.34) | Built on Spring Boot 4.1.2 |
 | Flyway (open source) | 13.12.1 with `flyway-mysql` | Certified up to MySQL 9.4; MySQL 9.7 is confirmed by the Testcontainers tests (see section 3) |
 | MySQL Community | 9.7 (Cloud SQL 9.7.2; image `mysql:9.7`) | |
 | Cloud SQL Java connector | 1.30.2 (`com.google.cloud.sql:mysql-socket-factory-connector-j-8`) | Production only |
-| REST Assured | 6.3.0 (`rest-assured`, `json-schema-validator`) | |
+| REST Assured | 6.3.0 (`rest-assured`, `json-schema-validator`) | Not managed by Spring Boot 4; version set in `pom.xml`. JSON Schema 2020-12 through the networknt validator |
 | ArchUnit | 1.5.1 (`archunit-junit5`) | Keeps the domain layer free of Spring, JDBC and HTTP |
 | Angular, Angular CDK, Angular Material, `@angular/localize` | 22.2.6 | 22.3.0 is at RC; minor updates are free |
 | Angular unit tests | default runner of Angular 22 (Vitest) | |

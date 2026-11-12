@@ -29,18 +29,18 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 **Purpose**: empty projects with the versions of research section 1
 
-- [ ] T001 Create the root files: `.gitignore` (add `backend/target/`, `frontend/node_modules/`, `frontend/dist/`, `frontend/.angular/`, `frontend/src/app/build-info.ts`, `frontend/test-results/`, `frontend/playwright-report/`, `backend/src/main/resources/static/pt-BR/`, `backend/src/main/resources/static/en-US/`, `backend/src/main/resources/static/es-ES/`, `.env`), `.editorconfig` (`charset = utf-8`, `end_of_line = lf`, 4 spaces for Java, 2 for the rest) and `.gitattributes` (`* text=auto eol=lf`, `*.cmd text eol=crlf`)
-- [ ] T002 Create `backend/pom.xml`:
+- [X] T001 Create the root files: `.gitignore` (add `backend/target/`, `frontend/node_modules/`, `frontend/dist/`, `frontend/.angular/`, `frontend/src/app/build-info.ts`, `frontend/test-results/`, `frontend/playwright-report/`, `backend/src/main/resources/static/pt-BR/`, `backend/src/main/resources/static/en-US/`, `backend/src/main/resources/static/es-ES/`, `.env`), `.editorconfig` (`charset = utf-8`, `end_of_line = lf`, 4 spaces for Java, 2 for the rest) and `.gitattributes` (`* text=auto eol=lf`, `*.cmd text eol=crlf`)
+- [X] T002 Create `backend/pom.xml`:
   - **Coordinates:** parent `spring-boot-starter-parent` 4.1.2; `io.github.diegoquirino:veredito:0.3.0`; `java.version` 25.
   - **Properties:** `flyway.version` 13.12.1, `rest-assured.version` 6.3.0, and `veredito.version` (default `${project.version}+dev`).
   - **Runtime dependencies:** the Boot starters for Web MVC, HATEOAS, JDBC, Flyway, Mail and Validation; `org.flywaydb:flyway-mysql`; `com.mysql:mysql-connector-j`; `org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0`; `com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.30.2` (runtime scope).
   - **Development:** `spring-boot-docker-compose` (optional).
-  - **Test dependencies:** `spring-boot-starter-test`, `spring-boot-testcontainers`, the Testcontainers MySQL and JUnit Jupiter modules, `io.rest-assured:rest-assured`, `io.rest-assured:json-schema-validator`, `com.tngtech.archunit:archunit-junit5:1.5.1`.
+  - **Test dependencies:** the Boot 4 test starters of each technology (`spring-boot-starter-webmvc-test`, `-hateoas-test`, `-jdbc-test`, `-flyway-test`), `spring-boot-testcontainers`, the Testcontainers MySQL and JUnit Jupiter modules, `io.rest-assured:rest-assured`, `io.rest-assured:json-schema-validator`, `com.tngtech.archunit:archunit-junit5:1.5.1`.
   - **Build:** `spring-boot-maven-plugin` with the `build-info` goal and the additional property `veredito.version`.
 
-  Then add the Maven Wrapper 3.9.16 (`backend/mvnw`, `backend/mvnw.cmd`, `backend/.mvn/wrapper/`).
-- [ ] T003 Create `<pkg>/VereditoApplication.java` and one `package-info.java` with a one-line description in each of `<pkg>/domain`, `<pkg>/api`, `<pkg>/api/v1`, `<pkg>/web`, `<pkg>/persistence`, `<pkg>/config`
-- [ ] T004 [P] Create the Angular application in `frontend/`:
+  Then add the Maven Wrapper with Maven 3.10.0 (`backend/mvnw`, `backend/mvnw.cmd`, `backend/.mvn/wrapper/`).
+- [X] T003 Create `<pkg>/VereditoApplication.java` and one `package-info.java` with a one-line description in each of `<pkg>/domain`, `<pkg>/api`, `<pkg>/api/v1`, `<pkg>/web`, `<pkg>/persistence`, `<pkg>/config`
+- [X] T004 [P] Create the Angular application in `frontend/`:
   - **Scaffold:** `npx @angular/cli@22.2.6 new frontend --routing --style=scss --ssr=false --skip-git`, then `ng add @angular/material@22.2.6` (Material 3 theme) and `ng add @angular/localize@22.2.6`.
   - **npm scripts in `frontend/package.json`:**
     - `prebuild`, `pretest` and `prestart` run `node scripts/write-build-info.mjs`;
@@ -48,8 +48,8 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
     - `i18n:check` = `node scripts/check-i18n.mjs`;
     - `e2e` = `playwright test -c e2e/playwright.config.ts`.
   - **Dev dependency:** `@playwright/test@1.65.0`.
-- [ ] T005 [P] Copy `../ISSTA_2027/src/inputs/oracle/veredito_minitest.csv` to `backend/src/test/resources/minitest/veredito_minitest.csv` byte for byte (same SHA-256), as required by constitution Principle IV
-- [ ] T006 [P] Create `.env.example` with the variable names of `specs/003-deployment-foundation/contracts/pipeline.md` (section "Environment variables"); harmless local defaults only, no secret values
+- [X] T005 [P] Copy `../ISSTA_2027/src/inputs/oracle/veredito_minitest.csv` to `backend/src/test/resources/minitest/veredito_minitest.csv` byte for byte (same SHA-256), as required by constitution Principle IV
+- [X] T006 [P] Create `.env.example` with the variable names of `specs/003-deployment-foundation/contracts/pipeline.md` (section "Environment variables"); harmless local defaults only, no secret values
 
 ---
 
@@ -59,7 +59,7 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 **CRITICAL**: no story starts before this phase is complete
 
-- [ ] T007 Create `backend/src/main/resources/application.yaml`:
+- [X] T007 Create `backend/src/main/resources/application.yaml`:
   - **Server:** `server.port: ${PORT:8080}`.
   - **Datasource:** `spring.datasource.url` from `DB_URL`, with the default `jdbc:mysql://localhost:3306/veredito`; `DB_USER` and `DB_PASSWORD` from the environment, with local defaults. Always append `connectionTimeZone=UTC&preserveInstants=true`.
   - **Pool:** `spring.datasource.hikari.maximum-pool-size: 5`.
@@ -72,14 +72,14 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   Profile files:
   - **`application-staging.yaml`:** `veredito.environment: staging`; Docker Compose support off; mail to `${SMTP_HOST:mailpit}:${SMTP_PORT:1025}`.
   - **`application-prod.yaml`:** `veredito.environment: production`; Docker Compose support off; mail `smtp.gmail.com:587` with STARTTLS and `SMTP_USER`/`SMTP_PASSWORD` from the environment; structured JSON console logging.
-- [ ] T008 Create `<pkg>/config/VereditoProperties.java` (`@ConfigurationProperties("veredito")`, field `environment` of enum `Environment { PRODUCTION, STAGING, DEVELOPMENT }` serialized in lowercase) and `<pkg>/config/SystemVersion.java` (reads `veredito.version` from `BuildProperties`, `0.3.0+dev` when absent)
-- [ ] T009 [P] Create `<pkg>/api/LocaleConfig.java`:
+- [X] T008 Create `<pkg>/config/VereditoProperties.java` (`@ConfigurationProperties("veredito")`, field `environment` of enum `Environment { PRODUCTION, STAGING, DEVELOPMENT }` serialized in lowercase) and `<pkg>/config/SystemVersion.java` (reads `veredito.version` from `BuildProperties`, `0.3.0+dev` when absent)
+- [X] T009 [P] Create `<pkg>/api/LocaleConfig.java`:
   - **Resolver:** `AcceptHeaderLocaleResolver` with supported locales `pt_BR`, `en_US`, `es_ES` and default `pt_BR`.
   - **Matching:** language-only, so `pt`, `en` and `es` resolve to their supported locale.
   - **Fallback:** `fr-FR`, `*` or a missing header give `pt_BR`.
   - **Response:** a filter that sets `Content-Language` to the resolved locale (`pt-BR`, `en-US` or `es-ES`).
-- [ ] T010 [P] Create `backend/src/main/resources/messages.properties` (en-US), `messages_pt_BR.properties` and `messages_es_ES.properties`, UTF-8, with `problem.<slug>.title` and `problem.<slug>.detail` for the eight slugs of `specs/003-deployment-foundation/contracts/problem-details.md` (`unsupported-api-version` detail with the placeholders for the requested version and the supported list, as in the contract example)
-- [ ] T011 Create `<pkg>/api/ProblemType.java` (enum: slug, HTTP status; type URI `urn:veredito:problem:<slug>`) and `<pkg>/api/ProblemDetailsAdvice.java` (`@RestControllerAdvice` extending `ResponseEntityExceptionHandler`).
+- [X] T010 [P] Create `backend/src/main/resources/messages.properties` (en-US), `messages_pt_BR.properties` and `messages_es_ES.properties`, UTF-8, with `problem.<slug>.title` and `problem.<slug>.detail` for the eight slugs of `specs/003-deployment-foundation/contracts/problem-details.md` (`unsupported-api-version` detail with the placeholders for the requested version and the supported list, as in the contract example)
+- [X] T011 Create `<pkg>/api/ProblemType.java` (enum: slug, HTTP status; type URI `urn:veredito:problem:<slug>`) and `<pkg>/api/ProblemDetailsAdvice.java` (`@RestControllerAdvice` extending `ResponseEntityExceptionHandler`).
 
   **Exception mapping:**
   - `NoResourceFoundException` -> `not-found`;
@@ -94,19 +94,19 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - `title` and `detail` come from `MessageSource` in the request locale;
   - `instance` is the request path;
   - `Content-Type` is `application/problem+json`.
-- [ ] T012 Create `<pkg>/api/ApiVersioningConfig.java` (`WebMvcConfigurer.configureApiVersioning`):
+- [X] T012 Create `<pkg>/api/ApiVersioningConfig.java` (`WebMvcConfigurer.configureApiVersioning`):
   - **Where:** version in path segment 1, applied only to `/api/v{n}/**`.
   - **Parsing:** a parser that accepts the `v` prefix; supported version `1` only; detection of other versions off.
   - **Elsewhere:** version not required outside `/api/v{n}/**`.
   - **Deprecation:** `StandardApiVersionDeprecationHandler` wired, with no deprecated version in 003.
-- [ ] T013 [P] Create `<pkg>/api/HypermediaConfig.java`: HAL and HAL-FORMS enabled, HAL-FORMS as the default for `*/*`, CURIE `vd` -> `/api/v1/rels/{rel}`
-- [ ] T014 Create `<pkg>/persistence/DatabaseStatus.java`: `boolean isAvailable()` with `JdbcClient` running `SELECT 1` with a 2-second query timeout; returns `false` on any `DataAccessException`, without logging a stack trace more than once per minute
-- [ ] T015 Create `<pkg>/api/v1/EntryPointController.java` and `<pkg>/api/v1/EntryPointModel.java`, per `specs/003-deployment-foundation/contracts/api.md`:
+- [X] T013 [P] Create `<pkg>/api/HypermediaConfig.java`: HAL and HAL-FORMS enabled, HAL-FORMS as the default for `*/*`, CURIE `vd` -> `/api/v1/rels/{rel}`
+- [X] T014 Create `<pkg>/persistence/DatabaseStatus.java`: `boolean isAvailable()` with `JdbcClient` running `SELECT 1` with a 2-second query timeout; returns `false` on any `DataAccessException`, without logging a stack trace more than once per minute
+- [X] T015 Create `<pkg>/api/v1/EntryPointController.java` and `<pkg>/api/v1/EntryPointModel.java`, per `specs/003-deployment-foundation/contracts/api.md`:
   - **Route:** `GET /api/{version}/` mapped with `version = "1"`.
   - **Properties:** `systemVersion`, `environment`, and `available` from `DatabaseStatus`.
   - **Links when available:** `self`, `curies` and `vd:request-code` -> `/api/v1/access-codes`.
-  - **Links when unavailable:** only `self` and `curies`.
-- [ ] T016 Create `<pkg>/web/LocaleRoutingFilter.java` (servlet filter before Spring MVC) implementing rules 1 to 10 of `specs/003-deployment-foundation/contracts/web-routing.md`:
+  - **Links when unavailable:** only `self` (HAL lists `curies` only next to a curied relation).
+- [X] T016 Create `<pkg>/web/LocaleRoutingFilter.java` (servlet filter before Spring MVC) implementing rules 1 to 10 of `specs/003-deployment-foundation/contracts/web-routing.md`:
   - `/api` and the documentation paths pass through;
   - `/` serves `static/index.html`;
   - a prefix without the trailing slash gets `301` to the same prefix with `/`;
@@ -118,15 +118,15 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - methods other than GET and HEAD outside `/api` get `405`.
 
   Also create `<pkg>/web/StaticCacheConfig.java` with the `Cache-Control` values of the contract: `no-cache` for `index.html` and the root page, and `public, max-age=31536000, immutable` for hashed bundles.
-- [ ] T017 Create the test support in `<tpkg>/support/`:
+- [X] T017 Create the test support in `<tpkg>/support/`:
   - **`MySqlContainerConfig.java`:** `@TestConfiguration` with `@ServiceConnection` on `MySQLContainer("mysql:9.7")`, reused across classes.
   - **`ApiTestBase.java`:** `@SpringBootTest(webEnvironment = RANDOM_PORT)`, plus a REST Assured base specification (port, `Accept: application/prs.hal-forms+json`, logging only on failure).
   - **`ApiTestBase` helpers:** `entryPoint()`, and `follow(response, rel)`, which reads the `href` of a relation and expands the `vd` CURIE.
 
   Also create `backend/src/test/resources/schemas/problem-details.json` (JSON Schema 2020-12 of the contract fields) and stubs `backend/src/test/resources/static/{pt-BR,en-US,es-ES}/index.html`, each with `<html lang="...">` and one asset `main-TEST.js`.
-- [ ] T018 [P] Create `<tpkg>/domain/DomainIsolationTest.java` (ArchUnit): classes in `..veredito.domain..` must not depend on `org.springframework..`, `java.sql..`, `javax.sql..`, `jakarta.servlet..` or `..veredito.api..`, `..veredito.web..`, `..veredito.persistence..`, `..veredito.config..`; `allowEmptyShould(true)` while the package has no classes
-- [ ] T019 [P] Create `<tpkg>/i18n/MessageBundleParityTest.java`: loads the three bundles as UTF-8 `Properties` and fails unless they have exactly the same keys and no empty value, listing each missing key and the file where it is missing (FR-017)
-- [ ] T020 Create `<tpkg>/web/WebRoutingTest.java` (REST Assured, extends `ApiTestBase`), one test per row of the rules table and the headers table of `contracts/web-routing.md`:
+- [X] T018 [P] Create `<tpkg>/domain/DomainIsolationTest.java` (ArchUnit): classes in `..veredito.domain..` must not depend on `org.springframework..`, `java.sql..`, `javax.sql..`, `jakarta.servlet..` or `..veredito.api..`, `..veredito.web..`, `..veredito.persistence..`, `..veredito.config..`; `allowEmptyShould(true)` while the package has no classes
+- [X] T019 [P] Create `<tpkg>/i18n/MessageBundleParityTest.java`: loads the three bundles as UTF-8 `Properties` and fails unless they have exactly the same keys and no empty value, listing each missing key and the file where it is missing (FR-017)
+- [X] T020 Create `<tpkg>/web/WebRoutingTest.java` (REST Assured, extends `ApiTestBase`), one test per row of the rules table and the headers table of `contracts/web-routing.md`:
   - `/` gives `200`;
   - `/en-US` gives `301` to `/en-US/`;
   - `/es-ES/admin` and `/pt-BR/tasks/12` give `200`, with `lang="es-ES"` and `lang="pt-BR"`;
@@ -137,13 +137,13 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - `POST /pt-BR/` gives `405`;
   - `/api/v1` is not affected by the filter;
   - `index.html` responses carry `Cache-Control: no-cache`.
-- [ ] T021 Configure i18n in `frontend/angular.json`:
+- [X] T021 Configure i18n in `frontend/angular.json`:
   - **Locales:** `i18n.sourceLocale` `{ "code": "en-US", "subPath": "en-US" }`; `locales` `pt-BR` and `es-ES`, each with `translation: src/locale/messages.<locale>.xlf` and `subPath` equal to the locale.
   - **Build options:** `localize: true`, `i18nMissingTranslation: "error"`.
   - **Serve:** configurations `pt-BR` and `es-ES` for `ng serve`.
   - **Proxy:** `frontend/proxy.conf.json` forwards `/api` to `http://localhost:8080`.
-- [ ] T022 [P] Create `frontend/scripts/write-build-info.mjs`: writes `frontend/src/app/build-info.ts` with `export const BUILD_VERSION = '<value>';` from the environment variable `VEREDITO_VERSION` (default `0.3.0+dev`)
-- [ ] T023 Create the front-end core in `frontend/src/app/core/`:
+- [X] T022 [P] Create `frontend/scripts/write-build-info.mjs`: writes `frontend/src/app/build-info.ts` with `export const BUILD_VERSION = '<value>';` from the environment variable `VEREDITO_VERSION` (default `0.3.0+dev`)
+- [X] T023 Create the front-end core in `frontend/src/app/core/`:
   - **`accept-language.interceptor.ts`:** sends `Accept-Language` equal to `LOCALE_ID` on every `/api` call.
   - **`hal.ts`:** typed link reader for `_links`, with CURIE expansion.
   - **`entry-point.service.ts`:** `GET /api/v1`, returning `{ systemVersion, environment, available, links }`. On an HTTP or network error it returns `available: false` and `environment: 'production'`, which hides the banner.

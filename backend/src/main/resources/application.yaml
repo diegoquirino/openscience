@@ -1,0 +1,39 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: veredito
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/veredito}
+    username: ${DB_USER:veredito}
+    password: ${DB_PASSWORD:veredito-local}
+    hikari:
+      maximum-pool-size: 5
+      data-source-properties:
+        connectionTimeZone: UTC
+        preserveInstants: true
+  messages:
+    basename: messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+  mvc:
+    problemdetails:
+      enabled: true
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          no-cache: true
+  flyway:
+    clean-disabled: true
+  docker:
+    compose:
+      skip:
+        in-tests: true
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+
+veredito:
+  environment: development

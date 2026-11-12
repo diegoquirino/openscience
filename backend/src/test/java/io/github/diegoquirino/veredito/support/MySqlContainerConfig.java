@@ -1,0 +1,20 @@
+package io.github.diegoquirino.veredito.support;
+
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Bean;
+import org.testcontainers.mysql.MySQLContainer;
+import org.testcontainers.utility.DockerImageName;
+
+/** MySQL 9.7, the version of Cloud SQL; one container per cached application context. */
+@TestConfiguration(proxyBeanMethods = false)
+public class MySqlContainerConfig {
+
+    public static final String IMAGE = "mysql:9.7";
+
+    @Bean
+    @ServiceConnection
+    public MySQLContainer mysql() {
+        return new MySQLContainer(DockerImageName.parse(IMAGE));
+    }
+}

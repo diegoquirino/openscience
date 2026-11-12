@@ -1,0 +1,10 @@
+spring:
+  docker:
+    compose:
+      enabled: false
+  mail:
+    host: ${SMTP_HOST:mailpit}
+    port: ${SMTP_PORT:1025}
+
+veredito:
+  environment: staging

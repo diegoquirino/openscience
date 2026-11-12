@@ -1,0 +1,1963 @@
+system,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase
+minitest,LoginTest|1|1,LoginTest,MOD,step,launches the login screen,displays the login screen,v1.0,v1.1,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the login screen""   <- edited
+    step 2 system ""presents a form with username and password fields and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button""
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist"" bs 3
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect"" bs 3
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""   <- edited
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|1|2,LoginTest,MOD,step,presents a form with username and password fields and a submit button,"presents a form containing a username text field, a masked password field, and a submit button",v1.0,v1.1,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the login screen""
+    step 2 system ""presents a form with username and password fields and a submit button""   <- edited
+    step 3 emailUser ""fills out the fields and click on the submit button""
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist"" bs 3
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect"" bs 3
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""   <- edited
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|1|3,LoginTest,ADD,alt_flow_steps_block,,"alternative 1 ""Username is predicted""
+[emailUser] selects a suggested user name, types password and click on the submit button",v1.0,v1.1,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the login screen""
+    step 2 system ""presents a form with username and password fields and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button""
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist"" bs 3
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect"" bs 3
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {   <- edited
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|2|1,LoginTest,MOD,step,displays the login screen,Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system,v1.1,v1.2,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""   <- edited
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""   <- edited
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|2|2,LoginTest,MOD,alt_flow_step,"selects a suggested user name, types password and click on the submit button","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.1,v1.2,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|2|3,LoginTest,MOD,exc_flow_step,alerts that user does not exist,alerts: user does not exist,v1.1,v1.2,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""   <- edited
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""   <- edited
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|2|4,LoginTest,MOD,exc_flow_step,alerts that username and/or password are incorrect,alerts: username and/or password are incorrect,v1.1,v1.2,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""displays the login screen""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""selects a suggested user name, types password and click on the submit button"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts that user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts that username and/or password are incorrect""   <- edited
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""   <- edited
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|3|1,LoginTest,META,requirements,,REQ-07,v1.2,v1.3,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""   <- edited
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|3|2,LoginTest,MOD,step,Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system,launches the authentication screen,v1.2,v1.3,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""   <- edited
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""   <- edited
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|3|3,LoginTest,MOD,step,"presents a form containing a username text field, a masked password field, and a submit button","allows users to authenticate using their username and password through a form with username field, masked password field, and submit button",v1.2,v1.3,"systemName ""Email""
+usecase ""Login User"" {
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system""
+    step 2 system ""presents a form containing a username text field, a masked password field, and a submit button""   <- edited
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""   <- edited
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}"
+minitest,LoginTest|4|1,LoginTest,MOD,post,User successfully logged,User successfully authenticated with two-factor verification,v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""   <- edited
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""   <- edited
+}"
+minitest,LoginTest|4|2,LoginTest,MOD,step,"allows users to authenticate using their username and password through a form with username field, masked password field, and submit button","allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button",v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""   <- edited
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""   <- edited
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|4|3,LoginTest,MOD,step,fills out the fields and click on the submit button,"fills out the username, password, and 2FA code fields and clicks on the submit button",v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]   <- edited
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]   <- edited
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|4|4,LoginTest,MOD,alt_flow_step,"chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|4|5,LoginTest,MOD,exc_flow_step,alerts: username and/or password are incorrect,"alerts: username, password, and/or 2FA code are incorrect",v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""   <- edited
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""   <- edited
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|4|6,LoginTest,ADD,exc_flow_steps_block,,"exception 3 ""Invalid or expired two-factor authentication code""
+[system] alerts: two-factor authentication code is invalid or expired",v1.3,v1.4,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the fields and click on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  postCondition ""User successfully logged""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {   <- edited
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|5|1,LoginTest,ADD,exc_flow_steps_block,,"exception 4 ""Password length constraint""
+[system] alerts: password contains fewer than eight characters",v1.4,v1.5,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4,5]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Password length constraint"" {   <- edited
+    step 1 system ""alerts: password contains fewer than eight characters""   <- edited
+  }
+  exception 5 ""Password uppercase constraint"" {
+    step 1 system ""alerts: password contains no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|5|2,LoginTest,ADD,exc_flow_steps_block,,"exception 5 ""Password uppercase constraint""
+[system] alerts: password contains no uppercase letter",v1.4,v1.5,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4,5]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Password length constraint"" {
+    step 1 system ""alerts: password contains fewer than eight characters""
+  }
+  exception 5 ""Password uppercase constraint"" {   <- edited
+    step 1 system ""alerts: password contains no uppercase letter""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|6|1,LoginTest,MOD,exc_flow_title,Password length constraint,Unified password policy (formerly separate length and uppercase checks),v1.5,v1.6,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4,5]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Password length constraint"" {   <- edited
+    step 1 system ""alerts: password contains fewer than eight characters""
+  }
+  exception 5 ""Password uppercase constraint"" {
+    step 1 system ""alerts: password contains no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {   <- edited
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|6|2,LoginTest,MOD,exc_flow_step,alerts: password contains fewer than eight characters,alerts: password contains fewer than eight characters or no uppercase letter,v1.5,v1.6,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4,5]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Password length constraint"" {
+    step 1 system ""alerts: password contains fewer than eight characters""   <- edited
+  }
+  exception 5 ""Password uppercase constraint"" {
+    step 1 system ""alerts: password contains no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|6|3,LoginTest,DEL,exc_flow_steps_block,"exception 5 ""Password uppercase constraint""
+[system] alerts: password contains no uppercase letter",,v1.5,v1.6,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4,5]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Password length constraint"" {
+    step 1 system ""alerts: password contains fewer than eight characters""
+  }
+  exception 5 ""Password uppercase constraint"" {   <- edited
+    step 1 system ""alerts: password contains no uppercase letter""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}"
+minitest,LoginTest|7|1,LoginTest,MOD,post,User successfully authenticated with two-factor verification,"User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log",v1.6,v1.7,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""   <- edited
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""   <- edited
+}"
+minitest,LoginTest|7|2,LoginTest,MOD,step,displays a successful message,confirms successful authentication and grants session access,v1.6,v1.7,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]   <- edited
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]   <- edited
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|7|3,LoginTest,ADD,steps_block,,"[emailUser] continues into the authenticated session
+[system] notifies the user via email of the successful login
+[emailUser] opens the login notification email
+[system] records the login event in the audit log with timestamp and user identity",v1.6,v1.7,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""displays a successful message"" ef[1,2,3,4]
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""   <- edited
+    step 6 system ""notifies the user via email of the successful login""   <- edited
+    step 7 emailUser ""opens the login notification email""   <- edited
+    step 8 system ""records the login event in the audit log with timestamp and user identity""   <- edited
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|8|1,LoginTest,META,requirements,REQ-07,"REQ-07, REQ-08, REQ-09",v1.7,v1.8,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07""   <- edited
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""   <- edited
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|9|1,LoginTest,MOD,exc_flow_step,alerts: password contains fewer than eight characters or no uppercase letter,alerts: password contains fewer than some characters or no suitable letter,v1.8,v1.9,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than eight characters or no uppercase letter""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""   <- edited
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|10|1,LoginTest,MOD,post,"User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log","User successfully authenticated, notified by email, and login recorded in the audit log",v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""   <- edited
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""   <- edited
+}"
+minitest,LoginTest|10|2,LoginTest,MOD,step,"allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button","allows users to authenticate using their username and password through a form with username field, masked password field, and submit button",v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""   <- edited
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""   <- edited
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|10|3,LoginTest,MOD,step,"fills out the username, password, and 2FA code fields and clicks on the submit button",fills out the username and password fields and clicks on the submit button,v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]   <- edited
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]   <- edited
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|10|4,LoginTest,MOD,alt_flow_step,"chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4   <- edited
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|10|5,LoginTest,MOD,exc_flow_step,"alerts: username, password, and/or 2FA code are incorrect",alerts: username and/or password are incorrect,v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""   <- edited
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""   <- edited
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|10|6,LoginTest,DEL,exc_flow_steps_block,"exception 3 ""Invalid or expired two-factor authentication code""
+[system] alerts: two-factor authentication code is invalid or expired",,v1.9,v2.0,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button""
+    step 3 emailUser ""fills out the username, password, and 2FA code fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3,4]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username, password, and/or 2FA code are incorrect""
+  }
+  exception 3 ""Invalid or expired two-factor authentication code"" {   <- edited
+    step 1 system ""alerts: two-factor authentication code is invalid or expired""   <- edited
+  }
+  exception 4 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|11|1,LoginTest,MOD,exc_flow_title,Incorrect username/password combination,Invalid credentials (unknown username or incorrect password),v2.0,v2.1,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {   <- edited
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {   <- edited
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|11|2,LoginTest,MOD,exc_flow_step,alerts: username and/or password are incorrect,alerts: Invalid credentials: unknown username or incorrect password,v2.0,v2.1,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {
+    step 1 system ""alerts: user does not exist""
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""   <- edited
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""   <- edited
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|11|3,LoginTest,DEL,exc_flow_steps_block,"exception 1 ""User does not exist in database""
+[system] alerts: user does not exist",,v2.0,v2.1,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""User does not exist in database"" {   <- edited
+    step 1 system ""alerts: user does not exist""   <- edited
+  }
+  exception 2 ""Incorrect username/password combination"" {
+    step 1 system ""alerts: username and/or password are incorrect""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|12|1,LoginTest,MOD,exc_flow_title,Invalid credentials (unknown username or incorrect password),Invalid credentials: unknown username,v2.1,v2.2,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {   <- edited
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials: unknown username"" {   <- edited
+    step 1 system ""rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Invalid credentials: incorrect password"" {
+    step 1 system ""rejects the incorrect password and alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|12|2,LoginTest,MOD,exc_flow_step,alerts: Invalid credentials: unknown username or incorrect password,rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password,v2.1,v2.2,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""   <- edited
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials: unknown username"" {
+    step 1 system ""rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password""   <- edited
+  }
+  exception 2 ""Invalid credentials: incorrect password"" {
+    step 1 system ""rejects the incorrect password and alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"
+minitest,LoginTest|12|3,LoginTest,ADD,exc_flow_steps_block,,"exception 2 ""Invalid credentials: incorrect password""
+[system] rejects the incorrect password and alerts: Invalid credentials: unknown username or incorrect password",v2.1,v2.2,"systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials (unknown username or incorrect password)"" {
+    step 1 system ""alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}","systemName ""Email""
+usecase ""Login User"" {
+  requirements ""REQ-07, REQ-08, REQ-09""
+  actor emailUser ""Email User""
+  preCondition ""There is an active network connection.""
+  basic {
+    step 1 emailUser ""launches the authentication screen""
+    step 2 system ""allows users to authenticate using their username and password through a form with username field, masked password field, and submit button""
+    step 3 emailUser ""fills out the username and password fields and clicks on the submit button"" af[1]
+    step 4 system ""confirms successful authentication and grants session access"" ef[1,2,3]
+    step 5 emailUser ""continues into the authenticated session""
+    step 6 system ""notifies the user via email of the successful login""
+    step 7 emailUser ""opens the login notification email""
+    step 8 system ""records the login event in the audit log with timestamp and user identity""
+  }
+  alternative 1 ""Username is predicted"" {
+    step 1 emailUser ""chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form"" bs 4
+  }
+  exception 1 ""Invalid credentials: unknown username"" {
+    step 1 system ""rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password""
+  }
+  exception 2 ""Invalid credentials: incorrect password"" {   <- edited
+    step 1 system ""rejects the incorrect password and alerts: Invalid credentials: unknown username or incorrect password""   <- edited
+  }
+  exception 3 ""Unified password policy (formerly separate length and uppercase checks)"" {
+    step 1 system ""alerts: password contains fewer than some characters or no suitable letter""
+  }
+  postCondition ""User successfully authenticated, notified by email, and login recorded in the audit log""
+}"

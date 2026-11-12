@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:veredito:schema:problem-details",
+  "title": "Problem Details of Veredito (RFC 9457)",
+  "type": "object",
+  "required": ["type", "title", "status", "detail", "instance"],
+  "properties": {
+    "type": { "type": "string", "pattern": "^urn:veredito:problem:[a-z]+(-[a-z]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "type": "integer", "minimum": 400, "maximum": 599 },
+    "detail": { "type": "string", "minLength": 1 },
+    "instance": { "type": "string", "pattern": "^/" },
+    "supportedVersions": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^v[0-9]+$" },
+      "minItems": 1
+    },
+    "incidentId": { "type": "string", "format": "uuid" },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "code"],
+        "properties": {
+          "field": { "type": "string" },
+          "code": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -49,8 +49,8 @@ No session in 003 (sessions arrive in spec 004). Documented in the OpenAPI group
 }
 ```
 
-**200**, database unreachable: same body with `"available": false` and only `self` and `curies`
-in `_links`.
+**200**, database unreachable: same body with `"available": false` and only `self` in `_links`
+(HAL lists `curies` only next to a curied relation).
 
 | Field | Type | Meaning |
 |---|---|---|
