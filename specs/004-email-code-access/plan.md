@@ -19,7 +19,7 @@ Spec 004 adds the sign-in on top of the skeleton of 003.
   cookie `veredito-lang`. After sign-in, the profile language wins. A header switch on every
   screen changes the language, saves it in the profile and keeps whatever was typed.
 
-The database needs only `V3__access.sql` (one column, two indexes). The deployment needs one new
+The database needs only `V3__access.sql` (two columns, two indexes). The deployment needs one new
 secret, the key of the code hash. Decisions are in [research.md](research.md).
 
 ## Technical Context
@@ -32,7 +32,7 @@ comes before the deployment of 004); TypeScript with Angular 22.2.6; Node.js 26 
   Mail is already in the build and is used now.
 - **Front end:** as in 003 (Angular Material 22.2.6, `@angular/localize`).
 
-**Storage**: MySQL 9.7 with the tables of 003; `V3__access.sql` adds `config.admin_name` and the
+**Storage**: MySQL 9.7 with the tables of 003; `V3__access.sql` adds `config.admin_name`, `access_code.name` and the
 indexes `access_code (created_at)` and `access_session (expires_at)` ([data-model.md](data-model.md))
 
 **Testing**:

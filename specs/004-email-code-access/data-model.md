@@ -4,7 +4,7 @@
 
 Spec 003 already created every table that sign-in needs (`participant`, `access_code`,
 `access_session`, `config`; [data-model of 003](../003-deployment-foundation/data-model.md)). Spec
-004 adds one column and two indexes in `V3__access.sql` and fixes how the existing columns are
+004 adds two columns and two indexes in `V3__access.sql` and fixes how the existing columns are
 used. V1 and V2 are not edited (Principle III).
 
 ## Migration `V3__access.sql`
@@ -12,10 +12,11 @@ used. V1 and V2 are not edited (Principle III).
 | Change | Why |
 |---|---|
 | `config.admin_name VARCHAR(120) NULL` | The administrative area shows the administrator's name (US2 scenario 1); the administrator has no participant row, so the latest name typed is kept here (research, section 8) |
+| `access_code.name VARCHAR(120) NULL` | The name typed with the code request; the sign-in request carries only e-mail and code, so the name that FR-005 keeps comes from the code row. Deleted with the row after 24 hours |
 | Index `access_code (created_at)` | The daily limit counts the rows of the last 24 hours across all e-mails, and the cleanup deletes the older ones (research, sections 5 and 14) |
 | Index `access_session (expires_at)` | Cleanup of expired sessions (research, section 14) |
 
-The change only adds things: the code of 003 ignores the new column and indexes, so a rollback to
+The change only adds things: the code of 003 ignores the new columns and indexes, so a rollback to
 the revision of 003 still works (spec 003, *Changes after V2*).
 
 ## How spec 004 uses the tables
@@ -25,6 +26,7 @@ the revision of 003 still works (spec 003, *Changes after V2*).
 | Column | Use in 004 |
 |---|---|
 | `email` | Normalized e-mail (lowercase, trimmed) of the request |
+| `name` | Name typed with the request (trimmed, 2 to 120 characters); copied to `participant.name` or `config.admin_name` at sign-in |
 | `code_hash` | `HMAC-SHA256(CODE_HASH_KEY, email + ":" + code)`, 64 hexadecimal characters; the code itself is never stored or logged |
 | `created_at` | Time of the send; base of the 60-second, hourly and daily limits |
 | `expires_at` | `created_at` + 10 minutes |

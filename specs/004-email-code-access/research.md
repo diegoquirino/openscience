@@ -144,7 +144,7 @@ No other new dependency: the access code, the session token and the hashes use t
 
 - **Decision**: when a code is validated:
   - **Administrator** (the e-mail equals `config.admin_email`): no participant row (FR-007).
-    `config.admin_name` keeps the latest name typed (new column, V3), and
+    `config.admin_name` keeps the latest name typed (new column, V3; the name travels from the code request to the sign-in in the new column `access_code.name`), and
     `config.admin_preferred_language` gets the language in use if it is still `NULL` (FR-012).
   - **Participant**: `INSERT ... ON DUPLICATE KEY UPDATE` on the unique `participant.email`.
     - A new e-mail gets `pseudonym = 'R-' + id`, zero-padded to 4 digits (`R-0001`; after 9999,

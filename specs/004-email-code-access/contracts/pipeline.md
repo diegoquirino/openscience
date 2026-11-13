@@ -47,6 +47,6 @@ from `http://localhost:8025/api/v1/`.
 
 ## Rollback
 
-V3 only adds a column and two indexes, so the revision of spec 003 keeps working on the migrated
+V3 only adds two columns and two indexes, so the revision of spec 003 keeps working on the migrated
 database. After a rollback, sessions created by 004 are ignored by the code of 003, which has no
 sessions.
