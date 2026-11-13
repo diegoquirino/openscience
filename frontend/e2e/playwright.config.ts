@@ -5,6 +5,7 @@ const ci = !!process.env['CI'];
 export default defineConfig({
   testDir: '.',
   outputDir: '../test-results',
+  globalSetup: './global-setup.ts',
   fullyParallel: true,
   forbidOnly: ci,
   retries: ci ? 1 : 0,

@@ -6,6 +6,7 @@ import { filter, map } from 'rxjs';
 import { BUILD_VERSION } from '../build-info';
 import { EntryPoint, EntryPointService } from '../core/entry-point.service';
 import { UnavailableComponent } from '../unavailable/unavailable.component';
+import { StagingBannerComponent } from './staging-banner.component';
 
 /** Supported locales, each labeled in its own language. */
 export const LOCALES = [
@@ -16,7 +17,7 @@ export const LOCALES = [
 
 @Component({
   selector: 'app-shell',
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, UnavailableComponent],
+  imports: [RouterOutlet, RouterLink, MatToolbarModule, UnavailableComponent, StagingBannerComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
 })
@@ -28,6 +29,7 @@ export class ShellComponent {
 
   private readonly entryPoint = signal<EntryPoint | null>(null);
   protected readonly unavailable = computed(() => this.entryPoint()?.available === false);
+  protected readonly environment = computed(() => this.entryPoint()?.environment ?? null);
 
   constructor() {
     this.load();

@@ -29,6 +29,7 @@ spring:
     clean-disabled: true
   docker:
     compose:
+      file: ../compose.yaml
       skip:
         in-tests: true
   mail:

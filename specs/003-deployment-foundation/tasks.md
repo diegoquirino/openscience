@@ -302,23 +302,24 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Tests for User Story 4
 
-- [ ] T043 [P] [US4] Component test in `frontend/src/app/shell/staging-banner.spec.ts`: the banner is shown for `environment` `staging` and `development` and hidden for `production`
-- [ ] T044 [P] [US4] Playwright test in `frontend/e2e/staging.spec.ts`: under each prefix, the banner reads "AMBIENTE DE ENSAIO", "STAGING ENVIRONMENT" or "ENTORNO DE PRUEBAS" (US4 scenario 2), and `GET /api/v1` reports `environment: "staging"`
+- [X] T043 [P] [US4] Component test in `frontend/src/app/shell/staging-banner.spec.ts`: the banner is shown for `environment` `staging` and `development` and hidden for `production`
+- [X] T044 [P] [US4] Playwright test in `frontend/e2e/staging.spec.ts`: under each prefix, the banner reads "AMBIENTE DE ENSAIO", "STAGING ENVIRONMENT" or "ENTORNO DE PRUEBAS" (US4 scenario 2), and `GET /api/v1` reports `environment: "staging"`
 
 ### Implementation for User Story 4
 
-- [ ] T045 [US4] Create the staging banner in `frontend/src/app/shell/staging-banner.component.ts` (shown when `environment !== 'production'`), with the GLOSSARY texts in both XLIFF files
-- [ ] T046 [US4] Write the `Dockerfile` per `contracts/pipeline.md`:
+- [X] T045 [US4] Create the staging banner in `frontend/src/app/shell/staging-banner.component.ts` (shown when `environment !== 'production'`), with the GLOSSARY texts in both XLIFF files
+- [X] T046 [US4] Write the `Dockerfile` per `contracts/pipeline.md`:
   1. **Front-end stage** (`node:26-bookworm-slim`): `npm ci`, then `npm run build` with `VEREDITO_VERSION`.
   2. **Back-end stage** (`eclipse-temurin:25-jdk`): copy `dist/frontend/browser/{pt-BR,en-US,es-ES}` into `backend/src/main/resources/static/`, then `./mvnw -B -DskipTests -Dveredito.version=$VEREDITO_VERSION package`.
   3. **Runtime stage** (`eclipse-temurin:25-jre`): non-root user, `-XX:MaxRAMPercentage=75`, exposes 8080, runs the jar.
 
   The build argument `VEREDITO_VERSION` defaults to `0.3.0+dev`. Add a `.dockerignore` excluding `node_modules`, `target`, `dist`, `.angular`, `.git`, `.env` and `specs`.
-- [ ] T047 [US4] Write `compose.yaml`:
+- [X] T047 [US4] Write `compose.yaml`:
   - **`mysql`:** `mysql:9.7`; database `veredito`, user `veredito`, password `${DB_PASSWORD:-veredito-local}`, root password random; volume `mysql-data`; healthcheck; port 3306.
   - **`mailpit`:** `axllent/mailpit:v1.33.1`; ports 8025 and 1025.
   - **`app`:** profile `staging`; `image: ${VEREDITO_IMAGE:-veredito-app:local}`; `build` from `.` with argument `VEREDITO_VERSION`; `SPRING_PROFILES_ACTIVE=staging`; `DB_URL=jdbc:mysql://mysql:3306/veredito`; depends on a healthy `mysql`; port 8080.
-- [ ] T048 [US4] Run quickstart section 2 on the researcher's machine: `docker compose --profile staging down -v`, then `up --build` timed (less than 10 minutes, SC-001), app at `http://localhost:8080`, inbox at `http://localhost:8025`; then `down -v` and `up` again give an empty, prepared database (US4 scenario 4); note the times in this task
+- [X] T048 [US4] Run quickstart section 2 on the researcher's machine: `docker compose --profile staging down -v`, then `up --build` timed (less than 10 minutes, SC-001), app at `http://localhost:8080`, inbox at `http://localhost:8025`; then `down -v` and `up` again give an empty, prepared database (US4 scenario 4); note the times in this task
+  - **Run 2026-11-12** (Windows 11, Docker Desktop 29.8.1, `APP_PORT=8200` because Windows reserves 8080): first `up --build -d` 4 min 16 s (SC-001 met); `down -v` then `up -d` until `GET /api/v1` answers: 1 min 58 s; after it, a marker row was gone, `config` had its default row (`pilot`), `consent_form` was empty and the history listed V1 and V2; Mailpit answered on 8025; the app runs as the non-root user `veredito`; Playwright: 29 passed, 3 skipped by design
 
 **Checkpoint**: local staging runs with one command; T043 and T044 pass against it
 
