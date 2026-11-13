@@ -66,7 +66,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 
 ## Milestones
 
-1. **Foundation online** (002 and 003): fixed URL on Google Cloud, database prepared, local staging starting with one command, Minitest CSV generated, UI built in pt-BR, en-US and es-ES.
+1. **Foundation online** (002 and 003), **reached on 2026-11-13**: fixed URL on Google Cloud, database prepared, local staging starting with one command, Minitest CSV generated, UI built in pt-BR, en-US and es-ES.
 2. **Access** (004): anyone chooses the language and signs in; the administrator sees their own area.
 3. **Ready for data labeling** (005, 007, 006 and 008): complete volunteer flow.
 4. **Pilot** (009 ready):
