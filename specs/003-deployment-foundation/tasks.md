@@ -416,7 +416,7 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 - [X] T063 [US2] Run the remaining commands of `docs/cloud-setup.md` with the researcher's authenticated `gcloud`, set the GitHub repository variables, push to `Veredito` and confirm that all `ci.yml` jobs pass and the image `app:<sha>` exists in Artifact Registry
   **Done 2026-11-13:** instance `veredito-db` (MySQL 9.7, Enterprise, db-f1-micro, connector enforcement required, no authorized networks, 7 daily backups; creation took about 50 minutes), service `veredito` created public with the sample image (https://veredito-702222986877.southamerica-east1.run.app), WIF pool `github`, five repository variables. CI fixes on the way: `i18n:check` generates `build-info.ts` first, and gitleaks scans only `HEAD` (the shared repository has other study branches). Run 43435792394 for `d02c709` passed all five jobs in about 8 minutes; image `app:d02c709…` digest `sha256:607d00a0…`.
   **Done 2026-11-13:** instance `veredito-db` (MySQL 9.7, Enterprise, db-f1-micro, connector enforcement required, no authorized networks, 7 daily backups; creation took about 50 minutes), service `veredito` created public with the sample image (https://veredito-702222986877.southamerica-east1.run.app), WIF pool `github`, five repository variables. CI fixes on the way: `i18n:check` generates `build-info.ts` first, and gitleaks scans only `HEAD` (the shared repository has other study branches). Run 43435792394 for `d02c709` passed all five jobs in about 8 minutes; image `app:d02c709…` digest `sha256:607d00a0…`.
-- [ ] T064 [US2] First production deployment with `git push origin <commit>:refs/tags/deploy/0.3.0-1`, for a commit rehearsed in local staging.
+- [X] T064 [US2] First production deployment with `git push origin <commit>:refs/tags/deploy/0.3.0-1`, for a commit rehearsed in local staging.
 
   **Check (quickstart section 7):**
   - the workflow finishes in less than 15 minutes (SC-001);
@@ -427,6 +427,13 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - the warm home page loads in less than 3 seconds (SC-004).
 
   Record the URL and the results in this task.
+
+  **Done 2026-11-13:** tag `deploy/0.3.0-1` on `ffe85d8` (rehearsed by the `e2e` job of ci run 43439131188, which runs the same image in the staging compose profile; the researcher accepted it as the rehearsal). URL https://veredito-702222986877.southamerica-east1.run.app, revision `veredito-00002-pk8` with 100 % of the traffic.
+  - deploy workflow run 43446743887: about 1 minute (SC-001 met);
+  - footer and `/api/v1`: `systemVersion` `0.3.0+ffe85d8`, the same as in the CI staging; `environment` `production`, `available` true, no banner;
+  - `/swagger-ui.html` and `/v3/api-docs/v1`: `401` `application/problem+json`;
+  - TCP to the instance public IP on port 3306: no connection within 8 s;
+  - warm home page: 0.33 s to 0.77 s over three requests; `/pt-BR/`, `/en-US/`, `/es-ES/` under 0.5 s (SC-004 met). First request after idle (cold start of `/api/v1`): 2.6 s.
 - [ ] T065 [US2] Three deployments in a row and one rollback.
 
   **Deployments:** with the first deployment's `config.updated_at` noted, deploy two more commits (`deploy/0.3.0-2`, `deploy/0.3.0-3`). The URL does not change, the footer follows the commit, `flyway_schema_history` has no new rows, and the `config` row is unchanged (US2 scenarios 1 and 2, SC-002).
