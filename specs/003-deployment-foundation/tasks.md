@@ -268,25 +268,25 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Tests for User Story 6
 
-- [ ] T037 [P] [US6] Create `<tpkg>/api/LocalizedProblemDetailsTest.java` (REST Assured): `GET /api/v9/tasks` with `Accept-Language` `pt-BR`, `en-US`, `es-ES`, `es`, `fr-FR` and without the header; checks `400`, `application/problem+json`, the same `type` `urn:veredito:problem:unsupported-api-version`, `supportedVersions: ["v1"]`, `title` and `detail` equal to the bundle texts of the expected locale (pt-BR for `fr-FR` and no header), `Content-Language`, and validation against `schemas/problem-details.json` (US6 scenario 5, FR-016)
-- [ ] T038 [P] [US6] Create `frontend/e2e/locales.spec.ts`:
+- [X] T037 [P] [US6] Create `<tpkg>/api/LocalizedProblemDetailsTest.java` (REST Assured): `GET /api/v9/tasks` with `Accept-Language` `pt-BR`, `en-US`, `es-ES`, `es`, `fr-FR` and without the header; checks `400`, `application/problem+json`, the same `type` `urn:veredito:problem:unsupported-api-version`, `supportedVersions: ["v1"]`, `title` and `detail` equal to the bundle texts of the expected locale (pt-BR for `fr-FR` and no header), `Content-Language`, and validation against `schemas/problem-details.json` (US6 scenario 5, FR-016)
+- [X] T038 [P] [US6] Create `frontend/e2e/locales.spec.ts`:
   - reload `/es-ES/participate`: still Spanish (`html[lang="es-ES"]`) on the participate page (US6 scenario 2);
   - `/en-us/` ends at `/en-US/`;
   - `/fr-FR/` and `/xyz` end at `/`;
   - clicking the footer link to another locale loads the same route under the other prefix, with a full page load (US6 scenarios 3 and 4).
-- [ ] T039 [P] [US6] Unit test `frontend/src/app/core/labels/study-phase-labels.spec.ts`: the label function returns the localized label for `pilot` and `collection` and leaves the code itself unchanged; an unknown code is shown as is (US6 scenario 8)
+- [X] T039 [P] [US6] Unit test `frontend/src/app/core/labels/study-phase-labels.spec.ts`: the label function returns the localized label for `pilot` and `collection` and leaves the code itself unchanged; an unknown code is shown as is (US6 scenario 8)
 
 ### Implementation for User Story 6
 
-- [ ] T040 [US6] Create `frontend/scripts/check-i18n.mjs` (Node only, no dependency):
+- [X] T040 [US6] Create `frontend/scripts/check-i18n.mjs` (Node only, no dependency):
   1. Runs `ng extract-i18n --format=xlf2` to a temporary folder.
   2. Reads every `<unit id>` of the extracted source.
   3. Fails with exit code 1 when `src/locale/messages.pt-BR.xlf` or `messages.es-ES.xlf` lacks a unit or has an empty `<target>`, printing for each problem the unit id, the source text and the locale.
   4. Warns about obsolete units present only in a translation file.
 
   Covers FR-017 and SC-008.
-- [ ] T041 [US6] Create `frontend/src/app/core/labels/study-phase-labels.ts` with `$localize` labels for `pilot` and `collection` (pt-BR "piloto", "coleta"; es-ES "piloto", "recolección"), the pattern later specs follow for `change_impact`, `maintenance_operation`, `professional_skill` and screening codes; add the units to both XLIFF files
-- [ ] T042 [US6] Set `<html lang>` per build (Angular sets it from the locale; confirm in `dist/frontend/browser/<locale>/index.html`) and make the chunk-load error handler in `frontend/src/app/core/` (router `withNavigationErrorHandler`) show the localized "A new version is available; reload the page" message with a reload action (edge case "Page open for hours before a deployment"); add the units to both XLIFF files
+- [X] T041 [US6] Create `frontend/src/app/core/labels/study-phase-labels.ts` with `$localize` labels for `pilot` and `collection` (pt-BR "piloto", "coleta"; es-ES "piloto", "recolección"), the pattern later specs follow for `change_impact`, `maintenance_operation`, `professional_skill` and screening codes; add the units to both XLIFF files
+- [X] T042 [US6] Set `<html lang>` per build (Angular sets it from the locale; confirm in `dist/frontend/browser/<locale>/index.html`) and make the chunk-load error handler in `frontend/src/app/core/` (router `withNavigationErrorHandler`) show the localized "A new version is available; reload the page" message with a reload action (edge case "Page open for hours before a deployment"); add the units to both XLIFF files
 
 **Checkpoint**: T037 to T039 pass; `npm run i18n:check` passes; removing one target or one bundle key makes the checks fail (quickstart section 1, negative checks 1 and 2)
 

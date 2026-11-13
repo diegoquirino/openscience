@@ -6,14 +6,15 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withNavigationErrorHandler } from '@angular/router';
 import { routes } from './app.routes';
 import { acceptLanguageInterceptor } from './core/accept-language.interceptor';
+import { offerReloadOnChunkError } from './core/chunk-error';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(routes, withNavigationErrorHandler(offerReloadOnChunkError)),
     provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor])),
     { provide: MAT_DATE_LOCALE, useFactory: () => inject(LOCALE_ID) },
   ],
