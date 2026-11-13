@@ -153,7 +153,7 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 > Write these tests first and see them fail
 
-- [ ] T020 [P] [US1] Create `<tpkg>/api/v1/AccessTest.java` (REST Assured from `/api/v1`, Mailpit, `MovableClock`):
+- [X] T020 [P] [US1] Create `<tpkg>/api/v1/AccessTest.java` (REST Assured from `/api/v1`, Mailpit, `MovableClock`):
   - **Request (scenario 1):** a valid request answers `200` with `email`, `validityMinutes` 10, `resendAfterSeconds` 60, `vd:sign-in`, and exactly one e-mail.
   - **Invalid fields (scenario 2):** name "A" or e-mail "ana@" answer `400 invalid-request` with `errors` (`name`/`size`, `email`/`email`), and no e-mail is sent.
   - **Right code (scenario 3):** typed with spaces and hyphens, it answers `201` with `Location: /api/v1/access-sessions/current` and `Set-Cookie veredito-session` with `HttpOnly`, `Secure`, `SameSite=Lax`, `Path=/`, `Max-Age=86400`.
@@ -168,16 +168,20 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - **Two devices:** only the latest of two codes works.
   - **Send failure:** a nested class with `spring.mail.port` pointing to a closed port answers `503 code-not-sent`, with no new `access_code` row.
   - **No registration leak:** the wrong-code and dead-code answers are identical for a registered and an unknown e-mail.
-- [ ] T021 [P] [US1] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with `code-resend-too-soon`, `code-hourly-limit`, `daily-email-limit`, `code-not-sent`, `invalid-code` and `code-expired`, each with `Accept-Language` `pt-BR`, `en-US`, `es-ES` and without the header (title, detail, `Content-Language`, unchanged `type`)
+  **Record (2026-11-13):** `AccessTest` has 22 cases: the scenarios above, the e-mail language in pt-BR, en-US and es-ES, a code of the wrong shape, and a missing e-mail or code. The tests share one database, so they use unique `example.com` e-mails, compute the daily limit from the rows of the last 24 hours (restored in `finally`) and check consecutive pseudonyms instead of literal `R-0001`/`R-0002`. The send failure uses `support/SwitchableMailSender` (a `BeanPostProcessor` wraps the `JavaMailSender`, `failing(true)` throws `MailSendException`) instead of a nested class with a closed port, which would start a second context and a second MySQL container. `MovableClock` follows the system clock, so the `Retry-After` bounds come from clock readings around the request, not from fixed numbers (a slow SMTP run once gave 3249 s against a fixed 3290-3301).
+- [X] T021 [P] [US1] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with `code-resend-too-soon`, `code-hourly-limit`, `daily-email-limit`, `code-not-sent`, `invalid-code` and `code-expired`, each with `Accept-Language` `pt-BR`, `en-US`, `es-ES` and without the header (title, detail, `Content-Language`, unchanged `type`)
+  **Record (2026-11-13):** `accessProblemsAreLocalized` covers the 6 types in the 4 language cases (24 cases); titles and details are compared with the bundles through `support/Bundles`, with the extension values filled in.
 
 ### Implementation for User Story 1
 
-- [ ] T022 [US1] Create `<pkg>/access/AccessCodeMailer.java`: a `SimpleMailMessage` from `mail.access-code.subject` and `mail.access-code.body` in the request locale, from `Veredito <veredito.access.mail-from>` to the normalized e-mail; a `MailException` is rethrown as `code-not-sent`
-- [ ] T023 [US1] Create `<pkg>/access/AccessCodeService.java` with `request(name, email, locale)`:
+- [X] T022 [US1] Create `<pkg>/access/AccessCodeMailer.java`: a `SimpleMailMessage` from `mail.access-code.subject` and `mail.access-code.body` in the request locale, from `Veredito <veredito.access.mail-from>` to the normalized e-mail; a `MailException` is rethrown as `code-not-sent`
+  **Record (2026-11-13):** body arguments are the name, the code and the validity in minutes. On a `MailException` only the exception class is logged, since the message can carry the address.
+- [X] T023 [US1] Create `<pkg>/access/AccessCodeService.java` with `request(name, email, locale)`:
   1. Validate with `PersonName` and `EmailAddress`; a failure answers `invalid-request` with the field codes of `contracts/problem-details.md`.
   2. In one transaction: `ConfigRepository.lockForUpdate()`, decide with `SendLimits` (any refusal becomes its `ProblemException`), generate the code, and insert the row with the normalized name, `CodeHasher` and `expires_at = now + 10 minutes`.
   3. After the commit, send with `AccessCodeMailer`. On failure, delete the row and answer `code-not-sent` (research sections 5 and 6).
-- [ ] T024 [US1] Create `<pkg>/access/SignInService.java` with `signIn(email, code, locale)`:
+  **Record (2026-11-13):** the code comes from `SecureRandom`; the transaction uses `TransactionTemplate`. Refusals: `code-resend-too-soon` with `retryAfterSeconds`, `code-hourly-limit` with `retryAt` (rounded up to the second), both with `Retry-After`; `daily-email-limit`. `ProblemException.invalidFields` builds the `errors` list.
+- [X] T024 [US1] Create `<pkg>/access/SignInService.java` with `signIn(email, code, locale)`:
   1. Normalize the e-mail and the code; read `latestFor(email)`.
   2. A dead or missing code answers `code-expired`.
   3. A mismatch, or a code of the wrong shape, increments `attempts` in a transaction that commits even though the call fails: `invalid-code` with `attemptsLeft`, or `code-expired` at the fifth.
@@ -187,19 +191,23 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
      - a participant gets `upsertOnSignIn(email, name, language, now)`, where `name` is `access_code.name` of the code just used;
      - then a session with `TokenGenerator` and `TokenHasher`, `expires_at = now + 24 hours`.
   5. Return the session view and the raw token.
-- [ ] T025 [US1] Create `<pkg>/api/v1/AccessCodeController.java` (`POST /api/{version}/access-codes`) and `<pkg>/api/v1/AccessSessionController.java`:
+  **Record (2026-11-13):** the outcome (success, wrong code, dead code) is decided in a transaction that commits; the failure is thrown afterwards. `SessionView` carries the subject, name, pseudonym, language and expiry; `current(principal)` serves `GET current`. `ParticipantRepository.upsertOnSignIn` now updates an existing participant by id before trying the insert: InnoDB spends an auto-increment value on every `INSERT ... ON DUPLICATE KEY UPDATE`, which left gaps in the pseudonyms of returning people (`AccessRepositoriesTest.aReturningPersonLeavesNoGapInThePseudonyms`).
+- [X] T025 [US1] Create `<pkg>/api/v1/AccessCodeController.java` (`POST /api/{version}/access-codes`) and `<pkg>/api/v1/AccessSessionController.java`:
   - **`POST /api/{version}/access-sessions`:** `201`, with the `ResponseCookie` of research section 3 and `Location`.
   - **`GET /api/{version}/access-sessions/current`:** the session model of `contracts/access.md`.
 
   Request and response models go in `<pkg>/api/v1/`. Every operation gets `summary`, `description`, examples and every error response of the contract, so `ApiDocumentationCompletenessTest` passes.
-- [ ] T026 [US1] Extend `<tpkg>/api/v1/EntryPointTest.java`: with a participant session, the entry point offers `vd:session`, `vd:me` (`/api/v1/participants/me`) and `vd:sign-out`, and no administrative link; with an unknown cookie, the visitor links
-- [ ] T027 [P] [US1] Replace `<app>/participate/participate.component.ts` with the sign-in form `<app>/participate/sign-in.component.ts` (and `.html`, `.scss`, `.spec.ts`):
+  **Record (2026-11-13):** the controllers map `/api/v1/...` with `version = "v1"`, as the existing controllers do. Models: `AccessCodeRequest`, `SignInRequest`, `AccessCodeModel`, `SessionModel`. Links: `self`, `vd:sign-in` and `vd:request-code` on the code; `self`, `vd:me` and `vd:sign-out` on the session. `RelationController` describes the new relations. The version default moved to `0.4.0+dev` in `SystemVersion`, `Dockerfile` and `write-build-info.mjs` (missed in Phase 1).
+- [X] T026 [US1] Extend `<tpkg>/api/v1/EntryPointTest.java`: with a participant session, the entry point offers `vd:session`, `vd:me` (`/api/v1/participants/me`) and `vd:sign-out`, and no administrative link; with an unknown cookie, the visitor links
+  **Record (2026-11-13):** mostly covered in Phase 2 (T016). New cases: an empty `request-code` answers the field errors, and a participant signed in with a real code gets only the participant links.
+- [X] T027 [P] [US1] Replace `<app>/participate/participate.component.ts` with the sign-in form `<app>/participate/sign-in.component.ts` (and `.html`, `.scss`, `.spec.ts`):
   - **Fields:** Material name and e-mail fields with the rules of the data model ("Name: trimmed, 2 to 120 characters"; e-mail as `EmailAddress`). The field with a problem is marked.
   - **Submit:** "Send code" follows `vd:request-code` and maps Problem Details through `problem-messages`.
   - **On `200`:** keeps name and e-mail in `sessionStorage` (`veredito-pending-code`) and opens `/participate/code`.
 
   Add the XLIFF units.
-- [ ] T028 [P] [US1] Create `<app>/participate/code.component.ts` (and `.html`, `.scss`, `.spec.ts`):
+  **Record (2026-11-13):** `participate/pending-code.ts` keeps name, typed and normalized e-mail, validity, `resendAt` and the `vd:sign-in` href, so the code screen survives a reload without rebuilding URLs (`SessionService.requestCode` now returns `signInHref`). Validators in `participate/access-validators.ts`. `problemOf` accepts only bodies with a Veredito `type`; other failures show "Something went wrong; please try again". 5 Vitest cases; the old placeholder was removed.
+- [X] T028 [P] [US1] Create `<app>/participate/code.component.ts` (and `.html`, `.scss`, `.spec.ts`):
   - **Screen:** shows the e-mail, "valid for 10 minutes", the spam warning, and a 6-digit code field.
   - **Sign in:** follows `vd:sign-in`. `invalid-code` shows the attempts left; `code-expired` shows "Send a new code".
   - **"Resend":** disabled with a countdown from `resendAfterSeconds` or `retryAfterSeconds`.
@@ -207,8 +215,11 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - **On `201`:** `session.refresh()`, then `/welcome`.
 
   Add the XLIFF units.
-- [ ] T029 [US1] Create `<app>/welcome/welcome.component.ts` with "Thank you for identifying yourself; the next step will be available soon" (US2 scenario 2); add the routes `participate`, `participate/code` and `welcome` to `<app>/app.routes.ts`; add the XLIFF units; `npm run i18n:check` passes
-- [ ] T030 [US1] Create `frontend/e2e/support/mailpit.ts` (latest message to an address through `http://localhost:8025/api/v1/search`, subject, code) and `frontend/e2e/sign-in.spec.ts`: in `/pt-BR/`, sign in as a new `example.com` e-mail with the code from Mailpit; lands on `/pt-BR/welcome`; the e-mail subject is the pt-BR one
+  **Record (2026-11-13):** the code field also checks the 6-digit shape on the client (spaces and hyphens ignored), so a mistyped code does not spend an attempt. The countdown ticks every second from `resendAt`; "Resend" sends the same name and typed e-mail again. 8 Vitest cases.
+- [X] T029 [US1] Create `<app>/welcome/welcome.component.ts` with "Thank you for identifying yourself; the next step will be available soon" (US2 scenario 2); add the routes `participate`, `participate/code` and `welcome` to `<app>/app.routes.ts`; add the XLIFF units; `npm run i18n:check` passes
+  **Record (2026-11-13):** the three routes are lazy (`loadComponent`): with them eager the initial bundle reached 531 kB, over the 500 kB budget; now 416 kB. `i18n:check` passes with 41 units in pt-BR and es-ES (es-ES in "usted"); Vitest 46 tests in 13 files pass.
+- [X] T030 [US1] Create `frontend/e2e/support/mailpit.ts` (latest message to an address through `http://localhost:8025/api/v1/search`, subject, code) and `frontend/e2e/sign-in.spec.ts`: in `/pt-BR/`, sign in as a new `example.com` e-mail with the code from Mailpit; lands on `/pt-BR/welcome`; the e-mail subject is the pt-BR one
+  **Record (2026-11-13):** `sign-in.spec.ts` also checks the cookie flags and a wrong code ("Código incorreto; restam 4 tentativas"). `locales.spec.ts` now checks the "Nombre" field instead of the removed placeholder link. Against local staging (port 8200, Mailpit 8025): 32 passed, 3 skipped, in desktop and phone; one `page.goto` abort in `staging.spec.ts` did not repeat in 3 further runs of `staging` and `home` (57 passed). Back end: `mvnw -B verify` BUILD SUCCESS, 179 tests, none failed (`AccessTest` 22, `LocalizedProblemDetailsTest` 30, `EntryPointTest` 23, `AccessRepositoriesTest` 7).
 
 **Checkpoint**: sign-in works end to end in pt-BR; codes, limits and pseudonyms behave as in the spec
 

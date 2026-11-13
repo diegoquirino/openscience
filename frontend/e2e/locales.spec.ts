@@ -7,7 +7,7 @@ test('reloading a deep link keeps the locale (US6 scenario 2)', async ({ page })
   await expect(page).toHaveURL('/es-ES/participate');
   await expect(page.locator('html')).toHaveAttribute('lang', 'es-ES');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Participar');
-  await expect(page.getByRole('link', { name: 'Volver a la página de inicio' })).toBeVisible();
+  await expect(page.getByLabel('Nombre')).toBeVisible();
 });
 
 test('a prefix in another case ends at the canonical prefix', async ({ page }) => {

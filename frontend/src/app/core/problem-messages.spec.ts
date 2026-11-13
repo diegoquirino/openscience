@@ -1,5 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { clearTranslations, loadTranslations } from '@angular/localize';
-import { fieldMessage, problemMessage, problemSlug } from './problem-messages';
+import { fieldMessage, problemMessage, problemOf, problemSlug } from './problem-messages';
 
 const type = (slug: string) => `urn:veredito:problem:${slug}`;
 
@@ -57,7 +58,15 @@ describe('problem messages', () => {
   it('maps the field errors of invalid-request', () => {
     expect(fieldMessage({ field: 'name', code: 'size' })).toBe('Enter your name (2 to 120 characters)');
     expect(fieldMessage({ field: 'email', code: 'email' })).toBe('Enter a valid e-mail');
-    expect(fieldMessage({ field: 'code', code: 'required' })).toBe('Enter the code');
+    expect(fieldMessage({ field: 'code', code: 'required' })).toBe('Enter the 6-digit code');
     expect(fieldMessage({ field: 'other', code: 'required' })).toBeUndefined();
+  });
+
+  it('reads the problem of a failed call only when the API sent one', () => {
+    const problem = { type: type('invalid-code'), attemptsLeft: 4 };
+    expect(problemOf(new HttpErrorResponse({ status: 422, error: problem }))).toEqual(problem);
+    expect(problemOf(new HttpErrorResponse({ status: 0, error: new ProgressEvent('error') }))).toBeUndefined();
+    expect(problemOf(new HttpErrorResponse({ status: 502, error: '<html>' }))).toBeUndefined();
+    expect(problemOf(new Error('boom'))).toBeUndefined();
   });
 });

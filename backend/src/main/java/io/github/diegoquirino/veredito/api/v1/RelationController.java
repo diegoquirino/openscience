@@ -32,8 +32,8 @@ public class RelationController {
             summary = "Document a link relation",
             description = "Describes a vd: relation: what the link does, the HTTP method to use on it and where"
                     + " its operation is documented. The rel is given without the prefix (request-code for"
-                    + " vd:request-code). Relations known in this release: "
-                    + "v1 (index) and request-code (entry point).")
+                    + " vd:request-code). Relations known in this release: v1 (index), request-code,"
+                    + " sign-in, session, sign-out and me.")
     @ApiResponse(
             responseCode = "200",
             description = "The relation",

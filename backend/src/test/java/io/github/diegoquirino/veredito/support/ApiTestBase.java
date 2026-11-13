@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -35,13 +36,19 @@ import org.springframework.transaction.support.TransactionTemplate;
  * clock and a random code hash key; redirects are never followed.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Import({MySqlContainerConfig.class, MailpitContainerConfig.class, MovableClock.Config.class})
+@Import({
+    MySqlContainerConfig.class,
+    MailpitContainerConfig.class,
+    MovableClock.Config.class,
+    SwitchableMailSender.Config.class
+})
 @TestPropertySource(properties = "veredito.access.code-hash-key=${random.uuid}${random.uuid}")
 public abstract class ApiTestBase {
 
     public static final String HAL_FORMS = "application/prs.hal-forms+json";
     public static final String CURIE = "vd";
     public static final String ADMINISTRATOR_EMAIL = "diegoquirino@gmail.com";
+    public static final String SIGN_IN = "/api/v1/access-sessions";
 
     @Value("${local.server.port}")
     private int port;
@@ -51,6 +58,12 @@ public abstract class ApiTestBase {
 
     @Autowired
     protected MailpitClient mailpit;
+
+    @Autowired
+    protected SwitchableMailSender mailSender;
+
+    @Autowired
+    protected JdbcClient jdbc;
 
     @Autowired
     private AccessSessionRepository sessions;
@@ -67,6 +80,7 @@ public abstract class ApiTestBase {
     void setUpRestAssured() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         clock.reset();
+        mailSender.failing(false);
         api = new RequestSpecBuilder()
                 .setPort(port)
                 .setAccept(HAL_FORMS)
@@ -109,18 +123,34 @@ public abstract class ApiTestBase {
      * then {@code vd:sign-in}. Returns the {@code veredito-session} token.
      */
     protected String signIn(String name, String email, String locale) {
-        Response requested = request().header("Accept-Language", locale)
+        Response requested = requestCode(name, email, locale);
+        requested.then().statusCode(200);
+        Response signedIn = sendCode(email, mailpit.latestCodeTo(normalized(email)), locale);
+        signedIn.then().statusCode(201);
+        return signedIn.getCookie(CurrentSession.COOKIE);
+    }
+
+    /** Follows {@code vd:request-code} from the entry point. */
+    protected Response requestCode(String name, String email, String locale) {
+        return request().header("Accept-Language", locale)
                 .contentType("application/json")
                 .body(Map.of("name", name, "email", email))
                 .post(href(entryPoint(), "request-code"));
-        requested.then().statusCode(200);
-        String code = mailpit.latestCodeTo(EmailAddress.parse(email).orElseThrow().value());
-        Response signedIn = request().header("Accept-Language", locale)
+    }
+
+    /**
+     * Posts a code to {@code vd:sign-in}; AccessTest checks that every {@code vd:request-code} answer
+     * links this address, so the tests can also send a code for an e-mail that never asked for one.
+     */
+    protected Response sendCode(String email, String code, String locale) {
+        return request().header("Accept-Language", locale)
                 .contentType("application/json")
                 .body(Map.of("email", email, "code", code))
-                .post(href(requested, "sign-in"));
-        signedIn.then().statusCode(201);
-        return signedIn.getCookie(CurrentSession.COOKIE);
+                .post(SIGN_IN);
+    }
+
+    protected static String normalized(String email) {
+        return EmailAddress.parse(email).orElseThrow().value();
     }
 
     /** A session of a new participant, written directly, without a code (no e-mail limit applies). */

@@ -81,9 +81,15 @@ describe('SessionService', () => {
       resendAfterSeconds: 60,
       _links: { 'vd:sign-in': { href: '/links/sessions' } },
     });
-    expect(await requested).toEqual({ email: 'ana@example.com', validityMinutes: 10, resendAfterSeconds: 60 });
+    const code = await requested;
+    expect(code).toEqual({
+      email: 'ana@example.com',
+      validityMinutes: 10,
+      resendAfterSeconds: 60,
+      signInHref: '/links/sessions',
+    });
 
-    const signedIn = firstValueFrom(service.signIn('ana@example.com', '123 456'));
+    const signedIn = firstValueFrom(service.signIn(code.signInHref, 'ana@example.com', '123 456'));
     const signIn = http.expectOne('/links/sessions');
     expect(signIn.request.method).toBe('POST');
     expect(signIn.request.body).toEqual({ email: 'ana@example.com', code: '123 456' });
@@ -93,8 +99,12 @@ describe('SessionService', () => {
     expect(service.subject()).toBe('participant');
   });
 
-  it('refuses to sign in before a code was requested', async () => {
-    await expect(firstValueFrom(service.signIn('ana@example.com', '123456'))).rejects.toThrow('vd:sign-in');
+  it('fails the code request when the answer offers no vd:sign-in', async () => {
+    const requested = firstValueFrom(service.requestCode('Ana Souza', 'ana@example.com'));
+    http.expectOne('/api/v1').flush(VISITOR_ENTRY);
+    http.expectOne('/links/codes').flush({ email: 'ana@example.com', validityMinutes: 10, resendAfterSeconds: 60 });
+
+    await expect(requested).rejects.toThrow('vd:sign-in');
   });
 
   it('signs out through vd:sign-out of the session', async () => {

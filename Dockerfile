@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # Production image of Veredito, also used by local staging (compose.yaml) and CI.
-ARG VEREDITO_VERSION=0.3.0+dev
+ARG VEREDITO_VERSION=0.4.0+dev
 
 FROM node:26-bookworm-slim AS frontend
 ARG VEREDITO_VERSION

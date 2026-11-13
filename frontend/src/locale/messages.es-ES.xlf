@@ -31,16 +31,106 @@
         <target>Volver a la página de inicio</target>
       </segment>
     </unit>
-    <unit id="participate.title">
+    <unit id="signIn.title">
       <segment>
         <source>Participate</source>
         <target>Participar</target>
       </segment>
     </unit>
-    <unit id="participate.soon">
+    <unit id="signIn.intro">
       <segment>
-        <source>Sign-in with a code sent by e-mail is coming soon.</source>
-        <target>El acceso con un código enviado por correo electrónico estará disponible pronto.</target>
+        <source>Enter your name and e-mail. We will send you a 6-digit code to sign in.</source>
+        <target>Escriba su nombre y su correo electrónico. Le enviaremos un código de 6 dígitos para iniciar sesión.</target>
+      </segment>
+    </unit>
+    <unit id="signIn.name">
+      <segment>
+        <source>Name</source>
+        <target>Nombre</target>
+      </segment>
+    </unit>
+    <unit id="signIn.email">
+      <segment>
+        <source>E-mail</source>
+        <target>Correo electrónico</target>
+      </segment>
+    </unit>
+    <unit id="signIn.sendCode">
+      <segment>
+        <source>Send code</source>
+        <target>Enviar código</target>
+      </segment>
+    </unit>
+    <unit id="code.title">
+      <segment>
+        <source>Enter the code</source>
+        <target>Escriba el código</target>
+      </segment>
+    </unit>
+    <unit id="code.sentTo">
+      <segment>
+        <source>We sent a 6-digit code to <ph id="0" equiv="INTERPOLATION" disp="{{ entry.email }}"/>.</source>
+        <target>Hemos enviado un código de 6 dígitos a <ph id="0" equiv="INTERPOLATION" disp="{{ entry.email }}"/>.</target>
+      </segment>
+    </unit>
+    <unit id="code.validity">
+      <segment>
+        <source> The code is valid for <ph id="0" equiv="INTERPOLATION" disp="{{ entry.validityMinutes }}"/> minutes. If it does not arrive, check the spam folder. </source>
+        <target>El código es válido durante <ph id="0" equiv="INTERPOLATION" disp="{{ entry.validityMinutes }}"/> minutos. Si no llega, revise la carpeta de spam.</target>
+      </segment>
+    </unit>
+    <unit id="code.label">
+      <segment>
+        <source>Access code</source>
+        <target>Código de acceso</target>
+      </segment>
+    </unit>
+    <unit id="code.resent">
+      <segment>
+        <source>A new code was sent; only the latest code works.</source>
+        <target>Se ha enviado un nuevo código; solo vale el más reciente.</target>
+      </segment>
+    </unit>
+    <unit id="code.signIn">
+      <segment>
+        <source>Sign in</source>
+        <target>Iniciar sesión</target>
+      </segment>
+    </unit>
+    <unit id="code.resendIn">
+      <segment>
+        <source>Resend in <ph id="0" equiv="INTERPOLATION" disp="{{ secondsToResend() }}"/> s</source>
+        <target>Reenviar en <ph id="0" equiv="INTERPOLATION" disp="{{ secondsToResend() }}"/> s</target>
+      </segment>
+    </unit>
+    <unit id="code.sendNew">
+      <segment>
+        <source>Send a new code</source>
+        <target>Enviar un nuevo código</target>
+      </segment>
+    </unit>
+    <unit id="code.resend">
+      <segment>
+        <source>Resend code</source>
+        <target>Reenviar código</target>
+      </segment>
+    </unit>
+    <unit id="code.correctEmail">
+      <segment>
+        <source>Correct e-mail</source>
+        <target>Corregir el correo</target>
+      </segment>
+    </unit>
+    <unit id="welcome.title">
+      <segment>
+        <source>Welcome</source>
+        <target>Bienvenida</target>
+      </segment>
+    </unit>
+    <unit id="welcome.next">
+      <segment>
+        <source>Thank you for identifying yourself; the next step will be available soon.</source>
+        <target>Gracias por identificarse; el siguiente paso estará disponible pronto.</target>
       </segment>
     </unit>
     <unit id="shell.title">
@@ -159,8 +249,14 @@
     </unit>
     <unit id="field.code.required">
       <segment>
-        <source>Enter the code</source>
-        <target>Escriba el código</target>
+        <source>Enter the 6-digit code</source>
+        <target>Escriba el código de 6 dígitos</target>
+      </segment>
+    </unit>
+    <unit id="problem.unexpected">
+      <segment>
+        <source>Something went wrong; please try again</source>
+        <target>Algo salió mal; inténtelo de nuevo</target>
       </segment>
     </unit>
   </file>

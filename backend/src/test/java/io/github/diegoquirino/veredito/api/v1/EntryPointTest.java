@@ -1,6 +1,7 @@
 package io.github.diegoquirino.veredito.api.v1;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -115,12 +116,26 @@ class EntryPointTest extends ApiTestBase {
     }
 
     @Test
-    void requestCodeIsNotDeliveredBeforeSpec004() {
+    void requestCodeAnswersAnEmptyRequestWithTheFieldErrors() {
         String href = entryPoint().path("_links.'vd:request-code'.href");
         request().contentType("application/json").body("{}").post(href)
-                .then().statusCode(404)
+                .then().statusCode(400)
                 .contentType(startsWith(PROBLEM_JSON))
-                .body("type", equalTo("urn:veredito:problem:not-found"));
+                .body(matchesJsonSchemaInClasspath(PROBLEM_SCHEMA))
+                .body("type", equalTo("urn:veredito:problem:invalid-request"))
+                .body("errors.field", contains("name", "email"))
+                .body("errors.code", contains("required", "required"));
+    }
+
+    @Test
+    void aParticipantSignedInWithACodeGetsTheParticipantLinksOnly() {
+        String token = signIn("Ana Souza", "entry-" + System.nanoTime() + "@example.com", "pt-BR");
+
+        as(token).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
+                .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
+                .body("_links", not(hasKey("vd:request-code")));
     }
 
     @Test

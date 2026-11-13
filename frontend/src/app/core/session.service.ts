@@ -19,6 +19,8 @@ export interface CodeRequested {
   email: string;
   validityMinutes: number;
   resendAfterSeconds: number;
+  /** `vd:sign-in` of the answer, where the code is sent. */
+  signInHref: string;
 }
 
 interface SessionBody extends HalResource {
@@ -29,7 +31,7 @@ interface SessionBody extends HalResource {
   expiresAt: string;
 }
 
-interface CodeRequestedBody extends HalResource, CodeRequested {}
+interface CodeRequestedBody extends HalResource, Omit<CodeRequested, 'signInHref'> {}
 
 /**
  * Who is signed in, read by following `vd:session` from the entry point. Every address comes from
@@ -41,8 +43,6 @@ export class SessionService {
 
   readonly session = signal<Session | null>(null);
   readonly subject = computed<Subject>(() => this.session()?.subject ?? 'visitor');
-
-  private signInHref: string | undefined;
 
   /** Reads the entry point and, when it offers `vd:session`, the current session. */
   refresh(): Observable<Session | null> {
@@ -56,28 +56,27 @@ export class SessionService {
     );
   }
 
-  /** Follows `vd:request-code`; keeps the `vd:sign-in` link of the answer for {@link signIn}. */
+  /** Follows `vd:request-code`; the answer carries the `vd:sign-in` link for {@link signIn}. */
   requestCode(name: string, email: string): Observable<CodeRequested> {
     return this.entryLinks().pipe(
       switchMap((links) => {
         const href = links.href('request-code');
         return href ? this.http.post<CodeRequestedBody>(href, { name, email }) : missing('vd:request-code');
       }),
-      tap((body) => (this.signInHref = Links.of(body).href('sign-in'))),
-      map(({ email: normalized, validityMinutes, resendAfterSeconds }) => ({
-        email: normalized,
-        validityMinutes,
-        resendAfterSeconds,
-      })),
+      switchMap((body) => {
+        const signInHref = Links.of(body).href('sign-in');
+        if (!signInHref) {
+          return missing('vd:sign-in');
+        }
+        const { email: normalized, validityMinutes, resendAfterSeconds } = body;
+        return of({ email: normalized, validityMinutes, resendAfterSeconds, signInHref });
+      }),
     );
   }
 
-  /** Follows `vd:sign-in` with the typed code; the server sets the session cookie. */
-  signIn(email: string, code: string): Observable<Session> {
-    if (!this.signInHref) {
-      return missing('vd:sign-in');
-    }
-    return this.http.post<SessionBody>(this.signInHref, { email, code }).pipe(
+  /** Posts the typed code to the `vd:sign-in` link of the code request; the server sets the session cookie. */
+  signIn(signInHref: string, email: string, code: string): Observable<Session> {
+    return this.http.post<SessionBody>(signInHref, { email, code }).pipe(
       map(toSession),
       tap((session) => this.session.set(session)),
     );

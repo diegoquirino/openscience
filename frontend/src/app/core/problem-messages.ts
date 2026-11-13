@@ -4,6 +4,8 @@
  * server are never shown.
  */
 
+import { HttpErrorResponse } from '@angular/common/http';
+
 export const PROBLEM_TYPE_PREFIX = 'urn:veredito:problem:';
 
 export interface FieldError {
@@ -63,10 +65,23 @@ export function fieldMessage(error: FieldError): string | undefined {
     case 'email':
       return $localize`:e-mail field of the sign-in form@@field.email.invalid:Enter a valid e-mail`;
     case 'code':
-      return $localize`:code field of the sign-in form@@field.code.required:Enter the code`;
+      return $localize`:code field of the sign-in form@@field.code.required:Enter the 6-digit code`;
     default:
       return undefined;
   }
+}
+
+/** The Problem Details body of a failed call, if the API sent one. */
+export function problemOf(error: unknown): Problem | undefined {
+  const body: unknown = error instanceof HttpErrorResponse ? error.error : undefined;
+  return typeof body === 'object' && body !== null && problemSlug(body as Problem) !== undefined
+    ? (body as Problem)
+    : undefined;
+}
+
+/** For a failure that has no message of its own (network down, unexpected status). */
+export function unexpectedErrorMessage(): string {
+  return $localize`:failure without a specific message@@problem.unexpected:Something went wrong; please try again`;
 }
 
 function minutesUntil(retryAt: string | undefined, now: Date): number {

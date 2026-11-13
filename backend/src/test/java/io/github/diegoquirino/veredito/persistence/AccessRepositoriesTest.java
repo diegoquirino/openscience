@@ -104,6 +104,18 @@ class AccessRepositoriesTest {
     }
 
     @Test
+    void aReturningPersonLeavesNoGapInThePseudonyms() {
+        EmailAddress email = unique("returning");
+        ParticipantProfile first = signIn(email, ANA, "pt-BR");
+        signIn(email, ANA, "pt-BR");
+        signIn(email, ANA, "pt-BR");
+        ParticipantProfile next = signIn(unique("next"), ANA, "pt-BR");
+
+        assertThat(next.id()).isEqualTo(first.id() + 1);
+        assertThat(next.pseudonym()).isEqualTo(Pseudonym.of(first.id() + 1));
+    }
+
+    @Test
     void preferredLanguageIsSetOnlyWhenNull() {
         EmailAddress email = unique("language");
         assertThat(signIn(email, ANA, "es-ES").preferredLanguage()).isEqualTo("es-ES");

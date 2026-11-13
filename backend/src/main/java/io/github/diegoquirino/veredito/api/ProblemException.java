@@ -2,6 +2,7 @@ package io.github.diegoquirino.veredito.api;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpHeaders;
 
@@ -17,6 +18,14 @@ public class ProblemException extends RuntimeException {
         super(type.slug(), null, false, false);
         this.type = type;
         this.detailArgs = detailArgs.clone();
+    }
+
+    /** {@code invalid-request} with one {@code errors} entry per field, in the given order. */
+    public static ProblemException invalidFields(Map<String, String> codeByField) {
+        List<Map<String, String>> errors = codeByField.entrySet().stream()
+                .map(error -> Map.of("field", error.getKey(), "code", error.getValue()))
+                .toList();
+        return new ProblemException(ProblemType.INVALID_REQUEST).with("errors", errors);
     }
 
     /** Adds an extension member to the body. */

@@ -39,6 +39,24 @@ public class ParticipantRepository {
      * pseudonym, and its language when it has one.
      */
     public ParticipantProfile upsertOnSignIn(EmailAddress email, PersonName name, String language, Instant now) {
+        // InnoDB spends an auto-increment value on every INSERT ... ON DUPLICATE KEY UPDATE, even when it
+        // updates; a returning person must not leave a gap in the pseudonyms (FR-006). The plain read takes
+        // no gap lock, so two concurrent first sign-ins still meet in the upsert below.
+        Optional<Long> existing = jdbc.sql("SELECT id FROM participant WHERE email = ?")
+                .param(email.value())
+                .query(Long.class)
+                .optional();
+        if (existing.isPresent()) {
+            jdbc.sql("""
+                            UPDATE participant SET name = ?, preferred_language = COALESCE(preferred_language, ?)
+                            WHERE id = ?""")
+                    .params(name.value(), language, existing.get())
+                    .update();
+            return jdbc.sql(SELECT + " WHERE id = ?")
+                    .param(existing.get())
+                    .query(ParticipantRepository::profile)
+                    .single();
+        }
         String placeholder = placeholder();
         jdbc.sql("""
                         INSERT INTO participant (pseudonym, name, email, registered_at, preferred_language)
