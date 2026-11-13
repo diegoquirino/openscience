@@ -7,13 +7,13 @@
 
 | Variable | Production (Cloud Run) | Local staging (Compose) | Tests |
 |---|---|---|---|
-| `CODE_HASH_KEY` | Secret `veredito-code-key:latest` (32 random bytes, base64url) | Fixed non-secret value in `compose.yaml`, with a comment saying it is for staging only | Random per run |
+| `CODE_HASH_KEY` | Secret `veredito-code-key:latest` (32 random characters from `New-RandomPassword`: 24 random bytes, base64url) | Fixed non-secret phrase in `compose.yaml`, with a comment saying it is for staging only (a phrase with spaces, so secret scanners do not flag it) | Random per run |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER` | `smtp.gmail.com`, `587`, `diegoquirino@gmail.com` (spec 003) | `mailpit`, `1025`, none | Mailpit container |
 | `SMTP_PASSWORD` | Secret `veredito-smtp-password:latest` (spec 003) | none | none |
 
-The application refuses to start without `CODE_HASH_KEY`, or with a key shorter than 32 bytes, in
-the `prod` profile. In development (no profile), a missing key is replaced by a random one at
-startup, with a log line saying so.
+The application refuses to start without `CODE_HASH_KEY`, in the `prod` profile. In any profile, a key shorter than 32 characters stops the startup; the key is
+used as UTF-8 text. Without a profile (development) or in `staging`, a missing key is replaced by a
+random one at startup, with a log line saying so.
 
 `.env.example` documents `CODE_HASH_KEY` without a value.
 

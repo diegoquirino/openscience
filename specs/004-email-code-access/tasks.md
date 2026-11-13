@@ -30,12 +30,16 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 **Purpose**: dependencies, versions, configuration values and test support
 
-- [ ] T001 Update `backend/pom.xml`: version `0.4.0`; add `spring-boot-starter-security` and, in test scope, `spring-boot-starter-security-test` (both managed by Spring Boot 4.1.2, Spring Security 7.1.2, research section 1). Update `frontend/package.json` to version `0.4.0`
-- [ ] T002 [P] Add `CODE_HASH_KEY` to the `app` service of `compose.yaml` with a fixed 32-byte base64url value and the comment `# staging only; not a secret (production reads veredito-code-key from Secret Manager)`; add `CODE_HASH_KEY=` without value to `.env.example`, with a comment pointing to `specs/004-email-code-access/contracts/pipeline.md`
-- [ ] T003 [P] Create `package-info.java` with a one-line description in `<pkg>/access` (services that coordinate the access rules, repositories and mailer) and `<pkg>/domain/access` (plain-Java access rules)
-- [ ] T004 [P] Create the Mailpit test support:
+- [X] T001 Update `backend/pom.xml`: version `0.4.0`; add `spring-boot-starter-security` and, in test scope, `spring-boot-starter-security-test` (both managed by Spring Boot 4.1.2, Spring Security 7.1.2, research section 1). Update `frontend/package.json` to version `0.4.0`
+  **Record (2026-11-13):** pom `0.4.0` with `spring-boot-starter-security` and `spring-boot-starter-security-test` (Spring Security 7.1.2); `frontend/package.json` and `package-lock.json` `0.4.0`; default `VEREDITO_VERSION` in `compose.yaml` `0.4.0+dev`.
+- [X] T002 [P] Add `CODE_HASH_KEY` to the `app` service of `compose.yaml` with a fixed 32-byte base64url value and the comment `# staging only; not a secret (production reads veredito-code-key from Secret Manager)`; add `CODE_HASH_KEY=` without value to `.env.example`, with a comment pointing to `specs/004-email-code-access/contracts/pipeline.md`
+  **Record (2026-11-13):** the staging value is a readable phrase with spaces (`staging only - not a secret - code hash key`) instead of a base64url value, because the gitleaks generic-key rule flags any high-entropy value assigned to a `*KEY` name. The key is therefore read as UTF-8 text of at least 32 characters (production: the 32 characters of `New-RandomPassword`); `contracts/pipeline.md` and research section 4 updated. `.env.example` has `CODE_HASH_KEY=` with the comment.
+- [X] T003 [P] Create `package-info.java` with a one-line description in `<pkg>/access` (services that coordinate the access rules, repositories and mailer) and `<pkg>/domain/access` (plain-Java access rules)
+  **Record (2026-11-13):** both `package-info.java` created.
+- [X] T004 [P] Create the Mailpit test support:
   - **`<tpkg>/support/MailpitContainerConfig.java`:** a Testcontainers `GenericContainer` `axllent/mailpit:v1.33.1` exposing 1025 and 8025, started once per test run, with `@DynamicPropertySource` for `spring.mail.host` and `spring.mail.port`.
   - **`<tpkg>/support/MailpitClient.java`:** over the Mailpit HTTP API (`/api/v1/search?query=to:<address>`, `/api/v1/message/{id}`, `DELETE /api/v1/messages`), it can list messages to an address, read the latest subject and text body, extract the 6-digit code, and clear the inbox.
+  **Record (2026-11-13):** `MailpitContainerConfig` registers the mail host and port with a `DynamicPropertyRegistrar` bean (the bean form of `@DynamicPropertySource`, so it works through `@Import`) over a static container started once per run; `MailpitClient` waits up to 5 s for a message to arrive.
 
 ---
 
@@ -45,34 +49,41 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 **CRITICAL**: no story starts before this phase is complete
 
-- [ ] T005 Create `backend/src/main/resources/db/migration/V3__access.sql` exactly as in `specs/004-email-code-access/data-model.md` ("Migration `V3__access.sql`"): `ALTER TABLE config ADD COLUMN admin_name VARCHAR(120) NULL`; `ALTER TABLE access_code ADD COLUMN name VARCHAR(120) NULL`; index `ix_access_code_created_at` on `access_code (created_at)`; index `ix_access_session_expires_at` on `access_session (expires_at)`. Only additions (rollback to 003 must keep working)
-- [ ] T006 Extend `<tpkg>/persistence/MigrationTest.java`: V3 is applied once (third row of `flyway_schema_history`), `config.admin_name` and `access_code.name` exist as `VARCHAR(120)` nullable, both indexes exist, and the two-container structure comparison of 003 still passes
-- [ ] T007 [P] Create `<pkg>/config/ClockConfig.java` (a `java.time.Clock` bean, `Clock.systemUTC()`) and `<tpkg>/support/MovableClock.java` (a `Clock` that tests can move forward, registered as `@Primary` through a `@TestConfiguration`, reset before each test). Every new class reads time only from the `Clock` bean
-- [ ] T008 [P] Create `<pkg>/config/AccessProperties.java` (`@ConfigurationProperties("veredito.access")`):
+- [X] T005 Create `backend/src/main/resources/db/migration/V3__access.sql` exactly as in `specs/004-email-code-access/data-model.md` ("Migration `V3__access.sql`"): `ALTER TABLE config ADD COLUMN admin_name VARCHAR(120) NULL`; `ALTER TABLE access_code ADD COLUMN name VARCHAR(120) NULL`; index `ix_access_code_created_at` on `access_code (created_at)`; index `ix_access_session_expires_at` on `access_session (expires_at)`. Only additions (rollback to 003 must keep working)
+  **Record (2026-11-13):** `V3__access.sql` with the two columns (`AFTER admin_email`, `AFTER email`) and the two indexes; nothing else.
+- [X] T006 Extend `<tpkg>/persistence/MigrationTest.java`: V3 is applied once (third row of `flyway_schema_history`), `config.admin_name` and `access_code.name` exist as `VARCHAR(120)` nullable, both indexes exist, and the two-container structure comparison of 003 still passes
+  **Record (2026-11-13):** versions `1`, `2`, `3`; new test `v3AddsTheNameColumnsAndTheCleanupIndexes` (types, nullability, index columns); the two-container comparison passes.
+- [X] T007 [P] Create `<pkg>/config/ClockConfig.java` (a `java.time.Clock` bean, `Clock.systemUTC()`) and `<tpkg>/support/MovableClock.java` (a `Clock` that tests can move forward, registered as `@Primary` through a `@TestConfiguration`, reset before each test). Every new class reads time only from the `Clock` bean
+  **Record (2026-11-13):** `ClockConfig` and `MovableClock` (system clock plus an offset; nested `MovableClock.Config` registers it as `@Primary`); `ApiTestBase` resets it before each test.
+- [X] T008 [P] Create `<pkg>/config/AccessProperties.java` (`@ConfigurationProperties("veredito.access")`):
   - **Fields:** `codeHashKey` (base64url); `codeValidity` 10 minutes; `resendInterval` 60 seconds; `hourlyLimit` 5; `maxAttempts` 5; `sessionDuration` 24 hours; `mailFrom`.
   - **Mapping:** in `application.yaml`, `veredito.access.code-hash-key: ${CODE_HASH_KEY:}` and `veredito.access.mail-from: ${SMTP_USER:veredito@localhost}`.
   - **Startup checks:** in the `prod` profile, startup fails when the key is missing or decodes to fewer than 32 bytes. In development (no profile), a missing key is replaced by 32 random bytes with one `WARN` log line saying so, without the value.
   - **Mail timeouts** in `application.yaml`: `spring.mail.properties.mail.smtp.connectiontimeout: 5000`, `timeout: 10000`, `writetimeout: 10000` (research section 6).
   - **Tests:** a random key per run in the test configuration.
-- [ ] T009 Add the seven types of `specs/004-email-code-access/contracts/problem-details.md` to `<pkg>/api/ProblemType.java`:
+  **Record (2026-11-13):** `AccessProperties` (record) and `AccessConfig` with the `CodeHashKey` bean: missing key stops the startup in `prod`; a key under 32 characters stops it in any profile; otherwise a missing key becomes 32 random bytes with one `WARN` line. Tests: `veredito.access.code-hash-key=${random.uuid}${random.uuid}` through `@TestPropertySource` in `ApiTestBase`. SMTP timeouts in `application.yaml`.
+- [X] T009 Add the seven types of `specs/004-email-code-access/contracts/problem-details.md` to `<pkg>/api/ProblemType.java`:
   - **Types:** `code-resend-too-soon` 429, `code-hourly-limit` 429, `daily-email-limit` 429, `code-not-sent` 503, `invalid-code` 422, `code-expired` 422, `forbidden` 403.
   - **Exception:** a `<pkg>/api/ProblemException.java` (type, `detail` arguments, extensions, extra headers), mapped by `ProblemDetailsAdvice`.
   - **Shared builder:** the advice exposes its builder as a component (`<pkg>/api/ProblemResponses.java`), so the security handlers write the same localized Problem Details.
   - **Bundles:** `problem.<slug>.title` and `problem.<slug>.detail` in `messages.properties`, `messages_pt_BR.properties` and `messages_es_ES.properties`, with the `detail` arguments of the contract ("Detail texts").
   - **E-mail keys:** `mail.access-code.subject` and `mail.access-code.body` (`{0}` name, `{1}` code, `{2}` validity in minutes; plain text; valid for `{2}` minutes, do not share, ignore if not requested). pt-BR is the reference text.
-- [ ] T010 [P] Write the domain tests first, then the classes, in `<pkg>/domain/access/` and `<tpkg>/domain/access/` (plain Java, no Spring; the ArchUnit test of 003 guards it):
+  **Record (2026-11-13):** seven types in `ProblemType`; `ProblemException` (detail arguments, extensions, headers) handled by `ProblemDetailsAdvice`; `ProblemResponses` builds and writes the localized problems (also used by `ApiDocsAccessFilter` and the security handlers). Bundles: the 14 problem keys and the two mail keys in the three files; the `detail` of `authentication-required` is now "Sign in to access this resource." (no longer only the administrator).
+- [X] T010 [P] Write the domain tests first, then the classes, in `<pkg>/domain/access/` and `<tpkg>/domain/access/` (plain Java, no Spring; the ArchUnit test of 003 guards it):
   - `EmailAddress`: "trimmed and lowercased; at most 254 characters; one `@`, a non-empty local part and a domain with a dot, no spaces" (`Ana@X.com ` equals `ana@x.com`).
   - `PersonName`: "trimmed, 2 to 120 characters".
   - `AccessCodeFormat`: normalization removes spaces and hyphens; valid only as exactly 6 digits; generation of `000000` to `999999` from an injected `RandomGenerator` (production: `SecureRandom`).
   - `SendLimits`: a pure decision from the e-mail's send times in the last hour, the latest send, the count of sends in the last 24 hours, `now`, the resend interval, the hourly limit and `daily_email_limit`. Results: `Allowed`, `TooSoon(secondsLeft)`, `HourlyLimit(retryAt = oldest of the 5 + 1 hour)` or `DailyLimit`, checked in that order.
   - `Pseudonym`: `R-%04d` of the id (`R-0001`, `R-10000`).
-- [ ] T011 [P] Create the hashing classes in `<pkg>/access/`, with unit tests in `<tpkg>/access/`:
+  **Record (2026-11-13):** `AccessRulesTest` (37 cases) and `EmailAddress`, `PersonName`, `AccessCodeFormat`, `SendLimits` (`Rules`, sealed `Decision`), `Pseudonym`, plus the `Subject` enum; numbers formatted with `Locale.ROOT`. `DomainIsolationTest` passes.
+- [X] T011 [P] Create the hashing classes in `<pkg>/access/`, with unit tests in `<tpkg>/access/`:
   - `CodeHasher`: `HMAC-SHA256(key, email + ":" + code)` as 64 lowercase hexadecimal characters, plus a constant-time comparison with `MessageDigest.isEqual`.
   - `TokenGenerator`: 32 `SecureRandom` bytes, base64url without padding.
   - `TokenHasher`: SHA-256 of the token, as 64 hexadecimal characters.
 
   The tests cover the known vectors, that the same code gives different hashes for different e-mails, and that a hash never contains the code or the token.
-- [ ] T012 Create the `JdbcClient` repositories in `<pkg>/persistence/`:
+  **Record (2026-11-13):** `CodeHasher`, `TokenGenerator`, `TokenHasher` and `HashingTest` (8 cases; the HMAC vector was computed with the Python `hmac` module, the SHA-256 one is the FIPS `abc` vector).
+- [X] T012 Create the `JdbcClient` repositories in `<pkg>/persistence/`:
   - **`AccessCodeRepository`:** `insert` (with `name`), `latestFor(email)`, `sendTimesSince(email, since)`, `countAllSince(since)`, `incrementAttempts(id)`, `markUsed(id, now)`, `delete(id)` and `deleteCreatedBefore(instant)`.
   - **`AccessSessionRepository`:** `insert`, `findValid(tokenHash, now)`, `delete(tokenHash)` and `deleteExpired(now)`.
   - **`ParticipantRepository`:**
@@ -85,31 +96,38 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - pseudonyms `R-0001`, `R-0002` in order;
   - two concurrent first sign-ins of the same e-mail produce one row and one pseudonym;
   - `preferred_language` is set only when `NULL`.
-- [ ] T013 Configure Spring Security in `<pkg>/web/SecurityConfig.java`:
+  **Record (2026-11-13):** the upsert is `INSERT ... AS typed ON DUPLICATE KEY UPDATE` with a placeholder pseudonym (`~` and 14 hexadecimal characters) replaced by `R-%04d` of the id in the same transaction; `latestFor` locks the row (`FOR UPDATE`) and `markUsed` answers `false` for a code already used. `AccessRepositoriesTest` (6 cases) passes, including two concurrent first sign-ins.
+- [X] T013 Configure Spring Security in `<pkg>/web/SecurityConfig.java`:
   - `SecurityFilterChain` with `SessionCreationPolicy.STATELESS`.
   - CSRF, form login, HTTP Basic, logout and the request cache off. The CSRF line carries a comment citing research section 10.
   - Default security headers.
   - The rules of `specs/004-email-code-access/contracts/access.md` ("Authorization rules"), with every non-API path (root page, locale prefixes, static files) permitted so that `LocaleRoutingFilter` and `ApiDocsAccessFilter` keep their behavior of 003.
   - Roles `PARTICIPANT` and `ADMINISTRATOR`.
-- [ ] T014 Create `<pkg>/web/SessionCookieFilter.java`:
+  **Record (2026-11-13):** `SecurityConfig` with `@ConditionalOnWebApplication` (contexts without a web server, such as `MigrationTest`, have no `HttpSecurity`); administrative paths in `SecurityConfig.ADMINISTRATION`; `UserDetailsServiceAutoConfiguration` excluded in `VereditoApplication`, so no generated password is logged. New `SecurityRulesTest` (5 cases: `401` per protected path, `403` both ways, expired session, public paths).
+- [X] T014 Create `<pkg>/web/SessionCookieFilter.java`:
   - reads the cookie `veredito-session`, hashes it with `TokenHasher` and calls `AccessSessionRepository.findValid`;
   - sets a `VereditoPrincipal` (subject, participant id, pseudonym) with its role;
   - a missing, unknown or expired cookie leaves the request anonymous.
 
   Also create `<pkg>/web/ProblemAuthenticationEntryPoint.java` (`401 authentication-required`) and `<pkg>/web/ProblemAccessDeniedHandler.java` (`403 forbidden`), both through `ProblemResponses`. Each refusal under `/api/v1/administrator/**`, or on an operation tagged "Administration", is logged at `WARN` with the caller kind, the pseudonym (if any), the method and the path, never the e-mail or the token (research section 9).
-- [ ] T015 Replace `<pkg>/web/NoAdministratorSession.java` with `<pkg>/web/SecurityContextAdministratorCheck.java` (implements `AdministratorSessionCheck`; `true` only for the role `ADMINISTRATOR`); delete `NoAdministratorSession.java`
-- [ ] T016 Register the relations `sign-in`, `session`, `sign-out` and `me` in `<pkg>/api/v1/LinkRelations.java`, with method and description as in `contracts/access.md` ("Relations added"). Change `<pkg>/api/v1/EntryPointController.java` to emit the links by caller of `contracts/access.md` ("Entry point"):
+  **Record (2026-11-13):** `SessionCookieFilter` (not a bean; added before `AnonymousAuthenticationFilter`) takes the session from `CurrentSession`, which reads the cookie once per request, ignores a malformed token and answers `503 service-unavailable` if the database fails. `VereditoPrincipal` in `access`. `DeniedAccessLog` writes, for example, `Denied 403 on administrative resource: caller=participant pseudonym=R-0003 GET /api/v1/administrator/me`.
+- [X] T015 Replace `<pkg>/web/NoAdministratorSession.java` with `<pkg>/web/SecurityContextAdministratorCheck.java` (implements `AdministratorSessionCheck`; `true` only for the role `ADMINISTRATOR`); delete `NoAdministratorSession.java`
+  **Record (2026-11-13):** named `SessionAdministratorCheck` instead of `SecurityContextAdministratorCheck`: `ApiDocsAccessFilter` (order `HIGHEST_PRECEDENCE + 5`) runs before the Spring Security chain (order -100), so the security context is still empty there; the check reads the cookie through `CurrentSession`, shared with the filter (research section 2 and plan updated). `NoAdministratorSession` deleted. `ApiDocsAccessTest` gains: the administrator opens Swagger in production; a participant still gets `401`.
+- [X] T016 Register the relations `sign-in`, `session`, `sign-out` and `me` in `<pkg>/api/v1/LinkRelations.java`, with method and description as in `contracts/access.md` ("Relations added"). Change `<pkg>/api/v1/EntryPointController.java` to emit the links by caller of `contracts/access.md` ("Entry point"):
   - visitor: unchanged;
   - participant and administrator: `vd:session`, `vd:me` (participant or administrator address), `vd:sign-out`;
   - an invalid cookie: treated as a visitor, never `401`.
 
   Update the OpenAPI description of the entry point.
-- [ ] T017 Extend `<tpkg>/support/ApiTestBase.java`:
+  **Record (2026-11-13):** four relations registered; entry point links by caller, description and a participant example updated. `EntryPointTest` gains: malformed, unknown and expired cookie as visitor (never `401`); participant and administrator links; documentation of the four relations.
+- [X] T017 Extend `<tpkg>/support/ApiTestBase.java`:
   - Mailpit and `MovableClock` wiring.
   - A `signIn(name, email, locale)` helper that starts at `/api/v1`, follows `vd:request-code`, reads the code with `MailpitClient`, follows `vd:sign-in` and returns the `veredito-session` cookie.
   - `RequestSpecification`s for a visitor, a participant and the administrator (`diegoquirino@gmail.com`).
-- [ ] T018 Run `.\mvnw.cmd -B verify` in `backend/`: every test of 003 still passes with Spring Security on (`WebRoutingTest`, `ApiDocsAccessTest`, `EntryPointTest`, `LocalizedProblemDetailsTest`, `ApiDocumentationCompletenessTest`, `MigrationTest`, `DatabaseUnavailableTest`)
-- [ ] T019 [P] Create the front-end core, with Vitest specs:
+  **Record (2026-11-13):** `signIn(name, email, locale)` follows the links and reads the code from Mailpit (used from US1 on). `participantSession()` and `administratorSession()` write the session row directly, because repeated code requests for `diegoquirino@gmail.com` across test classes would hit the 60-second and hourly limits; `as(token)` adds the cookie.
+- [X] T018 Run `.\mvnw.cmd -B verify` in `backend/`: every test of 003 still passes with Spring Security on (`WebRoutingTest`, `ApiDocsAccessTest`, `EntryPointTest`, `LocalizedProblemDetailsTest`, `ApiDocumentationCompletenessTest`, `MigrationTest`, `DatabaseUnavailableTest`)
+  **Record (2026-11-13):** `mvnw -B verify` BUILD SUCCESS, 131 tests, none failed: every test of 003 (`WebRoutingTest` 12, `ApiDocsAccessTest` 12 with the two new production cases, `EntryPointTest` 22 with the new caller cases, `LocalizedProblemDetailsTest` 6, `ApiDocumentationCompletenessTest`, `MigrationTest` 15, `DatabaseUnavailableTest`, `ApiIndexTest` 3, `MessageBundleParityTest`, `DomainIsolationTest` 2) plus `AccessRulesTest` 37, `HashingTest` 8, `AccessRepositoriesTest` 6 and `SecurityRulesTest` 5. Front end: `npm test` (31 tests), `i18n:check` and `npm run build` pass.
+- [X] T019 [P] Create the front-end core, with Vitest specs:
   - **`<app>/core/hal-forms.ts`:** reads `_templates.default` (method, properties, inline options).
   - **`<app>/core/problem-messages.ts`:** maps each Problem Details `type` of `contracts/web.md` ("Messages on screen") to a `$localize` text filled with the extension values (`retryAfterSeconds`, minutes until `retryAt`, `attemptsLeft`).
   - **`<app>/core/session.service.ts`:**
@@ -119,6 +137,7 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
     - no URL is built except `/api/v1`.
 
   Add the XLIFF units for the problem messages.
+  **Record (2026-11-13):** `hal-forms.ts`, `problem-messages.ts` (also `fieldMessage` for `invalid-request`) and `session.service.ts`, with 3 spec files; Vitest 31 tests in 10 files pass. 9 units in `messages.pt-BR.xlf` and `messages.es-ES.xlf`; `i18n:check` passes (16 units), the 9 new ones reported as "not in the built application" until the screens of US1 use them.
 
 **Checkpoint**: foundation ready; the API of 003 behaves as before, now behind Spring Security
 
@@ -275,7 +294,7 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - **Sign-in form:** saves name and e-mail before a switch and restores them after the reload (`veredito-unsaved:/participate`).
   - **Code screen, after sign-in:** if `preferredLanguage` differs from `LOCALE_ID`, sets the cookie and opens `/<profile locale>/welcome` or `/<profile locale>/admin` with a reload (FR-012, US4 scenario 7).
 - [ ] T047 [US4] Add `frontend/e2e/language.spec.ts`:
-  - **Preselection:** Playwright contexts with `locale` `pt-BR`, `es-MX`, `en-GB` and `fr-FR` (expect "Portugu�s (Brasil)", "Espa�ol (Espa�a)", "English (US)", "Portugu�s (Brasil)").
+  - **Preselection:** Playwright contexts with `locale` `pt-BR`, `es-MX`, `en-GB` and `fr-FR` (expect "Português (Brasil)", "Español (España)", "English (US)", "Português (Brasil)").
   - **Cookie:** confirming sets the cookie and `/` redirects afterwards; an invalid cookie shows the choice page; a direct `/es-ES/` saves `es-ES`.
   - **Sign-in in each locale:** e-mail subject in that locale and no text from another locale on the screens (SC-005).
   - **Profile wins (SC-006):** a participant with profile `es-ES` signs in from `/en-US/` and ends on `/es-ES/welcome`.

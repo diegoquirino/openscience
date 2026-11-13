@@ -1,14 +1,11 @@
 package io.github.diegoquirino.veredito.api;
 
-import io.github.diegoquirino.veredito.api.LocaleConfig.SupportedLocaleResolver;
 import jakarta.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
 import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
@@ -39,12 +36,15 @@ public class ProblemDetailsAdvice extends ResponseEntityExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(ProblemDetailsAdvice.class);
 
-    private final MessageSource messages;
-    private final SupportedLocaleResolver localeResolver;
+    private final ProblemResponses problems;
 
-    public ProblemDetailsAdvice(MessageSource messages, SupportedLocaleResolver localeResolver) {
-        this.messages = messages;
-        this.localeResolver = localeResolver;
+    public ProblemDetailsAdvice(ProblemResponses problems) {
+        this.problems = problems;
+    }
+
+    @ExceptionHandler(ProblemException.class)
+    public ResponseEntity<Object> handleProblem(ProblemException ex, WebRequest request) {
+        return handleExceptionInternal(ex, null, ex.headers(), ex.type().status(), request);
     }
 
     @ExceptionHandler({CannotGetJdbcConnectionException.class, DataAccessResourceFailureException.class})
@@ -63,6 +63,7 @@ public class ProblemDetailsAdvice extends ResponseEntityExceptionHandler {
             Exception ex, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         HttpServletRequest servletRequest = ((NativeWebRequest) request).getNativeRequest(HttpServletRequest.class);
         ProblemDetail problem = switch (ex) {
+            case ProblemException e -> fromException(e, servletRequest);
             case InvalidApiVersionException e -> unsupportedVersion(e, servletRequest);
             case NoResourceFoundException e -> notFound(servletRequest);
             case NoHandlerFoundException e -> notFound(servletRequest);
@@ -81,12 +82,12 @@ public class ProblemDetailsAdvice extends ResponseEntityExceptionHandler {
 
     /** Builds a localized problem of the given type for the current request. */
     public ProblemDetail create(ProblemType type, HttpServletRequest request, Object... detailArgs) {
-        var locale = localeResolver.resolveLocale(request);
-        ProblemDetail problem = ProblemDetail.forStatus(type.status());
-        problem.setType(type.type());
-        problem.setTitle(messages.getMessage(type.titleKey(), null, locale));
-        problem.setDetail(messages.getMessage(type.detailKey(), detailArgs, locale));
-        problem.setInstance(URI.create(request.getRequestURI()));
+        return problems.create(type, request, detailArgs);
+    }
+
+    private ProblemDetail fromException(ProblemException ex, HttpServletRequest request) {
+        ProblemDetail problem = create(ex.type(), request, ex.detailArgs());
+        ex.properties().forEach(problem::setProperty);
         return problem;
     }
 

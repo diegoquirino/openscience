@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.mysql.MySQLContainer;
 
-/** US3 and SC-003: V1 and V2 on MySQL 9.7, repeatable, with every constraint of data-model.md. */
+/** Spec 003 US3 and SC-003, and the V3 of spec 004: MySQL 9.7, repeatable, every constraint of the data models. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import(MySqlContainerConfig.class)
 @Transactional
@@ -43,7 +43,7 @@ class MigrationTest {
     DataSource dataSource;
 
     @Test
-    void createsEveryTableAndRecordsBothMigrations() {
+    void createsEveryTableAndRecordsEachMigrationOnce() {
         List<String> tables = jdbc.sql("""
                         SELECT table_name FROM information_schema.tables
                         WHERE table_schema = DATABASE() AND table_name <> 'flyway_schema_history'
@@ -55,7 +55,36 @@ class MigrationTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2");
+        assertThat(versions).containsExactly("1", "2", "3");
+    }
+
+    @Test
+    void v3AddsTheNameColumnsAndTheCleanupIndexes() {
+        List<Map<String, Object>> columns = jdbc.sql("""
+                        SELECT table_name AS t, column_name AS c, column_type AS type, is_nullable AS nullable
+                        FROM information_schema.columns
+                        WHERE table_schema = DATABASE()
+                          AND ((table_name = 'config' AND column_name = 'admin_name')
+                            OR (table_name = 'access_code' AND column_name = 'name'))
+                        ORDER BY table_name""")
+                .query().listOfRows();
+        assertThat(columns).extracting(row -> row.get("t") + "." + row.get("c") + " " + row.get("type") + " "
+                        + row.get("nullable"))
+                .containsExactly("access_code.name varchar(120) YES", "config.admin_name varchar(120) YES");
+
+        List<String> indexes = jdbc.sql("""
+                        SELECT DISTINCT CONCAT(table_name, '.', index_name, '(', column_name, ')')
+                        FROM information_schema.statistics
+                        WHERE table_schema = DATABASE()
+                          AND index_name IN ('ix_access_code_created_at', 'ix_access_session_expires_at')
+                        ORDER BY 1""")
+                .query(String.class).list();
+        assertThat(indexes).containsExactly(
+                "access_code.ix_access_code_created_at(created_at)",
+                "access_session.ix_access_session_expires_at(expires_at)");
+
+        Map<String, Object> config = jdbc.sql("SELECT admin_name FROM config").query().singleRow();
+        assertThat(config.get("admin_name")).isNull();
     }
 
     @Test

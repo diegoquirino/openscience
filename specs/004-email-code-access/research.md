@@ -34,8 +34,10 @@ No other new dependency: the access code, the session token and the hashes use t
   Authorization rules by path and method are listed in [contracts/access.md](contracts/access.md).
   The `AuthenticationEntryPoint` and the `AccessDeniedHandler` write localized Problem Details
   (`authentication-required`, `forbidden`) through the same builder as `ProblemDetailsAdvice`.
-  The real `AdministratorSessionCheck` of 003 reads the security context, so Swagger opens in
-  production for the administrator (spec 003, US5 scenario 3).
+  The real `AdministratorSessionCheck` of 003 reads the session cookie through the same lookup as
+  the security filter (once per request), because the documentation filter of 003 runs before the
+  Spring Security chain; Swagger then opens in production for the administrator (spec 003, US5
+  scenario 3).
 - **Rationale**: Principle I asks for the standard, mainstream piece. Spring Security gives the
   filter chain, the path rules, the security headers (`X-Content-Type-Options`, `X-Frame-Options`,
   `Cache-Control` on API responses) and method security for later specs. The sessions themselves
@@ -65,11 +67,11 @@ No other new dependency: the access code, the session token and the hashes use t
 ## 4. Access code
 
 - **Decision**: 6 digits drawn uniformly from `000000` to `999999` with `SecureRandom`. The database
-  keeps `HMAC-SHA256(key, email + ":" + code)` in `access_code.code_hash`; the key (32 random
-  bytes) comes from the environment variable `CODE_HASH_KEY`. In production it is the new secret
+  keeps `HMAC-SHA256(key, email + ":" + code)` in `access_code.code_hash`; the key (at least 32
+  characters of text; in production 32 random characters) comes from the environment variable `CODE_HASH_KEY`. In production it is the new secret
   `veredito-code-key` in Secret Manager, created by the researcher without seeing its value (same
   helper as the database password in `docs/cloud-setup.md`); in local staging it is a fixed,
-  non-secret value in `compose.yaml`; in the tests it is random per run. Before checking, the typed
+  non-secret phrase in `compose.yaml`; in the tests it is random per run. Before checking, the typed
   code loses spaces and hyphens (edge case). Only the most recent code of an e-mail counts (edge
   case "two devices"): the check reads the latest row of that e-mail and compares in constant time
   (`MessageDigest.isEqual`). A wrong code increments `attempts`; at 5 the code is dead

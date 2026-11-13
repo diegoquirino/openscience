@@ -35,6 +35,10 @@ spring:
   mail:
     host: ${SMTP_HOST:localhost}
     port: ${SMTP_PORT:1025}
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 10000
+      mail.smtp.writetimeout: 10000
 
 springdoc:
   override-with-generic-response: false
@@ -43,3 +47,6 @@ springdoc:
 
 veredito:
   environment: development
+  access:
+    code-hash-key: ${CODE_HASH_KEY:}
+    mail-from: ${SMTP_USER:veredito@localhost}

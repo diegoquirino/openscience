@@ -154,7 +154,7 @@ backend/
     |   |   |-- access/                  # AccessCodeService, SignInService, CodeHasher, TokenHasher, AccessCodeMailer, CleanupJob
     |   |   |-- persistence/             # AccessCodeRepository, AccessSessionRepository, ParticipantRepository, ConfigRepository (JdbcClient)
     |   |   |-- web/                     # SecurityConfig, SessionCookieFilter, ProblemAuthenticationEntryPoint, ProblemAccessDeniedHandler,
-    |   |   |                            # SecurityContextAdministratorCheck (replaces NoAdministratorSession), LocaleRoutingFilter (cookie redirect)
+    |   |   |                            # CurrentSession, SessionAdministratorCheck (replaces NoAdministratorSession), LocaleRoutingFilter (cookie redirect)
     |   |   |-- api/                     # ProblemType and ProblemDetailsAdvice gain the new types
     |   |   |-- api/v1/                  # AccessCodeController, AccessSessionController, ParticipantMeController, AdministratorMeController,
     |   |   |                            # their models; EntryPointController links by caller; LinkRelations gains the new relations

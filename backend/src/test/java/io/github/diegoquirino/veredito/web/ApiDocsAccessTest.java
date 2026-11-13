@@ -6,11 +6,12 @@ import static org.hamcrest.Matchers.startsWith;
 
 import io.github.diegoquirino.veredito.support.ApiTestBase;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.test.context.ActiveProfiles;
 
-/** US5 scenario 3: the API documentation is open in staging and refused in production. */
+/** Spec 003 US5 scenario 3: the API documentation is open in staging and, in production, only for the administrator. */
 class ApiDocsAccessTest {
 
     @Nested
@@ -28,6 +29,20 @@ class ApiDocsAccessTest {
                     .body("type", equalTo("urn:veredito:problem:authentication-required"))
                     .body("title", equalTo("Authentication required"))
                     .body("instance", equalTo(path));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"/swagger-ui.html", "/v3/api-docs/v1"})
+        void theAdministratorOpensTheDocumentation(String path) {
+            as(administratorSession()).redirects().follow(true).accept("*/*").get(path)
+                    .then().statusCode(200);
+        }
+
+        @Test
+        void aParticipantIsStillRefused() {
+            as(participantSession()).get("/v3/api-docs/v1")
+                    .then().statusCode(401)
+                    .body("type", equalTo("urn:veredito:problem:authentication-required"));
         }
 
         @ParameterizedTest

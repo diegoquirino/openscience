@@ -17,11 +17,21 @@ public final class LinkRelations {
             "v1", "Entry point of version 1 of the API.", HttpMethod.GET, "/swagger-ui.html#/Entry%20point");
     public static final Relation REQUEST_CODE = new Relation(
             "request-code", "Request a sign-in code by e-mail.", HttpMethod.POST, "/swagger-ui.html#/Access");
+    public static final Relation SIGN_IN = new Relation(
+            "sign-in", "Validate an access code and sign in.", HttpMethod.POST, "/swagger-ui.html#/Access");
+    public static final Relation SESSION = new Relation(
+            "session", "The current session: who is signed in, the profile language and the expiry.",
+            HttpMethod.GET, "/swagger-ui.html#/Access");
+    public static final Relation SIGN_OUT = new Relation(
+            "sign-out", "End the current session.", HttpMethod.DELETE, "/swagger-ui.html#/Access");
+    public static final Relation ME = new Relation(
+            "me", "Own profile; PUT changes the preferred language.", HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
 
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
-        for (Relation relation : new Relation[] {V1, REQUEST_CODE}) {
+        for (Relation relation : new Relation[] {V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME}) {
             BY_NAME.put(relation.name(), relation);
         }
     }

@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.startsWith;
 
 import io.github.diegoquirino.veredito.support.ApiTestBase;
 import io.restassured.response.Response;
+import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -34,6 +35,51 @@ class EntryPointTest extends ApiTestBase {
     @ValueSource(strings = {"vd:me", "vd:batches", "vd:exports", "vd:dashboard", "vd:participants"})
     void noAdministrativeOrParticipantLinkForAVisitor(String rel) {
         entryPoint().then().body("_links", not(hasKey(rel)));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"not-a-token", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"})
+    void anUnknownOrMalformedCookieIsAVisitorNever401(String cookie) {
+        as(cookie).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:request-code"));
+    }
+
+    @Test
+    void participantGetsSessionOwnProfileAndSignOut() {
+        as(participantSession()).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
+                .body("_links.'vd:session'.href", equalTo("/api/v1/access-sessions/current"))
+                .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
+                .body("_links.'vd:sign-out'.href", equalTo("/api/v1/access-sessions/current"));
+    }
+
+    @Test
+    void administratorGetsTheAdministratorProfile() {
+        as(administratorSession()).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
+                .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"));
+    }
+
+    @Test
+    void anExpiredSessionIsAVisitor() {
+        String token = participantSession();
+        clock.advance(Duration.ofHours(24));
+        as(token).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:request-code"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"sign-in", "session", "sign-out", "me"})
+    void curieDocumentsTheAccessRelations(String rel) {
+        request().get("/api/v1/rels/" + rel)
+                .then().statusCode(200)
+                .body("rel", equalTo("vd:" + rel))
+                .body("description", notNullValue())
+                .body("documentation", startsWith("/swagger-ui.html#/"));
     }
 
     @Test

@@ -5,6 +5,7 @@ import static io.github.diegoquirino.veredito.api.ApiDocs.NOT_ACCEPTABLE_EXAMPLE
 import static io.github.diegoquirino.veredito.api.ApiDocs.PROBLEM_JSON;
 import static io.github.diegoquirino.veredito.api.ApiDocs.UNSUPPORTED_VERSION_EXAMPLE;
 
+import io.github.diegoquirino.veredito.access.VereditoPrincipal;
 import io.github.diegoquirino.veredito.api.ProblemDetailsSchema;
 import io.github.diegoquirino.veredito.config.SystemVersion;
 import io.github.diegoquirino.veredito.config.VereditoProperties;
@@ -16,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.hateoas.Link;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,9 @@ public class EntryPointController {
 
     static final String SELF = "/api/v1";
     static final String REQUEST_CODE = "/api/v1/access-codes";
+    static final String SESSION = "/api/v1/access-sessions/current";
+    static final String PARTICIPANT_ME = "/api/v1/participants/me";
+    static final String ADMINISTRATOR_ME = "/api/v1/administrator/me";
 
     private final SystemVersion systemVersion;
     private final VereditoProperties properties;
@@ -46,14 +51,16 @@ public class EntryPointController {
                     Reports the deployed version, the environment and whether the database answers, and links \
                     what the caller may do next. Clients follow the links and never build addresses.
 
-                    Links by state:
-                    - database available, visitor (no session): self, curies, vd:request-code;
+                    Links by caller, read from the veredito-session cookie:
+                    - visitor (no session, or an expired or unknown cookie): self, curies, vd:request-code;
+                    - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out;
+                    - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out;
                     - database unavailable: self only, and available is false.
 
-                    Later releases add vd:me, vd:consent-form and vd:next-task for a participant, and vd:me, \
-                    vd:batches, vd:exports, vd:dashboard and vd:participants for the administrator. No \
-                    administrative link is ever offered to a visitor. The operation behind vd:request-code \
-                    arrives in spec 004; until then it answers 404.""")
+                    An invalid cookie never makes this operation answer 401. Later releases add \
+                    vd:consent-form and vd:next-task for a participant, and vd:batches, vd:exports, \
+                    vd:dashboard and vd:participants for the administrator. No administrative link is ever \
+                    offered to a visitor or a participant.""")
     @ApiResponse(
             responseCode = "200",
             description = "The entry point; also 200 when the database is unavailable",
@@ -70,6 +77,19 @@ public class EntryPointController {
                                     "self": { "href": "/api/v1" },
                                     "curies": [ { "name": "vd", "href": "/api/v1/rels/{rel}", "templated": true } ],
                                     "vd:request-code": { "href": "/api/v1/access-codes" }
+                                  }
+                                }"""),
+                        @ExampleObject(name = "participant", value = """
+                                {
+                                  "systemVersion": "0.4.0+1a2b3c4",
+                                  "environment": "production",
+                                  "available": true,
+                                  "_links": {
+                                    "self": { "href": "/api/v1" },
+                                    "curies": [ { "name": "vd", "href": "/api/v1/rels/{rel}", "templated": true } ],
+                                    "vd:session": { "href": "/api/v1/access-sessions/current" },
+                                    "vd:me": { "href": "/api/v1/participants/me" },
+                                    "vd:sign-out": { "href": "/api/v1/access-sessions/current" }
                                   }
                                 }"""),
                         @ExampleObject(name = "unavailable", value = """
@@ -94,13 +114,20 @@ public class EntryPointController {
                     mediaType = PROBLEM_JSON,
                     schema = @Schema(implementation = ProblemDetailsSchema.class),
                     examples = @ExampleObject(value = NOT_ACCEPTABLE_EXAMPLE)))
-    public EntryPointModel entryPoint() {
+    public EntryPointModel entryPoint(@AuthenticationPrincipal VereditoPrincipal caller) {
         boolean available = databaseStatus.isAvailable();
         EntryPointModel model = new EntryPointModel(systemVersion.value(), properties.environment(), available);
         model.add(Link.of(SELF));
-        if (available) {
-            model.add(Link.of(REQUEST_CODE, LinkRelations.REQUEST_CODE.curied()));
+        if (!available) {
+            return model;
         }
+        if (caller == null) {
+            model.add(Link.of(REQUEST_CODE, LinkRelations.REQUEST_CODE.curied()));
+            return model;
+        }
+        model.add(Link.of(SESSION, LinkRelations.SESSION.curied()));
+        model.add(Link.of(caller.isAdministrator() ? ADMINISTRATOR_ME : PARTICIPANT_ME, LinkRelations.ME.curied()));
+        model.add(Link.of(SESSION, LinkRelations.SIGN_OUT.curied()));
         return model;
     }
 }

@@ -12,7 +12,14 @@ public enum ProblemType {
     NOT_ACCEPTABLE("not-acceptable", HttpStatus.NOT_ACCEPTABLE),
     INVALID_REQUEST("invalid-request", HttpStatus.BAD_REQUEST),
     INTERNAL_ERROR("internal-error", HttpStatus.INTERNAL_SERVER_ERROR),
-    SERVICE_UNAVAILABLE("service-unavailable", HttpStatus.SERVICE_UNAVAILABLE);
+    SERVICE_UNAVAILABLE("service-unavailable", HttpStatus.SERVICE_UNAVAILABLE),
+    CODE_RESEND_TOO_SOON("code-resend-too-soon", HttpStatus.TOO_MANY_REQUESTS),
+    CODE_HOURLY_LIMIT("code-hourly-limit", HttpStatus.TOO_MANY_REQUESTS),
+    DAILY_EMAIL_LIMIT("daily-email-limit", HttpStatus.TOO_MANY_REQUESTS),
+    CODE_NOT_SENT("code-not-sent", HttpStatus.SERVICE_UNAVAILABLE),
+    INVALID_CODE("invalid-code", HttpStatus.UNPROCESSABLE_CONTENT),
+    CODE_EXPIRED("code-expired", HttpStatus.UNPROCESSABLE_CONTENT),
+    FORBIDDEN("forbidden", HttpStatus.FORBIDDEN);
 
     public static final String URN_PREFIX = "urn:veredito:problem:";
 
