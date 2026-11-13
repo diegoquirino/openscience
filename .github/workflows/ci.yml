@@ -1,0 +1,155 @@
+# CI of Veredito (specs/003-deployment-foundation/contracts/pipeline.md).
+# Repository variables (non-secret identifiers, set by docs/cloud-setup.md):
+#   GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_CI_SERVICE_ACCOUNT
+name: ci
+
+on:
+  push:
+    branches: [Veredito]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: southamerica-east1-docker.pkg.dev
+  IMAGE: southamerica-east1-docker.pkg.dev/veredito-issta2027/veredito/app
+
+jobs:
+  backend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+      - name: Unit, architecture, Testcontainers MySQL 9.7, REST Assured, documentation and bundle tests
+        run: ./mvnw -B -ntp verify
+      - uses: actions/upload-artifact@v7
+        with:
+          name: openapi
+          path: backend/target/openapi/*.json
+          if-no-files-found: error
+
+  frontend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Every interface text translated in pt-BR and es-ES
+        run: npm run i18n:check
+      - run: npm test -- --watch=false
+      - run: npm run build
+
+  secrets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: gitleaks over the branch history
+        run: >
+          docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/repo"
+          ghcr.io/gitleaks/gitleaks:v8.30.1 git /repo --redact --verbose
+
+  image:
+    needs: [backend, frontend, secrets]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: version
+        name: VEREDITO_VERSION = <pom version>+<short commit>
+        run: |
+          project_version=$(python3 -c "import xml.etree.ElementTree as E; print(E.parse('backend/pom.xml').getroot().find('{http://maven.apache.org/POM/4.0.0}version').text)")
+          echo "version=${project_version}+${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+          echo "tag=${IMAGE}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+      - id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_CI_SERVICE_ACCOUNT }}
+          token_format: access_token
+      - uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.version.outputs.tag }}
+          build-args: VEREDITO_VERSION=${{ steps.version.outputs.version }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  e2e:
+    needs: image
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      VEREDITO_IMAGE: ${{ needs.image.outputs.tag }}
+      E2E_BASE_URL: http://localhost:8080
+    steps:
+      - uses: actions/checkout@v7
+      - id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_CI_SERVICE_ACCOUNT }}
+          token_format: access_token
+      - uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+      - name: Local staging with the image of this commit
+        run: |
+          docker pull "$VEREDITO_IMAGE"
+          docker compose --profile staging up -d --no-build
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Playwright smoke tests per locale (Chromium)
+        working-directory: frontend
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run e2e
+      - name: Application log
+        if: failure()
+        run: docker compose --profile staging logs app
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/
+      - name: Stop local staging
+        if: always()
+        run: docker compose --profile staging down -v

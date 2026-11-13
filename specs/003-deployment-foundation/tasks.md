@@ -374,8 +374,9 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 **Order note**: depends on US4 (rehearsal in local staging) and on the researcher's one-time cloud setup
 
-- [ ] T058 [US2] If Spring Boot 4.2.0 GA is out (due 2026-11-19), raise the parent in `backend/pom.xml` to the latest 4.2.x and springdoc to the matching 3.x, run `.\mvnw.cmd -B verify`, and record the versions in `specs/003-deployment-foundation/research.md` section 1; otherwise keep 4.1.2 and note the date of the check here
-- [ ] T059 [US2] Write `.github/workflows/ci.yml` per `contracts/pipeline.md`:
+- [X] T058 [US2] If Spring Boot 4.2.0 GA is out (due 2026-11-19), raise the parent in `backend/pom.xml` to the latest 4.2.x and springdoc to the matching 3.x, run `.\mvnw.cmd -B verify`, and record the versions in `specs/003-deployment-foundation/research.md` section 1; otherwise keep 4.1.2 and note the date of the check here
+  **Checked 2026-11-13:** Maven Central lists `spring-boot-starter-parent` up to 4.2.0-RC2 (no 4.2.0 GA yet) and springdoc up to 3.2.0, so the backend stays on Boot 4.1.2 with springdoc 3.2.0.
+- [X] T059 [US2] Write `.github/workflows/ci.yml` per `contracts/pipeline.md`:
   - **Trigger:** push to `Veredito`.
   - **Jobs:**
     - `backend`: Temurin 25, `./mvnw -B verify`, upload `backend/target/openapi/*.json`.
@@ -385,7 +386,7 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
     - `e2e`: needs `image`; runs `VEREDITO_IMAGE=<that image> docker compose --profile staging up -d --no-build`, then the Playwright tests (Chromium only).
   - **Variables:** only non-secret repository variables.
   - **Permissions:** `id-token: write` only where needed.
-- [ ] T060 [US2] Write `.github/workflows/deploy.yml`:
+- [X] T060 [US2] Write `.github/workflows/deploy.yml`:
   - **Trigger:** push of tags `deploy/*`.
   - **Steps:**
     1. Resolve the tagged commit.
@@ -394,7 +395,9 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
     4. Run `gcloud run deploy veredito` with these flags: `--image <image>@<digest>`, `--region southamerica-east1`, `--service-account veredito-run`, `--allow-unauthenticated`, `--cpu 1`, `--memory 1Gi`, `--min-instances 0`, `--max-instances 4`, `--cpu-boost`.
     5. Pass the environment variables of `contracts/pipeline.md`, with `SPRING_PROFILES_ACTIVE=prod`, and the secrets through `--set-secrets` (`DB_PASSWORD=veredito-db-password:latest`, `SMTP_PASSWORD=veredito-smtp-password:latest`).
     6. Print the service URL and the new revision.
-- [ ] T061 [P] [US2] Write `docs/cloud-setup.md`: the `gcloud` commands of research section 19 in order.
+
+  **Done:** `--allow-unauthenticated` is not in the workflow: `roles/run.developer` cannot change the IAM policy of the service, so `docs/cloud-setup.md` step 7 creates the service once as public (the binding stays across revisions). After the deploy, `update-traffic --to-latest` sends all traffic to the new revision, also after a rollback that pinned an older one.
+- [X] T061 [P] [US2] Write `docs/cloud-setup.md`: the `gcloud` commands of research section 19 in order.
 
   **Resources:**
   - enable the APIs;
