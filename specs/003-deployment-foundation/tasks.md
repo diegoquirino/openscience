@@ -453,10 +453,16 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ## Phase 9: Polish & Cross-Cutting Concerns
 
-- [ ] T066 Run quickstart section 1 completely, including the three negative checks (one translation target, one bundle key, one operation description removed and restored), and record that each check failed as expected (SC-008, SC-007)
-- [ ] T067 [P] Run `scripts/_check_utf8.py` over `Veredito/backend/src`, `Veredito/frontend/src`, `Veredito/specs`, `Veredito/docs` and the root files; no file fails
-- [ ] T068 [P] Confirm SC-006: the `secrets` job is green and GitHub secret scanning has no alert; `git grep -n -i -E "password|secret|api[_-]?key"` shows only variable names and documentation, no values
-- [ ] T069 Mark spec 003 as complete: `Status` in `specs/003-deployment-foundation/spec.md` and the line of 003 in `specs/ROADMAP.md`, listing any criterion left to a later spec (US4 scenario 2 for e-mails is checked in spec 004, SC-005 there); commit and push to `Veredito`
+- [X] T066 Run quickstart section 1 completely, including the three negative checks (one translation target, one bundle key, one operation description removed and restored), and record that each check failed as expected (SC-008, SC-007)
+  **Record (2026-11-13, on `f12f9b0`):** `mvnw -B verify` BUILD SUCCESS, 62 tests (`MigrationTest` 14, `EntryPointTest` 13, `WebRoutingTest` 12, `ApiDocsAccessTest` 9, `LocalizedProblemDetailsTest` 6, `ApiIndexTest` 3, `DomainIsolationTest` 2, `ApiDocumentationCompletenessTest`, `MessageBundleParityTest`, `DatabaseUnavailableTest`), `target/openapi/openapi-v1.json` written; front end `npm ci`, `i18n:check` (16 units in pt-BR and es-ES), 17 tests in 7 files and `npm run build` pass. Negative checks, each restored with `git checkout` afterwards:
+  - `<target>` of `notFound.title` removed from `messages.es-ES.xlf`: `i18n:check` exits 1 with `es-ES: missing unit "notFound.title"`;
+  - `problem.not-found.detail` removed from `messages_pt_BR.properties`: `MessageBundleParityTest` fails with `missing key problem.not-found.detail in messages_pt_BR.properties`;
+  - `description` of the `GET /api` operation removed from `ApiIndexController`: `ApiDocumentationCompletenessTest` fails with `GET /api: missing description`.
+- [X] T067 [P] Run `scripts/_check_utf8.py` over `Veredito/backend/src`, `Veredito/frontend/src`, `Veredito/specs`, `Veredito/docs` and the root files; no file fails
+  **Record (2026-11-13):** 133 files in the four folders and the 8 root files, all `ok`.
+- [X] T068 [P] Confirm SC-006: the `secrets` job is green and GitHub secret scanning has no alert; `git grep -n -i -E "password|secret|api[_-]?key"` shows only variable names and documentation, no values
+  **Record (2026-11-13):** `secrets` green in ci run 43474530465 (`f12f9b0`), as in every run since `d02c709`; GitHub secret scanning: 0 open, 0 closed alerts. `git grep` (604 lines): 476 are use-case texts of `veredito_minitest.csv` ("username/password combination"); the rest are variable names, `${...}` references, Secret Manager references in `deploy.yml` and documentation. The only literal value is the local-staging default `veredito-local` (`.env.example`, `compose.yaml`, `application.yaml`), a fictitious password documented as such and never used in production.
+- [X] T069 Mark spec 003 as complete: `Status` in `specs/003-deployment-foundation/spec.md` and the line of 003 in `specs/ROADMAP.md`, listing any criterion left to a later spec (US4 scenario 2 for e-mails is checked in spec 004, SC-005 there); commit and push to `Veredito`
 
 ---
 

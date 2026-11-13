@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: Complete (2026-11-13; the e-mail part of US4 scenario 2 is checked in spec 004, SC-005)
 
 **Input**: User description: "Put Veredito online at a fixed URL, with a home page, a database with all the planned tables, a separate staging environment and a way to update the system without changing the URL."
 

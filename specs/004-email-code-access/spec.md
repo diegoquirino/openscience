@@ -140,7 +140,7 @@ Before signing in, the person chooses the language of the interface among Portug
 - **SC-002**: In 95 % of the sends, the code arrives in less than 1 minute.
 - **SC-003**: In a test with all administrative functions called by a regular session and without a session, 100 % of the calls are denied.
 - **SC-004**: A person who comes back on the same day does not use a new e-mail send.
-- **SC-005**: In local staging, a person completes the sign-in in each of the three languages (from the language-choice screen to the screen after sign-in), with no text in another language on any screen, and the access-code e-mail arrives in the chosen language in 100 % of the tests.
+- **SC-005**: In local staging, a person completes the sign-in in each of the three languages (from the language-choice screen to the screen after sign-in), with no text in another language on any screen, and the access-code e-mail arrives in the chosen language in 100 % of the tests, only in the local test mailbox (closes the e-mail part of US4 scenario 2 of spec 003).
 - **SC-006**: In 100 % of the tests where a participant with a preferred language signs in on a browser with another saved language, the interface switches to the profile language right after sign-in.
 
 ## Assumptions
