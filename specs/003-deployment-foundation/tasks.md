@@ -440,6 +440,10 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
   **Rollback:** `gcloud run services update-traffic veredito --region=southamerica-east1 --to-revisions=<previous>=100` keeps the URL and shows the previous version (US2 scenario 3). Record the results in this task.
 
+  **Record (2026-11-13):**
+  - before: `config.updated_at` `2026-11-13 14:52:08.320255`, `flyway_schema_history` 2 rows (both from the first deployment), read in Cloud SQL Studio as `veredito_app`;
+  - `deploy/0.3.0-2` on `e20b1f8`: deploy run 43469785097 in 53 s, revision `veredito-00003-dgv` with 100 % of the traffic, same URL, `/api/v1` `systemVersion` `0.3.0+e20b1f8`;
+
 **Checkpoint**: production at a fixed URL; deployment and rollback proven
 
 ---
