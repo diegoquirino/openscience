@@ -434,7 +434,7 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - `/swagger-ui.html` and `/v3/api-docs/v1`: `401` `application/problem+json`;
   - TCP to the instance public IP on port 3306: no connection within 8 s;
   - warm home page: 0.33 s to 0.77 s over three requests; `/pt-BR/`, `/en-US/`, `/es-ES/` under 0.5 s (SC-004 met). First request after idle (cold start of `/api/v1`): 2.6 s.
-- [ ] T065 [US2] Three deployments in a row and one rollback.
+- [X] T065 [US2] Three deployments in a row and one rollback.
 
   **Deployments:** with the first deployment's `config.updated_at` noted, deploy two more commits (`deploy/0.3.0-2`, `deploy/0.3.0-3`). The URL does not change, the footer follows the commit, `flyway_schema_history` has no new rows, and the `config` row is unchanged (US2 scenarios 1 and 2, SC-002).
 
@@ -443,6 +443,9 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   **Record (2026-11-13):**
   - before: `config.updated_at` `2026-11-13 14:52:08.320255`, `flyway_schema_history` 2 rows (both from the first deployment), read in Cloud SQL Studio as `veredito_app`;
   - `deploy/0.3.0-2` on `e20b1f8`: deploy run 43469785097 in 53 s, revision `veredito-00003-dgv` with 100 % of the traffic, same URL, `/api/v1` `systemVersion` `0.3.0+e20b1f8`;
+  - `deploy/0.3.0-3` on `48fe1b6`: deploy run 43471719353 in 51 s, revision `veredito-00004-qn5` with 100 % of the traffic, same URL, `systemVersion` `0.3.0+48fe1b6`;
+  - after both deployments: `config.updated_at` still `2026-11-13 14:52:08.320255` and `flyway_schema_history` still 2 rows (last `installed_on` `2026-11-13 14:52:08`), so no migration ran and the row was not rewritten;
+  - rollback: `update-traffic --to-revisions=veredito-00003-dgv=100` in 14 s; same URL, 100 % on `veredito-00003-dgv` (latest ready revision still `veredito-00004-qn5`), `/api/v1` `systemVersion` `0.3.0+e20b1f8`. Traffic stays pinned to that revision until the next deployment, whose `update-traffic --to-latest` step routes it back to the newest revision.
 
 **Checkpoint**: production at a fixed URL; deployment and rollback proven
 
