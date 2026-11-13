@@ -36,5 +36,10 @@ spring:
     host: ${SMTP_HOST:localhost}
     port: ${SMTP_PORT:1025}
 
+springdoc:
+  override-with-generic-response: false
+  swagger-ui:
+    deep-linking: true
+
 veredito:
   environment: development

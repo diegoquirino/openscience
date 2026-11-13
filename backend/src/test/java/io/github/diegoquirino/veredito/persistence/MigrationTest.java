@@ -22,7 +22,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.mysql.MySQLContainer;
-import org.testcontainers.utility.DockerImageName;
 
 /** US3 and SC-003: V1 and V2 on MySQL 9.7, repeatable, with every constraint of data-model.md. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -94,7 +93,7 @@ class MigrationTest {
     @Test
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void aFreshDatabaseGetsTheSameSchema() {
-        try (MySQLContainer other = new MySQLContainer(DockerImageName.parse(MySqlContainerConfig.IMAGE))) {
+        try (MySQLContainer other = MySqlContainerConfig.newContainer()) {
             other.start();
             DataSource otherSource = new DriverManagerDataSource(
                     other.getJdbcUrl(), other.getUsername(), other.getPassword());

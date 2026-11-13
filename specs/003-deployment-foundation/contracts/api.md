@@ -87,6 +87,10 @@ Documents a `vd:` relation; `rel` without the prefix (`request-code`).
 **404** Problem Details `not-found` for an unknown relation. The text is English documentation for
 developers, not a user-facing message.
 
+Relations documented in 003: `v1` (linked from `GET /api`) and `request-code` (linked from the
+entry point). Every curied link the API emits resolves here; later specs add their relations to the
+same registry (`LinkRelations`).
+
 ## Versioning rules
 
 | Request | Result |

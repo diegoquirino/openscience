@@ -333,34 +333,34 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Tests for User Story 5
 
-- [ ] T049 [P] [US5] Create `<tpkg>/api/ApiIndexTest.java`:
+- [X] T049 [P] [US5] Create `<tpkg>/api/ApiIndexTest.java`:
   - `GET /api` lists `v1` (`deprecated: false`) with the link `vd:v1` to `/api/v1`;
   - `GET /api/v9` returns `400` `unsupported-api-version` (US5 scenario 5);
   - every `href` in a `/api/v1` response starts with `/api/v1`.
-- [ ] T050 [P] [US5] Create `<tpkg>/api/v1/EntryPointTest.java`:
+- [X] T050 [P] [US5] Create `<tpkg>/api/v1/EntryPointTest.java`:
   - **Visitor links:** the entry point has exactly `self`, `curies` and `vd:request-code`, and none of `vd:me`, `vd:batches`, `vd:exports`, `vd:dashboard` or `vd:participants` (US5 scenario 2).
   - **Properties:** `systemVersion` and `environment` are present.
   - **Relation documentation:** following the `vd` CURIE for `request-code` returns `200` with `rel`, `description`, `method` and `documentation`; an unknown relation returns `404` `not-found`.
   - **Operation not yet delivered:** following `vd:request-code` with `POST` returns `404` Problem Details until spec 004.
   - **Errors:** `GET /api/v1/unknown` returns `404`; `DELETE /api/v1` returns `405` with `Allow`; `Accept: text/csv` returns `406`.
-- [ ] T051 [P] [US5] Create `<tpkg>/api/ApiDocumentationCompletenessTest.java`:
+- [X] T051 [P] [US5] Create `<tpkg>/api/ApiDocumentationCompletenessTest.java`:
   - **Coverage:** reads `/v3/api-docs/v1` and `/v3/api-docs/index`.
   - **Each operation must have:** a non-empty `summary` and `description`; an example in every success response; at least one 4xx response whose content `application/problem+json` references the Problem Details schema.
   - **On failure:** names `METHOD path` and what is missing (US5 scenario 4, SC-007).
   - **Output:** writes `backend/target/openapi/openapi-v1.json` and `openapi-index.json`.
-- [ ] T052 [P] [US5] Create `<tpkg>/web/ApiDocsAccessTest.java`: with profile `prod` (datasource from the test container), `/swagger-ui.html`, `/v3/api-docs/v1` and `/v3/api-docs/index` return `401` Problem Details `authentication-required` (US5 scenario 3); with profile `staging`, all three return `200`
+- [X] T052 [P] [US5] Create `<tpkg>/web/ApiDocsAccessTest.java`: with profile `prod` (datasource from the test container), `/swagger-ui.html`, `/v3/api-docs/v1` and `/v3/api-docs/index` return `401` Problem Details `authentication-required` (US5 scenario 3); with profile `staging`, all three return `200`
 
 ### Implementation for User Story 5
 
-- [ ] T053 [US5] Create `<pkg>/api/ApiIndexController.java` (`GET /api`, outside versioning, per `contracts/api.md`)
-- [ ] T054 [US5] Create `<pkg>/api/v1/LinkRelations.java` (registry of `vd:` relations: name, English description, method, Swagger anchor; `request-code` in 003) and `<pkg>/api/v1/RelationController.java` (`GET /api/v1/rels/{rel}`)
-- [ ] T055 [US5] Create `<pkg>/config/OpenApiConfig.java`:
+- [X] T053 [US5] Create `<pkg>/api/ApiIndexController.java` (`GET /api`, outside versioning, per `contracts/api.md`)
+- [X] T054 [US5] Create `<pkg>/api/v1/LinkRelations.java` (registry of `vd:` relations: name, English description, method, Swagger anchor; `request-code` in 003) and `<pkg>/api/v1/RelationController.java` (`GET /api/v1/rels/{rel}`)
+- [X] T055 [US5] Create `<pkg>/config/OpenApiConfig.java`:
   - **Groups:** `GroupedOpenApi` `v1` (`/api/v1/**`) and `index` (`/api`).
   - **`info`:** title "Veredito API"; `info.version` equal to the API version; `info.description` with the study and the `systemVersion`; contact and license.
   - **Tags:** Entry point, Access, Participation, Tasks, Administration.
   - **Components:** a reusable `ProblemDetails` schema, and the declared session cookie security scheme (used from 004).
-- [ ] T056 [US5] Document every operation of `EntryPointController`, `ApiIndexController` and `RelationController` with `@Operation` (summary, description listing the relations offered in each state), `@ApiResponse` for each success and error status with examples, and `@Schema` on the models, until T051 passes
-- [ ] T057 [US5] Create `<pkg>/web/ApiDocsAccessFilter.java`, active only in profile `prod`. It refuses `/swagger-ui.html`, `/swagger-ui/**` and `/v3/api-docs/**` with a `401` `authentication-required` Problem Details unless `AdministratorSessionCheck.isAdministrator(request)` is true. Also create the interface `<pkg>/web/AdministratorSessionCheck.java` and a 003 implementation that always returns `false`; spec 004 replaces it.
+- [X] T056 [US5] Document every operation of `EntryPointController`, `ApiIndexController` and `RelationController` with `@Operation` (summary, description listing the relations offered in each state), `@ApiResponse` for each success and error status with examples, and `@Schema` on the models, until T051 passes
+- [X] T057 [US5] Create `<pkg>/web/ApiDocsAccessFilter.java`, active only in profile `prod`. It refuses `/swagger-ui.html`, `/swagger-ui/**` and `/v3/api-docs/**` with a `401` `authentication-required` Problem Details unless `AdministratorSessionCheck.isAdministrator(request)` is true. Also create the interface `<pkg>/web/AdministratorSessionCheck.java` and a 003 implementation that always returns `false`; spec 004 replaces it.
 
 **Checkpoint**: T049 to T052 pass; Swagger UI in local staging lists `v1` and `index` with every operation complete
 
