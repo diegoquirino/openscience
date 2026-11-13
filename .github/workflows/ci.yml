@@ -69,7 +69,7 @@ jobs:
         run: |
           curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
             | tar -xz -C "$RUNNER_TEMP" gitleaks
-          "$RUNNER_TEMP/gitleaks" git . --redact --verbose
+          "$RUNNER_TEMP/gitleaks" git . --log-opts=HEAD --redact --verbose
 
   image:
     needs: [backend, frontend, secrets]
