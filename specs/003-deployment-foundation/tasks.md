@@ -198,7 +198,7 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
 
 ### Tests for User Story 3
 
-- [ ] T031 [P] [US3] Create `<tpkg>/persistence/MigrationTest.java` (Testcontainers `mysql:9.7`).
+- [X] T031 [P] [US3] Create `<tpkg>/persistence/MigrationTest.java` (Testcontainers `mysql:9.7`).
 
   **Migration and repetition:**
   1. On an empty database: the 11 tables of `data-model.md` exist (`import_batch`, `block`, `item`, `task`, `response`, `participant`, `access_code`, `access_session`, `consent_form`, `consent_form_text`, `config`), plus `flyway_schema_history` with V1 and V2 successful (US3 scenario 1).
@@ -218,12 +218,12 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
   - `participant` with `anonymized_at` set and `email` not `NULL`;
   - `response.change_impact = 'MEDIUM'`;
   - `response.maintenance_operation = 'DELETE'`.
-- [ ] T032 [P] [US3] Create `<tpkg>/api/v1/DatabaseUnavailableTest.java`: application started with `spring.datasource.url` pointing to a closed port and Flyway off; `GET /api/v1` returns `200` with `available: false` and no `vd:request-code` (edge case "Database deleted or unreachable")
-- [ ] T033 [P] [US3] Component test in `frontend/src/app/shell/unavailable.spec.ts`: when the entry point service returns `available: false`, the shell shows the localized "System temporarily unavailable" message instead of the page content
+- [X] T032 [P] [US3] Create `<tpkg>/api/v1/DatabaseUnavailableTest.java`: application started with `spring.datasource.url` pointing to a closed port and Flyway off; `GET /api/v1` returns `200` with `available: false` and no `vd:request-code` (edge case "Database deleted or unreachable")
+- [X] T033 [P] [US3] Component test in `frontend/src/app/shell/unavailable.spec.ts`: when the entry point service returns `available: false`, the shell shows the localized "System temporarily unavailable" message instead of the page content
 
 ### Implementation for User Story 3
 
-- [ ] T034 [US3] Write `backend/src/main/resources/db/migration/V1__create_schema.sql` exactly as `specs/003-deployment-foundation/data-model.md`:
+- [X] T034 [US3] Write `backend/src/main/resources/db/migration/V1__create_schema.sql` exactly as `specs/003-deployment-foundation/data-model.md`:
   - **Defaults:** InnoDB, `utf8mb4`, default collation `utf8mb4_0900_ai_ci`.
   - **Binary collation:** `utf8mb4_0900_bin` on `item.system`, `item.edit_key`, `participant.email`, `access_code.email`, `access_code.code_hash`, `access_session.token_hash` and `config.admin_email`.
   - **Instants:** all `DATETIME(6)`.
@@ -253,8 +253,8 @@ description: "Tasks of spec 003: deploy Veredito and prepare the database"
     - `study_phase` in `pilot`, `collection`;
     - `admin_preferred_language` a locale or `NULL`.
   - **Every locale column:** `CHECK (... IN ('pt-BR', 'en-US', 'es-ES'))`.
-- [ ] T035 [US3] Write `backend/src/main/resources/db/migration/V2__insert_default_config.sql`: one `config` row with `id = 1`, `admin_email = 'diegoquirino@gmail.com'`, `admin_preferred_language = NULL`, `reservation_minutes = 20`, `block_size = 10`, `daily_email_limit = 450`, `study_phase = 'pilot'`, `study_phase_changed_at = NULL`, `updated_at = UTC_TIMESTAMP(6)`; no consent form
-- [ ] T036 [US3] Create `frontend/src/app/unavailable/` and wire it in the shell: when `EntryPointService` reports `available: false`, show "System temporarily unavailable" (pt-BR "Sistema temporariamente indisponível", es-ES "Sistema temporalmente no disponible", per GLOSSARY) with a retry button; add the units to both XLIFF files
+- [X] T035 [US3] Write `backend/src/main/resources/db/migration/V2__insert_default_config.sql`: one `config` row with `id = 1`, `admin_email = 'diegoquirino@gmail.com'`, `admin_preferred_language = NULL`, `reservation_minutes = 20`, `block_size = 10`, `daily_email_limit = 450`, `study_phase = 'pilot'`, `study_phase_changed_at = NULL`, `updated_at = UTC_TIMESTAMP(6)`; no consent form
+- [X] T036 [US3] Create `frontend/src/app/unavailable/` and wire it in the shell: when `EntryPointService` reports `available: false`, show "System temporarily unavailable" (pt-BR "Sistema temporariamente indisponível", es-ES "Sistema temporalmente no disponible", per GLOSSARY) with a retry button; add the units to both XLIFF files
 
 **Checkpoint**: T031 to T033 pass; V1 and V2 are final and must never be edited after the first production deployment (Principle III)
 

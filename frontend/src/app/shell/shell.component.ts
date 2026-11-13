@@ -1,9 +1,11 @@
-import { Component, computed, inject, LOCALE_ID } from '@angular/core';
+import { Component, computed, inject, LOCALE_ID, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { BUILD_VERSION } from '../build-info';
+import { EntryPoint, EntryPointService } from '../core/entry-point.service';
+import { UnavailableComponent } from '../unavailable/unavailable.component';
 
 /** Supported locales, each labeled in its own language. */
 export const LOCALES = [
@@ -14,14 +16,26 @@ export const LOCALES = [
 
 @Component({
   selector: 'app-shell',
-  imports: [RouterOutlet, RouterLink, MatToolbarModule],
+  imports: [RouterOutlet, RouterLink, MatToolbarModule, UnavailableComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
 })
 export class ShellComponent {
   private readonly router = inject(Router);
   private readonly locale = inject(LOCALE_ID);
+  private readonly entryPoints = inject(EntryPointService);
   protected readonly version = BUILD_VERSION;
+
+  private readonly entryPoint = signal<EntryPoint | null>(null);
+  protected readonly unavailable = computed(() => this.entryPoint()?.available === false);
+
+  constructor() {
+    this.load();
+  }
+
+  protected load(): void {
+    this.entryPoints.load().subscribe((entryPoint) => this.entryPoint.set(entryPoint));
+  }
 
   private readonly url = toSignal(
     this.router.events.pipe(

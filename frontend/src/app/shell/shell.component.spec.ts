@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { BUILD_VERSION } from '../build-info';
+import { EntryPointService } from '../core/entry-point.service';
+import { Links } from '../core/hal';
 import { ShellComponent } from './shell.component';
 
 @Component({ template: '' })
@@ -9,9 +12,13 @@ class BlankPage {}
 
 describe('ShellComponent', () => {
   beforeEach(async () => {
+    const available = { systemVersion: '0.3.0', environment: 'production', available: true, links: new Links() };
     await TestBed.configureTestingModule({
       imports: [ShellComponent],
-      providers: [provideRouter([{ path: '**', component: BlankPage }])],
+      providers: [
+        provideRouter([{ path: '**', component: BlankPage }]),
+        { provide: EntryPointService, useValue: { load: () => of(available) } },
+      ],
     }).compileComponents();
   });
 

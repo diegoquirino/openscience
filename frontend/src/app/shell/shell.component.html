@@ -5,7 +5,11 @@
 </header>
 
 <main class="page">
-  <router-outlet />
+  @if (unavailable()) {
+    <app-unavailable (retry)="load()" />
+  } @else {
+    <router-outlet />
+  }
 </main>
 
 <footer class="footer">

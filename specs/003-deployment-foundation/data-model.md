@@ -74,7 +74,8 @@ Constraints: **unique** (`system`, `edit_key`); **unique** (`block_id`, `positio
 in `MOD`/`DEL`, empty `target` in `MOD`/`ADD`) stay in the domain validation of spec 005, which
 reports them per row. The lengths of `system` (100), `edit_key` (500), `uc` (255) and `field` (100)
 are not in FR-052; spec 005 refuses longer values as a row error instead of letting the insert
-fail. In Minitest the longest values are far below these limits.
+fail. In Minitest the longest values are far below these limits. `SYSTEM` is a reserved word in
+MySQL 8 and later, so every SQL statement, in V1 and in later code, writes the column as `` `system` ``.
 
 ### `task`
 
