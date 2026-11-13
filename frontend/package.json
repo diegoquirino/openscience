@@ -10,7 +10,9 @@
     "watch": "ng build --watch --configuration development",
     "pretest": "node scripts/write-build-info.mjs",
     "test": "ng test",
+    "prei18n:extract": "node scripts/write-build-info.mjs",
     "i18n:extract": "ng extract-i18n --format=xlf2 --output-path src/locale",
+    "prei18n:check": "node scripts/write-build-info.mjs",
     "i18n:check": "node scripts/check-i18n.mjs",
     "e2e": "playwright test -c e2e/playwright.config.ts"
   },
