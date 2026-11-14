@@ -135,6 +135,10 @@ No other new dependency: the access code, the session token and the hashes use t
   4.88 and 4.22 s (median 4.29 s; none below 2 s). Each send opens a new SMTP connection to Gmail
   (TCP, STARTTLS, authentication). The researcher accepted up to 7 seconds for this request, so
   the synchronous send stays; the asynchronous fallback is taken only if sends go above 7 seconds.
+- **Later**: the researcher and a colleague found the wait for the code long (up to 1 minute for
+  the e-mail; up to 3 minutes for the whole sign-in). Options to study before the launch: the
+  asynchronous send above; a transactional e-mail service with an HTTP API instead of Gmail SMTP
+  (shorter request and usually faster delivery); keeping the SMTP connection open between sends.
 
 ## 7. Text of the e-mail
 

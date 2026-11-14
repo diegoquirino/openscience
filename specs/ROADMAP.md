@@ -73,6 +73,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
    - in local staging, run the test with 30 simultaneous participants (spec 007, SC-001, automated test) and a complete flow with a reduced reservation time;
    - deploy to production (phase `pilot`, which only accepts Minitest), import Minitest and invite 3 to 5 colleagues, warning them that the pilot responses will be discarded;
    - measure the time per block (spec 008, SC-002) and the Cloud Run cold start, and listen to the colleagues about the clarity of the questions;
+   - shorten the wait for the access code if it still feels long (spec 004, research section 6, "Later": asynchronous send or a transactional e-mail service);
    - export and run `agreement` and `oracle-disagreements` on the files (spec 009, SC-001);
    - fix and rehearse locally; **recreate the production database empty** (drop and create again the `veredito` database in Cloud SQL) and deploy, so that Flyway prepares it from scratch;
    - switch the study phase to `collection` (spec 005), publish the final consent form, import the real dataset and announce.
