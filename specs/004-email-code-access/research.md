@@ -131,6 +131,10 @@ No other new dependency: the access code, the session token and the hashes use t
 - **Alternatives considered**: asynchronous sending with a status resource that the client polls
   (meets the 2-second limit with margin but adds a resource, a state and a poll loop); kept as the
   fallback if the production measurement goes above 2 seconds for most sends.
+- **Production measurement (2026-11-13, T059)**: five sends 61 s apart took 6.84, 4.06, 4.29,
+  4.88 and 4.22 s (median 4.29 s; none below 2 s). Each send opens a new SMTP connection to Gmail
+  (TCP, STARTTLS, authentication). The researcher accepted up to 7 seconds for this request, so
+  the synchronous send stays; the asynchronous fallback is taken only if sends go above 7 seconds.
 
 ## 7. Text of the e-mail
 

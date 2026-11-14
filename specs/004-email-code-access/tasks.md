@@ -429,6 +429,9 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
   If most sends take more than 2 seconds, stop and ask the researcher about the asynchronous fallback.
 
+  **Record (2026-11-13), request time:** `scripts/_veredito_send_timing.py` sent five codes for the administrator, 61 s apart (23:05:18 to 23:09:19 UTC-3), all `200`: 6.84, 4.06, 4.29, 4.88 and 4.22 s (median 4.29 s; none below 2 s). Asked the researcher, who accepted up to 7 seconds; the synchronous send stays (research section 6 updated).
+  **Record (2026-11-13), arrival and Swagger without a session:** the researcher received all five codes in Gmail, each in less than 1 minute (SC-002). Without a session, `/swagger-ui.html` and `/v3/api-docs` answer `401` with `application/problem+json`. The researcher signed in as a participant with two other addresses of his own, in two languages, and the checks passed (sign-in, name and "Sign out" in the bar, language switch while signed in, sign-out). An attempt with the administrator address answered `429 code-hourly-limit` ("about 48 minutes"), as expected after the five timing sends. Pending: the administrator's sign-in with `/admin`, Swagger with the administrator session, and a colleague's sign-in (SC-001).
+
 ---
 
 ## Phase 8: Polish & Cross-Cutting Concerns
