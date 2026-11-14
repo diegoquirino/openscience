@@ -3,14 +3,22 @@
   <mat-toolbar class="toolbar">
     <a class="brand" routerLink="/" i18n="@@shell.title">Veredito</a>
     <span class="spacer"></span>
+    @if (signedIn(); as current) {
+      @if (current.name) {
+        <span class="name">{{ current.name }}</span>
+      }
+      <button mat-button class="sign-out" type="button" (click)="signOut()" i18n="@@shell.signOut">Sign out</button>
+    }
     <button
       mat-button
       class="language"
+      type="button"
       [matMenuTriggerFor]="languageMenu"
       [attr.lang]="currentLocale"
       [attr.aria-label]="switchLabel"
     >
-      {{ currentLabel }}
+      <span class="long">{{ currentLabel }}</span>
+      <span class="short">{{ currentLocale }}</span>
     </button>
     <mat-menu #languageMenu="matMenu">
       @for (option of locales; track option.code) {

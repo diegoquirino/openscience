@@ -39,8 +39,33 @@
   flex: 1;
 }
 
-.language {
+.language,
+.sign-out {
   --mat-button-text-label-text-color: var(--mat-sys-on-primary);
+}
+
+.name {
+  font: var(--mat-sys-body-medium);
+  margin-right: 8px;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.short {
+  display: none;
+}
+
+@media (max-width: 599px) {
+  .name,
+  .long {
+    display: none;
+  }
+
+  .short {
+    display: inline;
+  }
 }
 
 .mark {

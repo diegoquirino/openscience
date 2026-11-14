@@ -109,6 +109,11 @@ public class SignInService {
                 .orElseThrow(() -> new ProblemException(ProblemType.AUTHENTICATION_REQUIRED));
     }
 
+    /** {@code vd:sign-out}: the session row is deleted, so the cookie no longer opens anything. */
+    public void signOut(VereditoPrincipal principal) {
+        sessions.delete(principal.tokenHash());
+    }
+
     private Outcome attempt(EmailAddress email, String code, String language) {
         Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
         Optional<StoredCode> latest = codes.latestFor(email);

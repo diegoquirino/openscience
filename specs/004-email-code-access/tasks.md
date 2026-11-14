@@ -336,7 +336,7 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - **Profile wins (SC-006):** a participant with profile `es-ES` signs in from `/en-US/` and ends on `/es-ES/welcome`.
   - **Header switch:** on the sign-in form it keeps the typed values; when signed in it updates the profile.
 
-  **Record (2026-11-13):** 12 tests per project (desktop and phone), all passing against local staging. Other-locale text is checked on the welcome screen. The profile test signs in on `/pt-BR/`, switches to es-ES from the header, clears the cookies, waits until 65 s after the first code (one code per minute) and signs in from `/en-US/`: the e-mail comes in en-US and the screen opens on `/es-ES/welcome`. Full e2e suite: 60 passed, 4 skipped by design (no-scroll checks on phone only, administrator on desktop only).
+  **Record (2026-11-13):** 12 tests per project (desktop and phone), all passing against local staging. Other-locale text is checked on the welcome screen. The profile test signs in on `/pt-BR/`, switches to es-ES from the header, clears the cookies, waits until 61 s after the first code request was accepted (one code per minute) and signs in from `/en-US/`: the e-mail comes in en-US and the screen opens on `/es-ES/welcome`. Full e2e suite: 60 passed, 4 skipped by design (no-scroll checks on phone only, administrator on desktop only).
 
 **Checkpoint**: the three locales work from the first screen to the area after sign-in, with e-mails in the language in use
 
@@ -350,21 +350,33 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 ### Tests for User Story 3
 
-- [ ] T048 [P] [US3] Create `<tpkg>/api/v1/SessionTest.java`:
+- [X] T048 [P] [US3] Create `<tpkg>/api/v1/SessionTest.java`:
   - **Within 24 hours:** the cookie gives `200` on `vd:session`, and no e-mail is sent (SC-004).
   - **After 24 hours:** with the clock moved 24 hours, `401`, and the entry point shows the visitor links.
   - **Sign-out:** `DELETE` on `vd:sign-out` answers `204` with `Set-Cookie veredito-session=; Max-Age=0`; the row is gone; the same cookie then gives `401`.
   - **Hash only:** `access_session.token_hash` never equals the cookie value.
-- [ ] T049 [P] [US3] Create `<tpkg>/access/CleanupJobTest.java` (Testcontainers, `MovableClock`): rows of `access_code` older than 24 hours and expired rows of `access_session` are deleted; newer rows stay; running twice is harmless
+
+  **Record (2026-11-13):** five tests. The 24-hour test signs in with a real code and moves the clock 23 h 59 min. Sign-out is checked for a participant and for the administrator, including all cookie attributes and a second `DELETE` giving `401`. A visitor's `DELETE` gives `401`.
+- [X] T049 [P] [US3] Create `<tpkg>/access/CleanupJobTest.java` (Testcontainers, `MovableClock`): rows of `access_code` older than 24 hours and expired rows of `access_session` are deleted; newer rows stay; running twice is harmless
+
+  **Record (2026-11-13):** two tests. The first checks the limits around "now"; a second run removes nothing. The second moves the clock 23 h (rows stay), then 1 h 1 s more (rows go).
 
 ### Implementation for User Story 3
 
-- [ ] T050 [US3] Add `DELETE /api/{version}/access-sessions/current` to `AccessSessionController` (deletes the row, clears the cookie with the attributes of research section 3), with complete documentation
-- [ ] T051 [US3] Create `<pkg>/access/CleanupJob.java` (`@Scheduled(cron = "0 0 * * * *")`, deletes as in T049) and enable scheduling in `<pkg>/config/SchedulingConfig.java`
-- [ ] T052 [US3] Show the name and "Sign out" in the header when signed in (`<app>/shell/`); "Sign out" follows `vd:sign-out`, clears the session signal and opens the home page (US3 scenario 3); update the spec and the XLIFF units
-- [ ] T053 [US3] Add `frontend/e2e/session.spec.ts`:
+- [X] T050 [US3] Add `DELETE /api/{version}/access-sessions/current` to `AccessSessionController` (deletes the row, clears the cookie with the attributes of research section 3), with complete documentation
+
+  **Record (2026-11-13):** `SignInService.signOut` deletes the row by the principal's token hash. The sign-in and the sign-out build the cookie through the same `sessionCookie(token, maxAge)` method. The `204` response documents the `Set-Cookie` header and no body; `ApiDocumentationCompletenessTest` now requires a `204` to document no content instead of an example.
+- [X] T051 [US3] Create `<pkg>/access/CleanupJob.java` (`@Scheduled(cron = "0 0 * * * *")`, deletes as in T049) and enable scheduling in `<pkg>/config/SchedulingConfig.java`
+
+  **Record (2026-11-13):** `run()` returns the counts and logs them (no personal data). The scheduled entry point logs a WARN and skips the run when the database is unavailable. The 24-hour window reuses `SendLimits.DAY`.
+- [X] T052 [US3] Show the name and "Sign out" in the header when signed in (`<app>/shell/`); "Sign out" follows `vd:sign-out`, clears the session signal and opens the home page (US3 scenario 3); update the spec and the XLIFF units
+
+  **Record (2026-11-13):** the header reads the session signal, which the home page and the guards load. Below 600 px the name is hidden and the language button shows the code (`pt-BR`), so the phone layout does not scroll sideways. New unit `shell.signOut` ("Sair", "Cerrar sesión"). Vitest: three new shell tests.
+- [X] T053 [US3] Add `frontend/e2e/session.spec.ts`:
   - a new page with the same storage state stays signed in, and the Mailpit message count is unchanged;
   - "Sign out" goes to the home page, after which `/pt-BR/welcome` leads to `/pt-BR/participate`.
+
+  **Record (2026-11-13):** the reopened browser is a new context with the storage state of the first one and the same device options. The test also checks that there is no horizontal scrolling when signed in and that the session cookie is gone after "Sign out". Full e2e suite against local staging: 62 passed, 4 skipped by design. Backend `mvnw verify`: 201 tests.
 
 **Checkpoint**: all stories work in local staging
 

@@ -36,8 +36,8 @@ const SCREENS = {
 } as const;
 
 type Locale = keyof typeof SCREENS;
-// One code per e-mail per 60 s, plus the time between reading the clock and the request.
-const NEXT_CODE_AFTER_MS = 65_000;
+// One code per e-mail per 60 s, counted from the accepted request.
+const NEXT_CODE_AFTER_MS = 61_000;
 
 async function requestCode(page: Page, locale: Locale, name: string, email: string): Promise<void> {
   const screen = SCREENS[locale];
@@ -48,10 +48,20 @@ async function requestCode(page: Page, locale: Locale, name: string, email: stri
   await expect(page).toHaveURL(new RegExp(`/${locale}/participate/code$`));
 }
 
-/** Requests a code on the screens of `locale`, signs in with it and returns the subject of its e-mail. */
-async function signIn(page: Page, request: APIRequestContext, locale: Locale, email: string): Promise<string> {
+/**
+ * Requests a code on the screens of `locale`, signs in with it and returns the subject of its e-mail;
+ * `onCodeSent` runs once the code request was accepted.
+ */
+async function signIn(
+  page: Page,
+  request: APIRequestContext,
+  locale: Locale,
+  email: string,
+  onCodeSent?: () => void,
+): Promise<string> {
   const previousId = await newestMessageId(request, email);
   await requestCode(page, locale, 'Ana Souza', email);
+  onCodeSent?.();
   const message = await latestMessageTo(request, email, previousId);
   await page.getByLabel(SCREENS[locale].code).fill(message.code);
   await page.getByRole('button', { name: SCREENS[locale].signIn }).click();
@@ -162,8 +172,8 @@ test('the profile language follows the header switch and wins at the next sign-i
   test.setTimeout(150_000);
   const email = `e2e-profile-${testInfo.project.name}-${Date.now()}@example.com`;
 
-  const firstCodeAt = Date.now();
-  await signIn(page, request, 'pt-BR', email);
+  let firstCodeAt = 0;
+  await signIn(page, request, 'pt-BR', email, () => (firstCodeAt = Date.now()));
   await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
   await switchLanguage(page, 'pt-BR', 'es-ES');
   await expect(page).toHaveURL(/\/es-ES\/welcome$/);

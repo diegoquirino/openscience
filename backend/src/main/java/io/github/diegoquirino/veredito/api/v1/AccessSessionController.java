@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
+import java.time.Duration;
 import java.util.Locale;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpHeaders;
@@ -28,6 +29,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -156,13 +158,7 @@ public class AccessSessionController {
                     }))
     public ResponseEntity<SessionModel> signIn(@RequestBody SignInRequest body, Locale locale) {
         SignedIn signedIn = service.signIn(body.email(), body.code(), locale);
-        ResponseCookie cookie = ResponseCookie.from(CurrentSession.COOKIE, signedIn.token())
-                .path("/")
-                .maxAge(properties.sessionDuration())
-                .httpOnly(true)
-                .secure(true)
-                .sameSite("Lax")
-                .build();
+        ResponseCookie cookie = sessionCookie(signedIn.token(), properties.sessionDuration());
         return ResponseEntity.created(URI.create(CURRENT))
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(model(signedIn.session()));
@@ -202,6 +198,51 @@ public class AccessSessionController {
                             }""")))
     public SessionModel current(@AuthenticationPrincipal VereditoPrincipal caller) {
         return model(service.current(caller));
+    }
+
+    @DeleteMapping(path = "/current", version = "v1")
+    @SecurityRequirement(name = OpenApiConfig.SESSION_SCHEME)
+    @Operation(
+            summary = "Sign out",
+            description = """
+                    Ends the current session: the session row is deleted and the cookie veredito-session is \
+                    cleared, so the same cookie no longer opens anything. Other sessions of the same person, on \
+                    other browsers, stay until they expire.""")
+    @ApiResponse(
+            responseCode = "204",
+            description = "Signed out",
+            headers = @Header(
+                    name = "Set-Cookie",
+                    description = "veredito-session=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax"))
+    @ApiResponse(
+            responseCode = "401",
+            description = "No valid session: no cookie, or an unknown or expired one",
+            content = @Content(
+                    mediaType = PROBLEM_JSON,
+                    schema = @Schema(implementation = ProblemDetailsSchema.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "type": "urn:veredito:problem:authentication-required",
+                              "title": "Authentication required",
+                              "status": 401,
+                              "detail": "Sign in to access this resource.",
+                              "instance": "/api/v1/access-sessions/current"
+                            }""")))
+    public ResponseEntity<Void> signOut(@AuthenticationPrincipal VereditoPrincipal caller) {
+        service.signOut(caller);
+        return ResponseEntity.noContent()
+                .header(HttpHeaders.SET_COOKIE, sessionCookie("", Duration.ZERO).toString())
+                .build();
+    }
+
+    private ResponseCookie sessionCookie(String token, Duration maxAge) {
+        return ResponseCookie.from(CurrentSession.COOKIE, token)
+                .path("/")
+                .maxAge(maxAge)
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("Lax")
+                .build();
     }
 
     private static SessionModel model(SessionView session) {

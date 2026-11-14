@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * US5 scenario 4, FR-013 and SC-007: every operation of each OpenAPI group has a summary, a description,
- * an example in each success response and a Problem Details error response. Also writes the documents
+ * an example in each success response with a body (a 204 documents none) and a Problem Details error response. Also writes the documents
  * to {@code target/openapi/} for CI.
  */
 class ApiDocumentationCompletenessTest extends ApiTestBase {
@@ -67,7 +67,11 @@ class ApiDocumentationCompletenessTest extends ApiTestBase {
         for (Map.Entry<String, Object> entry : responses.entrySet()) {
             String status = entry.getKey();
             Map<String, Object> content = asMap(asMap(entry.getValue()).get("content"));
-            if (status.startsWith("2")) {
+            if (status.equals("204")) {
+                if (!content.isEmpty()) {
+                    problems.add(operation + ": response 204 documents a body");
+                }
+            } else if (status.startsWith("2")) {
                 if (content.isEmpty()) {
                     problems.add(operation + ": response " + status + " has no content");
                 }

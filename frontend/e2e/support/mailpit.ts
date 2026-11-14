@@ -15,6 +15,12 @@ export async function newestMessageId(request: APIRequestContext, address: strin
   return (await search.json()).messages?.[0]?.ID;
 }
 
+/** How many messages Mailpit holds for the address. */
+export async function messageCountTo(request: APIRequestContext, address: string): Promise<number> {
+  const search = await request.get(`${MAILPIT_URL}/api/v1/search`, { params: { query: `to:"${address}"` } });
+  return (await search.json()).messages?.length ?? 0;
+}
+
 /**
  * The newest message to the address, waiting a few seconds for it to arrive. For an address used
  * before, pass the id seen before the request so an older message is not taken.
