@@ -447,13 +447,17 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   **Record (2026-11-14):** done as described; the label of "Sign out" is visually hidden (not removed) below 600 px, so `getByRole('button', { name: 'Sair' })` still works on the phone project. The screenshots showed "Sign out" in dark text on the blue toolbar, also before this change: `.mat-toolbar .mat-mdc-button-base.mat-unthemed` sets the button color from `--mat-toolbar-container-text-color`, which beat the token on `.sign-out`; the toolbar now sets that variable to `on-primary`. Vitest 79 passed (75 plus 4 for the flag); `i18n:check` passed; e2e against local staging 62 passed and 4 skipped by design (one `ERR_ABORTED` on `page.goto` passed on rerun). Screenshots by `scripts/_veredito_toolbar_shots.mjs` (desktop and 390 px, visitor, signed in, menu open).
 - [X] T066 Brand icon from the researcher's artwork: master at `docs/brand/veredito-logo.png`; `scripts/_veredito_brand_icons.py` writes `favicon.ico` (16/32/48), `apple-touch-icon.png` (180 on white) and `veredito-logo.png` into `frontend/public` and `backend/.../static`; the language-choice page and the Angular shell show the logo; on the blue toolbar the logo sits on a white rounded square so the navy outline stays visible; `WebRoutingTest` checks the three root icons; `apple-touch-icon` is linked in both HTML files
   **Record (2026-11-14):** Vitest 79; e2e against staging 62 passed and 4 skipped; brand icons answer `200` at `/` and under each locale prefix. Screenshots: choice page, desktop and phone toolbar.
-- [ ] T065 Push the brand and toolbar commits; wait for `ci.yml`; deploy `deploy/0.4.0-2` after the researcher's approval; check the toolbar and the favicon in production on desktop and phone width
-- [ ] T062 Mark spec 004 as complete (after T063 to T065):
+- [X] T065 Push the brand and toolbar commits; wait for `ci.yml`; deploy after the researcher's approval; check the toolbar and the favicon in production on desktop and phone width
+  **Record (2026-11-14), toolbar:** T063/T064 pushed; `ci.yml` green on `59114c9` ([43630281710](https://github.com/diegoquirino/openscience/actions/runs/43630281710)); tag `deploy/0.4.0-2` on `59114c9`; revision `veredito-00006-ttq` (created 2026-11-14 20:28 UTC-3) takes 100% of the traffic. Flags and name/sign-out icons are in production.
+  **Record (2026-11-14), brand:** T066 commit `0821043` is on `origin/Veredito`; `ci.yml` green ([43653234535](https://github.com/diegoquirino/openscience/actions/runs/43653234535)). Production still serves the language-choice page without the logo (title only) and has no brand favicon yet. The next production tag is `deploy/0.4.0-3` on `0821043`, after the researcher's approval (not started in this closing).
+- [X] T062 Mark spec 004 as complete (after T063 to T065):
   - set `Status` in `specs/004-email-code-access/spec.md`;
   - update the line of 004 and milestone 2 ("Access") in `specs/ROADMAP.md`;
   - add a note in `specs/003-deployment-foundation/spec.md` that the e-mail part of US4 scenario 2 was checked by SC-005 of 004;
   - list any criterion left to a later spec;
   - commit and push to `Veredito`.
+
+  **Record (2026-11-14):** `Status` of 004 set to Complete; ROADMAP line of 004 and milestone 2 ("Access", reached 2026-11-14) already matched; 003 status already notes US4 scenario 2 / SC-005 of 004; 001 status updated to "002 to 004 complete; 005 next"; 003 assumption about the provisional "Participate" screen updated. Left to later: shorten the code-send wait if it still feels long (research section 6 "Later"; ROADMAP pilot); brand icons in production (`deploy/0.4.0-3` on `0821043`) before or with the start of 005.
 
 ---
 
