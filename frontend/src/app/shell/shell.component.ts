@@ -1,35 +1,41 @@
-import { Component, computed, inject, LOCALE_ID, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, inject, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { BUILD_VERSION } from '../build-info';
 import { EntryPoint, EntryPointService } from '../core/entry-point.service';
+import { LanguageService, Locale, LOCALES } from '../core/language.service';
 import { UnavailableComponent } from '../unavailable/unavailable.component';
 import { StagingBannerComponent } from './staging-banner.component';
 
-/** Supported locales, each labeled in its own language. */
-export const LOCALES = [
-  { code: 'pt-BR', label: 'Português (Brasil)' },
-  { code: 'en-US', label: 'English (US)' },
-  { code: 'es-ES', label: 'Español (España)' },
-] as const;
-
 @Component({
   selector: 'app-shell',
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, UnavailableComponent, StagingBannerComponent],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    UnavailableComponent,
+    StagingBannerComponent,
+  ],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
 })
 export class ShellComponent {
-  private readonly router = inject(Router);
-  private readonly locale = inject(LOCALE_ID);
   private readonly entryPoints = inject(EntryPointService);
+  private readonly language = inject(LanguageService);
   protected readonly version = BUILD_VERSION;
 
   private readonly entryPoint = signal<EntryPoint | null>(null);
   protected readonly unavailable = computed(() => this.entryPoint()?.available === false);
   protected readonly environment = computed(() => this.entryPoint()?.environment ?? null);
+
+  protected readonly locales = LOCALES;
+  protected readonly currentLocale = this.language.current;
+  protected readonly currentLabel = LOCALES.find((option) => option.code === this.language.current)?.label ?? '';
+  protected readonly switchLabel = $localize`:@@shell.language:Language: ${this.currentLabel}:language:`;
 
   constructor() {
     this.load();
@@ -39,19 +45,10 @@ export class ShellComponent {
     this.entryPoints.load().subscribe((entryPoint) => this.entryPoint.set(entryPoint));
   }
 
-  private readonly url = toSignal(
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map((event) => event.urlAfterRedirects),
-    ),
-    { initialValue: this.router.url },
-  );
-
-  /** Provisional language switch: a full page load of the same route under another prefix. */
-  protected readonly otherLocales = computed(() =>
-    LOCALES.filter((option) => option.code !== this.locale).map((option) => ({
-      ...option,
-      href: `/${option.code}${this.url()}`,
-    })),
-  );
+  /** Header language switch (FR-013): the same screen under the new prefix, with a page load. */
+  protected switchTo(locale: Locale): void {
+    if (locale !== this.currentLocale) {
+      this.language.switchTo(locale).subscribe();
+    }
+  }
 }

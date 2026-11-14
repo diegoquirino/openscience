@@ -1,7 +1,9 @@
 package io.github.diegoquirino.veredito.web;
 
+import io.github.diegoquirino.veredito.api.LocaleConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,12 +17,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-/** Rules 1 to 10 of {@code specs/003-deployment-foundation/contracts/web-routing.md}, in order. */
+/**
+ * Rules 1 to 10 of {@code specs/003-deployment-foundation/contracts/web-routing.md}, in order, with the
+ * root page of {@code specs/004-email-code-access/contracts/web.md}.
+ */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 10)
 public class LocaleRoutingFilter extends OncePerRequestFilter {
 
-    public static final List<String> PREFIXES = List.of("pt-BR", "en-US", "es-ES");
+    public static final List<String> PREFIXES = LocaleConfig.SUPPORTED_TAGS;
+    public static final String LANGUAGE_COOKIE = "veredito-lang";
 
     private final ResourceLoader resources;
 
@@ -46,6 +52,13 @@ public class LocaleRoutingFilter extends OncePerRequestFilter {
             return;
         }
         if (path.isEmpty() || "/".equals(path)) {
+            response.setHeader(HttpHeaders.VARY, HttpHeaders.COOKIE);
+            String saved = savedLocale(request);
+            if (saved != null) {
+                response.setHeader(HttpHeaders.CACHE_CONTROL, "no-cache");
+                redirect(response, HttpServletResponse.SC_FOUND, "/" + saved + "/");
+                return;
+            }
             forward("/index.html", request, response);
             return;
         }
@@ -98,6 +111,20 @@ public class LocaleRoutingFilter extends OncePerRequestFilter {
         String lower = path.toLowerCase(Locale.ROOT);
         return lower.contains("..") || lower.contains("%2e") || lower.contains("%2f") || lower.contains("\\")
                 || lower.contains("//");
+    }
+
+    /** The language saved by the choice page or by a build; any other value is ignored (spec 004, FR-011). */
+    private static String savedLocale(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies == null) {
+            return null;
+        }
+        for (Cookie cookie : cookies) {
+            if (LANGUAGE_COOKIE.equals(cookie.getName()) && PREFIXES.contains(cookie.getValue())) {
+                return cookie.getValue();
+            }
+        }
+        return null;
     }
 
     private static String canonicalPrefix(String segment) {

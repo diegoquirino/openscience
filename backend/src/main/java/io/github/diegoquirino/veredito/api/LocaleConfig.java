@@ -24,6 +24,8 @@ public class LocaleConfig {
     public static final Locale EN_US = Locale.of("en", "US");
     public static final Locale ES_ES = Locale.of("es", "ES");
     public static final List<Locale> SUPPORTED = List.of(PT_BR, EN_US, ES_ES);
+    /** The values of {@code preferred_language} and of the cookie {@code veredito-lang}. */
+    public static final List<String> SUPPORTED_TAGS = SUPPORTED.stream().map(Locale::toLanguageTag).toList();
 
     @Bean(DispatcherServlet.LOCALE_RESOLVER_BEAN_NAME)
     public SupportedLocaleResolver localeResolver() {

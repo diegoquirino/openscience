@@ -53,3 +53,11 @@ a:focus-visible {
   outline: 3px solid #a5c8ff;
   outline-offset: 2px;
 }
+
+/* The option preselected from the browser language (language.js). */
+a[aria-current="true"] {
+  background: #004494;
+  font-weight: 600;
+  outline: 3px solid #a5c8ff;
+  outline-offset: 2px;
+}

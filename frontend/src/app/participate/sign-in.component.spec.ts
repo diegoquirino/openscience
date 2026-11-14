@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { LanguageService, LOAD_PAGE } from '../core/language.service';
 import { PendingCode, readPendingCode, savePendingCode } from './pending-code';
 import { SignInComponent } from './sign-in.component';
 
@@ -21,21 +22,31 @@ const problem = (slug: string, extensions: object = {}) => ({ type: `urn:veredit
 
 describe('SignInComponent', () => {
   let http: HttpTestingController;
+  let load: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
     sessionStorage.clear();
+    load = vi.fn();
+    vi.spyOn(document, 'cookie', 'set').mockImplementation(() => undefined);
     await TestBed.configureTestingModule({
       imports: [SignInComponent],
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
-        provideRouter([{ path: 'participate/code', component: BlankPage }]),
+        provideRouter([
+          { path: 'participate/code', component: BlankPage },
+          { path: 'participate', component: BlankPage },
+        ]),
+        { provide: LOAD_PAGE, useValue: load },
       ],
     }).compileComponents();
     http = TestBed.inject(HttpTestingController);
   });
 
-  afterEach(() => http.verify());
+  afterEach(() => {
+    http.verify();
+    vi.restoreAllMocks();
+  });
 
   async function render(): Promise<ComponentFixture<SignInComponent>> {
     const fixture = TestBed.createComponent(SignInComponent);
@@ -148,5 +159,22 @@ describe('SignInComponent', () => {
       element(fixture).querySelector<HTMLInputElement>(`input[formcontrolname="${control}"]`)!.value;
     expect(value('name')).toBe('Ana Souza');
     expect(value('email')).toBe('ana@exmple.com');
+  });
+
+  it('keeps the typed values across a language switch, once', async () => {
+    const fixture = await render();
+    type(fixture, 'name', 'Ana Souza');
+    type(fixture, 'email', 'ana@example.com');
+    await TestBed.inject(Router).navigateByUrl('/participate');
+    TestBed.inject(LanguageService).switchTo('es-ES').subscribe();
+    expect(load).toHaveBeenCalledWith('/es-ES/participate');
+    fixture.destroy();
+
+    const reloaded = await render();
+    const value = (control: string) =>
+      element(reloaded).querySelector<HTMLInputElement>(`input[formcontrolname="${control}"]`)!.value;
+    expect(value('name')).toBe('Ana Souza');
+    expect(value('email')).toBe('ana@example.com');
+    expect(TestBed.inject(LanguageService).takeUnsaved('/participate')).toBeUndefined();
   });
 });

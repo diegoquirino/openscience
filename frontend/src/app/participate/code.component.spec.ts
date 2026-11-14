@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { LOAD_PAGE } from '../core/language.service';
 import { SessionService } from '../core/session.service';
 import { CodeComponent } from './code.component';
 import { PendingCode, readPendingCode, savePendingCode } from './pending-code';
@@ -16,7 +17,7 @@ const SESSION = {
   subject: 'participant',
   name: 'Ana Souza',
   pseudonym: 'R-0001',
-  preferredLanguage: 'pt-BR',
+  preferredLanguage: 'en-US',
   expiresAt: '2026-11-14T17:03:00Z',
   _links: { self: { href: '/links/session' }, 'vd:sign-out': { href: '/links/session' } },
 };
@@ -36,9 +37,16 @@ function pendingCode(resendInSeconds: number): PendingCode {
 
 describe('CodeComponent', () => {
   let http: HttpTestingController;
+  let load: ReturnType<typeof vi.fn>;
+  let cookies: string[];
 
   beforeEach(async () => {
     sessionStorage.clear();
+    load = vi.fn();
+    cookies = [];
+    vi.spyOn(document, 'cookie', 'set').mockImplementation((value: string) => {
+      cookies.push(value);
+    });
     await TestBed.configureTestingModule({
       imports: [CodeComponent],
       providers: [
@@ -49,12 +57,16 @@ describe('CodeComponent', () => {
           { path: 'welcome', component: BlankPage },
           { path: 'admin', component: BlankPage },
         ]),
+        { provide: LOAD_PAGE, useValue: load },
       ],
     }).compileComponents();
     http = TestBed.inject(HttpTestingController);
   });
 
-  afterEach(() => http.verify());
+  afterEach(() => {
+    http.verify();
+    vi.restoreAllMocks();
+  });
 
   async function render(): Promise<ComponentFixture<CodeComponent>> {
     const fixture = TestBed.createComponent(CodeComponent);
@@ -124,6 +136,35 @@ describe('CodeComponent', () => {
     await fixture.whenStable();
 
     expect(TestBed.inject(Router).url).toBe('/admin');
+  });
+
+  it('opens the area in the language of the profile when it differs from the build', async () => {
+    savePendingCode(pendingCode(60));
+    const fixture = await render();
+
+    await signInWith(fixture, '123 456');
+    http
+      .expectOne('/links/sessions')
+      .flush({ ...SESSION, preferredLanguage: 'es-ES' }, { status: 201, statusText: 'Created' });
+    await fixture.whenStable();
+
+    expect(cookies).toEqual([expect.stringContaining('veredito-lang=es-ES')]);
+    expect(load).toHaveBeenCalledWith('/es-ES/welcome');
+    expect(TestBed.inject(Router).url).toBe('/');
+  });
+
+  it('stays in the build language when the profile has none', async () => {
+    savePendingCode(pendingCode(60));
+    const fixture = await render();
+
+    await signInWith(fixture, '123 456');
+    http
+      .expectOne('/links/sessions')
+      .flush({ ...SESSION, preferredLanguage: null }, { status: 201, statusText: 'Created' });
+    await fixture.whenStable();
+
+    expect(load).not.toHaveBeenCalled();
+    expect(TestBed.inject(Router).url).toBe('/welcome');
   });
 
   it('does not send a code of the wrong shape', async () => {

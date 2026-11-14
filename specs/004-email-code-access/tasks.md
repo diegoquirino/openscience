@@ -279,44 +279,64 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 ### Tests for User Story 4
 
-- [ ] T038 [P] [US4] Extend `<tpkg>/web/WebRoutingTest.java`:
+- [X] T038 [P] [US4] Extend `<tpkg>/web/WebRoutingTest.java`:
   - `GET /` with `veredito-lang=es-ES` answers `302` to `/es-ES/`, with `Cache-Control: no-cache` and `Vary: Cookie`;
   - with `veredito-lang=xx-XX` or no cookie, it answers `200` with the choice page and `Vary: Cookie`.
-- [ ] T039 [P] [US4] Create `<tpkg>/api/v1/LanguageProfileTest.java`:
+
+  **Record (2026-11-13):** three tests: `rootWithASavedLanguageGoesStraightToItsPrefix`, `rootIgnoresAnUnsupportedSavedLanguage` (`xx-XX`, `es-es` and `pt` are not exact supported tags) and `rootWithoutASavedLanguageVariesByCookie`.
+- [X] T039 [P] [US4] Create `<tpkg>/api/v1/LanguageProfileTest.java`:
   - **First sign-in:** with `Accept-Language: es-ES`, it stores `preferred_language = es-ES`.
   - **Profile wins:** a later sign-in with `en-US` keeps `es-ES`, and the session representation answers `preferredLanguage` `es-ES` (FR-012).
   - **E-mail language:** the access-code e-mail uses the request language even when the profile differs (edge case).
   - **`PUT /api/v1/participants/me`:** changes the language; a value outside the three gives `400 invalid-request` (`preferredLanguage`/`locale`).
   - **`PUT /api/v1/administrator/me`:** stores `config.admin_preferred_language`.
   - **Templates:** both `GET`s carry `_templates.default` with method `PUT` and the three inline options.
-- [ ] T040 [P] [US4] Add to `<tpkg>/api/v1/AccessTest.java`: the access-code e-mail subject and body arrive in pt-BR, en-US and es-ES according to `Accept-Language` (FR-014, SC-005 back-end part)
+
+  **Record (2026-11-13):** six tests over Testcontainers MySQL and Mailpit with `MovableClock`. Invalid values `fr-FR`, `es-es` and `en` give `locale`; `{}` gives `required`. The administrator's language is restored in `finally`. The template also checks `required`, `minItems` and `maxItems` = 1. Spring HATEOAS 3 names a template after its input type (`putPreferredLanguageRequest`), so both affordances use `withName("default")`.
+- [X] T040 [P] [US4] Add to `<tpkg>/api/v1/AccessTest.java`: the access-code e-mail subject and body arrive in pt-BR, en-US and es-ES according to `Accept-Language` (FR-014, SC-005 back-end part)
+
+  **Record (2026-11-13):** already covered by `AccessTest.theEmailIsWrittenInTheLanguageOfTheRequest` (Phase 3, parameterized over the three locales: subject and body from each bundle); nothing added.
 
 ### Implementation for User Story 4
 
-- [ ] T041 [US4] Change `<pkg>/web/LocaleRoutingFilter.java`: for `GET /`, a cookie `veredito-lang` with a supported value answers `302` to `/<locale>/`; every answer on `/` carries `Vary: Cookie` (contracts/web.md "Root page")
-- [ ] T042 [US4] Add `PUT` to `ParticipantMeController` and `AdministratorMeController` (body `{ "preferredLanguage": ... }`, values `pt-BR`, `en-US`, `es-ES`), and the HAL-FORMS `_templates.default` affordance on both `GET` representations; complete documentation
-- [ ] T043 [P] [US4] Create `backend/src/main/resources/static/language.js` and reference it from `static/index.html`; adjust `static/language.css` for the selected option:
+- [X] T041 [US4] Change `<pkg>/web/LocaleRoutingFilter.java`: for `GET /`, a cookie `veredito-lang` with a supported value answers `302` to `/<locale>/`; every answer on `/` carries `Vary: Cookie` (contracts/web.md "Root page")
+
+  **Record (2026-11-13):** the supported prefixes come from `LocaleConfig.SUPPORTED_TAGS` (new); only an exact tag redirects, with `Cache-Control: no-cache`; otherwise `/` forwards to the choice page as before.
+- [X] T042 [US4] Add `PUT` to `ParticipantMeController` and `AdministratorMeController` (body `{ "preferredLanguage": ... }`, values `pt-BR`, `en-US`, `es-ES`), and the HAL-FORMS `_templates.default` affordance on both `GET` representations; complete documentation
+
+  **Record (2026-11-13):** body `PreferredLanguageRequest` (`@NotNull`, so the HAL-FORMS property is `required`); validation in `ProfileService` (`required`/`locale`). The inline options come from a `HalFormsConfiguration` bean in `HypermediaConfig`. Each operation documents 200 (example with `_templates`), 400, 401 and 403; `ApiDocumentationCompletenessTest` and `AuthorizationTest` pass.
+- [X] T043 [P] [US4] Create `backend/src/main/resources/static/language.js` and reference it from `static/index.html`; adjust `static/language.css` for the selected option:
   - **Preselection:** the first entry of `navigator.languages` whose language is `pt`, `en` or `es`; otherwise pt-BR.
   - **Confirm:** sets `veredito-lang=<locale>; Path=/; Max-Age=31536000; SameSite=Lax` and opens the prefix.
   - **Without JavaScript:** the three options stay plain links.
-- [ ] T044 [P] [US4] Create `<app>/core/language.service.ts`, with a Vitest spec, implementing `contracts/web.md` ("Language cookie in the Angular builds", "Language switch"):
+
+  **Record (2026-11-13):** the preselected link gets `aria-current="true"` and the focus; `language.css` marks it with a darker background, bold text and an outline (no symbol, so the accessible name stays the language name). The cookie is set on the click of any `a[hreflang]`, and the link then opens the prefix.
+- [X] T044 [P] [US4] Create `<app>/core/language.service.ts`, with a Vitest spec, implementing `contracts/web.md` ("Language cookie in the Angular builds", "Language switch"):
   - **Cookie:** `setCookie(locale)` writes `veredito-lang`, and it runs at startup with the build `LOCALE_ID` (`provideAppInitializer` in `<app>/app.config.ts`).
   - **Switch:** `switchTo(locale)` does `PUT` on `vd:me` when signed in, then sets the cookie and loads the same route under the new prefix.
   - **Unsaved input:** `saveUnsaved(route, values)` and `takeUnsaved(route)` over `sessionStorage` key `veredito-unsaved:<route>`.
-- [ ] T045 [US4] Change the shell (`<app>/shell/shell.component.html`, `.ts`, `.scss`, `.spec.ts`):
+
+  **Record (2026-11-13):** `LOCALES` moved here from the shell. The page load goes through the `LOAD_PAGE` token, so specs replace it. A failed `PUT` does not stop the switch. A form registers its values with `keepOnSwitch(route, values)` in its constructor; the entry is dropped when the form is destroyed, and `takeUnsaved` removes the entry it reads. Vitest: 7 tests.
+- [X] T045 [US4] Change the shell (`<app>/shell/shell.component.html`, `.ts`, `.scss`, `.spec.ts`):
   - a Material menu in the header with the three languages, each labeled in its own language, the current one marked, calling `language.switchTo`;
   - the footer keeps the version and loses the language links.
 
   Update the XLIFF units.
-- [ ] T046 [US4] Use the language service in the screens:
+
+  **Record (2026-11-13):** the header button shows the current language and is named "Language: <language>" (`shell.language`, built with `$localize`). Each menu option has `lang`; the current one has `aria-current="true"` and a check mark hidden from screen readers. Choosing the current language does nothing. The unit `shell.otherLanguages` was replaced by `shell.language` in pt-BR and es-ES. The footer test of `e2e/locales.spec.ts` moved to `e2e/language.spec.ts` (header switch).
+- [X] T046 [US4] Use the language service in the screens:
   - **Sign-in form:** saves name and e-mail before a switch and restores them after the reload (`veredito-unsaved:/participate`).
   - **Code screen, after sign-in:** if `preferredLanguage` differs from `LOCALE_ID`, sets the cookie and opens `/<profile locale>/welcome` or `/<profile locale>/admin` with a reload (FR-012, US4 scenario 7).
-- [ ] T047 [US4] Add `frontend/e2e/language.spec.ts`:
+
+  **Record (2026-11-13):** the restored values override the pending code; the code screen keeps its state across a switch through the pending code in `sessionStorage`. A profile language outside the three is ignored. Vitest: three new tests (sign-in restore; code screen redirect to `/es-ES/welcome` and no redirect when the profile has no language).
+- [X] T047 [US4] Add `frontend/e2e/language.spec.ts`:
   - **Preselection:** Playwright contexts with `locale` `pt-BR`, `es-MX`, `en-GB` and `fr-FR` (expect "Português (Brasil)", "Español (España)", "English (US)", "Português (Brasil)").
   - **Cookie:** confirming sets the cookie and `/` redirects afterwards; an invalid cookie shows the choice page; a direct `/es-ES/` saves `es-ES`.
   - **Sign-in in each locale:** e-mail subject in that locale and no text from another locale on the screens (SC-005).
   - **Profile wins (SC-006):** a participant with profile `es-ES` signs in from `/en-US/` and ends on `/es-ES/welcome`.
   - **Header switch:** on the sign-in form it keeps the typed values; when signed in it updates the profile.
+
+  **Record (2026-11-13):** 12 tests per project (desktop and phone), all passing against local staging. Other-locale text is checked on the welcome screen. The profile test signs in on `/pt-BR/`, switches to es-ES from the header, clears the cookies, waits until 65 s after the first code (one code per minute) and signs in from `/en-US/`: the e-mail comes in en-US and the screen opens on `/es-ES/welcome`. Full e2e suite: 60 passed, 4 skipped by design (no-scroll checks on phone only, administrator on desktop only).
 
 **Checkpoint**: the three locales work from the first screen to the area after sign-in, with e-mails in the language in use
 

@@ -9,7 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-/** Rules and headers of {@code specs/003-deployment-foundation/contracts/web-routing.md}. */
+/**
+ * Rules and headers of {@code specs/003-deployment-foundation/contracts/web-routing.md}, and the root
+ * page of {@code specs/004-email-code-access/contracts/web.md}.
+ */
 class WebRoutingTest extends ApiTestBase {
 
     private static final String NO_CACHE = "no-cache";
@@ -21,6 +24,31 @@ class WebRoutingTest extends ApiTestBase {
                 .then().statusCode(200)
                 .header("Cache-Control", NO_CACHE)
                 .body(containsString("/pt-BR/"));
+    }
+
+    @Test
+    void rootWithASavedLanguageGoesStraightToItsPrefix() {
+        request().cookie("veredito-lang", "es-ES").get("/")
+                .then().statusCode(302)
+                .header("Location", "/es-ES/")
+                .header("Cache-Control", NO_CACHE)
+                .header("Vary", containsString("Cookie"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"xx-XX", "es-es", "pt"})
+    void rootIgnoresAnUnsupportedSavedLanguage(String value) {
+        request().accept("text/html").cookie("veredito-lang", value).get("/")
+                .then().statusCode(200)
+                .header("Vary", containsString("Cookie"))
+                .body(containsString("/pt-BR/"));
+    }
+
+    @Test
+    void rootWithoutASavedLanguageVariesByCookie() {
+        request().accept("text/html").get("/")
+                .then().statusCode(200)
+                .header("Vary", containsString("Cookie"));
     }
 
     @Test

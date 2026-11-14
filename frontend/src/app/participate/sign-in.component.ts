@@ -12,9 +12,12 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { LanguageService } from '../core/language.service';
 import { SessionService } from '../core/session.service';
 import { emailValidator, NAME_MAX_LENGTH, nameValidator } from './access-validators';
 import { readPendingCode, savePendingCode } from './pending-code';
+
+const ROUTE = '/participate';
 
 /** First step of the sign-in: name and e-mail, then "Send code" (spec 004, US1). */
 @Component({
@@ -26,6 +29,7 @@ import { readPendingCode, savePendingCode } from './pending-code';
 export class SignInComponent {
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
+  private readonly language = inject(LanguageService);
 
   protected readonly nameMaxLength = NAME_MAX_LENGTH;
   protected readonly nameError = fieldMessage({ field: 'name', code: 'size' });
@@ -44,6 +48,11 @@ export class SignInComponent {
     if (pending) {
       this.form.setValue({ name: pending.name, email: pending.typedEmail });
     }
+    const unsaved = this.language.takeUnsaved(ROUTE);
+    if (unsaved) {
+      this.form.patchValue({ name: unsaved['name'] ?? '', email: unsaved['email'] ?? '' });
+    }
+    this.language.keepOnSwitch(ROUTE, () => this.form.getRawValue());
   }
 
   protected submit(): void {

@@ -1,5 +1,6 @@
 package io.github.diegoquirino.veredito.api;
 
+import io.github.diegoquirino.veredito.api.v1.PreferredLanguageRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.UriTemplate;
@@ -7,6 +8,8 @@ import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 import org.springframework.hateoas.mediatype.hal.CurieProvider;
 import org.springframework.hateoas.mediatype.hal.DefaultCurieProvider;
+import org.springframework.hateoas.mediatype.hal.forms.HalFormsConfiguration;
+import org.springframework.hateoas.mediatype.hal.forms.HalFormsOptions;
 
 /**
  * HAL-FORMS first, so it is the representation chosen for {@code Accept: *}{@code /*}; the CURIE
@@ -27,5 +30,14 @@ public class HypermediaConfig {
                 return template.toString();
             }
         };
+    }
+
+    /** The three locales as the inline options of every {@code preferredLanguage} property. */
+    @Bean
+    public HalFormsConfiguration halFormsConfiguration() {
+        return new HalFormsConfiguration().withOptions(
+                PreferredLanguageRequest.class,
+                "preferredLanguage",
+                property -> HalFormsOptions.inline(LocaleConfig.SUPPORTED_TAGS).withMinItems(1L).withMaxItems(1L));
     }
 }

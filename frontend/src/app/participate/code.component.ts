@@ -13,6 +13,7 @@ import {
   unexpectedErrorMessage,
 } from '../core/problem-messages';
 import { areaOf } from '../core/guards';
+import { isLocale, LanguageService } from '../core/language.service';
 import { SessionService } from '../core/session.service';
 import { codeValidator } from './access-validators';
 import { clearPendingCode, PendingCode, readPendingCode, savePendingCode } from './pending-code';
@@ -27,6 +28,7 @@ import { clearPendingCode, PendingCode, readPendingCode, savePendingCode } from 
 export class CodeComponent {
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
+  private readonly language = inject(LanguageService);
 
   protected readonly codeError = fieldMessage({ field: 'code', code: 'required' });
   protected readonly form = new FormGroup({
@@ -68,7 +70,13 @@ export class CodeComponent {
       .subscribe({
         next: (session) => {
           clearPendingCode();
-          void this.router.navigateByUrl(areaOf(session.subject));
+          const area = areaOf(session.subject);
+          const preferred = session.preferredLanguage;
+          if (preferred && preferred !== this.language.current && isLocale(preferred)) {
+            this.language.open(preferred, area);
+          } else {
+            void this.router.navigateByUrl(area);
+          }
         },
         error: (error: unknown) => {
           this.sending.set(false);

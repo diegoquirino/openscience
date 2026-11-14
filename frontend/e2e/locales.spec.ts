@@ -25,19 +25,3 @@ for (const path of ['/fr-FR/', '/xyz']) {
     await expect(page.getByRole('link', { name: 'English (US)' })).toBeVisible();
   });
 }
-
-test('a footer language link opens the same route under the other prefix with a page load (US6 scenarios 3 and 4)', async ({
-  page,
-}) => {
-  await page.goto('/pt-BR/participate');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Participar');
-  await page.evaluate(() => ((window as unknown as Record<string, unknown>)['vereditoMarker'] = true));
-
-  await page.locator('footer').getByRole('link', { name: 'English (US)' }).click();
-
-  await expect(page).toHaveURL('/en-US/participate');
-  await expect(page.locator('html')).toHaveAttribute('lang', 'en-US');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Participate');
-  const kept = await page.evaluate(() => (window as unknown as Record<string, unknown>)['vereditoMarker']);
-  expect(kept).toBeUndefined();
-});
