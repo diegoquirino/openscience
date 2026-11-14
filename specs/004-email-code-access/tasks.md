@@ -233,32 +233,39 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 ### Tests for User Story 2
 
-- [ ] T031 [P] [US2] Create `<tpkg>/api/v1/AuthorizationTest.java`:
+- [X] T031 [P] [US2] Create `<tpkg>/api/v1/AuthorizationTest.java`:
   - **Enumeration:** reads `/v3/api-docs/v1` and takes every operation tagged "Administration".
   - **Denials:** for each one, no session answers `401 authentication-required`, and a participant session answers `403 forbidden`.
   - **Administrator:** gets neither `401` nor `403`.
   - **Participant-only operations:** with the administrator session, they answer `403` (US2 scenario 4).
   - **Report and logs:** prints how many operations were checked (SC-003). With `OutputCaptureExtension`, each refusal logs one `WARN` line with the caller kind, the pseudonym, the method and the path, and no e-mail or cookie value (US2 scenario 3).
-- [ ] T032 [P] [US2] Create `<tpkg>/api/v1/AdministratorAccessTest.java`:
+  **Record (2026-11-13):** the operations come from `/v3/api-docs/v1` by tag; path variables become `1`, and `PUT`/`POST`/`PATCH` send `{}`. Today it checks 1 "Administration" operation (`GET /api/v1/administrator/me`) and 1 "Participation" operation (`GET /api/v1/participants/me`); later specs are checked as soon as they tag their operations. The participant's pseudonym for the log line is read from `vd:session`.
+- [X] T032 [P] [US2] Create `<tpkg>/api/v1/AdministratorAccessTest.java`:
   - **Sign-in:** signing in with `diegoquirino@gmail.com` gives a session with `subject` `administrator` and no `pseudonym`.
   - **Data:** no new `participant` row; `config.admin_name` is the typed name; `config.admin_preferred_language` is set on the first sign-in only.
   - **Profile:** `GET /api/v1/administrator/me` gives the contract body.
   - **Entry point:** offers `vd:me` to the administrator address.
 
   Extend `<tpkg>/web/ApiDocsAccessTest.java` (`Production`): with the administrator session, `/swagger-ui.html` and `/v3/api-docs/v1` open; with a participant session, `401`.
+  **Record (2026-11-13):** `AdministratorAccessTest` signs the administrator in twice with real codes (` DiegoQuirino@Gmail.com ` in es-ES, then the plain address in en-US 61 s later): no `participant` row, the latest name kept, the language of the first sign-in kept, and `vd:me` from the entry point gives the contract body. The `config` columns are cleared before and restored after. A second case reads the participant's own profile through `vd:me`. The `ApiDocsAccessTest` cases were already added in Phase 2.
 
 ### Implementation for User Story 2
 
-- [ ] T033 [US2] Create `<pkg>/api/v1/ParticipantMeController.java` (`GET /api/{version}/participants/me`, tag "Participation") and `<pkg>/api/v1/AdministratorMeController.java` (`GET /api/{version}/administrator/me`, tag "Administration"), with the representation models of `contracts/access.md` and complete documentation (examples, `401`, `403`)
-- [ ] T034 [P] [US2] Create `<app>/core/guards.ts` (`visitorOnly`, `participantOnly`, `administratorOnly`, reading `session.service`; the redirects of `contracts/web.md` "Guards") and an HTTP interceptor that sends a `401` from any call to `/participate`; Vitest specs
-- [ ] T035 [P] [US2] Create `<app>/admin/admin.component.ts` (and `.html`, `.scss`, `.spec.ts`): "Administration" title, the administrator's name, and a Material list with Import, Export, Dashboard and Participants, all disabled (US2 scenario 1); add the XLIFF units
-- [ ] T036 [US2] Wire the areas:
+- [X] T033 [US2] Create `<pkg>/api/v1/ParticipantMeController.java` (`GET /api/{version}/participants/me`, tag "Participation") and `<pkg>/api/v1/AdministratorMeController.java` (`GET /api/{version}/administrator/me`, tag "Administration"), with the representation models of `contracts/access.md` and complete documentation (examples, `401`, `403`)
+  **Record (2026-11-13):** models `ParticipantProfileModel` (pseudonym, name, language, `registeredAt`) and `AdministratorProfileModel` (name, e-mail, language), each with `self`; `access/ProfileService` reads them. The `_templates` for `PUT` come with T042. The authorization rules, the `403` handler and the `WARN` log were already in place from Phase 2. `mvnw -B verify` BUILD SUCCESS, 183 tests, none failed.
+- [X] T034 [P] [US2] Create `<app>/core/guards.ts` (`visitorOnly`, `participantOnly`, `administratorOnly`, reading `session.service`; the redirects of `contracts/web.md` "Guards") and an HTTP interceptor that sends a `401` from any call to `/participate`; Vitest specs
+  **Record (2026-11-13):** `areaOf(subject)` maps visitor, participant and administrator to `/participate`, `/welcome` and `/admin`. `SessionService.current()` reads the session once per page load (later navigations use the signal); `clear()` forgets it. `core/unauthorized.interceptor.ts` clears the session and opens `/participate` on a `401` from `/api/**`. Specs: `guards.spec.ts` (7), `unauthorized.interceptor.spec.ts` (2), one more case in `session.service.spec.ts`.
+- [X] T035 [P] [US2] Create `<app>/admin/admin.component.ts` (and `.html`, `.scss`, `.spec.ts`): "Administration" title, the administrator's name, and a Material list with Import, Export, Dashboard and Participants, all disabled (US2 scenario 1); add the XLIFF units
+  **Record (2026-11-13):** a `mat-action-list` (role `group`, labeled "Administrative functions") with four disabled buttons, "Signed in as {name}" and a note that the functions come in the next releases. 8 XLIFF units in pt-BR and es-ES; "Dashboard" follows the glossary ("Painel de andamento", "Panel de progreso").
+- [X] T036 [US2] Wire the areas:
   - **Routes:** `/admin` (`administratorOnly`), `/welcome` (`participantOnly`), `/participate` and `/participate/code` (`visitorOnly`).
   - **After sign-in:** the code screen opens `/admin` for the administrator and `/welcome` for a participant.
   - **Home page:** the "Participate" button goes to the person's area when signed in.
-- [ ] T037 [US2] Add `frontend/e2e/admin.spec.ts`:
+  **Record (2026-11-13):** `/admin` is lazy like the other areas (initial bundle 419.6 kB). The code screen now uses the session returned by `vd:sign-in` instead of reading it again with `refresh()`; the answer carries the same links, and a failed reread no longer sends the person back to the form. The interceptor joins `acceptLanguageInterceptor` in `app.config.ts`. Vitest: 59 tests in 16 files; `i18n:check` 49 units; `npm run build` passes.
+- [X] T037 [US2] Add `frontend/e2e/admin.spec.ts`:
   - signing in as `diegoquirino@gmail.com` (code from Mailpit) opens `/pt-BR/admin` with the four menu items disabled;
   - a participant who opens `/pt-BR/admin` lands on `/pt-BR/welcome`.
+  **Record (2026-11-13):** a third case sends a visitor from `/pt-BR/admin` and `/pt-BR/welcome` to `/pt-BR/participate`; the administrator also goes back to `/pt-BR/admin` from `/pt-BR/participate`. The administrator case runs only in the desktop project: both projects run in parallel and the single address accepts one code per 60 s. `latestMessageTo` takes the id of the newest message seen before the request, so an older code to the same address is never used. Against local staging, the full run gave 37 passed and 4 skipped; the administrator case failed only on the menu locator (a `mat-action-list` has role `group`, not `list`), and after the fix `admin.spec.ts` gave 5 passed, 1 skipped.
 
 **Checkpoint**: the two areas are separated in the API and in the screens; Swagger opens in production for the administrator
 

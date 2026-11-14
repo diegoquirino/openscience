@@ -9,21 +9,31 @@ export interface MailMessage {
   code: string;
 }
 
-/** The newest message to the address, waiting a few seconds for it to arrive. */
-export async function latestMessageTo(request: APIRequestContext, address: string): Promise<MailMessage> {
+/** The id of the newest message to the address, if any. */
+export async function newestMessageId(request: APIRequestContext, address: string): Promise<string | undefined> {
+  const search = await request.get(`${MAILPIT_URL}/api/v1/search`, { params: { query: `to:"${address}"` } });
+  return (await search.json()).messages?.[0]?.ID;
+}
+
+/**
+ * The newest message to the address, waiting a few seconds for it to arrive. For an address used
+ * before, pass the id seen before the request so an older message is not taken.
+ */
+export async function latestMessageTo(
+  request: APIRequestContext,
+  address: string,
+  previousId?: string,
+): Promise<MailMessage> {
   let id: string | undefined;
   await expect
     .poll(
       async () => {
-        const search = await request.get(`${MAILPIT_URL}/api/v1/search`, {
-          params: { query: `to:"${address}"` },
-        });
-        id = (await search.json()).messages?.[0]?.ID;
-        return id;
+        id = await newestMessageId(request, address);
+        return id !== undefined && id !== previousId;
       },
-      { message: 'a message in Mailpit for the test address', timeout: 10_000 },
+      { message: 'a new message in Mailpit for the test address', timeout: 10_000 },
     )
-    .toBeTruthy();
+    .toBe(true);
   const message = await (await request.get(`${MAILPIT_URL}/api/v1/message/${id}`)).json();
   const code = /(?<!\d)(\d{6})(?!\d)/.exec(message.Text)?.[1];
   if (!code) {

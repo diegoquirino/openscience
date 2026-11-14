@@ -107,6 +107,21 @@ describe('SessionService', () => {
     await expect(requested).rejects.toThrow('vd:sign-in');
   });
 
+  it('reads the session once for current() and forgets it on clear()', async () => {
+    const first = firstValueFrom(service.current());
+    http.expectOne('/api/v1').flush(PARTICIPANT_ENTRY);
+    http.expectOne('/links/session').flush(SESSION);
+    expect((await first)?.subject).toBe('participant');
+
+    expect((await firstValueFrom(service.current()))?.subject).toBe('participant');
+    http.expectNone('/api/v1');
+
+    service.clear();
+    expect(await firstValueFrom(service.current())).toBeNull();
+    expect(service.subject()).toBe('visitor');
+    http.expectNone('/api/v1');
+  });
+
   it('signs out through vd:sign-out of the session', async () => {
     const refreshed = firstValueFrom(service.refresh());
     http.expectOne('/api/v1').flush(PARTICIPANT_ENTRY);

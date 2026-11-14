@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
 import {
   fieldMessage,
   Problem,
@@ -13,6 +12,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { areaOf } from '../core/guards';
 import { SessionService } from '../core/session.service';
 import { codeValidator } from './access-validators';
 import { clearPendingCode, PendingCode, readPendingCode, savePendingCode } from './pending-code';
@@ -65,11 +65,10 @@ export class CodeComponent {
     this.sending.set(true);
     this.session
       .signIn(pending.signInHref, pending.email, this.code.value)
-      .pipe(switchMap(() => this.session.refresh()))
       .subscribe({
-        next: () => {
+        next: (session) => {
           clearPendingCode();
-          void this.router.navigate(['/welcome']);
+          void this.router.navigateByUrl(areaOf(session.subject));
         },
         error: (error: unknown) => {
           this.sending.set(false);

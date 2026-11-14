@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { SessionService } from '../core/session.service';
 import { CodeComponent } from './code.component';
 import { PendingCode, readPendingCode, savePendingCode } from './pending-code';
 
@@ -46,6 +47,7 @@ describe('CodeComponent', () => {
         provideRouter([
           { path: 'participate', component: BlankPage },
           { path: 'welcome', component: BlankPage },
+          { path: 'admin', component: BlankPage },
         ]),
       ],
     }).compileComponents();
@@ -104,14 +106,24 @@ describe('CodeComponent', () => {
     expect(signIn.request.method).toBe('POST');
     expect(signIn.request.body).toEqual({ email: 'ana@example.com', code: '123 456' });
     signIn.flush(SESSION, { status: 201, statusText: 'Created' });
-    http.expectOne('/api/v1').flush({
-      _links: { self: { href: '/api/v1' }, curies: CURIES, 'vd:session': { href: '/links/session' } },
-    });
-    http.expectOne('/links/session').flush(SESSION);
     await fixture.whenStable();
 
     expect(TestBed.inject(Router).url).toBe('/welcome');
+    expect(TestBed.inject(SessionService).subject()).toBe('participant');
     expect(readPendingCode()).toBeNull();
+  });
+
+  it('opens the administration for the administrator', async () => {
+    savePendingCode(pendingCode(60));
+    const fixture = await render();
+
+    await signInWith(fixture, '123 456');
+    http
+      .expectOne('/links/sessions')
+      .flush({ ...SESSION, subject: 'administrator', pseudonym: undefined }, { status: 201, statusText: 'Created' });
+    await fixture.whenStable();
+
+    expect(TestBed.inject(Router).url).toBe('/admin');
   });
 
   it('does not send a code of the wrong shape', async () => {

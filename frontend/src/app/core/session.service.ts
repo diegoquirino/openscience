@@ -43,6 +43,12 @@ export class SessionService {
 
   readonly session = signal<Session | null>(null);
   readonly subject = computed<Subject>(() => this.session()?.subject ?? 'visitor');
+  private known = false;
+
+  /** The session as last read, reading it once per page load. */
+  current(): Observable<Session | null> {
+    return this.known ? of(this.session()) : this.refresh();
+  }
 
   /** Reads the entry point and, when it offers `vd:session`, the current session. */
   refresh(): Observable<Session | null> {
@@ -52,8 +58,13 @@ export class SessionService {
         return href ? this.http.get<SessionBody>(href).pipe(map(toSession)) : of(null);
       }),
       catchError(() => of(null)),
-      tap((session) => this.session.set(session)),
+      tap((session) => this.remember(session)),
     );
+  }
+
+  /** Forgets the session after the API refused it (`401`). */
+  clear(): void {
+    this.remember(null);
   }
 
   /** Follows `vd:request-code`; the answer carries the `vd:sign-in` link for {@link signIn}. */
@@ -78,14 +89,14 @@ export class SessionService {
   signIn(signInHref: string, email: string, code: string): Observable<Session> {
     return this.http.post<SessionBody>(signInHref, { email, code }).pipe(
       map(toSession),
-      tap((session) => this.session.set(session)),
+      tap((session) => this.remember(session)),
     );
   }
 
   /** Follows `vd:sign-out` of the session; the session is gone locally even if the call fails. */
   signOut(): Observable<void> {
     const href = this.session()?.links.href('sign-out');
-    this.session.set(null);
+    this.remember(null);
     if (!href) {
       return of(undefined);
     }
@@ -93,6 +104,11 @@ export class SessionService {
       map(() => undefined),
       catchError(() => of(undefined)),
     );
+  }
+
+  private remember(session: Session | null): void {
+    this.known = true;
+    this.session.set(session);
   }
 
   private entryLinks(): Observable<Links> {
