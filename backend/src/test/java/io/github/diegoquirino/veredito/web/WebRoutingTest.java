@@ -26,6 +26,14 @@ class WebRoutingTest extends ApiTestBase {
                 .body(containsString("/pt-BR/"));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"/favicon.ico", "/apple-touch-icon.png", "/veredito-logo.png"})
+    void brandIconsAreServedAtTheRoot(String path) {
+        request().get(path)
+                .then().statusCode(200)
+                .contentType(containsString("image/"));
+    }
+
     @Test
     void rootWithASavedLanguageGoesStraightToItsPrefix() {
         request().cookie("veredito-lang", "es-ES").get("/")

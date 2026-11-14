@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: Complete (2026-11-14; SC-002 checked on five production sends, and the code send takes about 4 s against the 2 s of Principle V, accepted up to 7 s by the researcher, see research section 6; shortening the wait is planned for the pilot)
 
 **Input**: User description: "Participants and the administrator sign in by entering name and e-mail and typing a 6-digit code sent by e-mail, with no invitation and no password. The administrator (diegoquirino@gmail.com) goes to the administrative area; everyone else goes on to the participation flow."
 

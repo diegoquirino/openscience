@@ -60,9 +60,12 @@ describe('ShellComponent', () => {
     return { fixture, options: Array.from(document.querySelectorAll<HTMLButtonElement>('[mat-menu-item]')) };
   }
 
-  it('shows Veredito in the header', async () => {
+  it('shows the logo and Veredito in the header, linked to the home page', async () => {
     const element = (await render()).nativeElement as HTMLElement;
-    expect(element.querySelector('header')?.textContent).toContain('Veredito');
+    const brand = element.querySelector('header a.brand')!;
+    expect(brand.textContent?.trim()).toBe('Veredito');
+    expect(brand.querySelector('img.logo')?.getAttribute('src')).toBe('veredito-logo.png');
+    expect(brand.querySelector('img.logo')?.getAttribute('alt')).toBe('');
   });
 
   it('shows only the build version in the footer', async () => {

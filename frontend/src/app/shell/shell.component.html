@@ -1,7 +1,10 @@
 <header>
   <app-staging-banner [environment]="environment()" />
   <mat-toolbar class="toolbar">
-    <a class="brand" routerLink="/" i18n="@@shell.title">Veredito</a>
+    <a class="brand" routerLink="/">
+      <img class="logo" src="veredito-logo.png" alt="" width="36" height="36" />
+      <span i18n="@@shell.title">Veredito</span>
+    </a>
     <span class="spacer"></span>
     @if (signedIn(); as current) {
       @if (current.name) {

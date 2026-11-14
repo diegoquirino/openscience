@@ -11,9 +11,22 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: inherit;
   font: var(--mat-sys-title-large);
   text-decoration: none;
+}
+
+.logo {
+  display: block;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .page {
