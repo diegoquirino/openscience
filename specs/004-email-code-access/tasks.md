@@ -386,12 +386,37 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
 
 **Purpose**: rehearse in local staging, prepare the secret and deploy (constitution: staging before production)
 
-- [ ] T054 If Spring Boot 4.2.0 is GA by now (due on 2026-11-19), move `backend/pom.xml` to the latest 4.2.x, run `.\mvnw.cmd -B verify` and record the versions in `specs/004-email-code-access/research.md` section 1; otherwise record that 4.1.2 stays
-- [ ] T055 Run quickstart sections 1 to 9 in local staging and record the results in this task, including each failure case of section 5 and the `WARN` line of section 8 (without e-mail or token)
-- [ ] T056 [P] Update `.github/workflows/deploy.yml` (`--set-secrets` gains `CODE_HASH_KEY=veredito-code-key:latest`, as in `contracts/pipeline.md`) and `docs/cloud-setup.md`:
+- [X] T054 If Spring Boot 4.2.0 is GA by now (due on 2026-11-19), move `backend/pom.xml` to the latest 4.2.x, run `.\mvnw.cmd -B verify` and record the versions in `specs/004-email-code-access/research.md` section 1; otherwise record that 4.1.2 stays
+
+  **Record (2026-11-13):** Maven Central lists 4.2.0-RC2 as the latest release; 4.1.2 is the latest 4.1.x and stays. Recorded in research section 1.
+- [X] T055 Run quickstart sections 1 to 9 in local staging and record the results in this task, including each failure case of section 5 and the `WARN` line of section 8 (without e-mail or token)
+
+  **Record (2026-11-13):** local staging on port 8200 (`APP_PORT`), rebuilt with `up --build -d`. The `down -v` of section 2 was not run: deleting the volumes is blocked, so the database keeps earlier test rows and the pseudonyms are not `R-0001`/`R-0002`.
+  - **Sections 1 and 9:** `mvnw verify`, `i18n:check`, `npm test`, `npm run build` and the full Playwright suite pass (Phase 6 record).
+  - **Sections 3 to 8:** run through the API by `scripts/_veredito_quickstart_004.py` (prints pass/fail and statuses only). 28 checks:
+    - **Section 3:** `/` gives the choice page with `Vary: Cookie`; `/` with cookie `en-US` gives `302` to `/en-US/`; cookie `xx-XX` gives the choice page. Preselection by browser language is covered by `e2e/language.spec.ts`.
+    - **Section 4:**
+      - name "A" and e-mail "ana@" give `400` with `name/size` and `email/email`;
+      - `  Qs-Ana-...@Example.com  ` gives `validityMinutes` 10, the normalized e-mail and one e-mail in Portuguese;
+      - the code typed as `123 456` signs in, with no new e-mail, and the row has the pseudonym, `Ana Souza` and `pt-BR`;
+      - a sign-in in es-ES gives a Spanish e-mail and profile `es-ES`; after sign-out and 61 s, a sign-in from en-US gets the e-mail in en-US and `preferredLanguage` `es-ES` (profile wins);
+      - the administrator gets an administrator session with no new participant row, and `config.admin_name` is set.
+    - **Section 5:**
+      - five wrong codes give `attemptsLeft` 4, 3, 2, 1, then `code-expired`;
+      - an immediate resend gives `429 code-resend-too-soon` (60 s);
+      - five codes 61 s apart, then a sixth, give `429 code-hourly-limit`;
+      - with `daily_email_limit = 1`, `429 daily-email-limit` (the value 450 was restored);
+      - with Mailpit stopped, `503 code-not-sent` and no `access_code` row (Mailpit restarted).
+      - **Two tabs:** this check failed at first: the replaced code got `422 invalid-code` and used up an attempt, against `contracts/access.md` ("Dead code ... replaced by a newer code"). `SignInService` now answers `code-expired` for a code that a newer one replaced, without counting an attempt (`AccessCodeRepository.replacedHashes`). `AccessTest.onlyTheLatestOfTwoCodesWorks` now expects `code-expired` and zero attempts. The check passes after the rebuild.
+    - **Section 6:** the cookie has `Path=/`, `Max-Age=86400`, `Secure`, `HttpOnly`, `SameSite=Lax`; `access_session` holds the SHA-256 of the token; sign-out gives `204`, `Max-Age=0`, then `401`.
+    - **Section 7:** the participant's `PUT` stores `es-ES`; the administrator's `PUT` stores `en-US` (restored); `400` problems come with `Content-Language` and title in each locale ("Requisição inválida", "Invalid request", "Solicitud no válida").
+    - **Section 8:** the visitor gets `401 authentication-required` and the participant `403 forbidden`. The log line is `DeniedAccessLog : Denied 403 on administrative resource: caller=participant pseudonym=R-0083 GET /api/v1/administrator/me`, with no e-mail or token.
+- [X] T056 [P] Update `.github/workflows/deploy.yml` (`--set-secrets` gains `CODE_HASH_KEY=veredito-code-key:latest`, as in `contracts/pipeline.md`) and `docs/cloud-setup.md`:
   - **Step 5:** create `veredito-code-key` with `New-SecretFromValue` and `New-RandomPassword`.
   - **Step 6:** `secretAccessor` for `veredito-run`.
   - **New note:** the secret must exist before the first deployment of 004.
+
+  **Record (2026-11-13):** step 5 gains "Access-code key (spec 004)", with the note and the check of the three secrets. Step 6 binds the three secrets and adds the single command for a project set up before 004.
 - [ ] T057 The researcher creates the secret `veredito-code-key` and its binding with the commands of `docs/cloud-setup.md`. The agent never sees, prints or logs the value; it only checks that version 1 exists and that `veredito-run` has `secretAccessor`
 - [ ] T058 Push to `Veredito`; wait for `ci.yml` to pass (all five jobs); deploy with `git push origin <commit>:refs/tags/deploy/0.4.0-1`; record the deploy run, the revision, the time and the footer version
 - [ ] T059 Run quickstart section 10 in production and record:

@@ -46,6 +46,14 @@ public class AccessCodeRepository {
                 .optional();
     }
 
+    /** The hashes of the e-mail's codes other than {@code latestId}: the codes a newer one replaced. */
+    public List<String> replacedHashes(EmailAddress email, long latestId) {
+        return jdbc.sql("SELECT code_hash FROM access_code WHERE email = ? AND id <> ?")
+                .params(email.value(), latestId)
+                .query(String.class)
+                .list();
+    }
+
     public List<Instant> sendTimesSince(EmailAddress email, Instant since) {
         return jdbc.sql("SELECT created_at FROM access_code WHERE email = ? AND created_at > ? ORDER BY created_at")
                 .params(email.value(), Timestamp.from(since))

@@ -22,6 +22,10 @@ top of them.
 | Angular, Angular CDK, Angular Material, `@angular/localize` | 22.2.6 | 22.3.0 is at RC; unchanged |
 | Playwright | 1.65.0 | Unchanged |
 
+**Rechecked on 2026-11-13, before the deployment (T054):** Maven Central lists 4.2.0-RC2 as the
+latest Spring Boot and 4.1.2 as the latest 4.1.x, so 4.1.2 stays for the deployment of 004; the move
+to 4.2.x is left to a later spec.
+
 No other new dependency: the access code, the session token and the hashes use the JDK
 (`SecureRandom`, `Mac` with HmacSHA256, `MessageDigest` with SHA-256, `MessageDigest.isEqual`).
 

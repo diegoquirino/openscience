@@ -151,18 +151,33 @@ Nobody needs the `root` password: if access as `root` is ever needed, set a new 
 inspect the database, the researcher creates a separate personal user in the same way and connects
 with the Cloud SQL Auth Proxy.
 
-Check that both secrets exist (this lists versions, not values):
+### Access-code key (spec 004)
+
+The application keys the hash of the access codes with `CODE_HASH_KEY` (HMAC-SHA256). In the same
+terminal as the block above (or after pasting its two functions again), create the secret without
+showing the value:
+
+```powershell
+New-SecretFromValue veredito-code-key (New-RandomPassword)
+```
+
+> **Before the first deployment of spec 004:** the secret and its binding of step 6 must exist.
+> Otherwise Cloud Run refuses the new revision and the previous one keeps all the traffic.
+> Changing the key later only invalidates the codes in flight (at most 10 minutes old).
+
+Check that the three secrets exist (this lists versions, not values):
 
 ```powershell
 gcloud secrets versions list veredito-db-password
 gcloud secrets versions list veredito-smtp-password
+gcloud secrets versions list veredito-code-key
 ```
 
 ## 6. Service accounts and roles
 
 | Account | Use | Roles |
 |---|---|---|
-| `veredito-run` | identity of the running service | Cloud SQL client (project); secret accessor on the two secrets |
+| `veredito-run` | identity of the running service | Cloud SQL client (project); secret accessor on the three secrets |
 | `veredito-ci` | `ci.yml` pushes images | Artifact Registry writer on `veredito` |
 | `veredito-deploy` | `deploy.yml` deploys revisions | Cloud Run developer (project); service account user on `veredito-run`; Artifact Registry reader on `veredito` |
 
@@ -173,7 +188,7 @@ gcloud iam service-accounts create veredito-deploy --display-name="Veredito depl
 
 gcloud projects add-iam-policy-binding $project `
   --member="serviceAccount:$runAccount" --role=roles/cloudsql.client --condition=None
-foreach ($secret in "veredito-db-password", "veredito-smtp-password") {
+foreach ($secret in "veredito-db-password", "veredito-smtp-password", "veredito-code-key") {
   gcloud secrets add-iam-policy-binding $secret `
     --member="serviceAccount:$runAccount" --role=roles/secretmanager.secretAccessor
 }
@@ -187,6 +202,14 @@ gcloud iam service-accounts add-iam-policy-binding $runAccount `
   --member="serviceAccount:$deployAccount" --role=roles/iam.serviceAccountUser
 gcloud artifacts repositories add-iam-policy-binding veredito --location=$region `
   --member="serviceAccount:$deployAccount" --role=roles/artifactregistry.reader
+```
+
+On a project set up before spec 004, only the new key is missing: after the variables of step 1 and
+the secret of step 5, run
+
+```powershell
+gcloud secrets add-iam-policy-binding veredito-code-key `
+  --member="serviceAccount:$runAccount" --role=roles/secretmanager.secretAccessor
 ```
 
 ## 7. Cloud Run service (public access)

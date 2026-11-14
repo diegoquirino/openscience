@@ -279,7 +279,13 @@ class AccessTest extends ApiTestBase {
         String newer = mailpit.latestCodeTo(email);
         assumeFalse(older.equals(newer), "both draws gave the same code");
 
-        sendCode(email, older, "pt-BR").then().statusCode(422).body("type", equalTo(PROBLEM + "invalid-code"));
+        sendCode(email, older, "pt-BR").then().statusCode(422).body("type", equalTo(PROBLEM + "code-expired"));
+        assertThat(jdbc.sql("SELECT MAX(attempts) FROM access_code WHERE email = ?")
+                        .param(email)
+                        .query(Integer.class)
+                        .single())
+                .as("the replaced code uses up no attempt of the latest")
+                .isZero();
         sendCode(email, newer, "pt-BR").then().statusCode(201);
     }
 

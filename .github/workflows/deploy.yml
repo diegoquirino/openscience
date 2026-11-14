@@ -76,7 +76,7 @@ jobs:
             --max-instances 4 \
             --cpu-boost \
             --set-env-vars "SPRING_PROFILES_ACTIVE=prod,DB_URL=jdbc:mysql:///veredito?cloudSqlInstance=${CLOUD_SQL_INSTANCE}&socketFactory=com.google.cloud.sql.mysql.SocketFactory,DB_USER=veredito_app,SMTP_HOST=smtp.gmail.com,SMTP_PORT=587,SMTP_USER=diegoquirino@gmail.com" \
-            --set-secrets "DB_PASSWORD=veredito-db-password:latest,SMTP_PASSWORD=veredito-smtp-password:latest"
+            --set-secrets "DB_PASSWORD=veredito-db-password:latest,SMTP_PASSWORD=veredito-smtp-password:latest,CODE_HASH_KEY=veredito-code-key:latest"
       - name: Send all traffic to the new revision (also after a rollback)
         run: gcloud run services update-traffic "$SERVICE" --region "$REGION" --to-latest
       - name: Service URL and new revision

@@ -122,6 +122,9 @@ public class SignInService {
         }
         StoredCode stored = latest.get();
         if (!AccessCodeFormat.isWellFormed(code) || !codeHasher.matches(stored.codeHash(), email, code)) {
+            if (isReplaced(email, stored, code)) {
+                return new Outcome.DeadCode();
+            }
             codes.incrementAttempts(stored.id());
             int attemptsLeft = properties.maxAttempts() - stored.attempts() - 1;
             return attemptsLeft > 0 ? new Outcome.WrongCode(attemptsLeft) : new Outcome.DeadCode();
@@ -143,6 +146,16 @@ public class SignInService {
             session = SessionView.participant(participant, expiresAt);
         }
         return new Outcome.Success(new SignedIn(token, session));
+    }
+
+    /**
+     * A code that a newer one replaced (two devices) is dead, not wrong: it does not use up an
+     * attempt of the latest code (contracts/access.md, "Dead code").
+     */
+    private boolean isReplaced(EmailAddress email, StoredCode latest, String code) {
+        return AccessCodeFormat.isWellFormed(code)
+                && codes.replacedHashes(email, latest.id()).stream()
+                        .anyMatch(hash -> codeHasher.matches(hash, email, code));
     }
 
     /** Codes stored before V3 have no name and cannot open a session. */
