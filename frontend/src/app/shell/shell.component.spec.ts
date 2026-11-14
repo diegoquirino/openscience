@@ -71,11 +71,11 @@ describe('ShellComponent', () => {
     expect(element.querySelector('footer a')).toBeNull();
   });
 
-  it('names the current language on the header switch', async () => {
+  it('shows only the flag of the current language on the header switch, named for screen readers', async () => {
     const element = (await render()).nativeElement as HTMLElement;
     const button = element.querySelector('header button.language')!;
-    expect(button.querySelector('.long')?.textContent?.trim()).toBe('English (US)');
-    expect(button.querySelector('.short')?.textContent?.trim()).toBe('en-US');
+    expect(button.textContent?.trim()).toBe('');
+    expect(button.querySelector('app-flag svg')?.getAttribute('viewBox')).toBe('0 0 38 20');
     expect(button.getAttribute('aria-label')).toBe('Language: English (US)');
   });
 
@@ -85,11 +85,15 @@ describe('ShellComponent', () => {
     expect(element.querySelector('header button.sign-out')).toBeNull();
   });
 
-  it('shows the name and "Sign out" when signed in', async () => {
+  it('shows the name and "Sign out" with their icons when signed in', async () => {
     session.set(SIGNED_IN);
     const element = (await render()).nativeElement as HTMLElement;
-    expect(element.querySelector('header .name')?.textContent?.trim()).toBe('Ana Souza');
-    expect(element.querySelector('header button.sign-out')?.textContent?.trim()).toBe('Sign out');
+    const name = element.querySelector('header .name')!;
+    const signOutButton = element.querySelector('header button.sign-out')!;
+    expect(name.textContent?.trim()).toBe('Ana Souza');
+    expect(name.querySelector('svg.icon')?.getAttribute('aria-hidden')).toBe('true');
+    expect(signOutButton.textContent?.trim()).toBe('Sign out');
+    expect(signOutButton.querySelector('svg.icon')?.getAttribute('aria-hidden')).toBe('true');
   });
 
   it('signs out and opens the home page', async () => {
@@ -112,6 +116,11 @@ describe('ShellComponent', () => {
     ]);
     expect(options.map((option) => option.getAttribute('lang'))).toEqual(['pt-BR', 'en-US', 'es-ES']);
     expect(options.map((option) => option.getAttribute('aria-current'))).toEqual([null, 'true', null]);
+    expect(options.map((option) => option.querySelector('app-flag svg')?.getAttribute('viewBox'))).toEqual([
+      '0 0 20 14',
+      '0 0 38 20',
+      '0 0 3 2',
+    ]);
   });
 
   it('switches to the chosen language', async () => {

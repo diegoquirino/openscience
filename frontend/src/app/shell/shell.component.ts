@@ -5,9 +5,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { BUILD_VERSION } from '../build-info';
 import { EntryPoint, EntryPointService } from '../core/entry-point.service';
-import { LanguageService, Locale, LOCALES } from '../core/language.service';
+import { isLocale, LanguageService, Locale, LOCALES } from '../core/language.service';
 import { SessionService } from '../core/session.service';
 import { UnavailableComponent } from '../unavailable/unavailable.component';
+import { FlagComponent } from './flag.component';
 import { StagingBannerComponent } from './staging-banner.component';
 
 @Component({
@@ -20,6 +21,7 @@ import { StagingBannerComponent } from './staging-banner.component';
     MatMenuModule,
     UnavailableComponent,
     StagingBannerComponent,
+    FlagComponent,
   ],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
@@ -37,7 +39,7 @@ export class ShellComponent {
   protected readonly environment = computed(() => this.entryPoint()?.environment ?? null);
 
   protected readonly locales = LOCALES;
-  protected readonly currentLocale = this.language.current;
+  protected readonly currentLocale: Locale = isLocale(this.language.current) ? this.language.current : 'pt-BR';
   protected readonly currentLabel = LOCALES.find((option) => option.code === this.language.current)?.label ?? '';
   protected readonly switchLabel = $localize`:@@shell.language:Language: ${this.currentLabel}:language:`;
 

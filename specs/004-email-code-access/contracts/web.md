@@ -50,8 +50,8 @@ Shown on every screen, before and after sign-in, for participants and the admini
 | Element | Rule |
 |---|---|
 | "Veredito" | Link to the home page |
-| Language switch | Material menu with the three options, each labeled in its own language; the current one is marked |
-| Name and "Sign out" | Only when signed in; "Sign out" calls `vd:sign-out` and opens the home page (US3 scenario 3) |
+| Language switch | Button with the flag of the current language (accessible name "Language: <name>"); opens a Material menu with the three options, each with its flag and labeled in its own language; the current one is marked |
+| Name and "Sign out" | Only when signed in, each with an icon; "Sign out" calls `vd:sign-out` and opens the home page (US3 scenario 3). Below 600 px the name is hidden and "Sign out" shows only its icon |
 
 The footer of 003 keeps the version and loses the language links, replaced by the header switch.
 

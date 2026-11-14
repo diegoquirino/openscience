@@ -5,20 +5,31 @@
     <span class="spacer"></span>
     @if (signedIn(); as current) {
       @if (current.name) {
-        <span class="name">{{ current.name }}</span>
+        <span class="name">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"
+            />
+          </svg>
+          <span class="name-text">{{ current.name }}</span>
+        </span>
       }
-      <button mat-button class="sign-out" type="button" (click)="signOut()" i18n="@@shell.signOut">Sign out</button>
+      <button mat-button class="sign-out" type="button" (click)="signOut()">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+        </svg>
+        <span class="label" i18n="@@shell.signOut">Sign out</span>
+      </button>
     }
     <button
-      mat-button
+      mat-icon-button
       class="language"
       type="button"
       [matMenuTriggerFor]="languageMenu"
       [attr.lang]="currentLocale"
       [attr.aria-label]="switchLabel"
     >
-      <span class="long">{{ currentLabel }}</span>
-      <span class="short">{{ currentLocale }}</span>
+      <app-flag [locale]="currentLocale" />
     </button>
     <mat-menu #languageMenu="matMenu">
       @for (option of locales; track option.code) {
@@ -28,8 +39,11 @@
           [attr.aria-current]="option.code === currentLocale ? 'true' : null"
           (click)="switchTo(option.code)"
         >
-          <span class="mark" aria-hidden="true">{{ option.code === currentLocale ? '✓' : '' }}</span>
-          {{ option.label }}
+          <span class="option">
+            <span class="mark" aria-hidden="true">{{ option.code === currentLocale ? '✓' : '' }}</span>
+            <app-flag [locale]="option.code" />
+            <span>{{ option.label }}</span>
+          </span>
         </button>
       }
     </mat-menu>
