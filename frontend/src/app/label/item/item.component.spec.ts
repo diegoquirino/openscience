@@ -41,7 +41,10 @@ describe('LabelItemComponent', () => {
   const takeUnsaved = vi.fn();
   const keepOnSwitch = vi.fn();
 
-  function create(options: { draft?: ItemBody['draft']; unsaved?: Record<string, string> } = {}) {
+  function create(
+    options: { draft?: ItemBody['draft']; unsaved?: Record<string, string>; reservationExpiresAt?: string } = {},
+  ) {
+    const held = options.reservationExpiresAt ? { ...task, reservationExpiresAt: options.reservationExpiresAt } : task;
     takeUnsaved.mockReturnValue(options.unsaved);
     TestBed.configureTestingModule({
       providers: [
@@ -49,9 +52,9 @@ describe('LabelItemComponent', () => {
         {
           provide: LabelService,
           useValue: {
-            task: signal(task),
+            task: signal(held),
             clockOffsetMs: signal(0),
-            currentTask: () => of(task),
+            currentTask: () => of(held),
             getItem: () => of({ ...item, draft: options.draft ?? null }),
             saveResponse,
             nextPending,
@@ -120,6 +123,35 @@ describe('LabelItemComponent', () => {
     });
     expect(clearUnsaved).toHaveBeenCalledWith(unsavedKey(41, 2));
     expect(navigate).toHaveBeenCalledWith(['/label/items', 3]);
+  });
+
+  it('shows no expiry warning while time is left', async () => {
+    const fixture = create();
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('[role=timer]')?.textContent).toContain('0');
+    expect(root.querySelector('[role=timer].expired')).toBeNull();
+    expect(root.querySelector('p.warning')).toBeNull();
+  });
+
+  it('warns when the countdown is at zero and keeps the unsaved choices (T026)', async () => {
+    const fixture = create({
+      reservationExpiresAt: new Date(Date.now() - 5_000).toISOString(),
+      unsaved: { impact: 'HIGH', operation: 'FLAG', comment: 'typed' },
+    });
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('[role=timer]')?.textContent).toContain('00:00');
+    expect(root.querySelector('[role=timer].expired')).not.toBeNull();
+    expect(root.querySelector('p.warning[role=alert]')).not.toBeNull();
+    expect(fixture.componentInstance['impact']()).toBe('HIGH');
+    expect(fixture.componentInstance['operation']()).toBe('FLAG');
+    expect(fixture.componentInstance['comment']()).toBe('typed');
+    const button = root.querySelector('button[type=submit]') as HTMLButtonElement;
+    expect(button.disabled).toBe(false);
   });
 
   it('goes to the review when no item is pending', async () => {

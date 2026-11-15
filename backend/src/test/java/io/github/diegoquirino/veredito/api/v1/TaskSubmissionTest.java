@@ -153,6 +153,53 @@ class TaskSubmissionTest extends ApiTestBase {
     }
 
     @Test
+    void personWhoLabeledOneRoleOfEveryBlockGetsNoneAvailableForYou() {
+        String a = participantSession();
+        // Four blocks: the person may take one role of each, never both roles of a block.
+        for (int block = 1; block <= 4; block++) {
+            Response task = reserve(a);
+            assertThat(task.<Integer>path("blockNumber")).isEqualTo(block);
+            answerAll(a, task, task.<Integer>path("size"));
+            Response submitted = as(a).post(submissionUrl(task));
+            submitted.then().statusCode(200)
+                    .body("status", equalTo("completed"))
+                    .body("outcome", equalTo(block < 4 ? "more-available" : "none-available-for-you"));
+            assertThat(submitted.<Object>path("_links.'vd:next-task'") != null).isEqualTo(block < 4);
+        }
+
+        as(a).post("/api/v1/tasks/reservations").then().statusCode(200)
+                .body("outcome", equalTo("none-available-for-you"));
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM task WHERE status = 'free'").query(Long.class).single())
+                .isEqualTo(4);
+    }
+
+    @Test
+    void reserveOnACompletedDatabaseReportsDatabaseComplete() {
+        // Two raters (one per role) already answered everything; the caller arrives afterwards.
+        participantSession();
+        signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
+        List<Long> raters = jdbc.sql("SELECT id FROM participant ORDER BY id DESC LIMIT 2")
+                .query(Long.class)
+                .list();
+        String a = signIn("Carla Dias", "carla-" + System.nanoTime() + "@example.com", "en-US");
+        for (int role = 1; role <= 2; role++) {
+            jdbc.sql("""
+                            UPDATE task SET status = 'completed', participant_id = ?, reserved_at = ?,
+                                submitted_at = ?
+                            WHERE role = ?""")
+                    .params(
+                            raters.get(role - 1),
+                            java.sql.Timestamp.from(clock.instant()),
+                            java.sql.Timestamp.from(clock.instant()),
+                            role)
+                    .update();
+        }
+
+        as(a).post("/api/v1/tasks/reservations").then().statusCode(200)
+                .body("outcome", equalTo("database-complete"));
+    }
+
+    @Test
     void foreignTaskIsNotFoundAndOtherRoleKeepsItsOwnState() {
         String a = participantSession();
         String b = signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
