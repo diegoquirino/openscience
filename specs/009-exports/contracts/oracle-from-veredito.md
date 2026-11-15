@@ -1,7 +1,7 @@
 # Contract: Materialize pipeline rater sheets from `veredito_<system>_completo.csv`
 
 **Feature**: `009-exports` (pipeline side) | **Package**: `issta_tcm` in `ISSTA_2027/src`  
-**Consumes**: [US3 of spec 009](../spec.md) · **Feeds**: existing `agreement`, `oracle-disagreements`, `oracle-final`
+**Consumes**: [US3 of spec 009](../spec.md) Â· **Feeds**: existing `agreement`, `oracle-disagreements`, `oracle-final`
 
 ## Command
 
@@ -52,7 +52,7 @@ edit_key,uc,kind,field,origin,target,change_impact,maintenance_operation,comment
 
 | Rater sheet column | Taken from `_completo` |
 |---|---|
-| `edit_key` … `target` | Same Appendix D fields (exact strings) |
+| `edit_key` â€¦ `target` | Same Appendix D fields (exact strings) |
 | `change_impact` | `rater_N_change_impact` |
 | `maintenance_operation` | `rater_N_maintenance_operation` |
 | `comment` | `rater_N_comment` (empty string if blank) |

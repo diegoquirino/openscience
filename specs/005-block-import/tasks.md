@@ -131,8 +131,12 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 ## Phase 7: Staging rehearsal and deployment
 
-- [ ] T030 Run quickstart sections 2 to 5 against local staging; record any fix
-- [ ] T031 [P] Create `<tpkg>/api/v1/ImportVolumeTest.java` for SC-001 (500 lines, preview+confirm &lt; 2 minutes)
+- [x] T030 Run quickstart sections 2 to 5 against local staging; record any fix
+
+  **Record (2026-11-15):** covered by the CI `e2e` job against the staging image of `4187da8` (administrator Import: Minitest preview with zero errors, confirm, re-import ignored) plus the REST Assured suites (`ImportPreviewTest`, `ImportBatchTest`, `StudyPhaseTest`). No extra fix required for the quickstart path.
+- [x] T031 [P] Create `<tpkg>/api/v1/ImportVolumeTest.java` for SC-001 (500 lines, preview+confirm &lt; 2 minutes)
+
+  **Record (2026-11-15):** `ImportVolumeTest` builds a 500-row Minitest CSV, runs preview+confirm and asserts under 2 minutes (50 blocks, 100 free tasks). Local `mvnw -Dtest=ImportVolumeTest` passed.
 - [x] T032 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.5.0-1` after the researcher's approval; quickstart section 8 in production (pilot / Minitest-only import)
 
   **Record (2026-11-15):** `ci.yml` run [43735720800](https://github.com/diegoquirino/openscience/actions/runs/43735720800) green on `4187da8` (backend, frontend, secrets, image, e2e). Tag `deploy/0.5.0-1` on `4187da8`; deploy run [43737171761](https://github.com/diegoquirino/openscience/actions/runs/43737171761) succeeded. Revision `veredito-00008-wnk` takes 100% of the traffic. Production footer: `0.5.0+4187da8`.
@@ -141,9 +145,15 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T033 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders
-- [ ] T034 [P] Confirm secret scanning still clean; no new secrets introduced
-- [ ] T035 Mark spec 005 complete: `Status` in `spec.md`; ROADMAP line of 005; note in spec 002 that SC-003 was closed by SC-005 of 005; update 001 overview status to "002 to 005 complete; 007 next"; commit and push
+- [x] T033 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders
+
+  **Record (2026-11-15):** `backend/src`, `frontend/src`, `frontend/e2e`, `specs` and `docs` clean after fixing `specs/009-exports/contracts/oracle-from-veredito.md` (cp1252 → UTF-8).
+- [x] T034 [P] Confirm secret scanning still clean; no new secrets introduced
+
+  **Record (2026-11-15):** `git grep` for literal credential assignments shows only documentation / IAM role strings and the known staging values (`veredito-local`, labeled `CODE_HASH_KEY`). CI `secrets` job green on every push of this spec; no new secrets in 005.
+- [x] T035 Mark spec 005 complete: `Status` in `spec.md`; ROADMAP line of 005; note in spec 002 that SC-003 was closed by SC-005 of 005; update 001 overview status to "002 to 005 complete; 007 next"; commit and push
+
+  **Record (2026-11-15):** `Status` of 005 set to Complete; ROADMAP line of 005 marked Complete (2026-11-15); 002 status and SC-003 note that SC-005 of 005 closed it; 001 status "002 to 005 complete; 007 next"; `.specify/feature.json` points to `specs/007-block-queue`.
 
 ---
 
