@@ -12,10 +12,12 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /** Repositories of spec 007 against MySQL 9.7 (reserve, draft, finalize). */
@@ -48,6 +50,20 @@ class TaskQueueRepositoriesTest {
     TransactionTemplate transaction;
 
     private final Instant now = Instant.now().truncatedTo(ChronoUnit.MICROS);
+
+    @Autowired
+    JdbcClient jdbc;
+
+    @BeforeEach
+    void clearStudyData() {
+        // The MySQL container is shared by the whole run: other tests leave free tasks behind.
+        jdbc.sql("DELETE FROM response").update();
+        jdbc.sql("DELETE FROM task").update();
+        jdbc.sql("DELETE FROM item").update();
+        jdbc.sql("DELETE FROM block").update();
+        jdbc.sql("DELETE FROM import_batch").update();
+        jdbc.sql("DELETE FROM import_preview").update();
+    }
 
     @Test
     void reserveWithSkipLockedUpsertsDraftAndFinalizes() {
