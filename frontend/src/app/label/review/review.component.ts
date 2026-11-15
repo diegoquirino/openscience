@@ -25,7 +25,7 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
             <li class="item" [class.pending]="item.draft === null">
               <div class="head">
                 <strong i18n="@@label.review.item">Item {{ item.position }} of {{ items().length }}</strong>
-                <span class="where">{{ item.system }} · {{ item.uc }} · {{ item.field }}</span>
+                <span class="where">{{ item.system }} Â· {{ item.uc }} Â· {{ item.field }}</span>
                 <a mat-stroked-button class="edit" [routerLink]="['/label/items', item.position]" i18n="@@label.review.edit"
                   >Edit</a
                 >
@@ -42,7 +42,7 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
                   </div>
                   <div>
                     <dt i18n="@@label.review.comment">Comment</dt>
-                    <dd class="comment">{{ draft.comment || '—' }}</dd>
+                    <dd class="comment">{{ draft.comment || 'â€”' }}</dd>
                   </div>
                 </dl>
               } @else {

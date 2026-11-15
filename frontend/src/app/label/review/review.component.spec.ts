@@ -75,7 +75,7 @@ describe('LabelReviewComponent', () => {
     expect(rows[0].querySelector('.impact')?.textContent).toContain('High');
     expect(rows[0].querySelector('.operation')?.textContent).toContain('Update');
     expect(rows[0].querySelector('.comment')?.textContent).toContain('because');
-    expect(rows[1].querySelector('.comment')?.textContent).toContain('—');
+    expect(rows[1].querySelector('.comment')?.textContent).toContain('â€”');
     expect(rows[1].querySelector('a.edit')?.getAttribute('href')).toBe('/label/items/2');
     expect((root.querySelector('button.submit') as HTMLButtonElement).disabled).toBe(false);
   });
