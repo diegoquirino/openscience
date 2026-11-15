@@ -104,10 +104,10 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 
 **Independent Test**: reserve, let expire with reduced `reservation_minutes` in staging/tests, ask with another person
 
-- [ ] T024 [P] [US5] Create failing `<tpkg>/api/v1/TaskExpiryTest.java`: lower `reservation_minutes`; A reserves without saving past expiry; B receives the task and A's drafts are gone; A's save ? `reservation-expired`; A's save when nobody took renews for A
-- [ ] T025 [US5] Ensure `TaskReservationService` / `DraftService` implement reclaim and renew-own-expired paths (FR-003 to FR-005); no scheduled job
+- [x] T024 [P] [US5] Create failing `<tpkg>/api/v1/TaskExpiryTest.java`: lower `reservation_minutes`; A reserves without saving past expiry; B receives the task and A's drafts are gone; A's save ? `reservation-expired`; A's save when nobody took renews for A
+- [x] T025 [US5] Ensure `TaskReservationService` / `DraftService` implement reclaim and renew-own-expired paths (FR-003 to FR-005); no scheduled job
 - [ ] T026 [US5] Front end: countdown reaches zero ? localized expiry warning; keep unsaved choices; on save either resume or show `reservation-expired` and offer a new block (`contracts/web.md`)
-- [ ] T027 [US5] Playwright (or REST-only if timing brittle): short reservation expiry path covered; document in quickstart section 5
+- [x] T027 [US5] Playwright (or REST-only if timing brittle): short reservation expiry path covered; document in quickstart section 5
 
 **Checkpoint**: expiry behaviour covered
 
@@ -149,8 +149,8 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 
 **Independent Test**: answer part in pt-BR, switch to en-US then es-ES; check `language` per response and no lost drafts/choices (SC-006)
 
-- [ ] T036 [P] [US6] Create failing `<tpkg>/api/v1/TaskLanguageTest.java`: saves in three locales record `language`; switch does not require renew by itself (expiry unchanged until save)
-- [ ] T037 [US6] Confirm draft `language` comes from request locale resolution (not a free-form body field); item payloads untranslated
+- [x] T036 [P] [US6] Create failing `<tpkg>/api/v1/TaskLanguageTest.java`: saves in three locales record `language`; switch does not require renew by itself (expiry unchanged until save)
+- [x] T037 [US6] Confirm draft `language` comes from request locale resolution (not a free-form body field); item payloads untranslated
 - [ ] T038 [US6] Front end: all labeling strings in XLIFF (counter, countdown warning, end messages, refusals); language switch restores unsaved choices via sessionStorage without calling save; countdown keeps remaining time (FR-016)
 - [ ] T039 [US6] Playwright smoke: mid-block language switch across locales keeps drafts and reservation (SC-006)
 

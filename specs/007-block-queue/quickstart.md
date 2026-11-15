@@ -61,7 +61,12 @@ docker compose exec mysql mysql -uveredito -pveredito-local veredito -e "UPDATE 
 ```
 
 Reserve as A; wait past expiry without saving; ask as B ? B gets the task, A's drafts gone; A's
-next save gets `reservation-expired`. Restore `reservation_minutes = 20` afterwards.
+next save gets `404 not-found` (the task now belongs to B; `reservation-expired` is only for an
+owner who already holds another valid block). If nobody took it, A's save renews and keeps the
+drafts. Restore `reservation_minutes = 20` afterwards.
+
+Covered over REST by `TaskExpiryTest` (T027): the movable clock replaces the browser wait, so no
+Playwright timing test is kept.
 
 ## 6. Language (US6, SC-006)
 
