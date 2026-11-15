@@ -121,9 +121,9 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Independent Test**: import two batches; list shows newest first with file, systems, counts
 
-- [ ] T027 [P] [US3] Extend `ImportBatchTest`: `GET /api/v1/batches` newest first; `GET /api/v1/batches/{id}` summary with `systems`
-- [ ] T028 [US3] Implement list and get on `BatchController`; systems = distinct `item.system` of the batch
-- [ ] T029 [US3] Front end: batch list on `/admin/import` (date/time, file, systems, items, blocks)
+- [x] T027 [P] [US3] Extend `ImportBatchTest`: `GET /api/v1/batches` newest first; `GET /api/v1/batches/{id}` summary with `systems`
+- [x] T028 [US3] Implement list and get on `BatchController`; systems = distinct `item.system` of the batch
+- [x] T029 [US3] Front end: batch list on `/admin/import` (date/time, file, systems, items, blocks)
 
 **Checkpoint**: all stories independently useful
 

@@ -19,12 +19,14 @@ export class ImportComponent implements OnInit {
   protected readonly preview = signal<ImportPreview | null>(null);
   protected readonly batch = signal<ImportBatch | null>(null);
   protected readonly studyPhase = signal<StudyPhase | null>(null);
+  protected readonly batches = signal<ImportBatch[]>([]);
 
   ngOnInit(): void {
     this.imports.studyPhase().subscribe({
       next: (phase) => this.studyPhase.set(phase),
       error: () => this.studyPhase.set(null),
     });
+    this.reloadBatches();
   }
 
   protected onFileSelected(event: Event): void {
@@ -64,6 +66,7 @@ export class ImportComponent implements OnInit {
         this.batch.set(batch);
         this.preview.set(null);
         this.reloadPhase();
+        this.reloadBatches();
       },
       error: (error: unknown) => {
         this.busy.set(false);
@@ -113,6 +116,13 @@ export class ImportComponent implements OnInit {
     this.imports.studyPhase().subscribe({
       next: (phase) => this.studyPhase.set(phase),
       error: () => this.studyPhase.set(null),
+    });
+  }
+
+  private reloadBatches(): void {
+    this.imports.listBatches().subscribe({
+      next: (rows) => this.batches.set(rows),
+      error: () => this.batches.set([]),
     });
   }
 }

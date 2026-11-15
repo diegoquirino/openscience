@@ -13,7 +13,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.net.URI;
+import java.util.List;
 import java.util.Locale;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -115,6 +117,50 @@ public class BatchController {
             return ResponseEntity.created(URI.create(COLLECTION + "/" + result.id())).body(model);
         }
         return ResponseEntity.ok(model);
+    }
+
+    @GetMapping(version = "v1")
+    @Operation(
+            summary = "List confirmed import batches",
+            description = "Newest first. Each entry has file name, counts, systems and a self link.")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Batch list",
+            content = @Content(
+                    mediaType = HAL_FORMS,
+                    examples = @ExampleObject(value = """
+                            {
+                              "_embedded": {
+                                "vd:batches": [
+                                  {
+                                    "id": 3,
+                                    "fileName": "veredito_minitest_vazio.csv",
+                                    "importedAt": "2026-11-14T23:05:00Z",
+                                    "includedCount": 38,
+                                    "systems": ["minitest"],
+                                    "_links": { "self": { "href": "/api/v1/batches/3" } }
+                                  }
+                                ]
+                              },
+                              "_links": {
+                                "self": { "href": "/api/v1/batches" },
+                                "vd:request-preview": { "href": "/api/v1/batches/previews" }
+                              }
+                            }""")))
+    @ApiResponse(
+            responseCode = "401",
+            description = "Visitor",
+            content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
+    @ApiResponse(
+            responseCode = "403",
+            description = "Participant",
+            content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
+    public CollectionModel<ImportBatchModel> list(Locale locale) {
+        List<ImportBatchModel> items = batches.listNewestFirst(locale).stream().map(BatchController::model).toList();
+        return CollectionModel.of(
+                items,
+                Link.of(COLLECTION),
+                Link.of(EntryPointController.REQUEST_PREVIEW, LinkRelations.REQUEST_PREVIEW.curied()));
     }
 
     @GetMapping(path = "/{id}", version = "v1")

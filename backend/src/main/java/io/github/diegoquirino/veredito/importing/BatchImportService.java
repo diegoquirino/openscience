@@ -176,7 +176,16 @@ public class BatchImportService {
     }
 
     @Transactional(readOnly = true)
+    public List<ConfirmResult> listNewestFirst(Locale locale) {
+        return batches.listNewestFirst().stream().map(batch -> summary(batch.id())).toList();
+    }
+
+    @Transactional(readOnly = true)
     public ConfirmResult get(long batchId, Locale locale) {
+        return summary(batchId);
+    }
+
+    private ConfirmResult summary(long batchId) {
         var batch = batches.findById(batchId).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
         List<Block> batchBlocks = blocks.listByBatch(batchId);
         List<Integer> sizes = batchBlocks.stream().map(Block::size).toList();

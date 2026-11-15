@@ -8,8 +8,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
 import java.util.List;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 @Schema(name = "ImportBatch", description = "Result of confirming a CSV import preview.")
+@Relation(collectionRelation = "vd:batches", itemRelation = "vd:batch")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImportBatchModel extends RepresentationModel<ImportBatchModel> {
 

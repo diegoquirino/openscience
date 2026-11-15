@@ -68,6 +68,32 @@ class ImportBatchTest extends ApiTestBase {
     }
 
     @Test
+    void listIsNewestFirst() throws IOException {
+        String token = administratorSession();
+        confirmFixture(token);
+        // second batch from a one-row CSV built in-memory
+        String header = String.join(",",
+                "system", "edit_key", "uc", "kind", "field", "origin", "target",
+                "origin_version", "target_version", "origin_usecase", "target_usecase");
+        String row = "minitest,extra-key,UC-X,MOD,field,o,t,1,2,ou,tu";
+        Response preview = as(token)
+                .multiPart("file", "extra.csv", (header + "\n" + row + "\n").getBytes(java.nio.charset.StandardCharsets.UTF_8), "text/csv")
+                .post(EntryPointController.REQUEST_PREVIEW);
+        preview.then().statusCode(201);
+        as(token)
+                .contentType("application/json")
+                .body(Map.of("previewId", preview.<Integer>path("id")))
+                .post(EntryPointController.BATCHES)
+                .then().statusCode(201);
+
+        as(token).get(EntryPointController.BATCHES)
+                .then().statusCode(200)
+                .body("_embedded.'vd:batches'.size()", equalTo(2))
+                .body("_embedded.'vd:batches'[0].fileName", equalTo("extra.csv"))
+                .body("_embedded.'vd:batches'[1].fileName", equalTo("veredito_minitest_vazio.csv"));
+    }
+
+    @Test
     void secondConfirmIgnoresEverything() throws IOException {
         String token = administratorSession();
         Response firstPreview = upload(token, "minitest/veredito_minitest_vazio.csv");
@@ -87,6 +113,16 @@ class ImportBatchTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("includedCount", equalTo(0))
                 .body("id", nullValue());
+    }
+
+    private void confirmFixture(String token) throws IOException {
+        Response preview = upload(token, "minitest/veredito_minitest_vazio.csv");
+        preview.then().statusCode(201);
+        as(token)
+                .contentType("application/json")
+                .body(Map.of("previewId", preview.<Integer>path("id")))
+                .post(EntryPointController.BATCHES)
+                .then().statusCode(201);
     }
 
     private Response upload(String token, String classpath) throws IOException {

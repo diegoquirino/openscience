@@ -89,6 +89,23 @@ export class ImportService {
     return this.http.post<BatchBody>(href, { previewId: preview.id }).pipe(map(toBatch));
   }
 
+  listBatches(): Observable<ImportBatch[]> {
+    return this.http.get<HalResource>(ENTRY_POINT_URL).pipe(
+      switchMap((entry) => {
+        const href = Links.of(entry).href('batches');
+        if (!href) {
+          throw new Error('vd:batches missing');
+        }
+        return this.http.get<BatchListBody>(href);
+      }),
+      map((body) => {
+        const embedded = body._embedded?.['vd:batches'];
+        const rows = Array.isArray(embedded) ? embedded : embedded ? [embedded] : [];
+        return rows.map(toBatch);
+      }),
+    );
+  }
+
   studyPhase(): Observable<StudyPhase | null> {
     return this.http.get<HalResource>(ENTRY_POINT_URL).pipe(
       switchMap((entry) => {
@@ -125,6 +142,10 @@ interface BatchBody extends HalResource {
   blockSizes: number[];
   queuePositions?: { from: number; to: number };
   systems: string[];
+}
+
+interface BatchListBody extends HalResource {
+  _embedded?: { 'vd:batches'?: BatchBody | BatchBody[] };
 }
 
 function toPreview(body: PreviewBody): ImportPreview {

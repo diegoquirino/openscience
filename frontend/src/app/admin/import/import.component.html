@@ -128,4 +128,32 @@
       <button type="button" mat-stroked-button (click)="cancel()" i18n="@@import.another">Import another file</button>
     </section>
   }
+
+  @if (batches().length) {
+    <section class="history">
+      <h2 i18n="@@import.batchesHeading">Previous imports</h2>
+      <table>
+        <thead>
+          <tr>
+            <th i18n="@@import.batches.when">When</th>
+            <th i18n="@@import.batches.file">File</th>
+            <th i18n="@@import.batches.systems">Systems</th>
+            <th i18n="@@import.batches.items">Items</th>
+            <th i18n="@@import.batches.blocks">Blocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of batches(); track row.id) {
+            <tr>
+              <td>{{ row.importedAt }}</td>
+              <td>{{ row.fileName }}</td>
+              <td>{{ row.systems.join(', ') }}</td>
+              <td>{{ row.includedCount }}</td>
+              <td>{{ row.blockCount }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+  }
 </section>
