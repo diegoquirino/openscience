@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
-import { Observable, concatMap, defaultIfEmpty, filter, from, map, of, switchMap, take } from 'rxjs';
+import { Observable, concatMap, defaultIfEmpty, filter, forkJoin, from, map, of, switchMap, take, tap } from 'rxjs';
 import { HalResource, Links } from '../core/hal';
 import { EntryPointService } from '../core/entry-point.service';
 import { clockOffsetMs } from './countdown';
@@ -45,6 +45,12 @@ export interface ItemBody extends HalResource {
   origin: string | null;
   target: string | null;
   draft: ItemDraft | null;
+}
+
+/** The held task and its items (with drafts) in position order. */
+export interface ReviewData {
+  task: TaskBody;
+  items: ItemBody[];
 }
 
 export interface SaveResponseBody {
@@ -137,6 +143,33 @@ export class LabelService {
       map((item) => item.position),
       take(1),
       defaultIfEmpty(null as number | null),
+    );
+  }
+
+  /**
+   * Everything the review shows: the task as the server has it now (`GET` of the task) and each of
+   * its items with the caller's draft (`GET` of each item, in position order).
+   */
+  loadDraftsForReview(taskId: number): Observable<ReviewData> {
+    return this.http.get<TaskBody>(`${TASKS}/${taskId}`, { observe: 'response' }).pipe(
+      map((response) => this.accept(response) as TaskBody),
+      switchMap((task) =>
+        (task.size > 0
+          ? forkJoin(Array.from({ length: task.size }, (_, i) => this.getItem(task.id, i + 1)))
+          : of([] as ItemBody[])
+        ).pipe(map((items) => ({ task, items }))),
+      ),
+    );
+  }
+
+  /**
+   * `POST` of `vd:submit` of the task (the contract path when the link is absent: the server then
+   * answers `block-incomplete`). The held task is forgotten on success: the next reserve starts over.
+   */
+  submit(task: TaskBody): Observable<TaskBody> {
+    const href = Links.of(task).href('submit') ?? `${TASKS}/${task.id}/submission`;
+    return this.http.post<TaskBody>(href, null).pipe(
+      tap(() => this.taskState.set(null)),
     );
   }
 

@@ -122,7 +122,7 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 - [x] T028 [P] [US3] Create failing `<tpkg>/api/v1/TaskSubmissionTest.java`: submit complete ? `completed` + finals; incomplete ? `block-incomplete` with `firstPendingPosition`; resubmit ? 200 no-op; save after submit ? `task-already-submitted`
 - [x] T029 [US3] Implement `<pkg>/queue/SubmissionService.java`: lock; require draft per item; finalize all; set `submitted_at` / `status=completed`; attach `outcome` for the completion screen
 - [x] T030 [US3] Implement `POST /api/v1/tasks/{id}/submission` on `<pkg>/api/v1/TaskSubmissionController.java`; expose `vd:submit` only when `answeredCount == size`
-- [ ] T031 [US3] Front end: review screen `<app>/label/review/` listing choices/comments; edit navigates to item; Submit; on incomplete jump to pending position; XLIFF
+- [x] T031 [US3] Front end: review screen `<app>/label/review/` listing choices/comments; edit navigates to item; Submit; on incomplete jump to pending position; XLIFF
 - [ ] T032 [US3] Playwright: complete a small block (or last block of fixture), submit, confirm finals in DB and done navigation
 
 **Checkpoint**: full block lifecycle works
@@ -136,7 +136,7 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 **Independent Test**: exhaust a 2-block database with 3 people; check the three messages
 
 - [ ] T033 [P] [US4] Extend reservation/submission tests: after last possible task for a person ? `none-available-for-you`; when every task completed ? `database-complete`; after submit with more work ? `more-available`
-- [ ] T034 [US4] Front end: done screen `<app>/label/done/` with thanks, localized `label.end.*`, "Label another block" only when appropriate, "Sign out"; welcome uses the same outcomes when reserve returns no task
+- [x] T034 [US4] Front end: done screen `<app>/label/done/` with thanks, localized `label.end.*`, "Label another block" only when appropriate, "Sign out"; welcome uses the same outcomes when reserve returns no task
 - [ ] T035 [US4] Playwright: exhaust a tiny imported set (or API-driven) and assert the three end states appear
 
 **Checkpoint**: end-of-queue UX complete

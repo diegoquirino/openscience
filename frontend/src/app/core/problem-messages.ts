@@ -22,6 +22,8 @@ export interface Problem {
   column?: string;
   systems?: string[];
   errors?: FieldError[];
+  /** `block-incomplete`: 1-based position of the first item without a draft. */
+  firstPendingPosition?: number;
 }
 
 /** The slug of the type (`invalid-code`), or `undefined` for a body that is not a Veredito problem. */

@@ -781,16 +781,64 @@
         <target>Revisión</target>
       </segment>
     </unit>
-    <unit id="label.review.coming">
+    <unit id="label.review.intro">
       <segment>
-        <source>The review of your answers is coming soon.</source>
-        <target>La revisión de sus respuestas estará disponible pronto.</target>
+        <source>Check your answers. Open an item to change it, then submit the block.</source>
+        <target>Revise sus respuestas. Abra un elemento para cambiarlo y luego envíe el bloque.</target>
       </segment>
     </unit>
-    <unit id="label.review.backToItems">
+    <unit id="label.review.item">
       <segment>
-        <source>Back to the items</source>
-        <target>Volver a los elementos</target>
+        <source>Item <ph id="0" equiv="INTERPOLATION" disp="{{ item.position }}"/> of <ph id="1" equiv="INTERPOLATION_1" disp="{{ items().length }}"/></source>
+        <target>Elemento <ph id="0" equiv="INTERPOLATION" disp="{{ item.position }}"/> de <ph id="1" equiv="INTERPOLATION_1" disp="{{ items().length }}"/></target>
+      </segment>
+    </unit>
+    <unit id="label.review.edit">
+      <segment>
+        <source>Edit</source>
+        <target>Editar</target>
+      </segment>
+    </unit>
+    <unit id="label.review.impact">
+      <segment>
+        <source>Impact</source>
+        <target>Impacto</target>
+      </segment>
+    </unit>
+    <unit id="label.review.operation">
+      <segment>
+        <source>Operation</source>
+        <target>Operación</target>
+      </segment>
+    </unit>
+    <unit id="label.review.comment">
+      <segment>
+        <source>Comment</source>
+        <target>Comentario</target>
+      </segment>
+    </unit>
+    <unit id="label.review.pending">
+      <segment>
+        <source>Not answered yet</source>
+        <target>Aún sin respuesta</target>
+      </segment>
+    </unit>
+    <unit id="label.review.incomplete">
+      <segment>
+        <source>Answer every item before submitting the block.</source>
+        <target>Responda todos los elementos antes de enviar el bloque.</target>
+      </segment>
+    </unit>
+    <unit id="label.review.firstPending">
+      <segment>
+        <source>Go to the first pending item</source>
+        <target>Ir al primer elemento pendiente</target>
+      </segment>
+    </unit>
+    <unit id="label.review.submit">
+      <segment>
+        <source>Submit block</source>
+        <target>Enviar bloque</target>
       </segment>
     </unit>
     <unit id="welcome.start">

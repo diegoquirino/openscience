@@ -1,9 +1,11 @@
 import { Component, inject, computed } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
+import { SessionService } from '../core/session.service';
 
+/** End screen of the labeling loop; the text and the actions come from the `outcome` (spec 007, US4). */
 @Component({
   selector: 'app-label-done',
   imports: [MatButtonModule, RouterLink],
@@ -11,9 +13,14 @@ import { map } from 'rxjs';
     <section class="done">
       <h1 i18n="@@label.done.title">Thank you</h1>
       <p>{{ message() }}</p>
-      @if (outcome() === 'more-available') {
-        <a mat-flat-button routerLink="/label" i18n="@@label.another">Label another block</a>
-      }
+      <div class="actions">
+        @if (outcome() === 'more-available') {
+          <a mat-flat-button class="another" routerLink="/label" i18n="@@label.another">Label another block</a>
+        }
+        <button mat-stroked-button type="button" class="sign-out" (click)="signOut()" i18n="@@shell.signOut">
+          Sign out
+        </button>
+      </div>
     </section>
   `,
   styles: `
@@ -23,10 +30,18 @@ import { map } from 'rxjs';
       padding: 1.5rem 0;
       justify-items: start;
     }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
   `,
 })
 export class LabelDoneComponent {
   private readonly route = inject(ActivatedRoute);
+  private readonly session = inject(SessionService);
+  private readonly router = inject(Router);
+
   readonly outcome = toSignal(this.route.queryParamMap.pipe(map((p) => p.get('outcome') ?? '')), {
     initialValue: '',
   });
@@ -45,4 +60,9 @@ export class LabelDoneComponent {
         return $localize`:@@label.end.thanks:Thank you for labeling.`;
     }
   });
+
+  /** Same as the shell: the session is gone locally even if the call fails. */
+  protected signOut(): void {
+    this.session.signOut().subscribe(() => void this.router.navigateByUrl('/'));
+  }
 }

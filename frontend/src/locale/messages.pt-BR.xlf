@@ -781,16 +781,64 @@
         <target>Revisão</target>
       </segment>
     </unit>
-    <unit id="label.review.coming">
+    <unit id="label.review.intro">
       <segment>
-        <source>The review of your answers is coming soon.</source>
-        <target>A revisão das suas respostas estará disponível em breve.</target>
+        <source>Check your answers. Open an item to change it, then submit the block.</source>
+        <target>Confira suas respostas. Abra um item para alterá-lo e depois envie o bloco.</target>
       </segment>
     </unit>
-    <unit id="label.review.backToItems">
+    <unit id="label.review.item">
       <segment>
-        <source>Back to the items</source>
-        <target>Voltar aos itens</target>
+        <source>Item <ph id="0" equiv="INTERPOLATION" disp="{{ item.position }}"/> of <ph id="1" equiv="INTERPOLATION_1" disp="{{ items().length }}"/></source>
+        <target>Item <ph id="0" equiv="INTERPOLATION" disp="{{ item.position }}"/> de <ph id="1" equiv="INTERPOLATION_1" disp="{{ items().length }}"/></target>
+      </segment>
+    </unit>
+    <unit id="label.review.edit">
+      <segment>
+        <source>Edit</source>
+        <target>Editar</target>
+      </segment>
+    </unit>
+    <unit id="label.review.impact">
+      <segment>
+        <source>Impact</source>
+        <target>Impacto</target>
+      </segment>
+    </unit>
+    <unit id="label.review.operation">
+      <segment>
+        <source>Operation</source>
+        <target>Operação</target>
+      </segment>
+    </unit>
+    <unit id="label.review.comment">
+      <segment>
+        <source>Comment</source>
+        <target>Comentário</target>
+      </segment>
+    </unit>
+    <unit id="label.review.pending">
+      <segment>
+        <source>Not answered yet</source>
+        <target>Ainda sem resposta</target>
+      </segment>
+    </unit>
+    <unit id="label.review.incomplete">
+      <segment>
+        <source>Answer every item before submitting the block.</source>
+        <target>Responda todos os itens antes de enviar o bloco.</target>
+      </segment>
+    </unit>
+    <unit id="label.review.firstPending">
+      <segment>
+        <source>Go to the first pending item</source>
+        <target>Ir ao primeiro item pendente</target>
+      </segment>
+    </unit>
+    <unit id="label.review.submit">
+      <segment>
+        <source>Submit block</source>
+        <target>Enviar bloco</target>
       </segment>
     </unit>
     <unit id="welcome.start">
