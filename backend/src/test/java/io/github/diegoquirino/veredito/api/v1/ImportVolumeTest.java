@@ -22,11 +22,7 @@ class ImportVolumeTest extends ApiTestBase {
 
     @BeforeEach
     void clearStudyData() {
-        jdbc.sql("DELETE FROM task").update();
-        jdbc.sql("DELETE FROM item").update();
-        jdbc.sql("DELETE FROM block").update();
-        jdbc.sql("DELETE FROM import_batch").update();
-        jdbc.sql("DELETE FROM import_preview").update();
+        clearStudyDatabase();
     }
 
     @Test

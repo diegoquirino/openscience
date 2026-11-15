@@ -17,12 +17,7 @@ class StudyPhaseTest extends ApiTestBase {
 
     @BeforeEach
     void resetPhaseAndData() {
-        jdbc.sql("DELETE FROM task").update();
-        jdbc.sql("DELETE FROM item").update();
-        jdbc.sql("DELETE FROM block").update();
-        jdbc.sql("DELETE FROM import_batch").update();
-        jdbc.sql("DELETE FROM import_preview").update();
-        jdbc.sql("DELETE FROM response").update();
+        clearStudyDatabase();
         jdbc.sql("DELETE FROM access_session WHERE subject = 'participant'").update();
         jdbc.sql("DELETE FROM participant").update();
         jdbc.sql("UPDATE config SET study_phase = 'pilot', study_phase_changed_at = NULL WHERE id = 1").update();
