@@ -259,6 +259,6 @@ Task: "TaskConcurrencyTest" (T012)
 - V1 to V5 are immutable once deployed; later schema changes are V6+.
 - No new Secret Manager secret.
 - `AuthorizationTest` must deny every new Tasks operation without a participant session (and to the administrator).
-- Eligibility refusals stay stubbed until 006; keep the gate as the single change point.
+- Eligibility refusals were stubbed until 006; the gate remains the single change point (006 replaced the stub).
 - No task calls models; the sequential execution rule of `ISSTA_2027` does not apply.
 - Deploy tags only after explicit researcher approval (constitution workflow).

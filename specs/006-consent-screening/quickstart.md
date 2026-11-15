@@ -146,8 +146,12 @@ may have expired).
    (staging then shows `v1` as current, because it is published after the fixture date).
 4. Deploy only with explicit approval of the researcher:
    `git push origin <commit>:refs/tags/deploy/0.6.0-1`.
-5. Sign in with a participant of the pilot: they pass consent, skill and screening, then label one
-   block; the footer shows `0.6.0+...`. In the pilot database, check that the accepted row stores
-   `v1` and the language of the text shown.
+   **Done (2026-11-15):** tag `deploy/0.6.0-1` on `8e475c2`; revision `veredito-00010-gwf`;
+   production footer `0.6.0+8e475c2`. The CEP-approved TCLE migration is still pending, so
+   production currently has no current consent form (participants see "The study is not open yet"
+   until step 1 lands in a later deploy).
+5. After the real TCLE migration is deployed: sign in with a participant of the pilot; they pass
+   consent, skill and screening, then label one block; in the pilot database, check that the
+   accepted row stores `v1` and the language of the text shown.
 6. Rollback if needed: redeploy the previous tag (`deploy/0.7.0-1`); there is no schema change and
    the old gate ignores the new data.

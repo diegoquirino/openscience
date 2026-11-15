@@ -17,8 +17,9 @@ In addition to the links of 004, an eligible participant receives:
 |---|---|---|
 | `vd:next-task` | `/api/v1/tasks/reservations` | participant session and `EligibilityGate` true |
 
-Visitors and administrators never receive `vd:next-task`. Until 006, every participant with a
-session is eligible. `AuthorizationTest` enumerates every "Tasks" operation from the OpenAPI and
+Visitors and administrators never receive `vd:next-task`. Spec 006 makes `vd:next-task` available only when the
+eligibility gate is true (current consent accepted and screening passed). Before 006, every participant with a
+session was eligible. `AuthorizationTest` enumerates every "Tasks" operation from the OpenAPI and
 denies them to visitors and administrators (administrators keep only Administration links).
 
 ## `POST /api/v1/tasks/reservations` (`vd:next-task` / `vd:reserve`)

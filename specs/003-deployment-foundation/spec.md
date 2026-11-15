@@ -181,6 +181,6 @@ The same deployed image serves the interface in Portuguese (Brazil), English (US
 - The production database lives in the researcher's cloud project (`veredito-issta2027`); no participant has direct access to it.
 - Local staging, the automated tests and the pilot in production use only the items of the Minitest system (the CSV of spec 002 and files derived from it); the participants of local staging and of the tests are fictitious; nothing from production is copied to the machine. The refusal of other systems in the import is delivered in spec 005.
 - The first opening after a period without use may take a few seconds more; this can only be measured in production.
-- The "Participate" button led to a provisional screen in 003; spec 004 replaced it with the sign-in flow (and a provisional post-sign-in screen until 006).
+- The "Participate" button led to a provisional screen in 003; spec 004 replaced it with the sign-in flow; spec 006 replaced the provisional post-sign-in screen with consent, skill, screening and then participation.
 - The source language of the interface texts in the code is en-US (everything in the repository is in English); pt-BR and es-ES are translations, and pt-BR is the reference version of the consent form approved by the research ethics committee.
 - Local staging details are in [research.md](../001-oracle-labeling/research.md#local-staging-docker).

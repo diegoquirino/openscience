@@ -148,7 +148,7 @@ Before signing in, the person chooses the language of the interface among Portug
 - The code e-mail is sent from the researcher's account and may land in spam.
 - In production, the e-mail is sent from the researcher's Gmail account, which accepts about 500 recipients per day; the system default limit is 450, leaving a margin (see [research.md](../001-oracle-labeling/research.md) of spec 001).
 - In local staging (Docker, profile `staging`), the codes go to a local test mailbox and do not reach anyone; the daily limit can be reduced to test the exhausted-quota message.
-- The consent form, the profile and the screening (spec 006) come between the sign-in and the participation; until then, the provisional screen takes that place.
+- The consent form, the professional skill and the screening (spec 006, delivered) come between the sign-in and the participation; `/welcome` resolves to the first pending onboarding step or to labeling.
 - The routing of the locale prefixes, the serving of the three builds, the message bundles and the CI completeness checks come from spec 003; this spec delivers the language-choice screen and its behaviour.
 - The e-mail texts exist in the three languages; pt-BR is the reference version, as for the consent form approved by the research ethics committee.
 - The administrator is not a participant (no row in `participant`); their profile language is kept in the configuration (`config.admin_preferred_language`), as there is a single administrator.

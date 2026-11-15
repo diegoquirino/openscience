@@ -22,7 +22,7 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard | 005, 006, 007 |
 | 10 | [011-lgpd-withdrawal](./011-lgpd-withdrawal/spec.md) | Anonymization and disposal | 007, 009 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 comes before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Until 006 exists, every participant with a session is treated as eligible (spec 007, *Assumptions*); 007 uses a simple item screen and replaces it with the one from 008 when that is ready, without changing what is stored.
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 007 still uses a simple item screen; 008 replaces that screen without changing what is stored.
 
 ```mermaid
 flowchart LR
