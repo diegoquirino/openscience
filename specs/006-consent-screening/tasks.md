@@ -123,8 +123,10 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 ## Phase 7: Staging rehearsal and deployment
 
 - [x] T028 Run quickstart sections against local staging; record any fix _Record: partly: local staging rebuilt (down -v, up --build); full Playwright suite passed (77 tests, plus queue project 5/5 and one rerun of a goto flake); incomplete fixture-3 logged a WARN naming en-US, es-ES; sections 5 (new version) and not-open covered by ConsentFormTest, not by hand_
-- [ ] T029 [P] Confirm SC-002 (direct Tasks call while ineligible) and onboarding e2e pass in CI
+- [x] T029 [P] Confirm SC-002 (direct Tasks call while ineligible) and onboarding e2e pass in CI
+  **Record (2026-11-15):** `ci.yml` run [43770449843](https://github.com/diegoquirino/openscience/actions/runs/43770449843) green on `2a78d48` (backend, frontend, secrets, image, e2e). Earlier `65cc349` e2e failed on `queue-empty` before the welcome-resolver fix in `2a78d48`.
 - [ ] T030 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.6.0-1` **only after the researcher's approval**; quickstart production checks
+  **Left open on purpose (2026-11-15):** CI is green on `2a78d48`. Deploy tag waits for the researcher's explicit approval.
 
 ---
 
