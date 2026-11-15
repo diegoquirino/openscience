@@ -493,5 +493,29 @@
         <target>Importar otro archivo</target>
       </segment>
     </unit>
+    <unit id="import.phaseBanner">
+      <segment>
+        <source> Study phase: <ph id="0" equiv="INTERPOLATION" disp="{{ phase.phase }}"/>. Only Minitest items are accepted. </source>
+        <target> Fase del estudio: <ph id="0" equiv="INTERPOLATION" disp="{{ phase.phase }}"/>. Solo se aceptan ítems Minitest. </target>
+      </segment>
+    </unit>
+    <unit id="import.openCollection">
+      <segment>
+        <source>Open collection phase</source>
+        <target>Abrir fase de recolección</target>
+      </segment>
+    </unit>
+    <unit id="import.switchConfirm">
+      <segment>
+        <source>Open the collection phase? Only possible with an empty study database.</source>
+        <target>¿Abrir la fase de recolección? Solo es posible con la base del estudio vacía.</target>
+      </segment>
+    </unit>
+    <unit id="problem.phaseSwitchNotAllowed">
+      <segment>
+        <source>The study phase cannot switch to collection now (database not empty, already in collection, or staging)</source>
+        <target>La fase del estudio no puede pasar a recolección ahora (base no vacía, ya en recolección o staging)</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

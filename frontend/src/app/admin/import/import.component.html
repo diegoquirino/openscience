@@ -7,6 +7,19 @@
     Upload a CSV to see which rows would be included, ignored or refused before anything is stored.
   </p>
 
+  @if (studyPhase(); as phase) {
+    @if (phase.minitestOnly) {
+      <p class="banner" role="status" i18n="@@import.phaseBanner">
+        Study phase: {{ phase.phase }}. Only Minitest items are accepted.
+      </p>
+    }
+    @if (phase.switchAllowed) {
+      <button type="button" mat-stroked-button [disabled]="busy()" (click)="switchToCollection()" i18n="@@import.openCollection">
+        Open collection phase
+      </button>
+    }
+  }
+
   <label class="file">
     <span i18n="@@import.fileLabel">CSV file</span>
     <input type="file" accept=".csv,text/csv" [disabled]="busy()" (change)="onFileSelected($event)" />

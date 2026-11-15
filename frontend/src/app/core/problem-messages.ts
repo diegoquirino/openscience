@@ -68,6 +68,8 @@ export function problemMessage(problem: Problem | null | undefined, now: Date = 
     }
     case 'preview-not-found':
       return $localize`:import preview expired or unknown@@problem.previewNotFound:This import preview does not exist or has expired; upload the file again`;
+    case 'phase-switch-not-allowed':
+      return $localize`:cannot switch study phase@@problem.phaseSwitchNotAllowed:The study phase cannot switch to collection now (database not empty, already in collection, or staging)`;
     default:
       return undefined;
   }

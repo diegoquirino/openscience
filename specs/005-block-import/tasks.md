@@ -107,9 +107,9 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Independent Test**: `StudyPhaseTest` as in the spec Independent Test and quickstart section 6
 
-- [ ] T024 [P] [US4] Create failing `<tpkg>/api/v1/StudyPhaseTest.java`: GET phase; PUT refused with items present (`phase-switch-not-allowed`); after clearing `item`/`participant`/`response`, PUT `collection` succeeds; non-Minitest preview then accepted; with `staging` profile, PUT ? 404 and no switch control contract
-- [ ] T025 [US4] Implement `<pkg>/importing/StudyPhaseService.java` and `<pkg>/api/v1/StudyPhaseController.java` (`GET`/`PUT /api/v1/administrator/study-phase`) per `contracts/import.md`; `PreviewService` uses `StudyPhaseGate`
-- [ ] T026 [US4] Front end: phase banner and switch dialog on `/admin/import` when `switchAllowed`; hidden when staging / `minitestOnly` without switch; XLIFF units
+- [x] T024 [P] [US4] Create failing `<tpkg>/api/v1/StudyPhaseTest.java`: GET phase; PUT refused with items present (`phase-switch-not-allowed`); after clearing `item`/`participant`/`response`, PUT `collection` succeeds; non-Minitest preview then accepted; with `staging` profile, PUT ? 404 and no switch control contract
+- [x] T025 [US4] Implement `<pkg>/importing/StudyPhaseService.java` and `<pkg>/api/v1/StudyPhaseController.java` (`GET`/`PUT /api/v1/administrator/study-phase`) per `contracts/import.md`; `PreviewService` uses `StudyPhaseGate`
+- [x] T026 [US4] Front end: phase banner and switch dialog on `/admin/import` when `switchAllowed`; hidden when staging / `minitestOnly` without switch; XLIFF units
 
 **Checkpoint**: phase gate complete
 

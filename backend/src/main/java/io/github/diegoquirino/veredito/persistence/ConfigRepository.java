@@ -45,7 +45,8 @@ public class ConfigRepository {
                     Timestamp value = rs.getTimestamp("study_phase_changed_at");
                     return value == null ? null : value.toInstant();
                 })
-                .single();
+                .optional()
+                .orElse(null);
     }
 
     /** Sets the study phase (e.g. {@code collection}) and the change timestamp. */

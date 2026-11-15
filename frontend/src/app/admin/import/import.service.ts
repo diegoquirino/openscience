@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { ENTRY_POINT_URL } from '../../core/entry-point.service';
 import { HalResource, Links } from '../../core/hal';
 
@@ -38,6 +38,14 @@ export interface ImportBatch {
   blockSizes: number[];
   queuePositions: { from: number; to: number } | null;
   systems: string[];
+}
+
+export interface StudyPhase {
+  phase: 'pilot' | 'collection';
+  changedAt: string | null;
+  switchAllowed: boolean;
+  minitestOnly: boolean;
+  selfHref: string;
 }
 
 interface PreviewBody extends HalResource {
@@ -80,6 +88,30 @@ export class ImportService {
     }
     return this.http.post<BatchBody>(href, { previewId: preview.id }).pipe(map(toBatch));
   }
+
+  studyPhase(): Observable<StudyPhase | null> {
+    return this.http.get<HalResource>(ENTRY_POINT_URL).pipe(
+      switchMap((entry) => {
+        const href = Links.of(entry).href('study-phase');
+        return href
+          ? this.http.get<StudyPhaseBody>(href).pipe(map((body) => toStudyPhase(body, href)))
+          : of(null);
+      }),
+    );
+  }
+
+  switchToCollection(selfHref: string): Observable<StudyPhase> {
+    return this.http
+      .put<StudyPhaseBody>(selfHref, { phase: 'collection' })
+      .pipe(map((body) => toStudyPhase(body, selfHref)));
+  }
+}
+
+interface StudyPhaseBody extends HalResource {
+  phase: StudyPhase['phase'];
+  changedAt?: string | null;
+  switchAllowed: boolean;
+  minitestOnly: boolean;
 }
 
 interface BatchBody extends HalResource {
@@ -124,5 +156,15 @@ function toBatch(body: BatchBody): ImportBatch {
     blockSizes: body.blockSizes ?? [],
     queuePositions: body.queuePositions ?? null,
     systems: body.systems ?? [],
+  };
+}
+
+function toStudyPhase(body: StudyPhaseBody, fallbackHref: string): StudyPhase {
+  return {
+    phase: body.phase,
+    changedAt: body.changedAt ?? null,
+    switchAllowed: body.switchAllowed,
+    minitestOnly: body.minitestOnly,
+    selfHref: Links.of(body).href('self') ?? fallbackHref,
   };
 }

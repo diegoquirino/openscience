@@ -9,6 +9,7 @@ import io.github.diegoquirino.veredito.access.VereditoPrincipal;
 import io.github.diegoquirino.veredito.api.ProblemDetailsSchema;
 import io.github.diegoquirino.veredito.config.SystemVersion;
 import io.github.diegoquirino.veredito.config.VereditoProperties;
+import io.github.diegoquirino.veredito.config.VereditoProperties.Environment;
 import io.github.diegoquirino.veredito.persistence.DatabaseStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -135,7 +136,9 @@ public class EntryPointController {
         if (caller.isAdministrator()) {
             model.add(Link.of(BATCHES, LinkRelations.BATCHES.curied()));
             model.add(Link.of(REQUEST_PREVIEW, LinkRelations.REQUEST_PREVIEW.curied()));
-            model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
+            if (properties.environment() != Environment.STAGING) {
+                model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
+            }
         }
         return model;
     }
