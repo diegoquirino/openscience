@@ -82,17 +82,37 @@
       }
 
       <div class="actions">
-        <button type="button" mat-stroked-button (click)="cancel()" i18n="@@import.cancel">Cancel</button>
+        <button type="button" mat-stroked-button (click)="cancel()" [disabled]="busy()" i18n="@@import.cancel">
+          Cancel
+        </button>
         <button
           type="button"
           mat-flat-button
           color="primary"
-          disabled
+          [disabled]="busy() || view.includedCount === 0 || !view.confirmHref"
+          (click)="confirm()"
           i18n="@@import.confirm"
         >
           Confirm import
         </button>
       </div>
+    </section>
+  }
+
+  @if (batch(); as stored) {
+    <section class="summary" aria-live="polite">
+      <h2 i18n="@@import.confirmedHeading">Import confirmed</h2>
+      <ul class="counts">
+        <li i18n="@@import.confirmedFile">File: {{ stored.fileName }}</li>
+        <li i18n="@@import.confirmedIncluded">Included: {{ stored.includedCount }}</li>
+        <li i18n="@@import.confirmedBlocks">
+          Blocks: {{ stored.blockCount }} ({{ stored.blockSizes.join(', ') }})
+        </li>
+        @if (stored.queuePositions; as queue) {
+          <li i18n="@@import.confirmedQueue">Queue positions: {{ queue.from }} to {{ queue.to }}</li>
+        }
+      </ul>
+      <button type="button" mat-stroked-button (click)="cancel()" i18n="@@import.another">Import another file</button>
     </section>
   }
 </section>

@@ -457,5 +457,41 @@
         <target>Esta prévia de importação não existe ou expirou; envie o arquivo de novo</target>
       </segment>
     </unit>
+    <unit id="import.confirmedHeading">
+      <segment>
+        <source>Import confirmed</source>
+        <target>Importação confirmada</target>
+      </segment>
+    </unit>
+    <unit id="import.confirmedFile">
+      <segment>
+        <source>File: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.fileName }}"/></source>
+        <target>Arquivo: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.fileName }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.confirmedIncluded">
+      <segment>
+        <source>Included: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.includedCount }}"/></source>
+        <target>Incluídas: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.includedCount }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.confirmedBlocks">
+      <segment>
+        <source>Blocks: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.blockCount }}"/> (<ph id="1" equiv="INTERPOLATION_1" disp="{{ stored.blockSizes.join(&apos;, &apos;) }}"/>)</source>
+        <target>Blocos: <ph id="0" equiv="INTERPOLATION" disp="{{ stored.blockCount }}"/> (<ph id="1" equiv="INTERPOLATION_1" disp="{{ stored.blockSizes.join(&apos;, &apos;) }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="import.confirmedQueue">
+      <segment>
+        <source>Queue positions: <ph id="0" equiv="INTERPOLATION" disp="{{ queue.from }}"/> to <ph id="1" equiv="INTERPOLATION_1" disp="{{ queue.to }}"/></source>
+        <target>Posições na fila: <ph id="0" equiv="INTERPOLATION" disp="{{ queue.from }}"/> a <ph id="1" equiv="INTERPOLATION_1" disp="{{ queue.to }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.another">
+      <segment>
+        <source>Import another file</source>
+        <target>Importar outro arquivo</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

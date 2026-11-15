@@ -12,11 +12,21 @@ import io.restassured.response.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
 /** US1 of spec 005: CSV preview via vd:request-preview. */
 class ImportPreviewTest extends ApiTestBase {
+
+    @BeforeEach
+    void clearStudyData() {
+        jdbc.sql("DELETE FROM task").update();
+        jdbc.sql("DELETE FROM item").update();
+        jdbc.sql("DELETE FROM block").update();
+        jdbc.sql("DELETE FROM import_batch").update();
+        jdbc.sql("DELETE FROM import_preview").update();
+    }
 
     @Test
     void minitestPreviewHasZeroErrorsAndPlannedBlocks() throws IOException {

@@ -34,7 +34,12 @@ test('administrator previews Minitest with zero errors and can cancel', async ({
   await expect(page.getByText(/Erros:\s*0/)).toBeVisible();
   await expect(page.getByText(/Blocos:\s*4\s*\(10,\s*10,\s*10,\s*8\)/)).toBeVisible();
 
-  await page.getByRole('button', { name: 'Cancelar' }).click();
-  await expect(page.getByText(/Incluídas:\s*38/)).toHaveCount(0);
-  // Cancel only clears the preview; confirm is still disabled in US1, so no import_batch is created.
+  await page.getByRole('button', { name: 'Confirmar importação' }).click();
+  await expect(page.getByRole('heading', { name: 'Importação confirmada' })).toBeVisible();
+  await expect(page.getByText(/Posições na fila:\s*1\s*a\s*8/)).toBeVisible();
+
+  await page.getByRole('button', { name: 'Importar outro arquivo' }).click();
+  await page.locator('input[type="file"]').setInputFiles(FIXTURE);
+  await expect(page.getByText(/Incluídas:\s*0/)).toBeVisible();
+  await expect(page.getByText(/Ignoradas:\s*38/)).toBeVisible();
 });

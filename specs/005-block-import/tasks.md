@@ -91,11 +91,11 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Independent Test**: confirm 38 items ? 4 blocks (10,10,10,8) and 8 tasks; second confirm all ignored; existing data unchanged
 
-- [ ] T019 [P] [US2] Extend `ImportPreviewTest` / add `<tpkg>/api/v1/ImportBatchTest.java`: confirm Minitest ? 201 with `Location`, blocks and queue positions; read-back of every stored field equals the file (SC-003); double confirm ? 200 all ignored; concurrent confirms store items once
-- [ ] T020 [US2] Implement `<pkg>/importing/BatchImportService.java`: lock config; re-classify included JSON against DB; if `includedCount > 0` insert batch/blocks/items/tasks in one transaction and delete the preview; otherwise return the all-ignored summary without a new batch (`contracts/import.md`)
-- [ ] T021 [US2] Implement `POST /api/v1/batches` on `<pkg>/api/v1/BatchController.java` with OpenAPI; wire `_templates` from the preview
-- [ ] T022 [US2] Front end: Confirm button posts `{ previewId }`, shows summary (blocks, queue positions); disable confirm when `includedCount = 0`
-- [ ] T023 [US2] Playwright: confirm Minitest; DB has expected block sizes; confirm again ? all ignored
+- [x] T019 [P] [US2] Extend `ImportPreviewTest` / add `<tpkg>/api/v1/ImportBatchTest.java`: confirm Minitest ? 201 with `Location`, blocks and queue positions; read-back of every stored field equals the file (SC-003); double confirm ? 200 all ignored; concurrent confirms store items once
+- [x] T020 [US2] Implement `<pkg>/importing/BatchImportService.java`: lock config; re-classify included JSON against DB; if `includedCount > 0` insert batch/blocks/items/tasks in one transaction and delete the preview; otherwise return the all-ignored summary without a new batch (`contracts/import.md`)
+- [x] T021 [US2] Implement `POST /api/v1/batches` on `<pkg>/api/v1/BatchController.java` with OpenAPI; wire `_templates` from the preview
+- [x] T022 [US2] Front end: Confirm button posts `{ previewId }`, shows summary (blocks, queue positions); disable confirm when `includedCount = 0`
+- [x] T023 [US2] Playwright: confirm Minitest; DB has expected block sizes; confirm again ? all ignored
 
 **Checkpoint**: US1 + US2 deliver a full import
 

@@ -27,6 +27,19 @@ export interface ImportPreview {
   confirmHref: string | null;
 }
 
+export interface ImportBatch {
+  id: number | null;
+  fileName: string;
+  importedAt: string | null;
+  includedCount: number;
+  ignoredCount: number;
+  errorCount: number;
+  blockCount: number;
+  blockSizes: number[];
+  queuePositions: { from: number; to: number } | null;
+  systems: string[];
+}
+
 interface PreviewBody extends HalResource {
   id: number;
   fileName: string;
@@ -59,6 +72,27 @@ export class ImportService {
       map(toPreview),
     );
   }
+
+  confirm(preview: ImportPreview): Observable<ImportBatch> {
+    const href = preview.confirmHref;
+    if (!href) {
+      throw new Error('vd:confirm missing');
+    }
+    return this.http.post<BatchBody>(href, { previewId: preview.id }).pipe(map(toBatch));
+  }
+}
+
+interface BatchBody extends HalResource {
+  id?: number;
+  fileName: string;
+  importedAt?: string;
+  includedCount: number;
+  ignoredCount: number;
+  errorCount: number;
+  blockCount: number;
+  blockSizes: number[];
+  queuePositions?: { from: number; to: number };
+  systems: string[];
 }
 
 function toPreview(body: PreviewBody): ImportPreview {
@@ -75,5 +109,20 @@ function toPreview(body: PreviewBody): ImportPreview {
     ignored: body.ignored ?? [],
     errors: body.errors ?? [],
     confirmHref: Links.of(body).href('confirm') ?? null,
+  };
+}
+
+function toBatch(body: BatchBody): ImportBatch {
+  return {
+    id: body.id ?? null,
+    fileName: body.fileName,
+    importedAt: body.importedAt ?? null,
+    includedCount: body.includedCount,
+    ignoredCount: body.ignoredCount,
+    errorCount: body.errorCount,
+    blockCount: body.blockCount,
+    blockSizes: body.blockSizes ?? [],
+    queuePositions: body.queuePositions ?? null,
+    systems: body.systems ?? [],
   };
 }

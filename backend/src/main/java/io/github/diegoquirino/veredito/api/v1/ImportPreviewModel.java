@@ -92,7 +92,7 @@ public class ImportPreviewModel extends RepresentationModel<ImportPreviewModel> 
         private final String system;
         private final String editKey;
 
-        RowIssueModel(RowIssue issue) {
+        public RowIssueModel(RowIssue issue) {
             this.line = issue.line();
             this.code = issue.code();
             this.reason = issue.reason();
