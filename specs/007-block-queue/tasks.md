@@ -119,9 +119,9 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 
 **Independent Test**: try submit with pending item; submit complete block; change after submit refused
 
-- [ ] T028 [P] [US3] Create failing `<tpkg>/api/v1/TaskSubmissionTest.java`: submit complete ? `completed` + finals; incomplete ? `block-incomplete` with `firstPendingPosition`; resubmit ? 200 no-op; save after submit ? `task-already-submitted`
-- [ ] T029 [US3] Implement `<pkg>/queue/SubmissionService.java`: lock; require draft per item; finalize all; set `submitted_at` / `status=completed`; attach `outcome` for the completion screen
-- [ ] T030 [US3] Implement `POST /api/v1/tasks/{id}/submission` on `<pkg>/api/v1/TaskSubmissionController.java`; expose `vd:submit` only when `answeredCount == size`
+- [x] T028 [P] [US3] Create failing `<tpkg>/api/v1/TaskSubmissionTest.java`: submit complete ? `completed` + finals; incomplete ? `block-incomplete` with `firstPendingPosition`; resubmit ? 200 no-op; save after submit ? `task-already-submitted`
+- [x] T029 [US3] Implement `<pkg>/queue/SubmissionService.java`: lock; require draft per item; finalize all; set `submitted_at` / `status=completed`; attach `outcome` for the completion screen
+- [x] T030 [US3] Implement `POST /api/v1/tasks/{id}/submission` on `<pkg>/api/v1/TaskSubmissionController.java`; expose `vd:submit` only when `answeredCount == size`
 - [ ] T031 [US3] Front end: review screen `<app>/label/review/` listing choices/comments; edit navigates to item; Submit; on incomplete jump to pending position; XLIFF
 - [ ] T032 [US3] Playwright: complete a small block (or last block of fixture), submit, confirm finals in DB and done navigation
 
