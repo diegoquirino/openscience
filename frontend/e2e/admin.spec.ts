@@ -35,11 +35,10 @@ test.describe('administrator (single address)', () => {
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Administração');
     await expect(page.getByText('Você entrou como Diego Quirino')).toBeVisible();
-    const menu = page.getByRole('group', { name: 'Funções administrativas' });
     const importLink = page.getByRole('link', { name: 'Importar' });
     await expect(importLink).toBeVisible();
     for (const item of ['Exportar', 'Painel de andamento', 'Participantes']) {
-      await expect(menu.getByRole('button', { name: item })).toBeDisabled();
+      await expect(page.getByRole('button', { name: item })).toBeDisabled();
     }
 
     await page.goto('/pt-BR/participate');
