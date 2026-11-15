@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: Planned (2026-11-14; plan and tasks ready for `/speckit-implement`)
 
 **Input**: User description: "The administrator uploads a CSV with the columns of Appendix D of spec 001, checks a preview and confirms. On confirmation, the new items are split into fixed blocks of 10 and each block enters the end of the queue with the roles of rater 1 and rater 2."
 
