@@ -171,9 +171,9 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 - [x] T040 Run quickstart sections 2 to 6 against local staging; record any fix
   **Record (2026-11-15):** local staging rebuilt (`0.7.0+dev`, V4 and V5 applied on the existing volume, no `down -v`) and `npm run e2e` run against it (68 passed, 4 skipped). Sections 2, 3, 4 (via `TaskConcurrencyTest`) and 6 covered; section 5 not repeated by hand (the 20-minute wait; covered by `TaskExpiryTest`). The queue specs assume a freshly started staging (nothing imported); to repeat the run, restart staging with `down -v`.
 - [x] T041 [P] Confirm `TaskConcurrencyTest` (SC-001) and exhaustion (SC-002) pass in CI; next-item latency smoke under 3 s where practical (SC-003)
-  **Record (2026-11-15):** `.\mvnw.cmd -B verify` green locally (339 tests, 0 failures), including `TaskConcurrencyTest` (SC-001: 30 threads, 8 tasks, no duplicates, nobody with both roles) and the exhaustion tests (SC-002). Not yet seen in GitHub CI (that is part of T042). SC-003 smoke: in the e2e run each item save plus navigation to the next item took well under 1 s on local staging. Fixed on the way: `TaskQueueRepositoriesTest` assumed an empty task table and failed in the full run; it now clears the study tables first.
-- [ ] T042 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.7.0-1` after the researcher's approval; quickstart section 7 in production
-  **Left open on purpose (2026-11-15):** no deploy was done. Needs the researcher's explicit approval: push to `Veredito`, wait for `ci.yml` (the `e2e` job now includes the queue specs), then `git push origin <commit>:refs/tags/deploy/0.7.0-1` and quickstart section 7 in production.
+  **Record (2026-11-15):** `.\mvnw.cmd -B verify` green locally (339 tests, 0 failures), including `TaskConcurrencyTest` (SC-001: 30 threads, 8 tasks, no duplicates, nobody with both roles) and the exhaustion tests (SC-002). Confirmed green in GitHub CI on `9a00796` (T042). SC-003 smoke: in the e2e run each item save plus navigation to the next item took well under 1 s on local staging. Fixed on the way: `TaskQueueRepositoriesTest` assumed an empty task table and failed in the full run; it now clears the study tables first.
+- [x] T042 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.7.0-1` after the researcher's approval; quickstart section 7 in production
+  **Record (2026-11-15):** researcher authorized deploy. CI on `278dade` failed (`ImportPreviewTest.clearStudyData` deleted `task` before `response`, `fk_response_task`); fixed in `9a00796` (import/study cleanups use `clearStudyDatabase()`). `ci.yml` run [43758878294](https://github.com/diegoquirino/openscience/actions/runs/43758878294) green on `9a00796` (backend, frontend, secrets, image, e2e). Tag `deploy/0.7.0-1` on `9a00796`; deploy run [43759740319](https://github.com/diegoquirino/openscience/actions/runs/43759740319) succeeded. Revision `veredito-00009-z97` takes 100% of the traffic. Production `/api/v1` `systemVersion` `0.7.0+9a00796`.
 
 ---
 
@@ -184,7 +184,7 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 - [x] T044 [P] Confirm secret scanning still clean; no new secrets introduced
   **Record (2026-11-15):** `gitleaks git --redact` (v8.30.1, as in `ci.yml`) over the 70 commits of the branch: no leaks found. Test e-mails are under `example.com`; no new secret.
 - [x] T045 Mark spec 007 complete: `Status` in `spec.md`; ROADMAP line of 007; update 001 overview status to "002 to 005 and 007 complete; 006 next"; point `.specify/feature.json` at `specs/006-consent-screening`; commit and push
-  **Record (2026-11-15):** closed with every story task done; only T042 (production deploy, needs approval) remains open, so `spec.md` and the ROADMAP say "production deploy pending". `.specify/feature.json` (git-ignored, local only) points at `specs/006-consent-screening`.
+  **Record (2026-11-15):** every story task and T042 done; `spec.md` and ROADMAP mark 007 complete; `.specify/feature.json` (git-ignored, local only) points at `specs/006-consent-screening`.
 
 ---
 

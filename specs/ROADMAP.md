@@ -14,7 +14,7 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 2 | [003-deployment-foundation](./003-deployment-foundation/spec.md) | App online (Google Cloud), database, local staging in Docker, rule tests, i18n infrastructure (pt-BR, en-US, es-ES). **Complete** (2026-11-13; e-mails in local staging checked in 004) | - |
 | 3 | [004-email-code-access](./004-email-code-access/spec.md) | Language choice; sign-in by code; separate administrator. **Complete** (2026-11-14; the wait for the code is revisited in the pilot) | 003 |
 | 4 | [005-block-import](./005-block-import/spec.md) | Import, preview, blocks and queue. **Complete** (2026-11-15) | 004 |
-| 5 | [007-block-queue](./007-block-queue/spec.md) | Request, answer, review and submit blocks; concurrency. **Complete** (2026-11-15; production deploy pending approval) | 004, 005 |
+| 5 | [007-block-queue](./007-block-queue/spec.md) | Request, answer, review and submit blocks; concurrency. **Complete** (2026-11-15; `deploy/0.7.0-1`) | 004, 005 |
 | 6 | [006-consent-screening](./006-consent-screening/spec.md) | Consent form, skill, screening | 004 |
 | 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions | 003 (sample items from 002) |
 | 8 | [009-exports](./009-exports/spec.md) | Wide and long tables; pipeline files | 005, 007 |

@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Complete (2026-11-15; production deploy of `0.7.0-1` pending the researcher's approval, T042)
+**Status**: Complete (2026-11-15; production `0.7.0+9a00796`, tag `deploy/0.7.0-1`)
 
 **Input**: User description: "The eligible participant receives the next free task (block-role) from the queue (10 items, or fewer in the last block of the batch), answers each item as a draft, reviews and submits the whole block. Two simultaneous requests never receive the same task, and the same person never receives both roles of a block. When finished, they know whether there are more blocks for them."
 
