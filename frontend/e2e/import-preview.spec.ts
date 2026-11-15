@@ -1,12 +1,11 @@
 import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { latestMessageTo, newestMessageId } from './support/mailpit';
 
 const ADMINISTRATOR = 'diegoquirino@gmail.com';
 const FIXTURE = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
-  '../../backend/src/test/resources/minitest/veredito_minitest_vazio.csv',
+  process.cwd(),
+  '../backend/src/test/resources/minitest/veredito_minitest_vazio.csv',
 );
 
 async function signIn(page: Page, request: APIRequestContext, name: string, email: string): Promise<void> {
