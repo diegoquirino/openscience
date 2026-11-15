@@ -4,7 +4,6 @@ import { latestMessageTo, newestMessageId } from './support/mailpit';
 
 // Runs against local staging (compose profile staging), whose e-mails land in Mailpit.
 const ADMINISTRATOR = 'diegoquirino@gmail.com';
-const NEXT_CODE_AFTER_MS = 61_000;
 const FIXTURE = path.resolve(
   process.cwd(),
   '../backend/src/test/resources/minitest/veredito_minitest_vazio.csv',
@@ -14,37 +13,24 @@ const FIXTURE = path.resolve(
 async function signIn(page: Page, request: APIRequestContext, name: string, email: string): Promise<void> {
   const previousId = await newestMessageId(request, email);
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome').fill(name);
-  await page.getByLabel('E-mail').fill(email);
+  await page.getByLabel('Nome', { exact: true }).fill(name);
+  await page.getByLabel('E-mail', { exact: true }).fill(email);
   await page.getByRole('button', { name: 'Enviar código' }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/participate\/code$/);
+  await expect(page).toHaveURL(/\/pt-BR\/participate\/code$/, { timeout: 15_000 });
   const { code } = await latestMessageTo(request, email, previousId);
   await page.getByLabel('Código de acesso').fill(code);
   await page.getByRole('button', { name: 'Entrar' }).click();
 }
 
 test.describe('administrator (single address)', () => {
-  test.describe.configure({ mode: 'serial' });
+  // One code per minute; a Playwright retry would hit code-resend-too-soon.
+  test.describe.configure({ mode: 'serial', retries: 0 });
 
-  let lastAdminCodeAt = 0;
-
-  async function signInAdministrator(page: Page, request: APIRequestContext): Promise<void> {
-    await page.waitForTimeout(Math.max(0, lastAdminCodeAt + NEXT_CODE_AFTER_MS - Date.now()));
-    const previousId = await newestMessageId(request, ADMINISTRATOR);
-    await page.goto('/pt-BR/participate');
-    await page.getByLabel('Nome').fill('Diego Quirino');
-    await page.getByLabel('E-mail').fill(ADMINISTRATOR);
-    await page.getByRole('button', { name: 'Enviar código' }).click();
-    await expect(page).toHaveURL(/\/pt-BR\/participate\/code$/);
-    lastAdminCodeAt = Date.now();
-    const { code } = await latestMessageTo(request, ADMINISTRATOR, previousId);
-    await page.getByLabel('Código de acesso').fill(code);
-    await page.getByRole('button', { name: 'Entrar' }).click();
-  }
-
-  test('the administrator signs in and reaches the administration (pt-BR)', async ({ page, request }, testInfo) => {
+  test('administrator opens Import, previews Minitest and confirms', async ({ page, request }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'one code per minute for the single administrator address');
-    await signInAdministrator(page, request);
+    test.setTimeout(120_000);
+
+    await signIn(page, request, 'Diego Quirino', ADMINISTRATOR);
 
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Administração');
@@ -56,15 +42,6 @@ test.describe('administrator (single address)', () => {
     }
 
     await page.goto('/pt-BR/participate');
-    await expect(page).toHaveURL(/\/pt-BR\/admin$/);
-  });
-
-  test('administrator previews Minitest, confirms, and re-import is skipped', async ({
-    page,
-    request,
-  }, testInfo) => {
-    test.skip(testInfo.project.name !== 'desktop', 'one code per minute for the single administrator address');
-    await signInAdministrator(page, request);
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
 
     await page.getByRole('link', { name: 'Importar' }).click();
