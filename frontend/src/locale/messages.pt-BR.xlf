@@ -553,5 +553,251 @@
         <target>Blocos</target>
       </segment>
     </unit>
+    <unit id="changeImpact.LOW">
+      <segment>
+        <source>Low</source>
+        <target>Baixo</target>
+      </segment>
+    </unit>
+    <unit id="changeImpact.HIGH">
+      <segment>
+        <source>High</source>
+        <target>Alto</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.KEEP">
+      <segment>
+        <source>Keep</source>
+        <target>Manter</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.UPDATE">
+      <segment>
+        <source>Update</source>
+        <target>Atualizar</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.REMOVE">
+      <segment>
+        <source>Remove</source>
+        <target>Remover</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.CREATE">
+      <segment>
+        <source>Create</source>
+        <target>Criar</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.MERGE">
+      <segment>
+        <source>Merge</source>
+        <target>Unir</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.SPLIT">
+      <segment>
+        <source>Split</source>
+        <target>Dividir</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.REASSIGN">
+      <segment>
+        <source>Reassign</source>
+        <target>Revincular</target>
+      </segment>
+    </unit>
+    <unit id="maintenanceOperation.FLAG">
+      <segment>
+        <source>Flag</source>
+        <target>Sinalizar</target>
+      </segment>
+    </unit>
+    <unit id="problem.reservationExpired">
+      <segment>
+        <source>Your time for this block ran out and it was given to someone else</source>
+        <target>Seu tempo para este bloco acabou e ele foi entregue a outra pessoa</target>
+      </segment>
+    </unit>
+    <unit id="problem.taskAlreadySubmitted">
+      <segment>
+        <source>This block was already submitted and can no longer be changed</source>
+        <target>Este bloco já foi enviado e não pode mais ser alterado</target>
+      </segment>
+    </unit>
+    <unit id="label.item.counter">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ current.position }}"/> of <ph id="1" equiv="INTERPOLATION_1" disp="{{ size() }}"/></source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ current.position }}"/> de <ph id="1" equiv="INTERPOLATION_1" disp="{{ size() }}"/></target>
+      </segment>
+    </unit>
+    <unit id="label.item.timeLeft">
+      <segment>
+        <source>Time left</source>
+        <target>Tempo restante</target>
+      </segment>
+    </unit>
+    <unit id="label.item.expired">
+      <segment>
+        <source> Your reservation time is over. Your choices on this screen are kept; continue to save them, but the block may already have been given to someone else. </source>
+        <target>O tempo da sua reserva acabou. Suas escolhas nesta tela foram mantidas; continue para salvá-las, mas o bloco pode já ter sido entregue a outra pessoa.</target>
+      </segment>
+    </unit>
+    <unit id="label.item.system">
+      <segment>
+        <source>System</source>
+        <target>Sistema</target>
+      </segment>
+    </unit>
+    <unit id="label.item.usecase">
+      <segment>
+        <source>Use case</source>
+        <target>Caso de uso</target>
+      </segment>
+    </unit>
+    <unit id="label.item.kind">
+      <segment>
+        <source>Kind</source>
+        <target>Tipo</target>
+      </segment>
+    </unit>
+    <unit id="label.item.field">
+      <segment>
+        <source>Field</source>
+        <target>Campo</target>
+      </segment>
+    </unit>
+    <unit id="label.item.originUsecase">
+      <segment>
+        <source>Use case before (version <ph id="0" equiv="INTERPOLATION" disp="{{ current.originVersion }}"/>)</source>
+        <target>Caso de uso antes (versão <ph id="0" equiv="INTERPOLATION" disp="{{ current.originVersion }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="label.item.targetUsecase">
+      <segment>
+        <source>Use case after (version <ph id="0" equiv="INTERPOLATION" disp="{{ current.targetVersion }}"/>)</source>
+        <target>Caso de uso depois (versão <ph id="0" equiv="INTERPOLATION" disp="{{ current.targetVersion }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="label.item.origin">
+      <segment>
+        <source>Edit: before</source>
+        <target>Edição: antes</target>
+      </segment>
+    </unit>
+    <unit id="label.item.target">
+      <segment>
+        <source>Edit: after</source>
+        <target>Edição: depois</target>
+      </segment>
+    </unit>
+    <unit id="label.item.impactQuestion">
+      <segment>
+        <source>Does this edit change the behavior that the use case specifies?</source>
+        <target>Esta edição muda o comportamento que o caso de uso especifica?</target>
+      </segment>
+    </unit>
+    <unit id="label.item.operationQuestion">
+      <segment>
+        <source> What should be done with the manual test cases that exercise this part? </source>
+        <target>O que deve ser feito com os casos de teste manuais que exercitam este trecho?</target>
+      </segment>
+    </unit>
+    <unit id="label.item.comment">
+      <segment>
+        <source>Comment (optional)</source>
+        <target>Comentário (opcional)</target>
+      </segment>
+    </unit>
+    <unit id="label.item.back">
+      <segment>
+        <source>Back</source>
+        <target>Voltar</target>
+      </segment>
+    </unit>
+    <unit id="label.item.continue">
+      <segment>
+        <source>Continue</source>
+        <target>Continuar</target>
+      </segment>
+    </unit>
+    <unit id="label.retry">
+      <segment>
+        <source>Try again</source>
+        <target>Tentar novamente</target>
+      </segment>
+    </unit>
+    <unit id="label.done.title">
+      <segment>
+        <source>Thank you</source>
+        <target>Obrigado</target>
+      </segment>
+    </unit>
+    <unit id="label.another">
+      <segment>
+        <source>Label another block</source>
+        <target>Rotular outro bloco</target>
+      </segment>
+    </unit>
+    <unit id="label.end.noItemsYet">
+      <segment>
+        <source>No items to label yet.</source>
+        <target>Ainda não há itens para rotular.</target>
+      </segment>
+    </unit>
+    <unit id="label.end.databaseComplete">
+      <segment>
+        <source>The database has been completely answered.</source>
+        <target>A base de dados foi totalmente respondida.</target>
+      </segment>
+    </unit>
+    <unit id="label.end.noneForYou">
+      <segment>
+        <source>There are no more blocks for you at the moment.</source>
+        <target>Não há mais blocos para você no momento.</target>
+      </segment>
+    </unit>
+    <unit id="label.end.moreAvailable">
+      <segment>
+        <source>You can label another block.</source>
+        <target>Você pode rotular outro bloco.</target>
+      </segment>
+    </unit>
+    <unit id="label.end.thanks">
+      <segment>
+        <source>Thank you for labeling.</source>
+        <target>Obrigado por rotular.</target>
+      </segment>
+    </unit>
+    <unit id="label.reserveFailed">
+      <segment>
+        <source>Could not request a block. Please try again.</source>
+        <target>Não foi possível solicitar um bloco. Tente novamente.</target>
+      </segment>
+    </unit>
+    <unit id="label.review.title">
+      <segment>
+        <source>Review</source>
+        <target>Revisão</target>
+      </segment>
+    </unit>
+    <unit id="label.review.coming">
+      <segment>
+        <source>The review of your answers is coming soon.</source>
+        <target>A revisão das suas respostas estará disponível em breve.</target>
+      </segment>
+    </unit>
+    <unit id="label.review.backToItems">
+      <segment>
+        <source>Back to the items</source>
+        <target>Voltar aos itens</target>
+      </segment>
+    </unit>
+    <unit id="welcome.start">
+      <segment>
+        <source>Start labeling</source>
+        <target>Começar a rotular</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

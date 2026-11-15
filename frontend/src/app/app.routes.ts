@@ -28,8 +28,12 @@ export const routes: Routes = [
   {
     path: 'label/items/:position',
     canActivate: [participantOnly],
-    loadComponent: () =>
-      import('./label/label-item-placeholder.component').then((m) => m.LabelItemPlaceholderComponent),
+    loadComponent: () => import('./label/item/item.component').then((m) => m.LabelItemComponent),
+  },
+  {
+    path: 'label/review',
+    canActivate: [participantOnly],
+    loadComponent: () => import('./label/review/review.component').then((m) => m.LabelReviewComponent),
   },
   {
     path: 'label/done',

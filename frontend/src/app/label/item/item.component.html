@@ -1,0 +1,116 @@
+<section class="item">
+  @if (busy()) {
+    <mat-spinner diameter="40"></mat-spinner>
+  } @else if (item(); as current) {
+    <header class="bar">
+      <p class="counter" i18n="@@label.item.counter">{{ current.position }} of {{ size() }}</p>
+      @if (countdown()) {
+        <p class="countdown" [class.expired]="expired()" role="timer">
+          <span i18n="@@label.item.timeLeft">Time left</span>
+          <strong>{{ countdown() }}</strong>
+        </p>
+      }
+    </header>
+
+    @if (expired()) {
+      <p class="warning" role="alert" i18n="@@label.item.expired">
+        Your reservation time is over. Your choices on this screen are kept; continue to save them, but the block may
+        already have been given to someone else.
+      </p>
+    }
+
+    <dl class="meta">
+      <div>
+        <dt i18n="@@label.item.system">System</dt>
+        <dd>{{ current.system }}</dd>
+      </div>
+      <div>
+        <dt i18n="@@label.item.usecase">Use case</dt>
+        <dd>{{ current.uc }}</dd>
+      </div>
+      <div>
+        <dt i18n="@@label.item.kind">Kind</dt>
+        <dd>{{ current.kind }}</dd>
+      </div>
+      <div>
+        <dt i18n="@@label.item.field">Field</dt>
+        <dd>{{ current.field }}</dd>
+      </div>
+    </dl>
+
+    <div class="texts">
+      <section>
+        <h2 i18n="@@label.item.originUsecase">Use case before (version {{ current.originVersion }})</h2>
+        <div class="text">{{ current.originUsecase }}</div>
+      </section>
+      <section>
+        <h2 i18n="@@label.item.targetUsecase">Use case after (version {{ current.targetVersion }})</h2>
+        <div class="text">{{ current.targetUsecase }}</div>
+      </section>
+    </div>
+
+    <div class="texts">
+      <section>
+        <h2 i18n="@@label.item.origin">Edit: before</h2>
+        <div class="text edit">{{ current.origin }}</div>
+      </section>
+      <section>
+        <h2 i18n="@@label.item.target">Edit: after</h2>
+        <div class="text edit">{{ current.target }}</div>
+      </section>
+    </div>
+
+    <form class="questions" (submit)="$event.preventDefault(); submit()">
+      <fieldset>
+        <legend i18n="@@label.item.impactQuestion">Does this edit change the behavior that the use case specifies?</legend>
+        <mat-radio-group name="impact" [value]="impact()" (change)="setImpact($event.value)">
+          @for (code of impacts; track code) {
+            <mat-radio-button [value]="code">{{ impactLabel(code) }}</mat-radio-button>
+          }
+        </mat-radio-group>
+      </fieldset>
+
+      <fieldset>
+        <legend i18n="@@label.item.operationQuestion">
+          What should be done with the manual test cases that exercise this part?
+        </legend>
+        <mat-radio-group name="operation" [value]="operation()" (change)="setOperation($event.value)">
+          @for (code of operations; track code) {
+            <mat-radio-button [value]="code">{{ operationLabel(code) }}</mat-radio-button>
+          }
+        </mat-radio-group>
+      </fieldset>
+
+      <mat-form-field class="comment" appearance="outline">
+        <mat-label i18n="@@label.item.comment">Comment (optional)</mat-label>
+        <textarea
+          matInput
+          rows="3"
+          [attr.maxlength]="commentMax"
+          [value]="comment()"
+          (input)="onComment($event)"
+        ></textarea>
+        <mat-hint align="end">{{ comment().length }} / {{ commentMax }}</mat-hint>
+      </mat-form-field>
+
+      @if (message(); as text) {
+        <p class="error" role="alert">{{ text }}</p>
+      }
+
+      <div class="actions">
+        @if (previousPosition(); as previous) {
+          <a mat-stroked-button [routerLink]="['/label/items', previous]" i18n="@@label.item.back">Back</a>
+        }
+        <button mat-flat-button type="submit" [disabled]="!canContinue()" i18n="@@label.item.continue">Continue</button>
+        @if (saving()) {
+          <mat-spinner diameter="24"></mat-spinner>
+        }
+      </div>
+    </form>
+  } @else {
+    @if (message(); as text) {
+      <p class="error" role="alert">{{ text }}</p>
+    }
+    <button mat-flat-button type="button" (click)="retry()" i18n="@@label.retry">Try again</button>
+  }
+</section>

@@ -70,6 +70,10 @@ export function problemMessage(problem: Problem | null | undefined, now: Date = 
       return $localize`:import preview expired or unknown@@problem.previewNotFound:This import preview does not exist or has expired; upload the file again`;
     case 'phase-switch-not-allowed':
       return $localize`:cannot switch study phase@@problem.phaseSwitchNotAllowed:The study phase cannot switch to collection now (database not empty, already in collection, or staging)`;
+    case 'reservation-expired':
+      return $localize`:reservation expired and taken by someone else@@problem.reservationExpired:Your time for this block ran out and it was given to someone else`;
+    case 'task-already-submitted':
+      return $localize`:save after the block was submitted@@problem.taskAlreadySubmitted:This block was already submitted and can no longer be changed`;
     default:
       return undefined;
   }

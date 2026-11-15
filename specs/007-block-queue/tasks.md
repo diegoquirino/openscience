@@ -91,7 +91,7 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 - [x] T019 [P] [US2] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with the new 007 types in the three locales (force gate false for `not-eligible`)
 - [x] T020 [US2] Implement `<pkg>/queue/DraftService.java`: lock task; holder or renew-own-expired; upsert draft (`change_impact`/`maintenance_operation` NOT NULL codes, comment ? 1,000, `language` from request locale, `saved_at`); renew expiry by `reservation_minutes`
 - [x] T021 [US2] Implement `GET /api/v1/tasks/{id}/items/{position}` and `PUT /api/v1/tasks/{id}/responses/{itemId}` on `<pkg>/api/v1/TaskItemController.java` / `TaskResponseController.java` with OpenAPI and HAL-FORMS `vd:save-response`
-- [ ] T022 [US2] Front end: simple item screen `<app>/label/item/` (`/label/items/:position`) with fields, impact/operation radios, comment, counter, Continue disabled until both answered; countdown helper from `reservationExpiresAt` + `Date` header (SC-005); sessionStorage restore of unsaved choices; XLIFF
+- [x] T022 [US2] Front end: simple item screen `<app>/label/item/` (`/label/items/:position`) with fields, impact/operation radios, comment, counter, Continue disabled until both answered; countdown helper from `reservationExpiresAt` + `Date` header (SC-005); sessionStorage restore of unsaved choices; XLIFF
 - [ ] T023 [US2] Playwright: answer two items, reload, land on third with drafts kept (SC-004)
 
 **Checkpoint**: US1 + US2 deliver reserve and draft labeling
