@@ -21,6 +21,22 @@ export const routes: Routes = [
     loadComponent: () => import('./welcome/welcome.component').then((m) => m.WelcomeComponent),
   },
   {
+    path: 'label',
+    canActivate: [participantOnly],
+    loadComponent: () => import('./label/label-home.component').then((m) => m.LabelHomeComponent),
+  },
+  {
+    path: 'label/items/:position',
+    canActivate: [participantOnly],
+    loadComponent: () =>
+      import('./label/label-item-placeholder.component').then((m) => m.LabelItemPlaceholderComponent),
+  },
+  {
+    path: 'label/done',
+    canActivate: [participantOnly],
+    loadComponent: () => import('./label/label-done.component').then((m) => m.LabelDoneComponent),
+  },
+  {
     path: 'admin',
     canActivate: [administratorOnly],
     loadComponent: () => import('./admin/admin.component').then((m) => m.AdminComponent),

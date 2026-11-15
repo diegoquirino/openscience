@@ -16,7 +16,8 @@ public class ResponseRepository {
     private static final String SELECT = """
             SELECT id, task_id, item_id, participant_id, state, change_impact, maintenance_operation,
                    comment, language, saved_at
-            FROM response""";
+            FROM response
+            """;
 
     private final JdbcClient jdbc;
 

@@ -19,7 +19,8 @@ public class ItemRepository {
     private static final String SELECT = """
             SELECT id, `system`, edit_key, uc, kind, field, origin, target, origin_version, target_version,
                    origin_usecase, target_usecase, batch_id, block_id, position
-            FROM item""";
+            FROM item
+            """;
 
     private final JdbcClient jdbc;
 

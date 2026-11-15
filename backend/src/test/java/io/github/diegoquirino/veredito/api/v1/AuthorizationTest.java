@@ -20,8 +20,9 @@ import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 
 /**
- * US2 and SC-003: every operation the OpenAPI document tags "Administration" refuses visitors and
- * participants, and every "Participation" operation refuses the administrator.
+ * Every operation the OpenAPI document tags "Administration" refuses visitors and participants;
+ * every "Participation" or "Tasks" operation refuses the administrator (and visitors get 401 via
+ * SecurityConfig).
  */
 @ExtendWith(OutputCaptureExtension.class)
 class AuthorizationTest extends ApiTestBase {
@@ -79,13 +80,18 @@ class AuthorizationTest extends ApiTestBase {
     }
 
     @Test
-    void participantOperationsRefuseTheAdministrator() {
-        List<Operation> operations = operationsTagged("Participation");
+    void participantAndTaskOperationsRefuseTheAdministrator() {
+        List<Operation> operations = new ArrayList<>();
+        operations.addAll(operationsTagged("Participation"));
+        operations.addAll(operationsTagged("Tasks"));
         assertThat(operations).isNotEmpty();
         String administrator = administratorSession();
         String participant = participantSession();
 
         for (Operation operation : operations) {
+            operation.call(request())
+                    .then().statusCode(401)
+                    .body("type", equalTo(PROBLEM + "authentication-required"));
             operation.call(as(administrator))
                     .then().statusCode(403)
                     .body("type", equalTo(PROBLEM + "forbidden"));
@@ -93,7 +99,7 @@ class AuthorizationTest extends ApiTestBase {
                     .then().statusCode(not(oneOf(401, 403)));
         }
         System.out.println("AuthorizationTest: " + operations.size()
-                + " participant operation(s) refused the administrator: " + operations);
+                + " participant/task operation(s) refused visitors and the administrator: " + operations);
     }
 
     private List<Operation> operationsTagged(String tag) {

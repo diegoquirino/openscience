@@ -18,7 +18,8 @@ public class TaskRepository {
 
     private static final String SELECT = """
             SELECT id, block_id, role, queue_position, status, participant_id, reserved_at, expires_at, submitted_at
-            FROM task""";
+            FROM task
+            """;
 
     private final JdbcClient jdbc;
 
@@ -92,6 +93,19 @@ public class TaskRepository {
                 .query(Long.class)
                 .list();
         return Set.copyOf(ids);
+    }
+
+    /** Free tasks and expired reservations, unlocked (for outcome hints). */
+    public List<NextTaskChooser.Candidate> listCandidates(Instant now) {
+        return jdbc.sql("""
+                        SELECT id, block_id, role, queue_position, status, participant_id, expires_at
+                        FROM task
+                        WHERE status = 'free'
+                           OR (status = 'reserved' AND expires_at <= ?)
+                        ORDER BY queue_position""")
+                .param(Timestamp.from(now))
+                .query(TaskRepository::mapCandidate)
+                .list();
     }
 
     /**

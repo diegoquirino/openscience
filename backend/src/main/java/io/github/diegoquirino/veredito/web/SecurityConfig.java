@@ -51,6 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/api/v1/access-sessions/current").hasAnyRole(PARTICIPANT, ADMINISTRATOR)
                         .requestMatchers("/api/v1/participants/**").hasRole(PARTICIPANT)
+                        .requestMatchers("/api/v1/tasks/**").hasRole(PARTICIPANT)
                         .requestMatchers(ADMINISTRATION).hasRole(ADMINISTRATOR)
                         .anyRequest().permitAll());
         return http.build();

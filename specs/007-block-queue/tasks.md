@@ -69,12 +69,12 @@ description: "Tasks of spec 007: receive, answer and submit blocks without colli
 
 **Independent Test**: with 38 imported items (8 tasks), ask in sequence and in parallel; order and exclusivity as in US1 scenarios 1–7
 
-- [ ] T011 [P] [US1] Create failing `<tpkg>/api/v1/TaskReservationTest.java`: follow `vd:next-task` as participant after importing Minitest; first caller gets B1-R1 (`201`); second gets B1-R2; same caller with valid reservation gets `200` same task; empty DB ? `outcome=no-items-yet`; visitor 401 / administrator 403
-- [ ] T012 [P] [US1] Create failing `<tpkg>/api/v1/TaskConcurrencyTest.java` for SC-001: 30 threads reserve/save/submit against a small imported set; assert no task given to two people and nobody holds both roles of a block (also supports SC-002 when the set is exhausted)
-- [ ] T013 [US1] Implement `<pkg>/queue/TaskReservationService.java`: resume own reservation; else lock candidates with `FOR UPDATE SKIP LOCKED`, apply `NextTaskChooser`, reclaim expired (delete prior drafts), set holder/expiry; compute `outcome` when none (`contracts/tasks.md` research §4)
-- [ ] T014 [US1] Implement `<pkg>/api/v1/TaskReservationController.java` and task models: `POST /api/v1/tasks/reservations`, `GET /api/v1/tasks/{id}` per `contracts/tasks.md` (HAL links; OpenAPI tag Tasks complete)
-- [ ] T015 [US1] Secure `/api/v1/tasks/**` as participant-only in `<pkg>/web/SecurityConfig.java`; extend `<tpkg>/api/v1/AuthorizationTest.java` so every Tasks operation is denied to visitors and administrators
-- [ ] T016 [US1] Front end: routes `/label` and wiring from `/welcome` to start labeling; call `vd:next-task`; on task redirect to first item placeholder or done with `outcome`; XLIFF units; `npm run i18n:check`
+- [x] T011 [P] [US1] Create failing `<tpkg>/api/v1/TaskReservationTest.java`: follow `vd:next-task` as participant after importing Minitest; first caller gets B1-R1 (`201`); second gets B1-R2; same caller with valid reservation gets `200` same task; empty DB ? `outcome=no-items-yet`; visitor 401 / administrator 403
+- [x] T012 [P] [US1] Create failing `<tpkg>/api/v1/TaskConcurrencyTest.java` for SC-001: 30 threads reserve/save/submit against a small imported set; assert no task given to two people and nobody holds both roles of a block (also supports SC-002 when the set is exhausted)
+- [x] T013 [US1] Implement `<pkg>/queue/TaskReservationService.java`: resume own reservation; else lock candidates with `FOR UPDATE SKIP LOCKED`, apply `NextTaskChooser`, reclaim expired (delete prior drafts), set holder/expiry; compute `outcome` when none (`contracts/tasks.md` research §4)
+- [x] T014 [US1] Implement `<pkg>/api/v1/TaskReservationController.java` and task models: `POST /api/v1/tasks/reservations`, `GET /api/v1/tasks/{id}` per `contracts/tasks.md` (HAL links; OpenAPI tag Tasks complete)
+- [x] T015 [US1] Secure `/api/v1/tasks/**` as participant-only in `<pkg>/web/SecurityConfig.java`; extend `<tpkg>/api/v1/AuthorizationTest.java` so every Tasks operation is denied to visitors and administrators
+- [x] T016 [US1] Front end: routes `/label` and wiring from `/welcome` to start labeling; call `vd:next-task`; on task redirect to first item placeholder or done with `outcome`; XLIFF units; `npm run i18n:check`
 - [ ] T017 [US1] Playwright e2e: after Minitest import, two participants receive different first tasks; empty DB shows `no-items-yet`
 
 **Checkpoint**: US1 testable alone (reserve only)
