@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.startsWith;
 
 import io.github.diegoquirino.veredito.support.ApiTestBase;
 import io.github.diegoquirino.veredito.support.Bundles;
+import io.github.diegoquirino.veredito.web.CurrentSession;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.sql.Timestamp;
@@ -28,6 +29,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 class LocalizedProblemDetailsTest extends ApiTestBase {
 
     private static final String NO_HEADER = "<none>";
+    private static final String TASK_RESERVATIONS = "/api/v1/tasks/reservations";
+    private static final List<String> TASK_PROBLEMS = List.of("reservation-expired", "task-already-submitted");
     private static final List<String> HEADERS = List.of("pt-BR", "en-US", "es-ES", NO_HEADER);
     private static final List<String> ACCESS_PROBLEMS = List.of(
             "code-resend-too-soon", "code-hourly-limit", "daily-email-limit", "code-not-sent", "invalid-code",
@@ -64,6 +67,16 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
 
     static Stream<Arguments> importProblems() {
         return IMPORT_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
+    }
+
+    static Stream<Arguments> taskProblems() {
+        return TASK_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
+    }
+
+    @ParameterizedTest(name = "{0} with Accept-Language {1}")
+    @MethodSource("taskProblems")
+    void taskProblemsAreLocalized(String slug, String acceptLanguage) {
+        assertLocalized(slug, acceptLanguage, provokeTask(slug, acceptLanguage));
     }
 
     @ParameterizedTest(name = "{0} with Accept-Language {1}")
@@ -157,6 +170,42 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
             case "preview-not-found" -> localized(acceptLanguage)
                     .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
                     .get("/api/v1/batches/previews/999999");
+            default -> throw new IllegalArgumentException(slug);
+        };
+    }
+
+    /**
+     * Spec 007. {@code not-eligible} needs the gate to answer false (there is no participant that
+     * is ineligible until spec 006), so it is not provoked here.
+     */
+    private Response provokeTask(String slug, String acceptLanguage) {
+        clearStudyDatabase();
+        importMinitestBatch();
+        String token = participantSession();
+        Response reserved = as(token).post(TASK_RESERVATIONS);
+        reserved.then().statusCode(201);
+        String taskUrl = "/api/v1/tasks/" + reserved.<Integer>path("id");
+        long itemId = as(token).get(taskUrl + "/items/1").then().statusCode(200).extract().jsonPath().getLong("itemId");
+        Map<String, String> body = Map.of("changeImpact", "LOW", "maintenanceOperation", "KEEP");
+        return switch (slug) {
+            case "reservation-expired" -> {
+                // The reservation lapses and the participant is handed another block meanwhile.
+                clock.advance(Duration.ofMinutes(reserved.<Integer>path("reservationMinutes") + 1));
+                as(token).post(TASK_RESERVATIONS).then().statusCode(201);
+                yield localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
+                        .contentType("application/json")
+                        .body(body)
+                        .put(taskUrl + "/responses/" + itemId);
+            }
+            case "task-already-submitted" -> {
+                jdbc.sql("UPDATE task SET status = 'completed', submitted_at = ? WHERE id = ?")
+                        .params(Timestamp.from(clock.instant()), reserved.<Integer>path("id"))
+                        .update();
+                yield localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
+                        .contentType("application/json")
+                        .body(body)
+                        .put(taskUrl + "/responses/" + itemId);
+            }
             default -> throw new IllegalArgumentException(slug);
         };
     }

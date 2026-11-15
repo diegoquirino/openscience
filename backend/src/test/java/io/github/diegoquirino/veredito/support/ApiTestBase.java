@@ -18,6 +18,9 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
@@ -27,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -164,6 +168,34 @@ public abstract class ApiTestBase {
     /** A session of the administrator, written directly, without a code. */
     protected String administratorSession() {
         return session(Subject.ADMINISTRATOR, null);
+    }
+
+    /** Empties the study tables (responses, tasks, items, blocks, batches) so a test starts from scratch. */
+    protected void clearStudyDatabase() {
+        jdbc.sql("DELETE FROM response").update();
+        jdbc.sql("DELETE FROM task").update();
+        jdbc.sql("DELETE FROM item").update();
+        jdbc.sql("DELETE FROM block").update();
+        jdbc.sql("DELETE FROM import_batch").update();
+        jdbc.sql("DELETE FROM import_preview").update();
+    }
+
+    /** Imports the empty Minitest CSV as the administrator: 4 blocks of 10 items, 8 tasks. */
+    protected void importMinitestBatch() {
+        String token = administratorSession();
+        try (InputStream in = new ClassPathResource("minitest/veredito_minitest_vazio.csv").getInputStream()) {
+            Response preview = as(token)
+                    .multiPart("file", "veredito_minitest_vazio.csv", in.readAllBytes(), "text/csv")
+                    .post("/api/v1/batches/previews");
+            preview.then().statusCode(201);
+            as(token)
+                    .contentType("application/json")
+                    .body(Map.of("previewId", preview.<Integer>path("id")))
+                    .post("/api/v1/batches")
+                    .then().statusCode(201);
+        } catch (IOException ex) {
+            throw new UncheckedIOException(ex);
+        }
     }
 
     private String session(Subject subject, Long participantId) {

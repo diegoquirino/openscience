@@ -69,7 +69,14 @@ public class TaskReservationController {
     @ApiResponse(
             responseCode = "200",
             description = "Existing reservation or outcome without a task",
-            content = @Content(mediaType = HAL_FORMS, schema = @Schema(oneOf = {TaskModel.class, ReservationOutcomeModel.class})))
+            content = @Content(
+                    mediaType = HAL_FORMS,
+                    schema = @Schema(oneOf = {TaskModel.class, ReservationOutcomeModel.class}),
+                    examples = @ExampleObject(value = """
+                            {
+                              "outcome": "no-items-yet",
+                              "_links": { "self": { "href": "/api/v1/tasks/reservations" } }
+                            }""")))
     @ApiResponse(
             responseCode = "401",
             description = "Visitor",

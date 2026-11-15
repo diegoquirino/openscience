@@ -129,7 +129,8 @@ public class TaskReservationService {
         return outcomeWhenNone();
     }
 
-    private TaskView view(TaskRow task, Instant now, QueueOutcome outcome) {
+    /** Builds the task representation for an already loaded row; shared with the draft service. */
+    public TaskView view(TaskRow task, Instant now, QueueOutcome outcome) {
         var block = blocks.findById(task.blockId()).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
         long answered = responses.countByTaskId(task.id());
         int minutes = config.reservationMinutes();

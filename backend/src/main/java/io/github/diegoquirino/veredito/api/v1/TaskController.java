@@ -10,6 +10,7 @@ import io.github.diegoquirino.veredito.api.ProblemType;
 import io.github.diegoquirino.veredito.queue.TaskReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,7 +40,26 @@ public class TaskController {
     @ApiResponse(
             responseCode = "200",
             description = "Task",
-            content = @Content(mediaType = HAL_FORMS, schema = @Schema(implementation = TaskModel.class)))
+            content = @Content(
+                    mediaType = HAL_FORMS,
+                    schema = @Schema(implementation = TaskModel.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "id": 41,
+                              "blockNumber": 1,
+                              "role": 1,
+                              "status": "reserved",
+                              "size": 10,
+                              "answeredCount": 3,
+                              "reservationExpiresAt": "2026-11-15T18:20:00Z",
+                              "reservationMinutes": 20,
+                              "serverNow": "2026-11-15T18:00:00Z",
+                              "_links": {
+                                "self": { "href": "/api/v1/tasks/41" },
+                                "vd:items": { "href": "/api/v1/tasks/41/items/{position}", "templated": true },
+                                "vd:save-response": { "href": "/api/v1/tasks/41/responses/{itemId}", "templated": true }
+                              }
+                            }""")))
     @ApiResponse(
             responseCode = "401",
             description = "Visitor",

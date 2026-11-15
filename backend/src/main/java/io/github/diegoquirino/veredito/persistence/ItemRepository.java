@@ -103,6 +103,13 @@ public class ItemRepository {
                 .list();
     }
 
+    public Optional<Item> findById(long itemId) {
+        return jdbc.sql(SELECT + " WHERE id = ?")
+                .param(itemId)
+                .query(ItemRepository::map)
+                .optional();
+    }
+
     public Optional<Item> findByBlockAndPosition(long blockId, int position) {
         return jdbc.sql(SELECT + " WHERE block_id = ? AND position = ?")
                 .params(blockId, position)
