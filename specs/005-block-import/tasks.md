@@ -133,7 +133,9 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 - [ ] T030 Run quickstart sections 2 to 5 against local staging; record any fix
 - [ ] T031 [P] Create `<tpkg>/api/v1/ImportVolumeTest.java` for SC-001 (500 lines, preview+confirm &lt; 2 minutes)
-- [ ] T032 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.5.0-1` after the researcher's approval; quickstart section 8 in production (pilot / Minitest-only import)
+- [x] T032 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.5.0-1` after the researcher's approval; quickstart section 8 in production (pilot / Minitest-only import)
+
+  **Record (2026-11-15):** `ci.yml` run [43735720800](https://github.com/diegoquirino/openscience/actions/runs/43735720800) green on `4187da8` (backend, frontend, secrets, image, e2e). Tag `deploy/0.5.0-1` on `4187da8`; deploy run [43737171761](https://github.com/diegoquirino/openscience/actions/runs/43737171761) succeeded. Revision `veredito-00008-wnk` takes 100% of the traffic. Production footer: `0.5.0+4187da8`.
 
 ---
 
