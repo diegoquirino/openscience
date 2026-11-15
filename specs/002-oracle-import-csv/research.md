@@ -91,7 +91,8 @@ Survey done on 2026-11-11 on the run `runs/minitest-piloto` (38 edits, 12 versio
 
 - **Decision**: `utils.write_csv` (`csv.DictWriter`, UTF-8 without BOM, `newline=""`): records
   separated by `\r\n`, quotes only when needed, inner quotes doubled, `\n` preserved inside fields.
-  File name: `veredito_<system>.csv`, next to the `t1_*` files.
+  File name: `veredito_<system>_vazio.csv`, next to the `t1_*` files (the filled
+  counterpart from Veredito is `veredito_<system>_completo.csv`, spec 009).
 - **Rationale**: it is RFC 4180 (FR-002), it is what the pipeline already uses and it is
   deterministic for the same input (FR-007).
 - **Alternatives considered**: `import_<system>.csv` (too generic a name in the oracle folder).

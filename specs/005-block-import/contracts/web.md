@@ -17,7 +17,7 @@ Guards: same as `/admin` in 004 (participant ? `/welcome`, visitor ? `/participa
 | Element | Rule |
 |---|---|
 | Phase banner | When `minitestOnly` is true: current phase label and the warning that only Minitest is accepted (US4 scenario 1); texts from XLIFF |
-| Switch to collection | Shown only when `GET study-phase` has `switchAllowed`; confirm dialog; on success the banner updates (US4 scenarios 2–3). Absent in staging (US4 scenario 5) |
+| Switch to collection | Shown only when `GET study-phase` has `switchAllowed`; confirm dialog; on success the banner updates (US4 scenarios 2â€“3). Absent in staging (US4 scenario 5) |
 | File input | Accepts `.csv`; sending calls `vd:request-preview`; progress indicator while waiting |
 | Preview | Counts (included / ignored / errors / blocks); block sizes; tables of ignored and error rows (`line`, localized `reason`, `system`, `editKey`); list of extra columns; file values never translated (US1 scenario 10) |
 | Confirm | Enabled only when `includedCount > 0` and `vd:confirm` is present; posts `{ previewId }`; shows the batch summary (blocks and queue positions) |

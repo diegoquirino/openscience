@@ -18,7 +18,7 @@ cd frontend; npm ci; npm run i18n:check; npm test; npm run build; cd ..
 
 Expected: everything passes. Among the back-end tests: domain tests of `ItemRowRules`,
 `ImportClassifier` and `BlockPlan` (sizes for 1, 9, 10, 11, 38, 205); `ImportTest` (preview +
-confirm of `veredito_minitest.csv` with zero row errors — SC-005); read-back equality (SC-003);
+confirm of `veredito_minitest_vazio.csv` with zero row errors â€” SC-005); read-back equality (SC-003);
 localized preview of `minitest_duplicates.csv` in the three locales (SC-004); study-phase tests;
 `AuthorizationTest` still denies every Administration operation to visitors and participants.
 
@@ -36,7 +36,7 @@ Sign in as `diegoquirino@gmail.com` (code in Mailpit at `http://localhost:8025`)
 | Step | Expected |
 |---|---|
 | `/admin` ? Import | Phase banner: pilot / only Minitest; no "switch to collection" |
-| Upload `backend/src/test/resources/minitest/veredito_minitest.csv` | Preview: included = all data rows, ignored = 0, errors = 0; block sizes of 10… and a remainder |
+| Upload `backend/src/test/resources/minitest/veredito_minitest_vazio.csv` | Preview: included = all data rows, ignored = 0, errors = 0; block sizes of 10â€¦ and a remainder |
 | Cancel | Preview cleared; `import_batch` still empty |
 | Upload again and Confirm | Summary with block count and queue positions; batch appears in the list |
 
@@ -61,7 +61,7 @@ docker compose exec mysql mysql -uveredito -pveredito-local veredito -e "SELECT 
 | Confirm a derived file with new `edit_key`s | New blocks appended after the existing queue positions |
 | Two tabs confirm the same preview | Items stored once; the slower tab shows all ignored |
 
-## 6. Study phase (US4) — automated in `StudyPhaseTest`
+## 6. Study phase (US4) â€” automated in `StudyPhaseTest`
 
 Manual check in staging: the switch control is absent. The production emptiness path is covered by
 the Testcontainers test (import Minitest ? switch refused ? truncate study tables ? switch

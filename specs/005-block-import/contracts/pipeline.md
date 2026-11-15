@@ -9,7 +9,7 @@
 | Place | Value |
 |---|---|
 | `backend/pom.xml` / `frontend/package.json` | `0.5.0` |
-| Deploy tags | `deploy/0.5.0-1`, `deploy/0.5.0-2`, … |
+| Deploy tags | `deploy/0.5.0-1`, `deploy/0.5.0-2`, â€¦ |
 | Footer | `0.5.0+<git sha>` as in 003/004 |
 
 ## Multipart (application.yaml)
@@ -41,11 +41,11 @@ moves to `0.5.0-*`.
 
 | Path | Use |
 |---|---|
-| `backend/src/test/resources/minitest/veredito_minitest.csv` | SC-005 / SC-003 of 002 |
-| `…/minitest_duplicates.csv` | US1 scenarios 4–5, SC-004 |
-| `…/minitest_missing_kind_column.csv` | US1 scenario 2 |
-| `…/minitest_long_text.csv` | FR-052 length / quoted newlines |
-| `…/other_system_sample.csv` | `minitest-only` and phase-switch tests |
+| `backend/src/test/resources/minitest/veredito_minitest_vazio.csv` | SC-005 / SC-003 of 002 |
+| `â€¦/minitest_duplicates.csv` | US1 scenarios 4â€“5, SC-004 |
+| `â€¦/minitest_missing_kind_column.csv` | US1 scenario 2 |
+| `â€¦/minitest_long_text.csv` | FR-052 length / quoted newlines |
+| `â€¦/other_system_sample.csv` | `minitest-only` and phase-switch tests |
 
 Local staging continues to import through the UI from the researcher's machine (the CSV of
 `ISSTA_2027` / the fixture), not from a file baked into the runtime image.

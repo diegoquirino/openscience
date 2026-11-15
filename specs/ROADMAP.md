@@ -90,7 +90,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 | FR-006 to FR-010 (User Story 2) | 006 |
 | FR-013, FR-020 to FR-027, FR-034, FR-040 to FR-042 (User Stories 3 and 5) | 007 |
 | FR-030 to FR-033 (User Story 4) | 008 |
-| FR-057, FR-058, FR-060 (User Story 8) | 009 |
+| FR-057 (incl. `veredito_<system>_completo.csv`), FR-058, FR-060 (User Story 8) | 009 |
 | FR-056 (User Story 9) | 010 |
 | FR-059 (User Story 10) | 011 |
 

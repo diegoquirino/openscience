@@ -32,6 +32,9 @@ public class EntryPointController {
     static final String SESSION = "/api/v1/access-sessions/current";
     static final String PARTICIPANT_ME = "/api/v1/participants/me";
     static final String ADMINISTRATOR_ME = "/api/v1/administrator/me";
+    static final String BATCHES = "/api/v1/batches";
+    static final String REQUEST_PREVIEW = "/api/v1/batches/previews";
+    static final String STUDY_PHASE = "/api/v1/administrator/study-phase";
 
     private final SystemVersion systemVersion;
     private final VereditoProperties properties;
@@ -54,13 +57,14 @@ public class EntryPointController {
                     Links by caller, read from the veredito-session cookie:
                     - visitor (no session, or an expired or unknown cookie): self, curies, vd:request-code;
                     - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out;
-                    - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out;
+                    - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out, \
+                      vd:batches, vd:request-preview, vd:study-phase;
                     - database unavailable: self only, and available is false.
 
                     An invalid cookie never makes this operation answer 401. Later releases add \
-                    vd:consent-form and vd:next-task for a participant, and vd:batches, vd:exports, \
-                    vd:dashboard and vd:participants for the administrator. No administrative link is ever \
-                    offered to a visitor or a participant.""")
+                    vd:consent-form and vd:next-task for a participant, and vd:exports, vd:dashboard and \
+                    vd:participants for the administrator. No administrative link is ever offered to a \
+                    visitor or a participant.""")
     @ApiResponse(
             responseCode = "200",
             description = "The entry point; also 200 when the database is unavailable",
@@ -81,7 +85,7 @@ public class EntryPointController {
                                 }"""),
                         @ExampleObject(name = "participant", value = """
                                 {
-                                  "systemVersion": "0.4.0+1a2b3c4",
+                                  "systemVersion": "0.5.0+1a2b3c4",
                                   "environment": "production",
                                   "available": true,
                                   "_links": {
@@ -128,6 +132,11 @@ public class EntryPointController {
         model.add(Link.of(SESSION, LinkRelations.SESSION.curied()));
         model.add(Link.of(caller.isAdministrator() ? ADMINISTRATOR_ME : PARTICIPANT_ME, LinkRelations.ME.curied()));
         model.add(Link.of(SESSION, LinkRelations.SIGN_OUT.curied()));
+        if (caller.isAdministrator()) {
+            model.add(Link.of(BATCHES, LinkRelations.BATCHES.curied()));
+            model.add(Link.of(REQUEST_PREVIEW, LinkRelations.REQUEST_PREVIEW.curied()));
+            model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
+        }
         return model;
     }
 }

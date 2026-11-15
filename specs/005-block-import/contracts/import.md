@@ -30,7 +30,7 @@ Administrator only. Multipart form field `file` (CSV).
 ```json
 {
   "id": 12,
-  "fileName": "veredito_minitest.csv",
+  "fileName": "veredito_minitest_vazio.csv",
   "expiresAt": "2026-11-14T23:30:00Z",
   "includedCount": 38,
   "ignoredCount": 0,
@@ -59,7 +59,7 @@ Administrator only. Multipart form field `file` (CSV).
 }
 ```
 
-`ignored` / `errors` entries: `{ "line": 15, "code": "already-imported", "reason": "…", "system": "minitest", "editKey": "…" }`.
+`ignored` / `errors` entries: `{ "line": 15, "code": "already-imported", "reason": "â€¦", "system": "minitest", "editKey": "â€¦" }`.
 `reason` is localized; `code` is the stable slug. The preview does **not** embed the included row
 payloads in the HTTP response (only counts and block sizes); the server keeps them in
 `import_preview.included_json`.
@@ -97,7 +97,7 @@ Administrator only.
 ```json
 {
   "id": 3,
-  "fileName": "veredito_minitest.csv",
+  "fileName": "veredito_minitest_vazio.csv",
   "importedAt": "2026-11-14T23:05:00Z",
   "includedCount": 38,
   "ignoredCount": 0,
@@ -136,7 +136,7 @@ Administrator only. Newest first.
     "vd:batches": [
       {
         "id": 3,
-        "fileName": "veredito_minitest.csv",
+        "fileName": "veredito_minitest_vazio.csv",
         "importedAt": "2026-11-14T23:05:00Z",
         "includedCount": 38,
         "ignoredCount": 0,

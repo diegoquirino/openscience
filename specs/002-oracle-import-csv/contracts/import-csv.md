@@ -10,9 +10,10 @@ python -m issta_tcm oracle-import [--config <yaml>] [--set key=value ...]
 ```
 
 - Run in `ISSTA_2027/src`, after S5 of the configured run.
-- Output: `<oracle_dir>/veredito_<system>.csv`; `oracle_dir` is `stages.s8_evaluate.oracle_dir`
-  (default `../inputs/oracle`).
-- Overwrites the existing file, because the output is deterministic.
+- Output: `<oracle_dir>/veredito_<system>_vazio.csv` (empty oracle: Appendix D columns only, no
+  rater labels); `oracle_dir` is `stages.s8_evaluate.oracle_dir` (default `../inputs/oracle`).
+  The filled counterpart returned by Veredito is `veredito_<system>_completo.csv` (spec 009).
+- Overwrites the existing `_vazio` file, because the output is deterministic.
 - Standard output, on success: the written path, then the report: `N row(s)`, `by kind: ...`,
   `by field: ...`, `longest: ...` (longest `origin`, `target`, `origin_usecase`,
   `target_usecase`), then one `warning: ...` line per warning.

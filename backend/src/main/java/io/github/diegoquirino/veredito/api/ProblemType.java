@@ -19,7 +19,13 @@ public enum ProblemType {
     CODE_NOT_SENT("code-not-sent", HttpStatus.SERVICE_UNAVAILABLE),
     INVALID_CODE("invalid-code", HttpStatus.UNPROCESSABLE_CONTENT),
     CODE_EXPIRED("code-expired", HttpStatus.UNPROCESSABLE_CONTENT),
-    FORBIDDEN("forbidden", HttpStatus.FORBIDDEN);
+    FORBIDDEN("forbidden", HttpStatus.FORBIDDEN),
+    CSV_NOT_UTF8("csv-not-utf8", HttpStatus.BAD_REQUEST),
+    CSV_INVALID("csv-invalid", HttpStatus.BAD_REQUEST),
+    CSV_MISSING_COLUMN("csv-missing-column", HttpStatus.BAD_REQUEST),
+    MINITEST_ONLY("minitest-only", HttpStatus.UNPROCESSABLE_CONTENT),
+    PREVIEW_NOT_FOUND("preview-not-found", HttpStatus.NOT_FOUND),
+    PHASE_SWITCH_NOT_ALLOWED("phase-switch-not-allowed", HttpStatus.CONFLICT);
 
     public static final String URN_PREFIX = "urn:veredito:problem:";
 

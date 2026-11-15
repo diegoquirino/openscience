@@ -31,7 +31,7 @@ class MigrationTest {
 
     private static final List<String> TABLES = List.of(
             "access_code", "access_session", "block", "config", "consent_form", "consent_form_text",
-            "import_batch", "item", "participant", "response", "task");
+            "import_batch", "import_preview", "item", "participant", "response", "task");
 
     @Autowired
     JdbcClient jdbc;
@@ -55,7 +55,28 @@ class MigrationTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2", "3");
+        assertThat(versions).containsExactly("1", "2", "3", "4");
+    }
+
+    @Test
+    void v4AddsTheImportPreviewTableAndExpiryIndex() {
+        List<String> columns = jdbc.sql("""
+                        SELECT column_name FROM information_schema.columns
+                        WHERE table_schema = DATABASE() AND table_name = 'import_preview'
+                        ORDER BY ordinal_position""")
+                .query(String.class).list();
+        assertThat(columns).containsExactly(
+                "id", "file_name", "created_at", "expires_at", "included_count", "ignored_count",
+                "error_count", "block_count", "block_size", "extra_columns_json", "included_json",
+                "ignored_json", "errors_json", "block_sizes_json");
+
+        List<String> indexes = jdbc.sql("""
+                        SELECT DISTINCT CONCAT(table_name, '.', index_name, '(', column_name, ')')
+                        FROM information_schema.statistics
+                        WHERE table_schema = DATABASE() AND index_name = 'ix_import_preview_expires_at'
+                        ORDER BY 1""")
+                .query(String.class).list();
+        assertThat(indexes).containsExactly("import_preview.ix_import_preview_expires_at(expires_at)");
     }
 
     @Test

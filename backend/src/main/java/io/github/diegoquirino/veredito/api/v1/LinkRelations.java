@@ -27,11 +27,25 @@ public final class LinkRelations {
     public static final Relation ME = new Relation(
             "me", "Own profile; PUT changes the preferred language.", HttpMethod.GET,
             "/swagger-ui.html#/Participation");
+    public static final Relation BATCHES = new Relation(
+            "batches", "List of confirmed import batches, newest first.", HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
+    public static final Relation REQUEST_PREVIEW = new Relation(
+            "request-preview", "Upload a CSV and receive an import preview.", HttpMethod.POST,
+            "/swagger-ui.html#/Administration");
+    public static final Relation STUDY_PHASE = new Relation(
+            "study-phase", "Read or switch the study phase (pilot / collection).", HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
+    public static final Relation CONFIRM = new Relation(
+            "confirm", "Confirm a preview and store items, blocks and free tasks.", HttpMethod.POST,
+            "/swagger-ui.html#/Administration");
 
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
-        for (Relation relation : new Relation[] {V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME}) {
+        for (Relation relation : new Relation[] {
+            V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM
+        }) {
             BY_NAME.put(relation.name(), relation);
         }
     }

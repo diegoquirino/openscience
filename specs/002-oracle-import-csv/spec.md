@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Complete (2026-11-11; SC-003 is checked in spec 005, SC-005)
+**Status**: Complete (2026-11-11; SC-003 is checked in spec 005, SC-005; file name standardized on 2026-11-14 to `veredito_<system>_vazio.csv`)
 
 **Input**: User description: "Generate, from the ISSTA 2027 pipeline data, the CSV file that Veredito imports (Appendix D of spec 001), one file per system, with the complete use case of each version and the edited lines marked." (translated from the original Portuguese)
 
@@ -59,7 +59,7 @@ When generating the file, the researcher sees a summary and is warned about any 
 
 ### Functional Requirements
 
-- **FR-001**: The command MUST generate one CSV per system, with one row per edit, in the order of the pipeline edits.
+- **FR-001**: The command MUST generate one CSV per system, with one row per edit, in the order of the pipeline edits, named `veredito_<system>_vazio.csv` in the oracle folder (empty oracle: items only).
 - **FR-002**: The CSV MUST have exactly the columns of Appendix D of spec 001, in that order, in UTF-8 and following RFC 4180.
 - **FR-003**: `edit_key`, `uc`, `kind`, `field`, `origin` and `target` MUST be copied unchanged.
 - **FR-004**: The complete use cases MUST follow the format of the labeling sheet, marking with `<- edited` only the lines touched by the edit of the row.

@@ -10,15 +10,17 @@
 
 **Parent spec**: [001-oracle-labeling](../001-oracle-labeling/spec.md), User Story 8, FR-057, FR-058, FR-060 and Appendix C · **Depends on**: 005 and 007
 
+**Naming with the pipeline**: the empty import file is `veredito_<system>_vazio.csv` (spec 002). This spec also exports the filled counterpart `veredito_<system>_completo.csv` (FR-057 (d)), filtered by system, so both files sit side by side in `ISSTA_2027/src/inputs/oracle/`. The **canonical** way to feed the agreement / adjudication / final-oracle commands is to place `_completo` in the oracle folder and run `python -m issta_tcm oracle-from-veredito`, which overwrites `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv` from it (contract: [contracts/oracle-from-veredito.md](contracts/oracle-from-veredito.md)). Veredito may still offer a direct download of the two rater files (US1) as a convenience.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Download the pipeline files (Priority: P1)
 
-For each system, the administrator downloads `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv`, ready for the pipeline.
+For each system, the administrator can download `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv`, ready for the pipeline (same bytes that `oracle-from-veredito` would materialize from `_completo` when both roles are complete).
 
-**Why this priority**: It is the final product of the study and the format the pipeline already reads.
+**Why this priority**: It is the format the pipeline already reads; the direct download avoids an extra step when the researcher stays inside Veredito.
 
-**Independent Test**: Export Minitest with completed blocks and run `agreement` and `oracle-disagreements` from `issta_tcm` on the files.
+**Independent Test**: Export Minitest with completed blocks and run `agreement` and `oracle-disagreements` from `issta_tcm` on the files; alternatively, export only `_completo`, run `oracle-from-veredito`, and check that the materialized rater files match a direct US1 export.
 
 **Acceptance Scenarios**:
 
@@ -47,7 +49,27 @@ The administrator downloads one row per item, with the data of both raters side 
 
 ---
 
-### User Story 3 - Download the pseudonymized long table (Priority: P2)
+### User Story 3 - Download the filled Veredito oracle per system (Priority: P1)
+
+For each system, the administrator downloads `veredito_<system>_completo.csv`, the filled counterpart of `veredito_<system>_vazio.csv`.
+
+**Why this priority**: It closes the loop with the pipeline folder: empty file in, labeled file out, same system filter, without PII.
+
+**Independent Test**: Import Minitest from `_vazio`, complete both roles of every item, export `_completo`, and check that every Appendix D cell matches the import and that both raters' final codes are present.
+
+**Acceptance Scenarios**:
+
+1. **Given** a system with items, **When** the administrator exports that system's filled oracle, **Then** they receive `veredito_<system>_completo.csv` with one row per item of that system only, in queue order.
+2. **Given** the file, **When** opened, **Then** the header is exactly: `system,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase,rater_1_pseudonym,rater_1_change_impact,rater_1_maintenance_operation,rater_1_comment,rater_1_response_language,rater_2_pseudonym,rater_2_change_impact,rater_2_maintenance_operation,rater_2_comment,rater_2_response_language`.
+3. **Given** a completed role, **When** exported, **Then** that role's columns hold the English codes, the comment as typed, the locale of the last save and the participant's pseudonym (`R-0001`); name and e-mail never appear.
+4. **Given** a role not yet completed, **When** exported, **Then** that role's five columns are blank.
+5. **Given** the export UI, **When** the administrator chooses a system, **Then** only that system's rows are in the file (same filter as the skill that generates `_vazio` for one subject).
+6. **Given** `veredito_<system>_completo.csv` saved in the oracle folder with every role filled, **When** the researcher runs `python -m issta_tcm oracle-from-veredito` for that system, **Then** `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv` are overwritten with the pipeline columns, and `oracle-disagreements` / `oracle-final` can run without manual editing of the rater sheets.
+7. **Given** a `_completo` file with any blank `rater_N_change_impact` or `rater_N_maintenance_operation`, **When** `oracle-from-veredito` runs, **Then** it refuses to write the rater sheets, lists the incomplete `edit_key`s and exits with failure.
+
+---
+
+### User Story 4 - Download the pseudonymized long table (Priority: P2)
 
 The administrator downloads one row per final response, with neither name nor e-mail, for analysis and for the replication package.
 
@@ -82,7 +104,9 @@ The administrator downloads one row per final response, with neither name nor e-
 - **FR-002**: The system MUST export the wide table of Appendix C of spec 001.
 - **FR-003**: The system MUST export the long table with a pseudonymous identifier.
 - **FR-004**: The system MUST export, per system, `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv` in the format of the `issta_tcm` package, in queue order.
-- **FR-005**: The long table and the pipeline files MUST NOT contain name or e-mail.
+- **FR-004b**: The system MUST export, per system, `veredito_<system>_completo.csv` with the Appendix D columns (exact stored values) plus, for each role, `rater_N_pseudonym`, `rater_N_change_impact`, `rater_N_maintenance_operation`, `rater_N_comment` and `rater_N_response_language` (blank when that role is not completed); the file MUST contain only rows of the chosen system.
+- **FR-004c**: The `issta_tcm` command `oracle-from-veredito` MUST materialize `t1_<system>_rater1.csv` and `t1_<system>_rater2.csv` from `veredito_<system>_completo.csv` as specified in [contracts/oracle-from-veredito.md](contracts/oracle-from-veredito.md) (canonical path from the oracle folder into agreement / adjudication / final).
+- **FR-005**: The long table, the pipeline files and `veredito_<system>_completo.csv` MUST NOT contain name or e-mail.
 - **FR-006**: All CSV files MUST be UTF-8 and RFC 4180. The wide and long tables MUST neutralize texts starting with `=`, `+`, `-` or `@`; the pipeline files MUST NOT change any text, so that they stay identical to the pipeline's edits.
 - **FR-007**: Only the administrator MUST be able to export.
 - **FR-008**: Codes in every export (`professional_skill`, `change_impact`, `maintenance_operation`) MUST be the English identifiers stored in the database, never the translated display labels; column headers MUST be in English, whatever the administrator's UI language.
@@ -96,6 +120,8 @@ The administrator downloads one row per final response, with neither name nor e-
 ### Measurable Outcomes
 
 - **SC-001**: The `t1_<system>_rater*.csv` files are read by the `agreement` and `oracle-disagreements` commands of `issta_tcm` without manual editing.
+- **SC-001b**: For every Minitest item, the Appendix D cells of `veredito_minitest_completo.csv` match the imported `veredito_minitest_vazio.csv` character by character, and both rater columns are filled after both roles are completed.
+- **SC-001c**: After `oracle-from-veredito` on a complete Minitest `_completo`, the materialized `t1_minitest_rater*.csv` files are byte-identical (apart from optional CRLF normalization already used by the pipeline) to a direct US1 export of the same database state, and `oracle-disagreements` followed by `oracle-final` succeeds when there are no disagreements (or after adjudication when there are).
 - **SC-002**: Exporting a database of 500 items takes less than 1 minute.
 - **SC-003**: The number of responses in the long table matches the number of completed roles multiplied by the size of each block.
 - **SC-004**: 100% of the rows with a final response in the wide and long tables have a response language in {`pt-BR`, `en-US`, `es-ES`}, and 100% of the exported comments are identical to the saved ones (apart from the formula neutralization of FR-006 in the wide and long tables).
@@ -105,3 +131,5 @@ The administrator downloads one row per final response, with neither name nor e-
 - "Role 1" becomes `rater1` and "role 2" becomes `rater2`, even though people vary from block to block (see the note on agreement in spec 001).
 - The pipeline files are not meant to be opened in a spreadsheet; whoever opens them should import them as text.
 - `consent_language` is the language of the consent form acceptance in force when the participant submitted the block; `participant_preferred_language` is the participant's preferred language at export time.
+- Recommended researcher loop for one system: generate `_vazio` (002) → import and label in Veredito (005–008) → download `_completo` into `inputs/oracle/` → `oracle-from-veredito` → `oracle-disagreements` → if the adjudication sheet is empty, `oracle-final`; otherwise fill the ties manually and then `oracle-final`. The `agreement` command remains optional diagnostics.
+- `oracle-from-veredito` is implemented in the `ISSTA_2027` package (not in the Veredito web app); this spec defines its contract because `_completo` is produced here.

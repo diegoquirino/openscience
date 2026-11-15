@@ -60,8 +60,13 @@ class EntryPointTest extends ApiTestBase {
     void administratorGetsTheAdministratorProfile() {
         as(administratorSession()).get("/api/v1")
                 .then().statusCode(200)
-                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
-                .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"));
+                .body("_links.keySet()", containsInAnyOrder(
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out",
+                        "vd:batches", "vd:request-preview", "vd:study-phase"))
+                .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"))
+                .body("_links.'vd:batches'.href", equalTo("/api/v1/batches"))
+                .body("_links.'vd:request-preview'.href", equalTo("/api/v1/batches/previews"))
+                .body("_links.'vd:study-phase'.href", equalTo("/api/v1/administrator/study-phase"));
     }
 
     @Test
@@ -74,7 +79,9 @@ class EntryPointTest extends ApiTestBase {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"sign-in", "session", "sign-out", "me"})
+    @ValueSource(strings = {
+            "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm"
+    })
     void curieDocumentsTheAccessRelations(String rel) {
         request().get("/api/v1/rels/" + rel)
                 .then().statusCode(200)

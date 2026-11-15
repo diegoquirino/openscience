@@ -1,10 +1,12 @@
 package io.github.diegoquirino.veredito.persistence;
 
 import io.github.diegoquirino.veredito.domain.access.PersonName;
+import java.sql.Timestamp;
+import java.time.Instant;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
-/** The single {@code config} row: the administrator and the daily e-mail limit. */
+/** The single {@code config} row: administrator, limits and study phase. */
 @Repository
 public class ConfigRepository {
 
@@ -27,6 +29,32 @@ public class ConfigRepository {
 
     public int dailyEmailLimit() {
         return jdbc.sql("SELECT daily_email_limit FROM config WHERE id = 1").query(Integer.class).single();
+    }
+
+    public int blockSize() {
+        return jdbc.sql("SELECT block_size FROM config WHERE id = 1").query(Integer.class).single();
+    }
+
+    public String studyPhase() {
+        return jdbc.sql("SELECT study_phase FROM config WHERE id = 1").query(String.class).single();
+    }
+
+    public Instant studyPhaseChangedAt() {
+        return jdbc.sql("SELECT study_phase_changed_at FROM config WHERE id = 1")
+                .query((rs, row) -> {
+                    Timestamp value = rs.getTimestamp("study_phase_changed_at");
+                    return value == null ? null : value.toInstant();
+                })
+                .single();
+    }
+
+    /** Sets the study phase (e.g. {@code collection}) and the change timestamp. */
+    public void updateStudyPhase(String phase, Instant now) {
+        jdbc.sql("""
+                        UPDATE config SET study_phase = ?, study_phase_changed_at = ?, updated_at = ?
+                        WHERE id = 1""")
+                .params(phase, Timestamp.from(now), Timestamp.from(now))
+                .update();
     }
 
     /** Keeps the latest name; the language is set only at the first sign-in. */

@@ -123,7 +123,7 @@ instances share them without Redis or another Google service.
 ## 9. Localization of preview messages
 
 - **Decision**: row reason codes are stable English slugs (`empty-system`, `invalid-kind`,
-  `duplicate-in-file`, `already-imported`, …). The API returns each error/ignored row with
+  `duplicate-in-file`, `already-imported`, â€¦). The API returns each error/ignored row with
   `line`, `code` and, for display, a localized `reason` from MessageSource
   (`import.reason.<code>`). The Angular screen shows the localized `reason` and never translates
   file values (FR-013, FR-014, SC-004). Missing column, not UTF-8, not CSV and study-phase refusal
@@ -134,7 +134,7 @@ instances share them without Redis or another Google service.
 
 ## 10. Fixtures
 
-- **Decision**: keep `backend/src/test/resources/minitest/veredito_minitest.csv` as the reference
+- **Decision**: keep `backend/src/test/resources/minitest/veredito_minitest_vazio.csv` as the reference
   (from spec 002). Add derived fixtures beside it: `minitest_duplicates.csv`,
   `minitest_missing_kind_column.csv`, `minitest_long_text.csv`, and a small non-minitest sample for
   the phase-gate tests. Volume for SC-001 is generated in the test (repeat Minitest rows with a

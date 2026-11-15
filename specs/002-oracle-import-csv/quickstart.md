@@ -28,7 +28,7 @@ python -m issta_tcm oracle-import --config config/experiment-minitest.yaml
 
 Expected, in a few seconds:
 
-- `inputs/oracle/veredito_minitest.csv` written;
+- `inputs/oracle/veredito_minitest_vazio.csv` written;
 - report with `38 row(s)`, counts per `kind` and `field` and the longest lengths;
 - exit code 0, without `no line marked <- edited` warnings (SC-002).
 
@@ -50,9 +50,9 @@ META 2, MOD 27`.
 Generate again and compare the hash:
 
 ```powershell
-(Get-FileHash inputs/oracle/veredito_minitest.csv).Hash
+(Get-FileHash inputs/oracle/veredito_minitest_vazio.csv).Hash
 python -m issta_tcm oracle-import --config config/experiment-minitest.yaml
-(Get-FileHash inputs/oracle/veredito_minitest.csv).Hash
+(Get-FileHash inputs/oracle/veredito_minitest_vazio.csv).Hash
 ```
 
 Expected: the two hashes are equal (recorded on 2026-11-11: identical hash on two runs).
@@ -65,5 +65,5 @@ The automated test with a 5,001-character edit covers this case. Expected: exit 
 
 ## 6. Preview in Veredito (SC-003)
 
-Done in spec 005: import `veredito_minitest.csv` in local staging (Docker) and check that the
+Done in spec 005: import `veredito_minitest_vazio.csv` in local staging (Docker) and check that the
 preview shows 38 included, 0 ignored and 0 in error.

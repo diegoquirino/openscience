@@ -302,7 +302,7 @@ researcher by hand; the plan only lists them.
 
 - **Decision**: the package `...veredito.domain` is created in 003, with an ArchUnit test that fails
   if any class in it depends on Spring, `java.sql`, `jakarta.servlet` or the web and persistence
-  packages. The Minitest fixture `veredito_minitest.csv` is copied to
+  packages. The Minitest fixture `veredito_minitest_vazio.csv` is copied to
   `backend/src/test/resources/minitest/` in 003.
 - **Rationale**: FR-008 and Principle II; the rules themselves (CSV validation, blocks, queue,
   exports) come with specs 005, 007 and 009, which find the rule and the fixture already in place.

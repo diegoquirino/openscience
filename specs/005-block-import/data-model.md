@@ -64,7 +64,7 @@ nothing.
 On confirm, one row: `file_name`, `imported_at` (UTC now), `included_count`, `ignored_count`,
 `error_count` from the **confirm-time** classification (so a double confirm can record a batch with
 `included_count = 0` only if the product chooses to; this plan records a batch only when
-`included_count > 0`, and otherwise returns the summary without a new batch row — see contract).
+`included_count > 0`, and otherwise returns the summary without a new batch row â€” see contract).
 
 Decision recorded in the contract: **a batch row is created only when at least one item is
 inserted**; a double confirm answers `200` with a summary body (all ignored) and no `Location`.
@@ -73,7 +73,7 @@ inserted**; a double confirm answers `200` with a summary body (all ignored) and
 
 | Rule | Detail |
 |---|---|
-| Block `number` | `max(existing) + 1, + 2, …` in confirm order |
+| Block `number` | `max(existing) + 1, + 2, â€¦` in confirm order |
 | Block `size` | Number of items in that block (1 to `block_size`) |
 | Item fields | Exact strings from the file; empty optional sides stored as SQL `NULL` |
 | Item `position` | 1 .. size within the block |
@@ -94,7 +94,7 @@ inserted**; a double confirm answers `200` with a summary body (all ignored) and
 |---|---|
 | Required columns present or refuse the whole file | US1 scenario 2 |
 | FR-052 emptiness / kind / length rules ? row error | FR-002, FR-052 |
-| Model length caps (`system` 100, …) ? row error | 003 data model |
+| Model length caps (`system` 100, â€¦) ? row error | 003 data model |
 | (`system`, `edit_key`) already in DB ? ignored | FR-003 |
 | Duplicate (`system`, `edit_key`) in file ? error from the 2nd | FR-003 |
 | Any non-`minitest` system while staging or `pilot` ? refuse file | FR-011 |

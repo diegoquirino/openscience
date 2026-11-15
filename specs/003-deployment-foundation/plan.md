@@ -107,7 +107,7 @@ Constitution 2.7.1.
 | III. Invariants as database constraints; schema only through Flyway; no edits to applied migrations | Unique keys and `CHECK` constraints of [data-model.md](data-model.md); V1/V2 never edited after the first deployment | Pass |
 | IV. No secrets or participant data in git; Secret Manager; WIF without long-lived keys | `.env` ignored, `.env.example` without values; secrets in Secret Manager; Workload Identity Federation; gitleaks in CI | Pass |
 | IV. Codes and session ids only as hashes; cookie flags | Columns `code_hash` and `token_hash`; cookies come with 004 | Pass |
-| IV. Database not exposed; Minitest-only data in staging and tests | No authorized networks + connector enforcement; fixture `veredito_minitest.csv` copied to test resources | Pass |
+| IV. Database not exposed; Minitest-only data in staging and tests | No authorized networks + connector enforcement; fixture `veredito_minitest_vazio.csv` copied to test resources | Pass |
 | V. Single artifact; only Cloud Run, Cloud SQL, Secret Manager, Artifact Registry | One image; IAM, Workload Identity Federation and the billing budget are account features, not running services | Pass |
 | V. Budget R$ 200 with alerts only | "Veredito mensal" at 50/90/100 %, created by the researcher | Pass |
 | V. Material only, responsive; API under 2 s | Material components; phone viewport in Playwright; one cheap query per entry point call | Pass |
@@ -179,7 +179,7 @@ backend/
         |   |-- api/v1/EntryPointTest.java
         |   `-- web/WebRoutingTest.java
         `-- resources/
-            |-- minitest/veredito_minitest.csv
+            |-- minitest/veredito_minitest_vazio.csv
             |-- schemas/problem-details.json
             `-- static/{pt-BR,en-US,es-ES}/index.html   # stubs for the routing tests
 

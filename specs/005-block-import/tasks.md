@@ -30,10 +30,10 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Purpose**: versions, dependency, fixtures and packages
 
-- [ ] T001 Update `backend/pom.xml` to version `0.5.0` and add `org.apache.commons:commons-csv:1.14.1` (research section 1). Update `frontend/package.json` / `package-lock.json` to `0.5.0`; default `VEREDITO_VERSION` in `compose.yaml`, `SystemVersion`, `Dockerfile` and `write-build-info.mjs` to `0.5.0+dev`
-- [ ] T002 [P] Create `package-info.java` in `<pkg>/importing` (services that coordinate CSV reading, domain rules and persistence) and `<pkg>/domain/importing` (plain-Java import rules)
-- [ ] T003 [P] Add fixtures under `backend/src/test/resources/minitest/`: keep `veredito_minitest.csv`; add `minitest_duplicates.csv`, `minitest_missing_kind_column.csv`, `minitest_long_text.csv` and `other_system_sample.csv` as in `contracts/pipeline.md` and the quickstart
-- [ ] T004 [P] Set `spring.servlet.multipart.max-file-size` and `max-request-size` to `10MB` in `backend/src/main/resources/application.yaml` (`contracts/pipeline.md`)
+- [x] T001 Update `backend/pom.xml` to version `0.5.0` and add `org.apache.commons:commons-csv:1.14.1` (research section 1). Update `frontend/package.json` / `package-lock.json` to `0.5.0`; default `VEREDITO_VERSION` in `compose.yaml`, `SystemVersion`, `Dockerfile` and `write-build-info.mjs` to `0.5.0+dev`
+- [x] T002 [P] Create `package-info.java` in `<pkg>/importing` (services that coordinate CSV reading, domain rules and persistence) and `<pkg>/domain/importing` (plain-Java import rules)
+- [x] T003 [P] Add fixtures under `backend/src/test/resources/minitest/`: keep `veredito_minitest_vazio.csv`; add `minitest_duplicates.csv`, `minitest_missing_kind_column.csv`, `minitest_long_text.csv` and `other_system_sample.csv` as in `contracts/pipeline.md` and the quickstart
+- [x] T004 [P] Set `spring.servlet.multipart.max-file-size` and `max-request-size` to `10MB` in `backend/src/main/resources/application.yaml` (`contracts/pipeline.md`)
 
 ---
 
@@ -43,16 +43,16 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **CRITICAL**: no story starts before this phase is complete
 
-- [ ] T005 Create `backend/src/main/resources/db/migration/V4__import_preview.sql` exactly as in `specs/005-block-import/data-model.md` (`import_preview` table and `ix_import_preview_expires_at`)
-- [ ] T006 Extend `<tpkg>/persistence/MigrationTest.java`: V4 applied once; table and index exist; two-container structure comparison of 003 still passes
-- [ ] T007 [P] Add the six Problem Details types of `contracts/problem-details.md` to `<pkg>/api/ProblemType.java` (`csv-not-utf8` 400, `csv-invalid` 400, `csv-missing-column` 400, `minitest-only` 422, `preview-not-found` 404, `phase-switch-not-allowed` 409) with `problem.<slug>.title` / `.detail` in the three message bundles; add every `import.reason.<code>` key from that contract
-- [ ] T008 [P] Write domain tests first, then classes, in `<pkg>/domain/importing/` and `<tpkg>/domain/importing/` (plain Java; ArchUnit of 003 guards it):
+- [x] T005 Create `backend/src/main/resources/db/migration/V4__import_preview.sql` exactly as in `specs/005-block-import/data-model.md` (`import_preview` table and `ix_import_preview_expires_at`)
+- [x] T006 Extend `<tpkg>/persistence/MigrationTest.java`: V4 applied once; table and index exist; two-container structure comparison of 003 still passes
+- [x] T007 [P] Add the six Problem Details types of `contracts/problem-details.md` to `<pkg>/api/ProblemType.java` (`csv-not-utf8` 400, `csv-invalid` 400, `csv-missing-column` 400, `minitest-only` 422, `preview-not-found` 404, `phase-switch-not-allowed` 409) with `problem.<slug>.title` / `.detail` in the three message bundles; add every `import.reason.<code>` key from that contract
+- [x] T008 [P] Write domain tests first, then classes, in `<pkg>/domain/importing/` and `<tpkg>/domain/importing/` (plain Java; ArchUnit of 003 guards it):
   - `ImportColumns`: Appendix D required names
   - `ItemRowRules`: FR-052 plus model length caps (`system` 100, `edit_key` 500, `uc` 255, `field` 100, `origin`/`target` 5,000, usecases 40,000, versions 20) ? reason codes of the contract
   - `ImportClassifier`: included / ignored (`already-imported`) / error (`duplicate-in-file` and validation); first occurrence in the file wins
   - `BlockPlan`: split included rows by `block_size`; cover sizes for 1, 9, 10, 11, 38 and 205 items (SC-002)
   - `StudyPhaseGate`: staging always Minitest-only; production allows other systems only when `study_phase` is `collection`
-- [ ] T009 Create JdbcClient repositories in `<pkg>/persistence/`:
+- [x] T009 Create JdbcClient repositories in `<pkg>/persistence/`:
   - `ImportPreviewRepository`: insert, findValid(id, now), delete, deleteExpired(now)
   - `ItemRepository`: `existingKeys()` (set of (`system`,`edit_key`)), `insert` batch, `count`, `findByBatch`
   - `BlockRepository`: `maxNumber`, `insert`, `countByBatch`, `listByBatch`
@@ -60,10 +60,10 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
   - `ImportBatchRepository`: `insert`, `findById`, `listNewestFirst`
   - Extend `ConfigRepository`: `blockSize`, `studyPhase`, `studyPhaseChangedAt`, `updateStudyPhase(collection, now)` under `lockForUpdate()`
   Integration test `<tpkg>/persistence/ImportRepositoriesTest.java` (Testcontainers): preview round-trip; insert one batch with 11 items ? 2 blocks (10+1) and 4 free tasks with contiguous `queue_position`
-- [ ] T010 Add administrator links `vd:batches`, `vd:request-preview` and `vd:study-phase` on `GET /api/v1` in `<pkg>/api/v1/EntryPointController.java` and document the relations in `LinkRelations` / `RelationController` (`contracts/import.md`)
-- [ ] T011 Run `.\mvnw.cmd -B verify` in `backend/`: every test of 004 still passes with V4 present
+- [x] T010 Add administrator links `vd:batches`, `vd:request-preview` and `vd:study-phase` on `GET /api/v1` in `<pkg>/api/v1/EntryPointController.java` and document the relations in `LinkRelations` / `RelationController` (`contracts/import.md`)
+- [x] T011 Run `.\mvnw.cmd -B verify` in `backend/`: every test of 004 still passes with V4 present
 
-**Checkpoint**: foundation ready — user stories can start
+**Checkpoint**: foundation ready â€” user stories can start
 
 ---
 
@@ -71,7 +71,7 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Goal**: administrator uploads a CSV and sees included / ignored / errors / planned blocks before anything is stored
 
-**Independent Test**: upload `veredito_minitest.csv` (SC-005: zero row errors) and `minitest_duplicates.csv`; missing column and non-Minitest refusals
+**Independent Test**: upload `veredito_minitest_vazio.csv` (SC-005: zero row errors) and `minitest_duplicates.csv`; missing column and non-Minitest refusals
 
 - [ ] T012 [P] [US1] Create failing `<tpkg>/api/v1/ImportPreviewTest.java`: follow `vd:request-preview` as administrator; Minitest preview 201 with zero errors; missing column ? `csv-missing-column`; non-Minitest in pilot ? `minitest-only`; visitor 401 / participant 403
 - [ ] T013 [P] [US1] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with the new types in the three locales
@@ -151,7 +151,7 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 - **Setup (Phase 1)**: no dependencies
 - **Foundational (Phase 2)**: depends on Setup; blocks every story
-- **US1 (Phase 3)**: depends on Phase 2 — MVP
+- **US1 (Phase 3)**: depends on Phase 2 â€” MVP
 - **US2 (Phase 4)**: depends on US1 (confirm uses preview id)
 - **US4 (Phase 5)**: depends on Phase 2; uses PreviewService gate (integrate after US1 reader exists)
 - **US3 (Phase 6)**: depends on US2 (needs confirmed batches)
