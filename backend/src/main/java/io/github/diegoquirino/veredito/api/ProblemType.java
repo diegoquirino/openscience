@@ -25,7 +25,12 @@ public enum ProblemType {
     CSV_MISSING_COLUMN("csv-missing-column", HttpStatus.BAD_REQUEST),
     MINITEST_ONLY("minitest-only", HttpStatus.UNPROCESSABLE_CONTENT),
     PREVIEW_NOT_FOUND("preview-not-found", HttpStatus.NOT_FOUND),
-    PHASE_SWITCH_NOT_ALLOWED("phase-switch-not-allowed", HttpStatus.CONFLICT);
+    PHASE_SWITCH_NOT_ALLOWED("phase-switch-not-allowed", HttpStatus.CONFLICT),
+    NOT_ELIGIBLE("not-eligible", HttpStatus.FORBIDDEN),
+    RESERVATION_EXPIRED("reservation-expired", HttpStatus.CONFLICT),
+    BLOCK_INCOMPLETE("block-incomplete", HttpStatus.CONFLICT),
+    TASK_ALREADY_SUBMITTED("task-already-submitted", HttpStatus.CONFLICT),
+    TASK_CONFLICT("task-conflict", HttpStatus.CONFLICT);
 
     public static final String URN_PREFIX = "urn:veredito:problem:";
 

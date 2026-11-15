@@ -39,12 +39,31 @@ public final class LinkRelations {
     public static final Relation CONFIRM = new Relation(
             "confirm", "Confirm a preview and store items, blocks and free tasks.", HttpMethod.POST,
             "/swagger-ui.html#/Administration");
+    public static final Relation NEXT_TASK = new Relation(
+            "next-task", "Request the next free task (block-role) from the queue.", HttpMethod.POST,
+            "/swagger-ui.html#/Tasks");
+    public static final Relation RESERVE = new Relation(
+            "reserve", "Reserve a task for the signed-in participant.", HttpMethod.POST,
+            "/swagger-ui.html#/Tasks");
+    public static final Relation SAVE_RESPONSE = new Relation(
+            "save-response", "Save or replace a draft response for one item.", HttpMethod.PUT,
+            "/swagger-ui.html#/Tasks");
+    public static final Relation SUBMIT = new Relation(
+            "submit", "Submit every draft of the reserved task as final.", HttpMethod.POST,
+            "/swagger-ui.html#/Tasks");
+    public static final Relation ITEMS = new Relation(
+            "items", "Item of a reserved task by position in the block.", HttpMethod.GET,
+            "/swagger-ui.html#/Tasks");
+    public static final Relation REVIEW = new Relation(
+            "review", "Reserved task ready for review of all drafts.", HttpMethod.GET,
+            "/swagger-ui.html#/Tasks");
 
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
         for (Relation relation : new Relation[] {
-            V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM
+            V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
+            NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW
         }) {
             BY_NAME.put(relation.name(), relation);
         }

@@ -3,6 +3,7 @@ package io.github.diegoquirino.veredito.persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
@@ -44,6 +45,13 @@ public class BlockRepository {
                 .param(batchId)
                 .query(BlockRepository::map)
                 .list();
+    }
+
+    public Optional<Block> findById(long id) {
+        return jdbc.sql("SELECT id, batch_id, number, size FROM block WHERE id = ?")
+                .param(id)
+                .query(BlockRepository::map)
+                .optional();
     }
 
     private static Block map(ResultSet rs, int row) throws SQLException {

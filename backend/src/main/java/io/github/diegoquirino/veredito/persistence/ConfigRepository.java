@@ -35,6 +35,12 @@ public class ConfigRepository {
         return jdbc.sql("SELECT block_size FROM config WHERE id = 1").query(Integer.class).single();
     }
 
+    public int reservationMinutes() {
+        return jdbc.sql("SELECT reservation_minutes FROM config WHERE id = 1")
+                .query(Integer.class)
+                .single();
+    }
+
     public String studyPhase() {
         return jdbc.sql("SELECT study_phase FROM config WHERE id = 1").query(String.class).single();
     }

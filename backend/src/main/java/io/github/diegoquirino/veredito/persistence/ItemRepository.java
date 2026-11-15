@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -92,6 +93,20 @@ public class ItemRepository {
                 .param(batchId)
                 .query(ItemRepository::map)
                 .list();
+    }
+
+    public List<Item> listByBlockOrdered(long blockId) {
+        return jdbc.sql(SELECT + " WHERE block_id = ? ORDER BY position")
+                .param(blockId)
+                .query(ItemRepository::map)
+                .list();
+    }
+
+    public Optional<Item> findByBlockAndPosition(long blockId, int position) {
+        return jdbc.sql(SELECT + " WHERE block_id = ? AND position = ?")
+                .params(blockId, position)
+                .query(ItemRepository::map)
+                .optional();
     }
 
     public record NewItem(

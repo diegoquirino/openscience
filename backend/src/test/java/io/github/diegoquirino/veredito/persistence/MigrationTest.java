@@ -55,7 +55,20 @@ class MigrationTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2", "3", "4");
+        assertThat(versions).containsExactly("1", "2", "3", "4", "5");
+    }
+
+    @Test
+    void v5AddsTheTaskQueueLookupIndex() {
+        List<String> indexes = jdbc.sql("""
+                        SELECT DISTINCT CONCAT(table_name, '.', index_name, '(', column_name, ')')
+                        FROM information_schema.statistics
+                        WHERE table_schema = DATABASE() AND index_name = 'ix_task_status_queue'
+                        ORDER BY 1""")
+                .query(String.class).list();
+        assertThat(indexes).contains(
+                "task.ix_task_status_queue(status)",
+                "task.ix_task_status_queue(queue_position)");
     }
 
     @Test

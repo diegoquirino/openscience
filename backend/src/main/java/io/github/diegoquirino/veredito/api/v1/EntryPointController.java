@@ -11,6 +11,7 @@ import io.github.diegoquirino.veredito.config.SystemVersion;
 import io.github.diegoquirino.veredito.config.VereditoProperties;
 import io.github.diegoquirino.veredito.config.VereditoProperties.Environment;
 import io.github.diegoquirino.veredito.persistence.DatabaseStatus;
+import io.github.diegoquirino.veredito.queue.EligibilityGate;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -36,16 +37,22 @@ public class EntryPointController {
     static final String BATCHES = "/api/v1/batches";
     static final String REQUEST_PREVIEW = "/api/v1/batches/previews";
     static final String STUDY_PHASE = "/api/v1/administrator/study-phase";
+    static final String TASK_RESERVATIONS = "/api/v1/tasks/reservations";
 
     private final SystemVersion systemVersion;
     private final VereditoProperties properties;
     private final DatabaseStatus databaseStatus;
+    private final EligibilityGate eligibilityGate;
 
     public EntryPointController(
-            SystemVersion systemVersion, VereditoProperties properties, DatabaseStatus databaseStatus) {
+            SystemVersion systemVersion,
+            VereditoProperties properties,
+            DatabaseStatus databaseStatus,
+            EligibilityGate eligibilityGate) {
         this.systemVersion = systemVersion;
         this.properties = properties;
         this.databaseStatus = databaseStatus;
+        this.eligibilityGate = eligibilityGate;
     }
 
     @GetMapping(version = "v1")
@@ -57,13 +64,14 @@ public class EntryPointController {
 
                     Links by caller, read from the veredito-session cookie:
                     - visitor (no session, or an expired or unknown cookie): self, curies, vd:request-code;
-                    - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out;
+                    - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out, and \
+                      vd:next-task when eligible;
                     - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out, \
                       vd:batches, vd:request-preview, vd:study-phase;
                     - database unavailable: self only, and available is false.
 
                     An invalid cookie never makes this operation answer 401. Later releases add \
-                    vd:consent-form and vd:next-task for a participant, and vd:exports, vd:dashboard and \
+                    vd:consent-form for a participant, and vd:exports, vd:dashboard and \
                     vd:participants for the administrator. No administrative link is ever offered to a \
                     visitor or a participant.""")
     @ApiResponse(
@@ -86,7 +94,7 @@ public class EntryPointController {
                                 }"""),
                         @ExampleObject(name = "participant", value = """
                                 {
-                                  "systemVersion": "0.5.0+1a2b3c4",
+                                  "systemVersion": "0.7.0+1a2b3c4",
                                   "environment": "production",
                                   "available": true,
                                   "_links": {
@@ -94,7 +102,8 @@ public class EntryPointController {
                                     "curies": [ { "name": "vd", "href": "/api/v1/rels/{rel}", "templated": true } ],
                                     "vd:session": { "href": "/api/v1/access-sessions/current" },
                                     "vd:me": { "href": "/api/v1/participants/me" },
-                                    "vd:sign-out": { "href": "/api/v1/access-sessions/current" }
+                                    "vd:sign-out": { "href": "/api/v1/access-sessions/current" },
+                                    "vd:next-task": { "href": "/api/v1/tasks/reservations" }
                                   }
                                 }"""),
                         @ExampleObject(name = "unavailable", value = """
@@ -139,6 +148,8 @@ public class EntryPointController {
             if (properties.environment() != Environment.STAGING) {
                 model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
             }
+        } else if (caller.participantId() != null && eligibilityGate.isEligible(caller.participantId())) {
+            model.add(Link.of(TASK_RESERVATIONS, LinkRelations.NEXT_TASK.curied()));
         }
         return model;
     }

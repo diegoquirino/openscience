@@ -47,13 +47,15 @@ class EntryPointTest extends ApiTestBase {
     }
 
     @Test
-    void participantGetsSessionOwnProfileAndSignOut() {
+    void participantGetsSessionOwnProfileSignOutAndNextTask() {
         as(participantSession()).get("/api/v1")
                 .then().statusCode(200)
-                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
+                .body("_links.keySet()", containsInAnyOrder(
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:next-task"))
                 .body("_links.'vd:session'.href", equalTo("/api/v1/access-sessions/current"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
-                .body("_links.'vd:sign-out'.href", equalTo("/api/v1/access-sessions/current"));
+                .body("_links.'vd:sign-out'.href", equalTo("/api/v1/access-sessions/current"))
+                .body("_links.'vd:next-task'.href", equalTo("/api/v1/tasks/reservations"));
     }
 
     @Test
@@ -80,7 +82,8 @@ class EntryPointTest extends ApiTestBase {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm"
+            "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm",
+            "next-task", "reserve", "save-response", "submit", "items", "review"
     })
     void curieDocumentsTheAccessRelations(String rel) {
         request().get("/api/v1/rels/" + rel)
@@ -140,8 +143,10 @@ class EntryPointTest extends ApiTestBase {
 
         as(token).get("/api/v1")
                 .then().statusCode(200)
-                .body("_links.keySet()", containsInAnyOrder("self", "curies", "vd:session", "vd:me", "vd:sign-out"))
+                .body("_links.keySet()", containsInAnyOrder(
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:next-task"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
+                .body("_links.'vd:next-task'.href", equalTo("/api/v1/tasks/reservations"))
                 .body("_links", not(hasKey("vd:request-code")));
     }
 
