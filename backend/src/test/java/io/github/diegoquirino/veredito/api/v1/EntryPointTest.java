@@ -33,7 +33,10 @@ class EntryPointTest extends ApiTestBase {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"vd:me", "vd:batches", "vd:exports", "vd:dashboard", "vd:participants"})
+    @ValueSource(strings = {
+        "vd:me", "vd:batches", "vd:exports", "vd:dashboard", "vd:participants", "vd:onboarding", "vd:consent-form",
+        "vd:next-task"
+    })
     void noAdministrativeOrParticipantLinkForAVisitor(String rel) {
         entryPoint().then().body("_links", not(hasKey(rel)));
     }
@@ -47,15 +50,37 @@ class EntryPointTest extends ApiTestBase {
     }
 
     @Test
-    void participantGetsSessionOwnProfileSignOutAndNextTask() {
+    void newParticipantGetsOnboardingAndConsentFormButNoNextTask() {
         as(participantSession()).get("/api/v1")
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
-                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:next-task"))
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:onboarding", "vd:consent-form"))
                 .body("_links.'vd:session'.href", equalTo("/api/v1/access-sessions/current"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
                 .body("_links.'vd:sign-out'.href", equalTo("/api/v1/access-sessions/current"))
+                .body("_links.'vd:onboarding'.href", equalTo("/api/v1/participants/me/onboarding"))
+                .body("_links.'vd:consent-form'.href", equalTo("/api/v1/consent-forms/current"));
+    }
+
+    @Test
+    void eligibleParticipantAlsoGetsNextTask() {
+        as(eligibleParticipantSession()).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links.keySet()", containsInAnyOrder(
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:onboarding", "vd:consent-form",
+                        "vd:next-task"))
                 .body("_links.'vd:next-task'.href", equalTo("/api/v1/tasks/reservations"));
+    }
+
+    @Test
+    void consentFormLinkDisappearsWhileNoFormIsCurrentAndNextTaskWhenNoLongerEligible() {
+        String token = eligibleParticipantSession();
+        jdbc.sql("UPDATE consent_form SET published_at = NULL").update();
+        as(token).get("/api/v1")
+                .then().statusCode(200)
+                .body("_links", not(hasKey("vd:consent-form")))
+                .body("_links", not(hasKey("vd:next-task")))
+                .body("_links", hasKey("vd:onboarding"));
     }
 
     @Test
@@ -83,7 +108,8 @@ class EntryPointTest extends ApiTestBase {
     @ParameterizedTest
     @ValueSource(strings = {
             "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm",
-            "next-task", "reserve", "save-response", "submit", "items", "review"
+            "next-task", "reserve", "save-response", "submit", "items", "review", "onboarding", "consent-form",
+            "consent-text", "consent", "skill", "screening", "screening-example"
     })
     void curieDocumentsTheAccessRelations(String rel) {
         request().get("/api/v1/rels/" + rel)
@@ -144,9 +170,9 @@ class EntryPointTest extends ApiTestBase {
         as(token).get("/api/v1")
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
-                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:next-task"))
+                        "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:onboarding", "vd:consent-form"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
-                .body("_links.'vd:next-task'.href", equalTo("/api/v1/tasks/reservations"))
+                .body("_links", not(hasKey("vd:next-task")))
                 .body("_links", not(hasKey("vd:request-code")));
     }
 

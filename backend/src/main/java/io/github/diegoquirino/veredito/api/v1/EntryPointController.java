@@ -10,6 +10,7 @@ import io.github.diegoquirino.veredito.api.ProblemDetailsSchema;
 import io.github.diegoquirino.veredito.config.SystemVersion;
 import io.github.diegoquirino.veredito.config.VereditoProperties;
 import io.github.diegoquirino.veredito.config.VereditoProperties.Environment;
+import io.github.diegoquirino.veredito.onboarding.OnboardingService;
 import io.github.diegoquirino.veredito.persistence.DatabaseStatus;
 import io.github.diegoquirino.veredito.queue.EligibilityGate;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,21 +39,30 @@ public class EntryPointController {
     static final String REQUEST_PREVIEW = "/api/v1/batches/previews";
     static final String STUDY_PHASE = "/api/v1/administrator/study-phase";
     static final String TASK_RESERVATIONS = "/api/v1/tasks/reservations";
+    static final String ONBOARDING = "/api/v1/participants/me/onboarding";
+    static final String CONSENT_FORM_CURRENT = "/api/v1/consent-forms/current";
+    static final String CONSENT = "/api/v1/participants/me/consent";
+    static final String SKILL = "/api/v1/participants/me/skill";
+    static final String SCREENING = "/api/v1/participants/me/screening";
+    static final String SCREENING_EXAMPLE = "/api/v1/screening-example";
 
     private final SystemVersion systemVersion;
     private final VereditoProperties properties;
     private final DatabaseStatus databaseStatus;
     private final EligibilityGate eligibilityGate;
+    private final OnboardingService onboarding;
 
     public EntryPointController(
             SystemVersion systemVersion,
             VereditoProperties properties,
             DatabaseStatus databaseStatus,
-            EligibilityGate eligibilityGate) {
+            EligibilityGate eligibilityGate,
+            OnboardingService onboarding) {
         this.systemVersion = systemVersion;
         this.properties = properties;
         this.databaseStatus = databaseStatus;
         this.eligibilityGate = eligibilityGate;
+        this.onboarding = onboarding;
     }
 
     @GetMapping(version = "v1")
@@ -64,15 +74,15 @@ public class EntryPointController {
 
                     Links by caller, read from the veredito-session cookie:
                     - visitor (no session, or an expired or unknown cookie): self, curies, vd:request-code;
-                    - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out, and \
-                      vd:next-task when eligible;
+                    - participant: self, curies, vd:session, vd:me (own profile), vd:sign-out, vd:onboarding, \
+                      vd:consent-form while a current consent form exists, and vd:next-task only when \
+                      eligible (current consent form accepted, skill answered, screening yes);
                     - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out, \
                       vd:batches, vd:request-preview, vd:study-phase;
                     - database unavailable: self only, and available is false.
 
                     An invalid cookie never makes this operation answer 401. Later releases add \
-                    vd:consent-form for a participant, and vd:exports, vd:dashboard and \
-                    vd:participants for the administrator. No administrative link is ever offered to a \
+                    vd:exports, vd:dashboard and vd:participants for the administrator. No administrative link is ever offered to a \
                     visitor or a participant.""")
     @ApiResponse(
             responseCode = "200",
@@ -94,7 +104,7 @@ public class EntryPointController {
                                 }"""),
                         @ExampleObject(name = "participant", value = """
                                 {
-                                  "systemVersion": "0.7.0+1a2b3c4",
+                                  "systemVersion": "0.6.0+1a2b3c4",
                                   "environment": "production",
                                   "available": true,
                                   "_links": {
@@ -103,6 +113,8 @@ public class EntryPointController {
                                     "vd:session": { "href": "/api/v1/access-sessions/current" },
                                     "vd:me": { "href": "/api/v1/participants/me" },
                                     "vd:sign-out": { "href": "/api/v1/access-sessions/current" },
+                                    "vd:onboarding": { "href": "/api/v1/participants/me/onboarding" },
+                                    "vd:consent-form": { "href": "/api/v1/consent-forms/current" },
                                     "vd:next-task": { "href": "/api/v1/tasks/reservations" }
                                   }
                                 }"""),
@@ -148,8 +160,14 @@ public class EntryPointController {
             if (properties.environment() != Environment.STAGING) {
                 model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
             }
-        } else if (caller.participantId() != null && eligibilityGate.isEligible(caller.participantId())) {
-            model.add(Link.of(TASK_RESERVATIONS, LinkRelations.NEXT_TASK.curied()));
+        } else if (caller.participantId() != null) {
+            model.add(Link.of(ONBOARDING, LinkRelations.ONBOARDING.curied()));
+            if (onboarding.currentForm().isPresent()) {
+                model.add(Link.of(CONSENT_FORM_CURRENT, LinkRelations.CONSENT_FORM.curied()));
+            }
+            if (eligibilityGate.isEligible(caller.participantId())) {
+                model.add(Link.of(TASK_RESERVATIONS, LinkRelations.NEXT_TASK.curied()));
+            }
         }
         return model;
     }

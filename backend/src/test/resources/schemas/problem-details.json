@@ -16,6 +16,8 @@
       "minItems": 1
     },
     "incidentId": { "type": "string", "format": "uuid" },
+    "step": { "enum": ["consent", "skill", "screening", "participation", "ineligible", "not-open"] },
+    "currentVersion": { "type": "string", "minLength": 1 },
     "errors": {
       "type": "array",
       "items": {

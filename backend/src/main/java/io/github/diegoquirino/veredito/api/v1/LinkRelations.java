@@ -58,12 +58,35 @@ public final class LinkRelations {
             "review", "Reserved task ready for review of all drafts.", HttpMethod.GET,
             "/swagger-ui.html#/Tasks");
 
+    public static final Relation ONBOARDING = new Relation(
+            "onboarding", "The step the participant is at: consent form, skill, screening or participation.",
+            HttpMethod.GET, "/swagger-ui.html#/Participation");
+    public static final Relation CONSENT_FORM = new Relation(
+            "consent-form", "The current consent form in the language of the request.", HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
+    public static final Relation CONSENT_TEXT = new Relation(
+            "consent-text", "One language of one version of the consent form (used for the pt-BR reference).",
+            HttpMethod.GET, "/swagger-ui.html#/Participation");
+    public static final Relation CONSENT = new Relation(
+            "consent", "The participant's decision on the consent form; PUT records it.", HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
+    public static final Relation SKILL = new Relation(
+            "skill", "The participant's professional skill; PUT records it once.", HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
+    public static final Relation SCREENING = new Relation(
+            "screening", "The participant's screening answer; PUT records it once.", HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
+    public static final Relation SCREENING_EXAMPLE = new Relation(
+            "screening-example", "The fixed English use case and test case shown before the screening question.",
+            HttpMethod.GET, "/swagger-ui.html#/Participation");
+
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
         for (Relation relation : new Relation[] {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
-            NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW
+            NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, ONBOARDING, CONSENT_FORM, CONSENT_TEXT, CONSENT, SKILL,
+            SCREENING, SCREENING_EXAMPLE
         }) {
             BY_NAME.put(relation.name(), relation);
         }

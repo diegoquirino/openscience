@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/access-sessions/current").hasAnyRole(PARTICIPANT, ADMINISTRATOR)
                         .requestMatchers("/api/v1/participants/**").hasRole(PARTICIPANT)
                         .requestMatchers("/api/v1/tasks/**").hasRole(PARTICIPANT)
+                        .requestMatchers("/api/v1/consent-forms/**", "/api/v1/screening-example").hasRole(PARTICIPANT)
                         .requestMatchers(ADMINISTRATION).hasRole(ADMINISTRATOR)
                         .anyRequest().permitAll());
         return http.build();

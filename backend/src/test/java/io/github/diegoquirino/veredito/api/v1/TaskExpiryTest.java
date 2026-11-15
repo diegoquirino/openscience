@@ -43,8 +43,8 @@ class TaskExpiryTest extends ApiTestBase {
 
     @Test
     void expiredTaskGoesToTheNextParticipantAndTheOldDraftsAreDeleted() {
-        String a = participantSession();
-        String b = participantSession();
+        String a = eligibleParticipantSession();
+        String b = eligibleParticipantSession();
         Response taskA = reserve(a);
         assertThat(taskA.<Integer>path("reservationMinutes")).isEqualTo(SHORT_MINUTES);
         long itemId = itemId(a, taskA, 1);
@@ -63,8 +63,8 @@ class TaskExpiryTest extends ApiTestBase {
 
     @Test
     void previousHolderCannotSaveAfterTheTaskWasReclaimed() {
-        String a = participantSession();
-        String b = participantSession();
+        String a = eligibleParticipantSession();
+        String b = eligibleParticipantSession();
         Response taskA = reserve(a);
         long itemId = itemId(a, taskA, 1);
         put(a, taskA, itemId, "LOW", "KEEP", "mine").then().statusCode(200);
@@ -81,7 +81,7 @@ class TaskExpiryTest extends ApiTestBase {
 
     @Test
     void saveWhenNobodyTookTheExpiredTaskRenewsItForTheOwnerAndKeepsDrafts() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response taskA = reserve(a);
         long itemId = itemId(a, taskA, 1);
         put(a, taskA, itemId, "LOW", "KEEP", "first").then().statusCode(200);
@@ -104,7 +104,7 @@ class TaskExpiryTest extends ApiTestBase {
 
     @Test
     void expiryNeedsNoJobAndReservationStaysUntilSomebodyAsks() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response taskA = reserve(a);
         clock.advance(Duration.ofHours(3));
 

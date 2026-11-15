@@ -1,0 +1,33 @@
+{
+  "version": "1",
+  "useCase": {
+    "id": "UC-S1",
+    "title": "Reset password",
+    "basicFlow": [
+      "The user selects \"Forgot my password\" on the sign-in page.",
+      "The system asks for the e-mail address of the account.",
+      "The user types the e-mail address and confirms.",
+      "The system sends a message with a reset link valid for 30 minutes.",
+      "The user opens the link and types a new password twice.",
+      "The system stores the new password and shows a confirmation."
+    ],
+    "exceptionFlow": {
+      "id": "E1",
+      "condition": "The e-mail address is not registered (step 3).",
+      "steps": [
+        "The system shows the same confirmation as in the basic flow, without sending any message.",
+        "The use case ends."
+      ]
+    }
+  },
+  "testCase": {
+    "id": "TC-S1",
+    "title": "Reset request for an unregistered e-mail address",
+    "derivedFrom": ["UC-S1 / E1"],
+    "steps": [
+      "Open the sign-in page and select \"Forgot my password\".",
+      "Type an e-mail address that has no account and confirm."
+    ],
+    "expected": "The confirmation is shown and no message is sent."
+  }
+}

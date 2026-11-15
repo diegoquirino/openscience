@@ -25,7 +25,7 @@ class TaskLanguageTest extends ApiTestBase {
 
     @Test
     void draftsSavedInThreeLocalesRecordEachLanguage() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long first = itemId(a, task, 1);
         long second = itemId(a, task, 2);
@@ -48,7 +48,7 @@ class TaskLanguageTest extends ApiTestBase {
 
     @Test
     void languageOnlyFollowsTheHeaderNotTheBody() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
 
@@ -63,7 +63,7 @@ class TaskLanguageTest extends ApiTestBase {
 
     @Test
     void unsupportedLocaleFallsBackAndRegionalVariantsMapToSupportedTags() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long first = itemId(a, task, 1);
         long second = itemId(a, task, 2);
@@ -77,7 +77,7 @@ class TaskLanguageTest extends ApiTestBase {
 
     @Test
     void switchingLanguageAloneDoesNotRenewTheReservation() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         String expiresAt = task.path("reservationExpiresAt");
         long itemId = itemId(a, task, 1);

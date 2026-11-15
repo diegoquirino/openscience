@@ -80,7 +80,7 @@ public class DraftService {
             String comment,
             Locale locale) {
         if (!eligibility.isEligible(participantId)) {
-            throw new ProblemException(ProblemType.NOT_ELIGIBLE);
+            throw eligibility.refusal(participantId);
         }
         Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
 

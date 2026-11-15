@@ -107,7 +107,7 @@ public class TaskReservationService {
 
     private void requireEligible(long participantId) {
         if (!eligibility.isEligible(participantId)) {
-            throw new ProblemException(ProblemType.NOT_ELIGIBLE);
+            throw eligibility.refusal(participantId);
         }
     }
 

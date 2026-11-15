@@ -31,6 +31,8 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
     private static final String NO_HEADER = "<none>";
     private static final String TASK_RESERVATIONS = "/api/v1/tasks/reservations";
     private static final List<String> TASK_PROBLEMS = List.of("reservation-expired", "task-already-submitted");
+    private static final List<String> ONBOARDING_PROBLEMS = List.of(
+            "not-eligible", "study-not-open", "consent-form-outdated", "step-not-pending");
     private static final List<String> HEADERS = List.of("pt-BR", "en-US", "es-ES", NO_HEADER);
     private static final List<String> ACCESS_PROBLEMS = List.of(
             "code-resend-too-soon", "code-hourly-limit", "daily-email-limit", "code-not-sent", "invalid-code",
@@ -69,6 +71,10 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
         return IMPORT_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
     }
 
+    static Stream<Arguments> onboardingProblems() {
+        return ONBOARDING_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
+    }
+
     static Stream<Arguments> taskProblems() {
         return TASK_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
     }
@@ -77,6 +83,12 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
     @MethodSource("taskProblems")
     void taskProblemsAreLocalized(String slug, String acceptLanguage) {
         assertLocalized(slug, acceptLanguage, provokeTask(slug, acceptLanguage));
+    }
+
+    @ParameterizedTest(name = "{0} with Accept-Language {1}")
+    @MethodSource("onboardingProblems")
+    void onboardingProblemsAreLocalized(String slug, String acceptLanguage) {
+        assertLocalized(slug, acceptLanguage, provokeOnboarding(slug, acceptLanguage));
     }
 
     @ParameterizedTest(name = "{0} with Accept-Language {1}")
@@ -175,13 +187,39 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
     }
 
     /**
-     * Spec 007. {@code not-eligible} needs the gate to answer false (there is no participant that
-     * is ineligible until spec 006), so it is not provoked here.
+     * Spec 006: a real participant who has done no onboarding step meets each refusal. The extensions
+     * ({@code step}, {@code currentVersion}) are the same in every language.
      */
+    private Response provokeOnboarding(String slug, String acceptLanguage) {
+        String token = participantSession();
+        return switch (slug) {
+            case "not-eligible" -> localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
+                    .post(TASK_RESERVATIONS);
+            case "study-not-open" -> {
+                jdbc.sql("UPDATE consent_form SET published_at = NULL").update();
+                yield putConsent(acceptLanguage, token, "accepted", "fixture-1");
+            }
+            case "consent-form-outdated" -> putConsent(acceptLanguage, token, "accepted", "v0-old");
+            case "step-not-pending" -> localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
+                    .contentType("application/json")
+                    .body(Map.of("skill", "developer"))
+                    .put("/api/v1/participants/me/skill");
+            default -> throw new IllegalArgumentException(slug);
+        };
+    }
+
+    private Response putConsent(String acceptLanguage, String token, String decision, String version) {
+        return localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
+                .contentType("application/json")
+                .body(Map.of("decision", decision, "consentFormVersion", version))
+                .put("/api/v1/participants/me/consent");
+    }
+
+    /** Spec 007: an eligible participant (spec 006 gate) meets the task refusals. */
     private Response provokeTask(String slug, String acceptLanguage) {
         clearStudyDatabase();
         importMinitestBatch();
-        String token = participantSession();
+        String token = eligibleParticipantSession();
         Response reserved = as(token).post(TASK_RESERVATIONS);
         reserved.then().statusCode(201);
         String taskUrl = "/api/v1/tasks/" + reserved.<Integer>path("id");

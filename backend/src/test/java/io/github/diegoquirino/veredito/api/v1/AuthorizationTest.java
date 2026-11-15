@@ -86,7 +86,7 @@ class AuthorizationTest extends ApiTestBase {
         operations.addAll(operationsTagged("Tasks"));
         assertThat(operations).isNotEmpty();
         String administrator = administratorSession();
-        String participant = participantSession();
+        String participant = eligibleParticipantSession();
 
         for (Operation operation : operations) {
             operation.call(request())
@@ -100,6 +100,22 @@ class AuthorizationTest extends ApiTestBase {
         }
         System.out.println("AuthorizationTest: " + operations.size()
                 + " participant/task operation(s) refused visitors and the administrator: " + operations);
+    }
+
+    @Test
+    void theOperationsOfSpec006AreTaggedParticipationAndTherefore() {
+        List<String> operations = operationsTagged("Participation").stream().map(Operation::toString).toList();
+        assertThat(operations).contains(
+                "GET /api/v1/participants/me/onboarding",
+                "GET /api/v1/consent-forms/current",
+                "GET /api/v1/consent-forms/1/texts/1",
+                "GET /api/v1/participants/me/consent",
+                "PUT /api/v1/participants/me/consent",
+                "GET /api/v1/participants/me/skill",
+                "PUT /api/v1/participants/me/skill",
+                "GET /api/v1/participants/me/screening",
+                "PUT /api/v1/participants/me/screening",
+                "GET /api/v1/screening-example");
     }
 
     private List<Operation> operationsTagged(String tag) {

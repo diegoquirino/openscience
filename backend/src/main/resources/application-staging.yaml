@@ -2,6 +2,9 @@ spring:
   docker:
     compose:
       enabled: false
+  flyway:
+    # db/staging holds the fixture consent form (V6); only this profile and the API tests load it, never prod.
+    locations: classpath:db/migration,classpath:db/staging
   mail:
     host: ${SMTP_HOST:mailpit}
     port: ${SMTP_PORT:1025}

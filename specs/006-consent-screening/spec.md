@@ -137,4 +137,4 @@ The consent form is shown in the interface language chosen by the participant. T
 - The screening example is fixed and written by the researcher, in English, the language of the use cases participants will label (Appendix B.3 of spec 001); only the question, the options and the instructions around it are translated.
 - The display labels of the skills and of the screening in the three languages are those of Appendices B.3 and B.4 of spec 001.
 - The language is chosen on the first screen, before sign-in (spec 004); this spec only uses it.
-- Until spec 007 is delivered, the eligible participant sees a screen "You are eligible; blocks will be available soon".
+- Spec 007 (block queue) is already delivered: an eligible participant (current consent form accepted, screening passed) proceeds straight to participation, that is, to the block queue of spec 007. This spec replaces the temporary "always eligible" rule of 007 with the real eligibility rule; it does not add a "you are eligible, blocks soon" screen.

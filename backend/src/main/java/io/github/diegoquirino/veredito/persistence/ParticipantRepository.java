@@ -3,6 +3,9 @@ package io.github.diegoquirino.veredito.persistence;
 import io.github.diegoquirino.veredito.domain.access.EmailAddress;
 import io.github.diegoquirino.veredito.domain.access.PersonName;
 import io.github.diegoquirino.veredito.domain.access.Pseudonym;
+import io.github.diegoquirino.veredito.domain.onboarding.ConsentDecision;
+import io.github.diegoquirino.veredito.domain.onboarding.OnboardingState;
+import io.github.diegoquirino.veredito.domain.onboarding.ScreeningAnswer;
 import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,6 +89,65 @@ public class ParticipantRepository {
         jdbc.sql("UPDATE participant SET preferred_language = ? WHERE id = ?").params(language, id).update();
     }
 
+    private static final String ONBOARDING_SELECT = """
+            SELECT consent_form_id, consent_decision, consent_language, consent_decided_at,
+                   professional_skill, professional_skill_other, screening_answer
+            FROM participant WHERE id = ?""";
+
+    /** The consent, skill and screening columns of one participant (spec 006). */
+    public Optional<OnboardingState> findOnboardingState(long id) {
+        return jdbc.sql(ONBOARDING_SELECT).param(id).query(ParticipantRepository::onboarding).optional();
+    }
+
+    /** Same as {@link #findOnboardingState} but locks the row; the caller must be in a transaction. */
+    public Optional<OnboardingState> lockOnboardingState(long id) {
+        return jdbc.sql(ONBOARDING_SELECT + " FOR UPDATE")
+                .param(id)
+                .query(ParticipantRepository::onboarding)
+                .optional();
+    }
+
+    /** Writes the four consent columns together ({@code ck_participant_consent_complete}). */
+    public void recordConsent(long id, long formId, ConsentDecision decision, String language, Instant decidedAt) {
+        jdbc.sql("""
+                        UPDATE participant
+                        SET consent_form_id = ?, consent_decision = ?, consent_language = ?, consent_decided_at = ?
+                        WHERE id = ?""")
+                .params(formId, decision.code(), language, Timestamp.from(decidedAt), id)
+                .update();
+    }
+
+    /** Stores the skill once; returns 0 when it was already answered. */
+    public int recordSkill(long id, String skill, String other) {
+        return jdbc.sql("""
+                        UPDATE participant SET professional_skill = ?, professional_skill_other = ?
+                        WHERE id = ? AND professional_skill IS NULL""")
+                .params(skill, other, id)
+                .update();
+    }
+
+    /** Stores the screening answer and the eligibility once; returns 0 when it was already answered. */
+    public int recordScreening(long id, ScreeningAnswer answer) {
+        return jdbc.sql("""
+                        UPDATE participant SET screening_answer = ?, eligible = ?
+                        WHERE id = ? AND screening_answer IS NULL""")
+                .params(answer.code(), answer.eligible(), id)
+                .update();
+    }
+
+    private static OnboardingState onboarding(ResultSet rs, int row) throws SQLException {
+        long formId = rs.getLong("consent_form_id");
+        Long consentFormId = rs.wasNull() ? null : formId;
+        Timestamp decided = rs.getTimestamp("consent_decided_at");
+        return new OnboardingState(
+                consentFormId,
+                ConsentDecision.fromCode(rs.getString("consent_decision")).orElse(null),
+                rs.getString("consent_language"),
+                decided == null ? null : decided.toInstant(),
+                rs.getString("professional_skill"),
+                rs.getString("professional_skill_other"),
+                ScreeningAnswer.fromCode(rs.getString("screening_answer")).orElse(null));
+    }
     private String placeholder() {
         byte[] bytes = new byte[7];
         random.nextBytes(bytes);

@@ -39,7 +39,7 @@ class TaskConcurrencyTest extends ApiTestBase {
         importMinitest();
         List<String> tokens = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
-            tokens.add(signIn("Worker " + i, "worker-" + i + "-" + System.nanoTime() + "@example.com", "en-US"));
+            tokens.add(eligibleSignIn("Worker " + i, "worker-" + i + "-" + System.nanoTime() + "@example.com", "en-US"));
         }
 
         ExecutorService pool = Executors.newFixedThreadPool(30);

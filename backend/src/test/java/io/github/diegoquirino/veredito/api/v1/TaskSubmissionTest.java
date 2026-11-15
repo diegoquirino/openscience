@@ -28,7 +28,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void completeBlockIsSubmittedAndFinalsAreStored() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
 
@@ -59,7 +59,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void incompleteBlockIsRefusedWithTheFirstPendingPosition() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10, 3);
 
@@ -75,7 +75,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void blockWithoutAnyAnswerPointsAtPositionOne() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
 
         as(a).post(submissionUrl(task)).then().statusCode(409)
@@ -85,7 +85,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void resubmittingIsAnUnchangedNoOp() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
         as(a).post(submissionUrl(task)).then().statusCode(200);
@@ -111,7 +111,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void savingAfterSubmitIsRefused() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
         as(a).post(submissionUrl(task)).then().statusCode(200);
@@ -122,12 +122,12 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void lastTaskOfTheDatabaseReportsDatabaseComplete() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
         // Everything else is already done (by raters outside this test).
-        participantSession();
-        participantSession();
+        eligibleParticipantSession();
+        eligibleParticipantSession();
         List<Long> others = jdbc.sql("SELECT id FROM participant ORDER BY id DESC LIMIT 2")
                 .query(Long.class)
                 .list();
@@ -154,7 +154,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void personWhoLabeledOneRoleOfEveryBlockGetsNoneAvailableForYou() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         // Four blocks: the person may take one role of each, never both roles of a block.
         for (int block = 1; block <= 4; block++) {
             Response task = reserve(a);
@@ -176,12 +176,12 @@ class TaskSubmissionTest extends ApiTestBase {
     @Test
     void reserveOnACompletedDatabaseReportsDatabaseComplete() {
         // Two raters (one per role) already answered everything; the caller arrives afterwards.
-        participantSession();
-        signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
+        eligibleParticipantSession();
+        eligibleSignIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
         List<Long> raters = jdbc.sql("SELECT id FROM participant ORDER BY id DESC LIMIT 2")
                 .query(Long.class)
                 .list();
-        String a = signIn("Carla Dias", "carla-" + System.nanoTime() + "@example.com", "en-US");
+        String a = eligibleSignIn("Carla Dias", "carla-" + System.nanoTime() + "@example.com", "en-US");
         for (int role = 1; role <= 2; role++) {
             jdbc.sql("""
                             UPDATE task SET status = 'completed', participant_id = ?, reserved_at = ?,
@@ -201,8 +201,8 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void foreignTaskIsNotFoundAndOtherRoleKeepsItsOwnState() {
-        String a = participantSession();
-        String b = signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
+        String a = eligibleParticipantSession();
+        String b = eligibleSignIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
         Response taskA = reserve(a);
         Response taskB = reserve(b);
         answerAll(a, taskA, 10);
@@ -220,7 +220,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void expiredReservationNobodyTookStillSubmits() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
 
@@ -231,7 +231,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void expiredReservationIsRefusedWhenTheCallerAlreadyHoldsAnotherBlock() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response first = reserve(a);
         answerAll(a, first, 10);
 
@@ -247,7 +247,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void visitorsAndAdministratorsAreRefused() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10);
 
@@ -259,7 +259,7 @@ class TaskSubmissionTest extends ApiTestBase {
 
     @Test
     void submitLinkAppearsOnlyWhenEveryItemIsAnswered() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         answerAll(a, task, 10, 10);
 

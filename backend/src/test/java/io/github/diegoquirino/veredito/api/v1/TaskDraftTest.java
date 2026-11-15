@@ -26,7 +26,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void itemCarriesFieldsAndNoDraftUntilSaved() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
 
         as(a).get(itemUrl(task, 1))
@@ -44,7 +44,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void savingDraftRenewsReservationAndIsShownOnTheItem() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         Instant before = Instant.parse(task.path("reservationExpiresAt"));
         long itemId = itemId(a, task, 1);
@@ -70,7 +70,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void draftLanguageFollowsAcceptLanguage() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
 
@@ -85,7 +85,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void savingTwiceKeepsOneRowAndReplacesTheValues() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
 
@@ -106,7 +106,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void invalidCodesAreInvalidRequest() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
 
@@ -130,8 +130,8 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void foreignTaskIsNotFoundAndOtherRoleDataNeverAppears() {
-        String a = participantSession();
-        String b = signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
+        String a = eligibleParticipantSession();
+        String b = eligibleSignIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
         Response taskA = reserve(a);
         Response taskB = reserve(b);
         long itemId = itemId(a, taskA, 1);
@@ -153,7 +153,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void positionOutsideTheBlockAndItemOfAnotherBlockAreNotFound() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long otherBlockItem = jdbc.sql("""
                         SELECT id FROM item
@@ -170,7 +170,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void ownExpiredReservationNobodyTookIsRenewedAndKeepsDrafts() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
         put(a, task, itemId, "LOW", "KEEP", "kept").then().statusCode(200);
@@ -183,7 +183,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void expiredReservationIsRefusedWhenTheCallerAlreadyHoldsAnotherBlock() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response first = reserve(a);
         long itemId = itemId(a, first, 1);
 
@@ -197,7 +197,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void completedTaskLocksItsAnswers() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
         put(a, task, itemId, "LOW", "KEEP", null).then().statusCode(200);
@@ -211,7 +211,7 @@ class TaskDraftTest extends ApiTestBase {
 
     @Test
     void visitorsAndAdministratorsAreRefused() {
-        String a = participantSession();
+        String a = eligibleParticipantSession();
         Response task = reserve(a);
         long itemId = itemId(a, task, 1);
 

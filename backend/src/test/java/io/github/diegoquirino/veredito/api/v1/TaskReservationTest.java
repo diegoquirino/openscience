@@ -29,8 +29,8 @@ class TaskReservationTest extends ApiTestBase {
     @Test
     void firstAndSecondCallersGetDifferentRolesThenResume() throws IOException {
         importMinitest();
-        String a = participantSession();
-        String b = signIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
+        String a = eligibleParticipantSession();
+        String b = eligibleSignIn("Bruno Lima", "bruno-" + System.nanoTime() + "@example.com", "en-US");
 
         Response first = as(a).post(href(as(a).get("/api/v1"), "next-task"));
         first.then().statusCode(201)
@@ -57,7 +57,7 @@ class TaskReservationTest extends ApiTestBase {
 
     @Test
     void emptyDatabaseReturnsNoItemsYet() {
-        String token = participantSession();
+        String token = eligibleParticipantSession();
         as(token).post(href(as(token).get("/api/v1"), "next-task"))
                 .then().statusCode(200)
                 .body("outcome", equalTo("no-items-yet"));
