@@ -26,15 +26,15 @@ denies them to visitors and administrators (administrators keep only Administrat
 Participant only. Empty body. HAL-FORMS template on the entry point may title it "Request next
 block".
 
-### New reservation — `201`
+### New reservation â€” `201`
 
 Header `Location: /api/v1/tasks/{id}`. Body = task representation (below).
 
-### Existing valid reservation — `200`
+### Existing valid reservation â€” `200`
 
 Same body and `self` link; no new `Location` required (idempotent resume).
 
-### No task handed out — `200`
+### No task handed out â€” `200`
 
 ```json
 {
@@ -46,7 +46,7 @@ Same body and `self` link; no new `Location` required (idempotent resume).
 }
 ```
 
-`outcome` is one of `no-items-yet` | `database-complete` | `none-available-for-you` (research §4).
+`outcome` is one of `no-items-yet` | `database-complete` | `none-available-for-you` (research Â§4).
 Localized end-screen copy comes from message keys / XLIFF; the slug is stable.
 
 | Error | Status | Type | When |
@@ -117,10 +117,10 @@ if any. Never includes the other role's response or identity.
   "field": "step",
   "originVersion": "1.1",
   "targetVersion": "1.2",
-  "originUsecase": "…",
-  "targetUsecase": "…",
-  "origin": "…",
-  "target": "…",
+  "originUsecase": "â€¦",
+  "targetUsecase": "â€¦",
+  "origin": "â€¦",
+  "target": "â€¦",
   "draft": {
     "changeImpact": "LOW",
     "maintenanceOperation": "KEEP",

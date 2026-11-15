@@ -34,7 +34,7 @@ docker compose --profile staging up --build -d
 2. Sign out; sign in as a participant (any non-admin e-mail; code in Mailpit at
    `http://localhost:8025`).
 
-## 3. Happy path (US1–US4)
+## 3. Happy path (US1â€“US4)
 
 | Step | Expected |
 |---|---|
@@ -54,7 +54,7 @@ Two browsers (or the automated concurrency test): both ask at once with one free
 receives it, the other gets `none-available-for-you` or the next task. Nobody holds both roles of
 the same block.
 
-## 5. Expiry (US5) — staging
+## 5. Expiry (US5) â€” staging
 
 ```powershell
 docker compose exec mysql mysql -uveredito -pveredito-local veredito -e "UPDATE config SET reservation_minutes = 1, updated_at = UTC_TIMESTAMP(6) WHERE id = 1"
@@ -78,4 +78,4 @@ Answer part of a block in pt-BR; switch header to en-US; confirm unsaved choices
 1. Push to `Veredito`; wait for `ci.yml`.
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.7.0-1` (only with explicit approval).
 3. Administrator imports Minitest if the pilot database is empty; a participant signs in, labels one
-   block, and the footer shows `0.7.0+…`.
+   block, and the footer shows `0.7.0+â€¦`.

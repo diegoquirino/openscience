@@ -28,7 +28,7 @@ No new Maven or npm dependency.
   B1-R2, skip own other role, resume own reservation before choosing).
 - **Rationale**: Constitution Principle II and spec 003 FR-008; the ROADMAP assumes this rule is
   testable in isolation before going live. The chooser does not talk to JDBC.
-- **Alternatives considered**: choosing inside SQL only (harder to unit-test the ìnever both rolesî
+- **Alternatives considered**: choosing inside SQL only (harder to unit-test the ‚Äúnever both roles‚Äù
   rule without a database); a priority queue in Redis (extra service, Principle V).
 
 ## 3. Concurrency and locking
@@ -36,7 +36,7 @@ No new Maven or npm dependency.
 - **Decision**: follow the critical path of spec 001 research:
   1. **Reserve** (`POST /tasks/reservations`): if the participant already has a `reserved` task
      with `expires_at > now`, return it (`200`). Otherwise lock candidates with
-     `SELECT Ö FROM task WHERE Ö FOR UPDATE SKIP LOCKED` in `queue_position` order, apply
+     `SELECT ‚Ä¶ FROM task WHERE ‚Ä¶ FOR UPDATE SKIP LOCKED` in `queue_position` order, apply
      `NextTaskChooser`, then update the chosen row to `reserved` (set holder, `reserved_at`,
      `expires_at = now + reservation_minutes`). If the row was expired under another holder,
      `DELETE` that holder's drafts for the task in the same transaction. Concurrent requests get
@@ -78,7 +78,7 @@ only when a later reserve would succeed.
   refusal scenarios; the reserve / save / submit services always call the gate first and answer
   `403` `not-eligible` when it returns false.
 - **Rationale**: Assumption of the spec; keeps a single change point for 006.
-- **Alternatives considered**: hard-coding ìalways eligibleî in each controller (scattered);
+- **Alternatives considered**: hard-coding ‚Äúalways eligible‚Äù in each controller (scattered);
   delaying 007 until 006 (contradicts ROADMAP risk order).
 
 ## 6. API shape (FR-018)
@@ -116,7 +116,7 @@ only when a later reserve would succeed.
   Source), not from a free-form field. Switching locale reloads the SPA under the new prefix; the
   tab restores unsaved impact/operation/comment via `sessionStorage` keyed by task id + position
   (FR-016, FR-078). Imported item text is shown as stored.
-- **Rationale**: constitution language rules; FR-015ñFR-017; SC-006.
+- **Rationale**: constitution language rules; FR-015‚ÄìFR-017; SC-006.
 - **Alternatives considered**: letting the client send `language` in the body (spoofable, drifts from
   UI); translating item text (forbidden).
 
@@ -124,14 +124,14 @@ only when a later reserve would succeed.
 
 - **Decision**: additive `V5__task_queue_lookup.sql` adds
   `INDEX ix_task_status_queue (status, queue_position)` to speed candidate scans under lock. No
-  column changes; `task` / `response` CHECKs from `V1` already match FR-006ñFR-008.
+  column changes; `task` / `response` CHECKs from `V1` already match FR-006‚ÄìFR-008.
 - **Rationale**: rollback to 0.5.x keeps working; index is safe to leave if rolled forward.
 - **Alternatives considered**: no migration (full table scans under contention); changing CHECK
   constraints (unnecessary).
 
 ## 10. Staging reservation minutes
 
-- **Decision**: staging (and tests) may `UPDATE config SET reservation_minutes = N` (within 1ñ240)
+- **Decision**: staging (and tests) may `UPDATE config SET reservation_minutes = N` (within 1‚Äì240)
   to exercise expiry; production stays at 20. No admin UI in this spec.
 - **Rationale**: Assumption of the spec; keeps production behaviour untouched.
 - **Alternatives considered**: a feature flag endpoint (out of scope); sleeping 20 minutes in CI
