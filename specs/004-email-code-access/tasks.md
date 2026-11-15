@@ -449,7 +449,8 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   **Record (2026-11-14):** Vitest 79; e2e against staging 62 passed and 4 skipped; brand icons answer `200` at `/` and under each locale prefix. Screenshots: choice page, desktop and phone toolbar.
 - [X] T065 Push the brand and toolbar commits; wait for `ci.yml`; deploy after the researcher's approval; check the toolbar and the favicon in production on desktop and phone width
   **Record (2026-11-14), toolbar:** T063/T064 pushed; `ci.yml` green on `59114c9` ([43630281710](https://github.com/diegoquirino/openscience/actions/runs/43630281710)); tag `deploy/0.4.0-2` on `59114c9`; revision `veredito-00006-ttq` (created 2026-11-14 20:28 UTC-3) takes 100% of the traffic. Flags and name/sign-out icons are in production.
-  **Record (2026-11-14), brand:** T066 commit `0821043` is on `origin/Veredito`; `ci.yml` green ([43653234535](https://github.com/diegoquirino/openscience/actions/runs/43653234535)). Production still serves the language-choice page without the logo (title only) and has no brand favicon yet. The next production tag is `deploy/0.4.0-3` on `0821043`, after the researcher's approval (not started in this closing).
+  **Record (2026-11-14), brand:** T066 commit `0821043` is on `origin/Veredito`; `ci.yml` green ([43653234535](https://github.com/diegoquirino/openscience/actions/runs/43653234535)).
+  **Record (2026-11-14), brand deploy:** researcher authorized `deploy/0.4.0-3` on `0821043`; deploy run [43656114575](https://github.com/diegoquirino/openscience/actions/runs/43656114575) succeeded. Revision `veredito-00007-qmt` takes 100% of the traffic. Checked in production: `/veredito-logo.png`, `/favicon.ico` and `/apple-touch-icon.png` answer `200`; the language-choice page shows the logo.
 - [X] T062 Mark spec 004 as complete (after T063 to T065):
   - set `Status` in `specs/004-email-code-access/spec.md`;
   - update the line of 004 and milestone 2 ("Access") in `specs/ROADMAP.md`;
@@ -457,7 +458,7 @@ description: "Tasks of spec 004: sign in with name, e-mail and code"
   - list any criterion left to a later spec;
   - commit and push to `Veredito`.
 
-  **Record (2026-11-14):** `Status` of 004 set to Complete; ROADMAP line of 004 and milestone 2 ("Access", reached 2026-11-14) already matched; 003 status already notes US4 scenario 2 / SC-005 of 004; 001 status updated to "002 to 004 complete; 005 next"; 003 assumption about the provisional "Participate" screen updated. Left to later: shorten the code-send wait if it still feels long (research section 6 "Later"; ROADMAP pilot); brand icons in production (`deploy/0.4.0-3` on `0821043`) before or with the start of 005.
+  **Record (2026-11-14):** `Status` of 004 set to Complete; ROADMAP line of 004 and milestone 2 ("Access", reached 2026-11-14) already matched; 003 status already notes US4 scenario 2 / SC-005 of 004; 001 status updated to "002 to 004 complete; 005 next"; 003 assumption about the provisional "Participate" screen updated. Left to later: shorten the code-send wait if it still feels long (research section 6 "Later"; ROADMAP pilot). Brand icons landed in production with `deploy/0.4.0-3` (T065).
 
 ---
 

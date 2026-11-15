@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Complete (2026-11-14; SC-001 to SC-006 checked; SC-002 on five production sends; the code send takes about 4 s against the 2 s of Principle V, accepted up to 7 s by the researcher, see research section 6; shortening the wait is planned for the pilot; brand icons of T066 are on `origin/Veredito` at `0821043` with CI green and await production tag `deploy/0.4.0-3`)
+**Status**: Complete (2026-11-14; SC-001 to SC-006 checked; SC-002 on five production sends; the code send takes about 4 s against the 2 s of Principle V, accepted up to 7 s by the researcher, see research section 6; shortening the wait is planned for the pilot; brand icons in production via `deploy/0.4.0-3`)
 
 **Input**: User description: "Participants and the administrator sign in by entering name and e-mail and typing a 6-digit code sent by e-mail, with no invitation and no password. The administrator (diegoquirino@gmail.com) goes to the administrative area; everyone else goes on to the participation flow."
 
