@@ -25,5 +25,10 @@ export const routes: Routes = [
     canActivate: [administratorOnly],
     loadComponent: () => import('./admin/admin.component').then((m) => m.AdminComponent),
   },
+  {
+    path: 'admin/import',
+    canActivate: [administratorOnly],
+    loadComponent: () => import('./admin/import/import.component').then((m) => m.ImportComponent),
+  },
   { path: '**', component: NotFoundComponent },
 ];

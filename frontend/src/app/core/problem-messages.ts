@@ -19,6 +19,8 @@ export interface Problem {
   retryAfterSeconds?: number;
   retryAt?: string;
   attemptsLeft?: number;
+  column?: string;
+  systems?: string[];
   errors?: FieldError[];
 }
 
@@ -52,6 +54,20 @@ export function problemMessage(problem: Problem | null | undefined, now: Date = 
     }
     case 'code-expired':
       return $localize`:expired, used or replaced access code@@problem.codeExpired:This code is no longer valid`;
+    case 'csv-not-utf8':
+      return $localize`:uploaded file is not UTF-8@@problem.csvNotUtf8:The file is not valid UTF-8 text`;
+    case 'csv-invalid':
+      return $localize`:uploaded file is not a readable CSV@@problem.csvInvalid:The file could not be read as a CSV`;
+    case 'csv-missing-column': {
+      const column = problem?.column ?? '';
+      return $localize`:CSV missing a required column@@problem.csvMissingColumn:The CSV is missing the required column ${column}:column:`;
+    }
+    case 'minitest-only': {
+      const systems = (problem?.systems ?? []).join(', ');
+      return $localize`:non-minitest systems while pilot/staging@@problem.minitestOnly:Only Minitest items are accepted in this phase. Other systems: ${systems}:systems:`;
+    }
+    case 'preview-not-found':
+      return $localize`:import preview expired or unknown@@problem.previewNotFound:This import preview does not exist or has expired; upload the file again`;
     default:
       return undefined;
   }

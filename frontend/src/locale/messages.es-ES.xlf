@@ -177,8 +177,8 @@
     </unit>
     <unit id="admin.soon">
       <segment>
-        <source>These functions will be available in the next releases.</source>
-        <target>Estas funciones estarán disponibles en las próximas versiones.</target>
+        <source>Export, dashboard and participants will be available in the next releases.</source>
+        <target>Exportación, panel y participantes estarán disponibles en las próximas versiones.</target>
       </segment>
     </unit>
     <unit id="shell.title">
@@ -311,6 +311,150 @@
       <segment>
         <source>Something went wrong; please try again</source>
         <target>Algo salió mal; inténtelo de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="import.back">
+      <segment>
+        <source>Back to administration</source>
+        <target>Volver a la administración</target>
+      </segment>
+    </unit>
+    <unit id="import.title">
+      <segment>
+        <source>Import</source>
+        <target>Importar</target>
+      </segment>
+    </unit>
+    <unit id="import.intro">
+      <segment>
+        <source> Upload a CSV to see which rows would be included, ignored or refused before anything is stored. </source>
+        <target> Suba un CSV para ver qué filas se incluirían, ignorarían o rechazarían antes de guardar nada. </target>
+      </segment>
+    </unit>
+    <unit id="import.fileLabel">
+      <segment>
+        <source>CSV file</source>
+        <target>Archivo CSV</target>
+      </segment>
+    </unit>
+    <unit id="import.working">
+      <segment>
+        <source>Reading the file...</source>
+        <target>Leyendo el archivo...</target>
+      </segment>
+    </unit>
+    <unit id="import.previewHeading">
+      <segment>
+        <source>Preview of <ph id="0" equiv="INTERPOLATION" disp="{{ view.fileName }}"/></source>
+        <target>Vista previa de <ph id="0" equiv="INTERPOLATION" disp="{{ view.fileName }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.included">
+      <segment>
+        <source>Included: <ph id="0" equiv="INTERPOLATION" disp="{{ view.includedCount }}"/></source>
+        <target>Incluidas: <ph id="0" equiv="INTERPOLATION" disp="{{ view.includedCount }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.ignored">
+      <segment>
+        <source>Ignored: <ph id="0" equiv="INTERPOLATION" disp="{{ view.ignoredCount }}"/></source>
+        <target>Ignoradas: <ph id="0" equiv="INTERPOLATION" disp="{{ view.ignoredCount }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.errors">
+      <segment>
+        <source>Errors: <ph id="0" equiv="INTERPOLATION" disp="{{ view.errorCount }}"/></source>
+        <target>Errores: <ph id="0" equiv="INTERPOLATION" disp="{{ view.errorCount }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.blocks">
+      <segment>
+        <source>Blocks: <ph id="0" equiv="INTERPOLATION" disp="{{ view.blockCount }}"/> (<ph id="1" equiv="INTERPOLATION_1" disp="{{ view.blockSizes.join(&apos;, &apos;) }}"/>)</source>
+        <target>Bloques: <ph id="0" equiv="INTERPOLATION" disp="{{ view.blockCount }}"/> (<ph id="1" equiv="INTERPOLATION_1" disp="{{ view.blockSizes.join(&apos;, &apos;) }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="import.extraColumns">
+      <segment>
+        <source>Extra columns: <ph id="0" equiv="INTERPOLATION" disp="{{ view.extraColumns.join(&apos;, &apos;) }}"/></source>
+        <target>Columnas extra: <ph id="0" equiv="INTERPOLATION" disp="{{ view.extraColumns.join(&apos;, &apos;) }}"/></target>
+      </segment>
+    </unit>
+    <unit id="import.ignoredHeading">
+      <segment>
+        <source>Ignored rows</source>
+        <target>Filas ignoradas</target>
+      </segment>
+    </unit>
+    <unit id="import.col.line">
+      <segment>
+        <source>Line</source>
+        <target>Línea</target>
+      </segment>
+    </unit>
+    <unit id="import.col.reason">
+      <segment>
+        <source>Reason</source>
+        <target>Motivo</target>
+      </segment>
+    </unit>
+    <unit id="import.col.system">
+      <segment>
+        <source>system</source>
+        <target>system</target>
+      </segment>
+    </unit>
+    <unit id="import.col.editKey">
+      <segment>
+        <source>edit_key</source>
+        <target>edit_key</target>
+      </segment>
+    </unit>
+    <unit id="import.errorsHeading">
+      <segment>
+        <source>Rows with errors</source>
+        <target>Filas con error</target>
+      </segment>
+    </unit>
+    <unit id="import.cancel">
+      <segment>
+        <source>Cancel</source>
+        <target>Cancelar</target>
+      </segment>
+    </unit>
+    <unit id="import.confirm">
+      <segment>
+        <source> Confirm import </source>
+        <target> Confirmar importación </target>
+      </segment>
+    </unit>
+    <unit id="problem.csvNotUtf8">
+      <segment>
+        <source>The file is not valid UTF-8 text</source>
+        <target>El archivo no es texto UTF-8 válido</target>
+      </segment>
+    </unit>
+    <unit id="problem.csvInvalid">
+      <segment>
+        <source>The file could not be read as a CSV</source>
+        <target>El archivo no se pudo leer como CSV</target>
+      </segment>
+    </unit>
+    <unit id="problem.csvMissingColumn">
+      <segment>
+        <source>The CSV is missing the required column <ph id="0" equiv="column" disp="column"/></source>
+        <target>Al CSV le falta la columna obligatoria <ph id="0" equiv="column" disp="column"/></target>
+      </segment>
+    </unit>
+    <unit id="problem.minitestOnly">
+      <segment>
+        <source>Only Minitest items are accepted in this phase. Other systems: <ph id="0" equiv="systems" disp="systems"/></source>
+        <target>En esta fase solo se aceptan ítems Minitest. Otros sistemas: <ph id="0" equiv="systems" disp="systems"/></target>
+      </segment>
+    </unit>
+    <unit id="problem.previewNotFound">
+      <segment>
+        <source>This import preview does not exist or has expired; upload the file again</source>
+        <target>Esta vista previa de importación no existe o ha caducado; suba el archivo de nuevo</target>
       </segment>
     </unit>
   </file>

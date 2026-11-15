@@ -32,6 +32,8 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
     private static final List<String> ACCESS_PROBLEMS = List.of(
             "code-resend-too-soon", "code-hourly-limit", "daily-email-limit", "code-not-sent", "invalid-code",
             "code-expired");
+    private static final List<String> IMPORT_PROBLEMS = List.of(
+            "csv-not-utf8", "csv-invalid", "csv-missing-column", "minitest-only", "preview-not-found");
 
     @ParameterizedTest(name = "Accept-Language {0} gives {1}")
     @CsvSource({
@@ -60,16 +62,31 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
         return ACCESS_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
     }
 
+    static Stream<Arguments> importProblems() {
+        return IMPORT_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
+    }
+
     @ParameterizedTest(name = "{0} with Accept-Language {1}")
     @MethodSource("accessProblems")
     void accessProblemsAreLocalized(String slug, String acceptLanguage) {
+        assertLocalized(slug, acceptLanguage, provokeAccess(slug, acceptLanguage));
+    }
+
+    @ParameterizedTest(name = "{0} with Accept-Language {1}")
+    @MethodSource("importProblems")
+    void importProblemsAreLocalized(String slug, String acceptLanguage) {
+        assertLocalized(slug, acceptLanguage, provokeImport(slug, acceptLanguage));
+    }
+
+    private void assertLocalized(String slug, String acceptLanguage, Response response) {
         String expectedLocale = NO_HEADER.equals(acceptLanguage) ? "pt-BR" : acceptLanguage;
         Properties texts = Bundles.load(Bundles.fileOf(expectedLocale));
-        Response response = provoke(slug, acceptLanguage);
         Object[] detailArgs = switch (slug) {
             case "code-resend-too-soon" -> new Object[] {response.<Integer>path("retryAfterSeconds")};
             case "code-hourly-limit" -> new Object[] {(Long.parseLong(response.header("Retry-After")) + 59) / 60};
             case "invalid-code" -> new Object[] {response.<Integer>path("attemptsLeft")};
+            case "csv-missing-column" -> new Object[] {response.<String>path("column")};
+            case "minitest-only" -> new Object[] {String.join(", ", response.<List<String>>path("systems"))};
             default -> new Object[0];
         };
 
@@ -82,7 +99,7 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
                 .body("detail", equalTo(Bundles.format(texts, "problem." + slug + ".detail", expectedLocale, detailArgs)));
     }
 
-    private Response provoke(String slug, String acceptLanguage) {
+    private Response provokeAccess(String slug, String acceptLanguage) {
         String email = "localized-" + System.nanoTime() + "@example.com";
         return switch (slug) {
             case "code-resend-too-soon" -> {
@@ -108,6 +125,48 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
             case "code-expired" -> postSignIn(acceptLanguage, email, "123456");
             default -> throw new IllegalArgumentException(slug);
         };
+    }
+
+    private Response provokeImport(String slug, String acceptLanguage) {
+        String token = administratorSession();
+        return switch (slug) {
+            case "csv-not-utf8" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
+                    .multiPart("file", "bad.csv", new byte[] {(byte) 0xFF, (byte) 0xFE}, "text/csv")
+                    .post("/api/v1/batches/previews");
+            case "csv-invalid" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
+                    .multiPart("file", "bad.csv", "\"unclosed".getBytes(java.nio.charset.StandardCharsets.UTF_8), "text/csv")
+                    .post("/api/v1/batches/previews");
+            case "csv-missing-column" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
+                    .multiPart(
+                            "file",
+                            "missing.csv",
+                            classpath("minitest/minitest_missing_kind_column.csv"),
+                            "text/csv")
+                    .post("/api/v1/batches/previews");
+            case "minitest-only" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
+                    .multiPart(
+                            "file",
+                            "other.csv",
+                            classpath("minitest/other_system_sample.csv"),
+                            "text/csv")
+                    .post("/api/v1/batches/previews");
+            case "preview-not-found" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, token)
+                    .get("/api/v1/batches/previews/999999");
+            default -> throw new IllegalArgumentException(slug);
+        };
+    }
+
+    private static byte[] classpath(String path) {
+        try (var in = new org.springframework.core.io.ClassPathResource(path).getInputStream()) {
+            return in.readAllBytes();
+        } catch (java.io.IOException ex) {
+            throw new IllegalStateException(ex);
+        }
     }
 
     private Response withDailyLimitReached(Supplier<Response> call) {

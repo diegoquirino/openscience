@@ -1,12 +1,16 @@
 import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { Links } from '../core/hal';
 import { SessionService } from '../core/session.service';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
-  it('shows the administrator name and the four functions, all disabled', async () => {
-    TestBed.configureTestingModule({ imports: [AdminComponent], providers: [provideHttpClient()] });
+  it('shows the administrator name with Import enabled and the other functions disabled', async () => {
+    TestBed.configureTestingModule({
+      imports: [AdminComponent],
+      providers: [provideHttpClient(), provideRouter([])],
+    });
     TestBed.inject(SessionService).session.set({
       subject: 'administrator',
       name: 'Diego Quirino',
@@ -22,8 +26,11 @@ describe('AdminComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     expect(element.querySelector('h1')?.textContent?.trim()).toBe('Administration');
     expect(element.textContent).toContain('Signed in as Diego Quirino');
-    const items = Array.from(element.querySelectorAll<HTMLButtonElement>('mat-action-list button'));
-    expect(items.map((item) => item.textContent?.trim())).toEqual(['Import', 'Export', 'Dashboard', 'Participants']);
-    expect(items.every((item) => item.disabled)).toBe(true);
+    const importLink = element.querySelector<HTMLAnchorElement>('mat-nav-list a');
+    expect(importLink?.textContent?.trim()).toBe('Import');
+    expect(importLink?.getAttribute('href')).toContain('/admin/import');
+    const disabled = Array.from(element.querySelectorAll<HTMLButtonElement>('mat-nav-list button'));
+    expect(disabled.map((item) => item.textContent?.trim())).toEqual(['Export', 'Dashboard', 'Participants']);
+    expect(disabled.every((item) => item.disabled)).toBe(true);
   });
 });

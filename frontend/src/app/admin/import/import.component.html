@@ -1,0 +1,98 @@
+<section class="import">
+  <p class="back">
+    <a routerLink="/admin" i18n="@@import.back">Back to administration</a>
+  </p>
+  <h1 i18n="@@import.title">Import</h1>
+  <p class="intro" i18n="@@import.intro">
+    Upload a CSV to see which rows would be included, ignored or refused before anything is stored.
+  </p>
+
+  <label class="file">
+    <span i18n="@@import.fileLabel">CSV file</span>
+    <input type="file" accept=".csv,text/csv" [disabled]="busy()" (change)="onFileSelected($event)" />
+  </label>
+
+  @if (busy()) {
+    <p class="status" i18n="@@import.working">Reading the file...</p>
+  }
+  @if (message(); as text) {
+    <p class="error" role="alert">{{ text }}</p>
+  }
+
+  @if (preview(); as view) {
+    <section class="preview" aria-live="polite">
+      <h2 i18n="@@import.previewHeading">Preview of {{ view.fileName }}</h2>
+      <ul class="counts">
+        <li i18n="@@import.included">Included: {{ view.includedCount }}</li>
+        <li i18n="@@import.ignored">Ignored: {{ view.ignoredCount }}</li>
+        <li i18n="@@import.errors">Errors: {{ view.errorCount }}</li>
+        <li i18n="@@import.blocks">Blocks: {{ view.blockCount }} ({{ view.blockSizes.join(', ') }})</li>
+      </ul>
+
+      @if (view.extraColumns.length) {
+        <p i18n="@@import.extraColumns">Extra columns: {{ view.extraColumns.join(', ') }}</p>
+      }
+
+      @if (view.ignored.length) {
+        <h3 i18n="@@import.ignoredHeading">Ignored rows</h3>
+        <table>
+          <thead>
+            <tr>
+              <th i18n="@@import.col.line">Line</th>
+              <th i18n="@@import.col.reason">Reason</th>
+              <th i18n="@@import.col.system">system</th>
+              <th i18n="@@import.col.editKey">edit_key</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of view.ignored; track trackIssue($index, row)) {
+              <tr>
+                <td>{{ row.line }}</td>
+                <td>{{ row.reason }}</td>
+                <td>{{ row.system }}</td>
+                <td>{{ row.editKey }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+
+      @if (view.errors.length) {
+        <h3 i18n="@@import.errorsHeading">Rows with errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th i18n="@@import.col.line">Line</th>
+              <th i18n="@@import.col.reason">Reason</th>
+              <th i18n="@@import.col.system">system</th>
+              <th i18n="@@import.col.editKey">edit_key</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of view.errors; track trackIssue($index, row)) {
+              <tr>
+                <td>{{ row.line }}</td>
+                <td>{{ row.reason }}</td>
+                <td>{{ row.system }}</td>
+                <td>{{ row.editKey }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+
+      <div class="actions">
+        <button type="button" mat-stroked-button (click)="cancel()" i18n="@@import.cancel">Cancel</button>
+        <button
+          type="button"
+          mat-flat-button
+          color="primary"
+          disabled
+          i18n="@@import.confirm"
+        >
+          Confirm import
+        </button>
+      </div>
+    </section>
+  }
+</section>

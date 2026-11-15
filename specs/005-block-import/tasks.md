@@ -73,13 +73,13 @@ description: "Tasks of spec 005: import items by CSV and form the queue blocks"
 
 **Independent Test**: upload `veredito_minitest_vazio.csv` (SC-005: zero row errors) and `minitest_duplicates.csv`; missing column and non-Minitest refusals
 
-- [ ] T012 [P] [US1] Create failing `<tpkg>/api/v1/ImportPreviewTest.java`: follow `vd:request-preview` as administrator; Minitest preview 201 with zero errors; missing column ? `csv-missing-column`; non-Minitest in pilot ? `minitest-only`; visitor 401 / participant 403
-- [ ] T013 [P] [US1] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with the new types in the three locales
-- [ ] T014 [US1] Implement `<pkg>/importing/CsvImportReader.java` (Commons CSV RFC 4180, UTF-8, BOM strip) and `<pkg>/importing/PreviewService.java`: classify, plan blocks, persist `import_preview` (30 min expiry), delete expired on create; throw ProblemException for whole-file refusals
-- [ ] T015 [US1] Implement `<pkg>/api/v1/BatchPreviewController.java` and models: `POST /api/v1/batches/previews`, `GET /api/v1/batches/previews/{id}` per `contracts/import.md` (HAL-FORMS `vd:confirm` when `includedCount > 0`); OpenAPI complete
-- [ ] T016 [US1] Secure the new paths as administrator-only in `<pkg>/web/SecurityConfig.java` (same pattern as `/api/v1/administrator/**`)
-- [ ] T017 [US1] Front end: enable Import in `<app>/admin/admin.component.*`; add route `/admin/import` and `<app>/admin/import/` component (file input, counts, ignored/error tables with localized `reason`, extra columns, cancel); XLIFF units; `npm run i18n:check`
-- [ ] T018 [US1] Playwright e2e: administrator opens Import, uploads Minitest, sees zero errors and block sizes; cancel leaves no `import_batch`
+- [x] T012 [P] [US1] Create failing `<tpkg>/api/v1/ImportPreviewTest.java`: follow `vd:request-preview` as administrator; Minitest preview 201 with zero errors; missing column ? `csv-missing-column`; non-Minitest in pilot ? `minitest-only`; visitor 401 / participant 403
+- [x] T013 [P] [US1] Extend `<tpkg>/api/LocalizedProblemDetailsTest.java` with the new types in the three locales
+- [x] T014 [US1] Implement `<pkg>/importing/CsvImportReader.java` (Commons CSV RFC 4180, UTF-8, BOM strip) and `<pkg>/importing/PreviewService.java`: classify, plan blocks, persist `import_preview` (30 min expiry), delete expired on create; throw ProblemException for whole-file refusals
+- [x] T015 [US1] Implement `<pkg>/api/v1/BatchPreviewController.java` and models: `POST /api/v1/batches/previews`, `GET /api/v1/batches/previews/{id}` per `contracts/import.md` (HAL-FORMS `vd:confirm` when `includedCount > 0`); OpenAPI complete
+- [x] T016 [US1] Secure the new paths as administrator-only in `<pkg>/web/SecurityConfig.java` (same pattern as `/api/v1/administrator/**`)
+- [x] T017 [US1] Front end: enable Import in `<app>/admin/admin.component.*`; add route `/admin/import` and `<app>/admin/import/` component (file input, counts, ignored/error tables with localized `reason`, extra columns, cancel); XLIFF units; `npm run i18n:check`
+- [x] T018 [US1] Playwright e2e: administrator opens Import, uploads Minitest, sees zero errors and block sizes; cancel leaves no `import_batch`
 
 **Checkpoint**: US1 testable alone (preview only)
 

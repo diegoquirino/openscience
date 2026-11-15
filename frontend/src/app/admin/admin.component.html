@@ -2,12 +2,12 @@
   <h1 i18n="@@admin.title">Administration</h1>
   <p class="signed-in" i18n="@@admin.signedInAs">Signed in as {{ name() }}</p>
 
-  <mat-action-list class="menu" aria-label="Administrative functions" i18n-aria-label="@@admin.menu">
-    <button mat-list-item disabled i18n="@@admin.import">Import</button>
+  <mat-nav-list class="menu" aria-label="Administrative functions" i18n-aria-label="@@admin.menu">
+    <a mat-list-item routerLink="/admin/import" i18n="@@admin.import">Import</a>
     <button mat-list-item disabled i18n="@@admin.export">Export</button>
     <button mat-list-item disabled i18n="@@admin.dashboard">Dashboard</button>
     <button mat-list-item disabled i18n="@@admin.participants">Participants</button>
-  </mat-action-list>
+  </mat-nav-list>
 
-  <p class="soon" i18n="@@admin.soon">These functions will be available in the next releases.</p>
+  <p class="soon" i18n="@@admin.soon">Export, dashboard and participants will be available in the next releases.</p>
 </section>

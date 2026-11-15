@@ -9,6 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 /**
@@ -24,8 +25,9 @@ public class SecurityConfig {
     public static final String ADMINISTRATOR = "ADMINISTRATOR";
 
     /** Administrative resources; later specs add the paths of their "Administration" operations here. */
-    public static final RequestMatcher ADMINISTRATION =
-            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/administrator/**");
+    public static final RequestMatcher ADMINISTRATION = new OrRequestMatcher(
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/administrator/**"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/batches/**"));
 
     @Bean
     public SecurityFilterChain securityFilterChain(

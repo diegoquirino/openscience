@@ -1,0 +1,79 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { map, Observable, switchMap } from 'rxjs';
+import { ENTRY_POINT_URL } from '../../core/entry-point.service';
+import { HalResource, Links } from '../../core/hal';
+
+export interface RowIssue {
+  line: number;
+  code: string;
+  reason: string;
+  system: string;
+  editKey: string;
+}
+
+export interface ImportPreview {
+  id: number;
+  fileName: string;
+  expiresAt: string;
+  includedCount: number;
+  ignoredCount: number;
+  errorCount: number;
+  blockCount: number;
+  blockSizes: number[];
+  extraColumns: string[];
+  ignored: RowIssue[];
+  errors: RowIssue[];
+  confirmHref: string | null;
+}
+
+interface PreviewBody extends HalResource {
+  id: number;
+  fileName: string;
+  expiresAt: string;
+  includedCount: number;
+  ignoredCount: number;
+  errorCount: number;
+  blockCount: number;
+  blockSizes: number[];
+  extraColumns: string[];
+  ignored: RowIssue[];
+  errors: RowIssue[];
+}
+
+@Injectable({ providedIn: 'root' })
+export class ImportService {
+  private readonly http = inject(HttpClient);
+
+  requestPreview(file: File): Observable<ImportPreview> {
+    return this.http.get<HalResource>(ENTRY_POINT_URL).pipe(
+      switchMap((entry) => {
+        const href = Links.of(entry).href('request-preview');
+        if (!href) {
+          throw new Error('vd:request-preview missing');
+        }
+        const body = new FormData();
+        body.append('file', file, file.name);
+        return this.http.post<PreviewBody>(href, body);
+      }),
+      map(toPreview),
+    );
+  }
+}
+
+function toPreview(body: PreviewBody): ImportPreview {
+  return {
+    id: body.id,
+    fileName: body.fileName,
+    expiresAt: body.expiresAt,
+    includedCount: body.includedCount,
+    ignoredCount: body.ignoredCount,
+    errorCount: body.errorCount,
+    blockCount: body.blockCount,
+    blockSizes: body.blockSizes ?? [],
+    extraColumns: body.extraColumns ?? [],
+    ignored: body.ignored ?? [],
+    errors: body.errors ?? [],
+    confirmHref: Links.of(body).href('confirm') ?? null,
+  };
+}
