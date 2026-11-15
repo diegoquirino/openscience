@@ -95,6 +95,9 @@
 
       @if (message(); as text) {
         <p class="error" role="alert">{{ text }}</p>
+        @if (blockLost()) {
+          <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
+        }
       }
 
       <div class="actions">

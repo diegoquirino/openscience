@@ -1,7 +1,8 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter, Router } from '@angular/router';
-import { of } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { of, throwError } from 'rxjs';
 import { LanguageService } from '../../core/language.service';
 import { ItemBody, LabelService, TaskBody } from '../label.service';
 import { LabelItemComponent, unsavedKey } from './item.component';
@@ -152,6 +153,23 @@ describe('LabelItemComponent', () => {
     expect(fixture.componentInstance['comment']()).toBe('typed');
     const button = root.querySelector('button[type=submit]') as HTMLButtonElement;
     expect(button.disabled).toBe(false);
+  });
+
+  it('offers a new block when the save finds the block gone (T026)', async () => {
+    saveResponse.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 404 })));
+    const fixture = create({
+      draft: { changeImpact: 'LOW', maintenanceOperation: 'KEEP', comment: null, language: 'pt-BR' },
+    });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('a.new-block')).toBeNull();
+
+    fixture.componentInstance['submit']();
+    fixture.detectChanges();
+
+    expect(root.querySelector('p.error[role=alert]')).not.toBeNull();
+    expect(root.querySelector('a.new-block')?.getAttribute('href')).toBe('/label');
+    expect(clearUnsaved).not.toHaveBeenCalled();
   });
 
   it('goes to the review when no item is pending', async () => {

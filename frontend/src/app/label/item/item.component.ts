@@ -20,7 +20,7 @@ import {
   maintenanceOperationLabel,
 } from '../../core/labels/response-labels';
 import { Links } from '../../core/hal';
-import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
+import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
 import { formatCountdown, remainingSeconds } from '../countdown';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
 
@@ -62,6 +62,7 @@ export class LabelItemComponent {
   protected readonly busy = signal(true);
   protected readonly saving = signal(false);
   protected readonly message = signal<string | undefined>(undefined);
+  protected readonly blockLost = signal(false);
   protected readonly item = signal<ItemBody | null>(null);
   protected readonly impact = signal<ChangeImpact | null>(null);
   protected readonly operation = signal<MaintenanceOperation | null>(null);
@@ -164,6 +165,7 @@ export class LabelItemComponent {
     }
     this.saving.set(true);
     this.message.set(undefined);
+    this.blockLost.set(false);
     const position = item.position;
     this.labels
       .saveResponse(href, {
@@ -184,6 +186,11 @@ export class LabelItemComponent {
         },
         error: (error: unknown) => {
           this.saving.set(false);
+          // The block is gone (given to someone else, or this person holds another one): offer a new block.
+          this.blockLost.set(
+            problemSlug(problemOf(error)) === 'reservation-expired' ||
+              (error instanceof HttpErrorResponse && error.status === 404),
+          );
           this.message.set(this.messageOf(error));
         },
       });
