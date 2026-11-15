@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Overview; implemented by specs 002 to 011, in the order of the [ROADMAP](../ROADMAP.md) (002 to 005 and 007 complete; 006 next)
+**Status**: Overview; implemented by specs 002 to 011, in the order of the [ROADMAP](../ROADMAP.md) (002 to 007 complete; 008 next)
 
 **Input**: User description: "Web app in which volunteers identify themselves by name and e-mail, validate their participation with a code sent by e-mail, accept the research consent form, state their professional skill, go through a screening question and classify the change impact and the maintenance operation of use-case edits. Each item gets two different raters. Only the administrator (Carlos Diego Quirino Lima, diegoquirino@gmail.com) imports items by CSV (`system, edit_key, uc, kind, field, origin, target`) and accesses the administration area. The system must withstand simultaneous access." (translated from the original Portuguese)
 

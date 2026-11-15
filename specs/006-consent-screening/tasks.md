@@ -125,8 +125,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 - [x] T028 Run quickstart sections against local staging; record any fix _Record: partly: local staging rebuilt (down -v, up --build); full Playwright suite passed (77 tests, plus queue project 5/5 and one rerun of a goto flake); incomplete fixture-3 logged a WARN naming en-US, es-ES; sections 5 (new version) and not-open covered by ConsentFormTest, not by hand_
 - [x] T029 [P] Confirm SC-002 (direct Tasks call while ineligible) and onboarding e2e pass in CI
   **Record (2026-11-15):** `ci.yml` run [43770449843](https://github.com/diegoquirino/openscience/actions/runs/43770449843) green on `2a78d48` (backend, frontend, secrets, image, e2e). Earlier `65cc349` e2e failed on `queue-empty` before the welcome-resolver fix in `2a78d48`.
-- [ ] T030 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.6.0-1` **only after the researcher's approval**; quickstart production checks
-  **Left open on purpose (2026-11-15):** CI is green on `2a78d48`. Deploy tag waits for the researcher's explicit approval.
+- [x] T030 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.6.0-1` **only after the researcher's approval**; quickstart production checks
+  **Record (2026-11-15):** researcher authorized deploy. `ci.yml` green on `8e475c2` ([43771497246](https://github.com/diegoquirino/openscience/actions/runs/43771497246)). Tag `deploy/0.6.0-1` on `8e475c2`; deploy run [43776874001](https://github.com/diegoquirino/openscience/actions/runs/43776874001) succeeded. Revision `veredito-00010-gwf` takes 100% of the traffic. Production `/api/v1` `systemVersion` `0.6.0+8e475c2`. Note: the CEP-approved TCLE is not in production yet (fixture is staging-only); until a researcher-supplied consent migration is published, participants see "The study is not open yet".
 
 ---
 
@@ -134,7 +134,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 - [x] T031 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders _Record: _check_utf8.py clean over backend/src, frontend/src, frontend/e2e, specs/006-consent-screening_
 - [x] T032 [P] Confirm secret scanning still clean; no new secrets introduced _Record: no new secrets: no credential patterns in the diff; fixture is a placeholder text; gitleaks not installed locally, CI job runs it_
-- [ ] T033 Mark spec 006 complete: `Status` in `spec.md`; ROADMAP line of 006; update 001 overview if needed; point `.specify/feature.json` at next spec (`specs/008-item-screen`); commit and push
+- [x] T033 Mark spec 006 complete: `Status` in `spec.md`; ROADMAP line of 006; update 001 overview if needed; point `.specify/feature.json` at next spec (`specs/008-item-screen`); commit and push
+  **Record (2026-11-15):** `spec.md` and ROADMAP mark 006 complete (`deploy/0.6.0-1`); 001 overview → 002–007 complete, 008 next; `.specify/feature.json` → `specs/008-item-screen`.
 
 ---
 

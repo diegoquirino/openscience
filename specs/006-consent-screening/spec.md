@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: In progress (2026-11-15; CI green on `2a78d48`; production `deploy/0.6.0-1` pending approval)
+**Status**: Complete (2026-11-15; production `0.6.0+8e475c2`, tag `deploy/0.6.0-1`)
 
 **Input**: User description: "After signing in, the participant accepts the research consent form (TCLE/LGPD), chooses their professional skill from a list and answers the screening question, which admits them to or excludes them from the study."
 
