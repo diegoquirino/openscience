@@ -11,7 +11,7 @@ const SCREENS = {
     signIn: 'Entrar',
     subject: 'Seu código de acesso ao Veredito',
     label: 'Português (Brasil)',
-    welcome: 'Obrigado por se identificar',
+    consent: 'Termo de consentimento',
   },
   'en-US': {
     name: 'Name',
@@ -21,7 +21,7 @@ const SCREENS = {
     signIn: 'Sign in',
     subject: 'Your Veredito access code',
     label: 'English (US)',
-    welcome: 'Thank you for identifying yourself',
+    consent: 'Consent form',
   },
   'es-ES': {
     name: 'Nombre',
@@ -31,7 +31,7 @@ const SCREENS = {
     signIn: 'Iniciar sesión',
     subject: 'Su código de acceso a Veredito',
     label: 'Español (España)',
-    welcome: 'Gracias por identificarse',
+    consent: 'Consentimiento informado',
   },
 } as const;
 
@@ -136,12 +136,12 @@ for (const locale of Object.keys(SCREENS) as Locale[]) {
     const subject = await signIn(page, request, locale, email);
 
     expect(subject).toBe(SCREENS[locale].subject);
-    await expect(page).toHaveURL(new RegExp(`/${locale}/welcome$`));
+    await expect(page).toHaveURL(new RegExp(`/${locale}/consent$`));
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
-    await expect(page.getByText(SCREENS[locale].welcome)).toBeVisible();
+    await expect(page.getByRole('heading', { name: SCREENS[locale].consent })).toBeVisible();
     for (const other of Object.keys(SCREENS) as Locale[]) {
       if (other !== locale) {
-        await expect(page.getByText(SCREENS[other].welcome)).toHaveCount(0);
+        await expect(page.getByRole('heading', { name: SCREENS[other].consent })).toHaveCount(0);
       }
     }
   });
@@ -174,17 +174,17 @@ test('the profile language follows the header switch and wins at the next sign-i
 
   let firstCodeAt = 0;
   await signIn(page, request, 'pt-BR', email, () => (firstCodeAt = Date.now()));
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
   await switchLanguage(page, 'pt-BR', 'es-ES');
-  await expect(page).toHaveURL(/\/es-ES\/welcome$/);
-  await expect(page.getByText('Gracias por identificarse')).toBeVisible();
+  await expect(page).toHaveURL(/\/es-ES\/consent$/);
+  await expect(page.getByRole('heading', { name: 'Consentimiento informado' })).toBeVisible();
 
   await page.context().clearCookies();
   await page.waitForTimeout(Math.max(0, firstCodeAt + NEXT_CODE_AFTER_MS - Date.now()));
   const subject = await signIn(page, request, 'en-US', email);
 
   expect(subject).toBe(SCREENS['en-US'].subject);
-  await expect(page).toHaveURL(/\/es-ES\/welcome$/);
-  await expect(page.getByText('Gracias por identificarse')).toBeVisible();
+  await expect(page).toHaveURL(/\/es-ES\/consent$/);
+  await expect(page.getByRole('heading', { name: 'Consentimiento informado' })).toBeVisible();
   expect(await savedLanguage(page)).toBe('es-ES');
 });

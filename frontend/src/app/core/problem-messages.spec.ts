@@ -69,4 +69,15 @@ describe('problem messages', () => {
     expect(problemOf(new HttpErrorResponse({ status: 502, error: '<html>' }))).toBeUndefined();
     expect(problemOf(new Error('boom'))).toBeUndefined();
   });
+
+  it('has messages for the onboarding problems and their fields', () => {
+    for (const slug of ['study-not-open', 'consent-form-outdated', 'step-not-pending', 'not-eligible']) {
+      expect(problemMessage({ type: type(slug) })).toBeTruthy();
+    }
+    expect(fieldMessage({ field: 'skillOther', code: 'size' })).toBe('Use at most 100 characters');
+    expect(fieldMessage({ field: 'skillOther', code: 'required' })).toContain('Describe');
+    expect(fieldMessage({ field: 'skill', code: 'option' })).toBeTruthy();
+    expect(fieldMessage({ field: 'answer', code: 'option' })).toBeTruthy();
+    expect(fieldMessage({ field: 'decision', code: 'required' })).toBeTruthy();
+  });
 });

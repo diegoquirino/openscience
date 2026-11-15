@@ -63,18 +63,19 @@ test.describe('administrator (single address)', () => {
   });
 });
 
-test('a participant who opens the administration lands on the welcome screen (pt-BR)', async ({
+test('a participant who opens the administration lands on the consent form (pt-BR)', async ({
   page,
   request,
 }, testInfo) => {
   const email = `e2e-admin-${testInfo.project.name}-${Date.now()}@example.com`;
   await signIn(page, request, 'Ana Souza', email);
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
 
   await page.goto('/pt-BR/admin');
 
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
-  await expect(page.getByText('Obrigado por se identificar')).toBeVisible();
+  // The welcome resolver sends a participant without consent to the consent form.
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
 });
 
 test('a visitor who opens an area lands on the sign-in form (pt-BR)', async ({ page }) => {

@@ -12,13 +12,14 @@ import { routes } from './app.routes';
 import { acceptLanguageInterceptor } from './core/accept-language.interceptor';
 import { offerReloadOnChunkError } from './core/chunk-error';
 import { LanguageService } from './core/language.service';
+import { notEligibleInterceptor } from './core/not-eligible.interceptor';
 import { unauthorizedInterceptor } from './core/unauthorized.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withNavigationErrorHandler(offerReloadOnChunkError)),
-    provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor, unauthorizedInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor, unauthorizedInterceptor, notEligibleInterceptor])),
     { provide: MAT_DATE_LOCALE, useFactory: () => inject(LOCALE_ID) },
     provideAppInitializer(() => inject(LanguageService).setCookie(inject(LOCALE_ID))),
   ],

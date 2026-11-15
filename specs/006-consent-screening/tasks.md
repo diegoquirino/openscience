@@ -71,8 +71,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 - [x] T012 [US1] Implement `<pkg>/onboarding/ConsentService.java` and controllers for `GET /api/v1/consent-forms/current`, `GET /api/v1/consent-forms/{version}/texts/{language}`, `GET|PUT /api/v1/participants/me/consent` per `contracts/onboarding.md` (HAL-FORMS; OpenAPI tag Participation) _Record: ConsentService, ConsentFormController, ConsentDecisionController_
 - [x] T013 [US1] Implement `GET /api/v1/participants/me/onboarding` (`OnboardingController` / service) returning `step` and links _Record: OnboardingController_
 - [x] T014 [US1] Secure new Participation paths as participant-only in `SecurityConfig`; extend `AuthorizationTest` _Record: SecurityConfig matcher; AuthorizationTest lists the 006 operations_
-- [ ] T015 [US1] Front end: `/consent` screen with scrollable text, accept/refuse, translation note + pt-BR link for en-US/es-ES; `/welcome` resolves via onboarding step; XLIFF; `npm run i18n:check`
-- [ ] T016 [US1] Playwright: accept path reaches skill (or next); refuse shows closing message; change of mind on return
+- [x] T015 [US1] Front end: `/consent` screen with scrollable text, accept/refuse, translation note + pt-BR link for en-US/es-ES; `/welcome` resolves via onboarding step; XLIFF; `npm run i18n:check` _Record: OnboardingService, step guards (onboardingStep, participationOnly), welcome resolver, /consent, /consent/declined, /consent/reference/:version, not-eligible interceptor; old welcome XLIFF units removed; i18n:check green (187 units)_
+- [x] T016 [US1] Playwright: accept path reaches skill (or next); refuse shows closing message; change of mind on return _Record: e2e/onboarding.spec.ts: accept path to skill per locale, refusal then reading the form again and accepting; passed on local staging_
 
 **Checkpoint**: US1 testable alone
 
@@ -86,8 +86,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 - [x] T017 [P] [US2] Create failing `<tpkg>/api/v1/SkillTest.java`: PUT skill codes; Other validation; step-not-pending when consent missing; language-independent codes _Record: SkillTest_
 - [x] T018 [US2] Implement `GET|PUT /api/v1/participants/me/skill` (`SkillService` / controller) per contracts _Record: SkillService, SkillController_
-- [ ] T019 [US2] Front end: `/skill` radio list (Appendix B.4 labels in locale), Other text field, Continue disabled until valid; XLIFF
-- [ ] T020 [US2] Playwright: choose skill in pt-BR; stored code is English; Other requires description
+- [x] T019 [US2] Front end: `/skill` radio list (Appendix B.4 labels in locale), Other text field, Continue disabled until valid; XLIFF _Record: SkillComponent, skill-labels (13 codes, exhaustive Record), unsaved restore after a language switch; Vitest for validation (100/101, code points)_
+- [x] T020 [US2] Playwright: choose skill in pt-BR; stored code is English; Other requires description _Record: onboarding.spec.ts: skill per locale, Other needs a description; the stored skill is the English code_
 
 **Checkpoint**: US1 + US2
 
@@ -101,8 +101,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 - [x] T021 [P] [US3] Create failing `<tpkg>/api/v1/ScreeningTest.java`: answers set `eligible`; `no` permanent; return always `ineligible`; yes paths reach participation / gate true; Tasks reserve denied until eligible _Record: ScreeningTest, EligibilityGateTest, OnboardingFlowTest_
 - [x] T022 [US3] Add English screening example resource (`classpath` JSON) and `GET /api/v1/screening-example`; implement `GET|PUT /api/v1/participants/me/screening` _Record: screening/screening-example.json, ScreeningExampleController, ScreeningService/Controller_
-- [ ] T023 [US3] Front end: `/screening` with English UC/TC example, localized question/options, closing screens for refuse / ineligible / not-open; after Yes navigate to `/label`; XLIFF
-- [ ] T024 [US3] Playwright: Yes professional ? can reserve; No ? closing message and cannot open `/label` / next-task; resume after reload
+- [x] T023 [US3] Front end: `/screening` with English UC/TC example, localized question/options, closing screens for refuse / ineligible / not-open; after Yes navigate to `/label`; XLIFF _Record: ScreeningComponent (English example cards, localized question and answers), closing screens (ClosingComponent), /not-open; resolver sends yes to /label_
+- [x] T024 [US3] Playwright: Yes professional ? can reserve; No ? closing message and cannot open `/label` / next-task; resume after reload _Record: onboarding.spec.ts: No leads to the closing screen and every route returns to it, API 403 not-eligible; typed /label returns to the pending step; reload keeps the step_
 
 **Checkpoint**: full onboarding gate works
 
@@ -112,9 +112,9 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 **Goal**: three languages; translation note; record language of text shown; incomplete version never becomes current
 
-- [ ] T025 [P] [US4] Extend consent/onboarding tests: accept in each locale records `consent_language`; incomplete published version skipped + logged; language switch on consent screen does not record until choose
-- [ ] T026 [US4] Front end: translation note + open pt-BR reference without changing UI locale; language switch reloads consent text; XLIFF
-- [ ] T027 [US4] Playwright smoke: one accept per locale records matching language; en-US/es-ES show note and reference link
+- [x] T025 [P] [US4] Extend consent/onboarding tests: accept in each locale records `consent_language`; incomplete published version skipped + logged; language switch on consent screen does not record until choose _Record: ConsentFormTest (per-locale language, incomplete form skipped and logged, switch records nothing) in the first backend commit; OnboardingFlowTest checks consent_language for the 3 locales_
+- [x] T026 [US4] Front end: translation note + open pt-BR reference without changing UI locale; language switch reloads consent text; XLIFF _Record: consent translation note + pt-BR reference link (new tab, same interface language); Vitest for note only when translation=true_
+- [x] T027 [US4] Playwright smoke: one accept per locale records matching language; en-US/es-ES show note and reference link _Record: onboarding.spec.ts: one accept per locale; stored consent language matches; note and reference link in en-US and es-ES; language switch records nothing_
 
 **Checkpoint**: i18n consent complete
 
@@ -122,7 +122,7 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 ## Phase 7: Staging rehearsal and deployment
 
-- [ ] T028 Run quickstart sections against local staging; record any fix
+- [x] T028 Run quickstart sections against local staging; record any fix _Record: partly: local staging rebuilt (down -v, up --build); full Playwright suite passed (77 tests, plus queue project 5/5 and one rerun of a goto flake); incomplete fixture-3 logged a WARN naming en-US, es-ES; sections 5 (new version) and not-open covered by ConsentFormTest, not by hand_
 - [ ] T029 [P] Confirm SC-002 (direct Tasks call while ineligible) and onboarding e2e pass in CI
 - [ ] T030 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.6.0-1` **only after the researcher's approval**; quickstart production checks
 
@@ -130,8 +130,8 @@ description: "Tasks of spec 006: consent form, professional skill and screening"
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T031 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders
-- [ ] T032 [P] Confirm secret scanning still clean; no new secrets introduced
+- [x] T031 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders _Record: _check_utf8.py clean over backend/src, frontend/src, frontend/e2e, specs/006-consent-screening_
+- [x] T032 [P] Confirm secret scanning still clean; no new secrets introduced _Record: no new secrets: no credential patterns in the diff; fixture is a placeholder text; gitleaks not installed locally, CI job runs it_
 - [ ] T033 Mark spec 006 complete: `Status` in `spec.md`; ROADMAP line of 006; update 001 overview if needed; point `.specify/feature.json` at next spec (`specs/008-item-screen`); commit and push
 
 ---

@@ -3,7 +3,7 @@ import {
   answerAllOverApi,
   answerCurrentItem,
   reserveOverApi,
-  signInParticipant,
+  signInEligibleParticipant,
   type HeldTask,
 } from './support/participant';
 
@@ -34,11 +34,12 @@ test.describe('two participants', () => {
     const otherContext = await browser.newContext({ baseURL });
     const other = await otherContext.newPage();
     try {
-      await signInParticipant(page, request, 'Ana Souza', `e2e-queue-a-${stamp}@example.com`);
-      await signInParticipant(other, request, 'Bruno Lima', `e2e-queue-b-${stamp}@example.com`);
+      await signInEligibleParticipant(page, request, 'Ana Souza', `e2e-queue-a-${stamp}@example.com`);
+      await signInEligibleParticipant(other, request, 'Bruno Lima', `e2e-queue-b-${stamp}@example.com`);
 
-      await page.getByRole('link', { name: 'Começar a rotular' }).click();
-      await other.getByRole('link', { name: 'Começar a rotular' }).click();
+      // Eligible after the onboarding, the welcome resolver opens the labeling.
+      await page.goto('/pt-BR/welcome');
+      await other.goto('/pt-BR/welcome');
       await expect(page).toHaveURL(/\/pt-BR\/label\/items\/1$/);
       await expect(other).toHaveURL(/\/pt-BR\/label\/items\/1$/);
       await expect(page.locator('.counter')).toHaveText('1 de 10');
@@ -87,7 +88,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
     test.setTimeout(90_000);
     context = await browser.newContext({ baseURL });
     page = await context.newPage();
-    await signInParticipant(page, request, 'Carla Dias', `e2e-queue-c-${Date.now()}@example.com`);
+    await signInEligibleParticipant(page, request, 'Carla Dias', `e2e-queue-c-${Date.now()}@example.com`);
   });
 
   test.afterAll(async () => {
@@ -96,7 +97,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
 
   test('switching the language keeps the reservation and the unsaved choices; language per draft (T039, SC-006)', async () => {
     test.setTimeout(120_000);
-    await page.getByRole('link', { name: 'Começar a rotular' }).click();
+    await page.goto('/pt-BR/welcome');
     await expect(page).toHaveURL(/\/pt-BR\/label\/items\/1$/);
     held = await reserveOverApi(page);
 

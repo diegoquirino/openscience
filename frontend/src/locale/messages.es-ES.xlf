@@ -121,18 +121,6 @@
         <target>Corregir el correo</target>
       </segment>
     </unit>
-    <unit id="welcome.title">
-      <segment>
-        <source>Welcome</source>
-        <target>Bienvenida</target>
-      </segment>
-    </unit>
-    <unit id="welcome.next">
-      <segment>
-        <source>Thank you for identifying yourself; the next step will be available soon.</source>
-        <target>Gracias por identificarse; el siguiente paso estará disponible pronto.</target>
-      </segment>
-    </unit>
     <unit id="admin.title">
       <segment>
         <source>Administration</source>
@@ -841,10 +829,310 @@
         <target>Enviar bloque</target>
       </segment>
     </unit>
-    <unit id="welcome.start">
+    <unit id="screening.answer.yes_professional">
       <segment>
-        <source>Start labeling</source>
-        <target>Empezar a etiquetar</target>
+        <source>Yes, in professional practice</source>
+        <target>Sí, en la práctica profesional</target>
+      </segment>
+    </unit>
+    <unit id="screening.answer.yes_academic">
+      <segment>
+        <source>Yes, in studies, courses or research</source>
+        <target>Sí, en estudios, cursos o investigación</target>
+      </segment>
+    </unit>
+    <unit id="screening.answer.no">
+      <segment>
+        <source>No</source>
+        <target>No</target>
+      </segment>
+    </unit>
+    <unit id="screening.question">
+      <segment>
+        <source>Have you ever written, executed or reviewed test cases based on use cases like this one, with a basic flow and alternative and exception flows?</source>
+        <target>¿Alguna vez has escrito, ejecutado o revisado casos de prueba a partir de casos de uso como este, con flujo básico, flujos alternativos y de excepción?</target>
+      </segment>
+    </unit>
+    <unit id="skill.developer">
+      <segment>
+        <source>Software developer</source>
+        <target>Desarrollador(a) de software</target>
+      </segment>
+    </unit>
+    <unit id="skill.software_engineer">
+      <segment>
+        <source>Software engineer</source>
+        <target>Ingeniero(a) de software</target>
+      </segment>
+    </unit>
+    <unit id="skill.systems_analyst">
+      <segment>
+        <source>Systems analyst</source>
+        <target>Analista de sistemas</target>
+      </segment>
+    </unit>
+    <unit id="skill.requirements_analyst">
+      <segment>
+        <source>Requirements or business analyst</source>
+        <target>Analista de requisitos o de negocio</target>
+      </segment>
+    </unit>
+    <unit id="skill.test_analyst">
+      <segment>
+        <source>Test analyst / QA</source>
+        <target>Analista de pruebas / QA</target>
+      </segment>
+    </unit>
+    <unit id="skill.test_engineer">
+      <segment>
+        <source>Test or test automation engineer</source>
+        <target>Ingeniero(a) de pruebas o de automatización de pruebas</target>
+      </segment>
+    </unit>
+    <unit id="skill.software_architect">
+      <segment>
+        <source>Software architect</source>
+        <target>Arquitecto(a) de software</target>
+      </segment>
+    </unit>
+    <unit id="skill.tech_lead">
+      <segment>
+        <source>Tech lead</source>
+        <target>Líder técnico(a)</target>
+      </segment>
+    </unit>
+    <unit id="skill.product_project_manager">
+      <segment>
+        <source>Product owner, product manager or project manager</source>
+        <target>Product owner, responsable de producto o jefe(a) de proyectos</target>
+      </segment>
+    </unit>
+    <unit id="skill.professor_researcher">
+      <segment>
+        <source>Computing professor or researcher</source>
+        <target>Docente o investigador(a) en informática</target>
+      </segment>
+    </unit>
+    <unit id="skill.graduate_student">
+      <segment>
+        <source>Graduate student in computing</source>
+        <target>Estudiante de posgrado en informática</target>
+      </segment>
+    </unit>
+    <unit id="skill.undergraduate_student">
+      <segment>
+        <source>Undergraduate student in computing</source>
+        <target>Estudiante de grado en informática</target>
+      </segment>
+    </unit>
+    <unit id="skill.other">
+      <segment>
+        <source>Other (describe)</source>
+        <target>Otro (describir)</target>
+      </segment>
+    </unit>
+    <unit id="problem.studyNotOpen">
+      <segment>
+        <source>The study is not open yet; please come back later</source>
+        <target>El estudio aún no está abierto; vuelve más tarde</target>
+      </segment>
+    </unit>
+    <unit id="problem.consentFormOutdated">
+      <segment>
+        <source>The consent form changed; read the new version and decide again</source>
+        <target>El consentimiento cambió; lee la nueva versión y decide de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="problem.stepNotPending">
+      <segment>
+        <source>This step was already completed or is not the next one</source>
+        <target>Este paso ya se completó o no es el siguiente</target>
+      </segment>
+    </unit>
+    <unit id="problem.notEligible">
+      <segment>
+        <source>Finish the consent form, skill and screening steps before labeling</source>
+        <target>Completa los pasos del consentimiento, la habilidad y la selección antes de etiquetar</target>
+      </segment>
+    </unit>
+    <unit id="field.skill.invalid">
+      <segment>
+        <source>Choose one option</source>
+        <target>Elige una opción</target>
+      </segment>
+    </unit>
+    <unit id="field.skillOther.size">
+      <segment>
+        <source>Use at most 100 characters</source>
+        <target>Usa como máximo 100 caracteres</target>
+      </segment>
+    </unit>
+    <unit id="field.skillOther.required">
+      <segment>
+        <source>Describe your professional skill (up to 100 characters)</source>
+        <target>Describe tu habilidad profesional (hasta 100 caracteres)</target>
+      </segment>
+    </unit>
+    <unit id="field.answer.invalid">
+      <segment>
+        <source>Choose one answer</source>
+        <target>Elige una respuesta</target>
+      </segment>
+    </unit>
+    <unit id="field.decision.invalid">
+      <segment>
+        <source>Choose whether you agree to participate</source>
+        <target>Elige si aceptas participar</target>
+      </segment>
+    </unit>
+    <unit id="consent.declined.title">
+      <segment>
+        <source>Thank you for considering the study</source>
+        <target>Gracias por considerar el estudio</target>
+      </segment>
+    </unit>
+    <unit id="consent.declined.text">
+      <segment>
+        <source> No labeling data is recorded without your consent. You can read the consent form again if you change your mind. </source>
+        <target>No se registra ningún dato de etiquetado sin tu consentimiento. Puedes leer el consentimiento de nuevo si cambias de opinión.</target>
+      </segment>
+    </unit>
+    <unit id="screening.closed.title">
+      <segment>
+        <source>Thank you for your interest</source>
+        <target>Gracias por tu interés</target>
+      </segment>
+    </unit>
+    <unit id="screening.closed.text">
+      <segment>
+        <source> This study requires experience with use cases and test cases, so your participation ends here. </source>
+        <target>Este estudio exige experiencia con casos de uso y casos de prueba, por lo que tu participación termina aquí.</target>
+      </segment>
+    </unit>
+    <unit id="notOpen.title">
+      <segment>
+        <source>The study is not open yet</source>
+        <target>El estudio aún no está abierto</target>
+      </segment>
+    </unit>
+    <unit id="notOpen.text">
+      <segment>
+        <source>Please come back later.</source>
+        <target>Vuelve más tarde.</target>
+      </segment>
+    </unit>
+    <unit id="consent.declined.again">
+      <segment>
+        <source>Read the consent form again</source>
+        <target>Leer el consentimiento de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="consent.reference.title">
+      <segment>
+        <source>Reference text (Portuguese, Brazil)</source>
+        <target>Texto de referencia (portugués, Brasil)</target>
+      </segment>
+    </unit>
+    <unit id="consent.title">
+      <segment>
+        <source>Consent form</source>
+        <target>Consentimiento informado</target>
+      </segment>
+    </unit>
+    <unit id="consent.changed">
+      <segment>
+        <source> The consent form changed. Read the new version before you decide. </source>
+        <target>El consentimiento cambió. Lee la nueva versión antes de decidir.</target>
+      </segment>
+    </unit>
+    <unit id="consent.translationNote">
+      <segment>
+        <source>This text is a translation. The reference version, approved by the research ethics committee, is the Portuguese (Brazil) one.</source>
+        <target>Este texto es una traducción. La versión de referencia, aprobada por el comité de ética en investigación, es la de portugués (Brasil).</target>
+      </segment>
+    </unit>
+    <unit id="consent.referenceLink">
+      <segment>
+        <source>Read the reference text (pt-BR)</source>
+        <target>Leer el texto de referencia (pt-BR)</target>
+      </segment>
+    </unit>
+    <unit id="consent.accept">
+      <segment>
+        <source> I have read it and agree to participate </source>
+        <target>He leído el consentimiento y acepto participar</target>
+      </segment>
+    </unit>
+    <unit id="consent.refuse">
+      <segment>
+        <source> I do not agree </source>
+        <target>No acepto</target>
+      </segment>
+    </unit>
+    <unit id="consent.retry">
+      <segment>
+        <source>Try again</source>
+        <target>Intentar de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="screening.title">
+      <segment>
+        <source>Screening</source>
+        <target>Selección</target>
+      </segment>
+    </unit>
+    <unit id="screening.intro">
+      <segment>
+        <source> Read the example below (it is shown in English for every participant), then answer the question. </source>
+        <target>Lee el ejemplo de abajo (se muestra en inglés a todos los participantes) y responde a la pregunta.</target>
+      </segment>
+    </unit>
+    <unit id="screening.continue">
+      <segment>
+        <source> Continue </source>
+        <target>Continuar</target>
+      </segment>
+    </unit>
+    <unit id="screening.retry">
+      <segment>
+        <source>Try again</source>
+        <target>Intentar de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="skill.title">
+      <segment>
+        <source>Your professional skill</source>
+        <target>Tu habilidad profesional</target>
+      </segment>
+    </unit>
+    <unit id="skill.intro">
+      <segment>
+        <source>Choose the option that best describes you. You answer this only once.</source>
+        <target>Elige la opción que mejor te describe. Respondes esto solo una vez.</target>
+      </segment>
+    </unit>
+    <unit id="skill.legend">
+      <segment>
+        <source>Professional skill</source>
+        <target>Habilidad profesional</target>
+      </segment>
+    </unit>
+    <unit id="skill.other.label">
+      <segment>
+        <source>Describe your skill</source>
+        <target>Describe tu habilidad</target>
+      </segment>
+    </unit>
+    <unit id="skill.continue">
+      <segment>
+        <source> Continue </source>
+        <target>Continuar</target>
+      </segment>
+    </unit>
+    <unit id="onboarding.retry">
+      <segment>
+        <source>Try again</source>
+        <target>Intentar de nuevo</target>
       </segment>
     </unit>
   </file>

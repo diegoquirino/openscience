@@ -1,7 +1,10 @@
 import { expect, type APIRequestContext, type Page } from '@playwright/test';
 import { latestMessageTo, newestMessageId } from './mailpit';
 
-/** Signs in through the pt-BR screens with the code read from Mailpit (e-mail under example.com). */
+/**
+ * Signs in through the pt-BR screens with the code read from Mailpit (e-mail under example.com). A new
+ * participant lands on the consent form (spec 006): the resolver at /welcome opens the pending step.
+ */
 export async function signInParticipant(
   page: Page,
   request: APIRequestContext,
@@ -17,7 +20,35 @@ export async function signInParticipant(
   const { code } = await latestMessageTo(request, email, previousId);
   await page.getByLabel('Código de acesso').fill(code);
   await page.getByRole('button', { name: 'Entrar' }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+}
+
+/** Accepts the current consent form, chooses a skill and answers the screening over the API (cookies of the page). */
+export async function completeOnboardingOverApi(page: Page, answer = 'yes_professional'): Promise<void> {
+  const headers = { 'Accept-Language': 'pt-BR' };
+  const form = await page.request.get('/api/v1/consent-forms/current', { headers });
+  expect(form.status()).toBe(200);
+  const { version } = await form.json();
+  const consent = await page.request.put('/api/v1/participants/me/consent', {
+    headers,
+    data: { decision: 'accepted', consentFormVersion: version },
+  });
+  expect(consent.status()).toBe(200);
+  const skill = await page.request.put('/api/v1/participants/me/skill', { headers, data: { skill: 'test_analyst' } });
+  expect(skill.status()).toBe(200);
+  const screening = await page.request.put('/api/v1/participants/me/screening', { headers, data: { answer } });
+  expect(screening.status()).toBe(200);
+}
+
+/** Signs in a new participant and completes the onboarding over the API, so the participant can label. */
+export async function signInEligibleParticipant(
+  page: Page,
+  request: APIRequestContext,
+  name: string,
+  email: string,
+): Promise<void> {
+  await signInParticipant(page, request, name, email);
+  await completeOnboardingOverApi(page);
 }
 
 /** The block held by the signed-in participant, read from the API with the session of the page. */

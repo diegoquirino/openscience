@@ -24,6 +24,11 @@ export interface Problem {
   errors?: FieldError[];
   /** `block-incomplete`: 1-based position of the first item without a draft. */
   firstPendingPosition?: number;
+  /** 
+ot-eligible and step-not-pending: the pending step of the participant. */
+  step?: string;
+  /** consent-form-outdated: the version now in force. */
+  currentVersion?: string;
 }
 
 /** The slug of the type (`invalid-code`), or `undefined` for a body that is not a Veredito problem. */
@@ -76,6 +81,14 @@ export function problemMessage(problem: Problem | null | undefined, now: Date = 
       return $localize`:reservation expired and taken by someone else@@problem.reservationExpired:Your time for this block ran out and it was given to someone else`;
     case 'task-already-submitted':
       return $localize`:save after the block was submitted@@problem.taskAlreadySubmitted:This block was already submitted and can no longer be changed`;
+    case 'study-not-open':
+      return $localize`:no consent form in force@@problem.studyNotOpen:The study is not open yet; please come back later`;
+    case 'consent-form-outdated':
+      return $localize`:consent form replaced while the screen was open@@problem.consentFormOutdated:The consent form changed; read the new version and decide again`;
+    case 'step-not-pending':
+      return $localize`:step already done or not next@@problem.stepNotPending:This step was already completed or is not the next one`;
+    case 'not-eligible':
+      return $localize`:gate refused a labeling call@@problem.notEligible:Finish the consent form, skill and screening steps before labeling`;
     default:
       return undefined;
   }
@@ -90,6 +103,17 @@ export function fieldMessage(error: FieldError): string | undefined {
       return $localize`:e-mail field of the sign-in form@@field.email.invalid:Enter a valid e-mail`;
     case 'code':
       return $localize`:code field of the sign-in form@@field.code.required:Enter the 6-digit code`;
+    case 'skill':
+      return $localize`:skill field not chosen@@field.skill.invalid:Choose one option`;
+    case 'skillOther':
+      return error.code === 'size'
+        ? $localize`:skill description too long@@field.skillOther.size:Use at most 100 characters`
+        : $localize`:skill description missing@@field.skillOther.required:Describe your professional skill (up to 100 characters)`;
+    case 'answer':
+      return $localize`:screening answer not chosen@@field.answer.invalid:Choose one answer`;
+    case 'decision':
+    case 'consentFormVersion':
+      return $localize`:consent decision invalid@@field.decision.invalid:Choose whether you agree to participate`;
     default:
       return undefined;
   }

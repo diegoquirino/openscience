@@ -21,7 +21,7 @@ test('the session survives a new browser window and ends on "Sign out" (US3)', a
   const { code } = await latestMessageTo(request, email);
   await page.getByLabel('Código de acesso').fill(code);
   await page.getByRole('button', { name: 'Entrar' }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
   const sent = await messageCountTo(request, email);
 
   const { viewport, isMobile, hasTouch, userAgent, deviceScaleFactor } = testInfo.project.use;
@@ -37,8 +37,8 @@ test('the session survives a new browser window and ends on "Sign out" (US3)', a
   const again = await reopened.newPage();
   await again.goto('/pt-BR/welcome');
 
-  await expect(again).toHaveURL(/\/pt-BR\/welcome$/);
-  await expect(again.getByText('Obrigado por se identificar')).toBeVisible();
+  await expect(again).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(again.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
   const header = again.locator('header');
   await expect(header.getByRole('button', { name: 'Sair' })).toBeVisible();
   if (testInfo.project.name === 'desktop') {

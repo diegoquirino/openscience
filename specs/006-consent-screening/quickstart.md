@@ -19,7 +19,7 @@ cd frontend; npm ci; npm run i18n:check; npm test; npm run build; cd ..
 
 Expected: everything passes. Among the back-end tests: `OnboardingRulesTest` (every combination of
 consent / skill / screening / form, SC-002); `ConsentFormRulesTest` (current form, incomplete
-version, future publication); REST Assured `ConsentFormTest`, `ConsentDecisionTest`, `SkillTest`,
+version, future publication); REST Assured `ConsentFormTest` (decisions included), `SkillTest`,
 `ScreeningTest`, `OnboardingFlowTest` and `EligibilityGateTest` (a direct `POST
 /tasks/reservations` is `403 not-eligible` until the three steps are done); the same codes stored in
 the three locales (SC-005); the language of the text recorded in each acceptance (SC-004);

@@ -22,8 +22,9 @@ test('a new participant signs in with the code sent by e-mail (pt-BR)', async ({
   await page.getByLabel('Código de acesso').fill(`${message.code.slice(0, 3)} ${message.code.slice(3)}`);
   await page.getByRole('button', { name: 'Entrar' }).click();
 
-  await expect(page).toHaveURL(/\/pt-BR\/welcome$/);
-  await expect(page.getByText('Obrigado por se identificar')).toBeVisible();
+  // A new participant goes through the welcome resolver to the consent form (spec 006).
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
   const cookies = await page.context().cookies();
   expect(cookies.find((cookie) => cookie.name === 'veredito-session')).toMatchObject({
     httpOnly: true,
