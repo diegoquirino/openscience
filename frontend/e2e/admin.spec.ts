@@ -36,7 +36,8 @@ test.describe('administrator (single address)', () => {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Administração');
     await expect(page.getByText('Você entrou como Diego Quirino')).toBeVisible();
     const menu = page.getByRole('group', { name: 'Funções administrativas' });
-    await expect(menu.getByRole('link', { name: 'Importar' })).toBeVisible();
+    const importLink = page.getByRole('link', { name: 'Importar' });
+    await expect(importLink).toBeVisible();
     for (const item of ['Exportar', 'Painel de andamento', 'Participantes']) {
       await expect(menu.getByRole('button', { name: item })).toBeDisabled();
     }
@@ -44,7 +45,7 @@ test.describe('administrator (single address)', () => {
     await page.goto('/pt-BR/participate');
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
 
-    await page.getByRole('link', { name: 'Importar' }).click();
+    await importLink.click();
     await expect(page).toHaveURL(/\/pt-BR\/admin\/import$/);
     await page.locator('input[type="file"]').setInputFiles(FIXTURE);
 
