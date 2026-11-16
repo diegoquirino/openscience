@@ -67,7 +67,7 @@ Link relations for the downloads: `vd:export-wide`, `vd:export-long`, `vd:export
 
 ### Headers
 
-**Wide** — Appendix C of spec 001 (exact order).
+**Wide** â€” Appendix C of spec 001 (exact order).
 
 **Long**:
 
@@ -75,7 +75,7 @@ Link relations for the downloads: `vd:export-wide`, `vd:export-long`, `vd:export
 system,edit_key,block,role,pseudonym,professional_skill,participant_preferred_language,consent_language,change_impact,maintenance_operation,comment,response_language,reserved_at,submitted_at
 ```
 
-**Completo** — US3 scenario 2 of the spec (exact order).
+**Completo** â€” US3 scenario 2 of the spec (exact order).
 
 **Rater**:
 

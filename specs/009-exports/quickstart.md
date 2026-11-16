@@ -19,24 +19,24 @@ docker compose --profile staging down -v
 docker compose --profile staging up --build -d
 ```
 
-Footer / `/api/v1` show `0.9.0+…`. Sign in as administrator (`diegoquirino@gmail.com`; code in
+Footer / `/api/v1` show `0.9.0+â€¦`. Sign in as administrator (`diegoquirino@gmail.com`; code in
 Mailpit at `http://localhost:8025`).
 
 ## 3. Seed labeled data
 
 1. Import `veredito_minitest_vazio.csv` (005).
-2. As two eligible participants, complete both roles of at least one block (006–008), or use the
+2. As two eligible participants, complete both roles of at least one block (006â€“008), or use the
    test helpers / SQL seed the automated `ExportTest` already applies.
 3. Leave at least one block with only drafts to prove drafts are absent from exports.
 
-## 4. Downloads (US1–US4)
+## 4. Downloads (US1â€“US4)
 
 On `/admin/export`:
 
 | Action | Expect |
 |---|---|
 | Wide | Appendix C header; completed roles filled; drafts absent; neutralization on leading `=` |
-| Long | Header of research §7; no name/email; one row per final response |
+| Long | Header of research Â§7; no name/email; one row per final response |
 | Completo (`minitest`) | US3 header; Appendix D cells match import; incomplete roles blank |
 | Rater 1 / 2 | Nine pipeline columns; incomplete role blanks |
 
@@ -68,4 +68,4 @@ npm run e2e
 1. Push to `Veredito`; wait for `ci.yml`.
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.9.0-1` (**only with the researcher's
    explicit approval**).
-3. Footer shows `0.9.0+…`; admin Export works; participant cannot open it.
+3. Footer shows `0.9.0+â€¦`; admin Export works; participant cannot open it.

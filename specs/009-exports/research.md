@@ -39,7 +39,7 @@ No new Maven or npm dependency.
 
 - **Decision**: a role contributes labels only when `task.status = completed` and the response for
   that `(task, item)` has `state = final`. Drafts never appear. Incomplete roles leave the role's
-  label columns blank but the item row still appears (US1–US3).
+  label columns blank but the item row still appears (US1â€“US3).
 - **Rationale**: FR-001; matches 007 submission semantics.
 - **Long table**: one row per final response only (no blank role rows).
 
@@ -57,10 +57,10 @@ No new Maven or npm dependency.
   - Index returns `systems: string[]` (distinct `item.system` in queue order of first appearance)
     and links: `vd:export-wide`, `vd:export-long`, plus for each system
     `vd:export-completo`, `vd:export-rater1`, `vd:export-rater2` with concrete hrefs including
-    `?system=…` (no client URL construction).
+    `?system=â€¦` (no client URL construction).
   - Downloads: `GET /api/v1/exports/wide|long` and
     `GET /api/v1/exports/completo|rater1|rater2?system=` producing
-    `text/csv;charset=UTF-8` with `Content-Disposition: attachment; filename="…"`.
+    `text/csv;charset=UTF-8` with `Content-Disposition: attachment; filename="â€¦"`.
 - **Rationale**: REST level 3; mirrors 001 research `GET /api/v1/exports/{type}`; per-system
   concrete links avoid templates on the Angular side.
 - **Alternatives considered**: single zip of all files (spec asks for separate downloads);

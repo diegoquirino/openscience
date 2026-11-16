@@ -24,7 +24,7 @@ item
   LEFT JOIN response r1 ON r1.task_id = t1.id AND r1.item_id = item.id AND r1.state = 'final'
   LEFT JOIN participant p1 ON p1.id = t1.participant_id
   LEFT JOIN consent_form cf1 ON cf1.id = p1.consent_form_id
-  LEFT JOIN task t2 … role = 2 … (same pattern)
+  LEFT JOIN task t2 â€¦ role = 2 â€¦ (same pattern)
 ORDER BY block.number, item.position
 ```
 
@@ -32,22 +32,22 @@ Draft responses (`state = draft`) and non-completed tasks are excluded by the jo
 
 ## Format mapping
 
-### Wide (Appendix C) — one row per item, all systems
+### Wide (Appendix C) â€” one row per item, all systems
 
 Item columns + for each role N with a final response: name/email (or `anonymized`), consent
 cell, professional_skill code, impact/operation codes, comment, `language` as
 `rater_N_response_language`. Incomplete role ? those nine cells blank.
 
-### Long — one row per final response
+### Long â€” one row per final response
 
-See research §7 header. `block` = `block.number`. No name/email columns.
+See research Â§7 header. `block` = `block.number`. No name/email columns.
 
-### Completo — one row per item of one `system`
+### Completo â€” one row per item of one `system`
 
 Eleven Appendix D columns (exact stored strings) + five columns per role (pseudonym, impact,
 operation, comment, response language). Incomplete role ? five blanks. No PII.
 
-### Rater N — one row per item of one `system`
+### Rater N â€” one row per item of one `system`
 
 Nine pipeline columns. Label cells blank when role N is incomplete. No neutralization.
 

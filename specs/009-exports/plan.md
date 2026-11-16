@@ -74,9 +74,9 @@ Constitution 2.7.1.
 | III. Transactions; Flyway only | Read-only; no migration | Pass |
 | IV. Staging/tests/pilot Minitest | Fixtures reuse Minitest import | Pass |
 | V. Single artifact; Material | `/admin/export`; CSV downloads | Pass |
-| Language / data untranslated | FR-008/FR-009; research §2–8 | Pass |
+| Language / data untranslated | FR-008/FR-009; research Â§2â€“8 | Pass |
 | Workflow: staging then tag deploy | Quickstart; `deploy/0.9.0-*` with approval | Pass |
-| UTF-8 | As in 003–008 | Pass |
+| UTF-8 | As in 003â€“008 | Pass |
 
 No violation.
 
