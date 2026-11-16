@@ -117,6 +117,7 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 - [x] T024 Run `.\mvnw.cmd -B verify` in `backend/`; `npm ci`, `npm run i18n:check`, `npm test`, `npm run build` in `frontend/` _Record: mvnw verify 481 tests green; npm ci, i18n:check (221 units), npm test (196 tests in 34 files) and npm run build green_
 - [x] T025 Run quickstart sections 2 to 6 against local staging (rebuild the image, `down -v`, `npm run e2e`); record any fix _Record: fresh staging (down -v, up) and full npm run e2e: 88 passed, 4 skipped, only cold-start flakes retried; visual check of desktop and 360 px screenshots_
 - [ ] T026 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.8.0-1` **only after the researcher's explicit approval**; quickstart section 8 in production (not part of the implementation run)
+  **Record (2026-11-15):** pushed through `3e8137c` (implementation) and `c1ea8f3` (ROADMAP prose). `ci.yml` green on `3e8137c` ([43782846083](https://github.com/diegoquirino/openscience/actions/runs/43782846083); backend, frontend, secrets, image, e2e). Deploy `deploy/0.8.0-1` still awaits explicit researcher approval.
 
 ---
 
