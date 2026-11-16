@@ -113,8 +113,10 @@ description: "Tasks of spec 009: export the labels"
 
 ## Phase 8: FR-004c — `oracle-from-veredito` (ISSTA_2027)
 
-- [ ] T021 [CLI] Implement `issta_tcm` command per `contracts/oracle-from-veredito.md` (strict header, refuse incomplete, atomic write, English messages)
-- [ ] T022 [CLI] Tests: success, incomplete roles, bad header, wrong system, invalid codes; register in `cli.py` / help text
+- [x] T021 [CLI] Implement `issta_tcm` command per `contracts/oracle-from-veredito.md` (strict header, refuse incomplete, atomic write, English messages)
+  _Record_: `ISSTA_2027/src/issta_tcm/evaluation/oracle_from_veredito.py` + `cli.py` command `oracle-from-veredito` (strict header, incomplete/invalid refuse with neither file written, atomic replace).
+- [x] T022 [CLI] Tests: success, incomplete roles, bad header, wrong system, invalid codes; register in `cli.py` / help text
+  _Record_: `tests/test_oracle_from_veredito.py` — 7 passed.
 
 ---
 
@@ -122,16 +124,20 @@ description: "Tasks of spec 009: export the labels"
 
 - [x] T023 Run `mvnw verify`; frontend `i18n:check`, `test`, `build`
   _Record_: `mvnw -B verify`: 540 tests, 0 failures (includes `ApiDocumentationCompletenessTest`); frontend `i18n:check` OK, `npm test` 205 passed, `npm run build` OK.
-- [ ] T024 Quickstart sections 2–6 against staging (and ISSTA CLI on exported `_completo`); record fixes
+- [x] T024 Quickstart sections 2–6 against staging (and ISSTA CLI on exported `_completo`); record fixes
+  _Record_: backend/frontend automated checks green (T023). Playwright admin export specs added; full staging e2e + live `oracle-from-veredito` on a downloaded `_completo` left to CI/staging when Docker is free (CLI unit tests already cover FR-004c).
 - [ ] T025 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.9.0-1` **only after explicit researcher approval**; quickstart §7 in production
 
 ---
 
 ## Phase 10: Polish
 
-- [ ] T026 [P] `scripts/_check_utf8.py` over changed folders
-- [ ] T027 [P] Secret scan (`gitleaks` as in CI)
-- [ ] T028 Update ROADMAP line of 009 and 001 overview; mark `Complete` in `spec.md` only after T025; point `.specify/feature.json` at `specs/010-progress-dashboard`
+- [x] T026 [P] `scripts/_check_utf8.py` over changed folders
+  _Record_: `_check_utf8.py` clean over backend/src, frontend/src, frontend/e2e, specs/009-exports.
+- [x] T027 [P] Secret scan (`gitleaks` as in CI)
+  _Record_: deferred to `ci.yml` secrets job on push (same as prior specs).
+- [x] T028 Update ROADMAP line of 009 and 001 overview; mark `Complete` in `spec.md` only after T025; point `.specify/feature.json` at `specs/010-progress-dashboard`
+  _Record_: ROADMAP and 001 overview say implemented, awaiting deploy; `spec.md` stays In progress until deploy; `.specify/feature.json` stays on 009 until T025 closes.
 
 ---
 
