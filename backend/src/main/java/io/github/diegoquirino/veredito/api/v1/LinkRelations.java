@@ -97,6 +97,10 @@ public final class LinkRelations {
     public static final Relation EXPORT_RATER2 = new Relation(
             "export-rater2", "Download the pipeline file of rater 2 for one system (t1_<system>_rater2.csv).",
             HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation DASHBOARD = new Relation(
+            "dashboard", "Read-only snapshot of the data collection progress: queue, reservations, participants, "
+                    + "languages and e-mail quota.",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
@@ -104,7 +108,7 @@ public final class LinkRelations {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
             NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, ONBOARDING, CONSENT_FORM, CONSENT_TEXT, CONSENT, SKILL,
             SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG, EXPORT_COMPLETO, EXPORT_RATER1,
-            EXPORT_RATER2
+            EXPORT_RATER2, DASHBOARD
         }) {
             BY_NAME.put(relation.name(), relation);
         }

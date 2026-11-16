@@ -89,8 +89,9 @@ class EntryPointTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
                         "self", "curies", "vd:session", "vd:me", "vd:sign-out",
-                        "vd:batches", "vd:request-preview", "vd:exports", "vd:study-phase"))
+                        "vd:batches", "vd:request-preview", "vd:exports", "vd:dashboard", "vd:study-phase"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"))
+                .body("_links.'vd:dashboard'.href", equalTo("/api/v1/dashboard"))
                 .body("_links.'vd:batches'.href", equalTo("/api/v1/batches"))
                 .body("_links.'vd:request-preview'.href", equalTo("/api/v1/batches/previews"))
                 .body("_links.'vd:study-phase'.href", equalTo("/api/v1/administrator/study-phase"));

@@ -28,7 +28,8 @@ public class SecurityConfig {
     public static final RequestMatcher ADMINISTRATION = new OrRequestMatcher(
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/administrator/**"),
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/batches/**"),
-            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/exports/**"));
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/exports/**"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/dashboard/**"));
 
     @Bean
     public SecurityFilterChain securityFilterChain(

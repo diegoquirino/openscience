@@ -39,6 +39,7 @@ public class EntryPointController {
     static final String REQUEST_PREVIEW = "/api/v1/batches/previews";
     static final String STUDY_PHASE = "/api/v1/administrator/study-phase";
     static final String EXPORTS = "/api/v1/exports";
+    static final String DASHBOARD = "/api/v1/dashboard";
     static final String TASK_RESERVATIONS = "/api/v1/tasks/reservations";
     static final String ONBOARDING = "/api/v1/participants/me/onboarding";
     static final String CONSENT_FORM_CURRENT = "/api/v1/consent-forms/current";
@@ -79,11 +80,11 @@ public class EntryPointController {
                       vd:consent-form while a current consent form exists, and vd:next-task only when \
                       eligible (current consent form accepted, skill answered, screening yes);
                     - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out, \
-                      vd:batches, vd:request-preview, vd:exports, vd:study-phase;
+                      vd:batches, vd:request-preview, vd:exports, vd:dashboard, vd:study-phase;
                     - database unavailable: self only, and available is false.
 
-                    An invalid cookie never makes this operation answer 401. Later releases add \
-                    vd:dashboard and vd:participants for the administrator. No administrative link is ever offered to a \
+                    An invalid cookie never makes this operation answer 401. A later release adds \
+                    vd:participants for the administrator. No administrative link is ever offered to a \
                     visitor or a participant.""")
     @ApiResponse(
             responseCode = "200",
@@ -105,7 +106,7 @@ public class EntryPointController {
                                 }"""),
                         @ExampleObject(name = "participant", value = """
                                 {
-                                  "systemVersion": "0.9.0+1a2b3c4",
+                                  "systemVersion": "0.10.0+1a2b3c4",
                                   "environment": "production",
                                   "available": true,
                                   "_links": {
@@ -159,6 +160,7 @@ public class EntryPointController {
             model.add(Link.of(BATCHES, LinkRelations.BATCHES.curied()));
             model.add(Link.of(REQUEST_PREVIEW, LinkRelations.REQUEST_PREVIEW.curied()));
             model.add(Link.of(EXPORTS, LinkRelations.EXPORTS.curied()));
+            model.add(Link.of(DASHBOARD, LinkRelations.DASHBOARD.curied()));
             if (properties.environment() != Environment.STAGING) {
                 model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
             }
