@@ -139,6 +139,6 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 1. Version + In progress
 2. Domain + links/security
-3. Progress ? reservations ? participants/languages/quota on one GET
+3. Progress → reservations → participants/languages/quota on one GET
 4. Admin UI + e2e
 5. Staging / CI; deploy only with approval

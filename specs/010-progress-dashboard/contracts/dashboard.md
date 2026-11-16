@@ -10,7 +10,7 @@ below is in the OpenAPI group `v1`, tag "Administration", and passes
 
 ## Entry point `GET /api/v1`, administrator links
 
-In addition to the links of 005�009, the administrator receives:
+In addition to the links of 005–009, the administrator receives:
 
 | Relation | Href | When |
 |---|---|---|
@@ -92,13 +92,13 @@ Read-only: the operation MUST NOT insert, update or delete any row (FR-007).
 |---|---|
 | `progress[0]` | Overall total: `system` and `batchId` are JSON `null` |
 | Later `progress` rows | One per distinct `(item.system, block.batch_id)` present in the study, ordered by first appearance in queue order |
-| Task buckets | Research �3 (`free` includes expired reserved) |
+| Task buckets | Research §3 (`free` includes expired reserved) |
 | `firstFreeQueuePosition` | Minimum `queue_position` among free/reclaimable tasks; JSON `null` when none |
 | `reservations` | Every `status = reserved` task; `expired` when `expiresAt <= generatedAt` |
-| `participants.*` | Research �5; anonymized excluded |
+| `participants.*` | Research §5; anonymized excluded |
 | `languages` | Always the three locales in that order, zeros allowed |
 | `emailQuota` | Rolling 24 h vs `config.daily_email_limit`; `lowRemaining` when `emailsRemaining < 10` |
-| Empty study | Zeros / empty lists; `_links` also include `vd:batches` ? `/api/v1/batches` |
+| Empty study | Zeros / empty lists; `_links` also include `vd:batches` → `/api/v1/batches` |
 
 No `name`, `email` or other PII fields appear anywhere in the document.
 

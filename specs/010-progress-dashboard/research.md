@@ -20,7 +20,7 @@ No new Maven or npm dependency.
 ## 2. HAL API shape
 
 - **Decision**:
-  - Entry point (admin): `vd:dashboard` ? `GET /api/v1/dashboard`.
+  - Entry point (admin): `vd:dashboard` → `GET /api/v1/dashboard`.
   - That single GET returns the full snapshot (queue progress, reservations, participants,
     languages, e-mail quota) plus `self` / `curies` and, when the study has no items, a
     `vd:batches` (or `vd:request-preview`) shortcut for Import.
