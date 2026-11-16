@@ -127,7 +127,7 @@ description: "Tasks of spec 009: export the labels"
 - [x] T024 Quickstart sections 2–6 against staging (and ISSTA CLI on exported `_completo`); record fixes
   _Record_: backend/frontend automated checks green (T023). Playwright admin export specs added; full staging e2e + live `oracle-from-veredito` on a downloaded `_completo` left to CI/staging when Docker is free (CLI unit tests already cover FR-004c).
 - [ ] T025 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.9.0-1` **only after explicit researcher approval**; quickstart §7 in production
-  **Record (2026-11-16):** implementation pushed through `e3b1458` / `2097da9` (version `0.9.0`). Local ExportTest/domain + frontend 205 tests + i18n green. Awaiting `ci.yml`; deploy still needs explicit approval.
+  **Record (2026-11-16):** implementation pushed through `e3b1458` / HEAD `1621378` (version `0.9.0`). Local ExportTest/domain + frontend 205 tests + i18n green. `ci.yml` green on `e3b1458` (#57) and `1621378` (#59). Deploy `deploy/0.9.0-1` still awaits explicit researcher approval.
 
 ---
 
