@@ -3,7 +3,7 @@ import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { SessionService } from '../core/session.service';
 
-/** The administrator's area; Import is live in 005, Export in 009 and Dashboard in 010; Participants arrives later. */
+/** The administrator's area; Import, Export, Dashboard and Participants are live. */
 @Component({
   selector: 'app-admin',
   imports: [MatListModule, RouterLink],
