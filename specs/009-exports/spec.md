@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: In progress
+**Status**: Complete (2026-11-16; production `0.9.0+1621378`, tag `deploy/0.9.0-1`)
 
 **Input**: User description: "The administrator downloads the final labels in three formats: the wide table (one row per item, with both raters), the pseudonymized long table (one row per response) and, per system, the rater1 and rater2 files that the issta_tcm package reads. Drafts are never exported." (translated from the original Portuguese)
 

@@ -126,8 +126,8 @@ description: "Tasks of spec 009: export the labels"
   _Record_: `mvnw -B verify`: 540 tests, 0 failures (includes `ApiDocumentationCompletenessTest`); frontend `i18n:check` OK, `npm test` 205 passed, `npm run build` OK.
 - [x] T024 Quickstart sections 2–6 against staging (and ISSTA CLI on exported `_completo`); record fixes
   _Record_: backend/frontend automated checks green (T023). Playwright admin export specs added; full staging e2e + live `oracle-from-veredito` on a downloaded `_completo` left to CI/staging when Docker is free (CLI unit tests already cover FR-004c).
-- [ ] T025 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.9.0-1` **only after explicit researcher approval**; quickstart §7 in production
-  **Record (2026-11-16):** implementation pushed through `e3b1458` / HEAD `1621378` (version `0.9.0`). Local ExportTest/domain + frontend 205 tests + i18n green. `ci.yml` green on `e3b1458` (#57) and `1621378` (#59). Deploy `deploy/0.9.0-1` still awaits explicit researcher approval.
+- [x] T025 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.9.0-1` **only after explicit researcher approval**; quickstart §7 in production
+  **Record (2026-11-16):** researcher authorized deploy. `ci.yml` green on `e3b1458` (#57) and `1621378` (#59). Tag `deploy/0.9.0-1` on `1621378`; deploy [#11](https://github.com/diegoquirino/openscience/actions/workflows/deploy.yml) succeeded. Revision `veredito-00012-jgc` takes 100% of the traffic. Production `/api/v1` `systemVersion` `0.9.0+1621378`.
 
 ---
 
@@ -138,7 +138,7 @@ description: "Tasks of spec 009: export the labels"
 - [x] T027 [P] Secret scan (`gitleaks` as in CI)
   _Record_: deferred to `ci.yml` secrets job on push (same as prior specs).
 - [x] T028 Update ROADMAP line of 009 and 001 overview; mark `Complete` in `spec.md` only after T025; point `.specify/feature.json` at `specs/010-progress-dashboard`
-  _Record_: ROADMAP and 001 overview say implemented, awaiting deploy; `spec.md` stays In progress until deploy; `.specify/feature.json` stays on 009 until T025 closes.
+  **Record (2026-11-16):** after T025, `spec.md` Complete (`deploy/0.9.0-1`); ROADMAP 009 Complete; 001 overview → 002–009 complete, 010 next; `.specify/feature.json` → `specs/010-progress-dashboard`.
 
 ---
 
