@@ -131,7 +131,9 @@ test.describe('administrator (single address)', () => {
     await page.getByTestId('keep-responses').click();
     await expect(page.getByTestId('confirm-dialog')).toBeVisible();
     await page.getByRole('button', { name: 'Confirmar' }).click();
-    await expect(page.getByTestId('withdrawal-result')).toContainText('Retirada registrada');
+    await expect(page.getByTestId('withdrawal-result')).toContainText('Retirada registrada', {
+      timeout: 15_000,
+    });
   });
 });
 

@@ -70,7 +70,16 @@ export class ParticipantsComponent {
         this.busy.set(false);
         this.confirming.set(false);
         this.result.set(outcome);
-        this.search();
+        // E-mail is erased; refresh by the surviving pseudonym so the success banner stays.
+        this.email.set('');
+        this.pseudonym.set(outcome.pseudonym);
+        this.participants.search({ pseudonym: outcome.pseudonym }).subscribe({
+          next: (cards) => {
+            this.empty.set(cards.length === 0);
+            this.card.set(cards[0] ?? null);
+          },
+          error: () => this.error.set('search-failed'),
+        });
       },
       error: () => {
         this.busy.set(false);
