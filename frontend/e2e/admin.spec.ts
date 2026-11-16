@@ -36,9 +36,9 @@ test.describe('administrator (single address)', () => {
   // One code per minute; a Playwright retry would hit code-resend-too-soon.
   test.describe.configure({ mode: 'serial', retries: 0 });
 
-  test('administrator opens Import, previews Minitest and confirms', async ({ page, request }, testInfo) => {
+  test('administrator opens Import, previews Minitest and confirms', async ({ page, request, browser }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'one code per minute for the single administrator address');
-    test.setTimeout(120_000);
+    test.setTimeout(180_000);
 
     await signIn(page, request, 'Diego Quirino', ADMINISTRATOR);
 
@@ -49,7 +49,7 @@ test.describe('administrator (single address)', () => {
     await expect(importLink).toBeVisible();
     await expect(page.getByRole('link', { name: 'Exportar' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Painel de andamento' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Participantes' })).toBeDisabled();
+    await expect(page.getByRole('link', { name: 'Participantes' })).toBeVisible();
 
     await page.goto('/pt-BR/participate');
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
@@ -109,6 +109,29 @@ test.describe('administrator (single address)', () => {
     await expect(page.getByTestId('dashboard-generated')).toBeVisible();
     await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
     expect(generated).toContain('Atualizado em');
+
+    // Spec 011: Participants is enabled; search and keep-responses withdrawal.
+    const withdrawEmail = `e2e-withdraw-${Date.now()}@example.com`;
+    const participantContext = await browser.newContext();
+    try {
+      const participantPage = await participantContext.newPage();
+      await signIn(participantPage, request, 'Ana Souza', withdrawEmail);
+      await expect(participantPage).toHaveURL(/\/pt-BR\/consent$/);
+    } finally {
+      await participantContext.close();
+    }
+
+    await page.goto('/pt-BR/admin');
+    await page.getByRole('link', { name: 'Participantes' }).click();
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/participants$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Participantes');
+    await page.getByLabel('E-mail', { exact: true }).fill(withdrawEmail);
+    await page.getByRole('button', { name: 'Buscar' }).click();
+    await expect(page.getByTestId('participant-card')).toBeVisible();
+    await page.getByTestId('keep-responses').click();
+    await expect(page.getByTestId('confirm-dialog')).toBeVisible();
+    await page.getByRole('button', { name: 'Confirmar' }).click();
+    await expect(page.getByTestId('withdrawal-result')).toContainText('Retirada registrada');
   });
 });
 
@@ -155,8 +178,28 @@ test('a participant has no Dashboard link and the dashboard screen sends them to
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
 });
 
+test('a participant has no Participants link and the participants screen sends them to the consent form (pt-BR)', async ({
+  page,
+  request,
+}, testInfo) => {
+  const email = `e2e-participants-${testInfo.project.name}-${Date.now()}@example.com`;
+  await signIn(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page.getByRole('link', { name: 'Participantes' })).toHaveCount(0);
+
+  await page.goto('/pt-BR/admin/participants');
+
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+});
+
 test('a visitor who opens an area lands on the sign-in form (pt-BR)', async ({ page }) => {
-  for (const area of ['/pt-BR/admin', '/pt-BR/admin/export', '/pt-BR/admin/dashboard', '/pt-BR/welcome']) {
+  for (const area of [
+    '/pt-BR/admin',
+    '/pt-BR/admin/export',
+    '/pt-BR/admin/dashboard',
+    '/pt-BR/admin/participants',
+    '/pt-BR/welcome',
+  ]) {
     await page.goto(area);
     await expect(page).toHaveURL(/\/pt-BR\/participate$/);
   }
