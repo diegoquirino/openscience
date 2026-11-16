@@ -107,7 +107,7 @@ description: "Tasks of spec 010: data collection progress dashboard"
 - [x] T019 Quickstart sections 2–6 against staging; record SC-002 timing if measured
   **Record (2026-11-16):** backend DashboardTest/domain + EntryPoint green locally (99 focused tests); frontend i18n/test/build recorded in T016/T018. Full staging e2e + SC-002 wall-clock left to CI/staging when Docker is free (Playwright specs already written).
 - [x] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart §7 in production
-  **Record (2026-11-16):** implementation pushed through HEAD `6f17002` (version `0.10.0`). `ci.yml` green on `6f17002` (#64). Deploy `deploy/0.10.0-1` still awaits explicit researcher approval.
+  **Record (2026-11-16):** researcher authorized deploy. `ci.yml` green on `6f17002` (#64). First tag attempt on `e4a7923` failed the CI gate (deploy #12); retagged `deploy/0.10.0-1` → `6f17002`; deploy [#13](https://github.com/diegoquirino/openscience/actions/runs/43882335183) succeeded. Revision `veredito-00013-wpl` takes 100% of the traffic. Production `/api/v1` `systemVersion` `0.10.0+6f17002`.
 
 ---
 
@@ -117,8 +117,8 @@ description: "Tasks of spec 010: data collection progress dashboard"
   _Record_: `_check_utf8.py` clean over backend/src, frontend/src, frontend/e2e, specs/010-progress-dashboard.
 - [x] T022 [P] Secret scan deferred to `ci.yml` (same as prior specs)
   _Record_: deferred to `ci.yml` secrets job on push (same as prior specs).
-- [ ] T023 Update ROADMAP line of 010 and 001 overview; mark `Complete` in `spec.md` only after T020; point `.specify/feature.json` at `specs/011-lgpd-withdrawal`
-  _Record_: ROADMAP and 001 overview say implemented, awaiting deploy; `spec.md` stays In progress until deploy; `.specify/feature.json` stays on 010 until T020 closes.
+- [x] T023 Update ROADMAP line of 010 and 001 overview; mark `Complete` in `spec.md` only after T020; point `.specify/feature.json` at `specs/011-lgpd-withdrawal`
+  **Record (2026-11-16):** after T020, `spec.md` Complete (`deploy/0.10.0-1`); ROADMAP 010 Complete; 001 overview → 002–010 complete, 011 next; `.specify/feature.json` → `specs/011-lgpd-withdrawal`.
 
 ---
 

@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: In progress
+**Status**: Complete (2026-11-16; production `0.10.0+6f17002`, tag `deploy/0.10.0-1`)
 
 **Input**: User description: "The administrator follows, per system and per batch, how many tasks are free, in progress and completed, the reservations in progress, the participant totals by status and by skill, and the e-mail quota left for the day." (translated from the original Portuguese)
 
