@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.dialog-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0 1.5rem;
+}
+
+.dialog-title {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+
+.progress {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+  gap: 0 1.5rem;
+}
+
+.body {
+  position: relative;
+  flex: 1 1 auto;
+  max-height: none;
+  min-height: 0;
+  overflow: auto;
+}
+
+.usecase {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.usecase-line {
+  min-height: 1.5em;
+  padding-right: 0.5rem;
+  border-left: 4px solid transparent;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  &.edited {
+    border-left-color: var(--mat-sys-tertiary);
+    background: color-mix(in srgb, var(--mat-sys-tertiary) 22%, transparent);
+  }
+}
+
+.missing-usecase {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
+}
+
+@media (max-width: 599px) {
+  .dialog-header {
+    padding: 0 1rem;
+  }
+}

@@ -1,11 +1,14 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
 import { of, throwError } from 'rxjs';
 import { LanguageService } from '../../core/language.service';
 import { ItemBody, LabelService, TaskBody } from '../label.service';
 import { LabelItemComponent, unsavedKey } from './item.component';
+import { UseCaseDialogComponent } from './usecase-dialog.component';
 
 const task: TaskBody = {
   id: 41,
@@ -169,6 +172,56 @@ describe('LabelItemComponent', () => {
     fixture.componentInstance['setOperation']('UPDATE');
     fixture.detectChanges();
     expect(button.disabled).toBe(false);
+  });
+
+  it('opens the full use case of each version in a dialog and leaves the choices untouched (T015)', async () => {
+    const fixture = create({
+      draft: { changeImpact: 'LOW', maintenanceOperation: 'KEEP', comment: 'mine', language: 'pt-BR' },
+    });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const dialog = TestBed.inject(MatDialog);
+    const open = vi.spyOn(dialog, 'open').mockReturnValue(undefined as never);
+    vi.spyOn(TestBed.inject(BreakpointObserver), 'isMatched').mockReturnValue(false);
+
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('button.open-usecase'));
+    expect(buttons.map((button) => button.textContent?.trim())).toEqual([
+      'View full use case (1.1)',
+      'View full use case (1.2)',
+    ]);
+
+    buttons[0].click();
+    buttons[1].click();
+
+    const [previous, modified] = open.mock.calls;
+    expect(previous[0]).toBe(UseCaseDialogComponent);
+    expect(previous[1]).toMatchObject({
+      width: '960px',
+      restoreFocus: buttons[0],
+      data: { side: 'origin', uc: 'UC01', version: '1.1', text: 'Line one\nLine two', position: 2, size: 3 },
+    });
+    expect(modified[1]).toMatchObject({
+      restoreFocus: buttons[1],
+      data: { side: 'target', version: '1.2', text: 'Changed' },
+    });
+    expect(fixture.componentInstance['impact']()).toBe('LOW');
+    expect(fixture.componentInstance['operation']()).toBe('KEEP');
+    expect(fixture.componentInstance['comment']()).toBe('mine');
+  });
+
+  it('opens the dialog full screen on a narrow screen and puts the button of an ADD in the first column', async () => {
+    const fixture = create({ item: { kind: 'ADD', origin: '', target: 'new flow' } });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const open = vi.spyOn(TestBed.inject(MatDialog), 'open').mockReturnValue(undefined as never);
+    vi.spyOn(TestBed.inject(BreakpointObserver), 'isMatched').mockReturnValue(true);
+
+    const first = root.querySelector<HTMLButtonElement>('.column[data-side=origin] button.open-usecase');
+    expect(first).not.toBeNull();
+    expect(root.querySelector('.column[data-side=origin] .block')).toBeNull();
+    first?.click();
+
+    expect(open.mock.calls[0][1]).toMatchObject({ width: '100vw', height: '100dvh', panelClass: 'usecase-dialog-full' });
   });
 
   it('restores unsaved choices over the stored draft', async () => {

@@ -34,3 +34,8 @@ video {
   max-width: 100%;
   height: auto;
 }
+
+/* Use case dialog of spec 008: the whole screen on a phone (no rounded corners). */
+.usecase-dialog-full .mat-mdc-dialog-surface {
+  border-radius: 0;
+}

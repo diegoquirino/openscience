@@ -75,9 +75,9 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 **Independent Test**: open both modals in an item of each `kind`, close them in each way and check that the choices are still there
 
-- [ ] T014 [P] [US2] Write tests first, then `<item>/usecase-dialog.component.ts`: title pattern, header with progress, lines with indentation and highlight, no marker in the DOM, scroll to the first edited line, localized missing-version message, Close button
-- [ ] T015 [US2] Wire the two "View full use case" buttons in the item component (`MatDialog`, full screen below 600 px, restore focus, `Esc`, backdrop); the choices of the item are untouched when it closes; component test that the choices survive open and close
-- [ ] T016 [US2] Extract and translate the units of the dialog (`item.usecase.*`, `item.missingUsecase`); `npm run i18n:check`
+- [x] T014 [P] [US2] Write tests first, then `<item>/usecase-dialog.component.ts`: title pattern, header with progress, lines with indentation and highlight, no marker in the DOM, scroll to the first edited line, localized missing-version message, Close button _Record: usecase-dialog.component (+html, scss) and spec: title pattern, header with counter and countdown, monospaced lines with hanging indent, marker never in the DOM, scroll to first edited line, localized missing-version message, Close button_
+- [x] T015 [US2] Wire the two "View full use case" buttons in the item component (`MatDialog`, full screen below 600 px, restore focus, `Esc`, backdrop); the choices of the item are untouched when it closes; component test that the choices survive open and close _Record: item component opens the dialog with MatDialog (full screen below 600 px, restoreFocus on the clicked button, Esc and backdrop by default); tests that choices are untouched and that the ADD button sits in the first column_
+- [x] T016 [US2] Extract and translate the units of the dialog (`item.usecase.*`, `item.missingUsecase`); `npm run i18n:check` _Record: item.usecase.* and item.missingUsecase units added to pt-BR and es-ES; i18n:check passes (210 units)_
 - [ ] T017 [US2] Playwright: both modals for one item of each `kind` (title with versions, highlighted lines, no marker text, scrolled to the first edited line), closing with Close, `Esc` and a click outside, focus back on the button, choices kept; full-screen dialog on 360 px with wrapped lines keeping the indentation and counter and countdown visible
 
 **Checkpoint**: US1 + US2 deliver the edit and its context

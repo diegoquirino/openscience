@@ -1,8 +1,10 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, DestroyRef, Injector, computed, inject, runInInjectionContext, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -26,8 +28,26 @@ import { noneLabel } from '../../core/labels/item-labels';
 import { ItemClock } from './item-clock';
 import { ItemProgressComponent } from './item-progress.component';
 import { buildItemLayout } from './item-layout';
+import { UseCaseDialogComponent, UseCaseDialogData } from './usecase-dialog.component';
 
 export const COMMENT_MAX_LENGTH = 1000;
+
+/** Below this width the use case dialog takes the whole screen (contracts/web.md). */
+export const NARROW_QUERY = '(max-width: 599.98px)';
+
+const WIDE_DIALOG: MatDialogConfig = {
+  width: '960px',
+  maxWidth: 'calc(100vw - 32px)',
+  height: '85vh',
+};
+
+const FULL_SCREEN_DIALOG: MatDialogConfig = {
+  width: '100vw',
+  maxWidth: '100vw',
+  height: '100dvh',
+  maxHeight: '100dvh',
+  panelClass: 'usecase-dialog-full',
+};
 
 /** Key of the unsaved choices of one item (FR-016, FR-078): task and position. */
 export function unsavedKey(taskId: number, position: number): string {
@@ -56,6 +76,8 @@ export class LabelItemComponent {
   private readonly labels = inject(LabelService);
   private readonly language = inject(LanguageService);
   private readonly injector = inject(Injector);
+  private readonly dialog = inject(MatDialog);
+  private readonly breakpoints = inject(BreakpointObserver);
   private loading: Subscription | undefined;
 
   protected readonly commentMax = COMMENT_MAX_LENGTH;
@@ -138,6 +160,31 @@ export class LabelItemComponent {
 
   protected onComment(event: Event): void {
     this.comment.set((event.target as HTMLTextAreaElement).value);
+  }
+
+  /** Opens the full use case of one version in a modal; the choices of the item are not touched. */
+  protected openUsecase(side: 'origin' | 'target', event: Event): void {
+    const current = this.item();
+    if (!current) {
+      return;
+    }
+    const origin = side === 'origin';
+    const data: UseCaseDialogData = {
+      side,
+      uc: current.uc,
+      version: (origin ? current.originVersion : current.targetVersion) ?? '-',
+      text: origin ? current.originUsecase : current.targetUsecase,
+      position: current.position,
+      size: this.size(),
+      clock: this.clock,
+    };
+    const size = this.breakpoints.isMatched(NARROW_QUERY) ? FULL_SCREEN_DIALOG : WIDE_DIALOG;
+    this.dialog.open(UseCaseDialogComponent, {
+      ...size,
+      data,
+      autoFocus: 'first-tabbable',
+      restoreFocus: event.currentTarget instanceof HTMLElement ? event.currentTarget : true,
+    });
   }
 
   protected previousPosition(): number | null {

@@ -1243,5 +1243,35 @@
         <target>Quedan menos de 2 minutos de esta reserva.</target>
       </segment>
     </unit>
+    <unit id="item.missingUsecase">
+      <segment>
+        <source>(this use case does not exist in this version)</source>
+        <target>(este caso de uso no existe en esta versión)</target>
+      </segment>
+    </unit>
+    <unit id="item.usecase.view">
+      <segment>
+        <source>View full use case (<ph id="0" equiv="INTERPOLATION" disp="{{ column.versionLabel }}"/>)</source>
+        <target>Ver caso de uso completo (<ph id="0" equiv="INTERPOLATION" disp="{{ column.versionLabel }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="item.usecase.previousTitle">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · version <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (previous)</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · versión <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (anterior)</target>
+      </segment>
+    </unit>
+    <unit id="item.usecase.modifiedTitle">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · version <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (modified)</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · versión <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (modificada)</target>
+      </segment>
+    </unit>
+    <unit id="item.usecase.close">
+      <segment>
+        <source>Close</source>
+        <target>Cerrar</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

@@ -78,6 +78,15 @@
                   </div>
                 </div>
               }
+              <button
+                mat-stroked-button
+                type="button"
+                class="open-usecase"
+                [attr.data-side]="column.side"
+                (click)="openUsecase(column.side, $event)"
+              >
+                <span i18n="@@item.usecase.view">View full use case ({{ column.versionLabel }})</span>
+              </button>
             </section>
           }
         </div>

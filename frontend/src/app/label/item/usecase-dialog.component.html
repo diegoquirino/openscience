@@ -1,0 +1,26 @@
+<header class="dialog-header">
+  <h2 mat-dialog-title class="dialog-title">
+    @if (data.side === 'origin') {
+      <span i18n="@@item.usecase.previousTitle">{{ data.uc }} · version {{ data.version }} (previous)</span>
+    } @else {
+      <span i18n="@@item.usecase.modifiedTitle">{{ data.uc }} · version {{ data.version }} (modified)</span>
+    }
+  </h2>
+  <app-item-progress class="progress" [position]="data.position" [size]="data.size" [clock]="data.clock" />
+</header>
+
+<mat-dialog-content class="body" #body>
+  @if (view.missing) {
+    <p class="missing-usecase">{{ missingText }}</p>
+  } @else {
+    <div class="usecase">
+      @for (line of view.lines; track $index) {
+        <div class="usecase-line" [class.edited]="line.edited" [style.padding-left.ch]="line.indent">{{ line.content }}</div>
+      }
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button type="button" class="close" mat-dialog-close i18n="@@item.usecase.close">Close</button>
+</mat-dialog-actions>
