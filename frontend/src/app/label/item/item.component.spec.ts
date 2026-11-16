@@ -43,7 +43,12 @@ describe('LabelItemComponent', () => {
   const keepOnSwitch = vi.fn();
 
   function create(
-    options: { draft?: ItemBody['draft']; unsaved?: Record<string, string>; reservationExpiresAt?: string } = {},
+    options: {
+      draft?: ItemBody['draft'];
+      unsaved?: Record<string, string>;
+      reservationExpiresAt?: string;
+      item?: Partial<ItemBody>;
+    } = {},
   ) {
     const held = options.reservationExpiresAt ? { ...task, reservationExpiresAt: options.reservationExpiresAt } : task;
     takeUnsaved.mockReturnValue(options.unsaved);
@@ -56,7 +61,7 @@ describe('LabelItemComponent', () => {
             task: signal(held),
             clockOffsetMs: signal(0),
             currentTask: () => of(held),
-            getItem: () => of({ ...item, draft: options.draft ?? null }),
+            getItem: () => of({ ...item, ...options.item, draft: options.draft ?? null }),
             saveResponse,
             nextPending,
           },
@@ -72,14 +77,88 @@ describe('LabelItemComponent', () => {
 
   beforeEach(() => vi.resetAllMocks());
 
-  it('shows the item texts with line breaks and keeps Continue disabled until both questions are answered', async () => {
+  function blocks(root: HTMLElement) {
+    return Array.from(root.querySelectorAll<HTMLElement>('.column')).map((column) => ({
+      side: column.dataset['side'],
+      title: column.querySelector('.block-title')?.textContent?.trim() ?? null,
+      text: column.querySelector('.text')?.textContent ?? null,
+      removed: Array.from(column.querySelectorAll('del')).map((e) => e.textContent),
+      added: Array.from(column.querySelectorAll('ins')).map((e) => e.textContent),
+    }));
+  }
+
+  it('shows the header and a MOD edit side by side with the changed words marked', async () => {
+    const fixture = create({ item: { origin: 'launches the screen\nand waits', target: 'displays the screen\nand waits' } });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('.location')?.textContent).toBe('Basic flow step · Modification');
+    expect(root.querySelector('.system')?.textContent).toBe('minitest');
+    expect(root.querySelector('.uc')?.textContent).toBe('UC01');
+    expect(blocks(root)).toEqual([
+      {
+        side: 'origin',
+        title: 'Before',
+        text: 'launches the screen\nand waits',
+        removed: ['launches'],
+        added: [],
+      },
+      {
+        side: 'target',
+        title: 'After',
+        text: 'displays the screen\nand waits',
+        removed: [],
+        added: ['displays'],
+      },
+    ]);
+    expect(root.querySelector('.no-difference')).toBeNull();
+  });
+
+  it('shows only the added text of an ADD and only the removed text of a DEL', async () => {
+    const add = create({ item: { kind: 'ADD', origin: '', target: 'exception 3 "New"\n  step 1' } });
+    await add.whenStable();
+    expect(blocks(add.nativeElement)).toEqual([
+      { side: 'origin', title: null, text: null, removed: [], added: [] },
+      { side: 'target', title: 'Added text', text: 'exception 3 "New"\n  step 1', removed: [], added: ['exception 3 "New"\n  step 1'] },
+    ]);
+
+    TestBed.resetTestingModule();
+    const del = create({ item: { kind: 'DEL', origin: 'exception 5 "Old"', target: '' } });
+    await del.whenStable();
+    expect(blocks(del.nativeElement)).toEqual([
+      { side: 'origin', title: 'Removed text', text: 'exception 5 "Old"', removed: ['exception 5 "Old"'], added: [] },
+      { side: 'target', title: null, text: null, removed: [], added: [] },
+    ]);
+  });
+
+  it('shows the requirements link before and after with (none) for the empty side', async () => {
+    const fixture = create({ item: { kind: 'META', field: 'requirements', origin: '', target: 'REQ-07' } });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('.location')?.textContent).toBe('Requirements link · Metadata');
+    expect(blocks(root)).toEqual([
+      { side: 'origin', title: 'Requirements link: before', text: '(none)', removed: [], added: [] },
+      { side: 'target', title: 'Requirements link: after', text: 'REQ-07', removed: [], added: ['REQ-07'] },
+    ]);
+  });
+
+  it('warns that nothing differs when origin equals target, and shows an unknown field as is', async () => {
+    const fixture = create({ item: { kind: 'META', field: 'custom_field', origin: 'REQ-07', target: 'REQ-07' } });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('.no-difference')?.textContent?.trim()).toBe('No text difference in this part');
+    expect(root.querySelector('.location')?.textContent).toBe('custom_field · Metadata');
+  });
+
+  it('keeps Continue disabled until both questions are answered', async () => {
     const fixture = create();
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.textContent).toContain('2 of 3');
-    expect(root.textContent).toContain('minitest');
-    expect(root.textContent).toContain('Line one\nLine two');
+    expect(root.querySelector('.counter')?.textContent?.trim()).toBe('2 of 3');
     const button = root.querySelector('button[type=submit]') as HTMLButtonElement;
     expect(button.disabled).toBe(true);
 

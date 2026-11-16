@@ -643,42 +643,6 @@
         <target>Caso de uso</target>
       </segment>
     </unit>
-    <unit id="label.item.kind">
-      <segment>
-        <source>Kind</source>
-        <target>Tipo</target>
-      </segment>
-    </unit>
-    <unit id="label.item.field">
-      <segment>
-        <source>Field</source>
-        <target>Campo</target>
-      </segment>
-    </unit>
-    <unit id="label.item.originUsecase">
-      <segment>
-        <source>Use case before (version <ph id="0" equiv="INTERPOLATION" disp="{{ current.originVersion }}"/>)</source>
-        <target>Caso de uso antes (versión <ph id="0" equiv="INTERPOLATION" disp="{{ current.originVersion }}"/>)</target>
-      </segment>
-    </unit>
-    <unit id="label.item.targetUsecase">
-      <segment>
-        <source>Use case after (version <ph id="0" equiv="INTERPOLATION" disp="{{ current.targetVersion }}"/>)</source>
-        <target>Caso de uso después (versión <ph id="0" equiv="INTERPOLATION" disp="{{ current.targetVersion }}"/>)</target>
-      </segment>
-    </unit>
-    <unit id="label.item.origin">
-      <segment>
-        <source>Edit: before</source>
-        <target>Edición: antes</target>
-      </segment>
-    </unit>
-    <unit id="label.item.target">
-      <segment>
-        <source>Edit: after</source>
-        <target>Edición: después</target>
-      </segment>
-    </unit>
     <unit id="label.item.impactQuestion">
       <segment>
         <source>Does this edit change the behavior that the use case specifies?</source>
@@ -1133,6 +1097,150 @@
       <segment>
         <source>Try again</source>
         <target>Intentar de nuevo</target>
+      </segment>
+    </unit>
+    <unit id="item.kind.MOD">
+      <segment>
+        <source>Modification</source>
+        <target>Modificación</target>
+      </segment>
+    </unit>
+    <unit id="item.kind.ADD">
+      <segment>
+        <source>Addition</source>
+        <target>Adición</target>
+      </segment>
+    </unit>
+    <unit id="item.kind.DEL">
+      <segment>
+        <source>Removal</source>
+        <target>Eliminación</target>
+      </segment>
+    </unit>
+    <unit id="item.kind.META">
+      <segment>
+        <source>Metadata</source>
+        <target>Metadatos</target>
+      </segment>
+    </unit>
+    <unit id="item.field.step">
+      <segment>
+        <source>Basic flow step</source>
+        <target>Paso del flujo básico</target>
+      </segment>
+    </unit>
+    <unit id="item.field.steps_block">
+      <segment>
+        <source>Block of basic flow steps</source>
+        <target>Bloque de pasos del flujo básico</target>
+      </segment>
+    </unit>
+    <unit id="item.field.alt_flow_step">
+      <segment>
+        <source>Alternative flow step</source>
+        <target>Paso de flujo alternativo</target>
+      </segment>
+    </unit>
+    <unit id="item.field.alt_flow_steps_block">
+      <segment>
+        <source>Entire alternative flow</source>
+        <target>Flujo alternativo completo</target>
+      </segment>
+    </unit>
+    <unit id="item.field.alt_flow_title">
+      <segment>
+        <source>Alternative flow title</source>
+        <target>Título de flujo alternativo</target>
+      </segment>
+    </unit>
+    <unit id="item.field.exc_flow_step">
+      <segment>
+        <source>Exception flow step</source>
+        <target>Paso de flujo de excepción</target>
+      </segment>
+    </unit>
+    <unit id="item.field.exc_flow_steps_block">
+      <segment>
+        <source>Entire exception flow</source>
+        <target>Flujo de excepción completo</target>
+      </segment>
+    </unit>
+    <unit id="item.field.exc_flow_title">
+      <segment>
+        <source>Exception flow title</source>
+        <target>Título de flujo de excepción</target>
+      </segment>
+    </unit>
+    <unit id="item.field.pre">
+      <segment>
+        <source>Precondition</source>
+        <target>Precondición</target>
+      </segment>
+    </unit>
+    <unit id="item.field.post">
+      <segment>
+        <source>Postcondition</source>
+        <target>Postcondición</target>
+      </segment>
+    </unit>
+    <unit id="item.field.requirements">
+      <segment>
+        <source>Requirements link</source>
+        <target>Vínculo con requisitos</target>
+      </segment>
+    </unit>
+    <unit id="item.block.before">
+      <segment>
+        <source>Before</source>
+        <target>Antes</target>
+      </segment>
+    </unit>
+    <unit id="item.block.after">
+      <segment>
+        <source>After</source>
+        <target>Después</target>
+      </segment>
+    </unit>
+    <unit id="item.block.added">
+      <segment>
+        <source>Added text</source>
+        <target>Texto añadido</target>
+      </segment>
+    </unit>
+    <unit id="item.block.removed">
+      <segment>
+        <source>Removed text</source>
+        <target>Texto eliminado</target>
+      </segment>
+    </unit>
+    <unit id="item.block.metaBefore">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ view.header.fieldLabel }}"/>: before</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ view.header.fieldLabel }}"/>: antes</target>
+      </segment>
+    </unit>
+    <unit id="item.block.metaAfter">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ view.header.fieldLabel }}"/>: after</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ view.header.fieldLabel }}"/>: después</target>
+      </segment>
+    </unit>
+    <unit id="item.none">
+      <segment>
+        <source>(none)</source>
+        <target>(ninguno)</target>
+      </segment>
+    </unit>
+    <unit id="item.noDifference">
+      <segment>
+        <source>No text difference in this part</source>
+        <target>Ninguna diferencia de texto en esta parte</target>
+      </segment>
+    </unit>
+    <unit id="item.progress.lowTime">
+      <segment>
+        <source>Less than 2 minutes left in this reservation.</source>
+        <target>Quedan menos de 2 minutos de esta reserva.</target>
       </segment>
     </unit>
   </file>

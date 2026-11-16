@@ -21,8 +21,11 @@ import {
 } from '../../core/labels/response-labels';
 import { Links } from '../../core/hal';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
-import { formatCountdown, remainingSeconds } from '../countdown';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
+import { noneLabel } from '../../core/labels/item-labels';
+import { ItemClock } from './item-clock';
+import { ItemProgressComponent } from './item-progress.component';
+import { buildItemLayout } from './item-layout';
 
 export const COMMENT_MAX_LENGTH = 1000;
 
@@ -31,7 +34,7 @@ export function unsavedKey(taskId: number, position: number): string {
   return `label-item:${taskId}:${position}`;
 }
 
-/** Simple item screen of spec 007 (replaced by the full screen of spec 008 later). */
+/** Rich item screen of spec 008 (the simple screen of spec 007 stored the same codes and fields). */
 @Component({
   selector: 'app-label-item',
   imports: [
@@ -41,7 +44,9 @@ export function unsavedKey(taskId: number, position: number): string {
     MatProgressSpinnerModule,
     MatRadioModule,
     RouterLink,
+    ItemProgressComponent,
   ],
+  providers: [ItemClock],
   templateUrl: './item.component.html',
   styleUrl: './item.component.scss',
 })
@@ -67,19 +72,15 @@ export class LabelItemComponent {
   protected readonly impact = signal<ChangeImpact | null>(null);
   protected readonly operation = signal<MaintenanceOperation | null>(null);
   protected readonly comment = signal('');
-  private readonly now = signal(Date.now());
-
   protected readonly task = this.labels.task;
   protected readonly position = computed(() => this.item()?.position ?? 0);
   protected readonly size = computed(() => this.task()?.size ?? 0);
-  protected readonly remaining = computed(() =>
-    remainingSeconds(this.task()?.reservationExpiresAt, this.labels.clockOffsetMs(), this.now()),
-  );
-  protected readonly countdown = computed(() => {
-    const seconds = this.remaining();
-    return seconds === null ? '' : formatCountdown(seconds);
+  protected readonly clock = inject(ItemClock);
+  protected readonly layout = computed(() => {
+    const current = this.item();
+    return current ? buildItemLayout(current) : null;
   });
-  protected readonly expired = computed(() => this.remaining() === 0);
+  protected readonly none = noneLabel();
   protected readonly canContinue = computed(
     () =>
       this.item() !== null &&
@@ -90,11 +91,7 @@ export class LabelItemComponent {
   );
 
   constructor() {
-    const timer = setInterval(() => this.now.set(Date.now()), 1000);
-    inject(DestroyRef).onDestroy(() => {
-      clearInterval(timer);
-      this.loading?.unsubscribe();
-    });
+    inject(DestroyRef).onDestroy(() => this.loading?.unsubscribe());
     this.route.paramMap
       .pipe(
         map((params) => Number(params.get('position'))),
