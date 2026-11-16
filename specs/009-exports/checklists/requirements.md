@@ -35,3 +35,4 @@
 - Fixed during validation: formula neutralization applies only to the wide and long tables; applying it to the pipeline files would change `origin`/`target` values that start with `-`.
 - Validated on 2026-11-10; ready for `/speckit-plan`.
 - Internationalization (2026-11-11): added FR-008 to FR-012 and SC-004, scenario 4 of User Story 1, scenario 4 of User Story 2, scenario 3 of User Story 3 and three edge cases. The wide header follows Appendix C of spec 001; the long table gains `participant_preferred_language`, `consent_language` and `response_language`; the pipeline files keep their columns unchanged.
+- Plan artifacts written 2026-11-15 (`plan.md`, `research.md`, `data-model.md`, `contracts/exports.md`, `contracts/web.md`, `quickstart.md`).
