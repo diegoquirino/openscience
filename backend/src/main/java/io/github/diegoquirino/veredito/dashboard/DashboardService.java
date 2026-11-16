@@ -1,13 +1,11 @@
 package io.github.diegoquirino.veredito.dashboard;
 
 import io.github.diegoquirino.veredito.dashboard.DashboardQuery.ReservationRow;
-import io.github.diegoquirino.veredito.domain.access.SendLimits;
 import io.github.diegoquirino.veredito.domain.dashboard.DashboardProgress;
 import io.github.diegoquirino.veredito.domain.dashboard.EmailQuota;
 import io.github.diegoquirino.veredito.domain.dashboard.LanguageTally;
 import io.github.diegoquirino.veredito.domain.dashboard.ParticipantTotals;
-import io.github.diegoquirino.veredito.persistence.AccessCodeRepository;
-import io.github.diegoquirino.veredito.persistence.ConfigRepository;
+import io.github.diegoquirino.veredito.withdrawal.EmailQuotaService;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
@@ -42,14 +40,12 @@ public class DashboardService {
     }
 
     private final DashboardQuery query;
-    private final AccessCodeRepository codes;
-    private final ConfigRepository config;
+    private final EmailQuotaService emailQuota;
     private final Clock clock;
 
-    public DashboardService(DashboardQuery query, AccessCodeRepository codes, ConfigRepository config, Clock clock) {
+    public DashboardService(DashboardQuery query, EmailQuotaService emailQuota, Clock clock) {
         this.query = query;
-        this.codes = codes;
-        this.config = config;
+        this.emailQuota = emailQuota;
         this.clock = clock;
     }
 
@@ -65,9 +61,8 @@ public class DashboardService {
                 ParticipantTotals.contributors(query.completedByPseudonym()));
         List<LanguageTally.Row> languages =
                 LanguageTally.rows(query.preferredLanguages(), query.finalResponseLanguages());
-        EmailQuota quota = EmailQuota.of(codes.countAllSince(now.minus(SendLimits.DAY)), config.dailyEmailLimit());
         return new Snapshot(now, progress.firstFreeQueuePosition(), progress.rows(), reservations, participants,
-                languages, quota);
+                languages, emailQuota.current());
     }
 
     private static Reservation reservation(ReservationRow row, Instant now) {

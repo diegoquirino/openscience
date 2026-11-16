@@ -101,6 +101,12 @@ public final class LinkRelations {
             "dashboard", "Read-only snapshot of the data collection progress: queue, reservations, participants, "
                     + "languages and e-mail quota.",
             HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation PARTICIPANTS = new Relation(
+            "participants", "Search participants by e-mail or pseudonym for LGPD withdrawal.",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation ANONYMIZE = new Relation(
+            "anonymize", "Confirm anonymization of a participant (keep or discard responses).",
+            HttpMethod.POST, "/swagger-ui.html#/Administration");
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
@@ -108,7 +114,7 @@ public final class LinkRelations {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
             NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, ONBOARDING, CONSENT_FORM, CONSENT_TEXT, CONSENT, SKILL,
             SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG, EXPORT_COMPLETO, EXPORT_RATER1,
-            EXPORT_RATER2, DASHBOARD
+            EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE
         }) {
             BY_NAME.put(relation.name(), relation);
         }

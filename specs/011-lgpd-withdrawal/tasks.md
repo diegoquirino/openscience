@@ -37,7 +37,7 @@ description: "Tasks of spec 011: LGPD withdrawal (anonymize keep/discard)"
 
 **CRITICAL**: security path split and `vd:participants` before story work
 
-- [ ] T003 Flyway `backend/src/main/resources/db/migration/V2__withdrawal_log.sql` per [data-model.md](data-model.md)
+- [ ] T003 Flyway `backend/src/main/resources/db/migration/V7__withdrawal_log.sql` per [data-model.md](data-model.md)
 - [ ] T004 [P] Domain tests then `<pkg>/domain/withdrawal/`: option enum, impact counts, keep vs discard task/response rules (research §4)
 - [ ] T005 Add `LinkRelations.PARTICIPANTS` and `LinkRelations.ANONYMIZE`; document at `/api/v1/rels/{rel}`
 - [ ] T006 Emit `vd:participants` for administrators on `GET /api/v1`; update OpenAPI / `EntryPointTest`

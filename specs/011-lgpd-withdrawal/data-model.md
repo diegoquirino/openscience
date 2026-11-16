@@ -32,14 +32,14 @@ while the address is still known.
 
 ## New table: `withdrawal_log`
 
-Flyway `V2__withdrawal_log.sql`.
+Flyway `V7__withdrawal_log.sql`.
 
 | Column | Type | Notes |
 |---|---|---|
 | `id` | BIGINT PK AI | |
 | `occurred_at` | DATETIME(6) NOT NULL | Audit timestamp |
 | `pseudonym` | VARCHAR(16) NOT NULL | Copy at withdrawal time |
-| `option` | VARCHAR(20) NOT NULL | `keep_responses` \| `discard_responses` |
+| `option_code` | VARCHAR(20) NOT NULL | `keep_responses` \| `discard_responses` (`option` is reserved in MySQL) |
 | `email_sent` | BOOLEAN NOT NULL | Whether the confirmation e-mail was sent |
 | `final_responses_discarded` | INT NOT NULL | 0 when keep |
 | `tasks_returned` | INT NOT NULL | Completed tasks returned to the queue; 0 when keep |

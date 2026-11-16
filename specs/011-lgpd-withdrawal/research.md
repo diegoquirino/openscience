@@ -76,7 +76,7 @@ No new Maven or npm dependency.
 
 ## 5. Audit log (FR-005)
 
-- **Decision**: Flyway `V2__withdrawal_log.sql` creates table `withdrawal_log`:
+- **Decision**: Flyway `V7__withdrawal_log.sql` creates table `withdrawal_log`:
   `id`, `occurred_at`, `pseudonym`, `option` (`keep_responses`|`discard_responses`),
   `email_sent` (boolean), `final_responses_discarded`, `tasks_returned`, `participant_id`
   (nullable FK kept for support; never expose name/email — those columns do not exist here).

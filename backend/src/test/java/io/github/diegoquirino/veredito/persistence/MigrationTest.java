@@ -31,7 +31,7 @@ class MigrationTest {
 
     private static final List<String> TABLES = List.of(
             "access_code", "access_session", "block", "config", "consent_form", "consent_form_text",
-            "import_batch", "import_preview", "item", "participant", "response", "task");
+            "import_batch", "import_preview", "item", "participant", "response", "task", "withdrawal_log");
 
     @Autowired
     JdbcClient jdbc;
@@ -55,7 +55,7 @@ class MigrationTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2", "3", "4", "5");
+        assertThat(versions).containsExactly("1", "2", "3", "4", "5", "7");
     }
 
     @Test

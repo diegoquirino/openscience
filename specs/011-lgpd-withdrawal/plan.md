@@ -20,7 +20,7 @@ the participant/session model of 004–006, the queue of 007, and the exports of
 - **HAL:** `vd:participants` / `vd:anonymize`; security split from `/participants/me`.
 - **UI:** `/admin/participants`; Participants menu enabled.
 
-Flyway `V2__withdrawal_log.sql`. Decisions are in [research.md](research.md).
+Flyway `V7__withdrawal_log.sql`. Decisions are in [research.md](research.md).
 
 ## Technical Context
 
@@ -74,7 +74,7 @@ Constitution 2.7.1.
 | II. Domain plain Java | `domain.withdrawal` for option rules / impact counts | Pass |
 | II. MySQL + REST Assured from `/api/v1` | Follow links from entry point | Pass |
 | II. i18n completeness | XLIFF + mail bundles | Pass |
-| III. Transactions; Flyway only | One TX; `V2__withdrawal_log.sql` | Pass |
+| III. Transactions; Flyway only | One TX; `V7__withdrawal_log.sql` | Pass |
 | IV. Privacy / LGPD | Erase PII; audit without PII; Minitest in staging | Pass |
 | V. Single artifact; Material | `/admin/participants` | Pass |
 | Workflow: staging then tag deploy | Quickstart; `deploy/0.11.0-*` with approval | Pass |
@@ -114,7 +114,7 @@ specs/011-lgpd-withdrawal/
 ### Source Code (`Veredito` branch)
 
 ```text
-backend/.../db/migration/V2__withdrawal_log.sql
+backend/.../db/migration/V7__withdrawal_log.sql
 backend/.../domain/withdrawal/
 backend/.../withdrawal/          # query + service + mailer
 backend/.../api/v1/ParticipantsController.java (admin)

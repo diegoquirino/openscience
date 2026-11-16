@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: In progress
 
 **Input**: User description: "At a participant's request, the administrator removes their name and e-mail and decides whether the responses stay, anonymized, or are discarded, returning the blocks to the queue." (translated from the original Portuguese)
 

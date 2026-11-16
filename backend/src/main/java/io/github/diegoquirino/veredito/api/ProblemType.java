@@ -34,7 +34,8 @@ public enum ProblemType {
     STUDY_NOT_OPEN("study-not-open", HttpStatus.CONFLICT),
     CONSENT_FORM_OUTDATED("consent-form-outdated", HttpStatus.CONFLICT),
     STEP_NOT_PENDING("step-not-pending", HttpStatus.CONFLICT),
-    SYSTEM_NOT_FOUND("system-not-found", HttpStatus.NOT_FOUND);
+    SYSTEM_NOT_FOUND("system-not-found", HttpStatus.NOT_FOUND),
+    ALREADY_ANONYMIZED("already-anonymized", HttpStatus.CONFLICT);
 
     public static final String URN_PREFIX = "urn:veredito:problem:";
 

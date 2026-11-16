@@ -29,7 +29,10 @@ public class SecurityConfig {
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/administrator/**"),
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/batches/**"),
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/exports/**"),
-            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/dashboard/**"));
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/dashboard/**"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/participants"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/participants/{id}"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/participants/{id}/anonymizations"));
 
     @Bean
     public SecurityFilterChain securityFilterChain(
@@ -52,7 +55,7 @@ public class SecurityConfig {
                         .accessDeniedHandler(accessDeniedHandler))
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/api/v1/access-sessions/current").hasAnyRole(PARTICIPANT, ADMINISTRATOR)
-                        .requestMatchers("/api/v1/participants/**").hasRole(PARTICIPANT)
+                        .requestMatchers("/api/v1/participants/me", "/api/v1/participants/me/**").hasRole(PARTICIPANT)
                         .requestMatchers("/api/v1/tasks/**").hasRole(PARTICIPANT)
                         .requestMatchers("/api/v1/consent-forms/**", "/api/v1/screening-example").hasRole(PARTICIPANT)
                         .requestMatchers(ADMINISTRATION).hasRole(ADMINISTRATOR)
