@@ -6,7 +6,7 @@ import { SessionService } from '../core/session.service';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
-  it('shows the administrator name with Import enabled and the other functions disabled', async () => {
+  it('shows the administrator name with Import and Export enabled and the other functions disabled', async () => {
     TestBed.configureTestingModule({
       imports: [AdminComponent],
       providers: [provideHttpClient(), provideRouter([])],
@@ -26,11 +26,15 @@ describe('AdminComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     expect(element.querySelector('h1')?.textContent?.trim()).toBe('Administration');
     expect(element.textContent).toContain('Signed in as Diego Quirino');
-    const importLink = element.querySelector<HTMLAnchorElement>('mat-nav-list a');
-    expect(importLink?.textContent?.trim()).toBe('Import');
-    expect(importLink?.getAttribute('href')).toContain('/admin/import');
+    const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('mat-nav-list a'));
+    expect(links.map((link) => link.textContent?.trim())).toEqual(['Import', 'Export']);
+    expect(links[0].getAttribute('href')).toContain('/admin/import');
+    expect(links[1].getAttribute('href')).toContain('/admin/export');
     const disabled = Array.from(element.querySelectorAll<HTMLButtonElement>('mat-nav-list button'));
-    expect(disabled.map((item) => item.textContent?.trim())).toEqual(['Export', 'Dashboard', 'Participants']);
+    expect(disabled.map((item) => item.textContent?.trim())).toEqual(['Dashboard', 'Participants']);
     expect(disabled.every((item) => item.disabled)).toBe(true);
+    expect(element.querySelector('.soon')?.textContent).toBe(
+      'Dashboard and participants will be available in the next releases.',
+    );
   });
 });

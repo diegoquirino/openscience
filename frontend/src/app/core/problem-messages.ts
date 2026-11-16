@@ -21,6 +21,8 @@ export interface Problem {
   attemptsLeft?: number;
   column?: string;
   systems?: string[];
+  /** `system-not-found`: the system that was asked for. */
+  system?: string;
   errors?: FieldError[];
   /** `block-incomplete`: 1-based position of the first item without a draft. */
   firstPendingPosition?: number;
@@ -75,6 +77,10 @@ export function problemMessage(problem: Problem | null | undefined, now: Date = 
     }
     case 'preview-not-found':
       return $localize`:import preview expired or unknown@@problem.previewNotFound:This import preview does not exist or has expired; upload the file again`;
+    case 'system-not-found': {
+      const system = problem?.system ?? '';
+      return $localize`:export system without items@@problem.systemNotFound:There are no items for the system ${system}:system:`;
+    }
     case 'phase-switch-not-allowed':
       return $localize`:cannot switch study phase@@problem.phaseSwitchNotAllowed:The study phase cannot switch to collection now (database not empty, already in collection, or staging)`;
     case 'reservation-expired':

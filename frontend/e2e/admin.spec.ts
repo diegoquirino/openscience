@@ -1,4 +1,4 @@
-import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
+import { expect, test, type APIRequestContext, type Download, type Page } from '@playwright/test';
 import path from 'node:path';
 import { latestMessageTo, newestMessageId } from './support/mailpit';
 
@@ -8,6 +8,16 @@ const FIXTURE = path.resolve(
   process.cwd(),
   '../backend/src/test/resources/minitest/veredito_minitest_vazio.csv',
 );
+
+/** The text of a Playwright download. */
+async function readDownload(download: Download): Promise<string> {
+  const stream = await download.createReadStream();
+  const chunks: Buffer[] = [];
+  for await (const chunk of stream) {
+    chunks.push(Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks).toString('utf8');
+}
 
 /** Signs in through the pt-BR screens with the code read from Mailpit. */
 async function signIn(page: Page, request: APIRequestContext, name: string, email: string): Promise<void> {
@@ -37,7 +47,8 @@ test.describe('administrator (single address)', () => {
     await expect(page.getByText('Você entrou como Diego Quirino')).toBeVisible();
     const importLink = page.getByRole('link', { name: 'Importar' });
     await expect(importLink).toBeVisible();
-    for (const item of ['Exportar', 'Painel de andamento', 'Participantes']) {
+    await expect(page.getByRole('link', { name: 'Exportar' })).toBeVisible();
+    for (const item of ['Painel de andamento', 'Participantes']) {
       await expect(page.getByRole('button', { name: item })).toBeDisabled();
     }
 
@@ -60,6 +71,27 @@ test.describe('administrator (single address)', () => {
     await page.locator('input[type="file"]').setInputFiles(FIXTURE);
     await expect(page.getByText(/Incluídas:\s*0/)).toBeVisible();
     await expect(page.getByText(/Ignoradas:\s*38/)).toBeVisible();
+
+    // Spec 009: the Export screen offers the CSV downloads through the HAL links.
+    await page.goto('/pt-BR/admin');
+    await page.getByRole('link', { name: 'Exportar' }).click();
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/export$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Exportar');
+    await expect(page.getByRole('heading', { level: 2, name: 'Sistema minitest' })).toBeVisible();
+
+    const wideDownload = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Baixar tabela ampla' }).click();
+    const wide = await wideDownload;
+    expect(wide.suggestedFilename()).toBe('veredito_wide.csv');
+    const wideText = await readDownload(wide);
+    expect(wideText.startsWith('system,edit_key,uc,kind,field,origin,target,rater_1_name,')).toBe(true);
+    expect(wideText.split('\n').filter((line) => line.startsWith('minitest,')).length).toBeGreaterThanOrEqual(38);
+
+    const raterDownload = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Baixar avaliador 1' }).click();
+    const rater = await raterDownload;
+    expect(rater.suggestedFilename()).toBe('t1_minitest_rater1.csv');
+    expect(await readDownload(rater)).toContain('edit_key,uc,kind,field,origin,target,change_impact,maintenance_operation,comment');
   });
 });
 
@@ -78,8 +110,22 @@ test('a participant who opens the administration lands on the consent form (pt-B
   await expect(page.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
 });
 
+test('a participant has no Export link and the export screen sends them to the consent form (pt-BR)', async ({
+  page,
+  request,
+}, testInfo) => {
+  const email = `e2e-export-${testInfo.project.name}-${Date.now()}@example.com`;
+  await signIn(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page.getByRole('link', { name: 'Exportar' })).toHaveCount(0);
+
+  await page.goto('/pt-BR/admin/export');
+
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+});
+
 test('a visitor who opens an area lands on the sign-in form (pt-BR)', async ({ page }) => {
-  for (const area of ['/pt-BR/admin', '/pt-BR/welcome']) {
+  for (const area of ['/pt-BR/admin', '/pt-BR/admin/export', '/pt-BR/welcome']) {
     await page.goto(area);
     await expect(page).toHaveURL(/\/pt-BR\/participate$/);
   }

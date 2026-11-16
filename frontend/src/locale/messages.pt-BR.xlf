@@ -165,8 +165,8 @@
     </unit>
     <unit id="admin.soon">
       <segment>
-        <source>Export, dashboard and participants will be available in the next releases.</source>
-        <target>Exportação, painel e participantes estarão disponíveis nas próximas versões.</target>
+        <source>Dashboard and participants will be available in the next releases.</source>
+        <target>Painel e participantes estarão disponíveis nas próximas versões.</target>
       </segment>
     </unit>
     <unit id="shell.title">
@@ -1337,6 +1337,90 @@
       <segment>
         <source>The edit is ambiguous or leaves a step vague; there is no safe decision and the case needs human analysis.</source>
         <target>A edição é ambígua ou deixa um passo vago; não há decisão segura e o caso precisa de análise humana.</target>
+      </segment>
+    </unit>
+    <unit id="export.back">
+      <segment>
+        <source>Back to administration</source>
+        <target>Voltar à administração</target>
+      </segment>
+    </unit>
+    <unit id="export.title">
+      <segment>
+        <source>Export</source>
+        <target>Exportar</target>
+      </segment>
+    </unit>
+    <unit id="export.intro">
+      <segment>
+        <source>Download the final responses as CSV files. Only submitted blocks are included; the column headers and codes are always the English identifiers, whatever the language of this screen.</source>
+        <target>Baixe as respostas finais em arquivos CSV. Só entram os blocos já enviados; os cabeçalhos das colunas e os códigos são sempre os identificadores em inglês, qualquer que seja o idioma desta tela.</target>
+      </segment>
+    </unit>
+    <unit id="export.loading">
+      <segment>
+        <source>Loading the downloads...</source>
+        <target>Carregando os downloads...</target>
+      </segment>
+    </unit>
+    <unit id="export.allHeading">
+      <segment>
+        <source>All systems</source>
+        <target>Todos os sistemas</target>
+      </segment>
+    </unit>
+    <unit id="export.wide">
+      <segment>
+        <source>Download wide table</source>
+        <target>Baixar tabela ampla</target>
+      </segment>
+    </unit>
+    <unit id="export.long">
+      <segment>
+        <source>Download long table</source>
+        <target>Baixar tabela longa</target>
+      </segment>
+    </unit>
+    <unit id="export.allHint">
+      <segment>
+        <source>The wide table has one row per item with both raters and their identification, for internal use. The long table has one row per response and no name or e-mail.</source>
+        <target>A tabela ampla tem uma linha por item, com os dois avaliadores e a identificação deles, para uso interno. A tabela longa tem uma linha por resposta, sem nome nem e-mail.</target>
+      </segment>
+    </unit>
+    <unit id="export.systemHeading">
+      <segment>
+        <source>System <ph id="0" equiv="INTERPOLATION" disp="{{ system.system }}"/></source>
+        <target>Sistema <ph id="0" equiv="INTERPOLATION" disp="{{ system.system }}"/></target>
+      </segment>
+    </unit>
+    <unit id="export.completo">
+      <segment>
+        <source>Download completo</source>
+        <target>Baixar completo</target>
+      </segment>
+    </unit>
+    <unit id="export.rater1">
+      <segment>
+        <source>Download rater 1</source>
+        <target>Baixar avaliador 1</target>
+      </segment>
+    </unit>
+    <unit id="export.rater2">
+      <segment>
+        <source>Download rater 2</source>
+        <target>Baixar avaliador 2</target>
+      </segment>
+    </unit>
+    <unit id="export.noSystems">
+      <segment>
+        <source>No items have been imported yet, so there are no per-system files.</source>
+        <target>Nenhum item foi importado ainda, então não há arquivos por sistema.</target>
+      </segment>
+    </unit>
+    <unit id="problem.systemNotFound">
+      <segment>
+        <source>There are no items for the system <ph id="0" equiv="system" disp="system"/></source>
+        <target>Não há itens para o sistema <ph id="0" equiv="system" disp="system"/></target>
       </segment>
     </unit>
   </file>

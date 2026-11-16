@@ -1,0 +1,91 @@
+<section class="export">
+  <p class="back">
+    <a routerLink="/admin" i18n="@@export.back">Back to administration</a>
+  </p>
+  <h1 i18n="@@export.title">Export</h1>
+  <p class="intro" i18n="@@export.intro">
+    Download the final responses as CSV files. Only submitted blocks are included; the column headers and codes are
+    always the English identifiers, whatever the language of this screen.
+  </p>
+
+  @if (loading()) {
+    <p class="status" i18n="@@export.loading">Loading the downloads...</p>
+  }
+  @if (message(); as text) {
+    <p class="error" role="alert">{{ text }}</p>
+  }
+
+  @if (index(); as view) {
+    <section class="all-systems">
+      <h2 i18n="@@export.allHeading">All systems</h2>
+      <div class="actions">
+        <button
+          type="button"
+          mat-stroked-button
+          data-testid="export-wide"
+          [disabled]="busy() || !view.wideHref"
+          (click)="download(view.wideHref)"
+          i18n="@@export.wide"
+        >
+          Download wide table
+        </button>
+        <button
+          type="button"
+          mat-stroked-button
+          data-testid="export-long"
+          [disabled]="busy() || !view.longHref"
+          (click)="download(view.longHref)"
+          i18n="@@export.long"
+        >
+          Download long table
+        </button>
+      </div>
+      <p class="hint" i18n="@@export.allHint">
+        The wide table has one row per item with both raters and their identification, for internal use. The long
+        table has one row per response and no name or e-mail.
+      </p>
+    </section>
+
+    @for (system of view.systems; track system.system) {
+      <section class="system" [attr.data-system]="system.system">
+        <h2 i18n="@@export.systemHeading">System {{ system.system }}</h2>
+        <div class="actions">
+          <button
+            type="button"
+            mat-stroked-button
+            data-testid="export-completo"
+            [disabled]="busy() || !system.completoHref"
+            (click)="download(system.completoHref)"
+            i18n="@@export.completo"
+          >
+            Download completo
+          </button>
+          <button
+            type="button"
+            mat-stroked-button
+            data-testid="export-rater1"
+            [disabled]="busy() || !system.rater1Href"
+            (click)="download(system.rater1Href)"
+            i18n="@@export.rater1"
+          >
+            Download rater 1
+          </button>
+          <button
+            type="button"
+            mat-stroked-button
+            data-testid="export-rater2"
+            [disabled]="busy() || !system.rater2Href"
+            (click)="download(system.rater2Href)"
+            i18n="@@export.rater2"
+          >
+            Download rater 2
+          </button>
+        </div>
+      </section>
+    } @empty {
+      <p class="empty" i18n="@@export.noSystems">
+        No items have been imported yet, so there are no per-system files.
+      </p>
+    }
+  }
+</section>

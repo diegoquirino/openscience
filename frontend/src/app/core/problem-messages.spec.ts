@@ -30,6 +30,12 @@ describe('problem messages', () => {
     expect(problemMessage({ type: type('code-expired') })).toBe('This code is no longer valid');
   });
 
+  it('names the system of a system-not-found problem', () => {
+    expect(problemMessage({ type: type('system-not-found'), system: 'minitest' })).toBe(
+      'There are no items for the system minitest',
+    );
+  });
+
   it('never rounds the waiting time down to zero', () => {
     const now = new Date('2026-11-13T12:00:00Z');
     expect(problemMessage({ type: type('code-hourly-limit'), retryAt: '2026-11-13T12:00:05Z' }, now)).toContain(

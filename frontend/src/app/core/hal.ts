@@ -28,6 +28,12 @@ export class Links {
     return Array.isArray(value) ? value[0] : value;
   }
 
+  /** Every link of a relation: a relation may repeat, e.g. once per system. */
+  all(rel: string): HalLink[] {
+    const value = this.raw[this.qualify(rel)];
+    return Array.isArray(value) ? value : value ? [value] : [];
+  }
+
   has(rel: string): boolean {
     return this.get(rel) !== undefined;
   }
