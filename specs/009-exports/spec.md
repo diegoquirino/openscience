@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: In progress
 
 **Input**: User description: "The administrator downloads the final labels in three formats: the wide table (one row per item, with both raters), the pseudonymized long table (one row per response) and, per system, the rater1 and rater2 files that the issta_tcm package reads. Drafts are never exported." (translated from the original Portuguese)
 
