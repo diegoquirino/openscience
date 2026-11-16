@@ -15,7 +15,7 @@ step). Visitors are sent to sign-in.
 ## Admin home
 
 - **Dashboard** list item is enabled and navigates to `/admin/dashboard`.
-- `@@admin.soon` mentions only participants (dashboard removed from the ìnext releasesî sentence).
+- `@@admin.soon` mentions only participants (dashboard removed from the ‚Äúnext releases‚Äù sentence).
 - Participants menu item stays disabled until 011.
 
 ## Screen behaviour
@@ -28,7 +28,7 @@ step). Visitors are sent to sign-in.
 4. When `progress` overall `items === 0`, show an empty state with a control that follows
    `vd:batches` (or the admin Import route already known from the home screen) toward Import.
 5. When `emailQuota.lowRemaining` is true, highlight the remaining count.
-6. Reservation rows with `expired: true` show the localized ìexpiredî label.
+6. Reservation rows with `expired: true` show the localized ‚Äúexpired‚Äù label.
 7. No name or e-mail is shown; only `pseudonym`.
 
 ## i18n

@@ -4,7 +4,7 @@
 
 Spec 010 is **read-only**. It adds no table, column, constraint, index or Flyway migration.
 
-## Tables used (all from V1–V5)
+## Tables used (all from V1â€“V5)
 
 | Table | Columns used |
 |---|---|
@@ -38,10 +38,10 @@ item
   JOIN block ON block.id = item.block_id
   JOIN task ON task.block_id = block.id
 GROUP BY item.system, block.batch_id, task.role
--- free / inProgress / completed per research §3 (evaluate expires_at against "now")
+-- free / inProgress / completed per research Â§3 (evaluate expires_at against "now")
 ```
 
-Item and block counts per system×batch: `COUNT(DISTINCT item.id)` and
+Item and block counts per systemÃ—batch: `COUNT(DISTINCT item.id)` and
 `COUNT(DISTINCT block.id)`.
 
 ## Reservation sketch
@@ -60,6 +60,6 @@ ORDER BY task.expires_at
 ## Validation rules
 
 - Snapshot is consistent with a single `Instant now` for all expiry and quota windows.
-- `completedPercent` uses the §3 formula; never NaN.
+- `completedPercent` uses the Â§3 formula; never NaN.
 - Language array always length 3 in fixed order: `pt-BR`, `en-US`, `es-ES`.
 - Anonymized participants omitted from every person-related tally.

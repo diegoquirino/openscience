@@ -19,7 +19,7 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions. **Complete** (2026-11-15; `deploy/0.8.0-1`) | 003 (sample items from 002) |
 | 8 | [009-exports](./009-exports/spec.md) | Wide and long tables; pipeline files. **Complete** (2026-11-16; `deploy/0.9.0-1`) | 005, 007 |
 | - | **Pilot and launch** | see below | 002 to 009 |
-| 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard. **In progress** (0.10.0) | 005, 006, 007 |
+| 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard. **Implemented, awaiting deploy** (`deploy/0.10.0-1`) | 005, 006, 007 |
 | 10 | [011-lgpd-withdrawal](./011-lgpd-withdrawal/spec.md) | Anonymization and disposal | 007, 009 |
 
 Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored.

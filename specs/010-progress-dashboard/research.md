@@ -39,12 +39,12 @@ No new Maven or npm dependency.
   - Percentage completed = `100.0 * completed / (free + inProgress + completed)` when the
     denominator is > 0; otherwise `0`. Report with one decimal place in the JSON
     (`completedPercent`).
-  - Counts are emitted **per role** (1 and 2) inside each system◊batch row, plus an **overall**
+  - Counts are emitted **per role** (1 and 2) inside each system√óbatch row, plus an **overall**
     first row that sums every system and batch.
   - **firstFreeQueuePosition** = minimum `task.queue_position` among free/reclaimable tasks, or
     `null` when none remain.
 - **Rationale**: matches `NextTaskChooser` / `listCandidates` reclaim semantics; expired holds
-  must not inflate ìin progressî.
+  must not inflate ‚Äúin progress‚Äù.
 - **Alternatives considered**: counting expired reserved as in progress (misleads the researcher);
   a fourth progress bucket (spec only asks for three).
 
@@ -76,8 +76,8 @@ No new Maven or npm dependency.
   include only codes that appear, plus omit null. UI maps codes through existing i18n labels.
 - **Completed tasks per pseudonym**: `COUNT` of `task.status = 'completed'` grouped by
   `participant.pseudonym`, ordered by count DESC then pseudonym ASC; `shareOfCompleted` =
-  `count / totalCompletedTasks` (0 when total is 0). ìBlocks completedî in the UI copy means
-  these completed tasks (block◊role units), matching SC wording about share of completed tasks.
+  `count / totalCompletedTasks` (0 when total is 0). ‚ÄúBlocks completed‚Äù in the UI copy means
+  these completed tasks (block√órole units), matching SC wording about share of completed tasks.
 - **Rationale**: no status column exists; buckets derive from 006 fields; FR-003.
 - **Alternatives considered**: a persisted status enum (DDL, out of scope); counting people who
   completed ?1 block as a fifth bucket (not requested).
@@ -109,21 +109,21 @@ No new Maven or npm dependency.
 
 - **Decision**: when `COUNT(item) = 0`, every progress number is zero, reservation and
   contributor lists are empty, language zeros still appear, and the HAL document includes
-  `vd:batches` (same href as the entry point) so the UI can offer ìImportî.
+  `vd:batches` (same href as the entry point) so the UI can offer ‚ÄúImport‚Äù.
 - **Rationale**: edge case in the spec.
 
 ## 9. Security and stubs already present
 
 - **Decision**: add `/api/v1/dashboard/**` to `SecurityConfig.ADMINISTRATION`; register
   `LinkRelations.DASHBOARD`; emit `vd:dashboard` for administrators only; update the OpenAPI
-  entry-point description that still says ìlater releases add vd:dashboardî.
+  entry-point description that still says ‚Äúlater releases add vd:dashboard‚Äù.
 - Frontend: enable the Dashboard button; route `/admin/dashboard`; shrink `@@admin.soon` to
   participants only.
 
 ## 10. SC-001 / SC-002 measurement
 
 - **SC-001**: `DashboardTest` seeds Minitest, completes/reserves a known mix, asserts task
-  totals equal `TaskRepository` counts under the ß3 mapping and final-response language totals
+  totals equal `TaskRepository` counts under the ¬ß3 mapping and final-response language totals
   equal a long-export tally (or equivalent JDBC).
 - **SC-002**: recorded in quickstart against staging with a 500-item / 100-participant seed when
   available; otherwise assert the API responds under 2 s in CI with Minitest and note staging

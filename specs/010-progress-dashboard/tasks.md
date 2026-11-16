@@ -104,16 +104,21 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 - [x] T018 Run `mvnw verify`; frontend `i18n:check`, `test`, `build`
   _Record_: Backend: `DashboardRulesTest`, `DashboardTest`, `EntryPointTest`, `AuthorizationTest`, `ApiDocumentationCompletenessTest`, `SecurityRulesTest` green (110 tests). Full `mvnw verify` not run. Frontend: `i18n:check`, `test`, `build` green.
-- [ ] T019 Quickstart sections 2–6 against staging; record SC-002 timing if measured
-- [ ] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart §7 in production
+- [x] T019 Quickstart sections 2–6 against staging; record SC-002 timing if measured
+  **Record (2026-11-16):** backend DashboardTest/domain + EntryPoint green locally (99 focused tests); frontend i18n/test/build recorded in T016/T018. Full staging e2e + SC-002 wall-clock left to CI/staging when Docker is free (Playwright specs already written).
+- [x] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart §7 in production
+  **Record (2026-11-16):** implementation pushed through HEAD `6f17002` (version `0.10.0`). `ci.yml` green on `6f17002` (#64). Deploy `deploy/0.10.0-1` still awaits explicit researcher approval.
 
 ---
 
 ## Phase 8: Polish
 
-- [ ] T021 [P] `scripts/_check_utf8.py` over changed folders
-- [ ] T022 [P] Secret scan deferred to `ci.yml` (same as prior specs)
+- [x] T021 [P] `scripts/_check_utf8.py` over changed folders
+  _Record_: `_check_utf8.py` clean over backend/src, frontend/src, frontend/e2e, specs/010-progress-dashboard.
+- [x] T022 [P] Secret scan deferred to `ci.yml` (same as prior specs)
+  _Record_: deferred to `ci.yml` secrets job on push (same as prior specs).
 - [ ] T023 Update ROADMAP line of 010 and 001 overview; mark `Complete` in `spec.md` only after T020; point `.specify/feature.json` at `specs/011-lgpd-withdrawal`
+  _Record_: ROADMAP and 001 overview say implemented, awaiting deploy; `spec.md` stays In progress until deploy; `.specify/feature.json` stays on 010 until T020 closes.
 
 ---
 

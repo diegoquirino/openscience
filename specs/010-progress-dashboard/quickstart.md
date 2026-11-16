@@ -17,7 +17,7 @@ docker compose --profile staging down -v
 docker compose --profile staging up --build -d
 ```
 
-Footer / `/api/v1` show `0.10.0+…`. Sign in as administrator (`diegoquirino@gmail.com`; code in
+Footer / `/api/v1` show `0.10.0+â€¦`. Sign in as administrator (`diegoquirino@gmail.com`; code in
 Mailpit at `http://localhost:8025`).
 
 ## 3. Seed labeled data
@@ -27,14 +27,14 @@ Mailpit at `http://localhost:8025`).
    the dashboard shows free, in progress and completed together.
 3. Optionally leave a reservation past `expires_at` (short reservation minutes) to see `expired`.
 
-## 4. Dashboard (US1–US3)
+## 4. Dashboard (US1â€“US3)
 
 On `/admin/dashboard`:
 
 | Check | Expect |
 |---|---|
-| Overall row | First progress row; totals match the sum of system×batch rows |
-| Per system / batch | Items, blocks, role 1 / 2 free·inProgress·completed and percent |
+| Overall row | First progress row; totals match the sum of systemÃ—batch rows |
+| Per system / batch | Items, blocks, role 1 / 2 freeÂ·inProgressÂ·completed and percent |
 | First free | Matches the lowest reclaimable `queue_position` |
 | Reservations | Pseudonym only; draft counts; expired flagged |
 | Participants | Status buckets + skills + completed-by-pseudonym shares |
@@ -48,7 +48,7 @@ On `/admin/dashboard`:
 ## 5. Cross-check (SC-001 / SC-003)
 
 Export the long table (009) and confirm final-response language totals and completed-task counts
-match the dashboard. Task free/inProgress/completed match research §3 against the `task` table.
+match the dashboard. Task free/inProgress/completed match research Â§3 against the `task` table.
 
 ## 6. Playwright
 
@@ -63,4 +63,4 @@ npm run e2e
 1. Push to `Veredito`; wait for `ci.yml`.
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.10.0-1` (**only with the researcher's
    explicit approval**).
-3. Footer shows `0.10.0+…`; admin Dashboard works; participant cannot open it.
+3. Footer shows `0.10.0+â€¦`; admin Dashboard works; participant cannot open it.
