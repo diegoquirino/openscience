@@ -15,7 +15,7 @@ sent to sign-in.
 ## Admin home
 
 - **Participants** list item is enabled and navigates to `/admin/participants`.
-- Remove the �Participants will be available in the next releases� soon message (or retire that
+- Remove the “Participants will be available in the next releases” soon message (or retire that
   unit if unused).
 - Import, Export and Dashboard stay as after 010.
 
@@ -23,8 +23,8 @@ sent to sign-in.
 
 1. On init, resolve `vd:participants` from the entry point (never hardcode the collection path).
 2. Search form: e-mail **or** pseudonym (exactly one field filled per submit).
-3. No match ? localized empty state.
-4. Match ? card with pseudonym, e-mail (if present), preferred language, completed / reserved
+3. No match → localized empty state.
+4. Match → card with pseudonym, e-mail (if present), preferred language, completed / reserved
    summary, and impact counts for discard.
 5. Two confirmation actions: **Anonymize and keep responses** and **Anonymize and discard
    responses**. Each opens a confirm step that shows:

@@ -64,3 +64,6 @@ npm run e2e
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.10.0-1` (**only with the researcher's
    explicit approval**).
 3. Footer shows `0.10.0+…`; admin Dashboard works; participant cannot open it.
+
+**Done (2026-11-16):** `ci.yml` #64 green on `6f17002`; tag `deploy/0.10.0-1`; deploy #13;
+revision `veredito-00013-wpl` at 100%; production `/api/v1` `systemVersion` `0.10.0+6f17002`.

@@ -3,7 +3,7 @@
 **Feature**: `011-lgpd-withdrawal` | **Date**: 2026-11-16 | **Spec**: [spec.md](spec.md)
 
 This research starts from User Story 10 / FR-059 of spec 001, the participant and task model of
-004–007, the wide/long exports of 009 (marker `anonymized`), and the dashboard tallies of 010
+004â€“007, the wide/long exports of 009 (marker `anonymized`), and the dashboard tallies of 010
 (already exclude `anonymized_at IS NOT NULL`).
 
 ## 1. Versions (checked on 2026-11-16)
@@ -20,7 +20,7 @@ No new Maven or npm dependency.
 ## 2. HAL API shape
 
 - **Decision**:
-  - Entry point (admin): `vd:participants` ? `GET /api/v1/participants`.
+  - Entry point (admin): `vd:participants` â†’ `GET /api/v1/participants`.
   - Search: `GET /api/v1/participants?email=` **or** `GET /api/v1/participants?pseudonym=`
     (exactly one of the two query parameters; case-insensitive exact match for e-mail using the
     stored binary collation via normalized lower-case compare in the service, exact match for
@@ -31,7 +31,7 @@ No new Maven or npm dependency.
     audit summary; `Location` points at the (now anonymized) participant.
   - Already anonymized cards omit `vd:anonymize`. Search by a former e-mail finds nothing.
 - **Rationale**: Richardson level 3; one admin screen; matches the disabled Participants entry.
-- **Alternatives considered**: separate keep/discard link relations (two POSTs without a body —
+- **Alternatives considered**: separate keep/discard link relations (two POSTs without a body â€”
   fine, but one relation + option enum matches the confirmation dialog); DELETE of the person
   (would lose the pseudonym link to kept responses).
 
@@ -54,7 +54,7 @@ No new Maven or npm dependency.
      localized confirmation to the current address; on SMTP failure, abort with Problem Details
      and change nothing. If quota is exhausted, skip sending, set `emailSent=false` on the
      result, and continue (edge case in the spec).
-  2. Lock the participant row and every task of that participant (`SELECT … FOR UPDATE` in the
+  2. Lock the participant row and every task of that participant (`SELECT â€¦ FOR UPDATE` in the
      same style as 007) so reserve/save/submit cannot interleave.
   3. Delete draft `response` rows of those tasks; for each `reserved` task, set
      `status='free'`, clear `participant_id` / `reserved_at` / `expires_at` (CHECK of V1).
@@ -68,7 +68,7 @@ No new Maven or npm dependency.
      e-mail (while the address is still known).
   7. Set `name=NULL`, `email=NULL`, `anonymized_at=now` (satisfies
      `ck_participant_anonymization`).
-  8. Insert `withdrawal_log` (see §5).
+  8. Insert `withdrawal_log` (see Â§5).
 - **Rationale**: FR-007 requires the e-mail before erasure; MySQL unique on `email` allows a
   later sign-in with the same address as a new person; 009 already exports `anonymized`.
 - **Alternatives considered**: soft-delete of the whole participant row (breaks kept responses
@@ -79,7 +79,7 @@ No new Maven or npm dependency.
 - **Decision**: Flyway `V7__withdrawal_log.sql` creates table `withdrawal_log`:
   `id`, `occurred_at`, `pseudonym`, `option` (`keep_responses`|`discard_responses`),
   `email_sent` (boolean), `final_responses_discarded`, `tasks_returned`, `participant_id`
-  (nullable FK kept for support; never expose name/email — those columns do not exist here).
+  (nullable FK kept for support; never expose name/email â€” those columns do not exist here).
   No PII columns.
 - **Rationale**: durable, queryable audit without personal data; constitution IV.
 - **Alternatives considered**: application log only (harder to prove SC-001 / audits); storing
@@ -92,12 +92,12 @@ No new Maven or npm dependency.
   participant `preferred_language` (fallback `pt-BR` if null). Body states which option was
   applied, without repeating the e-mail as a retained contact. Count the send toward the same
   rolling 24 h quota as access codes (insert a sentinel `access_code` row **or** a dedicated
-  counter — prefer recording via the existing `access_code` send path only for codes; for
+  counter â€” prefer recording via the existing `access_code` send path only for codes; for
   withdrawal, increment by inserting into a small `email_send_log` **or** reuse counting by
   adding the withdrawal send to a shared counter table). **Pragmatic choice**: introduce column
   usage via existing `access_code` is wrong semantically; instead count withdrawal sends by
   storing `email_sent` only on `withdrawal_log` and extending the quota query to
-  `COUNT(access_code) + COUNT(withdrawal_log WHERE email_sent)` in the rolling window — or
+  `COUNT(access_code) + COUNT(withdrawal_log WHERE email_sent)` in the rolling window â€” or
   simpler: when sending, also insert a row into `access_code` is unacceptable. **Chosen**: add
   table `email_outbox_count` is overkill. Extend `AccessCodeRepository.countAllSince` callers to
   a new `EmailQuotaService` that sums `access_code.created_at` plus
@@ -119,7 +119,7 @@ No new Maven or npm dependency.
 - **Decision**: enable Participants in the admin shell; route `/admin/participants`; search form;
   confirmation dialog with both options, impact counts, preferred language, quota warning, and
   export redo warning; follow `vd:participants` / `vd:anonymize` (never hardcode paths).
-- **Rationale**: US1–US2; constitution V (Material).
+- **Rationale**: US1â€“US2; constitution V (Material).
 
 ## 9. Security
 
@@ -138,4 +138,4 @@ No new Maven or npm dependency.
   quota-exhausted path); update `EntryPointTest` / `AuthorizationTest` /
   `ApiDocumentationCompletenessTest`; Vitest + Playwright for the admin screen; assert wide
   export marker after keep.
-- **Rationale**: SC-001–SC-003; constitution II.
+- **Rationale**: SC-001â€“SC-003; constitution II.

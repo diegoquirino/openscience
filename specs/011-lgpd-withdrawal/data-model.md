@@ -20,8 +20,8 @@ allows multiple NULLs in MySQL.
 
 | Option | `task` | `response` |
 |---|---|---|
-| `keep_responses` | Release `reserved` ? `free`; leave `completed` | Delete drafts; keep finals |
-| `discard_responses` | Release `reserved` and return this participant's `completed` ? `free` (clear holder timestamps; keep `queue_position`) | Delete drafts and finals of this participant |
+| `keep_responses` | Release `reserved` → `free`; leave `completed` | Delete drafts; keep finals |
+| `discard_responses` | Release `reserved` and return this participant's `completed` → `free` (clear holder timestamps; keep `queue_position`) | Delete drafts and finals of this participant |
 
 Other role on the same block is untouched.
 
@@ -50,7 +50,7 @@ No name or e-mail columns. CHECK on `option`.
 ## Validation rules
 
 - Search requires exactly one of `email` or `pseudonym`.
-- `POST �/anonymizations` rejected with `409` if already anonymized.
+- `POST …/anonymizations` rejected with `409` if already anonymized.
 - `option` must be one of the two enums (`400`/`422` otherwise).
 - Withdrawal is atomic with respect to reserve / save / submit (row locks).
 

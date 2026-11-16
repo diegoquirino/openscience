@@ -11,7 +11,7 @@ below is in the OpenAPI group `v1`, tag "Administration", and passes
 
 ## Entry point `GET /api/v1`, administrator links
 
-In addition to the links of 005�010, the administrator receives:
+In addition to the links of 005–010, the administrator receives:
 
 | Relation | Href | When |
 |---|---|---|
@@ -62,12 +62,12 @@ Query: exactly one of:
 
 Rules:
 
-- Zero matches ? `"vd:participant": []` (still `200`).
-- Already anonymized (search by pseudonym) ? card with `anonymizedAt` set, `email` omitted, no
+- Zero matches → `"vd:participant": []` (still `200`).
+- Already anonymized (search by pseudonym) → card with `anonymizedAt` set, `email` omitted, no
   `vd:anonymize`.
 - `reserved` is JSON `null` when the person holds no `status='reserved'` task.
 - `emailCanBeSent` is `false` when the rolling 24 h quota has no remaining slot.
-- Both `email` and `pseudonym`, or neither ? `400` with a validation Problem Details.
+- Both `email` and `pseudonym`, or neither → `400` with a validation Problem Details.
 
 | Error | Status | Type |
 |---|---|---|
@@ -89,7 +89,7 @@ Administrator only. Body:
 
 or `"discard_responses"`.
 
-Behaviour (research �4): attempt confirmation e-mail in `preferredLanguage` before mutating;
+Behaviour (research §4): attempt confirmation e-mail in `preferredLanguage` before mutating;
 then atomic anonymization; write `withdrawal_log`.
 
 `201 Created` with `Location: /api/v1/participants/{id}` and body:

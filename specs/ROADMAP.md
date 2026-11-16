@@ -62,7 +62,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 - **005 and right after it 007.** The import only needs the administrator and creates the blocks. 007 is the riskiest part (concurrency and reservation); the rule for choosing the next block is a function tested in isolation since 003, so the risk is tackled before the rich screen exists. The simple screen avoids waiting for 008.
 - **006 and then 008.** The consent form and the screening only need the participant and complete the eligibility that 007 left open; the item screen only needs sample items and replaces the simple screen of 007.
 - **009 before the launch.** Without export, the collected data does not reach the pipeline. It uses test responses generated in local staging.
-- **010 and 011 after the launch.** The study works without them. 010 can be brought forward if the researcher wants to follow the pilot on the dashboard; 011 must be ready before the first withdrawal request.
+- **010 and 011 after the launch.** The study works without them. 010 can be brought forward if the researcher wants to follow the pilot on the dashboard; 011 must be ready before the first withdrawal request. Both are now complete in production (`deploy/0.10.0-1`, `deploy/0.11.0-1`).
 
 ## Milestones
 
@@ -77,7 +77,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
    - export and run `agreement` and `oracle-disagreements` on the files (spec 009, SC-001);
    - fix and rehearse locally; **recreate the production database empty** (drop and create again the `veredito` database in Cloud SQL) and deploy, so that Flyway prepares it from scratch;
    - switch the study phase to `collection` (spec 005), publish the final consent form, import the real dataset and announce.
-5. **Monitored data collection** (010) and **complete LGPD** (011).
+5. **Monitored data collection** (010) and **complete LGPD** (011), **reached on 2026-11-16**: dashboard live (`deploy/0.10.0-1`); Participants withdrawal keep/discard live (`deploy/0.11.0-1`).
 
 ## Coverage of spec 001
 

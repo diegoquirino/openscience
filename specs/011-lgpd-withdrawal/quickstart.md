@@ -12,14 +12,14 @@
 
 ## 2. Version
 
-Footer / `/api/v1` show `0.11.0+�`. Sign in as administrator (`diegoquirino@gmail.com`; code in
+Footer / `/api/v1` show `0.11.0+…`. Sign in as administrator (`diegoquirino@gmail.com`; code in
 Mailpit in staging).
 
 ## 3. Search
 
 1. Open **Participants**.
-2. Search by the participant e-mail ? card with pseudonym, language, counts.
-3. Search by a wrong e-mail ? empty state.
+2. Search by the participant e-mail → card with pseudonym, language, counts.
+3. Search by a wrong e-mail → empty state.
 4. After anonymization, the same e-mail search finds nothing; pseudonym search shows a read-only
    anonymized card.
 
@@ -49,7 +49,7 @@ operation succeeds; UI warns that mail was not sent; administrator informs the p
 1. CI green on the commit.
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.11.0-1` (**only with the researcher's
    approval**).
-3. Footer shows `0.11.0+?`; admin Participants works; participant cannot open it.
+3. Footer shows `0.11.0+…`; admin Participants works; participant cannot open it.
 
 **Done (2026-11-16):** `ci.yml` #74 green on `060bd1e`; tag `deploy/0.11.0-1`; deploy #14;
 revision `veredito-00014-7tc` at 100%; production `/api/v1` `systemVersion` `0.11.0+060bd1e`.
