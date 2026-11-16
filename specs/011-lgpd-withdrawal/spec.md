@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: In progress
+**Status**: Complete (2026-11-16; production `0.11.0+060bd1e`, tag `deploy/0.11.0-1`)
 
 **Input**: User description: "At a participant's request, the administrator removes their name and e-mail and decides whether the responses stay, anonymized, or are discarded, returning the blocks to the queue." (translated from the original Portuguese)
 

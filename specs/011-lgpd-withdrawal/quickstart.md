@@ -49,4 +49,7 @@ operation succeeds; UI warns that mail was not sent; administrator informs the p
 1. CI green on the commit.
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.11.0-1` (**only with the researcher's
    approval**).
-3. Footer shows `0.11.0+…`; admin Participants works; participant cannot open it.
+3. Footer shows `0.11.0+?`; admin Participants works; participant cannot open it.
+
+**Done (2026-11-16):** `ci.yml` #74 green on `060bd1e`; tag `deploy/0.11.0-1`; deploy #14;
+revision `veredito-00014-7tc` at 100%; production `/api/v1` `systemVersion` `0.11.0+060bd1e`.
