@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: In progress
 
 **Input**: User description: "The item screen shows the edit comfortably (before and after side by side, with the differences highlighted), buttons that open in a modal the full use case in the previous and in the modified version, and the two questions with the explanation of each option."
 
