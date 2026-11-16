@@ -16,7 +16,7 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 4 | [005-block-import](./005-block-import/spec.md) | Import, preview, blocks and queue. **Complete** (2026-11-15) | 004 |
 | 5 | [007-block-queue](./007-block-queue/spec.md) | Request, answer, review and submit blocks; concurrency. **Complete** (2026-11-15; `deploy/0.7.0-1`) | 004, 005 |
 | 6 | [006-consent-screening](./006-consent-screening/spec.md) | Consent form, skill, screening. **Complete** (2026-11-15; `deploy/0.6.0-1`) | 004 |
-| 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions | 003 (sample items from 002) |
+| 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions. **Implemented, awaiting deploy** (`deploy/0.8.0-1`) | 003 (sample items from 002) |
 | 8 | [009-exports](./009-exports/spec.md) | Wide and long tables; pipeline files | 005, 007 |
 | - | **Pilot and launch** | see below | 002 to 009 |
 | 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard | 005, 006, 007 |

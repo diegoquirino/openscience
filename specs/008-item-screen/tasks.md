@@ -63,7 +63,7 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 - [x] T010 [US1] Rebuild `<item>/item.component.ts/html/scss`: progress bar with `ItemProgressComponent` (sticky on narrow screens), header, edit blocks with `<del>`/`<ins>` segments, the "No text difference in this part" note, stacking below 600 px; keep the 007 behavior of draft restore, save, review navigation and expiry warning untouched _Record: item component rebuilt: sticky ItemProgressComponent, header with field and kind labels, del/ins segments, no-difference note, columns stack below 600 px; draft restore, save and expiry untouched_
 - [x] T011 [US1] Update `<item>/item.component.spec.ts` for the new markup: all four kinds, `(none)` for an empty `META` side, the "no text difference" note, `PUT` body identical to 007, counter and countdown still present _Record: item.component.spec.ts: header, MOD marks, ADD, DEL, META with (none), no-difference note, unknown field (11 tests); PUT body test of 007 kept_
 - [x] T012 [US1] Extract and translate the new units (`item.kind.*`, `item.field.*`, `item.block.*`, `item.none`, `item.noDifference`, `item.progress.*`) with `scripts/_add_xlf_units_008.py`; `npm run i18n:check` _Record: scripts/_add_xlf_units_008.py adds 24 units (kinds, fields, blocks, none, no-difference, announcement) and drops 6 obsolete 007 units; i18n:check passes (205 units)_
-- [ ] T013 [US1] Add the Playwright project `item` (after `queue`) and `frontend/e2e/item-screen.spec.ts` for the four kinds on desktop and phone: header, layout per kind, highlighted words, stacked blocks and no horizontal scroll on 360 px
+- [x] T013 [US1] Add the Playwright project `item` (after `queue`) and `frontend/e2e/item-screen.spec.ts` for the four kinds on desktop and phone: header, layout per kind, highlighted words, stacked blocks and no horizontal scroll on 360 px _Record: item project in playwright.config.ts after queue; item-screen.spec.ts checks MOD ADD DEL META on desktop and a 360 px phone context (stacked, no horizontal scroll)_
 
 **Checkpoint**: US1 testable alone (rich edit view, simple questions as in 007)
 
@@ -78,7 +78,7 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 - [x] T014 [P] [US2] Write tests first, then `<item>/usecase-dialog.component.ts`: title pattern, header with progress, lines with indentation and highlight, no marker in the DOM, scroll to the first edited line, localized missing-version message, Close button _Record: usecase-dialog.component (+html, scss) and spec: title pattern, header with counter and countdown, monospaced lines with hanging indent, marker never in the DOM, scroll to first edited line, localized missing-version message, Close button_
 - [x] T015 [US2] Wire the two "View full use case" buttons in the item component (`MatDialog`, full screen below 600 px, restore focus, `Esc`, backdrop); the choices of the item are untouched when it closes; component test that the choices survive open and close _Record: item component opens the dialog with MatDialog (full screen below 600 px, restoreFocus on the clicked button, Esc and backdrop by default); tests that choices are untouched and that the ADD button sits in the first column_
 - [x] T016 [US2] Extract and translate the units of the dialog (`item.usecase.*`, `item.missingUsecase`); `npm run i18n:check` _Record: item.usecase.* and item.missingUsecase units added to pt-BR and es-ES; i18n:check passes (210 units)_
-- [ ] T017 [US2] Playwright: both modals for one item of each `kind` (title with versions, highlighted lines, no marker text, scrolled to the first edited line), closing with Close, `Esc` and a click outside, focus back on the button, choices kept; full-screen dialog on 360 px with wrapped lines keeping the indentation and counter and countdown visible
+- [x] T017 [US2] Playwright: both modals for one item of each `kind` (title with versions, highlighted lines, no marker text, scrolled to the first edited line), closing with Close, `Esc` and a click outside, focus back on the button, choices kept; full-screen dialog on 360 px with wrapped lines keeping the indentation and counter and countdown visible _Record: modals of both sides close by button Esc and outside click; focus returns and choices are kept; phone modal is full screen with counter and timer_
 
 **Checkpoint**: US1 + US2 deliver the edit and its context
 
@@ -92,7 +92,7 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 - [x] T018 [US3] Rebuild the question blocks of `<item>/item.component.html`: statement, radios with the short label, the explanation as `aria-describedby` description, the precedence rule with localized labels; keyboard navigation of radios, buttons and dialogs; component tests that the stored codes and comment are exactly those of 007 for every locale-independent choice _Record: question blocks rebuilt: statements, radios with short labels, explanation linked by aria-describedby, precedence rule with localized labels; component test of explanations, names and precedence; the existing submit test still pins the PUT body of 007_
 - [x] T019 [US3] Extract and translate the units (`item.impact.*`, `item.operation.*`); `npm run i18n:check` _Record: 13 units item.impact.* and item.operation.* added to pt-BR and es-ES, 2 obsolete units removed; i18n:check passes (221 units)_
-- [ ] T020 [US3] Playwright: the impact and operation statements, every option explanation and the precedence rule against `appendix-texts.ts` in one locale, answering both questions and Continue stores the English codes (read back over the API); the radios are still found by their short names
+- [x] T020 [US3] Playwright: the impact and operation statements, every option explanation and the precedence rule against `appendix-texts.ts` in one locale, answering both questions and Continue stores the English codes (read back over the API); the radios are still found by their short names _Record: impact and operation statements, explanations and precedence rule checked against appendix-texts.ts_
 
 **Checkpoint**: US1 to US3 deliver the whole screen in one locale
 
@@ -104,9 +104,9 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 **Independent Test**: one item of each `kind`, an item whose previous version does not exist and a `META` item with an empty side, in each locale; open both modals; language switch with unsaved choices
 
-- [ ] T021 [US4] Playwright (`item-screen.spec.ts`): for pt-BR, en-US and es-ES check labels, titles, buttons, statements, explanations, precedence rule and `(none)` against `appendix-texts.ts`; the system, use case name, `origin`, `target` and use case texts equal the API values in every locale; the stored codes equal across locales
-- [ ] T022 [US4] Playwright: an item whose `target_usecase` is the pipeline text (item response rewritten with `page.route`) shows the localized message in the modal in each locale without highlighting; an unknown `field` shows its original name in every locale
-- [ ] T023 [US4] Adapt `frontend/e2e/queue.spec.ts` and `frontend/e2e/support/participant.ts` to the new screen; the language switch pt-BR → en-US → es-ES keeps restoring the unsaved impact, operation and comment and the reservation
+- [x] T021 [US4] Playwright (`item-screen.spec.ts`): for pt-BR, en-US and es-ES check labels, titles, buttons, statements, explanations, precedence rule and `(none)` against `appendix-texts.ts`; the system, use case name, `origin`, `target` and use case texts equal the API values in every locale; the stored codes equal across locales _Record: same checks in pt-BR en-US and es-ES; same stored codes whichever locale saved_
+- [x] T022 [US4] Playwright: an item whose `target_usecase` is the pipeline text (item response rewritten with `page.route`) shows the localized message in the modal in each locale without highlighting; an unknown `field` shows its original name in every locale _Record: missing use case version and unknown field mocked with page.route show the localized message and the raw field_
+- [x] T023 [US4] Adapt `frontend/e2e/queue.spec.ts` and `frontend/e2e/support/participant.ts` to the new screen; the language switch pt-BR → en-US → es-ES keeps restoring the unsaved impact, operation and comment and the reservation _Record: queue.spec and participant.ts pass unchanged on the new screen; language switch keeps unsaved choices_
 
 **Checkpoint**: all four stories work in the three locales
 
@@ -114,17 +114,17 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 ## Phase 7: Staging rehearsal and deployment
 
-- [ ] T024 Run `.\mvnw.cmd -B verify` in `backend/`; `npm ci`, `npm run i18n:check`, `npm test`, `npm run build` in `frontend/`
-- [ ] T025 Run quickstart sections 2 to 6 against local staging (rebuild the image, `down -v`, `npm run e2e`); record any fix
+- [x] T024 Run `.\mvnw.cmd -B verify` in `backend/`; `npm ci`, `npm run i18n:check`, `npm test`, `npm run build` in `frontend/` _Record: mvnw verify 481 tests green; npm ci, i18n:check (221 units), npm test (196 tests in 34 files) and npm run build green_
+- [x] T025 Run quickstart sections 2 to 6 against local staging (rebuild the image, `down -v`, `npm run e2e`); record any fix _Record: fresh staging (down -v, up) and full npm run e2e: 88 passed, 4 skipped, only cold-start flakes retried; visual check of desktop and 360 px screenshots_
 - [ ] T026 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.8.0-1` **only after the researcher's explicit approval**; quickstart section 8 in production (not part of the implementation run)
 
 ---
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T027 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders
-- [ ] T028 [P] Run secret scanning (`gitleaks`, as in `ci.yml`); no new secrets introduced
-- [ ] T029 Update the ROADMAP line of 008 and the status line of the 001 overview ("implemented, awaiting deploy"); mark `Complete` in `spec.md` only after T026
+- [x] T027 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders _Record: _check_utf8 over specs, frontend, backend, .github and docs: all ok, no U+FFFD_
+- [x] T028 [P] Run secret scanning (`gitleaks`, as in `ci.yml`); no new secrets introduced _Record: gitleaks over HEAD history (89 commits): no leaks found_
+- [x] T029 Update the ROADMAP line of 008 and the status line of the 001 overview ("implemented, awaiting deploy"); mark `Complete` in `spec.md` only after T026 _Record: ROADMAP and 001 overview say implemented, awaiting deploy; spec.md stays In progress until deploy_
 
 ---
 

@@ -106,13 +106,12 @@ New units in `messages.pt-BR.xlf` and `messages.es-ES.xlf` (checked by `npm run 
 |---|---|
 | `item.kind.*`, `item.field.*` | Appendix A labels (4 kinds, 11 fields) |
 | `item.block.*` | "Before", "After", "Added text", "Removed text", "<field>: before", "<field>: after" |
-| `item.usecase.*` | Button text with version, modal titles, "Close", missing-version message |
+| `item.usecase.*` | Button text with version, the two modal titles, "Close" |
+| `item.missingUsecase` | Missing-version message |
 | `item.none`, `item.noDifference` | "(none)" and "No text difference in this part" |
-| `item.impact.*`, `item.operation.*` | Statements, explanations, precedence rule (Appendices B.1, B.2) |
-| `item.progress.*` | Counter, "Time left", the last-2-minutes announcement |
+| `item.impact.*`, `item.operation.*` | Statements (`.question`), explanations (`.LOW`, `.KEEP`, ...) and the precedence sentence (`item.operation.precedence`) of Appendices B.1 and B.2 |
+| `item.progress.lowTime` | The last-2-minutes announcement; the counter and "Time left" keep the ids `label.item.counter` and `label.item.timeLeft` of 007, and the header keeps `label.item.system` and `label.item.usecase` |
 
 ## Stable hooks for tests
 
-`.counter`, `[role=timer]`, `.header`, `.edit .block` (with `data-side="origin|target"`),
-`button.open-usecase` (with `data-side`), `.dialog-title`, `.usecase-line`, `.usecase-line.edited`,
-`.no-difference`, `.missing-usecase`, `.precedence`.
+`.counter`, `[role=timer]`, `.location`, `.system`, `.uc`, `.column[data-side=origin|target]` with `.block`, `.block-title` and `.text`, `button.open-usecase`, `.no-difference`, `.impact` and `.operation` fieldsets (`#impact-<CODE>`, `#operation-<CODE>` explanations), `.precedence .intro` and `.precedence .order`; in the dialog `.dialog-title`, `.body`, `.usecase-line` (`.edited`), `.missing-usecase`.
