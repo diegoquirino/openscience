@@ -25,7 +25,7 @@ class FixtureLocationTest {
 
         assertThat(migration).containsExactly(
                 "V1__create_schema.sql", "V2__insert_default_config.sql", "V3__access.sql",
-                "V4__import_preview.sql", "V5__task_queue_lookup.sql");
+                "V4__import_preview.sql", "V5__task_queue_lookup.sql", "V7__withdrawal_log.sql");
         assertThat(staging).containsExactly("V6__consent_form_fixture.sql");
         for (Resource resource : resolver.getResources("classpath*:db/migration/*.sql")) {
             assertThat(new String(resource.getContentAsByteArray(), java.nio.charset.StandardCharsets.UTF_8))
