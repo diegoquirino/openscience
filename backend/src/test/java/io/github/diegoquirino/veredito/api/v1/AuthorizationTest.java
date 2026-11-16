@@ -80,6 +80,18 @@ class AuthorizationTest extends ApiTestBase {
     }
 
     @Test
+    void theOperationsOfSpec009AreTaggedAdministration() {
+        List<String> operations = operationsTagged("Administration").stream().map(Operation::toString).toList();
+        assertThat(operations).contains(
+                "GET /api/v1/exports",
+                "GET /api/v1/exports/wide",
+                "GET /api/v1/exports/long",
+                "GET /api/v1/exports/completo",
+                "GET /api/v1/exports/rater1",
+                "GET /api/v1/exports/rater2");
+    }
+
+    @Test
     void participantAndTaskOperationsRefuseTheAdministrator() {
         List<Operation> operations = new ArrayList<>();
         operations.addAll(operationsTagged("Participation"));

@@ -27,7 +27,8 @@ public class SecurityConfig {
     /** Administrative resources; later specs add the paths of their "Administration" operations here. */
     public static final RequestMatcher ADMINISTRATION = new OrRequestMatcher(
             PathPatternRequestMatcher.withDefaults().matcher("/api/v1/administrator/**"),
-            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/batches/**"));
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/batches/**"),
+            PathPatternRequestMatcher.withDefaults().matcher("/api/v1/exports/**"));
 
     @Bean
     public SecurityFilterChain securityFilterChain(

@@ -37,6 +37,7 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
     private static final List<String> ACCESS_PROBLEMS = List.of(
             "code-resend-too-soon", "code-hourly-limit", "daily-email-limit", "code-not-sent", "invalid-code",
             "code-expired");
+    private static final List<String> EXPORT_PROBLEMS = List.of("system-not-found");
     private static final List<String> IMPORT_PROBLEMS = List.of(
             "csv-not-utf8", "csv-invalid", "csv-missing-column", "minitest-only", "preview-not-found");
 
@@ -71,6 +72,10 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
         return IMPORT_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
     }
 
+    static Stream<Arguments> exportProblems() {
+        return EXPORT_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
+    }
+
     static Stream<Arguments> onboardingProblems() {
         return ONBOARDING_PROBLEMS.stream().flatMap(slug -> HEADERS.stream().map(header -> Arguments.of(slug, header)));
     }
@@ -103,6 +108,12 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
         assertLocalized(slug, acceptLanguage, provokeImport(slug, acceptLanguage));
     }
 
+    @ParameterizedTest(name = "{0} with Accept-Language {1}")
+    @MethodSource("exportProblems")
+    void exportProblemsAreLocalized(String slug, String acceptLanguage) {
+        assertLocalized(slug, acceptLanguage, provokeExport(slug, acceptLanguage));
+    }
+
     private void assertLocalized(String slug, String acceptLanguage, Response response) {
         String expectedLocale = NO_HEADER.equals(acceptLanguage) ? "pt-BR" : acceptLanguage;
         Properties texts = Bundles.load(Bundles.fileOf(expectedLocale));
@@ -112,6 +123,7 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
             case "invalid-code" -> new Object[] {response.<Integer>path("attemptsLeft")};
             case "csv-missing-column" -> new Object[] {response.<String>path("column")};
             case "minitest-only" -> new Object[] {String.join(", ", response.<List<String>>path("systems"))};
+            case "system-not-found" -> new Object[] {response.<String>path("system")};
             default -> new Object[0];
         };
 
@@ -148,6 +160,16 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
                 yield postSignIn(acceptLanguage, email, "abcdef");
             }
             case "code-expired" -> postSignIn(acceptLanguage, email, "123456");
+            default -> throw new IllegalArgumentException(slug);
+        };
+    }
+
+    /** Spec 009: the administrator asks for the files of a system that has no item. */
+    private Response provokeExport(String slug, String acceptLanguage) {
+        return switch (slug) {
+            case "system-not-found" -> localized(acceptLanguage)
+                    .cookie(io.github.diegoquirino.veredito.web.CurrentSession.COOKIE, administratorSession())
+                    .get("/api/v1/exports/rater1?system=no-such-system");
             default -> throw new IllegalArgumentException(slug);
         };
     }

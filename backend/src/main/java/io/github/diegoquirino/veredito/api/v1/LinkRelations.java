@@ -79,14 +79,32 @@ public final class LinkRelations {
     public static final Relation SCREENING_EXAMPLE = new Relation(
             "screening-example", "The fixed English use case and test case shown before the screening question.",
             HttpMethod.GET, "/swagger-ui.html#/Participation");
-
+    public static final Relation EXPORTS = new Relation(
+            "exports", "Index of the CSV exports: the systems and every download link.", HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
+    public static final Relation EXPORT_WIDE = new Relation(
+            "export-wide", "Download the wide table: one row per item with both raters (CSV).", HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
+    public static final Relation EXPORT_LONG = new Relation(
+            "export-long", "Download the pseudonymized long table: one row per final response (CSV).",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation EXPORT_COMPLETO = new Relation(
+            "export-completo", "Download the filled oracle of one system (veredito_<system>_completo.csv).",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation EXPORT_RATER1 = new Relation(
+            "export-rater1", "Download the pipeline file of rater 1 for one system (t1_<system>_rater1.csv).",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
+    public static final Relation EXPORT_RATER2 = new Relation(
+            "export-rater2", "Download the pipeline file of rater 2 for one system (t1_<system>_rater2.csv).",
+            HttpMethod.GET, "/swagger-ui.html#/Administration");
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
         for (Relation relation : new Relation[] {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
             NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, ONBOARDING, CONSENT_FORM, CONSENT_TEXT, CONSENT, SKILL,
-            SCREENING, SCREENING_EXAMPLE
+            SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG, EXPORT_COMPLETO, EXPORT_RATER1,
+            EXPORT_RATER2
         }) {
             BY_NAME.put(relation.name(), relation);
         }

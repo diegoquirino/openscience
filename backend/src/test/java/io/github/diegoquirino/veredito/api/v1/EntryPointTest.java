@@ -89,7 +89,7 @@ class EntryPointTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
                         "self", "curies", "vd:session", "vd:me", "vd:sign-out",
-                        "vd:batches", "vd:request-preview", "vd:study-phase"))
+                        "vd:batches", "vd:request-preview", "vd:exports", "vd:study-phase"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"))
                 .body("_links.'vd:batches'.href", equalTo("/api/v1/batches"))
                 .body("_links.'vd:request-preview'.href", equalTo("/api/v1/batches/previews"))
@@ -109,7 +109,7 @@ class EntryPointTest extends ApiTestBase {
     @ValueSource(strings = {
             "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm",
             "next-task", "reserve", "save-response", "submit", "items", "review", "onboarding", "consent-form",
-            "consent-text", "consent", "skill", "screening", "screening-example"
+            "consent-text", "consent", "skill", "screening", "screening-example", "exports", "export-wide", "export-long",
     })
     void curieDocumentsTheAccessRelations(String rel) {
         request().get("/api/v1/rels/" + rel)
