@@ -6,16 +6,16 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 **Input**: documents in `specs/010-progress-dashboard/` (plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md)
 
-**Prerequisites**: specs 005ñ009 complete; Docker Desktop running; JDK 25; Minitest CSV available
+**Prerequisites**: specs 005‚Äì009 complete; Docker Desktop running; JDK 25; Minitest CSV available
 
 **Tests**: included (domain, REST Assured, Vitest, Playwright). SC-001/SC-003 in API tests; SC-002 measured or recorded in staging/CI.
 
-**Organization**: foundation first; then US1ñUS3 on one snapshot resource; admin UI; staging/CI; polish. Deploy only with explicit approval.
+**Organization**: foundation first; then US1‚ÄìUS3 on one snapshot resource; admin UI; staging/CI; polish. Deploy only with explicit approval.
 
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: can run in parallel
-- **[Story]**: US1ñUS3
+- **[Story]**: US1‚ÄìUS3
 - Paths relative to `Veredito/`
 - `<pkg>` = `backend/src/main/java/io/github/diegoquirino/veredito`
 - `<tpkg>` = `backend/src/test/java/io/github/diegoquirino/veredito`
@@ -28,8 +28,10 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 ## Phase 1: Setup
 
-- [ ] T001 Update `backend/pom.xml` to `0.10.0`; `frontend/package.json` / `package-lock.json` to `0.10.0`; `VEREDITO_VERSION` defaults in `compose.yaml`, `Dockerfile`, `SystemVersion.FALLBACK`, `write-build-info.mjs` (and OpenAPI example if present) to `0.10.0+dev`
-- [ ] T002 Set `Status` of `specs/010-progress-dashboard/spec.md` to "In progress" (`Complete` only after production deploy); update ROADMAP line of 010 to In progress
+- [x] T001 Update `backend/pom.xml` to `0.10.0`; `frontend/package.json` / `package-lock.json` to `0.10.0`; `VEREDITO_VERSION` defaults in `compose.yaml`, `Dockerfile`, `SystemVersion.FALLBACK`, `write-build-info.mjs` (and OpenAPI example if present) to `0.10.0+dev`
+  _Record_: pom, package.json/lock, compose, Dockerfile, `SystemVersion.FALLBACK`, `write-build-info.mjs` and the OpenAPI example at `0.10.0`.
+- [x] T002 Set `Status` of `specs/010-progress-dashboard/spec.md` to "In progress" (`Complete` only after production deploy); update ROADMAP line of 010 to In progress
+  _Record_: `spec.md` Status is "In progress"; ROADMAP line of 010 says In progress (0.10.0).
 
 ---
 
@@ -37,17 +39,17 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 **CRITICAL**: stories share one snapshot resource; domain + HAL wiring first
 
-- [ ] T003 [P] Domain tests then `<pkg>/domain/dashboard/` helpers: task-bucket classification (free / inProgress / completed per research ß3), `completedPercent`, first-free queue position
-- [ ] T004 [P] Domain tests then participant status buckets (research ß5), language tallies (always three locales), e-mail remaining / `lowRemaining`
+- [ ] T003 [P] Domain tests then `<pkg>/domain/dashboard/` helpers: task-bucket classification (free / inProgress / completed per research ¬ß3), `completedPercent`, first-free queue position
+- [ ] T004 [P] Domain tests then participant status buckets (research ¬ß5), language tallies (always three locales), e-mail remaining / `lowRemaining`
 - [ ] T005 Add `LinkRelations.DASHBOARD`; document at `/api/v1/rels/dashboard`
-- [ ] T006 Emit `vd:dashboard` for administrators on `GET /api/v1`; update OpenAPI description that still says ìlater releasesî; update `EntryPointTest`
+- [ ] T006 Emit `vd:dashboard` for administrators on `GET /api/v1`; update OpenAPI description that still says ‚Äúlater releases‚Äù; update `EntryPointTest`
 - [ ] T007 Add `/api/v1/dashboard/**` to `SecurityConfig.ADMINISTRATION`
 
 **Checkpoint**: entry point offers `vd:dashboard`; domain rules green
 
 ---
 
-## Phase 3: User Story 1 ó Queue progress (P1)
+## Phase 3: User Story 1 ‚Äî Queue progress (P1)
 
 - [ ] T008 [US1] Failing `<tpkg>/api/v1/DashboardTest`: overall + per system/batch progress; role buckets; `firstFreeQueuePosition`; admin only; empty study zeros + `vd:batches`
 - [ ] T009 [US1] `DashboardQuery` + `DashboardService` + `DashboardController` `GET /api/v1/dashboard` returning progress section (HAL model); OpenAPI Administration tag
@@ -57,7 +59,7 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 ---
 
-## Phase 4: User Story 2 ó Reservations (P2)
+## Phase 4: User Story 2 ‚Äî Reservations (P2)
 
 - [ ] T011 [US2] Extend `DashboardTest`: reserved list with pseudonym, block, role, draftCount, expiresAt, expired flag; no name/email fields in JSON
 - [ ] T012 [US2] Query + map reservations into the snapshot (ordered by `expires_at`)
@@ -66,7 +68,7 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 ---
 
-## Phase 5: User Story 3 ó Participants, languages, quota (P2)
+## Phase 5: User Story 3 ‚Äî Participants, languages, quota (P2)
 
 - [ ] T013 [US3] Extend `DashboardTest`: status buckets, bySkill, completedByPseudonym shares, languages (zeros included), emailQuota; SC-003 vs final-response language counts
 - [ ] T014 [US3] Query + map participants / languages / emailQuota into the snapshot (`AccessCodeRepository` + `ConfigRepository`)
@@ -86,8 +88,8 @@ description: "Tasks of spec 010: data collection progress dashboard"
 ## Phase 7: Staging and deployment
 
 - [ ] T018 Run `mvnw verify`; frontend `i18n:check`, `test`, `build`
-- [ ] T019 Quickstart sections 2ñ6 against staging; record SC-002 timing if measured
-- [ ] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart ß7 in production
+- [ ] T019 Quickstart sections 2‚Äì6 against staging; record SC-002 timing if measured
+- [ ] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart ¬ß7 in production
 
 ---
 
@@ -101,16 +103,16 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 ## Dependencies
 
-- Phase 2 before US1ñUS3
-- US1 controller/service before US2ñUS3 fields (same resource)
+- Phase 2 before US1‚ÄìUS3
+- US1 controller/service before US2‚ÄìUS3 fields (same resource)
 - UI after snapshot covers US1 at least (prefer full snapshot)
 - T020 last for Complete status
 
 ## Parallel opportunities
 
-- T003ñT004; T005ñT007 after domain starts
+- T003‚ÄìT004; T005‚ÄìT007 after domain starts
 - T015 can start once T006 exists (stub empty UI), but prefer after T014
-- T021ñT022
+- T021‚ÄìT022
 
 ## Implementation strategy
 

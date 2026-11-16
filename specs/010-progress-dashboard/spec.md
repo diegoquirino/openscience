@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Draft
+**Status**: In progress
 
 **Input**: User description: "The administrator follows, per system and per batch, how many tasks are free, in progress and completed, the reservations in progress, the participant totals by status and by skill, and the e-mail quota left for the day." (translated from the original Portuguese)
 
