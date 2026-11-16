@@ -178,7 +178,7 @@ The participant labels in pt-BR, en-US or es-ES and can switch language in the m
 ## Assumptions
 
 - The rule for choosing the next task is tested in isolation with queue scenarios (spec 003, FR-008) before going live.
-- The item screen of this spec is deliberately simple; spec 008 replaces it without changing what is stored.
+- The item screen of this spec was deliberately simple; spec 008 replaced it without changing what is stored.
 - Eligibility (FR-012) lives in a single backend gate. This spec shipped first with an always-true stub; spec 006 replaced that stub with the real rule (current consent form accepted and screening passed). Refusal-by-eligibility scenarios are covered in 006.
 - In staging, the reservation time can be reduced to test the expiry.
 - The interface language is chosen before sign-in and changed in the header (spec 004); switching language reloads the page, as there is one build per locale.

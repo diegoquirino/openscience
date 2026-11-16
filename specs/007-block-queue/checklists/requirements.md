@@ -31,7 +31,7 @@
 
 ## Notes
 
-- The simple item screen is an intentional scope choice, so as not to depend on spec 008.
+- The simple item screen was an intentional scope choice so 007 did not depend on spec 008 (008 later replaced it).
 - The codes `LOW`, `HIGH`, `KEEP` etc. are the oracle vocabulary, not an implementation detail.
 - The REST paths, link relations and JSON fields of FR-018 only fix the names set by the glossary ([GLOSSARY](../../GLOSSARY.md)), which the constitution requires for the REST API; they do not prescribe the implementation.
 - Validated on 2026-11-10; ready for `/speckit-plan`.

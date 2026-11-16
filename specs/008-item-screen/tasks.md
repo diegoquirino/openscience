@@ -32,7 +32,7 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 **Purpose**: version bump and status
 
 - [x] T001 Update `backend/pom.xml` to version `0.8.0` (research section 1; no new Maven or npm dependency). Update `frontend/package.json` / `package-lock.json` to `0.8.0`; default `VEREDITO_VERSION` in `compose.yaml`, `SystemVersion.FALLBACK` (and the example in `EntryPointController`), `Dockerfile` and `frontend/scripts/write-build-info.mjs` to `0.8.0+dev` _Record: version 0.8.0 in pom, package.json/lock, compose, Dockerfile, SystemVersion, EntryPointController example, write-build-info_
-- [x] T002 Set `Status` of `specs/008-item-screen/spec.md` to "In progress" (stays so until the production deploy; `Complete` only after it) _Record: spec.md Status is "In progress"_
+- [x] T002 Set `Status` of `specs/008-item-screen/spec.md` to "In progress" (stays so until the production deploy; `Complete` only after it) _Record: was In progress during implementation; Complete after T026 (`deploy/0.8.0-1`)_
 
 ---
 

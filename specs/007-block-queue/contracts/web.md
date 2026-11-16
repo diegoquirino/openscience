@@ -15,7 +15,7 @@
 
 Guards: same as `/welcome` in 004 (administrator ? `/admin`, visitor ? `/participate`).
 
-## Item screen (simple; replaced by 008 later)
+## Item screen (simple; replaced by 008)
 
 | Element | Rule |
 |---|---|

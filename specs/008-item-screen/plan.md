@@ -6,7 +6,7 @@
 
 ## Summary
 
-Spec 008 replaces the deliberately simple item screen of spec 007 with the rich screen of User
+Spec 008 replaced the deliberately simple item screen of spec 007 with the rich screen of User
 Story 4 of spec 001. It is a **front-end only** change: the item API, the draft/submit API and the
 stored codes of 007 do not change (FR-005); there is no new table, column, endpoint or Problem
 Details type.

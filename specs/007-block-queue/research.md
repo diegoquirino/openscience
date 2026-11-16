@@ -139,9 +139,9 @@ only when a later reserve would succeed.
 
 ## 11. Simple item screen vs 008
 
-- **Decision**: 007 ships a minimal item view: system, use case, `kind`, `field`, `origin`,
+- **Decision**: 007 shipped a minimal item view: system, use case, `kind`, `field`, `origin`,
   `target` (preserving line breaks), impact radios, operation radios, comment, counter, countdown.
-  No use-case modal, no Appendix B explanations beyond short option labels. Spec 008 replaces the
-  component without changing request/response JSON.
+  No use-case modal, no Appendix B explanations beyond short option labels. Spec 008 (Complete,
+  `deploy/0.8.0-1`) replaced the component without changing request/response JSON.
 - **Rationale**: ROADMAP risk order; Assumption of the spec.
-- **Alternatives considered**: implementing the rich screen now (blocks 007 on 008 scope).
+- **Alternatives considered**: implementing the rich screen in 007 (would have blocked 007 on 008 scope).

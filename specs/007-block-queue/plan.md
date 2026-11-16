@@ -19,9 +19,9 @@ Spec 007 opens the participant labeling loop on top of the access layer of 004 a
   complete. Idempotent retries never duplicate rows.
 - **UI:** a deliberately simple item / review / done flow under `/label/*`, with a countdown derived
   from `reservationExpiresAt` and the response `Date` header (device clock corrected). Spec 008
-  will replace the item layout without changing what is stored.
-- **Eligibility:** a single backend gate; until 006 exists it accepts every participant with a
-  session (Assumption).
+  later replaced the item layout without changing what is stored.
+- **Eligibility:** a single backend gate; until 006 existed it accepted every participant with a
+  session (Assumption; 006 replaced the stub).
 
 No new domain tables: `task` and `response` already exist in `V1`. Decisions are in
 [research.md](research.md).
