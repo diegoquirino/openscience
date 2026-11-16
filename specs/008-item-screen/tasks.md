@@ -116,8 +116,8 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 - [x] T024 Run `.\mvnw.cmd -B verify` in `backend/`; `npm ci`, `npm run i18n:check`, `npm test`, `npm run build` in `frontend/` _Record: mvnw verify 481 tests green; npm ci, i18n:check (221 units), npm test (196 tests in 34 files) and npm run build green_
 - [x] T025 Run quickstart sections 2 to 6 against local staging (rebuild the image, `down -v`, `npm run e2e`); record any fix _Record: fresh staging (down -v, up) and full npm run e2e: 88 passed, 4 skipped, only cold-start flakes retried; visual check of desktop and 360 px screenshots_
-- [ ] T026 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.8.0-1` **only after the researcher's explicit approval**; quickstart section 8 in production (not part of the implementation run)
-  **Record (2026-11-15):** pushed through `3e8137c` (implementation) and `c1ea8f3` (ROADMAP prose). `ci.yml` green on `3e8137c` ([43782846083](https://github.com/diegoquirino/openscience/actions/runs/43782846083); backend, frontend, secrets, image, e2e). Deploy `deploy/0.8.0-1` still awaits explicit researcher approval.
+- [x] T026 Push to `Veredito`; wait for `ci.yml`; deploy `deploy/0.8.0-1` **only after the researcher's explicit approval**; quickstart section 8 in production (not part of the implementation run)
+  **Record (2026-11-15):** researcher authorized deploy. `ci.yml` green on `3e8137c` ([43782846083](https://github.com/diegoquirino/openscience/actions/runs/43782846083)). Tag `deploy/0.8.0-1` on `3e8137c`; deploy [#10](https://github.com/diegoquirino/openscience/actions/workflows/deploy.yml) succeeded (1m 5s). Revision `veredito-00011-swt` takes 100% of the traffic. Production `/api/v1` `systemVersion` `0.8.0+3e8137c`.
 
 ---
 
@@ -125,7 +125,8 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 - [x] T027 [P] Run `scripts/_check_utf8.py` over the changed Veredito folders _Record: _check_utf8 over specs, frontend, backend, .github and docs: all ok, no U+FFFD_
 - [x] T028 [P] Run secret scanning (`gitleaks`, as in `ci.yml`); no new secrets introduced _Record: gitleaks over HEAD history (89 commits): no leaks found_
-- [x] T029 Update the ROADMAP line of 008 and the status line of the 001 overview ("implemented, awaiting deploy"); mark `Complete` in `spec.md` only after T026 _Record: ROADMAP and 001 overview say implemented, awaiting deploy; spec.md stays In progress until deploy_
+- [x] T029 Update the ROADMAP line of 008 and the status line of the 001 overview ("implemented, awaiting deploy"); mark `Complete` in `spec.md` only after T026
+  **Record (2026-11-15):** after T026, `spec.md` Complete (`deploy/0.8.0-1`); ROADMAP 008 Complete; 001 overview → 002–008 complete, 009 next; `.specify/feature.json` → `specs/009-exports`.
 
 ---
 

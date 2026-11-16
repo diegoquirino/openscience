@@ -88,3 +88,7 @@ least 80%).
 2. Deploy: `git push origin <commit>:refs/tags/deploy/0.8.0-1` (**only with the researcher's explicit
    approval**).
 3. A participant labels one block in each locale; the footer shows `0.8.0+…`.
+
+**Done (2026-11-15):** tag `deploy/0.8.0-1` on `3e8137c`; revision `veredito-00011-swt`;
+production footer / `/api/v1` `systemVersion` `0.8.0+3e8137c`. Full participant labeling in each
+locale in production still needs a published CEP consent form (see spec 006).

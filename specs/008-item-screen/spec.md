@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: In progress
+**Status**: Complete (2026-11-15; production `0.8.0+3e8137c`, tag `deploy/0.8.0-1`)
 
 **Input**: User description: "The item screen shows the edit comfortably (before and after side by side, with the differences highlighted), buttons that open in a modal the full use case in the previous and in the modified version, and the two questions with the explanation of each option."
 

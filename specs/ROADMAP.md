@@ -16,13 +16,13 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 4 | [005-block-import](./005-block-import/spec.md) | Import, preview, blocks and queue. **Complete** (2026-11-15) | 004 |
 | 5 | [007-block-queue](./007-block-queue/spec.md) | Request, answer, review and submit blocks; concurrency. **Complete** (2026-11-15; `deploy/0.7.0-1`) | 004, 005 |
 | 6 | [006-consent-screening](./006-consent-screening/spec.md) | Consent form, skill, screening. **Complete** (2026-11-15; `deploy/0.6.0-1`) | 004 |
-| 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions. **Implemented, awaiting deploy** (`deploy/0.8.0-1`) | 003 (sample items from 002) |
+| 7 | [008-item-screen](./008-item-screen/spec.md) | Differences, use-case modals, explained questions. **Complete** (2026-11-15; `deploy/0.8.0-1`) | 003 (sample items from 002) |
 | 8 | [009-exports](./009-exports/spec.md) | Wide and long tables; pipeline files | 005, 007 |
 | - | **Pilot and launch** | see below | 002 to 009 |
 | 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard | 005, 006, 007 |
 | 10 | [011-lgpd-withdrawal](./011-lgpd-withdrawal/spec.md) | Anonymization and disposal | 007, 009 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaces the simple item screen of 007 without changing what is stored (production deploy of 008 may still be pending).
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored.
 
 ```mermaid
 flowchart LR
@@ -68,7 +68,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 
 1. **Foundation online** (002 and 003), **reached on 2026-11-13**: fixed URL on Google Cloud, database prepared, local staging starting with one command, Minitest CSV generated, UI built in pt-BR, en-US and es-ES.
 2. **Access** (004), **reached on 2026-11-14**: anyone chooses the language and signs in; the administrator sees their own area.
-3. **Ready for data labeling** (005, 007, 006 and 008): complete volunteer flow.
+3. **Ready for data labeling** (005, 007, 006 and 008), **reached on 2026-11-15**: complete volunteer flow (CEP consent form still required in production before real participants).
 4. **Pilot** (009 ready):
    - in local staging, run the test with 30 simultaneous participants (spec 007, SC-001, automated test) and a complete flow with a reduced reservation time;
    - deploy to production (phase `pilot`, which only accepts Minitest), import Minitest and invite 3 to 5 colleagues, warning them that the pilot responses will be discarded;
