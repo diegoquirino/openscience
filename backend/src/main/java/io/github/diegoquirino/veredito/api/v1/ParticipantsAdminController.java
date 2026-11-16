@@ -57,7 +57,30 @@ public class ParticipantsAdminController {
             description = "Search result (possibly empty)",
             content = @Content(
                     mediaType = HAL_FORMS,
-                    schema = @Schema(implementation = ParticipantSearchModel.class)))
+                    schema = @Schema(implementation = ParticipantSearchModel.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "participants": [
+                                {
+                                  "id": 12,
+                                  "pseudonym": "R-0007",
+                                  "email": "ana@example.com",
+                                  "preferredLanguage": "es-ES",
+                                  "anonymizedAt": null,
+                                  "completedTasks": 2,
+                                  "reserved": null,
+                                  "finalResponseCount": 20,
+                                  "draftResponseCount": 0,
+                                  "tasksReturnableOnDiscard": 2,
+                                  "emailCanBeSent": true,
+                                  "_links": {
+                                    "self": { "href": "/api/v1/participants/12" },
+                                    "vd:anonymize": { "href": "/api/v1/participants/12/anonymizations" }
+                                  }
+                                }
+                              ],
+                              "_links": { "self": { "href": "/api/v1/participants?email=ana%40example.com" } }
+                            }""")))
     @ApiResponse(
             responseCode = "400",
             description = "Neither or both of email and pseudonym",
@@ -79,12 +102,35 @@ public class ParticipantsAdminController {
     }
 
     @GetMapping(path = "/{id}", version = "v1")
-    @Operation(summary = "Read one participant card for withdrawal")
+    @Operation(
+            summary = "Read one participant card for withdrawal",
+            description = """
+                    The same card shape as an item of the search collection: impact counts, preferred \
+                    language, e-mail quota flag and vd:anonymize while the person is not yet anonymized.""")
     @ApiResponse(
             responseCode = "200",
+            description = "Participant card",
             content = @Content(
                     mediaType = HAL_FORMS,
-                    schema = @Schema(implementation = ParticipantCardModel.class)))
+                    schema = @Schema(implementation = ParticipantCardModel.class),
+                    examples = @ExampleObject(value = """
+                            {
+                              "id": 12,
+                              "pseudonym": "R-0007",
+                              "email": "ana@example.com",
+                              "preferredLanguage": "es-ES",
+                              "anonymizedAt": null,
+                              "completedTasks": 2,
+                              "reserved": null,
+                              "finalResponseCount": 20,
+                              "draftResponseCount": 0,
+                              "tasksReturnableOnDiscard": 2,
+                              "emailCanBeSent": true,
+                              "_links": {
+                                "self": { "href": "/api/v1/participants/12" },
+                                "vd:anonymize": { "href": "/api/v1/participants/12/anonymizations" }
+                              }
+                            }""")))
     @ApiResponse(
             responseCode = "404",
             content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
