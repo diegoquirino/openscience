@@ -91,15 +91,19 @@ description: "Tasks of spec 010: data collection progress dashboard"
 
 ## Phase 6: Admin UI
 
-- [ ] T015 Enable Dashboard link on admin home; update `@@admin.soon` to participants only; route `/admin/dashboard`
-- [ ] T016 Build `<app>/admin/dashboard/` (follow `vd:dashboard`, four panels, Refresh, empty?Import, low-remaining highlight, expired label); XLIFF three locales; Vitest
-- [ ] T017 Playwright: admin opens dashboard after import; participant has no dashboard
+- [x] T015 Enable Dashboard link on admin home; update `@@admin.soon` to participants only; route `/admin/dashboard`
+  _Record_: Dashboard is a link to `/admin/dashboard`; `admin.soon` mentions only participants in en-US, pt-BR and es-ES.
+- [x] T016 Build `<app>/admin/dashboard/` (follow `vd:dashboard`, four panels, Refresh, empty?Import, low-remaining highlight, expired label); XLIFF three locales; Vitest
+  _Record_: `frontend/src/app/admin/dashboard/` (service follows `vd:dashboard`, four panels, Refresh, empty state with Import, low-quota highlight, Expired label); XLIFF pt-BR/es-ES; Vitest 216/216; `npm run i18n:check` and `npm run build` green.
+- [x] T017 Playwright: admin opens dashboard after import; participant has no dashboard
+  _Record_: `e2e/admin.spec.ts`: administrator opens the dashboard after import and refreshes; participant has no link and is sent to consent; visitor is sent to sign-in. Written but not run here (needs the staging stack).
 
 ---
 
 ## Phase 7: Staging and deployment
 
-- [ ] T018 Run `mvnw verify`; frontend `i18n:check`, `test`, `build`
+- [x] T018 Run `mvnw verify`; frontend `i18n:check`, `test`, `build`
+  _Record_: Backend: `DashboardRulesTest`, `DashboardTest`, `EntryPointTest`, `AuthorizationTest`, `ApiDocumentationCompletenessTest`, `SecurityRulesTest` green (110 tests). Full `mvnw verify` not run. Frontend: `i18n:check`, `test`, `build` green.
 - [ ] T019 Quickstart sections 2–6 against staging; record SC-002 timing if measured
 - [ ] T020 Push `Veredito`; wait for `ci.yml`; deploy `deploy/0.10.0-1` **only after explicit researcher approval**; quickstart §7 in production
 

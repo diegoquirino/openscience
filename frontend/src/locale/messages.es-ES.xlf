@@ -165,8 +165,308 @@
     </unit>
     <unit id="admin.soon">
       <segment>
-        <source>Dashboard and participants will be available in the next releases.</source>
-        <target>Panel y participantes estarán disponibles en las próximas versiones.</target>
+        <source>Participants will be available in the next releases.</source>
+        <target>Los participantes estarán disponibles en próximas versiones.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.back">
+      <segment>
+        <source>Back to administration</source>
+        <target>Volver a la administración</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.title">
+      <segment>
+        <source>Dashboard</source>
+        <target>Panel de avance</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.intro">
+      <segment>
+        <source>Progress of the data collection. The numbers are read-only and never show a name or an e-mail; participants appear by pseudonym.</source>
+        <target>Avance de la recolección de datos. Los números son de solo lectura y nunca muestran un nombre ni un correo electrónico; los participantes aparecen por seudónimo.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.refresh">
+      <segment>
+        <source>Refresh</source>
+        <target>Actualizar</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.generatedAt">
+      <segment>
+        <source>Updated at <ph id="0" equiv="INTERPOLATION" disp="{{ current.snapshot.generatedAt | date: &apos;medium&apos; }}"/></source>
+        <target>Actualizado el <ph id="0" equiv="INTERPOLATION" disp="{{ current.snapshot.generatedAt | date: &apos;medium&apos; }}"/></target>
+      </segment>
+    </unit>
+    <unit id="dashboard.loading">
+      <segment>
+        <source>Loading the progress...</source>
+        <target>Cargando el avance...</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.empty">
+      <segment>
+        <source>No items have been imported yet, so every number below is zero.</source>
+        <target>Aún no se ha importado ningún ítem, por lo que todos los números de abajo son cero.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.goImport">
+      <segment>
+        <source>Import items</source>
+        <target>Importar ítems</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.progressHeading">
+      <segment>
+        <source>Queue progress</source>
+        <target>Avance de la cola</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.firstFree">
+      <segment>
+        <source>First free position in the queue: <ph id="0" equiv="INTERPOLATION" disp="{{ snapshot.firstFreeQueuePosition }}"/></source>
+        <target>Primera posición libre en la cola: <ph id="0" equiv="INTERPOLATION" disp="{{ snapshot.firstFreeQueuePosition }}"/></target>
+      </segment>
+    </unit>
+    <unit id="dashboard.noFree">
+      <segment>
+        <source>No free task is left in the queue.</source>
+        <target>No queda ninguna tarea libre en la cola.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colScope">
+      <segment>
+        <source>System and batch</source>
+        <target>Sistema y lote</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colItems">
+      <segment>
+        <source>Items</source>
+        <target>Ítems</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colBlocks">
+      <segment>
+        <source>Blocks</source>
+        <target>Bloques</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colRole1">
+      <segment>
+        <source>Rater 1 tasks</source>
+        <target>Tareas del evaluador 1</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colRole2">
+      <segment>
+        <source>Rater 2 tasks</source>
+        <target>Tareas del evaluador 2</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colFree">
+      <segment>
+        <source>Free</source>
+        <target>Libres</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colInProgress">
+      <segment>
+        <source>In progress</source>
+        <target>En curso</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colCompleted">
+      <segment>
+        <source>Completed</source>
+        <target>Completadas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colPercent">
+      <segment>
+        <source>% completed</source>
+        <target>% completado</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.overall">
+      <segment>
+        <source>All systems</source>
+        <target>Todos los sistemas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.reservationsHeading">
+      <segment>
+        <source>Reservations</source>
+        <target>Reservas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.noReservations">
+      <segment>
+        <source>No task is reserved right now.</source>
+        <target>Ninguna tarea está reservada ahora.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colPseudonym">
+      <segment>
+        <source>Pseudonym</source>
+        <target>Seudónimo</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colSystem">
+      <segment>
+        <source>System</source>
+        <target>Sistema</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colBlock">
+      <segment>
+        <source>Block</source>
+        <target>Bloque</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colRole">
+      <segment>
+        <source>Role</source>
+        <target>Rol</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colDrafts">
+      <segment>
+        <source>Drafts</source>
+        <target>Borradores</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colExpires">
+      <segment>
+        <source>Expires at</source>
+        <target>Vence el</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.expired">
+      <segment>
+        <source>Expired</source>
+        <target>Vencida</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.participantsHeading">
+      <segment>
+        <source>Participants</source>
+        <target>Participantes</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.eligible">
+      <segment>
+        <source>Eligible</source>
+        <target>Elegibles</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.ineligible">
+      <segment>
+        <source>Not eligible</source>
+        <target>No elegibles</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.declined">
+      <segment>
+        <source>Declined consent</source>
+        <target>Rechazaron el consentimiento</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.incomplete">
+      <segment>
+        <source>Onboarding incomplete</source>
+        <target>Registro incompleto</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.skillsHeading">
+      <segment>
+        <source>By professional skill</source>
+        <target>Por habilidad profesional</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.noSkills">
+      <segment>
+        <source>No participant has chosen a skill yet.</source>
+        <target>Ningún participante ha elegido aún una habilidad.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.contributorsHeading">
+      <segment>
+        <source>Completed tasks per pseudonym</source>
+        <target>Tareas completadas por seudónimo</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.noContributors">
+      <segment>
+        <source>No task has been completed yet.</source>
+        <target>Aún no se ha completado ninguna tarea.</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colCompletedTasks">
+      <segment>
+        <source>Completed tasks</source>
+        <target>Tareas completadas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colShare">
+      <segment>
+        <source>Share of all completed</source>
+        <target>Parte del total completado</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.languagesHeading">
+      <segment>
+        <source>Languages and e-mail quota</source>
+        <target>Idiomas y cupo de correos</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colLanguage">
+      <segment>
+        <source>Language</source>
+        <target>Idioma</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colPreferred">
+      <segment>
+        <source>Participants who prefer it</source>
+        <target>Participantes que lo prefieren</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.colFinals">
+      <segment>
+        <source>Final responses</source>
+        <target>Respuestas finales</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.quotaHeading">
+      <segment>
+        <source>E-mails in the last 24 hours</source>
+        <target>Correos en las últimas 24 horas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.quotaSent">
+      <segment>
+        <source>Sent</source>
+        <target>Enviados</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.quotaLimit">
+      <segment>
+        <source>Daily limit</source>
+        <target>Límite diario</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.quotaRemaining">
+      <segment>
+        <source>Remaining</source>
+        <target>Restantes</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.quotaLow">
+      <segment>
+        <source>Fewer than 10 e-mails remain in the daily budget.</source>
+        <target>Quedan menos de 10 correos en el presupuesto diario.</target>
       </segment>
     </unit>
     <unit id="shell.title">

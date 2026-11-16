@@ -1,0 +1,256 @@
+<section class="dashboard">
+  <p class="back">
+    <a routerLink="/admin" i18n="@@dashboard.back">Back to administration</a>
+  </p>
+  <h1 i18n="@@dashboard.title">Dashboard</h1>
+  <p class="intro" i18n="@@dashboard.intro">
+    Progress of the data collection. The numbers are read-only and never show a name or an e-mail; participants
+    appear by pseudonym.
+  </p>
+
+  <div class="toolbar">
+    <button
+      type="button"
+      mat-stroked-button
+      data-testid="dashboard-refresh"
+      [disabled]="loading()"
+      (click)="refresh()"
+      i18n="@@dashboard.refresh"
+    >
+      Refresh
+    </button>
+    @if (view(); as current) {
+      <span class="generated" data-testid="dashboard-generated" i18n="@@dashboard.generatedAt">
+        Updated at {{ current.snapshot.generatedAt | date: 'medium' }}
+      </span>
+    }
+  </div>
+
+  @if (loading() && !view()) {
+    <p class="status" i18n="@@dashboard.loading">Loading the progress...</p>
+  }
+  @if (message(); as text) {
+    <p class="error" role="alert">{{ text }}</p>
+  }
+
+  @if (view(); as current) {
+    @let snapshot = current.snapshot;
+
+    @if (empty()) {
+      <section class="empty-study" data-testid="dashboard-empty">
+        <p i18n="@@dashboard.empty">No items have been imported yet, so every number below is zero.</p>
+        <a mat-flat-button routerLink="/admin/import" data-testid="dashboard-import" i18n="@@dashboard.goImport">
+          Import items
+        </a>
+      </section>
+    }
+
+    <section class="panel" data-testid="panel-progress">
+      <h2 i18n="@@dashboard.progressHeading">Queue progress</h2>
+      <p class="hint" data-testid="first-free">
+        @if (snapshot.firstFreeQueuePosition !== null) {
+          <ng-container i18n="@@dashboard.firstFree">
+            First free position in the queue: {{ snapshot.firstFreeQueuePosition }}
+          </ng-container>
+        } @else {
+          <ng-container i18n="@@dashboard.noFree">No free task is left in the queue.</ng-container>
+        }
+      </p>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" scope="col" i18n="@@dashboard.colScope">System and batch</th>
+              <th rowspan="2" scope="col" i18n="@@dashboard.colItems">Items</th>
+              <th rowspan="2" scope="col" i18n="@@dashboard.colBlocks">Blocks</th>
+              <th colspan="4" scope="colgroup" i18n="@@dashboard.colRole1">Rater 1 tasks</th>
+              <th colspan="4" scope="colgroup" i18n="@@dashboard.colRole2">Rater 2 tasks</th>
+            </tr>
+            <tr>
+              <th scope="col" i18n="@@dashboard.colFree">Free</th>
+              <th scope="col" i18n="@@dashboard.colInProgress">In progress</th>
+              <th scope="col" i18n="@@dashboard.colCompleted">Completed</th>
+              <th scope="col" i18n="@@dashboard.colPercent">% completed</th>
+              <th scope="col" i18n="@@dashboard.colFree">Free</th>
+              <th scope="col" i18n="@@dashboard.colInProgress">In progress</th>
+              <th scope="col" i18n="@@dashboard.colCompleted">Completed</th>
+              <th scope="col" i18n="@@dashboard.colPercent">% completed</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of snapshot.progress; track $index) {
+              <tr [class.overall]="row.system === null" [attr.data-row]="row.system === null ? 'overall' : 'system'">
+                <th scope="row">
+                  @if (row.system === null) {
+                    <span i18n="@@dashboard.overall">All systems</span>
+                  } @else {
+                    {{ row.system }}
+                    <span class="batch">{{ row.batchFileName }}</span>
+                  }
+                </th>
+                <td>{{ row.items }}</td>
+                <td>{{ row.blocks }}</td>
+                <td data-col="role1-free">{{ row.role1.free }}</td>
+                <td data-col="role1-in-progress">{{ row.role1.inProgress }}</td>
+                <td data-col="role1-completed">{{ row.role1.completed }}</td>
+                <td data-col="role1-percent">{{ row.role1.completedPercent / 100 | percent: '1.0-1' }}</td>
+                <td data-col="role2-free">{{ row.role2.free }}</td>
+                <td data-col="role2-in-progress">{{ row.role2.inProgress }}</td>
+                <td data-col="role2-completed">{{ row.role2.completed }}</td>
+                <td data-col="role2-percent">{{ row.role2.completedPercent / 100 | percent: '1.0-1' }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" data-testid="panel-reservations">
+      <h2 i18n="@@dashboard.reservationsHeading">Reservations</h2>
+      @if (snapshot.reservations.length === 0) {
+        <p class="hint" i18n="@@dashboard.noReservations">No task is reserved right now.</p>
+      } @else {
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" i18n="@@dashboard.colPseudonym">Pseudonym</th>
+                <th scope="col" i18n="@@dashboard.colSystem">System</th>
+                <th scope="col" i18n="@@dashboard.colBlock">Block</th>
+                <th scope="col" i18n="@@dashboard.colRole">Role</th>
+                <th scope="col" i18n="@@dashboard.colDrafts">Drafts</th>
+                <th scope="col" i18n="@@dashboard.colExpires">Expires at</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (reservation of snapshot.reservations; track $index) {
+                <tr [class.expired]="reservation.expired" data-testid="reservation-row">
+                  <th scope="row">{{ reservation.pseudonym }}</th>
+                  <td>{{ reservation.system }}</td>
+                  <td>{{ reservation.block }}</td>
+                  <td>{{ reservation.role }}</td>
+                  <td>{{ reservation.draftCount }}</td>
+                  <td>
+                    {{ reservation.expiresAt | date: 'medium' }}
+                    @if (reservation.expired) {
+                      <span class="badge" data-testid="expired-label" i18n="@@dashboard.expired">Expired</span>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </section>
+
+    <section class="panel" data-testid="panel-participants">
+      <h2 i18n="@@dashboard.participantsHeading">Participants</h2>
+      <dl class="figures">
+        <div>
+          <dt i18n="@@dashboard.eligible">Eligible</dt>
+          <dd data-testid="participants-eligible">{{ snapshot.participants.eligible }}</dd>
+        </div>
+        <div>
+          <dt i18n="@@dashboard.ineligible">Not eligible</dt>
+          <dd data-testid="participants-ineligible">{{ snapshot.participants.ineligible }}</dd>
+        </div>
+        <div>
+          <dt i18n="@@dashboard.declined">Declined consent</dt>
+          <dd data-testid="participants-declined">{{ snapshot.participants.declinedConsent }}</dd>
+        </div>
+        <div>
+          <dt i18n="@@dashboard.incomplete">Onboarding incomplete</dt>
+          <dd data-testid="participants-incomplete">{{ snapshot.participants.incomplete }}</dd>
+        </div>
+      </dl>
+
+      <h3 i18n="@@dashboard.skillsHeading">By professional skill</h3>
+      @if (skills().length === 0) {
+        <p class="hint" i18n="@@dashboard.noSkills">No participant has chosen a skill yet.</p>
+      } @else {
+        <ul class="skills" data-testid="skills">
+          @for (skill of skills(); track skill.code) {
+            <li [attr.data-skill]="skill.code">
+              <span>{{ skill.label }}</span>
+              <strong>{{ skill.total }}</strong>
+            </li>
+          }
+        </ul>
+      }
+
+      <h3 i18n="@@dashboard.contributorsHeading">Completed tasks per pseudonym</h3>
+      @if (snapshot.participants.completedByPseudonym.length === 0) {
+        <p class="hint" i18n="@@dashboard.noContributors">No task has been completed yet.</p>
+      } @else {
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" i18n="@@dashboard.colPseudonym">Pseudonym</th>
+                <th scope="col" i18n="@@dashboard.colCompletedTasks">Completed tasks</th>
+                <th scope="col" i18n="@@dashboard.colShare">Share of all completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (who of snapshot.participants.completedByPseudonym; track who.pseudonym) {
+                <tr data-testid="contributor-row">
+                  <th scope="row">{{ who.pseudonym }}</th>
+                  <td>{{ who.completedTasks }}</td>
+                  <td>{{ who.shareOfCompleted | percent: '1.0-1' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </section>
+
+    <section class="panel" data-testid="panel-languages">
+      <h2 i18n="@@dashboard.languagesHeading">Languages and e-mail quota</h2>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" i18n="@@dashboard.colLanguage">Language</th>
+              <th scope="col" i18n="@@dashboard.colPreferred">Participants who prefer it</th>
+              <th scope="col" i18n="@@dashboard.colFinals">Final responses</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (language of snapshot.languages; track language.language) {
+              <tr [attr.data-language]="language.language">
+                <th scope="row">{{ language.language }}</th>
+                <td>{{ language.participantsPreferred }}</td>
+                <td>{{ language.finalResponses }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h3 i18n="@@dashboard.quotaHeading">E-mails in the last 24 hours</h3>
+      <dl class="figures" data-testid="email-quota">
+        <div>
+          <dt i18n="@@dashboard.quotaSent">Sent</dt>
+          <dd data-testid="quota-sent">{{ snapshot.emailQuota.emailsSentLast24h }}</dd>
+        </div>
+        <div>
+          <dt i18n="@@dashboard.quotaLimit">Daily limit</dt>
+          <dd data-testid="quota-limit">{{ snapshot.emailQuota.dailyEmailLimit }}</dd>
+        </div>
+        <div>
+          <dt i18n="@@dashboard.quotaRemaining">Remaining</dt>
+          <dd data-testid="quota-remaining" [class.low]="snapshot.emailQuota.lowRemaining">
+            {{ snapshot.emailQuota.emailsRemaining }}
+          </dd>
+        </div>
+      </dl>
+      @if (snapshot.emailQuota.lowRemaining) {
+        <p class="low-note" role="status" data-testid="quota-low" i18n="@@dashboard.quotaLow">
+          Fewer than 10 e-mails remain in the daily budget.
+        </p>
+      }
+    </section>
+  }
+</section>

@@ -6,7 +6,7 @@ import { SessionService } from '../core/session.service';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
-  it('shows the administrator name with Import and Export enabled and the other functions disabled', async () => {
+  it('shows the administrator name with Import, Export and Dashboard enabled and Participants disabled', async () => {
     TestBed.configureTestingModule({
       imports: [AdminComponent],
       providers: [provideHttpClient(), provideRouter([])],
@@ -27,14 +27,13 @@ describe('AdminComponent', () => {
     expect(element.querySelector('h1')?.textContent?.trim()).toBe('Administration');
     expect(element.textContent).toContain('Signed in as Diego Quirino');
     const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('mat-nav-list a'));
-    expect(links.map((link) => link.textContent?.trim())).toEqual(['Import', 'Export']);
+    expect(links.map((link) => link.textContent?.trim())).toEqual(['Import', 'Export', 'Dashboard']);
     expect(links[0].getAttribute('href')).toContain('/admin/import');
     expect(links[1].getAttribute('href')).toContain('/admin/export');
+    expect(links[2].getAttribute('href')).toContain('/admin/dashboard');
     const disabled = Array.from(element.querySelectorAll<HTMLButtonElement>('mat-nav-list button'));
-    expect(disabled.map((item) => item.textContent?.trim())).toEqual(['Dashboard', 'Participants']);
+    expect(disabled.map((item) => item.textContent?.trim())).toEqual(['Participants']);
     expect(disabled.every((item) => item.disabled)).toBe(true);
-    expect(element.querySelector('.soon')?.textContent).toBe(
-      'Dashboard and participants will be available in the next releases.',
-    );
+    expect(element.querySelector('.soon')?.textContent).toBe('Participants will be available in the next releases.');
   });
 });

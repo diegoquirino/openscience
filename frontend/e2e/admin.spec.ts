@@ -48,9 +48,8 @@ test.describe('administrator (single address)', () => {
     const importLink = page.getByRole('link', { name: 'Importar' });
     await expect(importLink).toBeVisible();
     await expect(page.getByRole('link', { name: 'Exportar' })).toBeVisible();
-    for (const item of ['Painel de andamento', 'Participantes']) {
-      await expect(page.getByRole('button', { name: item })).toBeDisabled();
-    }
+    await expect(page.getByRole('link', { name: 'Painel de andamento' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Participantes' })).toBeDisabled();
 
     await page.goto('/pt-BR/participate');
     await expect(page).toHaveURL(/\/pt-BR\/admin$/);
@@ -92,6 +91,24 @@ test.describe('administrator (single address)', () => {
     const rater = await raterDownload;
     expect(rater.suggestedFilename()).toBe('t1_minitest_rater1.csv');
     expect(await readDownload(rater)).toContain('edit_key,uc,kind,field,origin,target,change_impact,maintenance_operation,comment');
+
+    // Spec 010: the Dashboard shows the imported queue and Refresh reads it again without reloading.
+    await page.goto('/pt-BR/admin');
+    await page.getByRole('link', { name: 'Painel de andamento' }).click();
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Painel de andamento');
+    const overall = page.locator('[data-row="overall"]');
+    await expect(overall).toContainText('Todos os sistemas');
+    await expect(overall.locator('td').first()).toHaveText('38');
+    await expect(page.locator('[data-testid="panel-progress"] [data-row="system"]')).toContainText('minitest');
+    await expect(page.locator('[data-language]')).toHaveCount(3);
+    await expect(page.getByTestId('dashboard-empty')).toHaveCount(0);
+    await expect(page.getByTestId('panel-participants')).not.toContainText('@');
+    const generated = await page.getByTestId('dashboard-generated').textContent();
+    await page.getByTestId('dashboard-refresh').click();
+    await expect(page.getByTestId('dashboard-generated')).toBeVisible();
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
+    expect(generated).toContain('Atualizado em');
   });
 });
 
@@ -124,8 +141,22 @@ test('a participant has no Export link and the export screen sends them to the c
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
 });
 
+test('a participant has no Dashboard link and the dashboard screen sends them to the consent form (pt-BR)', async ({
+  page,
+  request,
+}, testInfo) => {
+  const email = `e2e-dashboard-${testInfo.project.name}-${Date.now()}@example.com`;
+  await signIn(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page.getByRole('link', { name: 'Painel de andamento' })).toHaveCount(0);
+
+  await page.goto('/pt-BR/admin/dashboard');
+
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+});
+
 test('a visitor who opens an area lands on the sign-in form (pt-BR)', async ({ page }) => {
-  for (const area of ['/pt-BR/admin', '/pt-BR/admin/export', '/pt-BR/welcome']) {
+  for (const area of ['/pt-BR/admin', '/pt-BR/admin/export', '/pt-BR/admin/dashboard', '/pt-BR/welcome']) {
     await page.goto(area);
     await expect(page).toHaveURL(/\/pt-BR\/participate$/);
   }

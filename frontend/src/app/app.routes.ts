@@ -95,5 +95,10 @@ export const routes: Routes = [
     canActivate: [administratorOnly],
     loadComponent: () => import('./admin/export/export.component').then((m) => m.ExportComponent),
   },
+  {
+    path: 'admin/dashboard',
+    canActivate: [administratorOnly],
+    loadComponent: () => import('./admin/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+  },
   { path: '**', component: NotFoundComponent },
 ];
