@@ -134,9 +134,32 @@ legend {
 }
 
 mat-radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.option {
+  display: grid;
+  gap: 0;
+}
+
+.explanation {
+  margin: 0 0 0 2.5rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+}
+
+.precedence {
+  margin: 0.75rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--mat-sys-primary);
+  background: var(--mat-sys-surface-container-low);
+  font: var(--mat-sys-body-medium);
+
+  .order {
+    display: block;
+    margin-top: 0.25rem;
+  }
 }
 
 .comment {

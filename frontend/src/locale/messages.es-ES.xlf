@@ -643,18 +643,6 @@
         <target>Caso de uso</target>
       </segment>
     </unit>
-    <unit id="label.item.impactQuestion">
-      <segment>
-        <source>Does this edit change the behavior that the use case specifies?</source>
-        <target>¿Esta edición cambia el comportamiento que especifica el caso de uso?</target>
-      </segment>
-    </unit>
-    <unit id="label.item.operationQuestion">
-      <segment>
-        <source> What should be done with the manual test cases that exercise this part? </source>
-        <target>¿Qué se debe hacer con los casos de prueba manuales que ejercitan este fragmento?</target>
-      </segment>
-    </unit>
     <unit id="label.item.comment">
       <segment>
         <source>Comment (optional)</source>
@@ -1271,6 +1259,84 @@
       <segment>
         <source>Close</source>
         <target>Cerrar</target>
+      </segment>
+    </unit>
+    <unit id="item.impact.question">
+      <segment>
+        <source>Does this edit change the behavior that the use case specifies?</source>
+        <target>¿Esta edición cambia el comportamiento que especifica el caso de uso?</target>
+      </segment>
+    </unit>
+    <unit id="item.impact.LOW">
+      <segment>
+        <source>The edit does not change the observable behavior. Examples: rewording, added detail, synonym, typo fix, punctuation, formatting, shortening, reordering, renaming, or a change only in the requirements link. A step that was only moved, or merged with another or split from it, without losing behavior, is also low.</source>
+        <target>La edición no cambia el comportamiento observable. Ejemplos: reescritura, mayor detalle, sinónimo, corrección de erratas, puntuación, formato, reducción, reordenación, cambio de nombre, o un cambio solo en el vínculo con requisitos. Un paso que solo cambió de lugar, o que se unió a otro o se separó de él, sin perder comportamiento, también es bajo.</target>
+      </segment>
+    </unit>
+    <unit id="item.impact.HIGH">
+      <segment>
+        <source>The edit changes behavior, inputs, outputs, conditions or the flow. Examples: adding or removing a requirement, feature, entity, step, alternative or exception flow. It is also high when the text becomes so vague that the tester cannot decide whether the test passed or failed.</source>
+        <target>La edición cambia el comportamiento, las entradas, las salidas, las condiciones o el flujo. Ejemplos: incluir o eliminar un requisito, una funcionalidad, una entidad, un paso, un flujo alternativo o de excepción. También es alto cuando el texto queda tan vago que quien prueba no puede decidir si la prueba pasó o falló.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.question">
+      <segment>
+        <source>What should be done with the manual test cases that exercise this part?</source>
+        <target>¿Qué se debe hacer con los casos de prueba manuales que ejercitan este fragmento?</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.precedence">
+      <segment>
+        <source>If more than one applies, choose the one with the greatest consequence:</source>
+        <target>Si se aplica más de una, elige la de mayor consecuencia:</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.KEEP">
+      <segment>
+        <source>The test case does not exercise changed behavior, or the edit only rewords the text; it remains executable and verifiable as it is.</source>
+        <target>El caso de prueba no ejercita comportamiento modificado, o la edición solo reescribe el texto; sigue siendo ejecutable y verificable tal como está.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.UPDATE">
+      <segment>
+        <source>The scenario still exists, but a step, data item, condition or expected result changed, or the expected result needs to mention a new detail.</source>
+        <target>El escenario sigue existiendo, pero cambió un paso, un dato, una condición o el resultado esperado, o el resultado esperado debe mencionar un detalle nuevo.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.REMOVE">
+      <segment>
+        <source>The behavior the test case verifies no longer exists (it was deleted, not moved or merged with another).</source>
+        <target>El comportamiento que verifica el caso de prueba dejó de existir (se borró; no se movió ni se unió a otro).</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.CREATE">
+      <segment>
+        <source>There is new behavior that no existing test case covers.</source>
+        <target>Hay comportamiento nuevo que ningún caso de prueba existente cubre.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.MERGE">
+      <segment>
+        <source>The behavior was merged with that of another test case into a single scenario.</source>
+        <target>El comportamiento se unió al de otro caso de prueba en un único escenario.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.SPLIT">
+      <segment>
+        <source>A single scenario became several independently verifiable scenarios.</source>
+        <target>Un único escenario se convirtió en varios escenarios verificables de forma independiente.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.REASSIGN">
+      <segment>
+        <source>The behavior is the same, but the requirements link changed.</source>
+        <target>El comportamiento es el mismo, pero cambió el vínculo con requisitos.</target>
+      </segment>
+    </unit>
+    <unit id="item.operation.FLAG">
+      <segment>
+        <source>The edit is ambiguous or leaves a step vague; there is no safe decision and the case needs human analysis.</source>
+        <target>La edición es ambigua o deja un paso vago; no hay una decisión segura y el caso necesita análisis humano.</target>
       </segment>
     </unit>
   </file>

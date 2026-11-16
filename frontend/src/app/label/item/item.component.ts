@@ -25,6 +25,14 @@ import { Links } from '../../core/hal';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
 import { noneLabel } from '../../core/labels/item-labels';
+import {
+  OPERATION_PRECEDENCE,
+  impactExplanation,
+  impactStatement,
+  operationExplanation,
+  operationStatement,
+  precedenceIntro,
+} from '../../core/labels/question-texts';
 import { ItemClock } from './item-clock';
 import { ItemProgressComponent } from './item-progress.component';
 import { buildItemLayout } from './item-layout';
@@ -85,6 +93,12 @@ export class LabelItemComponent {
   protected readonly operations = MAINTENANCE_OPERATIONS;
   protected readonly impactLabel = changeImpactLabel;
   protected readonly operationLabel = maintenanceOperationLabel;
+  protected readonly impactExplanation = impactExplanation;
+  protected readonly operationExplanation = operationExplanation;
+  protected readonly impactText = impactStatement();
+  protected readonly operationText = operationStatement();
+  protected readonly precedenceText = precedenceIntro();
+  protected readonly precedenceOrder = OPERATION_PRECEDENCE.map((code) => maintenanceOperationLabel(code)).join(' > ');
 
   protected readonly busy = signal(true);
   protected readonly saving = signal(false);

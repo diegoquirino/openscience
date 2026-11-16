@@ -224,8 +224,49 @@ describe('LabelItemComponent', () => {
     expect(open.mock.calls[0][1]).toMatchObject({ width: '100vw', height: '100dvh', panelClass: 'usecase-dialog-full' });
   });
 
-  it('restores unsaved choices over the stored draft', async () => {
-    const fixture = create({
+  it('shows both statements with the explanation of every option and the precedence rule (T018)', async () => {
+    const fixture = create();
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('.impact legend')?.textContent).toBe(
+      'Does this edit change the behavior that the use case specifies?',
+    );
+    expect(root.querySelector('.operation legend')?.textContent).toBe(
+      'What should be done with the manual test cases that exercise this part?',
+    );
+    expect(root.querySelectorAll('.impact input[type=radio]')).toHaveLength(2);
+    expect(root.querySelectorAll('.operation input[type=radio]')).toHaveLength(8);
+
+    const explanation = (id: string) => root.querySelector(`#${id}`)?.textContent;
+    expect(explanation('impact-LOW')).toContain('does not change the observable behavior');
+    expect(explanation('impact-HIGH')).toContain('so vague that the tester cannot decide');
+    expect(explanation('operation-FLAG')).toContain('needs human analysis');
+
+    // The accessible name of a radio stays its short label; the explanation is its description.
+    const high = root.querySelector<HTMLInputElement>('.impact input[type=radio][value=HIGH]');
+    expect(high?.getAttribute('aria-describedby')).toBe('impact-HIGH');
+    expect(root.querySelector('.operation label[for$="-input"]')).not.toBeNull();
+    expect(Array.from(root.querySelectorAll('.operation mat-radio-button label')).map((l) => l.textContent?.trim())).toEqual([
+      'Keep',
+      'Update',
+      'Remove',
+      'Create',
+      'Merge',
+      'Split',
+      'Reassign',
+      'Flag',
+    ]);
+
+    expect(root.querySelector('.precedence .intro')?.textContent).toBe(
+      'If more than one applies, choose the one with the greatest consequence:',
+    );
+    expect(root.querySelector('.precedence .order')?.textContent).toBe(
+      'Flag > Remove > Merge > Split > Create > Update > Reassign > Keep',
+    );
+  });
+
+  it('restores unsaved choices over the stored draft', async () => {    const fixture = create({
       draft: { changeImpact: 'LOW', maintenanceOperation: 'KEEP', comment: 'saved', language: 'pt-BR' },
       unsaved: { impact: 'HIGH', operation: 'FLAG', comment: 'typed' },
     });

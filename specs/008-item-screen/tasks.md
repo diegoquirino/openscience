@@ -90,8 +90,8 @@ description: "Tasks of spec 008: item screen with differences, context and expla
 
 **Independent Test**: check the texts against Appendices B.1 and B.2 and answer an item
 
-- [ ] T018 [US3] Rebuild the question blocks of `<item>/item.component.html`: statement, radios with the short label, the explanation as `aria-describedby` description, the precedence rule with localized labels; keyboard navigation of radios, buttons and dialogs; component tests that the stored codes and comment are exactly those of 007 for every locale-independent choice
-- [ ] T019 [US3] Extract and translate the units (`item.impact.*`, `item.operation.*`); `npm run i18n:check`
+- [x] T018 [US3] Rebuild the question blocks of `<item>/item.component.html`: statement, radios with the short label, the explanation as `aria-describedby` description, the precedence rule with localized labels; keyboard navigation of radios, buttons and dialogs; component tests that the stored codes and comment are exactly those of 007 for every locale-independent choice _Record: question blocks rebuilt: statements, radios with short labels, explanation linked by aria-describedby, precedence rule with localized labels; component test of explanations, names and precedence; the existing submit test still pins the PUT body of 007_
+- [x] T019 [US3] Extract and translate the units (`item.impact.*`, `item.operation.*`); `npm run i18n:check` _Record: 13 units item.impact.* and item.operation.* added to pt-BR and es-ES, 2 obsolete units removed; i18n:check passes (221 units)_
 - [ ] T020 [US3] Playwright: the impact and operation statements, every option explanation and the precedence rule against `appendix-texts.ts` in one locale, answering both questions and Continue stores the English codes (read back over the API); the radios are still found by their short names
 
 **Checkpoint**: US1 to US3 deliver the whole screen in one locale

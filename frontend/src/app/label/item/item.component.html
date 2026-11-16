@@ -94,26 +94,33 @@
     }
 
     <form class="questions" (submit)="$event.preventDefault(); submit()">
-      <fieldset>
-        <legend i18n="@@label.item.impactQuestion">Does this edit change the behavior that the use case specifies?</legend>
+      <fieldset class="question impact">
+        <legend>{{ impactText }}</legend>
         <mat-radio-group name="impact" [value]="impact()" (change)="setImpact($event.value)">
           @for (code of impacts; track code) {
-            <mat-radio-button [value]="code">{{ impactLabel(code) }}</mat-radio-button>
+            <div class="option">
+              <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code">{{ impactLabel(code) }}</mat-radio-button>
+              <p class="explanation" [id]="'impact-' + code">{{ impactExplanation(code) }}</p>
+            </div>
           }
         </mat-radio-group>
       </fieldset>
 
-      <fieldset>
-        <legend i18n="@@label.item.operationQuestion">
-          What should be done with the manual test cases that exercise this part?
-        </legend>
+      <fieldset class="question operation">
+        <legend>{{ operationText }}</legend>
         <mat-radio-group name="operation" [value]="operation()" (change)="setOperation($event.value)">
           @for (code of operations; track code) {
-            <mat-radio-button [value]="code">{{ operationLabel(code) }}</mat-radio-button>
+            <div class="option">
+              <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code">{{ operationLabel(code) }}</mat-radio-button>
+              <p class="explanation" [id]="'operation-' + code">{{ operationExplanation(code) }}</p>
+            </div>
           }
         </mat-radio-group>
+        <p class="precedence">
+          <span class="intro">{{ precedenceText }}</span>
+          <strong class="order">{{ precedenceOrder }}</strong>
+        </p>
       </fieldset>
-
       <mat-form-field class="comment" appearance="outline">
         <mat-label i18n="@@label.item.comment">Comment (optional)</mat-label>
         <textarea
