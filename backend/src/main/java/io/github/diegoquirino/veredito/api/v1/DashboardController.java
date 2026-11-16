@@ -40,7 +40,7 @@ public class DashboardController {
                     the reserved tasks with the pseudonym that holds them, participants by status and skill, \
                     completed tasks per pseudonym, final responses per language and the rolling 24-hour e-mail \
                     quota. Carries no name or e-mail. When no item was imported, every number is zero and \
-                    vd:batches links the import. Refresh by calling the same link again.""")
+                    vd:batches (and the vd curie) links the import. Refresh by calling the same link again.""")
     @ApiResponse(
             responseCode = "200",
             description = "The progress snapshot",
@@ -95,8 +95,7 @@ public class DashboardController {
                                 "lowRemaining": false
                               },
                               "_links": {
-                                "self": { "href": "/api/v1/dashboard" },
-                                "curies": [ { "name": "vd", "href": "/api/v1/rels/{rel}", "templated": true } ]
+                                "self": { "href": "/api/v1/dashboard" }
                               }
                             }""")))
     @ApiResponse(

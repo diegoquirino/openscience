@@ -74,8 +74,14 @@ class DashboardTest extends ApiTestBase {
                 .then().statusCode(200)
                 .contentType(startsWith("application/prs.hal-forms+json"))
                 .body("_links.self.href", equalTo("/api/v1/dashboard"))
-                .body("_links.curies[0].name", equalTo("vd"))
                 .body("_links", not(hasKey("vd:batches")));
+    }
+
+    @Test
+    void emptyStudyAlsoCarriesTheCurieForItsVdLink() {
+        clearStudyDatabase();
+
+        dashboard().then().body("_links.curies[0].name", equalTo("vd"));
     }
 
     @Test
@@ -124,11 +130,11 @@ class DashboardTest extends ApiTestBase {
         Map<String, Object> overall = json.getMap("progress[0]");
         assertThat(overall).containsEntry("system", null).containsEntry("batchId", null)
                 .containsEntry("batchFileName", null);
-        assertThat(overall).containsEntry("items", 40).containsEntry("blocks", 4);
+        assertThat(overall).containsEntry("items", 38).containsEntry("blocks", 4);
         assertThat(json.getString("progress[1].system")).isEqualTo("minitest");
         assertThat(json.getString("progress[1].batchFileName")).isEqualTo("veredito_minitest_vazio.csv");
         assertThat(json.getLong("progress[1].batchId")).isEqualTo(batchId());
-        assertThat(json.getInt("progress[1].items")).isEqualTo(40);
+        assertThat(json.getInt("progress[1].items")).isEqualTo(38);
         assertThat(json.getInt("progress[1].blocks")).isEqualTo(4);
         assertThat(json.getInt("progress[1].role1.free")).isEqualTo(4);
         assertThat(json.getInt("progress[1].role2.free")).isEqualTo(4);
