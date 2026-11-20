@@ -1,6 +1,6 @@
 import { DOCUMENT, inject, InjectionToken } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError } from '@angular/router';
+import { ToastService } from './toast.service';
 
 /** Messages of Chromium, Firefox, Safari and webpack when a lazy chunk is gone after a deployment. */
 const CHUNK_LOAD_FAILURE =
@@ -25,8 +25,9 @@ export function offerReloadOnChunkError(navigationError: NavigationError): void 
     return;
   }
   const reload = inject(RELOAD_PAGE);
-  inject(MatSnackBar)
-    .open(
+  inject(ToastService)
+    .action(
+      'info',
       $localize`:@@newVersion.message:A new version is available; reload the page.`,
       $localize`:@@newVersion.reload:Reload`,
     )

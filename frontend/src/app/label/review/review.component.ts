@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { switchMap } from 'rxjs';
 import { changeImpactLabel, maintenanceOperationLabel } from '../../core/labels/response-labels';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.service';
 
 /** Review of the held block (spec 007, US3): every answer, edit links, and Submit. */
@@ -52,9 +53,6 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
           }
         </ol>
 
-        @if (message(); as text) {
-          <p class="error" role="alert">{{ text }}</p>
-        }
         @if (expired()) {
           <a mat-stroked-button routerLink="/label" i18n="@@label.retry">Try again</a>
         }
@@ -84,9 +82,6 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
           </div>
         }
       } @else {
-        @if (message(); as text) {
-          <p class="error" role="alert">{{ text }}</p>
-        }
         <button mat-flat-button type="button" (click)="load()" i18n="@@label.retry">Try again</button>
       }
     </section>
@@ -152,6 +147,7 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
 })
 export class LabelReviewComponent implements OnInit {
   private readonly labels = inject(LabelService);
+  private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
 
   protected readonly impactLabel = changeImpactLabel;
@@ -159,7 +155,6 @@ export class LabelReviewComponent implements OnInit {
 
   protected readonly busy = signal(true);
   protected readonly submitting = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly expired = signal(false);
   protected readonly task = signal<TaskBody | null>(null);
   protected readonly items = signal<ItemBody[]>([]);
@@ -172,8 +167,7 @@ export class LabelReviewComponent implements OnInit {
 
   protected load(): void {
     this.busy.set(true);
-    this.message.set(undefined);
-    this.expired.set(false);
+        this.expired.set(false);
     this.task.set(null);
     this.labels
       .currentTask()
@@ -194,8 +188,7 @@ export class LabelReviewComponent implements OnInit {
       return;
     }
     this.submitting.set(true);
-    this.message.set(undefined);
-    this.labels.submit(task).subscribe({
+        this.labels.submit(task).subscribe({
       next: (done) => {
         this.submitting.set(false);
         void this.router.navigate(['/label/done'], {
@@ -210,7 +203,7 @@ export class LabelReviewComponent implements OnInit {
           return;
         }
         this.expired.set(problemSlug(problem) === 'reservation-expired');
-        this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+        this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
       },
     });
   }
@@ -221,6 +214,6 @@ export class LabelReviewComponent implements OnInit {
       void this.router.navigate(['/label'], { replaceUrl: true });
       return;
     }
-    this.message.set(problemMessage(problemOf(error)) ?? unexpectedErrorMessage());
+    this.toast.error(problemMessage(problemOf(error)) ?? unexpectedErrorMessage());
   }
 }

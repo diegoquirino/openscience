@@ -22,6 +22,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 
 /** Route key of the values kept across a language switch (`veredito-unsaved:/skill`). */
 export const SKILL_UNSAVED_KEY = '/skill';
@@ -71,10 +72,7 @@ export const SKILL_UNSAVED_KEY = '/skill';
           <p class="error" role="alert">{{ text }}</p>
         }
       }
-      @if (message(); as text) {
-        <p class="error" role="alert">{{ text }}</p>
-      }
-      <div class="actions">
+            <div class="actions">
         <button
           mat-flat-button
           color="primary"
@@ -112,6 +110,7 @@ export const SKILL_UNSAVED_KEY = '/skill';
 })
 export class SkillComponent {
   private readonly onboarding = inject(OnboardingService);
+  private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
 
@@ -123,7 +122,6 @@ export class SkillComponent {
   readonly skill = signal<string | null>(null);
   readonly other = signal('');
   readonly saving = signal(false);
-  readonly message = signal<string | null>(null);
   readonly serverFieldError = signal<string | null>(null);
 
   readonly length = computed(() => codePoints(this.other()));
@@ -170,8 +168,7 @@ export class SkillComponent {
       return;
     }
     this.saving.set(true);
-    this.message.set(null);
-    this.serverFieldError.set(null);
+        this.serverFieldError.set(null);
     this.onboarding.recordSkill(this.name().trim(), skill, skill === 'other' ? this.other() : null).subscribe({
       next: () => {
         this.language.clearUnsaved(SKILL_UNSAVED_KEY);
@@ -191,11 +188,11 @@ export class SkillComponent {
               this.serverFieldError.set(fieldMessage(field) ?? unexpectedErrorMessage());
               return;
             }
-            this.message.set(errors.map((e) => fieldMessage(e)).find((m) => m !== undefined) ?? unexpectedErrorMessage());
+            this.toast.error(errors.map((e) => fieldMessage(e)).find((m) => m !== undefined) ?? unexpectedErrorMessage());
             return;
           }
           default:
-            this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+            this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
         }
       },
     });

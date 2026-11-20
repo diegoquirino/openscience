@@ -1,4 +1,4 @@
-<section class="export">
+<section class="export admin-page">
   <p class="back">
     <a routerLink="/admin/dashboard" i18n="@@export.back">Back to administration</a>
   </p>
@@ -11,12 +11,9 @@
   @if (loading()) {
     <p class="status" i18n="@@export.loading">Loading the downloads...</p>
   }
-  @if (message(); as text) {
-    <p class="error" role="alert">{{ text }}</p>
-  }
 
   @if (index(); as view) {
-    <section class="all-systems">
+    <section class="all-systems page-panel">
       <h2 i18n="@@export.allHeading">All systems</h2>
       <div class="actions">
         <button
@@ -47,7 +44,7 @@
     </section>
 
     @for (system of view.systems; track system.system) {
-      <section class="system" [attr.data-system]="system.system">
+      <section class="system page-panel" [attr.data-system]="system.system">
         <h2 i18n="@@export.systemHeading">System {{ system.system }}</h2>
         <div class="actions">
           <button

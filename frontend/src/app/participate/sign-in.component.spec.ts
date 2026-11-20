@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { LanguageService, LOAD_PAGE } from '../core/language.service';
+import { ToastService } from '../core/toast.service';
 import { PendingCode, readPendingCode, savePendingCode } from './pending-code';
 import { SignInComponent } from './sign-in.component';
 
@@ -38,6 +39,10 @@ describe('SignInComponent', () => {
           { path: 'participate', component: BlankPage },
         ]),
         { provide: LOAD_PAGE, useValue: load },
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
       ],
     }).compileComponents();
     http = TestBed.inject(HttpTestingController);
@@ -118,7 +123,8 @@ describe('SignInComponent', () => {
     await answerTheCodeRequest(problem('code-resend-too-soon', { retryAfterSeconds: 42 }), 429, 'Too Many Requests');
     await fixture.whenStable();
 
-    expect(element(fixture).querySelector('[role="alert"]')?.textContent?.trim()).toBe('Wait 42 s to request a new code');
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error).toHaveBeenCalledWith('Wait 42 s to request a new code');
     expect(TestBed.inject(Router).url).toBe('/');
   });
 

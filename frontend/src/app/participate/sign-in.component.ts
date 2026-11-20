@@ -12,6 +12,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 import { LanguageService } from '../core/language.service';
 import { SessionService } from '../core/session.service';
 import { emailValidator } from './access-validators';
@@ -30,6 +31,7 @@ export class SignInComponent {
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
+  private readonly toast = inject(ToastService);
 
   protected readonly emailError = fieldMessage({ field: 'email', code: 'email' });
 
@@ -38,8 +40,6 @@ export class SignInComponent {
   });
 
   protected readonly sending = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
-
   constructor() {
     const pending = readPendingCode();
     if (pending) {
@@ -53,7 +53,6 @@ export class SignInComponent {
   }
 
   protected submit(): void {
-    this.message.set(undefined);
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -87,6 +86,6 @@ export class SignInComponent {
       }
       return;
     }
-    this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+    this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
   }
 }

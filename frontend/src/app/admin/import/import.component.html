@@ -1,4 +1,4 @@
-<section class="import">
+<section class="import admin-page">
   <p class="back">
     <a routerLink="/admin/dashboard" i18n="@@import.back">Back to administration</a>
   </p>
@@ -9,7 +9,7 @@
 
   @if (studyPhase(); as phase) {
     @if (phase.minitestOnly) {
-      <p class="banner" role="status" i18n="@@import.phaseBanner">
+      <p class="banner page-panel" role="status" i18n="@@import.phaseBanner">
         Study phase: {{ phase.phase }}. Only Minitest items are accepted.
       </p>
     }
@@ -20,6 +20,7 @@
     }
   }
 
+  <div class="page-panel">
   <label class="file">
     <span i18n="@@import.fileLabel">CSV file</span>
     <input type="file" accept=".csv,text/csv" [disabled]="busy()" (change)="onFileSelected($event)" />
@@ -28,12 +29,10 @@
   @if (busy()) {
     <p class="status" i18n="@@import.working">Reading the file...</p>
   }
-  @if (message(); as text) {
-    <p class="error" role="alert">{{ text }}</p>
-  }
+  </div>
 
   @if (preview(); as view) {
-    <section class="preview" aria-live="polite">
+    <section class="preview page-panel" aria-live="polite">
       <h2 i18n="@@import.previewHeading">Preview of {{ view.fileName }}</h2>
       <ul class="counts">
         <li i18n="@@import.included">Included: {{ view.includedCount }}</li>
@@ -113,7 +112,7 @@
   }
 
   @if (batch(); as stored) {
-    <section class="summary" aria-live="polite">
+    <section class="summary page-panel" aria-live="polite">
       <h2 i18n="@@import.confirmedHeading">Import confirmed</h2>
       <ul class="counts">
         <li i18n="@@import.confirmedFile">File: {{ stored.fileName }}</li>
@@ -130,7 +129,7 @@
   }
 
   @if (batches().length) {
-    <section class="history">
+    <section class="history page-panel">
       <h2 i18n="@@import.batchesHeading">Previous imports</h2>
       <table>
         <thead>

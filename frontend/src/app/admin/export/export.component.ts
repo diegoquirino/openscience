@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { ExportIndex, ExportService, problemOfBlob } from './export.service';
 import { FileSaver } from './file-saver';
 
@@ -15,10 +16,10 @@ import { FileSaver } from './file-saver';
 export class ExportComponent implements OnInit {
   private readonly exports = inject(ExportService);
   private readonly saver = inject(FileSaver);
+  private readonly toast = inject(ToastService);
 
   protected readonly loading = signal(true);
   protected readonly busy = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly index = signal<ExportIndex | null>(null);
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class ExportComponent implements OnInit {
       error: (error: unknown) => {
         this.loading.set(false);
         const problem = problemOf(error);
-        this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+        this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
       },
     });
   }
@@ -39,7 +40,6 @@ export class ExportComponent implements OnInit {
     if (!href || this.busy()) {
       return;
     }
-    this.message.set(undefined);
     this.busy.set(true);
     this.exports.download(href).subscribe({
       next: (file) => {
@@ -49,7 +49,7 @@ export class ExportComponent implements OnInit {
       error: (error: unknown) => {
         problemOfBlob(error).subscribe((problem) => {
           this.busy.set(false);
-          this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+          this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
         });
       },
     });

@@ -22,6 +22,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 import { SessionService } from '../core/session.service';
 
 /** View and edit name (and skill for participants) from the header menu (spec 014). */
@@ -79,12 +80,6 @@ import { SessionService } from '../core/session.service';
         }
       }
 
-      @if (message(); as text) {
-        <p class="error" role="alert">{{ text }}</p>
-      }
-      @if (saved()) {
-        <p class="ok" role="status" i18n="@@profile.saved">Saved.</p>
-      }
 
       <div class="actions">
         <button mat-button type="button" routerLink="/" i18n="@@profile.back">Back</button>
@@ -132,6 +127,7 @@ import { SessionService } from '../core/session.service';
 export class ProfileComponent implements OnInit {
   private readonly onboarding = inject(OnboardingService);
   private readonly session = inject(SessionService);
+  private readonly toast = inject(ToastService);
   private readonly http = inject(HttpClient);
 
   protected readonly codes = SKILLS;
@@ -143,7 +139,6 @@ export class ProfileComponent implements OnInit {
   readonly other = signal('');
   readonly saving = signal(false);
   readonly saved = signal(false);
-  readonly message = signal<string | null>(null);
 
   readonly isParticipant = computed(() => this.session.subject() === 'participant');
   readonly length = computed(() => codePoints(this.other()));
@@ -177,7 +172,7 @@ export class ProfileComponent implements OnInit {
           this.skill.set(isSkill(profile.skill) ? profile.skill : null);
           this.other.set(profile.skillOther ?? '');
         },
-        error: () => this.message.set(unexpectedErrorMessage()),
+        error: () => this.toast.error(unexpectedErrorMessage()),
       });
     }
   }
@@ -199,8 +194,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
     this.saving.set(true);
-    this.message.set(null);
-    this.saved.set(false);
+        this.saved.set(false);
     if (this.isParticipant()) {
       const skill = this.skill()!;
       this.onboarding.recordSkill(this.name().trim(), skill, skill === 'other' ? this.other() : null).subscribe({
@@ -212,7 +206,7 @@ export class ProfileComponent implements OnInit {
     const href = this.session.session()?.links.href('me');
     if (!href) {
       this.saving.set(false);
-      this.message.set(unexpectedErrorMessage());
+      this.toast.error(unexpectedErrorMessage());
       return;
     }
     this.http.put(href, { name: this.name().trim() }).subscribe({
@@ -226,10 +220,12 @@ export class ProfileComponent implements OnInit {
       next: () => {
         this.saving.set(false);
         this.saved.set(true);
+        this.toast.success($localize`:@@profile.saved:Saved.`);
       },
       error: () => {
         this.saving.set(false);
         this.saved.set(true);
+        this.toast.success($localize`:@@profile.saved:Saved.`);
       },
     });
   }
@@ -239,9 +235,9 @@ export class ProfileComponent implements OnInit {
     const problem = problemOf(error);
     if (problemSlug(problem) === 'invalid-request') {
       const errors: FieldError[] = problem?.errors ?? [];
-      this.message.set(errors.map((e) => fieldMessage(e)).find((m) => m !== undefined) ?? unexpectedErrorMessage());
+      this.toast.error(errors.map((e) => fieldMessage(e)).find((m) => m !== undefined) ?? unexpectedErrorMessage());
       return;
     }
-    this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+    this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
   }
 }

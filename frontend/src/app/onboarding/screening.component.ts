@@ -7,6 +7,7 @@ import { LanguageService } from '../core/language.service';
 import { isScreeningAnswer, SCREENING_ANSWERS, screeningAnswerLabel, screeningQuestion } from '../core/labels/screening-labels';
 import { OnboardingService, ScreeningExample } from '../core/onboarding.service';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 
 /** Route key of the answer kept across a language switch (`veredito-unsaved:/screening`). */
 export const SCREENING_UNSAVED_KEY = '/screening';
@@ -62,10 +63,7 @@ export const SCREENING_UNSAVED_KEY = '/screening';
             <mat-radio-button [value]="code">{{ label(code) }}</mat-radio-button>
           }
         </mat-radio-group>
-        @if (message(); as text) {
-          <p class="error" role="alert">{{ text }}</p>
-        }
-        <div class="actions">
+                <div class="actions">
           <button
             mat-flat-button
             color="primary"
@@ -78,8 +76,7 @@ export const SCREENING_UNSAVED_KEY = '/screening';
             Continue
           </button>
         </div>
-      } @else if (message()) {
-        <p class="error" role="alert">{{ message() }}</p>
+      } @else if (failed()) {
         <button mat-flat-button type="button" (click)="load()" i18n="@@screening.retry">Try again</button>
       } @else {
         <mat-spinner diameter="40"></mat-spinner>
@@ -123,6 +120,7 @@ export const SCREENING_UNSAVED_KEY = '/screening';
 })
 export class ScreeningComponent implements OnInit {
   private readonly onboarding = inject(OnboardingService);
+  private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
 
@@ -132,7 +130,7 @@ export class ScreeningComponent implements OnInit {
   readonly example = signal<ScreeningExample | null>(null);
   readonly answer = signal<string | null>(null);
   readonly saving = signal(false);
-  readonly message = signal<string | null>(null);
+  readonly failed = signal(false);
   readonly valid = computed(() => isScreeningAnswer(this.answer()));
 
   constructor() {
@@ -152,10 +150,14 @@ export class ScreeningComponent implements OnInit {
   }
 
   load(): void {
-    this.message.set(null);
+    this.failed.set(false);
+    this.example.set(null);
     this.onboarding.screeningExample().subscribe({
       next: (example) => this.example.set(example),
-      error: (error: unknown) => this.message.set(problemMessage(problemOf(error)) ?? unexpectedErrorMessage()),
+      error: (error: unknown) => {
+        this.failed.set(true);
+        this.toast.error(problemMessage(problemOf(error)) ?? unexpectedErrorMessage());
+      },
     });
   }
 
@@ -165,8 +167,7 @@ export class ScreeningComponent implements OnInit {
       return;
     }
     this.saving.set(true);
-    this.message.set(null);
-    this.onboarding.recordScreening(answer).subscribe({
+        this.onboarding.recordScreening(answer).subscribe({
       next: () => {
         this.language.clearUnsaved(SCREENING_UNSAVED_KEY);
         void this.router.navigateByUrl('/welcome');
@@ -178,7 +179,7 @@ export class ScreeningComponent implements OnInit {
           void this.router.navigateByUrl('/welcome', { replaceUrl: true });
           return;
         }
-        this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+        this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
       },
     });
   }

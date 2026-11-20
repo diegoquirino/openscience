@@ -23,6 +23,7 @@ import {
 } from '../../core/labels/response-labels';
 import { Links } from '../../core/hal';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
 import { noneLabel } from '../../core/labels/item-labels';
 import {
@@ -82,6 +83,7 @@ export class LabelItemComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly labels = inject(LabelService);
+  private readonly toast = inject(ToastService);
   private readonly language = inject(LanguageService);
   private readonly injector = inject(Injector);
   private readonly dialog = inject(MatDialog);
@@ -102,7 +104,6 @@ export class LabelItemComponent {
 
   protected readonly busy = signal(true);
   protected readonly saving = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly blockLost = signal(false);
   protected readonly item = signal<ItemBody | null>(null);
   protected readonly impact = signal<ChangeImpact | null>(null);
@@ -139,8 +140,7 @@ export class LabelItemComponent {
   protected load(position: number): void {
     this.loading?.unsubscribe();
     this.busy.set(true);
-    this.message.set(undefined);
-    this.item.set(null);
+        this.item.set(null);
     if (!Number.isInteger(position) || position < 1) {
       void this.router.navigate(['/label'], { replaceUrl: true });
       return;
@@ -159,7 +159,7 @@ export class LabelItemComponent {
             void this.router.navigate(['/label'], { replaceUrl: true });
             return;
           }
-          this.message.set(this.messageOf(error));
+          this.toast.error(this.messageOf(error));
         },
       });
   }
@@ -218,12 +218,11 @@ export class LabelItemComponent {
     }
     const href = Links.of(item).href('save-response');
     if (!href) {
-      this.message.set(unexpectedErrorMessage());
+      this.toast.error(unexpectedErrorMessage());
       return;
     }
     this.saving.set(true);
-    this.message.set(undefined);
-    this.blockLost.set(false);
+        this.blockLost.set(false);
     const position = item.position;
     this.labels
       .saveResponse(href, {
@@ -249,7 +248,7 @@ export class LabelItemComponent {
             problemSlug(problemOf(error)) === 'reservation-expired' ||
               (error instanceof HttpErrorResponse && error.status === 404),
           );
-          this.message.set(this.messageOf(error));
+          this.toast.error(this.messageOf(error));
         },
       });
   }

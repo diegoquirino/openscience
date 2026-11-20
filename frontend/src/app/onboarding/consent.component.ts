@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 import { ConsentChoice, ConsentForm, NoConsentFormError, OnboardingService } from '../core/onboarding.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -37,10 +38,7 @@ import { HttpErrorResponse } from '@angular/common/http';
           </p>
         }
         <div class="text" role="region" aria-labelledby="consent-heading" tabindex="0" [attr.lang]="current.language">{{ current.text }}</div>
-        @if (message()) {
-          <p class="error" role="alert">{{ message() }}</p>
-        }
-        <div class="actions">
+                <div class="actions">
           <button
             mat-flat-button
             color="primary"
@@ -63,8 +61,7 @@ import { HttpErrorResponse } from '@angular/common/http';
             I do not agree
           </button>
         </div>
-      } @else if (message()) {
-        <p class="error" role="alert">{{ message() }}</p>
+      } @else {
         <button mat-flat-button type="button" (click)="load()" i18n="@@consent.retry">Try again</button>
       }
     </section>
@@ -108,12 +105,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ConsentComponent implements OnInit {
   private readonly onboarding = inject(OnboardingService);
+  private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
 
   readonly loading = signal(true);
   readonly saving = signal(false);
   readonly form = signal<ConsentForm | null>(null);
-  readonly message = signal<string | null>(null);
   readonly notice = signal(false);
 
   ngOnInit(): void {
@@ -122,7 +119,7 @@ export class ConsentComponent implements OnInit {
 
   load(): void {
     this.loading.set(true);
-    this.message.set(null);
+    this.form.set(null);
     this.onboarding.consentForm().subscribe({
       next: (form) => {
         this.form.set(form);
@@ -134,7 +131,7 @@ export class ConsentComponent implements OnInit {
           void this.router.navigateByUrl('/not-open', { replaceUrl: true });
           return;
         }
-        this.message.set(problemMessage(problemOf(error)) ?? unexpectedErrorMessage());
+        this.toast.error(problemMessage(problemOf(error)) ?? unexpectedErrorMessage());
       },
     });
   }
@@ -146,8 +143,7 @@ export class ConsentComponent implements OnInit {
       return;
     }
     this.saving.set(true);
-    this.message.set(null);
-    this.onboarding.recordConsent(decision, form.version).subscribe({
+        this.onboarding.recordConsent(decision, form.version).subscribe({
       next: () => {
         this.saving.set(false);
         void this.router.navigateByUrl(decision === 'accepted' ? '/welcome' : '/consent/declined');
@@ -173,7 +169,7 @@ export class ConsentComponent implements OnInit {
         void this.router.navigateByUrl('/welcome', { replaceUrl: true });
         return;
       default:
-        this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+        this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
     }
   }
 }

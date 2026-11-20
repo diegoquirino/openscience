@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { ImportBatch, ImportPreview, ImportService, RowIssue, StudyPhase } from './import.service';
 
 /** Administrator CSV import: preview, confirm and study-phase banner (spec 005). */
@@ -13,9 +14,9 @@ import { ImportBatch, ImportPreview, ImportService, RowIssue, StudyPhase } from 
 })
 export class ImportComponent implements OnInit {
   private readonly imports = inject(ImportService);
+  private readonly toast = inject(ToastService);
 
   protected readonly busy = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly preview = signal<ImportPreview | null>(null);
   protected readonly batch = signal<ImportBatch | null>(null);
   protected readonly studyPhase = signal<StudyPhase | null>(null);
@@ -36,7 +37,6 @@ export class ImportComponent implements OnInit {
     if (!file) {
       return;
     }
-    this.message.set(undefined);
     this.batch.set(null);
     this.busy.set(true);
     this.imports.requestPreview(file).subscribe({
@@ -48,7 +48,7 @@ export class ImportComponent implements OnInit {
         this.busy.set(false);
         this.preview.set(null);
         const problem = problemOf(error);
-        this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+        this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
       },
     });
   }
@@ -58,7 +58,6 @@ export class ImportComponent implements OnInit {
     if (!current?.confirmHref || current.includedCount <= 0) {
       return;
     }
-    this.message.set(undefined);
     this.busy.set(true);
     this.imports.confirm(current).subscribe({
       next: (batch) => {
@@ -71,7 +70,7 @@ export class ImportComponent implements OnInit {
       error: (error: unknown) => {
         this.busy.set(false);
         const problem = problemOf(error);
-        this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+        this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
       },
     });
   }
@@ -97,7 +96,7 @@ export class ImportComponent implements OnInit {
       error: (error: unknown) => {
         this.busy.set(false);
         const problem = problemOf(error);
-        this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+        this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
       },
     });
   }
@@ -105,7 +104,6 @@ export class ImportComponent implements OnInit {
   protected cancel(): void {
     this.preview.set(null);
     this.batch.set(null);
-    this.message.set(undefined);
   }
 
   protected trackIssue(_index: number, issue: RowIssue): string {

@@ -10,9 +10,6 @@
       <mat-error>{{ emailError }}</mat-error>
     </mat-form-field>
 
-    @if (message(); as text) {
-      <p class="message" role="alert">{{ text }}</p>
-    }
 
     <button mat-flat-button type="submit" [disabled]="sending()" i18n="@@signIn.sendCode">Send code</button>
   </form>

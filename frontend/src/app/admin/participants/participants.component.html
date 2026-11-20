@@ -1,4 +1,4 @@
-<section class="participants" data-testid="participants-page">
+<section class="participants admin-page" data-testid="participants-page">
   <p class="back"><a routerLink="/admin/dashboard" i18n="@@participants.back">Back to administration</a></p>
   <h1 i18n="@@participants.title">Anonymization of Participants</h1>
   <p class="page-intro" i18n="@@participants.intro">
@@ -60,10 +60,6 @@
       }
     </section>
   </div>
-
-  @if (error() === 'search-failed' || error() === 'anonymize-failed') {
-    <p class="warn" role="alert" i18n="@@participants.failed">The request failed. Try again.</p>
-  }
 
   @if (card(); as person) {
     <article class="card page-panel" data-testid="participant-card">

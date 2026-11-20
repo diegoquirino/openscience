@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError } from '@angular/router';
 import { Subject } from 'rxjs';
 import { isChunkLoadError, offerReloadOnChunkError, RELOAD_PAGE } from './chunk-error';
+import { ToastService } from './toast.service';
 
 describe('chunk load error handler', () => {
   it('recognizes the chunk load messages of the browsers', () => {
@@ -12,25 +12,29 @@ describe('chunk load error handler', () => {
     expect(isChunkLoadError(new Error('Cannot match any routes'))).toBe(false);
   });
 
-  it('offers a reload for a chunk load error and nothing for other errors', () => {
+  it('offers a reload toast for a chunk load error and nothing for other errors', () => {
     const action = new Subject<void>();
-    const open = vi.fn(() => ({ onAction: () => action }));
+    const toastAction = vi.fn(() => ({ onAction: () => action }));
     const reload = vi.fn();
     TestBed.configureTestingModule({
       providers: [
-        { provide: MatSnackBar, useValue: { open } },
+        { provide: ToastService, useValue: { action: toastAction } },
         { provide: RELOAD_PAGE, useValue: reload },
       ],
     });
     const failure = (error: unknown) => new NavigationError(1, '/participate', error);
 
     TestBed.runInInjectionContext(() => offerReloadOnChunkError(failure(new Error('Cannot match any routes'))));
-    expect(open).not.toHaveBeenCalled();
+    expect(toastAction).not.toHaveBeenCalled();
 
     TestBed.runInInjectionContext(() =>
       offerReloadOnChunkError(failure(new TypeError('Failed to fetch dynamically imported module'))),
     );
-    expect(open).toHaveBeenCalledWith('A new version is available; reload the page.', 'Reload');
+    expect(toastAction).toHaveBeenCalledWith(
+      'info',
+      'A new version is available; reload the page.',
+      'Reload',
+    );
     expect(reload).not.toHaveBeenCalled();
 
     action.next();

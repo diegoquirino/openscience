@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { skillLabel } from '../../core/labels/skill-labels';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { DashboardService, DashboardView, ProgressRow } from './dashboard.service';
 
 /** The administrator's read-only progress snapshot, reached through the HAL link `vd:dashboard` (spec 010). */
@@ -16,9 +17,9 @@ import { DashboardService, DashboardView, ProgressRow } from './dashboard.servic
 })
 export class DashboardComponent implements OnInit {
   private readonly dashboard = inject(DashboardService);
+  private readonly toast = inject(ToastService);
 
   protected readonly loading = signal(true);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly view = signal<DashboardView | null>(null);
 
   /** No item was imported: every number is zero and the screen offers the Import. */
@@ -66,7 +67,6 @@ export class DashboardComponent implements OnInit {
 
   private load(): void {
     this.loading.set(true);
-    this.message.set(undefined);
     this.dashboard.load().subscribe({
       next: (view) => {
         this.loading.set(false);
@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
       error: (error: unknown) => {
         this.loading.set(false);
         const problem = problemOf(error);
-        this.message.set(problem ? problemMessage(problem) : unexpectedErrorMessage());
+        this.toast.error(problem ? (problemMessage(problem) ?? unexpectedErrorMessage()) : unexpectedErrorMessage());
       },
     });
   }

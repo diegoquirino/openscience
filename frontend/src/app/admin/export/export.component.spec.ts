@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { ToastService } from '../../core/toast.service';
 import { ExportComponent } from './export.component';
 import { filenameOf, ExportService, problemOfBlob } from './export.service';
 import { FileSaver } from './file-saver';
@@ -50,6 +51,10 @@ describe('ExportComponent', () => {
         provideHttpClientTesting(),
         provideRouter([]),
         { provide: FileSaver, useValue: saver },
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
       ],
     });
     http = TestBed.inject(HttpTestingController);
@@ -145,8 +150,8 @@ describe('ExportComponent', () => {
     await fixture.whenStable();
     fixture.detectChanges();
 
-    const alert = (fixture.nativeElement as HTMLElement).querySelector('[role="alert"]');
-    expect(alert?.textContent).toBe('There are no items for the system minitest');
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error).toHaveBeenCalledWith('There are no items for the system minitest');
     expect(saver.saved).toEqual([]);
   });
 });

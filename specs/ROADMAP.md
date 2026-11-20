@@ -1,6 +1,6 @@
 # Veredito implementation roadmap
 
-Spec [001-oracle-labeling](./001-oracle-labeling/spec.md) is the overview and the source of the rules. Specs 002 to 018 split it into slices that can be planned (`/speckit-plan`), broken into tasks (`/speckit-tasks`) and implemented one at a time, each one testable and deployable on its own.
+Spec [001-oracle-labeling](./001-oracle-labeling/spec.md) is the overview and the source of the rules. Specs 002 to 020 split it into slices that can be planned (`/speckit-plan`), broken into tasks (`/speckit-tasks`) and implemented one at a time, each one testable and deployable on its own.
 
 Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US and es-ES; data kept in its capture language) are defined in [GLOSSARY.md](./GLOSSARY.md).
 
@@ -28,8 +28,10 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 15 | [016-visual-design](./016-visual-design/spec.md) | Shared visual hierarchy (h1–h3), cards/panels and icons for participant and admin screens. **Complete** (0.16.0; deploy pending approval) | 014 |
 | 16 | [017-admin-dashboard-home](./017-admin-dashboard-home/spec.md) | Dashboard as admin home; action cards and account-menu shortcuts; metric summary cards. **Complete** (0.17.0; deploy pending approval) | 010, 016 |
 | 17 | [018-anonymization-panels](./018-anonymization-panels/spec.md) | Dual-panel anonymization UI; optional pseudonym on confirm. **Complete** (0.18.0; deploy pending approval) | 011, 016, 017 |
+| 18 | [019-toast-feedback](./019-toast-feedback/spec.md) | Typed toast for transient action/API feedback (error/warn/info/success), ≥10s, dismissible. **Complete** (0.19.0; deploy pending approval) | 018 |
+| 19 | [020-admin-visual-consistency](./020-admin-visual-consistency/spec.md) | Shared visual panels across all admin screens (dashboard including reservations, import, export, anonymization, hub). **Complete** (0.20.0; deploy pending approval) | 016, 017, 019 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–018 continue admin/participant UX.
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–018 continue admin/participant UX; 019–020 toast and admin visual consistency.
 
 ```mermaid
 flowchart LR
@@ -51,6 +53,8 @@ flowchart LR
     S016[016 Visual design]
     S017[017 Admin dashboard home]
     S018[018 Anonymization panels]
+    S019[019 Toast feedback]
+    S020[020 Admin visual]
 
     S003 --> S004
     S004 --> S005
@@ -76,6 +80,10 @@ flowchart LR
     S011 --> S018
     S016 --> S018
     S017 --> S018
+    S018 --> S019
+    S016 --> S020
+    S017 --> S020
+    S019 --> S020
 ```
 
 
@@ -106,6 +114,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 5. **Monitored data collection** (010) and **complete LGPD** (011), **reached on 2026-11-16**: dashboard live (`deploy/0.10.0-1`); Participants withdrawal keep/discard live (`deploy/0.11.0-1`).
 6. **Post-pilot UX** (012 to 014): clearer impact answers; e-mail-first sign-in with name and skill before consent; profile edit from the header.
 7. **Admin and participant UX** (015 to 018): continue labeling from the menu; shared visual design; dashboard as admin home; dual-panel anonymization with chosen pseudonym.
+8. **Feedback and admin polish** (019 to 020): typed dismissible toasts for transient feedback; consistent admin page panels.
 
 ## Coverage of spec 001
 
@@ -128,13 +137,15 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 | Shared visual hierarchy, cards and icons | 016 |
 | Dashboard as admin home and action shortcuts | 017 |
 | Dual-panel anonymization; optional pseudonym | 018 |
+| Transient toast feedback (error/warn/info/success) | 019 |
+| Admin visual consistency across all admin screens | 020 |
 
 ## How to use with Spec Kit
 
 For each spec, in the order above:
 
 1. Point `.specify/feature.json` to the spec folder (for example, `{"feature_directory":"specs/003-deployment-foundation"}`).
-2. Run `/speckit-plan`, then `/speckit-tasks` and `/speckit-implement`. In each Veredito spec (003 to 018), the `contracts/` of the plan lists the resources (under `/api/v1`), the HTTP methods and status codes, the link relations and the actions per state (Richardson level 3), and each new operation is documented in Swagger.
+2. Run `/speckit-plan`, then `/speckit-tasks` and `/speckit-implement`. In each Veredito spec (003 to 020), the `contracts/` of the plan lists the resources (under `/api/v1`), the HTTP methods and status codes, the link relations and the actions per state (Richardson level 3), and each new operation is documented in Swagger.
 3. Run in local staging (Docker), check the success criteria of the spec, deploy to production and only then move on to the next one.
 
 The plans follow the [constitution](../.specify/memory/constitution.md) (version 2.7.0: Angular with Angular Material, Spring Boot with a level 3 REST API versioned in the path (`/api/v1`), documented in Swagger and tested with REST Assured, MySQL with Flyway; production on Google Cloud, local staging in Docker; staging, tests and pilot only with Minitest items; English everywhere in the repository, internationalized UI (pt-BR, en-US, es-ES) and data kept in its capture language) and the technology selection in [research.md](./001-oracle-labeling/research.md). The code lives in the orphan branch `Veredito` of `diegoquirino/openscience`.

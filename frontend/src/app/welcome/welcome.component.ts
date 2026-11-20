@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OnboardingService, routeOfStep } from '../core/onboarding.service';
 import { unexpectedErrorMessage } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 
 /**
  * Participant landing of spec 006: no content of its own. It follows `vd:onboarding` and opens the
@@ -14,8 +15,7 @@ import { unexpectedErrorMessage } from '../core/problem-messages';
   imports: [MatButtonModule, MatProgressSpinnerModule],
   template: `
     <section class="welcome">
-      @if (error()) {
-        <p class="error" role="alert">{{ error() }}</p>
+      @if (failed()) {
         <button mat-flat-button type="button" (click)="resolve()" i18n="@@onboarding.retry">Try again</button>
       } @else {
         <mat-spinner diameter="40"></mat-spinner>
@@ -29,26 +29,27 @@ import { unexpectedErrorMessage } from '../core/problem-messages';
       justify-items: start;
       padding: 1.5rem 0;
     }
-    .error {
-      color: var(--mat-sys-error, #b3261e);
-    }
   `,
 })
 export class WelcomeComponent implements OnInit {
   private readonly onboarding = inject(OnboardingService);
   private readonly router = inject(Router);
+  private readonly toast = inject(ToastService);
 
-  readonly error = signal<string | null>(null);
+  readonly failed = signal(false);
 
   ngOnInit(): void {
     this.resolve();
   }
 
   resolve(): void {
-    this.error.set(null);
+    this.failed.set(false);
     this.onboarding.state().subscribe({
       next: (state) => void this.router.navigateByUrl(routeOfStep(state.step), { replaceUrl: true }),
-      error: () => this.error.set(unexpectedErrorMessage()),
+      error: () => {
+        this.failed.set(true);
+        this.toast.error(unexpectedErrorMessage());
+      },
     });
   }
 }

@@ -1,4 +1,4 @@
-<section class="dashboard">
+<section class="dashboard admin-page">
   <h1 i18n="@@dashboard.title">Dashboard</h1>
   <p class="page-intro intro" i18n="@@dashboard.intro">
     Progress of the data collection. The numbers are read-only and never show a name or an e-mail; participants
@@ -40,9 +40,6 @@
 
   @if (loading() && !view()) {
     <p class="status" i18n="@@dashboard.loading">Loading the progress...</p>
-  }
-  @if (message(); as text) {
-    <p class="error" role="alert">{{ text }}</p>
   }
 
   @if (view(); as current) {
@@ -144,7 +141,7 @@
       </div>
     </section>
 
-    <section class="panel" data-testid="panel-reservations">
+    <section class="panel page-panel" data-testid="panel-reservations">
       <h2 i18n="@@dashboard.reservationsHeading">Reservations</h2>
       @if (snapshot.reservations.length === 0) {
         <p class="hint" i18n="@@dashboard.noReservations">No task is reserved right now.</p>
@@ -183,7 +180,7 @@
       }
     </section>
 
-    <section class="panel" data-testid="panel-participants">
+    <section class="panel page-panel" data-testid="panel-participants">
       <h2 i18n="@@dashboard.participantsHeading">Participants</h2>
       <dl class="figures">
         <div>
@@ -245,7 +242,7 @@
       }
     </section>
 
-    <section class="panel" data-testid="panel-languages">
+    <section class="panel page-panel" data-testid="panel-languages">
       <h2 i18n="@@dashboard.languagesHeading">Languages and e-mail quota</h2>
       <div class="scroll">
         <table>

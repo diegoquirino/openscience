@@ -133,11 +133,8 @@
         <mat-hint align="end">{{ comment().length }} / {{ commentMax }}</mat-hint>
       </mat-form-field>
 
-      @if (message(); as text) {
-        <p class="error" role="alert">{{ text }}</p>
-        @if (blockLost()) {
-          <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
-        }
+      @if (blockLost()) {
+        <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
       }
 
       <div class="actions">
@@ -151,9 +148,6 @@
       </div>
     </form>
   } @else {
-    @if (message(); as text) {
-      <p class="error" role="alert">{{ text }}</p>
-    }
     <button mat-flat-button type="button" (click)="retry()" i18n="@@label.retry">Try again</button>
   }
 </section>

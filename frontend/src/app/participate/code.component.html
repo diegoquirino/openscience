@@ -14,12 +14,6 @@
         <mat-error>{{ codeError }}</mat-error>
       </mat-form-field>
 
-      @if (message(); as text) {
-        <p class="message" role="alert">{{ text }}</p>
-      }
-      @if (resent()) {
-        <p class="resent" role="status" i18n="@@code.resent">A new code was sent; only the latest code works.</p>
-      }
 
       <div class="actions">
         <button mat-flat-button type="submit" [disabled]="sending()" i18n="@@code.signIn">Sign in</button>

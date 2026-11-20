@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConsentForm, OnboardingService } from '../core/onboarding.service';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 import { switchMap } from 'rxjs';
 
 /** The pt-BR reference text of the consent form; the rest of the page stays in the interface language (spec 006, US4). */
@@ -13,8 +14,6 @@ import { switchMap } from 'rxjs';
       <h1 id="reference-heading" i18n="@@consent.reference.title">Reference text (Portuguese, Brazil)</h1>
       @if (reference(); as current) {
         <div class="text" role="region" aria-labelledby="reference-heading" tabindex="0" lang="pt-BR">{{ current.text }}</div>
-      } @else if (message()) {
-        <p class="error" role="alert">{{ message() }}</p>
       } @else {
         <mat-spinner diameter="40"></mat-spinner>
       }
@@ -39,9 +38,9 @@ import { switchMap } from 'rxjs';
 })
 export class ConsentReferenceComponent implements OnInit {
   private readonly onboarding = inject(OnboardingService);
+  private readonly toast = inject(ToastService);
 
   readonly reference = signal<ConsentForm | null>(null);
-  readonly message = signal<string | null>(null);
 
   ngOnInit(): void {
     this.onboarding
@@ -49,7 +48,7 @@ export class ConsentReferenceComponent implements OnInit {
       .pipe(switchMap((form) => this.onboarding.referenceText(form)))
       .subscribe({
         next: (reference) => this.reference.set(reference),
-        error: (error: unknown) => this.message.set(problemMessage(problemOf(error)) ?? unexpectedErrorMessage()),
+        error: (error: unknown) => this.toast.error(problemMessage(problemOf(error)) ?? unexpectedErrorMessage()),
       });
   }
 }

@@ -12,6 +12,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { ToastService } from '../core/toast.service';
 import { areaOf } from '../core/guards';
 import { isLocale, LanguageService } from '../core/language.service';
 import { SessionService } from '../core/session.service';
@@ -29,6 +30,7 @@ export class CodeComponent {
   private readonly session = inject(SessionService);
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
+  private readonly toast = inject(ToastService);
 
   protected readonly codeError = fieldMessage({ field: 'code', code: 'required' });
   protected readonly form = new FormGroup({
@@ -43,7 +45,6 @@ export class CodeComponent {
   );
 
   protected readonly sending = signal(false);
-  protected readonly message = signal<string | undefined>(undefined);
   protected readonly codeExpired = signal(false);
   protected readonly resent = signal(false);
 
@@ -58,7 +59,6 @@ export class CodeComponent {
 
   protected submit(): void {
     const pending = this.pending();
-    this.message.set(undefined);
     this.resent.set(false);
     if (!pending || this.code.invalid) {
       this.code.markAsTouched();
@@ -90,7 +90,6 @@ export class CodeComponent {
     if (!pending) {
       return;
     }
-    this.message.set(undefined);
     this.resent.set(false);
     this.sending.set(true);
     this.session.requestCode(pending.typedEmail).subscribe({
@@ -105,6 +104,7 @@ export class CodeComponent {
         this.sending.set(false);
         this.codeExpired.set(false);
         this.code.reset();
+        this.toast.success($localize`:@@code.resent:A new code was sent; only the latest code works.`);
         this.resent.set(true);
       },
       error: (error: unknown) => {
@@ -113,7 +113,7 @@ export class CodeComponent {
         if (problemSlug(problem) === 'code-resend-too-soon' && problem?.retryAfterSeconds) {
           this.update({ ...pending, resendAt: Date.now() + problem.retryAfterSeconds * 1000 });
         }
-        this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+        this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
       },
     });
   }
@@ -139,6 +139,6 @@ export class CodeComponent {
         this.codeExpired.set(true);
         break;
     }
-    this.message.set(problemMessage(problem) ?? unexpectedErrorMessage());
+    this.toast.error(problemMessage(problem) ?? unexpectedErrorMessage());
   }
 }

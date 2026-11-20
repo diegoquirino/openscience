@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { ToastService } from '../../core/toast.service';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from './dashboard.service';
 
@@ -83,7 +84,15 @@ describe('DashboardComponent', () => {
   function setup() {
     TestBed.configureTestingModule({
       imports: [DashboardComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideRouter([]),
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
+      ],
     });
     http = TestBed.inject(HttpTestingController);
     const fixture = TestBed.createComponent(DashboardComponent);
@@ -229,13 +238,14 @@ describe('DashboardComponent', () => {
 
   it('shows a problem message when the snapshot cannot be read', async () => {
     const fixture = setup();
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
     http.expectOne('/api/v1').flush(ENTRY);
     await Promise.resolve();
     http.expectOne('/api/v1/dashboard').flush('oops', { status: 500, statusText: 'Server Error' });
     await fixture.whenStable();
     fixture.detectChanges();
 
-    expect((fixture.nativeElement as HTMLElement).querySelector('[role="alert"]')).not.toBeNull();
+    expect(toast.error).toHaveBeenCalled();
     expect((fixture.nativeElement as HTMLElement).querySelector('[data-testid="panel-progress"]')).toBeNull();
   });
 });

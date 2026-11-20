@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+import { ToastService } from '../../core/toast.service';
 import {
   AnonymizationResult,
   ParticipantCard,
@@ -18,10 +19,10 @@ import {
 })
 export class ParticipantsComponent implements OnInit {
   private readonly participants = inject(ParticipantsService);
+  private readonly toast = inject(ToastService);
 
   protected readonly cards = signal<ParticipantCard[]>([]);
   protected readonly card = signal<ParticipantCard | null>(null);
-  protected readonly error = signal('');
   protected readonly result = signal<AnonymizationResult | null>(null);
   protected readonly confirming = signal(false);
   protected readonly option = signal<'keep_responses' | 'discard_responses'>('keep_responses');
@@ -41,7 +42,6 @@ export class ParticipantsComponent implements OnInit {
   }
 
   protected select(person: ParticipantCard): void {
-    this.error.set('');
     this.result.set(null);
     this.confirming.set(false);
     this.chosenPseudonym.set(person.pseudonym);
@@ -59,17 +59,19 @@ export class ParticipantsComponent implements OnInit {
       return;
     }
     this.busy.set(true);
-    this.error.set('');
     this.participants.anonymize(current, this.option(), this.chosenPseudonym()).subscribe({
       next: (outcome) => {
         this.busy.set(false);
         this.confirming.set(false);
         this.result.set(outcome);
+        this.toast.success(
+          $localize`:@@participants.toastSuccess:The participant was anonymized.`,
+        );
         this.reload(outcome.pseudonym);
       },
       error: () => {
         this.busy.set(false);
-        this.error.set('anonymize-failed');
+        this.toast.error($localize`:@@participants.failed:The request failed. Try again.`);
       },
     });
   }
@@ -90,7 +92,7 @@ export class ParticipantsComponent implements OnInit {
       },
       error: () => {
         this.busy.set(false);
-        this.error.set('search-failed');
+        this.toast.error($localize`:@@participants.failed:The request failed. Try again.`);
       },
     });
   }

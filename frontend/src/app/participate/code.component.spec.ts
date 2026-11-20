@@ -5,6 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { LOAD_PAGE } from '../core/language.service';
 import { SessionService } from '../core/session.service';
+import { ToastService } from '../core/toast.service';
 import { CodeComponent } from './code.component';
 import { PendingCode, readPendingCode, savePendingCode } from './pending-code';
 
@@ -55,8 +56,13 @@ describe('CodeComponent', () => {
           { path: 'participate', component: BlankPage },
           { path: 'welcome', component: BlankPage },
           { path: 'admin', component: BlankPage },
+          { path: 'admin/dashboard', component: BlankPage },
         ]),
         { provide: LOAD_PAGE, useValue: load },
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
       ],
     }).compileComponents();
     http = TestBed.inject(HttpTestingController);
@@ -187,7 +193,8 @@ describe('CodeComponent', () => {
     });
     await fixture.whenStable();
 
-    expect(element(fixture).querySelector('[role="alert"]')?.textContent?.trim()).toBe('Wrong code; 3 attempts left');
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error).toHaveBeenCalledWith('Wrong code; 3 attempts left');
   });
 
   it('offers a new code when the code is no longer valid', async () => {
@@ -201,7 +208,8 @@ describe('CodeComponent', () => {
     });
     await fixture.whenStable();
 
-    expect(element(fixture).querySelector('[role="alert"]')?.textContent?.trim()).toBe('This code is no longer valid');
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error).toHaveBeenCalledWith('This code is no longer valid');
     const sendNew = buttons(fixture)[1];
     expect(sendNew.textContent!.trim()).toBe('Send a new code');
     expect(sendNew.disabled).toBe(false);
@@ -225,7 +233,8 @@ describe('CodeComponent', () => {
     });
     await fixture.whenStable();
 
-    expect(element(fixture).querySelector('[role="status"]')).not.toBeNull();
+    const toast = TestBed.inject(ToastService) as unknown as { success: ReturnType<typeof vi.fn> };
+    expect(toast.success).toHaveBeenCalledWith('A new code was sent; only the latest code works.');
     expect(buttons(fixture)[1].disabled).toBe(true);
     expect(readPendingCode()?.signInHref).toBe('/links/sessions-2');
   });
