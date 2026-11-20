@@ -313,10 +313,10 @@ test.describe('the four kinds, in every locale', () => {
     await expect(page.locator('mat-dialog-container')).toHaveCount(0);
     await expect(button).toBeFocused();
 
-    // The radio groups answer to the arrow keys.
-    await page.getByRole('radio', { name: 'Bajo', exact: true }).focus();
+    // The radio groups answer to the arrow keys (spec 012 Yes/No impact labels).
+    await page.getByRole('radio', { name: IMPACT_LABELS['es-ES'].LOW, exact: true }).focus();
     await page.keyboard.press('ArrowRight');
-    await expect(page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true })).toBeChecked();
+    await expect(page.getByRole('radio', { name: IMPACT_LABELS['es-ES'].HIGH, exact: true })).toBeChecked();
   });
 
   test('every locale answers the same stored codes, with the language of the save (FR-011, SC-004)', async () => {

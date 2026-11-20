@@ -119,7 +119,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
 
     await switchLanguage(page, EN_US, ES_ES);
     await expect(page).toHaveURL(/\/es-ES\/label\/items\/2$/);
-    await expect(page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true })).toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Sí (alto impacto)', exact: true })).toBeChecked();
     await expect(page.getByRole('radio', { name: 'Actualizar', exact: true })).toBeChecked();
     await expect(page.getByLabel('Comentario (opcional)')).toHaveValue('ainda não salvo');
 
