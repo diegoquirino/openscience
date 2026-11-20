@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-10
 
-**Status**: Overview; implemented by specs 002 to 011, in the order of the [ROADMAP](../ROADMAP.md) (002 to 011 complete)
+**Status**: Overview; implemented by specs 002 to 014, in the order of the [ROADMAP](../ROADMAP.md) (002 to 011 complete; 012 to 014 next)
 
 **Input**: User description: "Web app in which volunteers identify themselves by name and e-mail, validate their participation with a code sent by e-mail, accept the research consent form, state their professional skill, go through a screening question and classify the change impact and the maintenance operation of use-case edits. Each item gets two different raters. Only the administrator (Carlos Diego Quirino Lima, diegoquirino@gmail.com) imports items by CSV (`system, edit_key, uc, kind, field, origin, target`) and accesses the administration area. The system must withstand simultaneous access." (translated from the original Portuguese)
 
@@ -459,22 +459,22 @@ Before signing in, the volunteer chooses the language of the screens: Português
 
 **Pergunta**: "Esta edição muda o comportamento que o caso de uso especifica?"
 
-- **Baixo** (`LOW`): a edição não muda o comportamento observável. Exemplos: reescrita, detalhamento, sinônimo, correção de digitação, pontuação, formatação, redução, reordenação, renomeação, ou mudança apenas no vínculo com requisitos. Um passo que só mudou de lugar, ou foi unido a outro ou separado dele, sem perder comportamento, também é baixo.
-- **Alto** (`HIGH`): a edição muda comportamento, entradas, saídas, condições ou o fluxo. Exemplos: incluir ou remover um requisito, funcionalidade, entidade, passo, fluxo alternativo ou de exceção. Também é alto quando o texto fica vago a ponto de o testador não conseguir decidir se o teste passou ou falhou.
+- **Não (baixo impacto)** (`LOW`): a edição não muda o comportamento observável. Exemplos: reescrita, detalhamento, sinônimo, correção de digitação, pontuação, formatação, redução, reordenação, renomeação, ou mudança apenas no vínculo com requisitos. Um passo que só mudou de lugar, ou foi unido a outro ou separado dele, sem perder comportamento, também é baixo.
+- **Sim (alto impacto)** (`HIGH`): a edição muda comportamento, entradas, saídas, condições ou o fluxo. Exemplos: incluir ou remover um requisito, funcionalidade, entidade, passo, fluxo alternativo ou de exceção. Também é alto quando o texto fica vago a ponto de o testador não conseguir decidir se o teste passou ou falhou.
 
 **en-US**
 
 **Question**: "Does this edit change the behavior that the use case specifies?"
 
-- **Low** (`LOW`): the edit does not change the observable behavior. Examples: rewording, added detail, synonym, typo fix, punctuation, formatting, shortening, reordering, renaming, or a change only in the requirements link. A step that was only moved, or merged with another or split from it, without losing behavior, is also low.
-- **High** (`HIGH`): the edit changes behavior, inputs, outputs, conditions or the flow. Examples: adding or removing a requirement, feature, entity, step, alternative or exception flow. It is also high when the text becomes so vague that the tester cannot decide whether the test passed or failed.
+- **No (low impact)** (`LOW`): the edit does not change the observable behavior. Examples: rewording, added detail, synonym, typo fix, punctuation, formatting, shortening, reordering, renaming, or a change only in the requirements link. A step that was only moved, or merged with another or split from it, without losing behavior, is also low.
+- **Yes (high impact)** (`HIGH`): the edit changes behavior, inputs, outputs, conditions or the flow. Examples: adding or removing a requirement, feature, entity, step, alternative or exception flow. It is also high when the text becomes so vague that the tester cannot decide whether the test passed or failed.
 
 **es-ES**
 
 **Pregunta**: "¿Esta edición cambia el comportamiento que especifica el caso de uso?"
 
-- **Bajo** (`LOW`): la edición no cambia el comportamiento observable. Ejemplos: reescritura, mayor detalle, sinónimo, corrección de erratas, puntuación, formato, reducción, reordenación, cambio de nombre, o un cambio solo en el vínculo con requisitos. Un paso que solo cambió de lugar, o que se unió a otro o se separó de él, sin perder comportamiento, también es bajo.
-- **Alto** (`HIGH`): la edición cambia el comportamiento, las entradas, las salidas, las condiciones o el flujo. Ejemplos: incluir o eliminar un requisito, una funcionalidad, una entidad, un paso, un flujo alternativo o de excepción. También es alto cuando el texto queda tan vago que quien prueba no puede decidir si la prueba pasó o falló.
+- **No (bajo impacto)** (`LOW`): la edición no cambia el comportamiento observable. Ejemplos: reescritura, mayor detalle, sinónimo, corrección de erratas, puntuación, formato, reducción, reordenación, cambio de nombre, o un cambio solo en el vínculo con requisitos. Un paso que solo cambió de lugar, o que se unió a otro o se separó de él, sin perder comportamiento, también es bajo.
+- **Sí (alto impacto)** (`HIGH`): la edición cambia el comportamiento, las entradas, las salidas, las condiciones o el flujo. Ejemplos: incluir o eliminar un requisito, una funcionalidad, una entidad, un paso, un flujo alternativo o de excepción. También es alto cuando el texto queda tan vago que quien prueba no puede decidir si la prueba pasó o falló.
 
 ### B.2 Maintenance operation (`maintenance_operation`)
 

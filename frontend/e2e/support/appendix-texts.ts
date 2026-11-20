@@ -60,9 +60,9 @@ export const FIELD_LABELS: Record<Locale, Record<string, string>> = {
 
 /** Option labels (Appendices B.1 and B.2). */
 export const IMPACT_LABELS: Record<Locale, Record<Impact, string>> = {
-  'pt-BR': { LOW: 'Baixo', HIGH: 'Alto' },
-  'en-US': { LOW: 'Low', HIGH: 'High' },
-  'es-ES': { LOW: 'Bajo', HIGH: 'Alto' },
+  'pt-BR': { LOW: 'Não (baixo impacto)', HIGH: 'Sim (alto impacto)' },
+  'en-US': { LOW: 'No (low impact)', HIGH: 'Yes (high impact)' },
+  'es-ES': { LOW: 'No (bajo impacto)', HIGH: 'Sí (alto impacto)' },
 };
 
 export const OPERATION_LABELS: Record<Locale, Record<Operation, string>> = {

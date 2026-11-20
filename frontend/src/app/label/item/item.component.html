@@ -95,8 +95,8 @@
 
     <form class="questions" (submit)="$event.preventDefault(); submit()">
       <fieldset class="question impact">
-        <legend>{{ impactText }}</legend>
-        <mat-radio-group name="impact" [value]="impact()" (change)="setImpact($event.value)">
+        <legend>{{ impactText }} <span class="required" aria-hidden="true">*</span></legend>
+        <mat-radio-group name="impact" [value]="impact()" (change)="setImpact($event.value)" [attr.aria-required]="true">
           @for (code of impacts; track code) {
             <div class="option">
               <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code">{{ impactLabel(code) }}</mat-radio-button>
@@ -107,8 +107,8 @@
       </fieldset>
 
       <fieldset class="question operation">
-        <legend>{{ operationText }}</legend>
-        <mat-radio-group name="operation" [value]="operation()" (change)="setOperation($event.value)">
+        <legend>{{ operationText }} <span class="required" aria-hidden="true">*</span></legend>
+        <mat-radio-group name="operation" [value]="operation()" (change)="setOperation($event.value)" [attr.aria-required]="true">
           @for (code of operations; track code) {
             <div class="option">
               <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code">{{ operationLabel(code) }}</mat-radio-button>

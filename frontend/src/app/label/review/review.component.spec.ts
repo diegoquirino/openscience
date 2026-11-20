@@ -72,7 +72,7 @@ describe('LabelReviewComponent', () => {
 
     const rows = root.querySelectorAll('li.item');
     expect(rows.length).toBe(2);
-    expect(rows[0].querySelector('.impact')?.textContent).toContain('High');
+    expect(rows[0].querySelector('.impact')?.textContent).toContain('Yes (high impact)');
     expect(rows[0].querySelector('.operation')?.textContent).toContain('Update');
     expect(rows[0].querySelector('.comment')?.textContent).toContain('because');
     expect(rows[1].querySelector('.comment')?.textContent).toContain('—');

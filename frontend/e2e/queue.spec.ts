@@ -50,9 +50,9 @@ test.describe('two participants', () => {
       expect(second.blockNumber).toBe(first.blockNumber);
       expect(second.role).not.toBe(first.role);
 
-      await answerCurrentItem(page, { impact: 'Alto', operation: 'Manter', comment: 'primeiro item' });
+      await answerCurrentItem(page, { impact: 'Sim (alto impacto)', operation: 'Manter', comment: 'primeiro item' });
       await expect(page).toHaveURL(/\/pt-BR\/label\/items\/2$/);
-      await answerCurrentItem(page, { impact: 'Baixo', operation: 'Atualizar' });
+      await answerCurrentItem(page, { impact: 'Não (baixo impacto)', operation: 'Atualizar' });
       await expect(page).toHaveURL(/\/pt-BR\/label\/items\/3$/);
 
       // Reload on the item, then come back through the start of labeling: the third item, same block.
@@ -64,11 +64,11 @@ test.describe('two participants', () => {
 
       // The drafts are kept.
       await page.goto('/pt-BR/label/items/1');
-      await expect(page.getByRole('radio', { name: 'Alto', exact: true })).toBeChecked();
+      await expect(page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true })).toBeChecked();
       await expect(page.getByRole('radio', { name: 'Manter', exact: true })).toBeChecked();
       await expect(page.getByLabel('Comentário (opcional)')).toHaveValue('primeiro item');
       await page.goto('/pt-BR/label/items/2');
-      await expect(page.getByRole('radio', { name: 'Baixo', exact: true })).toBeChecked();
+      await expect(page.getByRole('radio', { name: 'Não (baixo impacto)', exact: true })).toBeChecked();
       await expect(page.getByRole('radio', { name: 'Atualizar', exact: true })).toBeChecked();
 
       // The other participant still holds the other role of the block, untouched.
@@ -101,9 +101,9 @@ test.describe('one participant labels blocks until none is left for them', () =>
     await expect(page).toHaveURL(/\/pt-BR\/label\/items\/1$/);
     held = await reserveOverApi(page);
 
-    await answerCurrentItem(page, { impact: 'Baixo', operation: 'Manter' });
+    await answerCurrentItem(page, { impact: 'Não (baixo impacto)', operation: 'Manter' });
     await expect(page).toHaveURL(/\/pt-BR\/label\/items\/2$/);
-    await page.getByRole('radio', { name: 'Alto', exact: true }).check();
+    await page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true }).check();
     await page.getByRole('radio', { name: 'Atualizar', exact: true }).check();
     await page.getByLabel('Comentário (opcional)').fill('ainda não salvo');
     const timer = page.getByRole('timer');
@@ -111,7 +111,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
 
     await switchLanguage(page, PT_BR, EN_US);
     await expect(page).toHaveURL(/\/en-US\/label\/items\/2$/);
-    await expect(page.getByRole('radio', { name: 'High', exact: true })).toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Yes (high impact)', exact: true })).toBeChecked();
     await expect(page.getByRole('radio', { name: 'Update', exact: true })).toBeChecked();
     await expect(page.getByLabel('Comment (optional)')).toHaveValue('ainda não salvo');
     await expect(page.getByRole('timer')).toBeVisible();
@@ -119,7 +119,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
 
     await switchLanguage(page, EN_US, ES_ES);
     await expect(page).toHaveURL(/\/es-ES\/label\/items\/2$/);
-    await expect(page.getByRole('radio', { name: 'Alto', exact: true })).toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true })).toBeChecked();
     await expect(page.getByRole('radio', { name: 'Actualizar', exact: true })).toBeChecked();
     await expect(page.getByLabel('Comentario (opcional)')).toHaveValue('ainda não salvo');
 
@@ -143,7 +143,7 @@ test.describe('one participant labels blocks until none is left for them', () =>
     for (let position = 3; position <= held.size; position++) {
       await expect(page.locator('.counter')).toHaveText(`${position} de ${held.size}`);
       await answerCurrentItem(page, {
-        impact: position % 2 === 0 ? 'Alto' : 'Baixo',
+        impact: position % 2 === 0 ? 'Sim (alto impacto)' : 'Não (baixo impacto)',
         operation: 'Manter',
       });
     }

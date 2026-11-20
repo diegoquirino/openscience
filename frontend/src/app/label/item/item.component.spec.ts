@@ -229,12 +229,13 @@ describe('LabelItemComponent', () => {
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
 
-    expect(root.querySelector('.impact legend')?.textContent).toBe(
-      'Does this edit change the behavior that the use case specifies?',
+    expect(root.querySelector('.impact legend')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
+      'Does this edit change the behavior that the use case specifies? *',
     );
-    expect(root.querySelector('.operation legend')?.textContent).toBe(
-      'What should be done with the manual test cases that exercise this part?',
+    expect(root.querySelector('.operation legend')?.textContent?.replace(/\s+/g, ' ').trim()).toBe(
+      'What should be done with the manual test cases that exercise this part? *',
     );
+    expect(root.querySelectorAll('.impact .required, .operation .required')).toHaveLength(2);
     expect(root.querySelectorAll('.impact input[type=radio]')).toHaveLength(2);
     expect(root.querySelectorAll('.operation input[type=radio]')).toHaveLength(8);
 

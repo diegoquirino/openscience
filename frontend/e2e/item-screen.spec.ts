@@ -278,7 +278,7 @@ test.describe('the four kinds, in every locale', () => {
     test.setTimeout(120_000);
     const item = items.find((candidate) => candidate.kind === 'ADD' && editedCount(candidate.targetUsecase) > 0) ?? items[0];
     await page.goto(`/en-US/label/items/${item.position}`);
-    await page.getByRole('radio', { name: 'High', exact: true }).check();
+    await page.getByRole('radio', { name: 'Yes (high impact)', exact: true }).check();
     await page.getByRole('radio', { name: 'Flag', exact: true }).check();
     await page.getByLabel('Comment (optional)').fill('typed before the modal');
 
@@ -289,7 +289,7 @@ test.describe('the four kinds, in every locale', () => {
       await expectModal(page, 'en-US', item, side);
       await closeModal(page, how);
       await expect(column(page, side).locator('button.open-usecase')).toBeFocused();
-      await expect(page.getByRole('radio', { name: 'High', exact: true })).toBeChecked();
+      await expect(page.getByRole('radio', { name: 'Yes (high impact)', exact: true })).toBeChecked();
       await expect(page.getByRole('radio', { name: 'Flag', exact: true })).toBeChecked();
       await expect(page.getByLabel('Comment (optional)')).toHaveValue('typed before the modal');
     }
@@ -316,7 +316,7 @@ test.describe('the four kinds, in every locale', () => {
     // The radio groups answer to the arrow keys.
     await page.getByRole('radio', { name: 'Bajo', exact: true }).focus();
     await page.keyboard.press('ArrowRight');
-    await expect(page.getByRole('radio', { name: 'Alto', exact: true })).toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Sim (alto impacto)', exact: true })).toBeChecked();
   });
 
   test('every locale answers the same stored codes, with the language of the save (FR-011, SC-004)', async () => {

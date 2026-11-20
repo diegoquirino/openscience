@@ -1,6 +1,6 @@
 # Veredito implementation roadmap
 
-Spec [001-oracle-labeling](./001-oracle-labeling/spec.md) is the overview and the source of the rules. Specs 002 to 011 split it into slices that can be planned (`/speckit-plan`), broken into tasks (`/speckit-tasks`) and implemented one at a time, each one testable and deployable on its own.
+Spec [001-oracle-labeling](./001-oracle-labeling/spec.md) is the overview and the source of the rules. Specs 002 to 014 split it into slices that can be planned (`/speckit-plan`), broken into tasks (`/speckit-tasks`) and implemented one at a time, each one testable and deployable on its own.
 
 Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US and es-ES; data kept in its capture language) are defined in [GLOSSARY.md](./GLOSSARY.md).
 
@@ -21,8 +21,11 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | - | **Pilot and launch** | see below | 002 to 009 |
 | 9 | [010-progress-dashboard](./010-progress-dashboard/spec.md) | Data collection dashboard. **Complete** (2026-11-16; `deploy/0.10.0-1`) | 005, 006, 007 |
 | 10 | [011-lgpd-withdrawal](./011-lgpd-withdrawal/spec.md) | Anonymization and disposal. **Complete** (2026-11-16; `deploy/0.11.0-1`) | 007, 009 |
+| 11 | [012-impact-answer-labels](./012-impact-answer-labels/spec.md) | Change-impact choice labels (No/Yes) and required markers on item questions. **In progress** (0.12.0) | 008 |
+| 12 | [013-email-first-onboarding](./013-email-first-onboarding/spec.md) | Sign-in by e-mail only; name and skill after the code, before consent. **Planned** (0.13.0) | 004, 006 |
+| 13 | [014-participant-profile-menu](./014-participant-profile-menu/spec.md) | Header profile menu to view and edit name and skill. **Planned** (0.14.0) | 013 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored.
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX.
 
 ```mermaid
 flowchart LR
@@ -37,6 +40,9 @@ flowchart LR
     PIL{{Pilot and launch}}
     S010[010 Dashboard]
     S011[011 LGPD withdrawal]
+    S012[012 Impact labels]
+    S013[013 Email-first onboarding]
+    S014[014 Profile menu]
 
     S003 --> S004
     S004 --> S005
@@ -51,6 +57,10 @@ flowchart LR
     S009 --> PIL
     S007 --> S010
     S009 --> S011
+    S008 --> S012
+    S004 --> S013
+    S006 --> S013
+    S013 --> S014
 ```
 
 Solid arrows are hard dependencies; dashed ones are integrations that do not block the start of the work.
@@ -78,6 +88,7 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
    - fix and rehearse locally; **recreate the production database empty** (drop and create again the `veredito` database in Cloud SQL) and deploy, so that Flyway prepares it from scratch;
    - switch the study phase to `collection` (spec 005), publish the final consent form, import the real dataset and announce.
 5. **Monitored data collection** (010) and **complete LGPD** (011), **reached on 2026-11-16**: dashboard live (`deploy/0.10.0-1`); Participants withdrawal keep/discard live (`deploy/0.11.0-1`).
+6. **Post-pilot UX** (012 to 014): clearer impact answers; e-mail-first sign-in with name and skill before consent; profile edit from the header.
 
 ## Coverage of spec 001
 
@@ -93,13 +104,16 @@ Solid arrows are hard dependencies; dashed ones are integrations that do not blo
 | FR-057 (incl. `veredito_<system>_completo.csv`), FR-058, FR-060 (User Story 8) | 009 |
 | FR-056 (User Story 9) | 010 |
 | FR-059 (User Story 10) | 011 |
+| Item impact choice labels and required markers (amends B.1 display) | 012 |
+| FR-001 / US1 e-mail-first; name and skill before consent (amends 004, 006) | 013 |
+| Profile view/edit from the header | 014 |
 
 ## How to use with Spec Kit
 
 For each spec, in the order above:
 
 1. Point `.specify/feature.json` to the spec folder (for example, `{"feature_directory":"specs/003-deployment-foundation"}`).
-2. Run `/speckit-plan`, then `/speckit-tasks` and `/speckit-implement`. In each Veredito spec (003 to 011), the `contracts/` of the plan lists the resources (under `/api/v1`), the HTTP methods and status codes, the link relations and the actions per state (Richardson level 3), and each new operation is documented in Swagger.
+2. Run `/speckit-plan`, then `/speckit-tasks` and `/speckit-implement`. In each Veredito spec (003 to 014), the `contracts/` of the plan lists the resources (under `/api/v1`), the HTTP methods and status codes, the link relations and the actions per state (Richardson level 3), and each new operation is documented in Swagger.
 3. Run in local staging (Docker), check the success criteria of the spec, deploy to production and only then move on to the next one.
 
 The plans follow the [constitution](../.specify/memory/constitution.md) (version 2.7.0: Angular with Angular Material, Spring Boot with a level 3 REST API versioned in the path (`/api/v1`), documented in Swagger and tested with REST Assured, MySQL with Flyway; production on Google Cloud, local staging in Docker; staging, tests and pilot only with Minitest items; English everywhere in the repository, internationalized UI (pt-BR, en-US, es-ES) and data kept in its capture language) and the technology selection in [research.md](./001-oracle-labeling/research.md). The code lives in the orphan branch `Veredito` of `diegoquirino/openscience`.

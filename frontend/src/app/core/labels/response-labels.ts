@@ -18,8 +18,8 @@ export const MAINTENANCE_OPERATIONS = [
 export type MaintenanceOperation = (typeof MAINTENANCE_OPERATIONS)[number];
 
 const IMPACT_LABELS: Record<ChangeImpact, () => string> = {
-  LOW: () => $localize`:change impact code LOW@@changeImpact.LOW:Low`,
-  HIGH: () => $localize`:change impact code HIGH@@changeImpact.HIGH:High`,
+  LOW: () => $localize`:change impact code LOW@@changeImpact.LOW:No (low impact)`,
+  HIGH: () => $localize`:change impact code HIGH@@changeImpact.HIGH:Yes (high impact)`,
 };
 
 const OPERATION_LABELS: Record<MaintenanceOperation, () => string> = {

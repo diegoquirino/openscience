@@ -89,7 +89,7 @@ export async function answerAllOverApi(page: Page, task: HeldTask): Promise<void
 /** Answers the item on screen (pt-BR labels) and continues to the next screen. */
 export async function answerCurrentItem(
   page: Page,
-  answer: { impact: 'Baixo' | 'Alto'; operation: string; comment?: string },
+  answer: { impact: string; operation: string; comment?: string },
 ): Promise<void> {
   await page.getByRole('radio', { name: answer.impact, exact: true }).check();
   await page.getByRole('radio', { name: answer.operation, exact: true }).check();
