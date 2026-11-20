@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { PROBLEM_TYPE_PREFIX } from '../../core/problem-messages';
+import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, TaskBody } from '../label.service';
 import { LabelReviewComponent } from './review.component';
 
@@ -46,6 +47,10 @@ describe('LabelReviewComponent', () => {
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
         {
           provide: LabelService,
           useValue: {
@@ -135,6 +140,7 @@ describe('LabelReviewComponent', () => {
     fixture.componentInstance['submit']();
     fixture.detectChanges();
 
-    expect((fixture.nativeElement as HTMLElement).querySelector('p.error')?.textContent).toContain('ran out');
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error.mock.calls[0]?.[0]).toContain('ran out');
   });
 });

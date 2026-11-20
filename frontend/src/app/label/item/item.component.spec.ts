@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { of, throwError } from 'rxjs';
 import { LanguageService } from '../../core/language.service';
+import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, TaskBody } from '../label.service';
 import { LabelItemComponent, unsavedKey } from './item.component';
 import { UseCaseDialogComponent } from './usecase-dialog.component';
@@ -58,6 +59,10 @@ describe('LabelItemComponent', () => {
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
         {
           provide: LabelService,
           useValue: {
@@ -341,7 +346,8 @@ describe('LabelItemComponent', () => {
     fixture.componentInstance['submit']();
     fixture.detectChanges();
 
-    expect(root.querySelector('p.error[role=alert]')).not.toBeNull();
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
+    expect(toast.error).toHaveBeenCalled();
     expect(root.querySelector('a.new-block')?.getAttribute('href')).toBe('/label');
     expect(clearUnsaved).not.toHaveBeenCalled();
   });

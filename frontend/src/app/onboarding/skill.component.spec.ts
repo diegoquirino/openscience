@@ -3,6 +3,7 @@ import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { LanguageService } from '../core/language.service';
 import { OnboardingService } from '../core/onboarding.service';
+import { ToastService } from '../core/toast.service';
 import { SKILL_UNSAVED_KEY, SkillComponent } from './skill.component';
 
 describe('SkillComponent', () => {
@@ -18,6 +19,10 @@ describe('SkillComponent', () => {
         provideRouter([]),
         { provide: OnboardingService, useValue: { recordSkill } },
         { provide: LanguageService, useValue: { takeUnsaved, keepOnSwitch, clearUnsaved } },
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
       ],
     });
     const navigate = vi.spyOn(TestBed.inject(Router), 'navigateByUrl').mockResolvedValue(true);
@@ -30,22 +35,23 @@ describe('SkillComponent', () => {
 
   beforeEach(() => vi.resetAllMocks());
 
-  it('lists the 13 options and disables Continue until one is chosen', () => {
+  it('lists the 13 options and disables Continue until name and skill are chosen', () => {
     const { root } = create();
     expect(root.querySelectorAll('mat-radio-button')).toHaveLength(13);
     expect(proceed(root).disabled).toBe(true);
   });
 
-  it('enables Continue for a common option and sends its code without description', () => {
+  it('enables Continue for a common option and sends name and code without description', () => {
     recordSkill.mockReturnValue(of(undefined));
     const { fixture, navigate, root, component } = create();
 
+    component.name.set('Ana Souza');
     component.choose('test_analyst');
     fixture.detectChanges();
     expect(proceed(root).disabled).toBe(false);
     proceed(root).click();
 
-    expect(recordSkill).toHaveBeenCalledWith('test_analyst', null);
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'test_analyst', null);
     expect(clearUnsaved).toHaveBeenCalledWith(SKILL_UNSAVED_KEY);
     expect(navigate).toHaveBeenCalledWith('/welcome');
   });
@@ -53,6 +59,7 @@ describe('SkillComponent', () => {
   it('asks for a description for "other" within 100 characters', () => {
     const { fixture, root, component } = create();
 
+    component.name.set('Ana Souza');
     component.choose('other');
     fixture.detectChanges();
     expect(root.querySelector('input.other-input')).not.toBeNull();
@@ -82,22 +89,24 @@ describe('SkillComponent', () => {
   it('sends the description as typed with "other"', () => {
     recordSkill.mockReturnValue(of(undefined));
     const { fixture, root, component } = create();
+    component.name.set('Ana Souza');
     component.choose('other');
     component.other.set(' Technical writer ');
     fixture.detectChanges();
 
     proceed(root).click();
 
-    expect(recordSkill).toHaveBeenCalledWith('other', ' Technical writer ');
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'other', ' Technical writer ');
   });
 
   it('restores the choice kept across a language switch and registers the values to keep', () => {
-    const { component } = create({ skill: 'other', other: 'Redator' });
+    const { component } = create({ name: 'Ana', skill: 'other', other: 'Redator' });
+    expect(component.name()).toBe('Ana');
     expect(component.skill()).toBe('other');
     expect(component.other()).toBe('Redator');
     expect(takeUnsaved).toHaveBeenCalledWith(SKILL_UNSAVED_KEY);
 
     const values = keepOnSwitch.mock.calls[0][1] as () => Record<string, string>;
-    expect(values()).toEqual({ skill: 'other', other: 'Redator' });
+    expect(values()).toEqual({ name: 'Ana', skill: 'other', other: 'Redator' });
   });
 });

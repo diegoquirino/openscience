@@ -104,11 +104,18 @@ class LanguageProfileTest extends ApiTestBase {
     private static void assertLanguageTemplate(Response profile) {
         profile.then().statusCode(200)
                 .body("_templates.default.method", equalTo("PUT"))
-                .body("_templates.default.properties.name", contains("preferredLanguage"))
-                .body("_templates.default.properties[0].required", equalTo(true))
-                .body("_templates.default.properties[0].options.inline", contains("pt-BR", "en-US", "es-ES"))
-                .body("_templates.default.properties[0].options.minItems", equalTo(1))
-                .body("_templates.default.properties[0].options.maxItems", equalTo(1));
+                .body("_templates.default.properties.name", contains("name", "preferredLanguage"));
+        java.util.List<java.util.Map<String, Object>> properties = profile.path("_templates.default.properties");
+        java.util.Map<String, Object> language = properties.stream()
+                .filter(property -> "preferredLanguage".equals(property.get("name")))
+                .findFirst()
+                .orElseThrow();
+        assertThat(language.get("options")).isInstanceOf(java.util.Map.class);
+        @SuppressWarnings("unchecked")
+        java.util.Map<String, Object> options = (java.util.Map<String, Object>) language.get("options");
+        assertThat(options.get("inline")).asList().containsExactly("pt-BR", "en-US", "es-ES");
+        assertThat(options.get("minItems")).isEqualTo(1);
+        assertThat(options.get("maxItems")).isEqualTo(1);
     }
 
     private Response changeLanguage(String token, String href, String language) {

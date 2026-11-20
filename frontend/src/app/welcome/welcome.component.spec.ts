@@ -3,6 +3,7 @@ import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { OnboardingService, Step, STEP_ROUTES } from '../core/onboarding.service';
 import { Links } from '../core/hal';
+import { ToastService } from '../core/toast.service';
 import { WelcomeComponent } from './welcome.component';
 
 describe('WelcomeComponent (onboarding resolver)', () => {
@@ -10,7 +11,14 @@ describe('WelcomeComponent (onboarding resolver)', () => {
 
   function create() {
     TestBed.configureTestingModule({
-      providers: [provideRouter([]), { provide: OnboardingService, useValue: { state } }],
+      providers: [
+        provideRouter([]),
+        { provide: OnboardingService, useValue: { state } },
+        {
+          provide: ToastService,
+          useValue: { error: vi.fn(), success: vi.fn(), warn: vi.fn(), info: vi.fn(), show: vi.fn(), action: vi.fn() },
+        },
+      ],
     });
     const navigate = vi.spyOn(TestBed.inject(Router), 'navigateByUrl').mockResolvedValue(true);
     const fixture = TestBed.createComponent(WelcomeComponent);
@@ -29,8 +37,9 @@ describe('WelcomeComponent (onboarding resolver)', () => {
   it('shows an error and a retry button when the step cannot be read', () => {
     state.mockReturnValue(throwError(() => new Error('down')));
     const { navigate, root } = create();
+    const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
     expect(navigate).not.toHaveBeenCalled();
-    expect(root.querySelector('[role=alert]')).not.toBeNull();
+    expect(toast.error).toHaveBeenCalled();
     expect(root.querySelector('button')).not.toBeNull();
   });
 });
