@@ -13,7 +13,7 @@ const CURIES = [{ name: 'vd', href: '/api/v1/rels/{rel}', templated: true }];
 
 describe('step to route map', () => {
   it('has one distinct route per step', () => {
-    const steps: Step[] = ['consent', 'skill', 'screening', 'participation', 'ineligible', 'not-open'];
+    const steps: Step[] = ['consent', 'profile', 'screening', 'participation', 'ineligible', 'not-open'];
     expect(steps.map(routeOfStep)).toEqual([
       '/consent',
       '/skill',
@@ -37,7 +37,7 @@ describe('onboarding guards', () => {
         provideHttpClientTesting(),
         provideRouter([
           { path: 'consent', canActivate: [onboardingStep('consent')], component: BlankPage },
-          { path: 'skill', canActivate: [onboardingStep('skill')], component: BlankPage },
+          { path: 'skill', canActivate: [onboardingStep('profile')], component: BlankPage },
           { path: 'screening', canActivate: [onboardingStep('screening')], component: BlankPage },
           { path: 'screening/closed', canActivate: [onboardingStep('ineligible')], component: BlankPage },
           { path: 'not-open', canActivate: [onboardingStep('not-open')], component: BlankPage },
@@ -79,7 +79,7 @@ describe('onboarding guards', () => {
   }
   it.each([
     ['/consent', 'consent'],
-    ['/skill', 'skill'],
+    ['/skill', 'profile'],
     ['/screening', 'screening'],
     ['/screening/closed', 'ineligible'],
     ['/not-open', 'not-open'],
@@ -90,11 +90,11 @@ describe('onboarding guards', () => {
 
   it.each([
     ['/label', 'consent', '/consent'],
-    ['/label', 'skill', '/skill'],
+    ['/label', 'profile', '/skill'],
     ['/label', 'screening', '/screening'],
     ['/label', 'ineligible', '/screening/closed'],
     ['/label', 'not-open', '/not-open'],
-    ['/consent', 'skill', '/skill'],
+    ['/consent', 'profile', '/skill'],
     ['/skill', 'participation', '/label'],
     ['/screening', 'ineligible', '/screening/closed'],
   ] as const)('sends the participant from %s at step %s to %s', async (url, step, expected) => {

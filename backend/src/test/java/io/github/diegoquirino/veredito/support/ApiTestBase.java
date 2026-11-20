@@ -139,18 +139,19 @@ public abstract class ApiTestBase {
      * then {@code vd:sign-in}. Returns the {@code veredito-session} token.
      */
     protected String signIn(String name, String email, String locale) {
-        Response requested = requestCode(name, email, locale);
+        // name is ignored at code request (spec 013); kept in signature for call-site compatibility.
+        Response requested = requestCode(email, locale);
         requested.then().statusCode(200);
         Response signedIn = sendCode(email, mailpit.latestCodeTo(normalized(email)), locale);
         signedIn.then().statusCode(201);
         return signedIn.getCookie(CurrentSession.COOKIE);
     }
 
-    /** Follows {@code vd:request-code} from the entry point. */
-    protected Response requestCode(String name, String email, String locale) {
+    /** Follows {@code vd:request-code} from the entry point (e-mail only, spec 013). */
+    protected Response requestCode(String email, String locale) {
         return request().header("Accept-Language", locale)
                 .contentType("application/json")
-                .body(Map.of("name", name, "email", email))
+                .body(Map.of("email", email))
                 .post(href(entryPoint(), "request-code"));
     }
 
@@ -194,8 +195,8 @@ public abstract class ApiTestBase {
     protected String eligibleSignIn(String name, String email, String locale) {
         String token = signIn(name, email, locale);
         long id = participantIdOf(token);
+        seedProfile(id, name, "test_analyst", null);
         acceptCurrentConsent(id, "pt-BR");
-        seedSkill(id, "test_analyst", null);
         seedScreening(id, ScreeningAnswer.YES_PROFESSIONAL);
         return token;
     }
@@ -218,6 +219,11 @@ public abstract class ApiTestBase {
 
     protected void seedSkill(long participantId, String skill, String other) {
         participants.recordSkill(participantId, skill, other);
+    }
+
+    /** Sets name and skill together (profile step, spec 013). */
+    protected void seedProfile(long participantId, String name, String skill, String other) {
+        participants.updateProfile(participantId, name, skill, other);
     }
 
     protected void seedScreening(long participantId, ScreeningAnswer answer) {

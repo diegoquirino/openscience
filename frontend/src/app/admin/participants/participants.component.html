@@ -1,36 +1,72 @@
 <section class="participants" data-testid="participants-page">
-  <p class="back"><a routerLink="/admin" i18n="@@participants.back">Back to administration</a></p>
-  <h1 i18n="@@participants.title">Participants</h1>
-  <p i18n="@@participants.intro">
-    Search by e-mail or pseudonym (exactly one), then anonymize keeping or discarding the responses.
+  <p class="back"><a routerLink="/admin/dashboard" i18n="@@participants.back">Back to administration</a></p>
+  <h1 i18n="@@participants.title">Anonymization of Participants</h1>
+  <p class="page-intro" i18n="@@participants.intro">
+    Select a person from either panel, then anonymize keeping or discarding the responses. You may set the
+    retained pseudonym on confirm.
   </p>
 
-  <form class="search" (ngSubmit)="search()">
-    <mat-form-field appearance="outline">
-      <mat-label i18n="@@participants.email">E-mail</mat-label>
-      <input matInput type="email" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label i18n="@@participants.pseudonym">Pseudonym</mat-label>
-      <input matInput [ngModel]="pseudonym()" (ngModelChange)="pseudonym.set($event)" name="pseudonym" />
-    </mat-form-field>
-    <button mat-flat-button color="primary" type="submit" [disabled]="busy()" i18n="@@participants.search">
-      Search
-    </button>
-  </form>
+  <div class="panels">
+    <section class="page-panel list-panel" data-testid="panel-with-email">
+      <h2 i18n="@@participants.panelEmail">Participants</h2>
+      <p class="hint" i18n="@@participants.panelEmailHint">People who still have an e-mail.</p>
+      @if (withEmail().length === 0) {
+        <p i18n="@@participants.panelEmailEmpty">No identifiable participants.</p>
+      } @else {
+        <ul class="roster">
+          @for (person of withEmail(); track person.id) {
+            <li>
+              <button
+                type="button"
+                class="roster-item"
+                [class.selected]="card()?.id === person.id"
+                (click)="select(person)"
+              >
+                <span class="email">{{ person.email }}</span>
+                <span class="pseudo">{{ person.pseudonym }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </section>
 
-  @if (error() === 'exact-one') {
-    <p class="warn" role="alert" i18n="@@participants.exactOne">Fill exactly one of e-mail or pseudonym.</p>
-  }
+    <section class="page-panel list-panel" data-testid="panel-pseudonyms">
+      <h2 i18n="@@participants.panelPseudonym">Pseudonyms</h2>
+      <p class="hint" i18n="@@participants.panelPseudonymHint">All retained identifiers.</p>
+      @if (byPseudonym().length === 0) {
+        <p i18n="@@participants.panelPseudonymEmpty">No participants yet.</p>
+      } @else {
+        <ul class="roster">
+          @for (person of byPseudonym(); track person.id) {
+            <li>
+              <button
+                type="button"
+                class="roster-item"
+                [class.selected]="card()?.id === person.id"
+                [class.anonymized]="!!person.anonymizedAt"
+                (click)="select(person)"
+              >
+                <span class="pseudo">{{ person.pseudonym }}</span>
+                @if (person.anonymizedAt) {
+                  <span class="tag" i18n="@@participants.anonymizedTag">Anonymized</span>
+                } @else if (person.email) {
+                  <span class="email">{{ person.email }}</span>
+                }
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  </div>
+
   @if (error() === 'search-failed' || error() === 'anonymize-failed') {
     <p class="warn" role="alert" i18n="@@participants.failed">The request failed. Try again.</p>
   }
-  @if (empty()) {
-    <p i18n="@@participants.none">No participant matched that search.</p>
-  }
 
   @if (card(); as person) {
-    <article class="card" data-testid="participant-card">
+    <article class="card page-panel" data-testid="participant-card">
       <h2>{{ person.pseudonym }}</h2>
       @if (person.email) {
         <p><span i18n="@@participants.fieldEmail">E-mail</span>: {{ person.email }}</p>
@@ -94,7 +130,7 @@
   }
 
   @if (confirming() && card(); as person) {
-    <div class="confirm" role="dialog" data-testid="confirm-dialog">
+    <div class="confirm page-panel" role="dialog" data-testid="confirm-dialog">
       <h2 i18n="@@participants.confirmTitle">Confirm withdrawal</h2>
       <p>
         <span i18n="@@participants.confirmOption">Option</span>:
@@ -104,6 +140,17 @@
         <span i18n="@@participants.confirmLanguage">E-mail language</span>:
         {{ person.preferredLanguage || 'pt-BR' }}
       </p>
+      <mat-form-field appearance="outline" class="pseudonym-field">
+        <mat-label i18n="@@participants.choosePseudonym">Pseudonym to keep</mat-label>
+        <input
+          matInput
+          data-testid="chosen-pseudonym"
+          [ngModel]="chosenPseudonym()"
+          (ngModelChange)="chosenPseudonym.set($event)"
+          maxlength="16"
+        />
+        <mat-hint i18n="@@participants.choosePseudonymHint">Leave as is to keep the current identifier.</mat-hint>
+      </mat-form-field>
       <div class="actions">
         <button mat-flat-button color="primary" type="button" [disabled]="busy()" (click)="confirm()" i18n="@@participants.confirm">
           Confirm

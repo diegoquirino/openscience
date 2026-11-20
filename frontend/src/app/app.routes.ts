@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { administratorOnly, participantOnly, visitorOnly } from './core/guards';
+import { administratorOnly, participantOnly, signedInOnly, visitorOnly } from './core/guards';
 import { onboardingStep, participationOnly } from './core/onboarding-guards';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -40,7 +40,7 @@ export const routes: Routes = [
   },
   {
     path: 'skill',
-    canActivate: [participantOnly, onboardingStep('skill')],
+    canActivate: [participantOnly, onboardingStep('profile')],
     loadComponent: () => import('./onboarding/skill.component').then((m) => m.SkillComponent),
   },
   {
@@ -81,9 +81,14 @@ export const routes: Routes = [
     loadComponent: () => import('./label/label-done.component').then((m) => m.LabelDoneComponent),
   },
   {
+    path: 'profile',
+    canActivate: [signedInOnly],
+    loadComponent: () => import('./profile/profile.component').then((m) => m.ProfileComponent),
+  },
+  {
     path: 'admin',
-    canActivate: [administratorOnly],
-    loadComponent: () => import('./admin/admin.component').then((m) => m.AdminComponent),
+    redirectTo: 'admin/dashboard',
+    pathMatch: 'full',
   },
   {
     path: 'admin/import',

@@ -40,7 +40,7 @@
     <unit id="signIn.intro">
       <segment>
         <source>Enter your name and e-mail. We will send you a 6-digit code to sign in.</source>
-        <target>Informe seu nome e e-mail. Enviaremos um código de 6 dígitos para você entrar.</target>
+        <target>Informe seu e-mail. Enviaremos um codigo de 6 digitos para entrar.</target>
       </segment>
     </unit>
     <unit id="signIn.name">
@@ -159,8 +159,8 @@
     </unit>
     <unit id="admin.participants">
       <segment>
-        <source>Participants</source>
-        <target>Participantes</target>
+        <source>Anonymization of Participants</source>
+        <target>Anonimização de Participantes</target>
       </segment>
     </unit>
     <unit id="admin.soon">
@@ -179,6 +179,42 @@
       <segment>
         <source>Dashboard</source>
         <target>Painel de andamento</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.completedPercent">
+      <segment>
+        <source>Completed</source>
+        <target>Concluído</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.free">
+      <segment>
+        <source>Free tasks</source>
+        <target>Tarefas livres</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.inProgress">
+      <segment>
+        <source>In progress</source>
+        <target>Em andamento</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.completed">
+      <segment>
+        <source>Completed tasks</source>
+        <target>Tarefas concluídas</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.eligible">
+      <segment>
+        <source>Eligible participants</source>
+        <target>Participantes elegíveis</target>
+      </segment>
+    </unit>
+    <unit id="dashboard.metric.emailRemaining">
+      <segment>
+        <source>E-mails remaining today</source>
+        <target>E-mails restantes hoje</target>
       </segment>
     </unit>
     <unit id="dashboard.intro">
@@ -1354,13 +1390,13 @@
     <unit id="skill.title">
       <segment>
         <source>Your professional skill</source>
-        <target>Sua habilidade profissional</target>
+        <target>Seu nome e habilidade profissional</target>
       </segment>
     </unit>
     <unit id="skill.intro">
       <segment>
         <source>Choose the option that best describes you. You answer this only once.</source>
-        <target>Escolha a opção que melhor descreve você. Você responde isto apenas uma vez.</target>
+        <target>Informe seu nome e escolha a opcao que melhor descreve voce.</target>
       </segment>
     </unit>
     <unit id="skill.legend">
@@ -1731,14 +1767,68 @@
     </unit>
     <unit id="participants.title">
       <segment>
-        <source>Participants</source>
-        <target>Participantes</target>
+        <source>Anonymization of Participants</source>
+        <target>Anonimização de Participantes</target>
       </segment>
     </unit>
     <unit id="participants.intro">
       <segment>
-        <source> Search by e-mail or pseudonym (exactly one), then anonymize keeping or discarding the responses. </source>
-        <target>Busque por e-mail ou pseudônimo (exatamente um) e anonimize mantendo ou descartando as respostas.</target>
+        <source>Select a person from either panel, then anonymize keeping or discarding the responses. You may set the retained pseudonym on confirm.</source>
+        <target>Selecione uma pessoa em qualquer painel e anonimize mantendo ou descartando as respostas. Você pode definir o pseudônimo retido na confirmação.</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelEmail">
+      <segment>
+        <source>Participants</source>
+        <target>Participantes</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelEmailHint">
+      <segment>
+        <source>People who still have an e-mail.</source>
+        <target>Pessoas que ainda têm e-mail.</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelEmailEmpty">
+      <segment>
+        <source>No identifiable participants.</source>
+        <target>Nenhum participante identificável.</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelPseudonym">
+      <segment>
+        <source>Pseudonyms</source>
+        <target>Pseudônimos</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelPseudonymHint">
+      <segment>
+        <source>All retained identifiers.</source>
+        <target>Todos os identificadores retidos.</target>
+      </segment>
+    </unit>
+    <unit id="participants.panelPseudonymEmpty">
+      <segment>
+        <source>No participants yet.</source>
+        <target>Ainda não há participantes.</target>
+      </segment>
+    </unit>
+    <unit id="participants.anonymizedTag">
+      <segment>
+        <source>Anonymized</source>
+        <target>Anonimizado</target>
+      </segment>
+    </unit>
+    <unit id="participants.choosePseudonym">
+      <segment>
+        <source>Pseudonym to keep</source>
+        <target>Pseudônimo a manter</target>
+      </segment>
+    </unit>
+    <unit id="participants.choosePseudonymHint">
+      <segment>
+        <source>Leave as is to keep the current identifier.</source>
+        <target>Deixe como está para manter o identificador atual.</target>
       </segment>
     </unit>
     <unit id="participants.email">
@@ -1879,5 +1969,83 @@
         <target>Retirada registrada</target>
       </segment>
     </unit>
-  </file>
+      <unit id="skill.name">
+      <segment>
+        <source>Name</source>
+        <target>Nome</target>
+      </segment>
+    </unit>
+    <unit id="shell.continueLabeling">
+      <segment>
+        <source>Continue labeling</source>
+        <target>Continuar rotulação</target>
+      </segment>
+    </unit>
+    <unit id="shell.profile">
+      <segment>
+        <source>Profile</source>
+        <target>Perfil</target>
+      </segment>
+    </unit>
+    <unit id="shell.account">
+      <segment>
+        <source>Account</source>
+        <target>Conta</target>
+      </segment>
+    </unit>
+    <unit id="shell.accountMenu">
+      <segment>
+        <source>Account menu</source>
+        <target>Menu da conta</target>
+      </segment>
+    </unit>
+    <unit id="profile.title">
+      <segment>
+        <source>Profile</source>
+        <target>Perfil</target>
+      </segment>
+    </unit>
+    <unit id="profile.intro">
+      <segment>
+        <source>Update how your name appears. E-mail stays the same.</source>
+        <target>Atualize como seu nome aparece. O e-mail permanece o mesmo.</target>
+      </segment>
+    </unit>
+    <unit id="profile.name">
+      <segment>
+        <source>Name</source>
+        <target>Nome</target>
+      </segment>
+    </unit>
+    <unit id="profile.skill.legend">
+      <segment>
+        <source>Professional skill</source>
+        <target>Habilidade profissional</target>
+      </segment>
+    </unit>
+    <unit id="profile.skill.other">
+      <segment>
+        <source>Describe your skill</source>
+        <target>Descreva sua habilidade</target>
+      </segment>
+    </unit>
+    <unit id="profile.saved">
+      <segment>
+        <source>Saved.</source>
+        <target>Salvo.</target>
+      </segment>
+    </unit>
+    <unit id="profile.back">
+      <segment>
+        <source>Back</source>
+        <target>Voltar</target>
+      </segment>
+    </unit>
+    <unit id="profile.save">
+      <segment>
+        <source>Save</source>
+        <target>Salvar</target>
+      </segment>
+    </unit>
+</file>
 </xliff>

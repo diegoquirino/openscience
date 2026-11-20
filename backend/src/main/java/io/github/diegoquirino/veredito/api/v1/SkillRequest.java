@@ -1,13 +1,16 @@
 package io.github.diegoquirino.veredito.api.v1;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-/** Body of {@code PUT} on {@code vd:skill}; the codes are English in every language. */
-@Schema(name = "SkillRequest", description = "The professional skill of the participant (Appendix B.4).")
+/** Body of {@code PUT} on {@code vd:skill} / profile (name + skill, specs 013–014). */
+@Schema(name = "SkillRequest", description = "Name and professional skill of the participant.")
 public record SkillRequest(
-        @NotNull
+        @Schema(
+                description = "Display name, 2 to 120 characters after trimming.",
+                example = "Ana Souza",
+                requiredMode = Schema.RequiredMode.REQUIRED)
+        String name,
         @Schema(
                 description = "One of the 13 skill codes.",
                 example = "test_analyst",

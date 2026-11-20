@@ -1,14 +1,9 @@
 <section class="sign-in">
   <h1 i18n="@@signIn.title">Participate</h1>
-  <p i18n="@@signIn.intro">Enter your name and e-mail. We will send you a 6-digit code to sign in.</p>
+  <p class="page-intro" i18n="@@signIn.intro">Enter your e-mail. We will send you a 6-digit code to sign in.</p>
+  <div class="page-panel">
 
   <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-    <mat-form-field appearance="outline">
-      <mat-label i18n="@@signIn.name">Name</mat-label>
-      <input matInput formControlName="name" autocomplete="name" [maxlength]="nameMaxLength" />
-      <mat-error>{{ nameError }}</mat-error>
-    </mat-form-field>
-
     <mat-form-field appearance="outline">
       <mat-label i18n="@@signIn.email">E-mail</mat-label>
       <input matInput formControlName="email" type="email" autocomplete="email" inputmode="email" />
@@ -21,4 +16,5 @@
 
     <button mat-flat-button type="submit" [disabled]="sending()" i18n="@@signIn.sendCode">Send code</button>
   </form>
+  </div>
 </section>

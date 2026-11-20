@@ -55,6 +55,7 @@ class EntryPointTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
                         "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:onboarding", "vd:consent-form"))
+                // profile is pending; consent-form link still advertised when a current form exists
                 .body("_links.'vd:session'.href", equalTo("/api/v1/access-sessions/current"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
                 .body("_links.'vd:sign-out'.href", equalTo("/api/v1/access-sessions/current"))
@@ -162,8 +163,8 @@ class EntryPointTest extends ApiTestBase {
                 .contentType(startsWith(PROBLEM_JSON))
                 .body(matchesJsonSchemaInClasspath(PROBLEM_SCHEMA))
                 .body("type", equalTo("urn:veredito:problem:invalid-request"))
-                .body("errors.field", contains("name", "email"))
-                .body("errors.code", contains("required", "required"));
+                .body("errors.field", contains("email"))
+                .body("errors.code", contains("required"));
     }
 
     @Test
@@ -174,6 +175,7 @@ class EntryPointTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("_links.keySet()", containsInAnyOrder(
                         "self", "curies", "vd:session", "vd:me", "vd:sign-out", "vd:onboarding", "vd:consent-form"))
+                // profile is pending; consent-form link still advertised when a current form exists
                 .body("_links.'vd:me'.href", equalTo("/api/v1/participants/me"))
                 .body("_links", not(hasKey("vd:next-task")))
                 .body("_links", not(hasKey("vd:request-code")));

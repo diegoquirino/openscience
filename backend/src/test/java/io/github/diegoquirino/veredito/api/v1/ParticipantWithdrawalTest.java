@@ -197,6 +197,59 @@ class ParticipantWithdrawalTest extends ApiTestBase {
         as(participant).get("/api/v1").then().body("_links", not(hasKey("vd:participants")));
     }
 
+    @Test
+    void listWithoutQueryReturnsAllParticipants() {
+        long first = rater("developer", "pt-BR");
+        long second = rater("test_analyst", "en-US");
+
+        as(admin)
+                .get("/api/v1/participants")
+                .then()
+                .statusCode(200)
+                .body("participants.size()", equalTo(2))
+                .body("participants.find { it.id == " + first + " }.email", not(nullValue()))
+                .body("participants.find { it.id == " + second + " }.pseudonym", not(nullValue()));
+    }
+
+    @Test
+    void anonymizeWithChosenPseudonymRenamesWhenUnique() {
+        long id = rater("developer", "pt-BR");
+
+        as(admin)
+                .contentType("application/json")
+                .body(Map.of("option", "keep_responses", "pseudonym", "KEEP-ME"))
+                .post("/api/v1/participants/" + id + "/anonymizations")
+                .then()
+                .statusCode(201)
+                .body("pseudonym", equalTo("KEEP-ME"));
+
+        assertThat(jdbc.sql("SELECT pseudonym FROM participant WHERE id = ?").param(id).query(String.class).single())
+                .isEqualTo("KEEP-ME");
+        assertThat(jdbc.sql("SELECT email FROM participant WHERE id = ?").param(id).query(String.class).optional())
+                .isEmpty();
+    }
+
+    @Test
+    void anonymizeWithTakenPseudonymConflicts() {
+        long first = rater("developer", "pt-BR");
+        long second = rater("test_analyst", "en-US");
+        String taken = pseudonym(first);
+
+        as(admin)
+                .contentType("application/json")
+                .body(Map.of("option", "keep_responses", "pseudonym", taken))
+                .post("/api/v1/participants/" + second + "/anonymizations")
+                .then()
+                .statusCode(409)
+                .body("type", equalTo(PROBLEM + "pseudonym-taken"));
+
+        assertThat(jdbc.sql("SELECT anonymized_at FROM participant WHERE id = ?")
+                        .param(second)
+                        .query(Timestamp.class)
+                        .optional())
+                .isEmpty();
+    }
+
     private long rater(String skill, String language) {
         long id = participantIdOf(participantSession());
         participantCounter++;

@@ -30,7 +30,12 @@ public class AccessCodeRepository {
         jdbc.sql("""
                         INSERT INTO access_code (email, name, code_hash, created_at, expires_at, attempts)
                         VALUES (?, ?, ?, ?, ?, 0)""")
-                .params(email.value(), name.value(), codeHash, Timestamp.from(createdAt), Timestamp.from(expiresAt))
+                .params(
+                        email.value(),
+                        name == null ? null : name.value(),
+                        codeHash,
+                        Timestamp.from(createdAt),
+                        Timestamp.from(expiresAt))
                 .update(keys);
         return keys.getKey().longValue();
     }

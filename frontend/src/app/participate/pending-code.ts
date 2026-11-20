@@ -6,7 +6,6 @@
 export const PENDING_CODE_KEY = 'veredito-pending-code';
 
 export interface PendingCode {
-  name: string;
   /** The e-mail as typed, for the form. */
   typedEmail: string;
   /** The e-mail as the API normalized it, shown on the code screen and sent with the code. */
@@ -40,7 +39,7 @@ function isPendingCode(value: unknown): value is PendingCode {
   }
   const entry = value as Record<string, unknown>;
   return (
-    ['name', 'typedEmail', 'email', 'signInHref'].every((key) => typeof entry[key] === 'string') &&
+    ['typedEmail', 'email', 'signInHref'].every((key) => typeof entry[key] === 'string') &&
     ['validityMinutes', 'resendAt'].every((key) => typeof entry[key] === 'number')
   );
 }

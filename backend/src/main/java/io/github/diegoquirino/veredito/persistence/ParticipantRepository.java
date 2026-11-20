@@ -37,9 +37,9 @@ public class ParticipantRepository {
             long id, String pseudonym, String name, Instant registeredAt, String preferredLanguage) {}
 
     /**
-     * Creates the participant at the first sign-in or updates the name at the next ones; must run in a
-     * transaction. A new row gets {@code R-<id>} and the language in use; an existing row keeps its
-     * pseudonym, and its language when it has one.
+     * Creates the participant at the first sign-in or refreshes language (and name when provided);
+     * must run in a transaction. A null name leaves an existing name untouched and inserts null for a
+     * first visit (profile step of spec 013).
      */
     public ParticipantProfile upsertOnSignIn(EmailAddress email, PersonName name, String language, Instant now) {
         // InnoDB spends an auto-increment value on every INSERT ... ON DUPLICATE KEY UPDATE, even when it
@@ -50,11 +50,19 @@ public class ParticipantRepository {
                 .query(Long.class)
                 .optional();
         if (existing.isPresent()) {
-            jdbc.sql("""
-                            UPDATE participant SET name = ?, preferred_language = COALESCE(preferred_language, ?)
-                            WHERE id = ?""")
-                    .params(name.value(), language, existing.get())
-                    .update();
+            if (name != null) {
+                jdbc.sql("""
+                                UPDATE participant SET name = ?, preferred_language = COALESCE(preferred_language, ?)
+                                WHERE id = ?""")
+                        .params(name.value(), language, existing.get())
+                        .update();
+            } else {
+                jdbc.sql("""
+                                UPDATE participant SET preferred_language = COALESCE(preferred_language, ?)
+                                WHERE id = ?""")
+                        .params(language, existing.get())
+                        .update();
+            }
             return jdbc.sql(SELECT + " WHERE id = ?")
                     .param(existing.get())
                     .query(ParticipantRepository::profile)
@@ -65,9 +73,14 @@ public class ParticipantRepository {
                         INSERT INTO participant (pseudonym, name, email, registered_at, preferred_language)
                         VALUES (?, ?, ?, ?, ?) AS typed
                         ON DUPLICATE KEY UPDATE
-                            name = typed.name,
+                            name = COALESCE(typed.name, participant.name),
                             preferred_language = COALESCE(participant.preferred_language, typed.preferred_language)""")
-                .params(placeholder, name.value(), email.value(), Timestamp.from(now), language)
+                .params(
+                        placeholder,
+                        name == null ? null : name.value(),
+                        email.value(),
+                        Timestamp.from(now),
+                        language)
                 .update();
         ParticipantProfile row = jdbc.sql(SELECT + " WHERE email = ? FOR UPDATE")
                 .param(email.value())
@@ -123,6 +136,16 @@ public class ParticipantRepository {
                         UPDATE participant SET professional_skill = ?, professional_skill_other = ?
                         WHERE id = ? AND professional_skill IS NULL""")
                 .params(skill, other, id)
+                .update();
+    }
+
+    /** Sets name and skill together (profile step and later edits). */
+    public void updateProfile(long id, String name, String skill, String other) {
+        jdbc.sql("""
+                        UPDATE participant
+                        SET name = ?, professional_skill = ?, professional_skill_other = ?
+                        WHERE id = ?""")
+                .params(name, skill, other, id)
                 .update();
     }
 

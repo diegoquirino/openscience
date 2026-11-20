@@ -19,8 +19,8 @@ public class OnboardingModel extends RepresentationModel<OnboardingModel> {
 
     @Schema(
             description = "consent, skill, screening, participation, ineligible or not-open.",
-            allowableValues = {"consent", "skill", "screening", "participation", "ineligible", "not-open"},
-            example = "skill")
+            allowableValues = {"consent", "profile", "screening", "participation", "ineligible", "not-open"},
+            example = "profile")
     public String getStep() {
         return step;
     }

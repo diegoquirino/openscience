@@ -7,22 +7,54 @@
     </a>
     <span class="spacer"></span>
     @if (signedIn(); as current) {
-      @if (current.name) {
-        <span class="name">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"
-            />
-          </svg>
-          <span class="name-text">{{ current.name }}</span>
-        </span>
-      }
-      <button mat-button class="sign-out" type="button" (click)="signOut()">
+      <button
+        mat-button
+        class="account"
+        type="button"
+        [matMenuTriggerFor]="accountMenu"
+        [attr.aria-label]="accountLabel"
+      >
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"
+          />
         </svg>
-        <span class="label" i18n="@@shell.signOut">Sign out</span>
+        <span class="name-text">{{ current.name || accountFallback }}</span>
       </button>
+      <mat-menu #accountMenu="matMenu">
+        @if (signedIn()?.subject === 'participant') {
+          <a mat-menu-item routerLink="/label">
+            <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">edit_note</mat-icon>
+            <span i18n="@@shell.continueLabeling">Continue labeling</span>
+          </a>
+        }
+        @if (signedIn()?.subject === 'administrator') {
+          <a mat-menu-item routerLink="/admin/dashboard">
+            <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">monitoring</mat-icon>
+            <span i18n="@@admin.dashboard">Dashboard</span>
+          </a>
+          <a mat-menu-item routerLink="/admin/import">
+            <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+            <span i18n="@@admin.import">Import</span>
+          </a>
+          <a mat-menu-item routerLink="/admin/export">
+            <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+            <span i18n="@@admin.export">Export</span>
+          </a>
+          <a mat-menu-item routerLink="/admin/participants">
+            <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">person_off</mat-icon>
+            <span i18n="@@admin.participants">Anonymization of Participants</span>
+          </a>
+        }
+        <a mat-menu-item routerLink="/profile">
+          <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">person</mat-icon>
+          <span i18n="@@shell.profile">Profile</span>
+        </a>
+        <button mat-menu-item type="button" (click)="signOut()">
+          <mat-icon class="menu-item-icon" fontSet="material-symbols-outlined" aria-hidden="true">logout</mat-icon>
+          <span i18n="@@shell.signOut">Sign out</span>
+        </button>
+      </mat-menu>
     }
     <button
       mat-icon-button

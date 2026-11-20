@@ -134,7 +134,7 @@ public class AccessCodeController {
                               "instance": "/api/v1/access-codes"
                             }""")))
     public AccessCodeModel request(@RequestBody AccessCodeRequest body, Locale locale) {
-        AccessCodeModel model = new AccessCodeModel(service.request(body.name(), body.email(), locale));
+        AccessCodeModel model = new AccessCodeModel(service.request(body.email(), locale));
         model.add(Link.of(SELF));
         model.add(Link.of(SIGN_IN, LinkRelations.SIGN_IN.curied()));
         model.add(Link.of(SELF, LinkRelations.REQUEST_CODE.curied()));

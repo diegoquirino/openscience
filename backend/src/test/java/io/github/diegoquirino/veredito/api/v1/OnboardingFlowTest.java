@@ -12,8 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
- * Spec 006 SC-001, SC-004 and SC-005: a new participant goes through the three steps by following links, in
- * each language, and the stored codes are the same.
+ * Spec 013: a new participant goes profile → consent → screening → participation by following links.
  */
 class OnboardingFlowTest extends ApiTestBase {
 
@@ -24,7 +23,15 @@ class OnboardingFlowTest extends ApiTestBase {
         String token = signIn("Ana Souza", email, locale);
 
         Response onboarding = as(token).get(href(as(token).get("/api/v1"), "onboarding"));
-        onboarding.then().body("step", equalTo("consent")).body("eligible", equalTo(false));
+        onboarding.then().body("step", equalTo("profile")).body("eligible", equalTo(false));
+
+        as(token).header("Accept-Language", locale).contentType("application/json")
+                .body(Map.of("name", "Ana Souza", "skill", "other", "skillOther", "Redator"))
+                .put(href(onboarding, "skill"))
+                .then().statusCode(200);
+
+        onboarding = as(token).get(href(onboarding, "self"));
+        onboarding.then().body("step", equalTo("consent"));
 
         Response form = as(token).header("Accept-Language", locale).get(href(onboarding, "consent-form"));
         form.then().statusCode(200).body("language", equalTo(locale)).body("version", equalTo("fixture-1"));
@@ -33,13 +40,6 @@ class OnboardingFlowTest extends ApiTestBase {
                 .body(Map.of("decision", "accepted", "consentFormVersion", version))
                 .put(href(form, "consent"))
                 .then().statusCode(200).body("language", equalTo(locale));
-
-        onboarding = as(token).get(href(onboarding, "self"));
-        onboarding.then().body("step", equalTo("skill"));
-        as(token).header("Accept-Language", locale).contentType("application/json")
-                .body(Map.of("skill", "other", "skillOther", "Redator"))
-                .put(href(onboarding, "skill"))
-                .then().statusCode(200);
 
         onboarding = as(token).get(href(onboarding, "self"));
         onboarding.then().body("step", equalTo("screening"));
@@ -56,11 +56,12 @@ class OnboardingFlowTest extends ApiTestBase {
         as(token).post(href(entry, "next-task")).then().statusCode(org.hamcrest.Matchers.anyOf(equalTo(200), equalTo(201)));
 
         Map<String, Object> row = jdbc.sql("""
-                        SELECT consent_decision, consent_language, professional_skill, professional_skill_other,
+                        SELECT name, consent_decision, consent_language, professional_skill, professional_skill_other,
                                screening_answer, eligible
                         FROM participant WHERE email = ?""")
                 .param(normalized(email)).query().singleRow();
         assertThat(row)
+                .containsEntry("name", "Ana Souza")
                 .containsEntry("consent_decision", "accepted")
                 .containsEntry("consent_language", locale)
                 .containsEntry("professional_skill", "other")
@@ -75,12 +76,13 @@ class OnboardingFlowTest extends ApiTestBase {
         String token = signIn("Ana Souza", "resume-" + System.nanoTime() + "@example.com", locale);
         long id = participantIdOf(token);
         as(token).get("/api/v1").then().body("_links", not(hasKey("vd:next-task")));
+        as(token).get(EntryPointController.ONBOARDING).then().body("step", equalTo("profile"));
 
-        acceptCurrentConsent(id, locale);
-        as(token).get(EntryPointController.ONBOARDING).then().body("step", equalTo("skill"));
+        seedProfile(id, "Ana Souza", "developer", null);
+        as(token).get(EntryPointController.ONBOARDING).then().body("step", equalTo("consent"));
         as(token).get("/api/v1").then().body("_links", not(hasKey("vd:next-task")));
 
-        seedSkill(id, "developer", null);
+        acceptCurrentConsent(id, locale);
         as(token).get(EntryPointController.ONBOARDING).then().body("step", equalTo("screening"));
 
         seedScreening(id, io.github.diegoquirino.veredito.domain.onboarding.ScreeningAnswer.YES_ACADEMIC);

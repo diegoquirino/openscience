@@ -93,7 +93,7 @@ export class CodeComponent {
     this.message.set(undefined);
     this.resent.set(false);
     this.sending.set(true);
-    this.session.requestCode(pending.name, pending.typedEmail).subscribe({
+    this.session.requestCode(pending.typedEmail).subscribe({
       next: (requested) => {
         this.update({
           ...pending,

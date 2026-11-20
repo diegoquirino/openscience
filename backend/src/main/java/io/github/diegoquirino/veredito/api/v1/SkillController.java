@@ -37,6 +37,7 @@ public class SkillController {
 
     private static final String EXAMPLE = """
             {
+              "name": "Ana Souza",
               "skill": "other",
               "skillOther": "Technical writer",
               "_links": {
@@ -54,11 +55,11 @@ public class SkillController {
     @GetMapping(version = "v1")
     @SecurityRequirement(name = OpenApiConfig.SESSION_SCHEME)
     @Operation(
-            summary = "The participant's professional skill",
+            summary = "The participant's name and professional skill",
             description = """
-                    The stored skill code and, with other, the description typed. The PUT template lists the \
-                    13 codes of Appendix B.4 and is present only while the pending step is skill: the skill \
-                    is asked once. Participant sessions only.""")
+                    The stored display name, skill code and, with other, the description typed. The PUT \
+                    template is present while the pending step is profile (before consent) and remains \
+                    available afterwards for edits (spec 014). Participant sessions only.""")
     @ApiResponse(
             responseCode = "200",
             description = "The stored answer, or nulls when not answered yet",
@@ -81,19 +82,18 @@ public class SkillController {
     @PutMapping(version = "v1", consumes = MediaType.APPLICATION_JSON_VALUE)
     @SecurityRequirement(name = OpenApiConfig.SESSION_SCHEME)
     @Operation(
-            summary = "Choose the professional skill",
+            summary = "Save name and professional skill",
             description = """
-                    Stores one skill code once. With other, skillOther is required, not blank and at most 100 \
-                    characters; it is stored exactly as typed. skillOther with any other code is refused. An \
-                    identical repeat is 200; any other answer once the skill is stored, or before its step, \
-                    is 409 step-not-pending.""")
+                    Stores the display name and one skill code. With other, skillOther is required, not blank \
+                    and at most 100 characters. While the pending step is profile, both name and skill are \
+                    required. Afterwards the same PUT updates the profile. An identical repeat is 200.""")
     @io.swagger.v3.oas.annotations.parameters.RequestBody(
             required = true,
             content = @Content(
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = SkillRequest.class),
                     examples = @ExampleObject(value = """
-                            { "skill": "other", "skillOther": "Technical writer" }""")))
+                            { "name": "Ana Souza", "skill": "other", "skillOther": "Technical writer" }""")))
     @ApiResponse(
             responseCode = "200",
             description = "The stored answer; Content-Location is the onboarding resource",
@@ -122,8 +122,8 @@ public class SkillController {
     public ResponseEntity<SkillModel> put(
             @AuthenticationPrincipal VereditoPrincipal caller, @RequestBody(required = false) SkillRequest body) {
         long participantId = participantId(caller);
-        SkillRequest request = body == null ? new SkillRequest(null, null) : body;
-        SkillView view = skills.record(participantId, request.skill(), request.skillOther());
+        SkillRequest request = body == null ? new SkillRequest(null, null, null) : body;
+        SkillView view = skills.record(participantId, request.name(), request.skill(), request.skillOther());
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_LOCATION, EntryPointController.ONBOARDING)
                 .body(model(view));
@@ -138,16 +138,13 @@ public class SkillController {
 
     private static SkillModel model(SkillView view) {
         SkillModel model = new SkillModel(view);
-        if (view.pending()) {
-            model.add(Affordances.of(Link.of(EntryPointController.SKILL))
-                    .afford(HttpMethod.PUT)
-                    .withName("default")
-                    .withInput(SkillRequest.class)
-                    .withInputMediaType(MediaType.APPLICATION_JSON)
-                    .toLink());
-        } else {
-            model.add(Link.of(EntryPointController.SKILL));
-        }
+        // PUT stays available after onboarding so the header profile screen can edit (spec 014).
+        model.add(Affordances.of(Link.of(EntryPointController.SKILL))
+                .afford(HttpMethod.PUT)
+                .withName("default")
+                .withInput(SkillRequest.class)
+                .withInputMediaType(MediaType.APPLICATION_JSON)
+                .toLink());
         return model;
     }
 }

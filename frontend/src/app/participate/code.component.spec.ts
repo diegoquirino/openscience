@@ -26,7 +26,6 @@ const problem = (slug: string, extensions: object = {}) => ({ type: `urn:veredit
 
 function pendingCode(resendInSeconds: number): PendingCode {
   return {
-    name: 'Ana Souza',
     typedEmail: 'Ana@Example.com',
     email: 'ana@example.com',
     validityMinutes: 10,
@@ -135,7 +134,7 @@ describe('CodeComponent', () => {
       .flush({ ...SESSION, subject: 'administrator', pseudonym: undefined }, { status: 201, statusText: 'Created' });
     await fixture.whenStable();
 
-    expect(TestBed.inject(Router).url).toBe('/admin');
+    expect(TestBed.inject(Router).url).toBe('/admin/dashboard');
   });
 
   it('opens the area in the language of the profile when it differs from the build', async () => {
@@ -208,7 +207,7 @@ describe('CodeComponent', () => {
     expect(sendNew.disabled).toBe(false);
   });
 
-  it('resends the code with the typed name and e-mail and restarts the countdown', async () => {
+  it('resends the code with the typed e-mail and restarts the countdown', async () => {
     savePendingCode(pendingCode(-1));
     const fixture = await render();
 
@@ -217,7 +216,7 @@ describe('CodeComponent', () => {
       _links: { self: { href: '/api/v1' }, curies: CURIES, 'vd:request-code': { href: '/links/codes' } },
     });
     const request = http.expectOne('/links/codes');
-    expect(request.request.body).toEqual({ name: 'Ana Souza', email: 'Ana@Example.com' });
+    expect(request.request.body).toEqual({ email: 'Ana@Example.com' });
     request.flush({
       email: 'ana@example.com',
       validityMinutes: 10,

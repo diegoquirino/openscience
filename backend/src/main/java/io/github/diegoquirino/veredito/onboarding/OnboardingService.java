@@ -8,6 +8,7 @@ import io.github.diegoquirino.veredito.domain.onboarding.OnboardingStep;
 import io.github.diegoquirino.veredito.persistence.ConsentFormRepository;
 import io.github.diegoquirino.veredito.persistence.ConsentFormRepository.ConsentFormRow;
 import io.github.diegoquirino.veredito.persistence.ParticipantRepository;
+import io.github.diegoquirino.veredito.persistence.ParticipantRepository.ParticipantProfile;
 import java.time.Clock;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -39,17 +40,18 @@ public class OnboardingService {
         OnboardingState state = participants
                 .findOnboardingState(participantId)
                 .orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
-        return of(state, currentForm().orElse(null));
+        String name = participants.findById(participantId).map(ParticipantProfile::name).orElse(null);
+        return of(state, currentForm().orElse(null), name);
     }
 
     /** Same, for a state already read (and locked) by the caller in its own transaction. */
-    public Onboarding of(OnboardingState state, ConsentFormRow currentForm) {
+    public Onboarding of(OnboardingState state, ConsentFormRow currentForm, String name) {
         Long currentId = currentForm == null ? null : currentForm.id();
         return new Onboarding(
                 state,
                 currentForm,
-                OnboardingRules.stepOf(state, currentId),
-                OnboardingRules.isEligible(state, currentId));
+                OnboardingRules.stepOf(state, currentId, name),
+                OnboardingRules.isEligible(state, currentId, name));
     }
 
     public Optional<ConsentFormRow> currentForm() {

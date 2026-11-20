@@ -14,12 +14,12 @@ import {
 } from '../core/problem-messages';
 import { LanguageService } from '../core/language.service';
 import { SessionService } from '../core/session.service';
-import { emailValidator, NAME_MAX_LENGTH, nameValidator } from './access-validators';
+import { emailValidator } from './access-validators';
 import { readPendingCode, savePendingCode } from './pending-code';
 
 const ROUTE = '/participate';
 
-/** First step of the sign-in: name and e-mail, then "Send code" (spec 004, US1). */
+/** First step of the sign-in: e-mail only, then "Send code" (spec 013). */
 @Component({
   selector: 'app-sign-in',
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
@@ -31,12 +31,9 @@ export class SignInComponent {
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
 
-  protected readonly nameMaxLength = NAME_MAX_LENGTH;
-  protected readonly nameError = fieldMessage({ field: 'name', code: 'size' });
   protected readonly emailError = fieldMessage({ field: 'email', code: 'email' });
 
   protected readonly form = new FormGroup({
-    name: new FormControl('', { nonNullable: true, validators: nameValidator }),
     email: new FormControl('', { nonNullable: true, validators: emailValidator }),
   });
 
@@ -46,11 +43,11 @@ export class SignInComponent {
   constructor() {
     const pending = readPendingCode();
     if (pending) {
-      this.form.setValue({ name: pending.name, email: pending.typedEmail });
+      this.form.setValue({ email: pending.typedEmail });
     }
     const unsaved = this.language.takeUnsaved(ROUTE);
     if (unsaved) {
-      this.form.patchValue({ name: unsaved['name'] ?? '', email: unsaved['email'] ?? '' });
+      this.form.patchValue({ email: unsaved['email'] ?? '' });
     }
     this.language.keepOnSwitch(ROUTE, () => this.form.getRawValue());
   }
@@ -61,12 +58,11 @@ export class SignInComponent {
       this.form.markAllAsTouched();
       return;
     }
-    const { name, email } = this.form.getRawValue();
+    const { email } = this.form.getRawValue();
     this.sending.set(true);
-    this.session.requestCode(name, email).subscribe({
+    this.session.requestCode(email).subscribe({
       next: (requested) => {
         savePendingCode({
-          name,
           typedEmail: email,
           email: requested.email,
           validityMinutes: requested.validityMinutes,

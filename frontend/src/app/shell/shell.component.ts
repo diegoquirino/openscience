@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -18,6 +19,7 @@ import { StagingBannerComponent } from './staging-banner.component';
     RouterLink,
     MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
     MatMenuModule,
     UnavailableComponent,
     StagingBannerComponent,
@@ -42,6 +44,8 @@ export class ShellComponent {
   protected readonly currentLocale: Locale = isLocale(this.language.current) ? this.language.current : 'pt-BR';
   protected readonly currentLabel = LOCALES.find((option) => option.code === this.language.current)?.label ?? '';
   protected readonly switchLabel = $localize`:@@shell.language:Language: ${this.currentLabel}:language:`;
+  protected readonly accountFallback = $localize`:@@shell.account:Account`;
+  protected readonly accountLabel = $localize`:@@shell.accountMenu:Account menu`;
 
   constructor() {
     this.load();

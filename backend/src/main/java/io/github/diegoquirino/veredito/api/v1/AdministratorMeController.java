@@ -155,7 +155,8 @@ public class AdministratorMeController {
                     schema = @Schema(implementation = ProblemDetailsSchema.class),
                     examples = @ExampleObject(value = FORBIDDEN_EXAMPLE)))
     public AdministratorProfileModel changeLanguage(@RequestBody PreferredLanguageRequest body) {
-        return model(profiles.changeAdministratorLanguage(body.preferredLanguage()));
+        PreferredLanguageRequest request = body == null ? new PreferredLanguageRequest(null, null) : body;
+        return model(profiles.updateAdministrator(request.name(), request.preferredLanguage()));
     }
 
     private static AdministratorProfileModel model(AdminProfile profile) {

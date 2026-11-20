@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.matchesPattern;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import io.github.diegoquirino.veredito.support.ApiTestBase;
@@ -37,7 +38,7 @@ class AccessTest extends ApiTestBase {
     void aValidRequestSendsExactlyOneCode() {
         String email = unique("request");
 
-        requestCode("Ana Souza", email, "pt-BR")
+        requestCode(email, "pt-BR")
                 .then().statusCode(200)
                 .body("email", equalTo(email))
                 .body("validityMinutes", equalTo(10))
@@ -54,34 +55,34 @@ class AccessTest extends ApiTestBase {
     @ValueSource(strings = {"pt-BR", "en-US", "es-ES"})
     void theEmailIsWrittenInTheLanguageOfTheRequest(String locale) {
         String email = unique("language");
-        requestCode("Ana Souza", email, locale).then().statusCode(200);
+        requestCode(email, locale).then().statusCode(200);
 
         Properties texts = Bundles.load(Bundles.fileOf(locale));
         Message message = mailpit.latestTo(email);
         String code = mailpit.latestCodeTo(email);
         assertThat(message.subject()).isEqualTo(texts.getProperty("mail.access-code.subject"));
         assertThat(message.text().replace("\r\n", "\n").strip())
-                .isEqualTo(Bundles.format(texts, "mail.access-code.body", locale, "Ana Souza", code, 10L).strip());
+                .isEqualTo(Bundles.format(texts, "mail.access-code.body", locale, code, 10L).strip());
     }
 
-    @ParameterizedTest(name = "name \"{0}\", e-mail \"{1}\" gives {2}/{3}")
+    @ParameterizedTest(name = "e-mail \"{0}\" gives {1}/{2}")
     @CsvSource({
-        "A,         valid,      name,  size",
-        "Ana Souza, ana@,       email, email",
-        "'  ',      valid,      name,  required"
+        "ana@,       email, email",
+        "'  ',       email, required",
+        ",           email, required"
     })
-    void invalidFieldsAreRefusedAndNothingIsSent(String name, String typedEmail, String field, String code) {
-        String email = "valid".equals(typedEmail) ? unique("invalid") : typedEmail;
+    void invalidFieldsAreRefusedAndNothingIsSent(String typedEmail, String field, String code) {
+        String email = typedEmail == null ? null : typedEmail;
         long codesBefore = countCodes();
 
-        requestCode(name, email, "en-US")
+        requestCode(email == null ? "" : email, "en-US")
                 .then().statusCode(400)
                 .body("type", equalTo(PROBLEM + "invalid-request"))
                 .body("errors.field", contains(field))
                 .body("errors.code", contains(code));
 
         assertThat(countCodes()).isEqualTo(codesBefore);
-        if (email.endsWith("@example.com")) {
+        if (email != null && email.endsWith("@example.com")) {
             assertThat(mailpit.countTo(email)).isZero();
         }
     }
@@ -89,7 +90,7 @@ class AccessTest extends ApiTestBase {
     @Test
     void theRightCodeTypedWithSpacesAndHyphensSignsIn() {
         String email = unique("right");
-        requestCode("Ana Souza", email, "es-ES").then().statusCode(200);
+        requestCode(email, "es-ES").then().statusCode(200);
         String code = mailpit.latestCodeTo(email);
         Instant before = clock.instant();
 
@@ -98,7 +99,7 @@ class AccessTest extends ApiTestBase {
         signedIn.then().statusCode(201)
                 .header("Location", equalTo(CURRENT))
                 .body("subject", equalTo("participant"))
-                .body("name", equalTo("Ana Souza"))
+                .body("name", nullValue())
                 .body("pseudonym", matchesPattern("R-[0-9]{4,}"))
                 .body("preferredLanguage", equalTo("es-ES"))
                 .body("_links.self.href", equalTo(CURRENT))
@@ -125,7 +126,7 @@ class AccessTest extends ApiTestBase {
     @Test
     void fourWrongCodesCountDownAndTheFifthKillsTheCode() {
         String email = unique("wrong");
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
         String code = mailpit.latestCodeTo(email);
         String wrong = wrongCode(code);
 
@@ -142,7 +143,7 @@ class AccessTest extends ApiTestBase {
     @Test
     void aCodeOfTheWrongShapeCountsAsAWrongAttempt() {
         String email = unique("shape");
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
 
         sendCode(email, "12345", "en-US")
                 .then().statusCode(422)
@@ -153,7 +154,7 @@ class AccessTest extends ApiTestBase {
     @Test
     void aCodeDiesTenMinutesAfterItWasSent() {
         String email = unique("expired");
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
         String code = mailpit.latestCodeTo(email);
 
         clock.advance(Duration.ofMinutes(10));
@@ -164,7 +165,7 @@ class AccessTest extends ApiTestBase {
     @Test
     void aUsedCodeCannotSignInAgain() {
         String email = unique("used");
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
         String code = mailpit.latestCodeTo(email);
 
         sendCode(email, code, "en-US").then().statusCode(201);
@@ -174,17 +175,17 @@ class AccessTest extends ApiTestBase {
     @Test
     void aNewCodeWithinSixtySecondsIsTooSoon() {
         String email = unique("soon");
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
         clock.advance(Duration.ofSeconds(10));
 
-        Response refused = requestCode("Ana Souza", email, "en-US");
+        Response refused = requestCode(email, "en-US");
         refused.then().statusCode(429)
                 .body("type", equalTo(PROBLEM + "code-resend-too-soon"))
                 .body("retryAfterSeconds", allOf(greaterThan(0), lessThanOrEqualTo(50)));
         assertThat(refused.header("Retry-After")).isEqualTo(String.valueOf(refused.<Integer>path("retryAfterSeconds")));
 
         clock.advance(Duration.ofSeconds(50));
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
         assertThat(mailpit.countTo(email)).isEqualTo(2);
     }
 
@@ -192,12 +193,12 @@ class AccessTest extends ApiTestBase {
     void theSixthCodeWithinAnHourHitsTheHourlyLimit() {
         String email = unique("hourly");
         for (int sent = 0; sent < 5; sent++) {
-            requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+            requestCode(email, "en-US").then().statusCode(200);
             clock.advance(RESEND_INTERVAL);
         }
 
         Instant askedAt = clock.instant();
-        Response refused = requestCode("Ana Souza", email, "en-US");
+        Response refused = requestCode(email, "en-US");
         Instant answeredAt = clock.instant();
 
         refused.then().statusCode(429).body("type", equalTo(PROBLEM + "code-hourly-limit"));
@@ -236,9 +237,9 @@ class AccessTest extends ApiTestBase {
         jdbc.sql("UPDATE config SET daily_email_limit = ? WHERE id = 1").param(countCodesOfTheLastDay() + 1).update();
         try {
             String second = unique("daily-second");
-            requestCode("Ana Souza", unique("daily-first"), "en-US").then().statusCode(200);
+            requestCode(unique("daily-first"), "en-US").then().statusCode(200);
 
-            requestCode("Ana Souza", second, "en-US")
+            requestCode(second, "en-US")
                     .then().statusCode(429)
                     .body("type", equalTo(PROBLEM + "daily-email-limit"));
             assertThat(mailpit.countTo(second)).isZero();
@@ -258,24 +259,27 @@ class AccessTest extends ApiTestBase {
     }
 
     @Test
-    void theLatestNameIsKept() {
+    void signInLeavesNameNullUntilTheProfileStep() {
         String email = unique("rename");
         signIn("Ana Souza", email, "pt-BR");
         clock.advance(RESEND_INTERVAL);
         String token = signIn("Ana S.", email, "pt-BR");
 
-        as(token).get(CURRENT).then().statusCode(200).body("name", equalTo("Ana S."));
-        assertThat(jdbc.sql("SELECT name FROM participant WHERE email = ?").param(email).query(String.class).single())
-                .isEqualTo("Ana S.");
+        as(token).get(CURRENT).then().statusCode(200).body("name", nullValue());
+        assertThat(jdbc.sql("SELECT COUNT(*) FROM participant WHERE email = ? AND name IS NULL")
+                        .param(email)
+                        .query(Long.class)
+                        .single())
+                .isEqualTo(1L);
     }
 
     @Test
     void onlyTheLatestOfTwoCodesWorks() {
         String email = unique("devices");
-        requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+        requestCode(email, "pt-BR").then().statusCode(200);
         String older = mailpit.latestCodeTo(email);
         clock.advance(RESEND_INTERVAL);
-        requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+        requestCode(email, "pt-BR").then().statusCode(200);
         String newer = mailpit.latestCodeTo(email);
         assumeFalse(older.equals(newer), "both draws gave the same code");
 
@@ -294,14 +298,14 @@ class AccessTest extends ApiTestBase {
         String email = unique("smtp");
         mailSender.failing(true);
 
-        requestCode("Ana Souza", email, "pt-BR")
+        requestCode(email, "pt-BR")
                 .then().statusCode(503)
                 .body("type", equalTo(PROBLEM + "code-not-sent"));
 
         assertThat(jdbc.sql("SELECT COUNT(*) FROM access_code WHERE email = ?").param(email).query(Long.class).single())
                 .isZero();
         mailSender.failing(false);
-        requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+        requestCode(email, "pt-BR").then().statusCode(200);
     }
 
     @Test
@@ -310,8 +314,8 @@ class AccessTest extends ApiTestBase {
         String unknown = unique("unknown");
         signIn("Ana Souza", registered, "pt-BR");
         clock.advance(RESEND_INTERVAL);
-        requestCode("Ana Souza", registered, "pt-BR").then().statusCode(200);
-        requestCode("Ana Souza", unknown, "pt-BR").then().statusCode(200);
+        requestCode(registered, "pt-BR").then().statusCode(200);
+        requestCode(unknown, "pt-BR").then().statusCode(200);
 
         Map<String, Object> wrongForRegistered = problem(sendCode(registered, wrongCode(mailpit.latestCodeTo(registered)), "pt-BR"));
         Map<String, Object> wrongForUnknown = problem(sendCode(unknown, wrongCode(mailpit.latestCodeTo(unknown)), "pt-BR"));

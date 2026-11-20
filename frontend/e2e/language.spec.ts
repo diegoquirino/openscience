@@ -39,10 +39,9 @@ type Locale = keyof typeof SCREENS;
 // One code per e-mail per 60 s, counted from the accepted request.
 const NEXT_CODE_AFTER_MS = 61_000;
 
-async function requestCode(page: Page, locale: Locale, name: string, email: string): Promise<void> {
+async function requestCode(page: Page, locale: Locale, _name: string, email: string): Promise<void> {
   const screen = SCREENS[locale];
   await page.goto(`/${locale}/participate`);
-  await page.getByLabel(screen.name, { exact: true }).fill(name);
   await page.getByLabel(screen.email, { exact: true }).fill(email);
   await page.getByRole('button', { name: screen.send }).click();
   await expect(page).toHaveURL(new RegExp(`/${locale}/participate/code$`));
@@ -136,12 +135,12 @@ for (const locale of Object.keys(SCREENS) as Locale[]) {
     const subject = await signIn(page, request, locale, email);
 
     expect(subject).toBe(SCREENS[locale].subject);
-    await expect(page).toHaveURL(new RegExp(`/${locale}/consent$`));
+    await expect(page).toHaveURL(new RegExp(`/${locale}/skill$`));
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
-    await expect(page.getByRole('heading', { name: SCREENS[locale].consent })).toBeVisible();
+    await expect(page.getByLabel(SCREENS[locale].name, { exact: true })).toBeVisible();
     for (const other of Object.keys(SCREENS) as Locale[]) {
       if (other !== locale) {
-        await expect(page.getByRole('heading', { name: SCREENS[other].consent })).toHaveCount(0);
+        await expect(page.getByLabel(SCREENS[other].name, { exact: true })).toHaveCount(0);
       }
     }
   });
@@ -150,7 +149,6 @@ for (const locale of Object.keys(SCREENS) as Locale[]) {
 test('the header switch keeps the typed values (FR-013)', async ({ page }, testInfo) => {
   const email = `e2e-switch-${testInfo.project.name}-${Date.now()}@example.com`;
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome', { exact: true }).fill('Ana Souza');
   await page.getByLabel('E-mail', { exact: true }).fill(email);
   await page.evaluate(() => ((window as unknown as Record<string, unknown>)['vereditoMarker'] = true));
 
@@ -158,7 +156,6 @@ test('the header switch keeps the typed values (FR-013)', async ({ page }, testI
 
   await expect(page).toHaveURL('/es-ES/participate');
   await expect(page.locator('html')).toHaveAttribute('lang', 'es-ES');
-  await expect(page.getByLabel('Nombre', { exact: true })).toHaveValue('Ana Souza');
   await expect(page.getByLabel('Correo electrónico', { exact: true })).toHaveValue(email);
   const kept = await page.evaluate(() => (window as unknown as Record<string, unknown>)['vereditoMarker']);
   expect(kept).toBeUndefined();

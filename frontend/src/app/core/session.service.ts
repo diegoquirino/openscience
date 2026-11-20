@@ -68,11 +68,11 @@ export class SessionService {
   }
 
   /** Follows `vd:request-code`; the answer carries the `vd:sign-in` link for {@link signIn}. */
-  requestCode(name: string, email: string): Observable<CodeRequested> {
+  requestCode(email: string): Observable<CodeRequested> {
     return this.entryLinks().pipe(
       switchMap((links) => {
         const href = links.href('request-code');
-        return href ? this.http.post<CodeRequestedBody>(href, { name, email }) : missing('vd:request-code');
+        return href ? this.http.post<CodeRequestedBody>(href, { email }) : missing('vd:request-code');
       }),
       switchMap((body) => {
         const signInHref = Links.of(body).href('sign-in');

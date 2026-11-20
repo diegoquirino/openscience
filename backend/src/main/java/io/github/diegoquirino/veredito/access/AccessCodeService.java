@@ -5,7 +5,6 @@ import io.github.diegoquirino.veredito.api.ProblemType;
 import io.github.diegoquirino.veredito.config.AccessProperties;
 import io.github.diegoquirino.veredito.domain.access.AccessCodeFormat;
 import io.github.diegoquirino.veredito.domain.access.EmailAddress;
-import io.github.diegoquirino.veredito.domain.access.PersonName;
 import io.github.diegoquirino.veredito.domain.access.SendLimits;
 import io.github.diegoquirino.veredito.domain.access.SendLimits.Decision;
 import io.github.diegoquirino.veredito.persistence.AccessCodeRepository;
@@ -57,22 +56,15 @@ public class AccessCodeService {
 
     private record PendingCode(long id, String code) {}
 
-    public RequestedCode request(String rawName, String rawEmail, Locale locale) {
-        Optional<PersonName> name = PersonName.parse(rawName);
+    public RequestedCode request(String rawEmail, Locale locale) {
         Optional<EmailAddress> email = EmailAddress.parse(rawEmail);
-        Map<String, String> errors = new LinkedHashMap<>();
-        if (name.isEmpty()) {
-            errors.put("name", isBlank(rawName) ? "required" : "size");
-        }
         if (email.isEmpty()) {
-            errors.put("email", isBlank(rawEmail) ? "required" : "email");
+            throw ProblemException.invalidFields(
+                    Map.of("email", isBlank(rawEmail) ? "required" : "email"));
         }
-        if (!errors.isEmpty()) {
-            throw ProblemException.invalidFields(errors);
-        }
-        PendingCode pending = transaction.execute(status -> store(name.get(), email.get()));
+        PendingCode pending = transaction.execute(status -> store(email.get()));
         try {
-            mailer.send(name.get(), email.get(), pending.code(), locale);
+            mailer.send(email.get(), pending.code(), locale);
         } catch (ProblemException notSent) {
             codes.delete(pending.id());
             throw notSent;
@@ -82,7 +74,7 @@ public class AccessCodeService {
     }
 
     /** Runs with the {@code config} row locked, so two requests at a limit cannot both pass. */
-    private PendingCode store(PersonName name, EmailAddress email) {
+    private PendingCode store(EmailAddress email) {
         config.lockForUpdate();
         Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
         SendLimits.Rules rules = new SendLimits.Rules(
@@ -102,7 +94,7 @@ public class AccessCodeService {
             case Decision.Allowed _ -> {}
         }
         String code = AccessCodeFormat.generate(random);
-        long id = codes.insert(email, name, hasher.hash(email, code), now, now.plus(properties.codeValidity()));
+        long id = codes.insert(email, null, hasher.hash(email, code), now, now.plus(properties.codeValidity()));
         return new PendingCode(id, code);
     }
 

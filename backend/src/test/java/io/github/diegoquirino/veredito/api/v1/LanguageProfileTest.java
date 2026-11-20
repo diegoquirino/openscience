@@ -38,7 +38,7 @@ class LanguageProfileTest extends ApiTestBase {
         signIn("Ana Souza", email, "es-ES");
 
         clock.advance(Duration.ofSeconds(61));
-        requestCode("Ana Souza", email, "en-US").then().statusCode(200);
+        requestCode(email, "en-US").then().statusCode(200);
 
         Properties english = Bundles.load(Bundles.fileOf("en-US"));
         assertThat(mailpit.countTo(email)).isEqualTo(2);

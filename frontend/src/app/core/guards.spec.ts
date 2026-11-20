@@ -23,7 +23,8 @@ describe('guards', () => {
         provideRouter([
           { path: 'participate', canActivate: [visitorOnly], component: BlankPage },
           { path: 'welcome', canActivate: [participantOnly], component: BlankPage },
-          { path: 'admin', canActivate: [administratorOnly], component: BlankPage },
+          { path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full' },
+          { path: 'admin/dashboard', canActivate: [administratorOnly], component: BlankPage },
         ]),
       ],
     });
@@ -51,7 +52,7 @@ describe('guards', () => {
   it('maps each kind of person to an area', () => {
     expect(areaOf('visitor')).toBe('/participate');
     expect(areaOf('participant')).toBe('/welcome');
-    expect(areaOf('administrator')).toBe('/admin');
+    expect(areaOf('administrator')).toBe('/admin/dashboard');
   });
 
   it('sends a visitor from the areas to the sign-in form', async () => {
@@ -59,24 +60,24 @@ describe('guards', () => {
   });
 
   it('sends a visitor from the administration to the sign-in form', async () => {
-    expect(await open('/admin', 'visitor')).toBe('/participate');
+    expect(await open('/admin/dashboard', 'visitor')).toBe('/participate');
   });
 
   it('sends a participant from the administration to the welcome screen', async () => {
-    expect(await open('/admin', 'participant')).toBe('/welcome');
+    expect(await open('/admin/dashboard', 'participant')).toBe('/welcome');
   });
 
   it('sends the administrator from the participant area to the administration', async () => {
-    expect(await open('/welcome', 'administrator')).toBe('/admin');
+    expect(await open('/welcome', 'administrator')).toBe('/admin/dashboard');
   });
 
   it('sends a signed-in person from the sign-in form to their own area', async () => {
-    expect(await open('/participate', 'administrator')).toBe('/admin');
+    expect(await open('/participate', 'administrator')).toBe('/admin/dashboard');
   });
 
   it('lets each person into their own area', async () => {
-    expect(await open('/admin', 'administrator')).toBe('/admin');
+    expect(await open('/admin/dashboard', 'administrator')).toBe('/admin/dashboard');
     await router.navigateByUrl('/participate');
-    expect(router.url).toBe('/admin');
+    expect(router.url).toBe('/admin/dashboard');
   });
 });

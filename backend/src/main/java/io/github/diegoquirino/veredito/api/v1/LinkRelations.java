@@ -71,7 +71,8 @@ public final class LinkRelations {
             "consent", "The participant's decision on the consent form; PUT records it.", HttpMethod.GET,
             "/swagger-ui.html#/Participation");
     public static final Relation SKILL = new Relation(
-            "skill", "The participant's professional skill; PUT records it once.", HttpMethod.GET,
+            "skill", "The participant's name and professional skill; PUT completes or updates the profile.",
+            HttpMethod.GET,
             "/swagger-ui.html#/Participation");
     public static final Relation SCREENING = new Relation(
             "screening", "The participant's screening answer; PUT records it once.", HttpMethod.GET,

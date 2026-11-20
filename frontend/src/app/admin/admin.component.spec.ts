@@ -26,17 +26,17 @@ describe('AdminComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     expect(element.querySelector('h1')?.textContent?.trim()).toBe('Administration');
     expect(element.textContent).toContain('Signed in as Diego Quirino');
-    const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('mat-nav-list a'));
-    expect(links.map((link) => link.textContent?.trim())).toEqual([
+    const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('a.action-card'));
+    expect(links.map((link) => link.querySelector('.action-card-label')?.textContent?.trim())).toEqual([
       'Import',
       'Export',
       'Dashboard',
-      'Participants',
+      'Anonymization of Participants',
     ]);
     expect(links[0].getAttribute('href')).toContain('/admin/import');
     expect(links[1].getAttribute('href')).toContain('/admin/export');
     expect(links[2].getAttribute('href')).toContain('/admin/dashboard');
     expect(links[3].getAttribute('href')).toContain('/admin/participants');
-    expect(element.querySelector('.soon')).toBeNull();
+    expect(element.querySelectorAll('mat-icon.action-card-icon').length).toBe(4);
   });
 });

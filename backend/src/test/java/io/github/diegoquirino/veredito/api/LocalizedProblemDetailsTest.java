@@ -140,12 +140,12 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
         String email = "localized-" + System.nanoTime() + "@example.com";
         return switch (slug) {
             case "code-resend-too-soon" -> {
-                requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+                requestCode(email, "pt-BR").then().statusCode(200);
                 yield postCode(acceptLanguage, email);
             }
             case "code-hourly-limit" -> {
                 for (int sent = 0; sent < 5; sent++) {
-                    requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+                    requestCode(email, "pt-BR").then().statusCode(200);
                     clock.advance(Duration.ofSeconds(60));
                 }
                 yield postCode(acceptLanguage, email);
@@ -156,7 +156,7 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
                 yield postCode(acceptLanguage, email);
             }
             case "invalid-code" -> {
-                requestCode("Ana Souza", email, "pt-BR").then().statusCode(200);
+                requestCode(email, "pt-BR").then().statusCode(200);
                 yield postSignIn(acceptLanguage, email, "abcdef");
             }
             case "code-expired" -> postSignIn(acceptLanguage, email, "123456");
@@ -218,14 +218,17 @@ class LocalizedProblemDetailsTest extends ApiTestBase {
             case "not-eligible" -> localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
                     .post(TASK_RESERVATIONS);
             case "study-not-open" -> {
+                seedSkill(participantIdOf(token), "developer", null);
                 jdbc.sql("UPDATE consent_form SET published_at = NULL").update();
                 yield putConsent(acceptLanguage, token, "accepted", "fixture-1");
             }
-            case "consent-form-outdated" -> putConsent(acceptLanguage, token, "accepted", "v0-old");
-            case "step-not-pending" -> localized(acceptLanguage).cookie(CurrentSession.COOKIE, token)
-                    .contentType("application/json")
-                    .body(Map.of("skill", "developer"))
-                    .put("/api/v1/participants/me/skill");
+            case "consent-form-outdated" -> {
+                seedSkill(participantIdOf(token), "developer", null);
+                yield putConsent(acceptLanguage, token, "accepted", "v0-old");
+            }
+            case "step-not-pending" ->
+                // Profile still pending: consent is refused with step=profile (spec 013).
+                putConsent(acceptLanguage, token, "accepted", "fixture-1");
             default -> throw new IllegalArgumentException(slug);
         };
     }

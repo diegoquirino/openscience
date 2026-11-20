@@ -70,11 +70,11 @@ describe('SessionService', () => {
   });
 
   it('requests a code and signs in through the links of the answers', async () => {
-    const requested = firstValueFrom(service.requestCode('Ana Souza', 'Ana@Example.com'));
+    const requested = firstValueFrom(service.requestCode('Ana@Example.com'));
     http.expectOne('/api/v1').flush(VISITOR_ENTRY);
     const codeRequest = http.expectOne('/links/codes');
     expect(codeRequest.request.method).toBe('POST');
-    expect(codeRequest.request.body).toEqual({ name: 'Ana Souza', email: 'Ana@Example.com' });
+    expect(codeRequest.request.body).toEqual({ email: 'Ana@Example.com' });
     codeRequest.flush({
       email: 'ana@example.com',
       validityMinutes: 10,
@@ -100,7 +100,7 @@ describe('SessionService', () => {
   });
 
   it('fails the code request when the answer offers no vd:sign-in', async () => {
-    const requested = firstValueFrom(service.requestCode('Ana Souza', 'ana@example.com'));
+    const requested = firstValueFrom(service.requestCode('ana@example.com'));
     http.expectOne('/api/v1').flush(VISITOR_ENTRY);
     http.expectOne('/links/codes').flush({ email: 'ana@example.com', validityMinutes: 10, resendAfterSeconds: 60 });
 

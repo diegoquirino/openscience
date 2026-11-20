@@ -119,8 +119,9 @@ public class ConsentService {
                 .lockOnboardingState(participantId)
                 .orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
         ConsentFormRow current = onboarding.currentForm().orElse(null);
-        Onboarding before = onboarding.of(state, current);
-        if (before.step() == OnboardingStep.INELIGIBLE) {
+        String name = participants.findById(participantId).map(p -> p.name()).orElse(null);
+        Onboarding before = onboarding.of(state, current, name);
+        if (before.step() == OnboardingStep.INELIGIBLE || before.step() == OnboardingStep.PROFILE) {
             throw notPending(before.step());
         }
         if (current == null) {
@@ -141,7 +142,7 @@ public class ConsentService {
 
         Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
         participants.recordConsent(participantId, current.id(), decision, language, now);
-        return view(onboarding.of(state.withConsent(current.id(), decision, language, now), current));
+        return view(onboarding.of(state.withConsent(current.id(), decision, language, now), current, name));
     }
 
     private static ProblemException notPending(OnboardingStep step) {

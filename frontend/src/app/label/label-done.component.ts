@@ -12,14 +12,16 @@ import { SessionService } from '../core/session.service';
   template: `
     <section class="done">
       <h1 i18n="@@label.done.title">Thank you</h1>
-      <p>{{ message() }}</p>
-      <div class="actions">
-        @if (outcome() === 'more-available') {
-          <a mat-flat-button class="another" routerLink="/label" i18n="@@label.another">Label another block</a>
-        }
-        <button mat-stroked-button type="button" class="sign-out" (click)="signOut()" i18n="@@shell.signOut">
-          Sign out
-        </button>
+      <div class="page-panel">
+        <p class="page-intro">{{ message() }}</p>
+        <div class="actions">
+          @if (outcome() === 'more-available') {
+            <a mat-flat-button class="another" routerLink="/label" i18n="@@label.another">Label another block</a>
+          }
+          <button mat-stroked-button type="button" class="sign-out" (click)="signOut()" i18n="@@shell.signOut">
+            Sign out
+          </button>
+        </div>
       </div>
     </section>
   `,

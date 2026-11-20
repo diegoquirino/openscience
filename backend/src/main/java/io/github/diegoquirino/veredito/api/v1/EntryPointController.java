@@ -107,7 +107,7 @@ public class EntryPointController {
                                 }"""),
                         @ExampleObject(name = "participant", value = """
                                 {
-                                  "systemVersion": "0.12.0+1a2b3c4",
+                                  "systemVersion": "0.14.0+1a2b3c4",
                                   "environment": "production",
                                   "available": true,
                                   "_links": {

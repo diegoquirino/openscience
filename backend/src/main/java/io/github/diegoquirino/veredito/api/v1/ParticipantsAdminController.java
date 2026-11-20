@@ -47,14 +47,14 @@ public class ParticipantsAdminController {
 
     @GetMapping(version = "v1")
     @Operation(
-            summary = "Search a participant by e-mail or pseudonym",
+            summary = "List or search participants for anonymization",
             description = """
-                    Exactly one of the query parameters email or pseudonym. Returns zero or one card \
-                    (never a fuzzy list). Already anonymized people are found only by pseudonym and have \
-                    no vd:anonymize link.""")
+                    With no query parameters, returns every participant card (identifiable and \
+                    anonymized). With exactly one of email or pseudonym, returns zero or one card. \
+                    Already anonymized people have no vd:anonymize link.""")
     @ApiResponse(
             responseCode = "200",
-            description = "Search result (possibly empty)",
+            description = "Collection of participant cards",
             content = @Content(
                     mediaType = HAL_FORMS,
                     schema = @Schema(implementation = ParticipantSearchModel.class),
@@ -79,11 +79,11 @@ public class ParticipantsAdminController {
                                   }
                                 }
                               ],
-                              "_links": { "self": { "href": "/api/v1/participants?email=ana%40example.com" } }
+                              "_links": { "self": { "href": "/api/v1/participants" } }
                             }""")))
     @ApiResponse(
             responseCode = "400",
-            description = "Neither or both of email and pseudonym",
+            description = "Both of email and pseudonym",
             content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
     @ApiResponse(
             responseCode = "401",
@@ -94,10 +94,14 @@ public class ParticipantsAdminController {
     public ParticipantSearchModel search(
             @RequestParam(required = false) String email, @RequestParam(required = false) String pseudonym) {
         List<ParticipantCard> cards = withdrawals.search(Optional.ofNullable(email), Optional.ofNullable(pseudonym));
-        String self = COLLECTION
-                + (email != null && !email.isBlank()
-                        ? "?email=" + encode(email)
-                        : "?pseudonym=" + encode(pseudonym));
+        boolean hasEmail = email != null && !email.isBlank();
+        boolean hasPseudonym = pseudonym != null && !pseudonym.isBlank();
+        String self = COLLECTION;
+        if (hasEmail) {
+            self = COLLECTION + "?email=" + encode(email);
+        } else if (hasPseudonym) {
+            self = COLLECTION + "?pseudonym=" + encode(pseudonym);
+        }
         return ParticipantSearchModel.of(cards, self);
     }
 
@@ -143,8 +147,9 @@ public class ParticipantsAdminController {
             summary = "Confirm anonymization (keep or discard responses)",
             description = """
                     Sends the confirmation e-mail in the participant preferred language when the rolling \
-                    quota allows, then anonymizes atomically. When the quota is exhausted the withdrawal \
-                    still proceeds with emailSent false.""")
+                    quota allows, then anonymizes atomically. Optional body field pseudonym renames the \
+                    retained identifier when unique; empty or omitted keeps the current R-NNNN. When the \
+                    quota is exhausted the withdrawal still proceeds with emailSent false.""")
     @ApiResponse(
             responseCode = "201",
             description = "Withdrawal recorded",
@@ -162,14 +167,16 @@ public class ParticipantsAdminController {
                             }""")))
     @ApiResponse(
             responseCode = "409",
-            description = "Already anonymized",
+            description = "Already anonymized or pseudonym taken",
             content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
     public ResponseEntity<AnonymizationModel> anonymize(
             @PathVariable long id, @RequestBody Map<String, String> body) {
         WithdrawalOption option = WithdrawalOption.parse(body == null ? null : body.get("option"))
                 .orElseThrow(() -> new ProblemException(ProblemType.INVALID_REQUEST)
                         .with("reason", "option must be keep_responses or discard_responses"));
-        AnonymizationResult result = withdrawals.anonymize(id, option);
+        Optional<String> chosen =
+                body == null ? Optional.empty() : Optional.ofNullable(body.get("pseudonym"));
+        AnonymizationResult result = withdrawals.anonymize(id, option, chosen);
         AnonymizationModel model = AnonymizationModel.of(result);
         return ResponseEntity.created(URI.create("/api/v1/participants/" + id)).body(model);
     }

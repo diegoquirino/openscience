@@ -7,8 +7,8 @@ import java.util.Optional;
 public enum OnboardingStep {
     INELIGIBLE("ineligible"),
     NOT_OPEN("not-open"),
+    PROFILE("profile"),
     CONSENT("consent"),
-    SKILL("skill"),
     SCREENING("screening"),
     PARTICIPATION("participation");
 

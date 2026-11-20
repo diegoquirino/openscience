@@ -27,7 +27,7 @@ class SessionTest extends ApiTestBase {
         as(token).get(href(as(token).get("/api/v1"), "session"))
                 .then().statusCode(200)
                 .body("subject", equalTo("participant"))
-                .body("name", equalTo("Ana Souza"));
+                .body("name", nullValue());
         assertThat(mailpit.countTo(email)).isEqualTo(1);
     }
 

@@ -50,6 +50,13 @@ class ConsentFormTest extends ApiTestBase {
         return as(token).get(href(as(token).get("/api/v1"), "onboarding")).path("step");
     }
 
+    /** Participant with name and skill already set, so consent is the pending step (spec 013). */
+    private String atConsentStep() {
+        String token = participantSession();
+        seedSkill(participantIdOf(token), "developer", null);
+        return token;
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"pt-BR", "en-US", "es-ES"})
     void theCurrentFormComesInTheLanguageOfTheRequest(String locale) {
@@ -95,7 +102,7 @@ class ConsentFormTest extends ApiTestBase {
     @ParameterizedTest
     @ValueSource(strings = {"pt-BR", "en-US", "es-ES"})
     void acceptingRecordsVersionLanguageAndTime(String locale) {
-        String token = participantSession();
+        String token = atConsentStep();
         long id = participantIdOf(token);
 
         decide(token, locale, "accepted", "fixture-1")
@@ -115,7 +122,7 @@ class ConsentFormTest extends ApiTestBase {
                 .containsEntry("consent_language", locale)
                 .containsEntry("version", "fixture-1");
         assertThat(row.get("consent_decided_at")).isNotNull();
-        assertThat(step(token)).isEqualTo("skill");
+        assertThat(step(token)).isEqualTo("screening");
     }
 
     @Test
@@ -137,7 +144,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void refusingRecordsTheRefusalAndTheNextStepIsStillConsent() {
-        String token = participantSession();
+        String token = atConsentStep();
         long id = participantIdOf(token);
 
         decide(token, "es-ES", "refused", "fixture-1")
@@ -153,7 +160,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void aParticipantWhoRefusedCanAcceptOnReturn() {
-        String token = participantSession();
+        String token = atConsentStep();
         decide(token, "pt-BR", "refused", "fixture-1").then().statusCode(200);
         assertThat(step(token)).isEqualTo("consent");
 
@@ -161,12 +168,12 @@ class ConsentFormTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("decision", equalTo("accepted"))
                 .body("language", equalTo("en-US"));
-        assertThat(step(token)).isEqualTo("skill");
+        assertThat(step(token)).isEqualTo("screening");
     }
 
     @Test
     void repeatingTheSameDecisionChangesNothing() {
-        String token = participantSession();
+        String token = atConsentStep();
         Response first = decide(token, "pt-BR", "accepted", "fixture-1");
         first.then().statusCode(200);
 
@@ -175,20 +182,20 @@ class ConsentFormTest extends ApiTestBase {
                 .body("language", equalTo("pt-BR"))
                 .body("decidedAt", equalTo(first.path("decidedAt")));
 
-        String other = participantSession();
+        String other = atConsentStep();
         decide(other, "pt-BR", "refused", "fixture-1").then().statusCode(200);
         decide(other, "es-ES", "refused", "fixture-1").then().statusCode(200).body("language", equalTo("pt-BR"));
     }
 
     @Test
     void anAcceptanceOfTheCurrentVersionCannotBeFlippedToARefusal() {
-        String token = participantSession();
+        String token = atConsentStep();
         decide(token, "pt-BR", "accepted", "fixture-1").then().statusCode(200);
 
         decide(token, "pt-BR", "refused", "fixture-1")
                 .then().statusCode(409)
                 .body("type", equalTo(PROBLEM + "step-not-pending"))
-                .body("step", equalTo("skill"));
+                .body("step", equalTo("screening"));
     }
 
     @Test
@@ -217,7 +224,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void anOutdatedVersionIsRefusedWithTheCurrentOne() {
-        String token = participantSession();
+        String token = atConsentStep();
         insertCompleteConsentForm("v2", clock.instant().minus(Duration.ofDays(1)));
 
         decide(token, "pt-BR", "accepted", "fixture-1")
@@ -235,7 +242,7 @@ class ConsentFormTest extends ApiTestBase {
 
         assertThat(output.getOut()).contains("Consent form v3 is published but lacks texts in: es-ES");
         assertThat(output.getOut()).contains("Current consent form: fixture-1");
-        String token = participantSession();
+        String token = atConsentStep();
         consentForm(token, "pt-BR").then().statusCode(200).body("version", equalTo("fixture-1"));
         decide(token, "pt-BR", "accepted", "v3").then().statusCode(409)
                 .body("type", equalTo(PROBLEM + "consent-form-outdated"))
@@ -266,8 +273,8 @@ class ConsentFormTest extends ApiTestBase {
     void anIneligibleParticipantCannotRecordAnything() {
         String token = participantSession();
         long id = participantIdOf(token);
-        acceptCurrentConsent(id, "pt-BR");
         seedSkill(id, "developer", null);
+        acceptCurrentConsent(id, "pt-BR");
         seedScreening(id, io.github.diegoquirino.veredito.domain.onboarding.ScreeningAnswer.NO);
 
         decide(token, "pt-BR", "accepted", "fixture-1")
@@ -279,7 +286,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void invalidBodiesAreFieldErrors() {
-        String token = participantSession();
+        String token = atConsentStep();
         Response onboarding = as(token).get(href(as(token).get("/api/v1"), "onboarding"));
         String consent = href(onboarding, "consent");
 
@@ -297,7 +304,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void theConsentTemplateIsOfferedOnlyWhileConsentIsPending() {
-        String token = participantSession();
+        String token = atConsentStep();
         as(token).get(EntryPointController.CONSENT)
                 .then().statusCode(200)
                 .body("_templates.default.method", equalTo("PUT"))
@@ -312,7 +319,7 @@ class ConsentFormTest extends ApiTestBase {
 
     @Test
     void decisionsKeepTheTimestampInUtc() {
-        String token = participantSession();
+        String token = atConsentStep();
         long id = participantIdOf(token);
         decide(token, "pt-BR", "accepted", "fixture-1").then().statusCode(200);
         Timestamp decided = jdbc.sql("SELECT consent_decided_at FROM participant WHERE id = ?").param(id)

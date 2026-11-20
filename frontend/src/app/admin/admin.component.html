@@ -1,11 +1,23 @@
 <section class="admin">
   <h1 i18n="@@admin.title">Administration</h1>
-  <p class="signed-in" i18n="@@admin.signedInAs">Signed in as {{ name() }}</p>
+  <p class="page-intro signed-in" i18n="@@admin.signedInAs">Signed in as {{ name() }}</p>
 
-  <mat-nav-list class="menu" aria-label="Administrative functions" i18n-aria-label="@@admin.menu">
-    <a mat-list-item routerLink="/admin/import" i18n="@@admin.import">Import</a>
-    <a mat-list-item routerLink="/admin/export" i18n="@@admin.export">Export</a>
-    <a mat-list-item routerLink="/admin/dashboard" i18n="@@admin.dashboard">Dashboard</a>
-    <a mat-list-item routerLink="/admin/participants" i18n="@@admin.participants">Participants</a>
-  </mat-nav-list>
+  <nav class="action-grid" aria-label="Administrative functions" i18n-aria-label="@@admin.menu">
+    <a class="action-card" routerLink="/admin/import" data-testid="admin-import">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+      <span class="action-card-label" i18n="@@admin.import">Import</span>
+    </a>
+    <a class="action-card" routerLink="/admin/export" data-testid="admin-export">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+      <span class="action-card-label" i18n="@@admin.export">Export</span>
+    </a>
+    <a class="action-card" routerLink="/admin/dashboard" data-testid="admin-dashboard">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">monitoring</mat-icon>
+      <span class="action-card-label" i18n="@@admin.dashboard">Dashboard</span>
+    </a>
+    <a class="action-card" routerLink="/admin/participants" data-testid="admin-participants">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">person_off</mat-icon>
+      <span class="action-card-label" i18n="@@admin.participants">Anonymization of Participants</span>
+    </a>
+  </nav>
 </section>

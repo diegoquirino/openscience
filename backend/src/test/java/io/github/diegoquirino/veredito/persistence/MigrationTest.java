@@ -55,7 +55,7 @@ class MigrationTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2", "3", "4", "5", "7");
+        assertThat(versions).containsExactly("1", "2", "3", "4", "5", "7", "8");
     }
 
     @Test

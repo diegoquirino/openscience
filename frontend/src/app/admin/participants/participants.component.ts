@@ -1,9 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
 import { RouterLink } from '@angular/router';
 import {
   AnonymizationResult,
@@ -13,45 +12,40 @@ import {
 
 @Component({
   selector: 'app-participants',
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, RouterLink],
+  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, RouterLink],
   templateUrl: './participants.component.html',
   styleUrl: './participants.component.scss',
 })
-export class ParticipantsComponent {
+export class ParticipantsComponent implements OnInit {
   private readonly participants = inject(ParticipantsService);
 
-  protected readonly email = signal('');
-  protected readonly pseudonym = signal('');
+  protected readonly cards = signal<ParticipantCard[]>([]);
   protected readonly card = signal<ParticipantCard | null>(null);
-  protected readonly empty = signal(false);
   protected readonly error = signal('');
   protected readonly result = signal<AnonymizationResult | null>(null);
   protected readonly confirming = signal(false);
   protected readonly option = signal<'keep_responses' | 'discard_responses'>('keep_responses');
+  protected readonly chosenPseudonym = signal('');
   protected readonly busy = signal(false);
 
-  protected search(): void {
+  /** People who still have an e-mail (identifiable). */
+  protected readonly withEmail = computed(() => this.cards().filter((c) => !!c.email));
+
+  /** Full list keyed by pseudonym (includes anonymized). */
+  protected readonly byPseudonym = computed(() =>
+    [...this.cards()].sort((a, b) => a.pseudonym.localeCompare(b.pseudonym)),
+  );
+
+  ngOnInit(): void {
+    this.reload();
+  }
+
+  protected select(person: ParticipantCard): void {
     this.error.set('');
     this.result.set(null);
     this.confirming.set(false);
-    const email = this.email().trim();
-    const pseudonym = this.pseudonym().trim();
-    if ((email && pseudonym) || (!email && !pseudonym)) {
-      this.error.set('exact-one');
-      return;
-    }
-    this.busy.set(true);
-    this.participants.search(email ? { email } : { pseudonym }).subscribe({
-      next: (cards) => {
-        this.busy.set(false);
-        this.empty.set(cards.length === 0);
-        this.card.set(cards[0] ?? null);
-      },
-      error: () => {
-        this.busy.set(false);
-        this.error.set('search-failed');
-      },
-    });
+    this.chosenPseudonym.set(person.pseudonym);
+    this.card.set(person);
   }
 
   protected askConfirm(option: 'keep_responses' | 'discard_responses'): void {
@@ -65,21 +59,13 @@ export class ParticipantsComponent {
       return;
     }
     this.busy.set(true);
-    this.participants.anonymize(current, this.option()).subscribe({
+    this.error.set('');
+    this.participants.anonymize(current, this.option(), this.chosenPseudonym()).subscribe({
       next: (outcome) => {
         this.busy.set(false);
         this.confirming.set(false);
         this.result.set(outcome);
-        // E-mail is erased; refresh by the surviving pseudonym so the success banner stays.
-        this.email.set('');
-        this.pseudonym.set(outcome.pseudonym);
-        this.participants.search({ pseudonym: outcome.pseudonym }).subscribe({
-          next: (cards) => {
-            this.empty.set(cards.length === 0);
-            this.card.set(cards[0] ?? null);
-          },
-          error: () => this.error.set('search-failed'),
-        });
+        this.reload(outcome.pseudonym);
       },
       error: () => {
         this.busy.set(false);
@@ -90,5 +76,22 @@ export class ParticipantsComponent {
 
   protected cancelConfirm(): void {
     this.confirming.set(false);
+  }
+
+  private reload(selectPseudonym?: string): void {
+    this.busy.set(true);
+    this.participants.list().subscribe({
+      next: (cards) => {
+        this.busy.set(false);
+        this.cards.set(cards);
+        if (selectPseudonym) {
+          this.card.set(cards.find((c) => c.pseudonym === selectPseudonym) ?? null);
+        }
+      },
+      error: () => {
+        this.busy.set(false);
+        this.error.set('search-failed');
+      },
+    });
   }
 }

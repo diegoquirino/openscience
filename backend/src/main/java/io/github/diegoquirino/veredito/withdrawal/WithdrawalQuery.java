@@ -68,6 +68,22 @@ public class WithdrawalQuery {
                 .optional();
     }
 
+    /** Every participant (identifiable and already anonymized), newest first. */
+    public List<ParticipantRow> listAll() {
+        return jdbc.sql("""
+                        SELECT id, pseudonym, name, email, preferred_language, anonymized_at
+                        FROM participant
+                        ORDER BY id DESC""")
+                .query(WithdrawalQuery::mapParticipant)
+                .list();
+    }
+
+    public void updatePseudonym(long participantId, String pseudonym) {
+        jdbc.sql("UPDATE participant SET pseudonym = ? WHERE id = ?")
+                .params(pseudonym, participantId)
+                .update();
+    }
+
     public long countCompletedTasks(long participantId) {
         return jdbc.sql("SELECT COUNT(*) FROM task WHERE participant_id = ? AND status = 'completed'")
                 .param(participantId)

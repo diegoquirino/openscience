@@ -6,7 +6,6 @@ test('a new participant signs in with the code sent by e-mail (pt-BR)', async ({
   const email = `e2e-${testInfo.project.name}-${Date.now()}@example.com`;
 
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome').fill('Ana Souza');
   await page.getByLabel('E-mail').fill(email);
   await page.getByRole('button', { name: 'Enviar código' }).click();
 
@@ -17,14 +16,14 @@ test('a new participant signs in with the code sent by e-mail (pt-BR)', async ({
 
   const message = await latestMessageTo(request, email);
   expect(message.subject).toBe('Seu código de acesso ao Veredito');
-  expect(message.text).toContain('Ana Souza');
+  expect(message.text).not.toContain('Ana Souza');
 
   await page.getByLabel('Código de acesso').fill(`${message.code.slice(0, 3)} ${message.code.slice(3)}`);
   await page.getByRole('button', { name: 'Entrar' }).click();
 
-  // A new participant goes through the welcome resolver to the consent form (spec 006).
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
-  await expect(page.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
+  // Spec 013: profile (name + skill) before the consent form.
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
+  await expect(page.getByLabel('Nome')).toBeVisible();
   const cookies = await page.context().cookies();
   expect(cookies.find((cookie) => cookie.name === 'veredito-session')).toMatchObject({
     httpOnly: true,
@@ -37,7 +36,6 @@ test('a wrong code shows the attempts left (pt-BR)', async ({ page, request }, t
   const email = `e2e-wrong-${testInfo.project.name}-${Date.now()}@example.com`;
 
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome').fill('Ana Souza');
   await page.getByLabel('E-mail').fill(email);
   await page.getByRole('button', { name: 'Enviar código' }).click();
   const { code } = await latestMessageTo(request, email);

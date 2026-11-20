@@ -57,6 +57,9 @@ public class WithdrawalService {
     public List<ParticipantCard> search(Optional<String> email, Optional<String> pseudonym) {
         boolean hasEmail = email.filter(s -> !s.isBlank()).isPresent();
         boolean hasPseudonym = pseudonym.filter(s -> !s.isBlank()).isPresent();
+        if (!hasEmail && !hasPseudonym) {
+            return listAll();
+        }
         if (hasEmail == hasPseudonym) {
             throw new ProblemException(ProblemType.INVALID_REQUEST)
                     .with("reason", "exactly one of email or pseudonym is required");
@@ -68,16 +71,32 @@ public class WithdrawalService {
     }
 
     @Transactional(readOnly = true)
+    public List<ParticipantCard> listAll() {
+        return query.listAll().stream().map(this::card).toList();
+    }
+
+    @Transactional(readOnly = true)
     public ParticipantCard requireCard(long id) {
         ParticipantRow row = query.findById(id).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
         return card(row);
     }
 
     @Transactional
-    public AnonymizationResult anonymize(long id, WithdrawalOption option) {
+    public AnonymizationResult anonymize(long id, WithdrawalOption option, Optional<String> chosenPseudonym) {
         ParticipantRow peek = query.findById(id).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
         if (peek.anonymizedAt() != null) {
             throw new ProblemException(ProblemType.ALREADY_ANONYMIZED);
+        }
+        String desired = chosenPseudonym.map(String::trim).filter(s -> !s.isEmpty()).orElse(null);
+        if (desired != null) {
+            if (desired.length() > 16) {
+                throw new ProblemException(ProblemType.INVALID_REQUEST)
+                        .with("reason", "pseudonym must be at most 16 characters");
+            }
+            Optional<ParticipantRow> clash = query.findByPseudonym(desired);
+            if (clash.isPresent() && clash.get().id() != id) {
+                throw new ProblemException(ProblemType.PSEUDONYM_TAKEN).with("pseudonym", desired);
+            }
         }
         boolean emailSent = false;
         if (quota.canSend()) {
@@ -91,7 +110,16 @@ public class WithdrawalService {
         if (row.anonymizedAt() != null) {
             throw new ProblemException(ProblemType.ALREADY_ANONYMIZED);
         }
+        if (desired != null && !desired.equals(row.pseudonym())) {
+            Optional<ParticipantRow> clash = query.findByPseudonym(desired);
+            if (clash.isPresent() && clash.get().id() != id) {
+                throw new ProblemException(ProblemType.PSEUDONYM_TAKEN).with("pseudonym", desired);
+            }
+            query.updatePseudonym(id, desired);
+            row = query.findByIdForUpdate(id).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
+        }
         String email = row.email();
+        String finalPseudonym = row.pseudonym();
         List<TaskRef> tasks = query.lockTasksOfParticipant(id);
         int finalsBefore = (int) query.countResponses(id, "final");
         query.deleteDraftsOfParticipant(id);
@@ -117,9 +145,15 @@ public class WithdrawalService {
         query.deleteAccessCodes(email);
         query.anonymize(id, now);
         query.insertLog(
-                now, row.pseudonym(), option.code(), emailSent, finalsDiscarded, tasksReturned, id);
+                now, finalPseudonym, option.code(), emailSent, finalsDiscarded, tasksReturned, id);
         return new AnonymizationResult(
-                row.pseudonym(), option, emailSent, finalsDiscarded, tasksReturned, now, id);
+                finalPseudonym, option, emailSent, finalsDiscarded, tasksReturned, now, id);
+    }
+
+    /** Spec 011 call sites without a chosen pseudonym. */
+    @Transactional
+    public AnonymizationResult anonymize(long id, WithdrawalOption option) {
+        return anonymize(id, option, Optional.empty());
     }
 
     private ParticipantCard card(ParticipantRow row) {

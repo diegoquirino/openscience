@@ -132,12 +132,19 @@ public class SignInService {
         if (!codes.markUsed(stored.id(), now)) {
             return new Outcome.DeadCode();
         }
-        PersonName name = new PersonName(stored.name());
+        PersonName name = stored.name() == null || stored.name().isBlank()
+                ? null
+                : PersonName.parse(stored.name()).orElse(null);
         String token = tokens.next();
         Instant expiresAt = now.plus(properties.sessionDuration());
         SessionView session;
         if (isAdministrator(email)) {
-            config.updateAdminSignIn(name, language);
+            if (name != null) {
+                config.updateAdminSignIn(name, language);
+            } else if (config.adminProfile().preferredLanguage() == null) {
+                // First e-mail-only sign-in keeps the request language; later codes do not overwrite it.
+                config.updateAdminPreferredLanguage(language);
+            }
             sessions.insert(tokenHasher.hash(token), Subject.ADMINISTRATOR, null, now, expiresAt);
             session = SessionView.administrator(config.adminProfile(), expiresAt);
         } else {
@@ -158,12 +165,10 @@ public class SignInService {
                         .anyMatch(hash -> codeHasher.matches(hash, email, code));
     }
 
-    /** Codes stored before V3 have no name and cannot open a session. */
     private boolean isDead(StoredCode code, Instant now) {
         return code.usedAt() != null
                 || !now.isBefore(code.expiresAt())
-                || code.attempts() >= properties.maxAttempts()
-                || code.name() == null;
+                || code.attempts() >= properties.maxAttempts();
     }
 
     private boolean isAdministrator(EmailAddress email) {

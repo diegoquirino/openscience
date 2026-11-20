@@ -60,24 +60,20 @@
   fill: currentColor;
 }
 
-.name {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font: var(--mat-sys-body-medium);
-  margin-right: 8px;
+.account {
+  margin-right: 4px;
   max-width: 240px;
+}
+
+.account .icon {
+  margin-right: 6px;
+  vertical-align: middle;
 }
 
 .name-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.sign-out .icon {
-  margin-right: 6px;
-  vertical-align: middle;
 }
 
 .language app-flag {

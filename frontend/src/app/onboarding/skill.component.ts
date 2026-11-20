@@ -32,8 +32,12 @@ export const SKILL_UNSAVED_KEY = '/skill';
   imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule],
   template: `
     <section class="skill">
-      <h1 i18n="@@skill.title">Your professional skill</h1>
-      <p i18n="@@skill.intro">Choose the option that best describes you. You answer this only once.</p>
+      <h1 i18n="@@skill.title">Your name and professional skill</h1>
+      <p i18n="@@skill.intro">Tell us your name and choose the option that best describes you.</p>
+      <mat-form-field appearance="outline" class="name">
+        <mat-label i18n="@@skill.name">Name</mat-label>
+        <input matInput class="name-input" [value]="name()" (input)="name.set($any($event.target).value)" autocomplete="name" maxlength="120" />
+      </mat-form-field>
       <mat-radio-group
         class="options"
         aria-labelledby="skill-legend"
@@ -115,6 +119,7 @@ export class SkillComponent {
   protected readonly max = SKILL_OTHER_MAX;
   protected readonly tooLongMessage = fieldMessage({ field: 'skillOther', code: 'size' });
 
+  readonly name = signal('');
   readonly skill = signal<string | null>(null);
   readonly other = signal('');
   readonly saving = signal(false);
@@ -123,7 +128,9 @@ export class SkillComponent {
 
   readonly length = computed(() => codePoints(this.other()));
   readonly otherTooLong = computed(() => this.length() > SKILL_OTHER_MAX);
-  readonly valid = computed(() => skillAnswerValid(this.skill(), this.other()));
+  readonly valid = computed(
+    () => this.name().trim().length >= 2 && skillAnswerValid(this.skill(), this.other()),
+  );
   readonly otherError = computed(() =>
     this.other().length > 0 && this.other().trim().length === 0
       ? fieldMessage({ field: 'skillOther', code: 'required' })
@@ -133,10 +140,15 @@ export class SkillComponent {
   constructor() {
     const kept = this.language.takeUnsaved(SKILL_UNSAVED_KEY);
     if (kept) {
+      this.name.set(kept['name'] ?? '');
       this.skill.set(isSkill(kept['skill']) ? kept['skill'] : null);
       this.other.set(kept['other'] ?? '');
     }
-    this.language.keepOnSwitch(SKILL_UNSAVED_KEY, () => ({ skill: this.skill() ?? '', other: this.other() }));
+    this.language.keepOnSwitch(SKILL_UNSAVED_KEY, () => ({
+      name: this.name(),
+      skill: this.skill() ?? '',
+      other: this.other(),
+    }));
   }
 
   protected label(code: string): string {
@@ -160,7 +172,7 @@ export class SkillComponent {
     this.saving.set(true);
     this.message.set(null);
     this.serverFieldError.set(null);
-    this.onboarding.recordSkill(skill, skill === 'other' ? this.other() : null).subscribe({
+    this.onboarding.recordSkill(this.name().trim(), skill, skill === 'other' ? this.other() : null).subscribe({
       next: () => {
         this.language.clearUnsaved(SKILL_UNSAVED_KEY);
         void this.router.navigateByUrl('/welcome');

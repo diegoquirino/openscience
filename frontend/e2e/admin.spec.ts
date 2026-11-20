@@ -23,7 +23,7 @@ async function readDownload(download: Download): Promise<string> {
 async function signIn(page: Page, request: APIRequestContext, name: string, email: string): Promise<void> {
   const previousId = await newestMessageId(request, email);
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome', { exact: true }).fill(name);
+  void name;
   await page.getByLabel('E-mail', { exact: true }).fill(email);
   await page.getByRole('button', { name: 'Enviar código' }).click();
   await expect(page).toHaveURL(/\/pt-BR\/participate\/code$/, { timeout: 15_000 });
@@ -42,17 +42,16 @@ test.describe('administrator (single address)', () => {
 
     await signIn(page, request, 'Diego Quirino', ADMINISTRATOR);
 
-    await expect(page).toHaveURL(/\/pt-BR\/admin$/);
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Administração');
-    await expect(page.getByText('Você entrou como Diego Quirino')).toBeVisible();
-    const importLink = page.getByRole('link', { name: 'Importar' });
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Painel de andamento');
+    await expect(page.getByTestId('dashboard-actions')).toBeVisible();
+    const importLink = page.getByTestId('dashboard-action-import');
     await expect(importLink).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Exportar' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Painel de andamento' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Participantes' })).toBeVisible();
+    await expect(page.getByTestId('dashboard-action-export')).toBeVisible();
+    await expect(page.getByTestId('dashboard-action-participants')).toBeVisible();
 
     await page.goto('/pt-BR/participate');
-    await expect(page).toHaveURL(/\/pt-BR\/admin$/);
+    await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
 
     await importLink.click();
     await expect(page).toHaveURL(/\/pt-BR\/admin\/import$/);
@@ -72,8 +71,8 @@ test.describe('administrator (single address)', () => {
     await expect(page.getByText(/Ignoradas:\s*38/)).toBeVisible();
 
     // Spec 009: the Export screen offers the CSV downloads through the HAL links.
-    await page.goto('/pt-BR/admin');
-    await page.getByRole('link', { name: 'Exportar' }).click();
+    await page.goto('/pt-BR/admin/dashboard');
+    await page.getByTestId('dashboard-action-export').click();
     await expect(page).toHaveURL(/\/pt-BR\/admin\/export$/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Exportar');
     await expect(page.getByRole('heading', { level: 2, name: 'Sistema minitest' })).toBeVisible();
@@ -92,9 +91,8 @@ test.describe('administrator (single address)', () => {
     expect(rater.suggestedFilename()).toBe('t1_minitest_rater1.csv');
     expect(await readDownload(rater)).toContain('edit_key,uc,kind,field,origin,target,change_impact,maintenance_operation,comment');
 
-    // Spec 010: the Dashboard shows the imported queue and Refresh reads it again without reloading.
-    await page.goto('/pt-BR/admin');
-    await page.getByRole('link', { name: 'Painel de andamento' }).click();
+    // Spec 010/017: the Dashboard is the admin home; Refresh reads it again without reloading.
+    await page.goto('/pt-BR/admin/dashboard');
     await expect(page).toHaveURL(/\/pt-BR\/admin\/dashboard$/);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Painel de andamento');
     const overall = page.locator('[data-row="overall"]');
@@ -121,12 +119,13 @@ test.describe('administrator (single address)', () => {
       await participantContext.close();
     }
 
-    await page.goto('/pt-BR/admin');
-    await page.getByRole('link', { name: 'Participantes' }).click();
+    await page.goto('/pt-BR/admin/dashboard');
+    await page.getByTestId('dashboard-action-participants').click();
     await expect(page).toHaveURL(/\/pt-BR\/admin\/participants$/);
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Participantes');
-    await page.getByLabel('E-mail', { exact: true }).fill(withdrawEmail);
-    await page.getByRole('button', { name: 'Buscar' }).click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Anonimização de Participantes');
+    await expect(page.getByTestId('panel-with-email')).toBeVisible();
+    await expect(page.getByTestId('panel-pseudonyms')).toBeVisible();
+    await page.getByTestId('panel-with-email').getByText(withdrawEmail).click();
     await expect(page.getByTestId('participant-card')).toBeVisible();
     await page.getByTestId('keep-responses').click();
     await expect(page.getByTestId('confirm-dialog')).toBeVisible();
@@ -187,7 +186,7 @@ test('a participant has no Participants link and the participants screen sends t
   const email = `e2e-participants-${testInfo.project.name}-${Date.now()}@example.com`;
   await signIn(page, request, 'Ana Souza', email);
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
-  await expect(page.getByRole('link', { name: 'Participantes' })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Anonimização de Participantes' })).toHaveCount(0);
 
   await page.goto('/pt-BR/admin/participants');
 

@@ -26,8 +26,8 @@ class ScreeningTest extends ApiTestBase {
     private String atScreeningStep() {
         String token = participantSession();
         long id = participantIdOf(token);
-        acceptCurrentConsent(id, "pt-BR");
         seedSkill(id, "developer", null);
+        acceptCurrentConsent(id, "pt-BR");
         return token;
     }
 
@@ -148,11 +148,11 @@ class ScreeningTest extends ApiTestBase {
         putAnswer(token, "en-US", "yes_professional")
                 .then().statusCode(409)
                 .body("type", equalTo(PROBLEM + "step-not-pending"))
-                .body("step", equalTo("consent"));
+                .body("step", equalTo("profile"));
 
         acceptCurrentConsent(participantIdOf(token), "pt-BR");
         putAnswer(token, "en-US", "yes_professional")
-                .then().statusCode(409).body("step", equalTo("skill"));
+                .then().statusCode(409).body("step", equalTo("profile"));
         as(token).get(EntryPointController.SCREENING)
                 .then().statusCode(200)
                 .body("answer", nullValue())

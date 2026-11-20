@@ -1,11 +1,12 @@
 @if (pending(); as entry) {
   <section class="code">
     <h1 i18n="@@code.title">Enter the code</h1>
-    <p class="email" i18n="@@code.sentTo">We sent a 6-digit code to {{ entry.email }}.</p>
-    <p i18n="@@code.validity">
+    <p class="page-intro email" i18n="@@code.sentTo">We sent a 6-digit code to {{ entry.email }}.</p>
+    <p class="page-intro" i18n="@@code.validity">
       The code is valid for {{ entry.validityMinutes }} minutes. If it does not arrive, check the spam folder.
     </p>
 
+    <div class="page-panel">
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <mat-form-field appearance="outline">
         <mat-label i18n="@@code.label">Access code</mat-label>
@@ -34,5 +35,6 @@
         <button mat-button type="button" (click)="correctEmail()" i18n="@@code.correctEmail">Correct e-mail</button>
       </div>
     </form>
+    </div>
   </section>
 }

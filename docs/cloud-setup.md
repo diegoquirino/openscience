@@ -283,3 +283,83 @@ Rollback to an earlier revision (listed by `gcloud run revisions list --service=
 ```powershell
 gcloud run services update-traffic veredito --region=$region --to-revisions=<revision>=100
 ```
+
+## 11. Custom domain (`diegoquirino.cloud`) via Global HTTPS LB
+
+Cloud Run domain mapping is **not** available in `southamerica-east1`. Production custom
+HTTPS uses a **global external Application Load Balancer** in front of the Cloud Run service,
+with DNS at Hostinger (domain only — no Hostinger VPS/hosting for the app).
+
+Enable Compute Engine if needed, then create the LB (names used in this project):
+
+```powershell
+gcloud services enable compute.googleapis.com
+
+gcloud compute addresses create veredito-lb-ip `
+  --network-tier=PREMIUM --ip-version=IPV4 --global
+
+gcloud compute addresses describe veredito-lb-ip --global --format="get(address)"
+# note the IPv4 (example: 136.82.203.121)
+
+gcloud compute network-endpoint-groups create veredito-neg `
+  --region=$region `
+  --network-endpoint-type=serverless `
+  --cloud-run-service=veredito
+
+gcloud compute backend-services create veredito-backend `
+  --load-balancing-scheme=EXTERNAL_MANAGED --global
+
+gcloud compute backend-services add-backend veredito-backend `
+  --global `
+  --network-endpoint-group=veredito-neg `
+  --network-endpoint-group-region=$region
+
+gcloud compute url-maps create veredito-url-map --default-service=veredito-backend
+
+gcloud compute ssl-certificates create veredito-cert `
+  --domains=diegoquirino.cloud,www.diegoquirino.cloud
+
+# Point DNS at the LB IP *before* expecting ACTIVE (or create a fresh cert after DNS
+# is correct to force an immediate CA check). Current production cert name:
+# veredito-cert-v2 (replace veredito-cert in the proxy commands below if needed).
+
+gcloud compute target-https-proxies create veredito-https-proxy `
+  --ssl-certificates=veredito-cert `
+  --url-map=veredito-url-map
+
+gcloud compute forwarding-rules create veredito-https-rule `
+  --load-balancing-scheme=EXTERNAL_MANAGED `
+  --network-tier=PREMIUM `
+  --address=veredito-lb-ip `
+  --target-https-proxy=veredito-https-proxy `
+  --global --ports=443
+```
+
+Official reference:
+<https://cloud.google.com/load-balancing/docs/https/setup-global-ext-https-serverless>
+
+### Hostinger DNS (hPanel → Domínios → DNS → `diegoquirino.cloud`)
+
+| Type | Name | Value | Notes |
+|---|---|---|---|
+| A | `@` | LB IPv4 (`veredito-lb-ip`) | Replace any Hostinger parking A |
+| CNAME | `www` | `diegoquirino.cloud` | Optional; covered by the managed cert |
+| — | — | — | Remove apex AAAA pointing at Hostinger parking (no IPv6 on this LB) |
+
+If CAA records exist, allow Google Trust Services / Let's Encrypt (`pki.goog`,
+`letsencrypt.org`) so the managed certificate can issue. Certificate status:
+
+```powershell
+gcloud compute ssl-certificates describe veredito-cert --global `
+  --format="yaml(managed.status,managed.domainStatus)"
+```
+
+`PROVISIONING` → `ACTIVE` usually takes minutes after DNS is correct (sometimes up to a few
+hours). The `*.run.app` URL stays valid; turning it off is optional.
+
+### Check
+
+```powershell
+Invoke-RestMethod https://diegoquirino.cloud/api/v1
+# expect available: true, environment: production
+```

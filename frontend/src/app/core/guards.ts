@@ -9,7 +9,7 @@ export function areaOf(subject: Subject): string {
     case 'participant':
       return '/welcome';
     case 'administrator':
-      return '/admin';
+      return '/admin/dashboard';
     default:
       return '/participate';
   }
@@ -29,3 +29,14 @@ function only(subject: Subject): CanActivateFn {
 export const visitorOnly = only('visitor');
 export const participantOnly = only('participant');
 export const administratorOnly = only('administrator');
+
+/** Signed-in participant or administrator (profile menu, spec 014). */
+export const signedInOnly: CanActivateFn = () => {
+  const session = inject(SessionService);
+  const router = inject(Router);
+  return session.current().pipe(
+    map(() =>
+      session.subject() === 'visitor' ? router.parseUrl('/participate') : true,
+    ),
+  );
+};

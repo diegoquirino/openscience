@@ -74,6 +74,11 @@ public class ConfigRepository {
                 .update();
     }
 
+    /** Updates the administrator display name (profile menu, spec 014). */
+    public void updateAdminName(PersonName name) {
+        jdbc.sql("UPDATE config SET admin_name = ? WHERE id = 1").param(name.value()).update();
+    }
+
     public AdminProfile adminProfile() {
         return jdbc.sql("SELECT admin_name, admin_email, admin_preferred_language FROM config WHERE id = 1")
                 .query((rs, row) -> new AdminProfile(

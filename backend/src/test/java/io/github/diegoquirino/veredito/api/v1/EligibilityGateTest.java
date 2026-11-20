@@ -41,14 +41,14 @@ class EligibilityGateTest extends ApiTestBase {
     void aNewParticipantIsRefused() {
         String token = participantSession();
         assertThat(gate.isEligible(participantIdOf(token))).isFalse();
-        assertRefusedEverywhere(token, "consent");
+        assertRefusedEverywhere(token, "profile");
     }
 
     @Test
     void aRefusalOfTheConsentFormIsRefused() {
         String token = participantSession();
         recordConsent(participantIdOf(token), ConsentDecision.REFUSED, "pt-BR");
-        assertRefusedEverywhere(token, "consent");
+        assertRefusedEverywhere(token, "profile");
     }
 
     @Test
@@ -56,7 +56,7 @@ class EligibilityGateTest extends ApiTestBase {
         String token = participantSession();
         long id = participantIdOf(token);
         acceptCurrentConsent(id, "en-US");
-        assertRefusedEverywhere(token, "skill");
+        assertRefusedEverywhere(token, "profile");
         seedSkill(id, "tech_lead", null);
         assertRefusedEverywhere(token, "screening");
         assertThat(gate.isEligible(id)).isFalse();

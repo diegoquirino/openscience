@@ -15,13 +15,12 @@ test('the session survives a new browser window and ends on "Sign out" (US3)', a
 }, testInfo) => {
   const email = `e2e-session-${testInfo.project.name}-${Date.now()}@example.com`;
   await page.goto('/pt-BR/participate');
-  await page.getByLabel('Nome', { exact: true }).fill('Ana Souza');
   await page.getByLabel('E-mail', { exact: true }).fill(email);
   await page.getByRole('button', { name: 'Enviar código' }).click();
   const { code } = await latestMessageTo(request, email);
   await page.getByLabel('Código de acesso').fill(code);
   await page.getByRole('button', { name: 'Entrar' }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
   const sent = await messageCountTo(request, email);
 
   const { viewport, isMobile, hasTouch, userAgent, deviceScaleFactor } = testInfo.project.use;
@@ -37,20 +36,18 @@ test('the session survives a new browser window and ends on "Sign out" (US3)', a
   const again = await reopened.newPage();
   await again.goto('/pt-BR/welcome');
 
-  await expect(again).toHaveURL(/\/pt-BR\/consent$/);
-  await expect(again.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
+  await expect(again).toHaveURL(/\/pt-BR\/skill$/);
+  await expect(again.getByLabel('Nome')).toBeVisible();
   const header = again.locator('header');
-  await expect(header.getByRole('button', { name: 'Sair' })).toBeVisible();
-  if (testInfo.project.name === 'desktop') {
-    await expect(header.getByText('Ana Souza')).toBeVisible();
-  }
+  await expect(header.getByRole('button', { name: /Conta|Account/i })).toBeVisible();
   await noHorizontalScrolling(again);
   expect(await messageCountTo(request, email)).toBe(sent);
 
-  await header.getByRole('button', { name: 'Sair' }).click();
+  await header.getByRole('button', { name: /Conta|Account/i }).click();
+  await again.getByRole('menuitem', { name: 'Sair' }).click();
 
   await expect(again).toHaveURL(/\/pt-BR\/$/);
-  await expect(header.getByRole('button', { name: 'Sair' })).toHaveCount(0);
+  await expect(header.getByRole('button', { name: /Conta|Account/i })).toHaveCount(0);
   const cookies = await reopened.cookies();
   expect(cookies.find((cookie) => cookie.name === 'veredito-session')).toBeUndefined();
 

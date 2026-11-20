@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 
 import io.github.diegoquirino.veredito.support.ApiTestBase;
 import io.restassured.response.Response;
@@ -26,7 +27,7 @@ class AdministratorAccessTest extends ApiTestBase {
             Response session = as(token).get(EntryPointController.SESSION);
             session.then().statusCode(200)
                     .body("subject", equalTo("administrator"))
-                    .body("name", equalTo("Diego Quirino"))
+                    .body("name", nullValue())
                     .body("$", not(hasKey("pseudonym")))
                     .body("preferredLanguage", equalTo("es-ES"))
                     .body("_links.'vd:me'.href", equalTo(EntryPointController.ADMINISTRATOR_ME));
@@ -41,7 +42,7 @@ class AdministratorAccessTest extends ApiTestBase {
             String second = signIn("Diego Q. Lima", ADMINISTRATOR_EMAIL, "en-US");
 
             assertThat(adminColumns())
-                    .containsEntry("admin_name", "Diego Q. Lima")
+                    .containsEntry("admin_name", null)
                     .containsEntry("admin_preferred_language", "es-ES");
             assertThat(participantCount()).isEqualTo(participantsBefore);
 
@@ -49,7 +50,7 @@ class AdministratorAccessTest extends ApiTestBase {
             entryPoint.then().body("_links.'vd:me'.href", equalTo(EntryPointController.ADMINISTRATOR_ME));
             as(second).get(href(entryPoint, "me"))
                     .then().statusCode(200)
-                    .body("name", equalTo("Diego Q. Lima"))
+                    .body("name", nullValue())
                     .body("email", equalTo(ADMINISTRATOR_EMAIL))
                     .body("preferredLanguage", equalTo("es-ES"))
                     .body("_links.self.href", equalTo(EntryPointController.ADMINISTRATOR_ME));
@@ -69,7 +70,7 @@ class AdministratorAccessTest extends ApiTestBase {
         entryPoint.then().body("_links.'vd:me'.href", equalTo(EntryPointController.PARTICIPANT_ME));
         Response profile = as(token).get(href(entryPoint, "me"));
         profile.then().statusCode(200)
-                .body("name", equalTo("Ana Souza"))
+                .body("name", nullValue())
                 .body("preferredLanguage", equalTo("pt-BR"))
                 .body("$", not(hasKey("email")))
                 .body("_links.self.href", equalTo(EntryPointController.PARTICIPANT_ME));

@@ -1,12 +1,24 @@
 <section class="dashboard">
-  <p class="back">
-    <a routerLink="/admin" i18n="@@dashboard.back">Back to administration</a>
-  </p>
   <h1 i18n="@@dashboard.title">Dashboard</h1>
-  <p class="intro" i18n="@@dashboard.intro">
+  <p class="page-intro intro" i18n="@@dashboard.intro">
     Progress of the data collection. The numbers are read-only and never show a name or an e-mail; participants
     appear by pseudonym.
   </p>
+
+  <nav class="action-grid" aria-label="Administrative functions" i18n-aria-label="@@admin.menu" data-testid="dashboard-actions">
+    <a class="action-card" routerLink="/admin/import" data-testid="dashboard-action-import">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+      <span class="action-card-label" i18n="@@admin.import">Import</span>
+    </a>
+    <a class="action-card" routerLink="/admin/export" data-testid="dashboard-action-export">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+      <span class="action-card-label" i18n="@@admin.export">Export</span>
+    </a>
+    <a class="action-card" routerLink="/admin/participants" data-testid="dashboard-action-participants">
+      <mat-icon class="action-card-icon" fontSet="material-symbols-outlined" aria-hidden="true">person_off</mat-icon>
+      <span class="action-card-label" i18n="@@admin.participants">Anonymization of Participants</span>
+    </a>
+  </nav>
 
   <div class="toolbar">
     <button
@@ -36,8 +48,35 @@
   @if (view(); as current) {
     @let snapshot = current.snapshot;
 
+    <section class="metric-grid" data-testid="dashboard-metrics" aria-label="Summary metrics">
+      <article class="metric-card">
+        <p class="metric-label" i18n="@@dashboard.metric.completedPercent">Completed</p>
+        <p class="metric-value">{{ completedPercent() | percent: '1.0-0' }}</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label" i18n="@@dashboard.metric.free">Free tasks</p>
+        <p class="metric-value">{{ freeTasks() }}</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label" i18n="@@dashboard.metric.inProgress">In progress</p>
+        <p class="metric-value">{{ inProgressTasks() }}</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label" i18n="@@dashboard.metric.completed">Completed tasks</p>
+        <p class="metric-value">{{ completedTasks() }}</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label" i18n="@@dashboard.metric.eligible">Eligible participants</p>
+        <p class="metric-value">{{ snapshot.participants.eligible }}</p>
+      </article>
+      <article class="metric-card" [class.warn]="snapshot.emailQuota.lowRemaining">
+        <p class="metric-label" i18n="@@dashboard.metric.emailRemaining">E-mails remaining today</p>
+        <p class="metric-value">{{ snapshot.emailQuota.emailsRemaining }}</p>
+      </article>
+    </section>
+
     @if (empty()) {
-      <section class="empty-study" data-testid="dashboard-empty">
+      <section class="empty-study page-panel" data-testid="dashboard-empty">
         <p i18n="@@dashboard.empty">No items have been imported yet, so every number below is zero.</p>
         <a mat-flat-button routerLink="/admin/import" data-testid="dashboard-import" i18n="@@dashboard.goImport">
           Import items
@@ -45,7 +84,7 @@
       </section>
     }
 
-    <section class="panel" data-testid="panel-progress">
+    <section class="panel page-panel" data-testid="panel-progress">
       <h2 i18n="@@dashboard.progressHeading">Queue progress</h2>
       <p class="hint" data-testid="first-free">
         @if (snapshot.firstFreeQueuePosition !== null) {

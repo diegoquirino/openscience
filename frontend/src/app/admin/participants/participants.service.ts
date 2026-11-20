@@ -33,35 +33,50 @@ export interface AnonymizationResult {
   occurredAt: string;
 }
 
-/** Follows `vd:participants` / `vd:anonymize` from HAL (spec 011 contracts/web.md). */
+/** Follows `vd:participants` / `vd:anonymize` from HAL (specs 011 and 018). */
 @Injectable({ providedIn: 'root' })
 export class ParticipantsService {
   private readonly http = inject(HttpClient);
 
+  /** Full collection for the dual panels (no query params). */
+  list(): Observable<ParticipantCard[]> {
+    return this.collection();
+  }
+
   search(params: { email?: string; pseudonym?: string }): Observable<ParticipantCard[]> {
+    const query = params.email
+      ? `?email=${encodeURIComponent(params.email)}`
+      : `?pseudonym=${encodeURIComponent(params.pseudonym ?? '')}`;
+    return this.collection(query);
+  }
+
+  anonymize(
+    card: ParticipantCard,
+    option: 'keep_responses' | 'discard_responses',
+    pseudonym?: string,
+  ): Observable<AnonymizationResult> {
+    const href = Links.of(card).href('anonymize');
+    if (!href) {
+      throw new Error('vd:anonymize missing');
+    }
+    const body: { option: string; pseudonym?: string } = { option };
+    const chosen = pseudonym?.trim();
+    if (chosen) {
+      body.pseudonym = chosen;
+    }
+    return this.http.post<AnonymizationResult>(href, body);
+  }
+
+  private collection(query = ''): Observable<ParticipantCard[]> {
     return this.http.get<HalResource>(ENTRY_POINT_URL).pipe(
       switchMap((entry) => {
         const base = Links.of(entry).href('participants');
         if (!base) {
           throw new Error('vd:participants missing');
         }
-        const query = params.email
-          ? `?email=${encodeURIComponent(params.email)}`
-          : `?pseudonym=${encodeURIComponent(params.pseudonym ?? '')}`;
         return this.http.get<{ participants: ParticipantCard[] }>(base + query);
       }),
       map((body) => body.participants ?? []),
     );
-  }
-
-  anonymize(
-    card: ParticipantCard,
-    option: 'keep_responses' | 'discard_responses',
-  ): Observable<AnonymizationResult> {
-    const href = Links.of(card).href('anonymize');
-    if (!href) {
-      throw new Error('vd:anonymize missing');
-    }
-    return this.http.post<AnonymizationResult>(href, { option });
   }
 }

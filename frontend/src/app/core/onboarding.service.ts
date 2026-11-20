@@ -5,12 +5,12 @@ import { EntryPointService } from './entry-point.service';
 import { HalResource, Links } from './hal';
 
 /** The step of a participant (spec 006, contracts/onboarding.md); what the resolver and the guards share. */
-export type Step = 'consent' | 'skill' | 'screening' | 'participation' | 'ineligible' | 'not-open';
+export type Step = 'consent' | 'profile' | 'screening' | 'participation' | 'ineligible' | 'not-open';
 
 /** Route of the screen of each step (contracts/web.md, "Step to route map"). */
 export const STEP_ROUTES: Record<Step, string> = {
   consent: '/consent',
-  skill: '/skill',
+  profile: '/skill',
   screening: '/screening',
   participation: '/label',
   ineligible: '/screening/closed',
@@ -117,8 +117,28 @@ export class OnboardingService {
     return this.put('consent', { decision, consentFormVersion });
   }
 
-  recordSkill(skill: string, skillOther: string | null): Observable<void> {
-    return this.put('skill', skillOther === null ? { skill } : { skill, skillOther });
+  recordSkill(name: string, skill: string, skillOther: string | null): Observable<void> {
+    return this.put(
+      'skill',
+      skillOther === null ? { name, skill } : { name, skill, skillOther },
+    );
+  }
+
+  /** Current name and skill (profile menu and resume). */
+  loadSkill(): Observable<{ name: string | null; skill: string | null; skillOther: string | null }> {
+    return this.state().pipe(
+      switchMap((state) => {
+        const href = state.links.href('skill');
+        return href
+          ? this.http.get<{ name?: string | null; skill?: string | null; skillOther?: string | null }>(href)
+          : missing('vd:skill');
+      }),
+      map((body) => ({
+        name: body.name ?? null,
+        skill: body.skill ?? null,
+        skillOther: body.skillOther ?? null,
+      })),
+    );
   }
 
   recordScreening(answer: string): Observable<void> {

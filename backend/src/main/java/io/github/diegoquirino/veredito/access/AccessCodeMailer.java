@@ -4,7 +4,6 @@ import io.github.diegoquirino.veredito.api.ProblemException;
 import io.github.diegoquirino.veredito.api.ProblemType;
 import io.github.diegoquirino.veredito.config.AccessProperties;
 import io.github.diegoquirino.veredito.domain.access.EmailAddress;
-import io.github.diegoquirino.veredito.domain.access.PersonName;
 import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,14 +30,14 @@ public class AccessCodeMailer {
     }
 
     /** Sends the code; an SMTP failure or timeout becomes {@code code-not-sent}. */
-    public void send(PersonName name, EmailAddress to, String code, Locale locale) {
+    public void send(EmailAddress to, String code, Locale locale) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("Veredito <" + properties.mailFrom() + ">");
         message.setTo(to.value());
         message.setSubject(messages.getMessage("mail.access-code.subject", null, locale));
         message.setText(messages.getMessage(
                 "mail.access-code.body",
-                new Object[] {name.value(), code, properties.codeValidity().toMinutes()},
+                new Object[] {code, properties.codeValidity().toMinutes()},
                 locale));
         try {
             mail.send(message);

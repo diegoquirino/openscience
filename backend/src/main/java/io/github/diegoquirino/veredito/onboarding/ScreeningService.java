@@ -48,7 +48,8 @@ public class ScreeningService {
         OnboardingState state = participants
                 .lockOnboardingState(participantId)
                 .orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
-        Onboarding before = onboarding.of(state, onboarding.currentForm().orElse(null));
+        String name = participants.findById(participantId).map(p -> p.name()).orElse(null);
+        Onboarding before = onboarding.of(state, onboarding.currentForm().orElse(null), name);
 
         if (state.screeningAnswer() != null) {
             if (state.screeningAnswer() == answer) {
@@ -62,7 +63,7 @@ public class ScreeningService {
         if (participants.recordScreening(participantId, answer) == 0) {
             throw notPending(before.step());
         }
-        return view(onboarding.of(state.withScreening(answer), before.currentForm()));
+        return view(onboarding.of(state.withScreening(answer), before.currentForm(), name));
     }
 
     private static ProblemException notPending(OnboardingStep step) {
