@@ -44,5 +44,8 @@ test('a wrong code shows the attempts left (pt-BR)', async ({ page, request }, t
   await page.getByLabel('Código de acesso').fill(wrong);
   await page.getByRole('button', { name: 'Entrar' }).click();
 
-  await expect(page.getByRole('alert')).toHaveText('Código incorreto; restam 4 tentativas');
+  // Spec 019: wrong-code feedback is a toast (MatSnackBar), not an inline role=alert.
+  const toast = page.locator('.toast.mat-mdc-snack-bar-container');
+  await expect(toast).toContainText('Código incorreto; restam 4 tentativas');
+  await expect(page.getByRole('button', { name: 'Fechar' })).toBeVisible();
 });
