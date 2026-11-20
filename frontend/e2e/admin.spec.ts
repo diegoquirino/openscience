@@ -1,6 +1,7 @@
 import { expect, test, type APIRequestContext, type Download, type Page } from '@playwright/test';
 import path from 'node:path';
 import { latestMessageTo, newestMessageId } from './support/mailpit';
+import { signInParticipant } from './support/participant';
 
 // Runs against local staging (compose profile staging), whose e-mails land in Mailpit.
 const ADMINISTRATOR = 'diegoquirino@gmail.com';
@@ -109,12 +110,13 @@ test.describe('administrator (single address)', () => {
     expect(generated).toContain('Atualizado em');
 
     // Spec 011: Participants is enabled; search and keep-responses withdrawal.
+    // Spec 013: a new participant lands on the profile step (skill), not consent.
     const withdrawEmail = `e2e-withdraw-${Date.now()}@example.com`;
     const participantContext = await browser.newContext();
     try {
       const participantPage = await participantContext.newPage();
-      await signIn(participantPage, request, 'Ana Souza', withdrawEmail);
-      await expect(participantPage).toHaveURL(/\/pt-BR\/consent$/);
+      await signInParticipant(participantPage, request, 'Ana Souza', withdrawEmail);
+      await expect(participantPage).toHaveURL(/\/pt-BR\/skill$/);
     } finally {
       await participantContext.close();
     }
@@ -136,61 +138,61 @@ test.describe('administrator (single address)', () => {
   });
 });
 
-test('a participant who opens the administration lands on the consent form (pt-BR)', async ({
+test('a participant who opens the administration lands on the profile step (pt-BR)', async ({
   page,
   request,
 }, testInfo) => {
   const email = `e2e-admin-${testInfo.project.name}-${Date.now()}@example.com`;
-  await signIn(page, request, 'Ana Souza', email);
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await signInParticipant(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
 
   await page.goto('/pt-BR/admin');
 
-  // The welcome resolver sends a participant without consent to the consent form.
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
-  await expect(page.getByRole('heading', { name: 'Termo de consentimento' })).toBeVisible();
+  // Spec 013: pending step is profile (name + skill) before consent.
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
+  await expect(page.getByRole('heading', { name: 'Seu nome e habilidade profissional' })).toBeVisible();
 });
 
-test('a participant has no Export link and the export screen sends them to the consent form (pt-BR)', async ({
+test('a participant has no Export link and the export screen sends them to the profile step (pt-BR)', async ({
   page,
   request,
 }, testInfo) => {
   const email = `e2e-export-${testInfo.project.name}-${Date.now()}@example.com`;
-  await signIn(page, request, 'Ana Souza', email);
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await signInParticipant(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
   await expect(page.getByRole('link', { name: 'Exportar' })).toHaveCount(0);
 
   await page.goto('/pt-BR/admin/export');
 
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
 });
 
-test('a participant has no Dashboard link and the dashboard screen sends them to the consent form (pt-BR)', async ({
+test('a participant has no Dashboard link and the dashboard screen sends them to the profile step (pt-BR)', async ({
   page,
   request,
 }, testInfo) => {
   const email = `e2e-dashboard-${testInfo.project.name}-${Date.now()}@example.com`;
-  await signIn(page, request, 'Ana Souza', email);
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await signInParticipant(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
   await expect(page.getByRole('link', { name: 'Painel de andamento' })).toHaveCount(0);
 
   await page.goto('/pt-BR/admin/dashboard');
 
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
 });
 
-test('a participant has no Participants link and the participants screen sends them to the consent form (pt-BR)', async ({
+test('a participant has no Participants link and the participants screen sends them to the profile step (pt-BR)', async ({
   page,
   request,
 }, testInfo) => {
   const email = `e2e-participants-${testInfo.project.name}-${Date.now()}@example.com`;
-  await signIn(page, request, 'Ana Souza', email);
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await signInParticipant(page, request, 'Ana Souza', email);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
   await expect(page.getByRole('link', { name: 'Anonimização de Participantes' })).toHaveCount(0);
 
   await page.goto('/pt-BR/admin/participants');
 
-  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
 });
 
 test('a visitor who opens an area lands on the sign-in form (pt-BR)', async ({ page }) => {

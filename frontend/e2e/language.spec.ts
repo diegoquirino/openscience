@@ -171,6 +171,11 @@ test('the profile language follows the header switch and wins at the next sign-i
 
   let firstCodeAt = 0;
   await signIn(page, request, 'pt-BR', email, () => (firstCodeAt = Date.now()));
+  // Spec 013: profile (name + skill) before consent.
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
+  await page.getByLabel(SCREENS['pt-BR'].name, { exact: true }).fill('Ana Souza');
+  await page.getByRole('radio', { name: 'Analista de testes / QA', exact: true }).check();
+  await page.getByRole('button', { name: 'Continuar' }).click();
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
   await switchLanguage(page, 'pt-BR', 'es-ES');
   await expect(page).toHaveURL(/\/es-ES\/consent$/);
@@ -181,6 +186,7 @@ test('the profile language follows the header switch and wins at the next sign-i
   const subject = await signIn(page, request, 'en-US', email);
 
   expect(subject).toBe(SCREENS['en-US'].subject);
+  // Returning participant already has profile; pending step is consent in the saved language.
   await expect(page).toHaveURL(/\/es-ES\/consent$/);
   await expect(page.getByRole('heading', { name: 'Consentimiento informado' })).toBeVisible();
   expect(await savedLanguage(page)).toBe('es-ES');

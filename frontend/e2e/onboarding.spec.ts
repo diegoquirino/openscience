@@ -1,8 +1,8 @@
 import { expect, test, type APIRequestContext, type Page } from '@playwright/test';
 import { latestMessageTo, newestMessageId } from './support/mailpit';
 
-// Spec 006: consent form, professional skill and screening, against local staging with the fixture
-// consent form `fixture-1` (three languages). One code per e-mail per minute: no retries.
+// Spec 006 + 013: e-mail-only sign-in, then profile (name + skill), consent, screening.
+// Fixture consent form `fixture-1` (three languages). One code per e-mail per minute: no retries.
 test.describe.configure({ retries: 0 });
 
 const SCREENS = {
@@ -17,7 +17,7 @@ const SCREENS = {
     refuse: 'Não concordo',
     declined: 'Obrigado por considerar o estudo',
     again: 'Ler o termo novamente',
-    skill: 'Sua habilidade profissional',
+    skill: 'Seu nome e habilidade profissional',
     skillOption: 'Analista de testes / QA',
     other: 'Outro (descrever)',
     otherField: 'Descreva sua habilidade',
@@ -41,7 +41,7 @@ const SCREENS = {
     refuse: 'I do not agree',
     declined: 'Thank you for considering the study',
     again: 'Read the consent form again',
-    skill: 'Your professional skill',
+    skill: 'Your name and professional skill',
     skillOption: 'Test analyst / QA',
     other: 'Other (describe)',
     otherField: 'Describe your skill',
@@ -65,7 +65,7 @@ const SCREENS = {
     refuse: 'No acepto',
     declined: 'Gracias por considerar el estudio',
     again: 'Leer el consentimiento de nuevo',
-    skill: 'Tu habilidad profesional',
+    skill: 'Su nombre y habilidad profesional',
     skillOption: 'Analista de pruebas / QA',
     other: 'Otro (describir)',
     otherField: 'Describe tu habilidad',
@@ -83,18 +83,27 @@ const SCREENS = {
 type Locale = keyof typeof SCREENS;
 const LOCALES = Object.keys(SCREENS) as Locale[];
 
-/** A new participant signs in on the screens of `locale` and lands on the consent form. */
+/** A new participant signs in (e-mail only) and lands on the profile step (spec 013). */
 async function signIn(page: Page, request: APIRequestContext, locale: Locale, email: string): Promise<void> {
   const screen = SCREENS[locale];
   const previousId = await newestMessageId(request, email);
   await page.goto(`/${locale}/participate`);
-  await page.getByLabel(screen.name, { exact: true }).fill('Ana Souza');
   await page.getByLabel(screen.email, { exact: true }).fill(email);
   await page.getByRole('button', { name: screen.send }).click();
   await expect(page).toHaveURL(new RegExp(`/${locale}/participate/code$`), { timeout: 15_000 });
   const { code } = await latestMessageTo(request, email, previousId);
   await page.getByLabel(screen.code).fill(code);
   await page.getByRole('button', { name: screen.signIn }).click();
+  await expect(page).toHaveURL(new RegExp(`/${locale}/skill$`));
+  await expect(page.getByRole('heading', { name: screen.skill })).toBeVisible();
+}
+
+/** Completes name + skill on the profile step and lands on consent. */
+async function completeProfile(page: Page, locale: Locale, name = 'Ana Souza'): Promise<void> {
+  const screen = SCREENS[locale];
+  await page.getByLabel(screen.name, { exact: true }).fill(name);
+  await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
+  await page.getByRole('button', { name: screen.continue }).click();
   await expect(page).toHaveURL(new RegExp(`/${locale}/consent$`));
   await expect(page.getByRole('heading', { name: screen.consent })).toBeVisible();
 }
@@ -128,7 +137,22 @@ for (const locale of LOCALES) {
     );
     await signIn(page, request, locale, addressOf('flow', locale, testInfo.project.name));
 
+    // Profile: Continue is disabled until name and a valid skill.
+    await expect(page.getByRole('heading', { name: screen.skill })).toBeVisible();
+    const proceed = page.getByRole('button', { name: screen.continue });
+    await expect(proceed).toBeDisabled();
+    await page.getByLabel(screen.name, { exact: true }).fill('Ana Souza');
+    await expect(proceed).toBeDisabled();
+    await page.getByRole('radio', { name: screen.other, exact: true }).check();
+    await expect(proceed).toBeDisabled();
+    await page.getByLabel(screen.otherField).fill('Technical writer');
+    await expect(proceed).toBeEnabled();
+    await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
+    await expect(page.getByLabel(screen.otherField)).toHaveCount(0);
+    await proceed.click();
+
     // Consent: the translation note and the pt-BR reference only outside pt-BR.
+    await expect(page).toHaveURL(new RegExp(`/${locale}/consent$`));
     const note = page.locator('p.translation');
     if (locale === 'pt-BR') {
       await expect(note).toHaveCount(0);
@@ -145,19 +169,6 @@ for (const locale of LOCALES) {
     }
     await expect(page.getByRole('region').first()).toContainText('FIXTURE');
     await page.getByRole('button', { name: screen.accept }).click();
-
-    // Skill: Continue is disabled until a valid answer.
-    await expect(page).toHaveURL(new RegExp(`/${locale}/skill$`));
-    await expect(page.getByRole('heading', { name: screen.skill })).toBeVisible();
-    const proceed = page.getByRole('button', { name: screen.continue });
-    await expect(proceed).toBeDisabled();
-    await page.getByRole('radio', { name: screen.other, exact: true }).check();
-    await expect(proceed).toBeDisabled();
-    await page.getByLabel(screen.otherField).fill('Technical writer');
-    await expect(proceed).toBeEnabled();
-    await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
-    await expect(page.getByLabel(screen.otherField)).toHaveCount(0);
-    await proceed.click();
 
     // Screening: the example is English in every locale.
     await expect(page).toHaveURL(new RegExp(`/${locale}/screening$`));
@@ -194,6 +205,7 @@ test('a participant who refuses can read the form again and accept (T016)', asyn
   test.setTimeout(60_000);
   const screen = SCREENS['pt-BR'];
   await signIn(page, request, 'pt-BR', addressOf('refuse', 'pt-BR', testInfo.project.name));
+  await completeProfile(page, 'pt-BR');
 
   await page.getByRole('button', { name: screen.refuse }).click();
 
@@ -210,16 +222,15 @@ test('a participant who refuses can read the form again and accept (T016)', asyn
   await page.getByRole('link', { name: screen.again }).click();
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
   await page.getByRole('button', { name: screen.accept }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
+  await expect(page).toHaveURL(/\/pt-BR\/screening$/);
 });
 
 test('a participant who answers "No" gets the closing message and cannot label (T024)', async ({ page, request }, testInfo) => {
   test.setTimeout(60_000);
   const screen = SCREENS['pt-BR'];
   await signIn(page, request, 'pt-BR', addressOf('no', 'pt-BR', testInfo.project.name));
+  await completeProfile(page, 'pt-BR');
   await page.getByRole('button', { name: screen.accept }).click();
-  await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
-  await page.getByRole('button', { name: screen.continue }).click();
   await expect(page).toHaveURL(/\/pt-BR\/screening$/);
 
   await page.getByRole('radio', { name: screen.no, exact: true }).check();
@@ -252,17 +263,18 @@ test('typing the labeling address before finishing returns to the pending step (
   await signIn(page, request, 'pt-BR', addressOf('pending', 'pt-BR', testInfo.project.name));
 
   await page.goto('/pt-BR/label');
+  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
+
+  await page.getByLabel(screen.name, { exact: true }).fill('Ana Souza');
+  await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
+  await page.getByRole('button', { name: screen.continue }).click();
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await page.goto('/pt-BR/label');
+  await expect(page).toHaveURL(/\/pt-BR\/consent$/);
+  await page.goto('/pt-BR/skill');
   await expect(page).toHaveURL(/\/pt-BR\/consent$/);
 
   await page.getByRole('button', { name: screen.accept }).click();
-  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
-  await page.goto('/pt-BR/label');
-  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
-  await page.goto('/pt-BR/consent');
-  await expect(page).toHaveURL(/\/pt-BR\/skill$/);
-
-  await page.getByRole('radio', { name: screen.skillOption, exact: true }).check();
-  await page.getByRole('button', { name: screen.continue }).click();
   await expect(page).toHaveURL(/\/pt-BR\/screening$/);
   await page.reload();
   await expect(page).toHaveURL(/\/pt-BR\/screening$/);
@@ -278,6 +290,28 @@ test('switching the language on the screens records nothing and keeps the typed 
   await signIn(page, request, 'pt-BR', addressOf('switch', 'pt-BR', testInfo.project.name));
 
   await switchLanguage(page, 'pt-BR', 'es-ES');
+  await expect(page).toHaveURL(/\/es-ES\/skill$/);
+  await expect(page.getByRole('heading', { name: SCREENS['es-ES'].skill })).toBeVisible();
+  expect(await api(page, '/api/v1/participants/me/skill', 'es-ES')).toMatchObject({
+    skill: null,
+  });
+
+  await page.getByLabel(SCREENS['es-ES'].name, { exact: true }).fill('Ana Souza');
+  await page.getByRole('radio', { name: SCREENS['es-ES'].other, exact: true }).check();
+  await page.getByLabel(SCREENS['es-ES'].otherField).fill('Redactora');
+
+  await switchLanguage(page, 'es-ES', 'en-US');
+
+  await expect(page).toHaveURL(/\/en-US\/skill$/);
+  await expect(page.getByLabel(SCREENS['en-US'].name, { exact: true })).toHaveValue('Ana Souza');
+  await expect(page.getByRole('radio', { name: SCREENS['en-US'].other, exact: true })).toBeChecked();
+  await expect(page.getByLabel(SCREENS['en-US'].otherField)).toHaveValue('Redactora');
+  expect(await api(page, '/api/v1/participants/me/skill', 'en-US')).toMatchObject({ skill: null });
+
+  await page.getByRole('button', { name: SCREENS['en-US'].continue }).click();
+  await expect(page).toHaveURL(/\/en-US\/consent$/);
+
+  await switchLanguage(page, 'en-US', 'es-ES');
   await expect(page).toHaveURL(/\/es-ES\/consent$/);
   await expect(page.getByRole('heading', { name: SCREENS['es-ES'].consent })).toBeVisible();
   await expect(page.getByRole('region').first()).toContainText('FORMULARIO DE CONSENTIMIENTO');
@@ -288,17 +322,8 @@ test('switching the language on the screens records nothing and keeps the typed 
   });
 
   await page.getByRole('button', { name: SCREENS['es-ES'].accept }).click();
-  await expect(page).toHaveURL(/\/es-ES\/skill$/);
-  await page.getByRole('radio', { name: SCREENS['es-ES'].other, exact: true }).check();
-  await page.getByLabel(SCREENS['es-ES'].otherField).fill('Redactora');
-
-  await switchLanguage(page, 'es-ES', 'en-US');
-
-  await expect(page).toHaveURL(/\/en-US\/skill$/);
-  await expect(page.getByRole('radio', { name: SCREENS['en-US'].other, exact: true })).toBeChecked();
-  await expect(page.getByLabel(SCREENS['en-US'].otherField)).toHaveValue('Redactora');
-  expect(await api(page, '/api/v1/participants/me/skill', 'en-US')).toMatchObject({ skill: null });
-  expect(await api(page, '/api/v1/participants/me/consent', 'en-US')).toMatchObject({
+  await expect(page).toHaveURL(/\/es-ES\/screening$/);
+  expect(await api(page, '/api/v1/participants/me/consent', 'es-ES')).toMatchObject({
     decision: 'accepted',
     language: 'es-ES',
   });
