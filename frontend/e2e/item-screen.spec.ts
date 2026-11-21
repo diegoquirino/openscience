@@ -148,12 +148,13 @@ async function expectEdit(page: Page, locale: Locale, item: ApiItem): Promise<vo
 
 /** Statements, labels, explanations and the precedence rule of Appendices B.1 and B.2. */
 async function expectQuestions(page: Page, locale: Locale): Promise<void> {
-  await expect(page.locator('.impact legend')).toHaveText(IMPACT_STATEMENT[locale]);
+  // Spec 012: required marker `*` is inside the legend (aria-hidden).
+  await expect(page.locator('.impact legend')).toHaveText(`${IMPACT_STATEMENT[locale]} *`);
   for (const code of ['LOW', 'HIGH'] as Impact[]) {
     await expect(page.getByRole('radio', { name: IMPACT_LABELS[locale][code], exact: true })).toBeVisible();
     await expect(page.locator(`#impact-${code}`)).toHaveText(IMPACT_EXPLANATIONS[locale][code]);
   }
-  await expect(page.locator('.operation legend')).toHaveText(OPERATION_STATEMENT[locale]);
+  await expect(page.locator('.operation legend')).toHaveText(`${OPERATION_STATEMENT[locale]} *`);
   await expect(page.locator('.operation input[type=radio]')).toHaveCount(8);
   for (const code of PRECEDENCE_ORDER) {
     await expect(page.getByRole('radio', { name: OPERATION_LABELS[locale][code], exact: true })).toBeVisible();
