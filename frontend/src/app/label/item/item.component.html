@@ -11,141 +11,198 @@
       </p>
     }
 
-    @if (layout(); as view) {
-      <header class="header">
-        <h2 class="location">{{ view.header.fieldLabel }} · {{ view.header.kindLabel }}</h2>
-        <dl class="meta">
-          <div>
-            <dt i18n="@@label.item.system">System</dt>
-            <dd class="system">{{ view.header.system }}</dd>
-          </div>
-          <div>
-            <dt i18n="@@label.item.usecase">Use case</dt>
-            <dd class="uc">{{ view.header.uc }}</dd>
-          </div>
-        </dl>
-      </header>
+    <form class="questions" (submit)="$event.preventDefault(); submit()">
+      <mat-accordion class="panels" multi displayMode="flat">
+        <mat-expansion-panel expanded data-testid="panel-change">
+          <mat-expansion-panel-header>
+            <mat-panel-title i18n="@@label.item.panel.change">Change</mat-panel-title>
+          </mat-expansion-panel-header>
 
-      <div class="edit">
-        @if (view.identical) {
-          <p class="no-difference" role="note" i18n="@@item.noDifference">No text difference in this part</p>
-        }
-        <div class="columns">
-          @for (column of view.columns; track column.side) {
-            <section class="column" [attr.data-side]="column.side">
-              @if (column.heading) {
-                <div class="block">
-                  <h3 class="block-title">
-                    @switch (column.heading) {
-                      @case ('before') {
-                        <span i18n="@@item.block.before">Before</span>
-                      }
-                      @case ('after') {
-                        <span i18n="@@item.block.after">After</span>
-                      }
-                      @case ('added') {
-                        <span i18n="@@item.block.added">Added text</span>
-                      }
-                      @case ('removed') {
-                        <span i18n="@@item.block.removed">Removed text</span>
-                      }
-                      @case ('metaBefore') {
-                        <span i18n="@@item.block.metaBefore">{{ view.header.fieldLabel }}: before</span>
-                      }
-                      @case ('metaAfter') {
-                        <span i18n="@@item.block.metaAfter">{{ view.header.fieldLabel }}: after</span>
-                      }
+          @if (layout(); as view) {
+            <header class="header">
+              <h2 class="location">{{ view.header.fieldLabel }} · {{ view.header.kindLabel }}</h2>
+              <dl class="meta">
+                <div>
+                  <dt i18n="@@label.item.system">System</dt>
+                  <dd class="system">{{ view.header.system }}</dd>
+                </div>
+                <div>
+                  <dt i18n="@@label.item.usecase">Use case</dt>
+                  <dd class="uc">{{ view.header.uc }}</dd>
+                </div>
+              </dl>
+            </header>
+
+            <div class="edit">
+              @if (view.identical) {
+                <p class="no-difference" role="note" i18n="@@item.noDifference">No text difference in this part</p>
+              }
+              <div class="columns">
+                @for (column of view.columns; track column.side) {
+                  <section class="column" [attr.data-side]="column.side">
+                    @if (column.heading) {
+                      <div class="block">
+                        <h3 class="block-title">
+                          @switch (column.heading) {
+                            @case ('before') {
+                              <span i18n="@@item.block.before">Before</span>
+                            }
+                            @case ('after') {
+                              <span i18n="@@item.block.after">After</span>
+                            }
+                            @case ('added') {
+                              <span i18n="@@item.block.added">Added text</span>
+                            }
+                            @case ('removed') {
+                              <span i18n="@@item.block.removed">Removed text</span>
+                            }
+                            @case ('metaBefore') {
+                              <span i18n="@@item.block.metaBefore">{{ view.header.fieldLabel }}: before</span>
+                            }
+                            @case ('metaAfter') {
+                              <span i18n="@@item.block.metaAfter">{{ view.header.fieldLabel }}: after</span>
+                            }
+                          }
+                        </h3>
+                        <div class="text" [attr.data-marking]="column.marking">
+                          @if (column.empty) {
+                            <span class="none">{{ none }}</span>
+                          } @else {
+                            @for (segment of column.segments; track $index) {
+                              @switch (segment.kind) {
+                                @case ('removed') {
+                                  <del>{{ segment.text }}</del>
+                                }
+                                @case ('added') {
+                                  <ins>{{ segment.text }}</ins>
+                                }
+                                @default {
+                                  <span>{{ segment.text }}</span>
+                                }
+                              }
+                            }
+                          }
+                        </div>
+                      </div>
                     }
-                  </h3>
-                  <div class="text" [attr.data-marking]="column.marking">
-                    @if (column.empty) {
-                      <span class="none">{{ none }}</span>
-                    } @else {
-                      @for (segment of column.segments; track $index) {
-                        @switch (segment.kind) {
-                          @case ('removed') {
-                            <del>{{ segment.text }}</del>
-                          }
-                          @case ('added') {
-                            <ins>{{ segment.text }}</ins>
-                          }
-                          @default {
-                            <span>{{ segment.text }}</span>
-                          }
-                        }
-                      }
-                    }
-                  </div>
+                    <button
+                      mat-stroked-button
+                      type="button"
+                      class="open-usecase"
+                      [attr.data-side]="column.side"
+                      (click)="openUsecase(column.side, $event)"
+                    >
+                      <span i18n="@@item.usecase.view">View full use case ({{ column.versionLabel }})</span>
+                    </button>
+                  </section>
+                }
+              </div>
+            </div>
+          }
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded data-testid="panel-impact">
+          <mat-expansion-panel-header>
+            <mat-panel-title i18n="@@label.item.panel.impact">Change impact</mat-panel-title>
+          </mat-expansion-panel-header>
+          <fieldset class="question impact">
+            <legend>{{ impactText }} <span class="required" aria-hidden="true">*</span></legend>
+            <mat-radio-group
+              name="impact"
+              [value]="impact()"
+              (change)="setImpact($event.value)"
+              [attr.aria-required]="true"
+            >
+              @for (code of impacts; track code) {
+                <div class="option">
+                  <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code">{{
+                    impactLabel(code)
+                  }}</mat-radio-button>
+                  <p class="explanation" [id]="'impact-' + code">{{ impactExplanation(code) }}</p>
                 </div>
               }
-              <button
-                mat-stroked-button
-                type="button"
-                class="open-usecase"
-                [attr.data-side]="column.side"
-                (click)="openUsecase(column.side, $event)"
-              >
-                <span i18n="@@item.usecase.view">View full use case ({{ column.versionLabel }})</span>
-              </button>
-            </section>
+            </mat-radio-group>
+          </fieldset>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded data-testid="panel-operation">
+          <mat-expansion-panel-header>
+            <mat-panel-title i18n="@@label.item.panel.operation">Maintenance operation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <fieldset class="question operation">
+            <legend>{{ operationText }} <span class="required" aria-hidden="true">*</span></legend>
+            <mat-radio-group
+              name="operation"
+              [value]="operation()"
+              (change)="setOperation($event.value)"
+              [attr.aria-required]="true"
+            >
+              @for (code of operations; track code) {
+                <div class="option">
+                  <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code">{{
+                    operationLabel(code)
+                  }}</mat-radio-button>
+                  <p class="explanation" [id]="'operation-' + code">{{ operationExplanation(code) }}</p>
+                </div>
+              }
+            </mat-radio-group>
+            <p class="precedence">
+              <span class="intro">{{ precedenceText }}</span>
+              <strong class="order">{{ precedenceOrder }}</strong>
+            </p>
+          </fieldset>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded data-testid="panel-comment">
+          <mat-expansion-panel-header>
+            <mat-panel-title i18n="@@label.item.panel.comment">Comment</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field class="comment" appearance="outline">
+            <mat-label i18n="@@label.item.comment">Comment (optional)</mat-label>
+            <textarea
+              matInput
+              rows="3"
+              [attr.maxlength]="commentMax"
+              [value]="comment()"
+              (input)="onComment($event)"
+            ></textarea>
+            <mat-hint align="end">{{ comment().length }} / {{ commentMax }}</mat-hint>
+          </mat-form-field>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded data-testid="panel-actions">
+          <mat-expansion-panel-header>
+            <mat-panel-title i18n="@@label.item.panel.actions">Actions</mat-panel-title>
+          </mat-expansion-panel-header>
+
+          @if (blockLost()) {
+            <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
           }
-        </div>
-      </div>
-    }
 
-    <form class="questions" (submit)="$event.preventDefault(); submit()">
-      <fieldset class="question impact">
-        <legend>{{ impactText }} <span class="required" aria-hidden="true">*</span></legend>
-        <mat-radio-group name="impact" [value]="impact()" (change)="setImpact($event.value)" [attr.aria-required]="true">
-          @for (code of impacts; track code) {
-            <div class="option">
-              <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code">{{ impactLabel(code) }}</mat-radio-button>
-              <p class="explanation" [id]="'impact-' + code">{{ impactExplanation(code) }}</p>
-            </div>
-          }
-        </mat-radio-group>
-      </fieldset>
-
-      <fieldset class="question operation">
-        <legend>{{ operationText }} <span class="required" aria-hidden="true">*</span></legend>
-        <mat-radio-group name="operation" [value]="operation()" (change)="setOperation($event.value)" [attr.aria-required]="true">
-          @for (code of operations; track code) {
-            <div class="option">
-              <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code">{{ operationLabel(code) }}</mat-radio-button>
-              <p class="explanation" [id]="'operation-' + code">{{ operationExplanation(code) }}</p>
-            </div>
-          }
-        </mat-radio-group>
-        <p class="precedence">
-          <span class="intro">{{ precedenceText }}</span>
-          <strong class="order">{{ precedenceOrder }}</strong>
-        </p>
-      </fieldset>
-      <mat-form-field class="comment" appearance="outline">
-        <mat-label i18n="@@label.item.comment">Comment (optional)</mat-label>
-        <textarea
-          matInput
-          rows="3"
-          [attr.maxlength]="commentMax"
-          [value]="comment()"
-          (input)="onComment($event)"
-        ></textarea>
-        <mat-hint align="end">{{ comment().length }} / {{ commentMax }}</mat-hint>
-      </mat-form-field>
-
-      @if (blockLost()) {
-        <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
-      }
-
-      <div class="actions">
-        @if (previousPosition(); as previous) {
-          <a mat-stroked-button [routerLink]="['/label/items', previous]" i18n="@@label.item.back">Back</a>
-        }
-        <button mat-flat-button type="submit" [disabled]="!canContinue()" i18n="@@label.item.continue">Continue</button>
-        @if (saving()) {
-          <mat-spinner diameter="24"></mat-spinner>
-        }
-      </div>
+          <div class="actions">
+            @if (previousPosition(); as previous) {
+              <a mat-stroked-button [routerLink]="['/label/items', previous]" i18n="@@label.item.back">Back</a>
+            }
+            <button mat-flat-button type="submit" [disabled]="!canContinue()" i18n="@@label.item.continue">
+              Continue
+            </button>
+            <button
+              mat-stroked-button
+              type="button"
+              class="cancel-block"
+              data-testid="cancel-block"
+              [disabled]="cancelling()"
+              (click)="cancelBlock()"
+              i18n="@@label.item.cancel"
+            >
+              Cancel
+            </button>
+            @if (saving() || cancelling()) {
+              <mat-spinner diameter="24"></mat-spinner>
+            }
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </form>
   } @else {
     <button mat-flat-button type="button" (click)="retry()" i18n="@@label.retry">Try again</button>

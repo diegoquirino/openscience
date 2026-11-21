@@ -57,6 +57,10 @@ public final class LinkRelations {
     public static final Relation REVIEW = new Relation(
             "review", "Reserved task ready for review of all drafts.", HttpMethod.GET,
             "/swagger-ui.html#/Tasks");
+    public static final Relation CANCEL_RESERVATION = new Relation(
+            "cancel-reservation",
+            "Cancel the held reservation: delete drafts of this task and return it to the free queue.",
+            HttpMethod.DELETE, "/swagger-ui.html#/Tasks");
 
     public static final Relation ONBOARDING = new Relation(
             "onboarding", "The step the participant is at: consent form, skill, screening or participation.",
@@ -113,9 +117,9 @@ public final class LinkRelations {
     static {
         for (Relation relation : new Relation[] {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
-            NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, ONBOARDING, CONSENT_FORM, CONSENT_TEXT, CONSENT, SKILL,
-            SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG, EXPORT_COMPLETO, EXPORT_RATER1,
-            EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE
+            NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, CANCEL_RESERVATION, ONBOARDING, CONSENT_FORM,
+            CONSENT_TEXT, CONSENT, SKILL, SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG,
+            EXPORT_COMPLETO, EXPORT_RATER1, EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE
         }) {
             BY_NAME.put(relation.name(), relation);
         }

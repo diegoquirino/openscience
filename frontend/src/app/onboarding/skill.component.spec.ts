@@ -3,21 +3,25 @@ import { provideRouter, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { LanguageService } from '../core/language.service';
 import { OnboardingService } from '../core/onboarding.service';
+import { SessionService } from '../core/session.service';
 import { ToastService } from '../core/toast.service';
 import { SKILL_UNSAVED_KEY, SkillComponent } from './skill.component';
 
 describe('SkillComponent', () => {
   const recordSkill = vi.fn();
+  const refresh = vi.fn();
   const takeUnsaved = vi.fn();
   const keepOnSwitch = vi.fn();
   const clearUnsaved = vi.fn();
 
   function create(unsaved?: Record<string, string>) {
     takeUnsaved.mockReturnValue(unsaved);
+    refresh.mockReturnValue(of(null));
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
         { provide: OnboardingService, useValue: { recordSkill } },
+        { provide: SessionService, useValue: { refresh } },
         { provide: LanguageService, useValue: { takeUnsaved, keepOnSwitch, clearUnsaved } },
         {
           provide: ToastService,
@@ -53,6 +57,7 @@ describe('SkillComponent', () => {
 
     expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'test_analyst', null);
     expect(clearUnsaved).toHaveBeenCalledWith(SKILL_UNSAVED_KEY);
+    expect(refresh).toHaveBeenCalled();
     expect(navigate).toHaveBeenCalledWith('/welcome');
   });
 

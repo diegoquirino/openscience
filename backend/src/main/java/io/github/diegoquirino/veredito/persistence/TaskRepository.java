@@ -151,6 +151,16 @@ public class TaskRepository {
                 .update();
     }
 
+    /** Returns a reserved task to the free queue (spec 023 cancel). */
+    public void releaseToFree(long taskId) {
+        jdbc.sql("""
+                        UPDATE task SET status = 'free', participant_id = NULL, reserved_at = NULL,
+                            expires_at = NULL, submitted_at = NULL
+                        WHERE id = ?""")
+                .param(taskId)
+                .update();
+    }
+
     public long countByStatus(String status) {
         return jdbc.sql("SELECT COUNT(*) FROM task WHERE status = ?")
                 .param(status)

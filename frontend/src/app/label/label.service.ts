@@ -173,6 +173,15 @@ export class LabelService {
     );
   }
 
+  /**
+   * `DELETE` of `vd:cancel-reservation`: discards drafts of this task and frees it (spec 023).
+   * The held task is forgotten on success so the next reserve starts over.
+   */
+  cancel(task: TaskBody): Observable<void> {
+    const href = Links.of(task).href('cancel-reservation') ?? `${TASKS}/${task.id}`;
+    return this.http.delete<void>(href).pipe(tap(() => this.taskState.set(null)));
+  }
+
   isTask(body: TaskBody | ReservationOutcomeBody): body is TaskBody {
     return typeof (body as TaskBody).id === 'number' && (body as TaskBody).status !== undefined;
   }

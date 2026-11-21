@@ -22,6 +22,7 @@ import {
   problemSlug,
   unexpectedErrorMessage,
 } from '../core/problem-messages';
+import { SessionService } from '../core/session.service';
 import { ToastService } from '../core/toast.service';
 
 /** Route key of the values kept across a language switch (`veredito-unsaved:/skill`). */
@@ -111,6 +112,7 @@ export const SKILL_UNSAVED_KEY = '/skill';
 export class SkillComponent {
   private readonly onboarding = inject(OnboardingService);
   private readonly toast = inject(ToastService);
+  private readonly session = inject(SessionService);
   private readonly router = inject(Router);
   private readonly language = inject(LanguageService);
 
@@ -172,7 +174,17 @@ export class SkillComponent {
     this.onboarding.recordSkill(this.name().trim(), skill, skill === 'other' ? this.other() : null).subscribe({
       next: () => {
         this.language.clearUnsaved(SKILL_UNSAVED_KEY);
-        void this.router.navigateByUrl('/welcome');
+        // Spec 021: refresh session so the shell shows the saved name (not "Account").
+        this.session.refresh().subscribe({
+          next: () => {
+            this.saving.set(false);
+            void this.router.navigateByUrl('/welcome');
+          },
+          error: () => {
+            this.saving.set(false);
+            void this.router.navigateByUrl('/welcome');
+          },
+        });
       },
       error: (error: unknown) => {
         this.saving.set(false);

@@ -29,9 +29,12 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 16 | [017-admin-dashboard-home](./017-admin-dashboard-home/spec.md) | Dashboard as admin home; action cards and account-menu shortcuts; metric summary cards. **Complete** (0.17.0; deploy pending approval) | 010, 016 |
 | 17 | [018-anonymization-panels](./018-anonymization-panels/spec.md) | Dual-panel anonymization UI; optional pseudonym on confirm. **Complete** (0.18.0; deploy pending approval) | 011, 016, 017 |
 | 18 | [019-toast-feedback](./019-toast-feedback/spec.md) | Typed toast for transient action/API feedback (error/warn/info/success), ≥10s, dismissible. **Complete** (0.19.0; deploy pending approval) | 018 |
-| 19 | [020-admin-visual-consistency](./020-admin-visual-consistency/spec.md) | Shared visual panels across all admin screens (dashboard including reservations, import, export, anonymization, hub). **Complete** (0.20.0; deploy pending approval) | 016, 017, 019 |
+| 19 | [020-admin-visual-consistency](./020-admin-visual-consistency/spec.md) | Shared visual panels across all admin screens (dashboard including reservations, import, export, anonymization, hub). **Complete** (`deploy/0.20.0-1`) | 016, 017, 019 |
+| 20 | [021-account-name-after-profile](./021-account-name-after-profile/spec.md) | Header account control shows saved name after first profile (session refresh). **Complete** (0.21.0; deploy pending approval) | 014 |
+| 21 | [022-item-expandable-panels](./022-item-expandable-panels/spec.md) | Item screen: change / impact / operation / comment / actions as expandable panels (all open by default). **Complete** (0.22.0; deploy pending approval) | 008, 012, 016 |
+| 22 | [023-cancel-labeling-block](./023-cancel-labeling-block/spec.md) | Cancel current block with confirmation; free task + drop drafts; done cards (another block / leave). **Complete** (0.23.0; deploy pending approval) | 007, 019, 022 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–018 continue admin/participant UX; 019–020 toast and admin visual consistency.
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–020 continue admin/participant UX; 021–023 header name, item panels and cancel block.
 
 ```mermaid
 flowchart LR
@@ -55,6 +58,9 @@ flowchart LR
     S018[018 Anonymization panels]
     S019[019 Toast feedback]
     S020[020 Admin visual]
+    S021[021 Account name]
+    S022[022 Item panels]
+    S023[023 Cancel block]
 
     S003 --> S004
     S004 --> S005
@@ -84,6 +90,14 @@ flowchart LR
     S016 --> S020
     S017 --> S020
     S019 --> S020
+    S014 --> S021
+    S008 --> S022
+    S012 --> S022
+    S016 --> S022
+    S007 --> S023
+    S019 --> S023
+    S022 --> S023
+    S021 --> S022
 ```
 
 

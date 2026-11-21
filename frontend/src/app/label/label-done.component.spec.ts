@@ -36,6 +36,13 @@ describe('LabelDoneComponent', () => {
     },
   );
 
+  it('shows icon cards after a cancelled block', () => {
+    const root = create('cancelled');
+    expect(root.querySelector('[data-testid="done-another-block"]')).not.toBeNull();
+    expect(root.querySelector('[data-testid="done-leave"]')).not.toBeNull();
+    expect(root.querySelector('a.another')).toBeNull();
+  });
+
   it('signs out and goes to the start', () => {
     signOut.mockReturnValue(of(undefined));
     const root = create('database-complete');

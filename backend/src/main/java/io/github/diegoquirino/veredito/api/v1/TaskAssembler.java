@@ -20,6 +20,10 @@ public class TaskAssembler {
             model.add(Link.of(self + "/items/{position}", LinkRelations.ITEMS.curied()));
             model.add(Link.of(self, LinkRelations.REVIEW.curied()));
             model.add(Link.of(self + "/responses/{itemId}", LinkRelations.SAVE_RESPONSE.curied()));
+            model.add(Affordances.of(Link.of(self, LinkRelations.CANCEL_RESERVATION.curied()))
+                    .afford(HttpMethod.DELETE)
+                    .withName("default")
+                    .toLink());
             if (view.answeredCount() == view.size()) {
                 model.add(Affordances.of(Link.of(self + "/submission", LinkRelations.SUBMIT.curied()))
                         .afford(HttpMethod.POST)

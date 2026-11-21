@@ -42,6 +42,7 @@ const item: ItemBody = {
 describe('LabelItemComponent', () => {
   const saveResponse = vi.fn();
   const nextPending = vi.fn();
+  const cancel = vi.fn();
   const clearUnsaved = vi.fn();
   const takeUnsaved = vi.fn();
   const keepOnSwitch = vi.fn();
@@ -72,6 +73,7 @@ describe('LabelItemComponent', () => {
             getItem: () => of({ ...item, ...options.item, draft: options.draft ?? null }),
             saveResponse,
             nextPending,
+            cancel,
           },
         },
         { provide: LanguageService, useValue: { takeUnsaved, clearUnsaved, keepOnSwitch } },
@@ -364,5 +366,43 @@ describe('LabelItemComponent', () => {
     fixture.componentInstance['submit']();
 
     expect(navigate).toHaveBeenCalledWith(['/label/review']);
+  });
+
+  it('renders five expandable panels open by default', async () => {
+    const fixture = create();
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const panels = root.querySelectorAll('mat-expansion-panel');
+    expect(panels.length).toBe(5);
+    expect(root.querySelector('[data-testid="panel-change"]')).not.toBeNull();
+    expect(root.querySelector('[data-testid="panel-actions"]')).not.toBeNull();
+  });
+
+  it('cancels the block after confirmation and goes to the done screen', async () => {
+    cancel.mockReturnValue(of(undefined));
+    const confirmSpy = vi.spyOn(globalThis, 'confirm').mockReturnValue(true);
+    const fixture = create();
+    await fixture.whenStable();
+    const navigate = vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
+    const toast = TestBed.inject(ToastService) as unknown as { success: ReturnType<typeof vi.fn> };
+
+    fixture.componentInstance['cancelBlock']();
+
+    expect(confirmSpy).toHaveBeenCalled();
+    expect(cancel).toHaveBeenCalledWith(expect.objectContaining({ id: 41 }));
+    expect(navigate).toHaveBeenCalledWith(['/label/done'], { queryParams: { outcome: 'cancelled' } });
+    expect(toast.success).toHaveBeenCalled();
+    confirmSpy.mockRestore();
+  });
+
+  it('does not cancel when the confirmation is dismissed', async () => {
+    const confirmSpy = vi.spyOn(globalThis, 'confirm').mockReturnValue(false);
+    const fixture = create();
+    await fixture.whenStable();
+
+    fixture.componentInstance['cancelBlock']();
+
+    expect(cancel).not.toHaveBeenCalled();
+    confirmSpy.mockRestore();
   });
 });

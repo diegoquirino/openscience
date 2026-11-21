@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -68,6 +69,7 @@ export function unsavedKey(taskId: number, position: number): string {
   selector: 'app-label-item',
   imports: [
     MatButtonModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -104,6 +106,7 @@ export class LabelItemComponent {
 
   protected readonly busy = signal(true);
   protected readonly saving = signal(false);
+  protected readonly cancelling = signal(false);
   protected readonly blockLost = signal(false);
   protected readonly item = signal<ItemBody | null>(null);
   protected readonly impact = signal<ChangeImpact | null>(null);
@@ -207,6 +210,34 @@ export class LabelItemComponent {
 
   protected retry(): void {
     this.load(this.position() || Number(this.route.snapshot.paramMap.get('position')));
+  }
+
+  /** Abandon the held block after confirmation; drafts of this task are discarded (spec 023). */
+  protected cancelBlock(): void {
+    const task = this.task();
+    if (!task || this.cancelling() || this.saving()) {
+      return;
+    }
+    const confirmed = globalThis.confirm(
+      $localize`:@@label.item.cancelConfirm:Cancel this block? All answers in this block will be discarded and the block will return to the queue.`,
+    );
+    if (!confirmed) {
+      return;
+    }
+    this.cancelling.set(true);
+    this.labels.cancel(task).subscribe({
+      next: () => {
+        this.cancelling.set(false);
+        this.toast.success(
+          $localize`:@@label.item.cancelSuccess:Block cancelled. Your answers for this block were discarded.`,
+        );
+        void this.router.navigate(['/label/done'], { queryParams: { outcome: 'cancelled' } });
+      },
+      error: (error: unknown) => {
+        this.cancelling.set(false);
+        this.toast.error(this.messageOf(error));
+      },
+    });
   }
 
   protected submit(): void {

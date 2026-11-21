@@ -105,6 +105,23 @@ public class TaskReservationService {
         return view(task, now, outcome);
     }
 
+    /**
+     * Cancels the caller's reserved task: deletes drafts for that task only and returns it to
+     * {@code free} (spec 023). Completed or foreign tasks answer 404.
+     */
+    @Transactional
+    public void cancel(long participantId, long taskId) {
+        requireEligible(participantId);
+        TaskRow task = tasks.findById(taskId).orElseThrow(() -> new ProblemException(ProblemType.NOT_FOUND));
+        if (task.participantId() == null
+                || task.participantId() != participantId
+                || !"reserved".equals(task.status())) {
+            throw new ProblemException(ProblemType.NOT_FOUND);
+        }
+        responses.deleteByTaskId(taskId);
+        tasks.releaseToFree(taskId);
+    }
+
     private void requireEligible(long participantId) {
         if (!eligibility.isEligible(participantId)) {
             throw eligibility.refusal(participantId);

@@ -14,10 +14,13 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -77,5 +80,33 @@ public class TaskController {
             throw new ProblemException(ProblemType.AUTHENTICATION_REQUIRED);
         }
         return assembler.toModel(reservations.requireOwnedTask(caller.participantId(), id));
+    }
+
+    @DeleteMapping(version = "v1")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Operation(
+            summary = "Cancel the held reservation",
+            description = """
+                    Deletes every draft of this task and returns the task to the free queue so another \
+                    participant (or the same one later) can reserve it. Only the current holder of a \
+                    reserved task may cancel; completed or foreign tasks answer 404.""")
+    @ApiResponse(responseCode = "204", description = "Reservation cancelled; drafts discarded")
+    @ApiResponse(
+            responseCode = "401",
+            description = "Visitor",
+            content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
+    @ApiResponse(
+            responseCode = "403",
+            description = "Administrator or not eligible",
+            content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
+    @ApiResponse(
+            responseCode = "404",
+            description = "Unknown, foreign or not reserved task",
+            content = @Content(mediaType = PROBLEM_JSON, schema = @Schema(implementation = ProblemDetailsSchema.class)))
+    public void cancel(@AuthenticationPrincipal VereditoPrincipal caller, @PathVariable long id) {
+        if (caller == null || caller.participantId() == null) {
+            throw new ProblemException(ProblemType.AUTHENTICATION_REQUIRED);
+        }
+        reservations.cancel(caller.participantId(), id);
     }
 }
