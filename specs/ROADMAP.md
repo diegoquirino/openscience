@@ -33,8 +33,10 @@ Terms and identifiers (English everywhere in the repository; UI in pt-BR, en-US 
 | 20 | [021-account-name-after-profile](./021-account-name-after-profile/spec.md) | Header account control shows saved name after first profile (session refresh). **Complete** (`deploy/0.23.0-1`) | 014 |
 | 21 | [022-item-expandable-panels](./022-item-expandable-panels/spec.md) | Item screen: change / impact / operation / comment / actions as expandable panels (all open by default). **Complete** (`deploy/0.23.0-1`) | 008, 012, 016 |
 | 22 | [023-cancel-labeling-block](./023-cancel-labeling-block/spec.md) | Cancel current block with confirmation; free task + drop drafts; done cards (another block / leave). **Complete** (`deploy/0.23.0-1`) | 007, 019, 022 |
+| 23 | [024-release-1.0](./024-release-1.0/spec.md) | MIT-style footer at **0.24.0**; product **1.0.0** only after explicit **promover a 1.0 e deploy** (TCLE/LGPD read). **Complete** (0.24.0; staging/local; 1.0 gated). | 003, 023 |
+| 24 | [025-organization-affiliation](./025-organization-affiliation/spec.md) | Profile field instituição/empresa (TJPB / UFCG / Outros+autocomplete). **0.25.0**. | 013, 014, 024 |
 
-Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–020 continue admin/participant UX; 021–023 header name, item panels and cancel block.
+Specs are implemented one at a time, in this order (constitution, *Restrictions and workflow*). 007 came before 006 and 008 to tackle the biggest risk early, the concurrency in block reservation. Spec 006 replaced the temporary "always eligible" gate of 007 with consent form and screening. Spec 008 replaced the simple item screen of 007 without changing what is stored. Specs 012–014 refine post-pilot UX; 015–020 continue admin/participant UX; 021–023 header name, item panels and cancel block. Spec **024** delivers the MIT footer at **0.24.0** and gates product **1.0.0** until the researcher says **promover a 1.0 e deploy** (after CEP/LGPD consent is read). Until that command, keep **`0.<spec>.0`** (025 → **0.25.0**, …).
 
 ```mermaid
 flowchart LR
@@ -61,6 +63,8 @@ flowchart LR
     S021[021 Account name]
     S022[022 Item panels]
     S023[023 Cancel block]
+    S024[024 Footer + 1.0 gate]
+    S025[025 Organization]
 
     S003 --> S004
     S004 --> S005
@@ -98,6 +102,11 @@ flowchart LR
     S019 --> S023
     S022 --> S023
     S021 --> S022
+    S003 --> S024
+    S023 --> S024
+    S013 --> S025
+    S014 --> S025
+    S024 --> S025
 ```
 
 

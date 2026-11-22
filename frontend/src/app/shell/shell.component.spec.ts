@@ -68,9 +68,9 @@ describe('ShellComponent', () => {
     expect(brand.querySelector('img.logo')?.getAttribute('alt')).toBe('');
   });
 
-  it('shows only the build version in the footer', async () => {
+  it('shows the build version and MIT license in the footer', async () => {
     const element = (await render()).nativeElement as HTMLElement;
-    expect(element.querySelector('footer')?.textContent?.trim()).toBe(`Version ${BUILD_VERSION}`);
+    expect(element.querySelector('footer')?.textContent?.trim()).toBe(`v${BUILD_VERSION} · MIT License`);
     expect(element.querySelector('footer a')).toBeNull();
   });
 
