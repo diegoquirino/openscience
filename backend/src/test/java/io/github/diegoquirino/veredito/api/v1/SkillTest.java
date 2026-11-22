@@ -26,6 +26,17 @@ class SkillTest extends ApiTestBase {
     }
 
     private Response putSkill(String token, String locale, String name, String skill, String other) {
+        return putSkill(token, locale, name, skill, other, "ufcg", null);
+    }
+
+    private Response putSkill(
+            String token,
+            String locale,
+            String name,
+            String skill,
+            String skillOther,
+            String organization,
+            String organizationOther) {
         Map<String, Object> body = new HashMap<>();
         if (name != null) {
             body.put("name", name);
@@ -33,8 +44,14 @@ class SkillTest extends ApiTestBase {
         if (skill != null) {
             body.put("skill", skill);
         }
-        if (other != null) {
-            body.put("skillOther", other);
+        if (skillOther != null) {
+            body.put("skillOther", skillOther);
+        }
+        if (organization != null) {
+            body.put("organization", organization);
+        }
+        if (organizationOther != null) {
+            body.put("organizationOther", organizationOther);
         }
         return as(token).header("Accept-Language", locale).contentType("application/json").body(body)
                 .put(EntryPointController.SKILL);
@@ -159,5 +176,47 @@ class SkillTest extends ApiTestBase {
                 .then().statusCode(200)
                 .body("skill", equalTo("developer"))
                 .body("skillOther", nullValue());
+    }
+
+    @Test
+    void organizationOtherIsStoredAndSuggestionsExcludeCaller() {
+        String first = atProfileStep();
+        putSkill(first, "pt-BR", "Ana Souza", "developer", null, "other", "Acme Ltd")
+                .then().statusCode(200)
+                .body("organization", equalTo("other"))
+                .body("organizationOther", equalTo("Acme Ltd"));
+
+        String second = atProfileStep();
+        as(second)
+                .get(EntryPointController.ORGANIZATION_SUGGESTIONS)
+                .then()
+                .statusCode(200)
+                .body("suggestions", contains("Acme Ltd"));
+
+        as(first)
+                .get(EntryPointController.ORGANIZATION_SUGGESTIONS)
+                .then()
+                .statusCode(200)
+                .body("suggestions", equalTo(java.util.List.of()));
+    }
+
+    @Test
+    void organizationValidationMirrorsSkillOtherRules() {
+        String token = atProfileStep();
+        putSkill(token, "pt-BR", "Ana Souza", "developer", null, null, null)
+                .then()
+                .statusCode(400)
+                .body("errors.field", contains("organization"))
+                .body("errors.code", contains("required"));
+        putSkill(token, "pt-BR", "Ana Souza", "developer", null, "other", null)
+                .then()
+                .statusCode(400)
+                .body("errors.field", contains("organizationOther"))
+                .body("errors.code", contains("required"));
+        putSkill(token, "pt-BR", "Ana Souza", "developer", null, "tjpb", "extra")
+                .then()
+                .statusCode(400)
+                .body("errors.field", contains("organizationOther"))
+                .body("errors.code", contains("unexpected"));
     }
 }

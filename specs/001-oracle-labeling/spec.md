@@ -576,13 +576,25 @@ Before the question, the screen shows a short use-case excerpt (basic flow with 
 | `undergraduate_student` | Estudante de graduação em computação | Undergraduate student in computing | Estudiante de grado en informática |
 | `other` | Outro (descrever) | Other (describe) | Otro (describir) |
 
+### B.5 Organization / employer (`organization`)
+
+See [025-organization-affiliation](../025-organization-affiliation/spec.md). Required on the profile step.
+
+| Code | pt-BR | en-US | es-ES |
+|---|---|---|---|
+| `tjpb` | TJPB - Tribunal de Justiça do Estado da Paraíba | TJPB - Tribunal de Justiça do Estado da Paraíba | TJPB - Tribunal de Justiça do Estado da Paraíba |
+| `ufcg` | UFCG - Universidade Federal de Campina Grande | UFCG - Universidade Federal de Campina Grande | UFCG - Universidade Federal de Campina Grande |
+| `other` | Outros(as) | Other | Otros(as) |
+
+With `other`, `organization_other` stores free text (up to 100 code points), as typed.
+
 ## Appendix C: Wide export header
 
 ```text
-system,edit_key,uc,kind,field,origin,target,rater_1_name,rater_1_email,rater_1_accepted_research_terms_lgpd,rater_1_professional_skill,rater_1_change_impact_choice,rater_1_maintenance_operation_choice,rater_1_comment,rater_1_response_language,rater_2_name,rater_2_email,rater_2_accepted_research_terms_lgpd,rater_2_professional_skill,rater_2_change_impact_choice,rater_2_maintenance_operation_choice,rater_2_comment,rater_2_response_language
+system,edit_key,uc,kind,field,origin,target,rater_1_name,rater_1_email,rater_1_accepted_research_terms_lgpd,rater_1_professional_skill,rater_1_organization,rater_1_organization_other,rater_1_change_impact_choice,rater_1_maintenance_operation_choice,rater_1_comment,rater_1_response_language,rater_2_name,rater_2_email,rater_2_accepted_research_terms_lgpd,rater_2_professional_skill,rater_2_organization,rater_2_organization_other,rater_2_change_impact_choice,rater_2_maintenance_operation_choice,rater_2_comment,rater_2_response_language
 ```
 
-`rater_N_accepted_research_terms_lgpd` holds the version, the language and the date/time of the consent form acceptance (for example, `v1 pt-BR 2026-11-20T14:03:00-03:00`). `rater_N_response_language` holds the `language` of that rater's final response to the item (`pt-BR`, `en-US` or `es-ES`). `rater_N_professional_skill` holds the code of Appendix B.4. All values are exported as captured, without translation.
+`rater_N_accepted_research_terms_lgpd` holds the version, the language and the date/time of the consent form acceptance (for example, `v1 pt-BR 2026-11-20T14:03:00-03:00`). `rater_N_response_language` holds the `language` of that rater's final response to the item (`pt-BR`, `en-US` or `es-ES`). `rater_N_professional_skill` holds the code of Appendix B.4. `rater_N_organization` / `rater_N_organization_other` hold the codes of Appendix B.5. All values are exported as captured, without translation.
 
 ## Appendix D: Import CSV columns
 

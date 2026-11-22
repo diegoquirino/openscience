@@ -1,10 +1,18 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {
+  isOrganization,
+  ORGANIZATION_OTHER_MAX,
+  organizationAnswerValid,
+  organizationLabel,
+  ORGANIZATIONS,
+} from '../core/labels/organization-labels';
 import {
   codePoints,
   isSkill,
@@ -25,10 +33,17 @@ import {
 import { ToastService } from '../core/toast.service';
 import { SessionService } from '../core/session.service';
 
-/** View and edit name (and skill for participants) from the header menu (spec 014). */
+/** View and edit name, skill and organization from the header menu (specs 014–025). */
 @Component({
   selector: 'app-profile',
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, RouterLink],
+  imports: [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    RouterLink,
+  ],
   template: `
     <section class="profile">
       <h1 i18n="@@profile.title">Profile</h1>
@@ -78,8 +93,46 @@ import { SessionService } from '../core/session.service';
             <p class="error" role="alert">{{ tooLongMessage }}</p>
           }
         }
-      }
 
+        <mat-radio-group
+          class="options"
+          aria-labelledby="profile-org-legend"
+          [value]="organization()"
+          (change)="chooseOrganization($event.value)"
+        >
+          <span id="profile-org-legend" class="legend" i18n="@@organization.legend"
+            >Organization / employer where you study or work</span
+          >
+          @for (code of orgCodes; track code) {
+            <mat-radio-button [value]="code">{{ orgLabel(code) }}</mat-radio-button>
+          }
+        </mat-radio-group>
+        @if (organization() === 'other') {
+          <mat-form-field appearance="outline" class="other">
+            <mat-label i18n="@@organization.other.label">Organization name</mat-label>
+            <input
+              matInput
+              class="org-other-input"
+              [value]="organizationOther()"
+              (input)="onOrganizationOtherInput($any($event.target).value)"
+              [matAutocomplete]="orgAuto"
+              autocomplete="off"
+            />
+            <mat-autocomplete #orgAuto="matAutocomplete">
+              @for (suggestion of filteredSuggestions(); track suggestion) {
+                <mat-option [value]="suggestion">{{ suggestion }}</mat-option>
+              }
+            </mat-autocomplete>
+            <mat-hint align="end">{{ orgLength() }} / {{ orgMax }}</mat-hint>
+          </mat-form-field>
+          @if (orgOtherError(); as text) {
+            <p class="error" role="alert">{{ text }}</p>
+          }
+          @if (orgOtherTooLong()) {
+            <p class="error" role="alert">{{ orgTooLongMessage }}</p>
+          }
+        }
+      }
 
       <div class="actions">
         <button mat-button type="button" routerLink="/" i18n="@@profile.back">Back</button>
@@ -131,18 +184,26 @@ export class ProfileComponent implements OnInit {
   private readonly http = inject(HttpClient);
 
   protected readonly codes = SKILLS;
+  protected readonly orgCodes = ORGANIZATIONS;
   protected readonly max = SKILL_OTHER_MAX;
+  protected readonly orgMax = ORGANIZATION_OTHER_MAX;
   protected readonly tooLongMessage = fieldMessage({ field: 'skillOther', code: 'size' });
+  protected readonly orgTooLongMessage = fieldMessage({ field: 'organizationOther', code: 'size' });
 
   readonly name = signal('');
   readonly skill = signal<string | null>(null);
   readonly other = signal('');
+  readonly organization = signal<string | null>(null);
+  readonly organizationOther = signal('');
+  readonly suggestions = signal<string[]>([]);
   readonly saving = signal(false);
   readonly saved = signal(false);
 
   readonly isParticipant = computed(() => this.session.subject() === 'participant');
   readonly length = computed(() => codePoints(this.other()));
+  readonly orgLength = computed(() => codePoints(this.organizationOther()));
   readonly otherTooLong = computed(() => this.length() > SKILL_OTHER_MAX);
+  readonly orgOtherTooLong = computed(() => this.orgLength() > ORGANIZATION_OTHER_MAX);
   readonly valid = computed(() => {
     if (this.name().trim().length < 2) {
       return false;
@@ -150,13 +211,29 @@ export class ProfileComponent implements OnInit {
     if (!this.isParticipant()) {
       return true;
     }
-    return skillAnswerValid(this.skill(), this.other());
+    return (
+      skillAnswerValid(this.skill(), this.other()) &&
+      organizationAnswerValid(this.organization(), this.organizationOther())
+    );
   });
   readonly otherError = computed(() =>
     this.other().length > 0 && this.other().trim().length === 0
       ? fieldMessage({ field: 'skillOther', code: 'required' })
       : null,
   );
+  readonly orgOtherError = computed(() =>
+    this.organizationOther().length > 0 && this.organizationOther().trim().length === 0
+      ? fieldMessage({ field: 'organizationOther', code: 'required' })
+      : null,
+  );
+  readonly filteredSuggestions = computed(() => {
+    const q = this.organizationOther().trim().toLowerCase();
+    const all = this.suggestions();
+    if (!q) {
+      return all.slice(0, 20);
+    }
+    return all.filter((s) => s.toLowerCase().includes(q)).slice(0, 20);
+  });
 
   ngOnInit(): void {
     const current = this.session.session();
@@ -171,14 +248,24 @@ export class ProfileComponent implements OnInit {
           }
           this.skill.set(isSkill(profile.skill) ? profile.skill : null);
           this.other.set(profile.skillOther ?? '');
+          this.organization.set(isOrganization(profile.organization) ? profile.organization : null);
+          this.organizationOther.set(profile.organizationOther ?? '');
         },
         error: () => this.toast.error(unexpectedErrorMessage()),
+      });
+      this.onboarding.organizationSuggestions().subscribe({
+        next: (values) => this.suggestions.set(values),
+        error: () => this.suggestions.set([]),
       });
     }
   }
 
   protected label(code: string): string {
     return skillLabel(code);
+  }
+
+  protected orgLabel(code: string): string {
+    return organizationLabel(code);
   }
 
   choose(code: string): void {
@@ -189,18 +276,40 @@ export class ProfileComponent implements OnInit {
     this.saved.set(false);
   }
 
+  chooseOrganization(code: string): void {
+    this.organization.set(code);
+    if (code !== 'other') {
+      this.organizationOther.set('');
+    }
+    this.saved.set(false);
+  }
+
+  onOrganizationOtherInput(value: string): void {
+    this.organizationOther.set(value);
+    this.saved.set(false);
+  }
+
   submit(): void {
     if (!this.valid() || this.saving()) {
       return;
     }
     this.saving.set(true);
-        this.saved.set(false);
+    this.saved.set(false);
     if (this.isParticipant()) {
       const skill = this.skill()!;
-      this.onboarding.recordSkill(this.name().trim(), skill, skill === 'other' ? this.other() : null).subscribe({
-        next: () => this.afterSave(),
-        error: (error: unknown) => this.fail(error),
-      });
+      const organization = this.organization()!;
+      this.onboarding
+        .recordSkill(
+          this.name().trim(),
+          skill,
+          skill === 'other' ? this.other() : null,
+          organization,
+          organization === 'other' ? this.organizationOther() : null,
+        )
+        .subscribe({
+          next: () => this.afterSave(),
+          error: (error: unknown) => this.fail(error),
+        });
       return;
     }
     const href = this.session.session()?.links.href('me');

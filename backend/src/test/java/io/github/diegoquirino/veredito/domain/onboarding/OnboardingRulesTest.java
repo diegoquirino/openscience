@@ -38,16 +38,23 @@ class OnboardingRulesTest {
     void profileBeforeConsentEvenWhenConsentWouldOtherwiseBeDue() {
         assertThat(OnboardingRules.stepOf(consent(ConsentDecision.REFUSED, CURRENT), CURRENT, null))
                 .isEqualTo(OnboardingStep.PROFILE);
-        OnboardingState named = consent(ConsentDecision.REFUSED, CURRENT).withSkill("developer", null);
+        OnboardingState named = consent(ConsentDecision.REFUSED, CURRENT)
+                .withSkill("developer", null)
+                .withOrganization("ufcg", null);
         assertThat(OnboardingRules.stepOf(named, CURRENT, NAME)).isEqualTo(OnboardingStep.CONSENT);
+        assertThat(OnboardingRules.stepOf(
+                        consent(ConsentDecision.REFUSED, CURRENT).withSkill("developer", null), CURRENT, NAME))
+                .isEqualTo(OnboardingStep.PROFILE);
     }
 
     @Test
-    void namedWithSkillThenConsentThenScreeningThenParticipation() {
-        OnboardingState withSkill = OnboardingState.empty().withSkill("developer", null);
-        assertThat(OnboardingRules.stepOf(withSkill, CURRENT, NAME)).isEqualTo(OnboardingStep.CONSENT);
+    void namedWithSkillAndOrganizationThenConsentThenScreeningThenParticipation() {
+        OnboardingState withProfile = OnboardingState.empty()
+                .withSkill("developer", null)
+                .withOrganization("tjpb", null);
+        assertThat(OnboardingRules.stepOf(withProfile, CURRENT, NAME)).isEqualTo(OnboardingStep.CONSENT);
 
-        OnboardingState accepted = withSkill.withConsent(CURRENT, ConsentDecision.ACCEPTED, "pt-BR", NOW);
+        OnboardingState accepted = withProfile.withConsent(CURRENT, ConsentDecision.ACCEPTED, "pt-BR", NOW);
         assertThat(OnboardingRules.stepOf(accepted, CURRENT, NAME)).isEqualTo(OnboardingStep.SCREENING);
 
         OnboardingState screened = accepted.withScreening(ScreeningAnswer.YES_ACADEMIC);
@@ -58,6 +65,7 @@ class OnboardingRulesTest {
     void noIsPermanentAndWinsOverEveryOtherStep() {
         OnboardingState no = consent(ConsentDecision.ACCEPTED, CURRENT)
                 .withSkill("other", "Writer")
+                .withOrganization("other", "Acme")
                 .withScreening(ScreeningAnswer.NO);
         assertThat(OnboardingRules.stepOf(no, CURRENT, NAME)).isEqualTo(OnboardingStep.INELIGIBLE);
         assertThat(OnboardingRules.stepOf(no, null, NAME)).isEqualTo(OnboardingStep.INELIGIBLE);
@@ -68,6 +76,7 @@ class OnboardingRulesTest {
     void newVersionAfterAcceptanceAsksOnlyConsentAgain() {
         OnboardingState done = consent(ConsentDecision.ACCEPTED, OLD)
                 .withSkill("test_analyst", null)
+                .withOrganization("ufcg", null)
                 .withScreening(ScreeningAnswer.YES_PROFESSIONAL);
         assertThat(OnboardingRules.stepOf(done, OLD, NAME)).isEqualTo(OnboardingStep.PARTICIPATION);
         assertThat(OnboardingRules.stepOf(done, CURRENT, NAME)).isEqualTo(OnboardingStep.CONSENT);
@@ -79,7 +88,7 @@ class OnboardingRulesTest {
     }
 
     @Test
-    void eligibleOnlyWithNameSkillCurrentAcceptanceAndYesScreening() {
+    void eligibleOnlyWithNameSkillOrganizationCurrentAcceptanceAndYesScreening() {
         List<Long> forms = new ArrayList<>();
         forms.add(null);
         forms.add(CURRENT);
@@ -94,6 +103,9 @@ class OnboardingRulesTest {
         List<String> skills = new ArrayList<>();
         skills.add(null);
         skills.add("developer");
+        List<String> organizations = new ArrayList<>();
+        organizations.add(null);
+        organizations.add("ufcg");
         List<ScreeningAnswer> answers = new ArrayList<>();
         answers.add(null);
         answers.addAll(List.of(ScreeningAnswer.values()));
@@ -104,34 +116,41 @@ class OnboardingRulesTest {
             for (String name : names) {
                 for (OnboardingState consent : consents) {
                     for (String skill : skills) {
-                        for (ScreeningAnswer answer : answers) {
-                            OnboardingState state = consent.withSkill(skill, null).withScreening(answer);
-                            boolean expected = form != null
-                                    && name != null
-                                    && state.consentDecision() == ConsentDecision.ACCEPTED
-                                    && CURRENT == (state.consentFormId() == null ? -1 : state.consentFormId())
-                                    && skill != null
-                                    && answer != null
-                                    && answer.eligible();
-                            assertThat(OnboardingRules.isEligible(state, form, name))
-                                    .as(
-                                            "form=%s name=%s consent=%s skill=%s answer=%s",
-                                            form,
-                                            name,
-                                            consent,
-                                            skill,
-                                            answer)
-                                    .isEqualTo(expected);
-                            combinations++;
-                            if (expected) {
-                                eligible++;
+                        for (String organization : organizations) {
+                            for (ScreeningAnswer answer : answers) {
+                                OnboardingState state = consent
+                                        .withSkill(skill, null)
+                                        .withOrganization(organization, null)
+                                        .withScreening(answer);
+                                boolean expected = form != null
+                                        && name != null
+                                        && state.consentDecision() == ConsentDecision.ACCEPTED
+                                        && CURRENT == (state.consentFormId() == null ? -1 : state.consentFormId())
+                                        && skill != null
+                                        && organization != null
+                                        && answer != null
+                                        && answer.eligible();
+                                assertThat(OnboardingRules.isEligible(state, form, name))
+                                        .as(
+                                                "form=%s name=%s consent=%s skill=%s org=%s answer=%s",
+                                                form,
+                                                name,
+                                                consent,
+                                                skill,
+                                                organization,
+                                                answer)
+                                        .isEqualTo(expected);
+                                combinations++;
+                                if (expected) {
+                                    eligible++;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        assertThat(combinations).isEqualTo(2 * 2 * 4 * 2 * 4);
+        assertThat(combinations).isEqualTo(2 * 2 * 4 * 2 * 2 * 4);
         assertThat(eligible).isEqualTo(2);
     }
 }

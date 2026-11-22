@@ -42,6 +42,8 @@ public final class ExportRows {
                 Integer.toString(response.role()),
                 response.pseudonym(),
                 response.professionalSkill(),
+                response.organization(),
+                response.organizationOther(),
                 response.participantPreferredLanguage(),
                 response.consentLanguage(),
                 response.changeImpact(),
@@ -106,7 +108,7 @@ public final class ExportRows {
 
     private static void wideRole(List<String> cells, ExportRole role) {
         if (role == null) {
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 10; i++) {
                 cells.add("");
             }
             return;
@@ -115,6 +117,8 @@ public final class ExportRows {
         cells.add(role.anonymized() ? ANONYMIZED : role.email());
         cells.add(consentCell(role));
         cells.add(role.professionalSkill());
+        cells.add(role.organization());
+        cells.add(role.organizationOther());
         cells.add(role.changeImpact());
         cells.add(role.maintenanceOperation());
         cells.add(role.comment());

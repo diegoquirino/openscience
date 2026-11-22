@@ -9,7 +9,8 @@
 INSERT INTO consent_form (version, reference_language, created_at, published_at)
 VALUES ('fixture-1', 'pt-BR', '2000-01-01 00:00:00.000000', '2000-01-01 00:00:00.000000');
 
-INSERT INTO consent_form_text (consent_form_id, language, text)\nSELECT id, 'pt-BR', 'TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO - FIXTURE / RASCUNHO DEV - NÃO APROVADO PELO CEP
+INSERT INTO consent_form_text (consent_form_id, language, text)
+SELECT id, 'pt-BR', 'TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO - FIXTURE / RASCUNHO DEV - NÃO APROVADO PELO CEP
 
 Este texto é rascunho para staging/dev-local, alinhado ao pacote CEP-TCLE. Não é o termo definitivo e não foi aprovado pelo Comitê de Ética em Pesquisa (CEP).
 
@@ -101,7 +102,11 @@ Participante: _________________________________
 Pesquisador responsável: Carlos Diego Quirino Lima  
 
 
-Marcação interna: rascunho para submissão CEP — NÃO APROVADO PELO CEP. Coleta com participantes reais somente após aprovação.'\nFROM consent_form WHERE version = 'fixture-1';\n\nINSERT INTO consent_form_text (consent_form_id, language, text)\nSELECT id, 'en-US', 'INFORMED CONSENT FORM - FIXTURE / DEV DRAFT - NOT APPROVED BY THE CEP
+Marcação interna: rascunho para submissão CEP — NÃO APROVADO PELO CEP. Coleta com participantes reais somente após aprovação.'
+FROM consent_form WHERE version = 'fixture-1';
+
+INSERT INTO consent_form_text (consent_form_id, language, text)
+SELECT id, 'en-US', 'INFORMED CONSENT FORM - FIXTURE / DEV DRAFT - NOT APPROVED BY THE CEP
 
 This is a translation; the Portuguese (Brazil) text is the reference version. This draft is for staging/dev-local only and was not approved by the research ethics committee (CEP). It mirrors the CEP-TCLE virtual-environment draft (Oficio Circular 02/2021, CNS 466/2012, LGPD).
 
@@ -114,7 +119,11 @@ You are invited to take part entirely online via Veredito. You will read this fo
 
 Data processed (LGPD): name; e-mail; skill/experience; organization/employer when requested; screening and labeling answers; technical timestamps. No sensitive personal data under LGPD. Legal basis: consent (Art. 7, I). Retention: 5 years after this research stage ends, then deletion or anonymisation unless legally required. Labeling answers are stored under a pseudonym. Results are published aggregated or anonymised.
 
-By agreeing in Veredito, you state that you read and understood this text and accept to take part voluntarily.'\nFROM consent_form WHERE version = 'fixture-1';\n\nINSERT INTO consent_form_text (consent_form_id, language, text)\nSELECT id, 'es-ES', 'FORMULARIO DE CONSENTIMIENTO INFORMADO - FIXTURE / BORRADOR DEV - NO APROBADO POR EL CEP
+By agreeing in Veredito, you state that you read and understood this text and accept to take part voluntarily.'
+FROM consent_form WHERE version = 'fixture-1';
+
+INSERT INTO consent_form_text (consent_form_id, language, text)
+SELECT id, 'es-ES', 'FORMULARIO DE CONSENTIMIENTO INFORMADO - FIXTURE / BORRADOR DEV - NO APROBADO POR EL CEP
 
 Esta es una traducción; la versión de referencia es la portuguesa (Brasil). Este borrador es solo para staging/dev-local y no fue aprobado por el comité de ética (CEP). Refleja el borrador CEP-TCLE de ambiente virtual (Oficio Circular 02/2021, CNS 466/2012, LGPD).
 
@@ -127,4 +136,5 @@ Se le invita a participar en línea mediante Veredito: leer este término, indic
 
 Datos (LGPD): nombre; correo; habilidad; institución/empresa cuando se solicite; respuestas de triaje y etiquetado; marcas temporales. Base legal: consentimiento (Art. 7, I). Retención: 5 años tras el cierre de esta etapa. Resultados agregados o anonimizados.
 
-Al aceptar, declara que leyó este texto y acepta participar voluntariamente.'\nFROM consent_form WHERE version = 'fixture-1';\n
+Al aceptar, declara que leyó este texto y acepta participar voluntariamente.'
+FROM consent_form WHERE version = 'fixture-1';

@@ -47,12 +47,15 @@ class ExportTest extends ApiTestBase {
 
     private static final String WIDE_HEADER = "system,edit_key,uc,kind,field,origin,target,"
             + "rater_1_name,rater_1_email,rater_1_accepted_research_terms_lgpd,rater_1_professional_skill,"
+            + "rater_1_organization,rater_1_organization_other,"
             + "rater_1_change_impact_choice,rater_1_maintenance_operation_choice,rater_1_comment,"
             + "rater_1_response_language,"
             + "rater_2_name,rater_2_email,rater_2_accepted_research_terms_lgpd,rater_2_professional_skill,"
+            + "rater_2_organization,rater_2_organization_other,"
             + "rater_2_change_impact_choice,rater_2_maintenance_operation_choice,rater_2_comment,"
             + "rater_2_response_language";
     private static final String LONG_HEADER = "system,edit_key,block,role,pseudonym,professional_skill,"
+            + "organization,organization_other,"
             + "participant_preferred_language,consent_language,change_impact,maintenance_operation,comment,"
             + "response_language,reserved_at,submitted_at";
     private static final String COMPLETO_HEADER = "system,edit_key,uc,kind,field,origin,target,origin_version,"
@@ -281,9 +284,10 @@ class ExportTest extends ApiTestBase {
         assertThat(first.get("rater_2_response_language")).isEqualTo("en-US");
         // Items of blocks not completed: both raters blank.
         CSVRecord pending = wide.records().get(10);
-        assertThat(wide.header().split(",")).hasSize(23);
+        assertThat(wide.header().split(",")).hasSize(27);
         for (String column : List.of(
                 "rater_1_name", "rater_1_email", "rater_1_accepted_research_terms_lgpd", "rater_1_professional_skill",
+                "rater_1_organization", "rater_1_organization_other",
                 "rater_1_change_impact_choice", "rater_1_response_language", "rater_2_name", "rater_2_response_language")) {
             assertThat(pending.get(column)).as(column).isEmpty();
         }

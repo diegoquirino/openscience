@@ -46,6 +46,7 @@ public class EntryPointController {
     static final String CONSENT_FORM_CURRENT = "/api/v1/consent-forms/current";
     static final String CONSENT = "/api/v1/participants/me/consent";
     static final String SKILL = "/api/v1/participants/me/skill";
+    static final String ORGANIZATION_SUGGESTIONS = "/api/v1/participants/me/organization-suggestions";
     static final String SCREENING = "/api/v1/participants/me/screening";
     static final String SCREENING_EXAMPLE = "/api/v1/screening-example";
 

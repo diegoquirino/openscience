@@ -104,7 +104,8 @@ public class ParticipantRepository {
 
     private static final String ONBOARDING_SELECT = """
             SELECT consent_form_id, consent_decision, consent_language, consent_decided_at,
-                   professional_skill, professional_skill_other, screening_answer
+                   professional_skill, professional_skill_other, organization, organization_other,
+                   screening_answer
             FROM participant WHERE id = ?""";
 
     /** The consent, skill and screening columns of one participant (spec 006). */
@@ -139,14 +140,33 @@ public class ParticipantRepository {
                 .update();
     }
 
-    /** Sets name and skill together (profile step and later edits). */
-    public void updateProfile(long id, String name, String skill, String other) {
+    /** Sets name, skill and organization together (profile step and later edits). */
+    public void updateProfile(
+            long id, String name, String skill, String skillOther, String organization, String organizationOther) {
         jdbc.sql("""
                         UPDATE participant
-                        SET name = ?, professional_skill = ?, professional_skill_other = ?
+                        SET name = ?, professional_skill = ?, professional_skill_other = ?,
+                            organization = ?, organization_other = ?
                         WHERE id = ?""")
-                .params(name, skill, other, id)
+                .params(name, skill, skillOther, organization, organizationOther, id)
                 .update();
+    }
+
+    /**
+     * Distinct {@code organization_other} values already saved by other participants with
+     * {@code organization = other} (spec 025 suggestions).
+     */
+    public java.util.List<String> organizationSuggestions(long excludeParticipantId) {
+        return jdbc.sql("""
+                        SELECT DISTINCT organization_other FROM participant
+                        WHERE organization = 'other'
+                          AND organization_other IS NOT NULL
+                          AND TRIM(organization_other) <> ''
+                          AND id <> ?
+                        ORDER BY organization_other""")
+                .param(excludeParticipantId)
+                .query(String.class)
+                .list();
     }
 
     /** Stores the screening answer and the eligibility once; returns 0 when it was already answered. */
@@ -169,6 +189,8 @@ public class ParticipantRepository {
                 decided == null ? null : decided.toInstant(),
                 rs.getString("professional_skill"),
                 rs.getString("professional_skill_other"),
+                rs.getString("organization"),
+                rs.getString("organization_other"),
                 ScreeningAnswer.fromCode(rs.getString("screening_answer")).orElse(null));
     }
     private String placeholder() {

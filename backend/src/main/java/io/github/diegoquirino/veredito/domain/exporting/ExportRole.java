@@ -19,6 +19,8 @@ public record ExportRole(
         String consentLanguage,
         Instant consentDecidedAt,
         String professionalSkill,
+        String organization,
+        String organizationOther,
         String changeImpact,
         String maintenanceOperation,
         String comment,

@@ -9,6 +9,7 @@ import { SKILL_UNSAVED_KEY, SkillComponent } from './skill.component';
 
 describe('SkillComponent', () => {
   const recordSkill = vi.fn();
+  const organizationSuggestions = vi.fn();
   const refresh = vi.fn();
   const takeUnsaved = vi.fn();
   const keepOnSwitch = vi.fn();
@@ -17,10 +18,11 @@ describe('SkillComponent', () => {
   function create(unsaved?: Record<string, string>) {
     takeUnsaved.mockReturnValue(unsaved);
     refresh.mockReturnValue(of(null));
+    organizationSuggestions.mockReturnValue(of(['Acme Ltd', 'Beta Corp']));
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
-        { provide: OnboardingService, useValue: { recordSkill } },
+        { provide: OnboardingService, useValue: { recordSkill, organizationSuggestions } },
         { provide: SessionService, useValue: { refresh } },
         { provide: LanguageService, useValue: { takeUnsaved, keepOnSwitch, clearUnsaved } },
         {
@@ -39,23 +41,24 @@ describe('SkillComponent', () => {
 
   beforeEach(() => vi.resetAllMocks());
 
-  it('lists the 13 options and disables Continue until name and skill are chosen', () => {
+  it('lists skill and organization options and disables Continue until both are chosen', () => {
     const { root } = create();
-    expect(root.querySelectorAll('mat-radio-button')).toHaveLength(13);
+    expect(root.querySelectorAll('mat-radio-button')).toHaveLength(16);
     expect(proceed(root).disabled).toBe(true);
   });
 
-  it('enables Continue for a common option and sends name and code without description', () => {
+  it('enables Continue for a common option and sends name, skill and organization without other text', () => {
     recordSkill.mockReturnValue(of(undefined));
     const { fixture, navigate, root, component } = create();
 
     component.name.set('Ana Souza');
     component.choose('test_analyst');
+    component.chooseOrganization('ufcg');
     fixture.detectChanges();
     expect(proceed(root).disabled).toBe(false);
     proceed(root).click();
 
-    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'test_analyst', null);
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'test_analyst', null, 'ufcg', null);
     expect(clearUnsaved).toHaveBeenCalledWith(SKILL_UNSAVED_KEY);
     expect(refresh).toHaveBeenCalled();
     expect(navigate).toHaveBeenCalledWith('/welcome');
@@ -66,6 +69,7 @@ describe('SkillComponent', () => {
 
     component.name.set('Ana Souza');
     component.choose('other');
+    component.chooseOrganization('tjpb');
     fixture.detectChanges();
     expect(root.querySelector('input.other-input')).not.toBeNull();
     expect(proceed(root).disabled).toBe(true);
@@ -97,21 +101,54 @@ describe('SkillComponent', () => {
     component.name.set('Ana Souza');
     component.choose('other');
     component.other.set(' Technical writer ');
+    component.chooseOrganization('tjpb');
     fixture.detectChanges();
 
     proceed(root).click();
 
-    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'other', ' Technical writer ');
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'other', ' Technical writer ', 'tjpb', null);
+  });
+
+  it('requires organization other text and offers suggestions', () => {
+    recordSkill.mockReturnValue(of(undefined));
+    const { fixture, root, component } = create();
+    component.name.set('Ana Souza');
+    component.choose('developer');
+    component.chooseOrganization('other');
+    fixture.detectChanges();
+    expect(root.querySelector('input.org-other-input')).not.toBeNull();
+    expect(proceed(root).disabled).toBe(true);
+
+    component.organizationOther.set('Acme Ltd');
+    fixture.detectChanges();
+    expect(proceed(root).disabled).toBe(false);
+    expect(component.filteredSuggestions()).toContain('Acme Ltd');
+    proceed(root).click();
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'developer', null, 'other', 'Acme Ltd');
   });
 
   it('restores the choice kept across a language switch and registers the values to keep', () => {
-    const { component } = create({ name: 'Ana', skill: 'other', other: 'Redator' });
+    const { component } = create({
+      name: 'Ana',
+      skill: 'other',
+      other: 'Redator',
+      organization: 'other',
+      organizationOther: 'Acme',
+    });
     expect(component.name()).toBe('Ana');
     expect(component.skill()).toBe('other');
     expect(component.other()).toBe('Redator');
+    expect(component.organization()).toBe('other');
+    expect(component.organizationOther()).toBe('Acme');
     expect(takeUnsaved).toHaveBeenCalledWith(SKILL_UNSAVED_KEY);
 
     const values = keepOnSwitch.mock.calls[0][1] as () => Record<string, string>;
-    expect(values()).toEqual({ name: 'Ana', skill: 'other', other: 'Redator' });
+    expect(values()).toEqual({
+      name: 'Ana',
+      skill: 'other',
+      other: 'Redator',
+      organization: 'other',
+      organizationOther: 'Acme',
+    });
   });
 });

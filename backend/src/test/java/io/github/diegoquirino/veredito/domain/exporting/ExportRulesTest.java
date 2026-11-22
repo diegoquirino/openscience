@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-/** Domain rules of spec 009 without Spring. */
+/** Domain rules of spec 009 without Spring (organization columns from spec 025). */
 class ExportRulesTest {
 
     private static final ExportItem ITEM = new ExportItem(
@@ -21,7 +21,8 @@ class ExportRulesTest {
     private static ExportRole role(String pseudonym, String comment) {
         return new ExportRole(
                 pseudonym, "Ana Souza", "ana@example.com", false, true, "v1", "pt-BR",
-                Instant.parse("2026-11-20T17:03:00Z"), "test_analyst", "HIGH", "UPDATE", comment, "es-ES");
+                Instant.parse("2026-11-20T17:03:00Z"), "test_analyst", "ufcg", null, "HIGH", "UPDATE", comment,
+                "es-ES");
     }
 
     @Nested
@@ -52,9 +53,9 @@ class ExportRulesTest {
         @Test
         void longHeaderIsExactlyTheLockedOne() {
             assertThat(String.join(",", ExportColumns.LONG)).isEqualTo(
-                    "system,edit_key,block,role,pseudonym,professional_skill,participant_preferred_language,"
-                            + "consent_language,change_impact,maintenance_operation,comment,response_language,"
-                            + "reserved_at,submitted_at");
+                    "system,edit_key,block,role,pseudonym,professional_skill,organization,organization_other,"
+                            + "participant_preferred_language,consent_language,change_impact,maintenance_operation,"
+                            + "comment,response_language,reserved_at,submitted_at");
         }
 
         @Test
@@ -65,9 +66,10 @@ class ExportRulesTest {
 
         @Test
         void wideAndCompletoHeadersMatchTheSpec() {
-            assertThat(ExportColumns.WIDE).hasSize(23).startsWith("system", "edit_key", "uc");
+            assertThat(ExportColumns.WIDE).hasSize(27).startsWith("system", "edit_key", "uc");
             assertThat(String.join(",", ExportColumns.WIDE)).endsWith(
                     "rater_2_name,rater_2_email,rater_2_accepted_research_terms_lgpd,rater_2_professional_skill,"
+                            + "rater_2_organization,rater_2_organization_other,"
                             + "rater_2_change_impact_choice,rater_2_maintenance_operation_choice,rater_2_comment,"
                             + "rater_2_response_language");
             assertThat(String.join(",", ExportColumns.COMPLETO)).isEqualTo(
@@ -93,7 +95,7 @@ class ExportRulesTest {
         @Test
         void incompleteRoleLeavesItsCellsBlank() {
             List<String> wide = ExportRows.wide(ITEM, role("R-0001", "ok"), null);
-            assertThat(wide.subList(15, 23)).containsOnly("");
+            assertThat(wide.subList(17, 27)).containsOnly("");
             List<String> completo = ExportRows.completo(ITEM, null, role("R-0002", "ok"));
             assertThat(completo.subList(11, 16)).containsOnly("");
             assertThat(completo.get(16)).isEqualTo("R-0002");
@@ -103,26 +105,27 @@ class ExportRulesTest {
         @Test
         void wideCarriesConsentCellProfessionalSkillCodeAndLanguage() {
             List<String> wide = ExportRows.wide(ITEM, role("R-0001", "Texto"), null);
-            assertThat(wide.subList(7, 15)).containsExactly(
-                    "Ana Souza", "ana@example.com", "v1 pt-BR 2026-11-20T17:03:00+00:00", "test_analyst", "HIGH",
-                    "UPDATE", "Texto", "es-ES");
+            assertThat(wide.subList(7, 17)).containsExactly(
+                    "Ana Souza", "ana@example.com", "v1 pt-BR 2026-11-20T17:03:00+00:00", "test_analyst", "ufcg", "",
+                    "HIGH", "UPDATE", "Texto", "es-ES");
         }
 
         @Test
         void anonymizedParticipantExportsTheMarker() {
             ExportRole anonymized = new ExportRole(
                     "R-0003", null, null, true, true, "v1", "en-US", Instant.parse("2026-11-20T17:03:00Z"),
-                    "other", "LOW", "KEEP", null, "en-US");
+                    "other", "other", "Acme", "LOW", "KEEP", null, "en-US");
             List<String> wide = ExportRows.wide(ITEM, anonymized, null);
             assertThat(wide.get(7)).isEqualTo("anonymized");
             assertThat(wide.get(8)).isEqualTo("anonymized");
-            assertThat(wide.get(13)).isEmpty();
+            assertThat(wide.get(15)).isEmpty();
         }
 
         @Test
         void consentCellIsBlankWhenConsentWasNotAccepted() {
             ExportRole refused = new ExportRole(
-                    "R-0004", "N", "n@example.com", false, false, "v1", "pt-BR", null, "other", "LOW", "KEEP", "", "pt-BR");
+                    "R-0004", "N", "n@example.com", false, false, "v1", "pt-BR", null, "other", "tjpb", null, "LOW",
+                    "KEEP", "", "pt-BR");
             assertThat(ExportRows.consentCell(refused)).isEmpty();
             assertThat(ExportRows.consentCell(null)).isEmpty();
         }
@@ -133,8 +136,8 @@ class ExportRulesTest {
                     "minitest", "k", "uc", "MOD", "step", "=origin", "-target", "v1", "v2", "=uc1", "+uc2");
             ExportRole r = role("R-0001", "@comment");
             assertThat(ExportRows.wide(formulaItem, r, null).subList(5, 7)).containsExactly("'=origin", "'-target");
-            assertThat(ExportRows.wide(formulaItem, r, null).get(13)).isEqualTo("'@comment");
-            assertThat(ExportRows.longRow(longResponse("=boom")).get(10)).isEqualTo("'=boom");
+            assertThat(ExportRows.wide(formulaItem, r, null).get(15)).isEqualTo("'@comment");
+            assertThat(ExportRows.longRow(longResponse("=boom")).get(12)).isEqualTo("'=boom");
             assertThat(ExportRows.completo(formulaItem, r, null).subList(5, 11))
                     .containsExactly("=origin", "-target", "v1", "v2", "=uc1", "+uc2");
             assertThat(ExportRows.completo(formulaItem, r, null).get(14)).isEqualTo("@comment");
@@ -153,14 +156,14 @@ class ExportRulesTest {
         void longRowHasNoNameOrEmailAndFormatsTimestamps() {
             List<String> row = ExportRows.longRow(longResponse("note"));
             assertThat(row).containsExactly(
-                    "minitest", "k", "2", "1", "R-0001", "developer", "pt-BR", "pt-BR", "LOW", "KEEP", "note", "en-US",
-                    "2026-11-20T16:00:00+00:00", "2026-11-20T16:30:00+00:00");
+                    "minitest", "k", "2", "1", "R-0001", "developer", "tjpb", "", "pt-BR", "pt-BR", "LOW", "KEEP",
+                    "note", "en-US", "2026-11-20T16:00:00+00:00", "2026-11-20T16:30:00+00:00");
         }
 
         private ExportLongResponse longResponse(String comment) {
             return new ExportLongResponse(
-                    "minitest", "k", 2, 1, "R-0001", "developer", "pt-BR", "pt-BR", "LOW", "KEEP", comment, "en-US",
-                    Instant.parse("2026-11-20T16:00:00Z"), Instant.parse("2026-11-20T16:30:00Z"));
+                    "minitest", "k", 2, 1, "R-0001", "developer", "tjpb", null, "pt-BR", "pt-BR", "LOW", "KEEP", comment,
+                    "en-US", Instant.parse("2026-11-20T16:00:00Z"), Instant.parse("2026-11-20T16:30:00Z"));
         }
     }
 

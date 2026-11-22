@@ -109,14 +109,16 @@ public class ExportController {
                     examples = @ExampleObject(value = """
                             system,edit_key,uc,kind,field,origin,target,rater_1_name,rater_1_email,\
                             rater_1_accepted_research_terms_lgpd,rater_1_professional_skill,\
+                            rater_1_organization,rater_1_organization_other,\
                             rater_1_change_impact_choice,rater_1_maintenance_operation_choice,rater_1_comment,\
                             rater_1_response_language,rater_2_name,rater_2_email,\
                             rater_2_accepted_research_terms_lgpd,rater_2_professional_skill,\
+                            rater_2_organization,rater_2_organization_other,\
                             rater_2_change_impact_choice,rater_2_maintenance_operation_choice,rater_2_comment,\
                             rater_2_response_language
                             minitest,LoginTest|1|1,LoginTest,MOD,step,launches the login screen,displays the login screen,\
-                            Ana Souza,ana@example.com,v1 pt-BR 2026-11-20T17:03:00+00:00,test_analyst,HIGH,UPDATE,,\
-                            pt-BR,,,,,,,,
+                            Ana Souza,ana@example.com,v1 pt-BR 2026-11-20T17:03:00+00:00,test_analyst,ufcg,,HIGH,UPDATE,,\
+                            pt-BR,,,,,,,,,,
                             """)))
     @ApiResponse(
             responseCode = "401",
@@ -146,10 +148,10 @@ public class ExportController {
                     mediaType = CSV,
                     schema = @Schema(type = "string"),
                     examples = @ExampleObject(value = """
-                            system,edit_key,block,role,pseudonym,professional_skill,participant_preferred_language,\
-                            consent_language,change_impact,maintenance_operation,comment,response_language,\
-                            reserved_at,submitted_at
-                            minitest,LoginTest|1|1,1,1,R-0001,test_analyst,pt-BR,pt-BR,HIGH,UPDATE,,pt-BR,\
+                            system,edit_key,block,role,pseudonym,professional_skill,organization,organization_other,\
+                            participant_preferred_language,consent_language,change_impact,maintenance_operation,\
+                            comment,response_language,reserved_at,submitted_at
+                            minitest,LoginTest|1|1,1,1,R-0001,test_analyst,ufcg,,pt-BR,pt-BR,HIGH,UPDATE,,pt-BR,\
                             2026-11-20T16:40:00+00:00,2026-11-20T17:03:00+00:00
                             """)))
     @ApiResponse(

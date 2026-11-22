@@ -66,6 +66,14 @@ public class HypermediaConfig {
                                 .withMinItems(1L)
                                 .withMaxItems(1L))
                 .withOptions(
+                        SkillRequest.class,
+                        "organization",
+                        property -> HalFormsOptions.inline(
+                                        io.github.diegoquirino.veredito.domain.onboarding.OrganizationAffiliation
+                                                .codes())
+                                .withMinItems(1L)
+                                .withMaxItems(1L))
+                .withOptions(
                         ScreeningRequest.class,
                         "answer",
                         property -> HalFormsOptions.inline(ScreeningAnswer.codes())

@@ -115,6 +115,12 @@ export function fieldMessage(error: FieldError): string | undefined {
       return error.code === 'size'
         ? $localize`:skill description too long@@field.skillOther.size:Use at most 100 characters`
         : $localize`:skill description missing@@field.skillOther.required:Describe your professional skill (up to 100 characters)`;
+    case 'organization':
+      return $localize`:organization field not chosen@@field.organization.invalid:Choose one option`;
+    case 'organizationOther':
+      return error.code === 'size'
+        ? $localize`:organization name too long@@field.organizationOther.size:Use at most 100 characters`
+        : $localize`:organization name missing@@field.organizationOther.required:Enter the organization name (up to 100 characters)`;
     case 'answer':
       return $localize`:screening answer not chosen@@field.answer.invalid:Choose one answer`;
     case 'decision':

@@ -5,11 +5,13 @@ import io.github.diegoquirino.veredito.api.ProblemType;
 import io.github.diegoquirino.veredito.domain.access.PersonName;
 import io.github.diegoquirino.veredito.domain.onboarding.OnboardingState;
 import io.github.diegoquirino.veredito.domain.onboarding.OnboardingStep;
+import io.github.diegoquirino.veredito.domain.onboarding.OrganizationChoice;
 import io.github.diegoquirino.veredito.domain.onboarding.SkillChoice;
 import io.github.diegoquirino.veredito.onboarding.OnboardingService.Onboarding;
 import io.github.diegoquirino.veredito.persistence.ParticipantRepository;
 import io.github.diegoquirino.veredito.persistence.ParticipantRepository.ParticipantProfile;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,8 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Profile step (spec 013): name and professional skill before consent. Also supports later updates
- * of name/skill when the profile step is already complete (spec 014).
+ * Profile step (specs 013–025): name, professional skill and organization before consent. Also
+ * supports later updates when the profile step is already complete (spec 014).
  */
 @Service
 public class SkillService {
@@ -32,7 +34,13 @@ public class SkillService {
     }
 
     /** Stored profile fields and whether the profile step is still pending. */
-    public record SkillView(String name, String skill, String skillOther, boolean pending) {}
+    public record SkillView(
+            String name,
+            String skill,
+            String skillOther,
+            String organization,
+            String organizationOther,
+            boolean pending) {}
 
     @Transactional(readOnly = true)
     public SkillView view(long participantId) {
@@ -45,29 +53,47 @@ public class SkillService {
                 name,
                 state.professionalSkill(),
                 state.professionalSkillOther(),
+                state.organization(),
+                state.organizationOther(),
                 onboarding.step() == OnboardingStep.PROFILE);
     }
 
+    @Transactional(readOnly = true)
+    public List<String> organizationSuggestions(long participantId) {
+        return participants.organizationSuggestions(participantId);
+    }
+
     /**
-     * Completes or updates name and skill. While the pending step is {@code profile}, both are
-     * required. Afterwards, either field may be updated (identical payload is {@code 200}).
+     * Completes or updates name, skill and organization. While the pending step is {@code profile},
+     * all are required. Afterwards, the same PUT updates the profile (identical payload is {@code 200}).
      */
     @Transactional
-    public SkillView record(long participantId, String rawName, String skill, String other) {
+    public SkillView record(
+            long participantId,
+            String rawName,
+            String skill,
+            String skillOther,
+            String organization,
+            String organizationOther) {
         Map<String, String> errors = new LinkedHashMap<>();
         Optional<PersonName> parsedName = PersonName.parse(rawName);
         if (parsedName.isEmpty()) {
             errors.put("name", rawName == null || rawName.isBlank() ? "required" : "size");
         }
-        SkillChoice.Validation validation = SkillChoice.validate(skill, other);
-        if (!validation.valid()) {
-            errors.putAll(validation.errors());
+        SkillChoice.Validation skillValidation = SkillChoice.validate(skill, skillOther);
+        if (!skillValidation.valid()) {
+            errors.putAll(skillValidation.errors());
+        }
+        OrganizationChoice.Validation orgValidation = OrganizationChoice.validate(organization, organizationOther);
+        if (!orgValidation.valid()) {
+            errors.putAll(orgValidation.errors());
         }
         if (!errors.isEmpty()) {
             throw ProblemException.invalidFields(errors);
         }
         PersonName name = parsedName.get();
-        SkillChoice choice = validation.choice();
+        SkillChoice skillChoice = skillValidation.choice();
+        OrganizationChoice orgChoice = orgValidation.choice();
 
         OnboardingState state = participants
                 .lockOnboardingState(participantId)
@@ -76,15 +102,29 @@ public class SkillService {
         Onboarding before = onboarding.of(state, onboarding.currentForm().orElse(null), currentName);
 
         boolean same = name.value().equals(currentName)
-                && choice.skill().code().equals(state.professionalSkill())
-                && Objects.equals(choice.other(), state.professionalSkillOther());
+                && skillChoice.skill().code().equals(state.professionalSkill())
+                && Objects.equals(skillChoice.other(), state.professionalSkillOther())
+                && orgChoice.organization().code().equals(state.organization())
+                && Objects.equals(orgChoice.other(), state.organizationOther());
         if (same) {
             return view(before, currentName);
         }
 
-        if (before.step() == OnboardingStep.PROFILE || state.professionalSkill() != null) {
-            participants.updateProfile(participantId, name.value(), choice.skill().code(), choice.other());
-            OnboardingState updated = state.withSkill(choice.skill().code(), choice.other());
+        boolean profilePending = before.step() == OnboardingStep.PROFILE;
+        boolean alreadyHadSkill = state.professionalSkill() != null;
+        if (profilePending || alreadyHadSkill || state.organization() != null) {
+            participants.updateProfile(
+                    participantId,
+                    name.value(),
+                    skillChoice.skill().code(),
+                    skillChoice.other(),
+                    orgChoice.organization().code(),
+                    orgChoice.other());
+            OnboardingState updated = state.withProfile(
+                    skillChoice.skill().code(),
+                    skillChoice.other(),
+                    orgChoice.organization().code(),
+                    orgChoice.other());
             return view(onboarding.of(updated, before.currentForm(), name.value()), name.value());
         }
         throw notPending(before.step());

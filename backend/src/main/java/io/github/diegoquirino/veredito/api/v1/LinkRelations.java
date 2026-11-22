@@ -75,7 +75,13 @@ public final class LinkRelations {
             "consent", "The participant's decision on the consent form; PUT records it.", HttpMethod.GET,
             "/swagger-ui.html#/Participation");
     public static final Relation SKILL = new Relation(
-            "skill", "The participant's name and professional skill; PUT completes or updates the profile.",
+            "skill",
+            "The participant's name, professional skill and organization; PUT completes or updates the profile.",
+            HttpMethod.GET,
+            "/swagger-ui.html#/Participation");
+    public static final Relation ORGANIZATION_SUGGESTIONS = new Relation(
+            "organization-suggestions",
+            "Distinct organizationOther values already saved by other participants (autocomplete).",
             HttpMethod.GET,
             "/swagger-ui.html#/Participation");
     public static final Relation SCREENING = new Relation(
@@ -118,7 +124,8 @@ public final class LinkRelations {
         for (Relation relation : new Relation[] {
             V1, REQUEST_CODE, SIGN_IN, SESSION, SIGN_OUT, ME, BATCHES, REQUEST_PREVIEW, STUDY_PHASE, CONFIRM,
             NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, CANCEL_RESERVATION, ONBOARDING, CONSENT_FORM,
-            CONSENT_TEXT, CONSENT, SKILL, SCREENING, SCREENING_EXAMPLE, EXPORTS, EXPORT_WIDE, EXPORT_LONG,
+            CONSENT_TEXT, CONSENT, SKILL, ORGANIZATION_SUGGESTIONS, SCREENING, SCREENING_EXAMPLE, EXPORTS,
+            EXPORT_WIDE, EXPORT_LONG,
             EXPORT_COMPLETO, EXPORT_RATER1, EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE
         }) {
             BY_NAME.put(relation.name(), relation);

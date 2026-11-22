@@ -186,7 +186,7 @@ public abstract class ApiTestBase {
     protected String eligibleParticipantSession() {
         long id = newParticipant().id();
         acceptCurrentConsent(id, "pt-BR");
-        seedSkill(id, "test_analyst", null);
+        seedProfile(id, "Eligible", "test_analyst", null);
         seedScreening(id, ScreeningAnswer.YES_PROFESSIONAL);
         return session(Subject.PARTICIPANT, id);
     }
@@ -221,9 +221,19 @@ public abstract class ApiTestBase {
         participants.recordSkill(participantId, skill, other);
     }
 
-    /** Sets name and skill together (profile step, spec 013). */
+    /** Sets name, skill and organization together (profile step, specs 013–025). */
     protected void seedProfile(long participantId, String name, String skill, String other) {
-        participants.updateProfile(participantId, name, skill, other);
+        seedProfile(participantId, name, skill, other, "ufcg", null);
+    }
+
+    protected void seedProfile(
+            long participantId,
+            String name,
+            String skill,
+            String skillOther,
+            String organization,
+            String organizationOther) {
+        participants.updateProfile(participantId, name, skill, skillOther, organization, organizationOther);
     }
 
     protected void seedScreening(long participantId, ScreeningAnswer answer) {

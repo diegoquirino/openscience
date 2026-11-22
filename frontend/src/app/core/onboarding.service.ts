@@ -117,27 +117,68 @@ export class OnboardingService {
     return this.put('consent', { decision, consentFormVersion });
   }
 
-  recordSkill(name: string, skill: string, skillOther: string | null): Observable<void> {
-    return this.put(
-      'skill',
-      skillOther === null ? { name, skill } : { name, skill, skillOther },
-    );
+  recordSkill(
+    name: string,
+    skill: string,
+    skillOther: string | null,
+    organization: string,
+    organizationOther: string | null,
+  ): Observable<void> {
+    const body: Record<string, string> = { name, skill, organization };
+    if (skillOther !== null) {
+      body['skillOther'] = skillOther;
+    }
+    if (organizationOther !== null) {
+      body['organizationOther'] = organizationOther;
+    }
+    return this.put('skill', body);
   }
 
-  /** Current name and skill (profile menu and resume). */
-  loadSkill(): Observable<{ name: string | null; skill: string | null; skillOther: string | null }> {
+  /** Current name, skill and organization (profile menu and resume). */
+  loadSkill(): Observable<{
+    name: string | null;
+    skill: string | null;
+    skillOther: string | null;
+    organization: string | null;
+    organizationOther: string | null;
+  }> {
     return this.state().pipe(
       switchMap((state) => {
         const href = state.links.href('skill');
         return href
-          ? this.http.get<{ name?: string | null; skill?: string | null; skillOther?: string | null }>(href)
+          ? this.http.get<{
+              name?: string | null;
+              skill?: string | null;
+              skillOther?: string | null;
+              organization?: string | null;
+              organizationOther?: string | null;
+              _links?: Record<string, { href?: string }>;
+            }>(href)
           : missing('vd:skill');
       }),
       map((body) => ({
         name: body.name ?? null,
         skill: body.skill ?? null,
         skillOther: body.skillOther ?? null,
+        organization: body.organization ?? null,
+        organizationOther: body.organizationOther ?? null,
       })),
+    );
+  }
+
+  organizationSuggestions(): Observable<string[]> {
+    return this.state().pipe(
+      switchMap((state) => {
+        const skillHref = state.links.href('skill');
+        return skillHref ? this.http.get<HalResource>(skillHref) : missing('vd:skill');
+      }),
+      switchMap((skill) => {
+        const href = Links.of(skill).href('organization-suggestions');
+        return href
+          ? this.http.get<{ suggestions?: string[] }>(href)
+          : missing('vd:organization-suggestions');
+      }),
+      map((body) => body.suggestions ?? []),
     );
   }
 

@@ -64,7 +64,8 @@ public class ExportQuery {
     public List<ExportLongResponse> longResponses() {
         return jdbc.sql("""
                         SELECT i.`system` AS i_system, i.edit_key, b.number AS block_number, t.role, p.pseudonym,
-                               p.professional_skill, p.preferred_language, p.consent_language,
+                               p.professional_skill, p.organization, p.organization_other,
+                               p.preferred_language, p.consent_language,
                                r.change_impact, r.maintenance_operation, r.comment, r.language,
                                t.reserved_at, t.submitted_at
                         FROM response r
@@ -81,6 +82,8 @@ public class ExportQuery {
                         rs.getInt("role"),
                         rs.getString("pseudonym"),
                         rs.getString("professional_skill"),
+                        rs.getString("organization"),
+                        rs.getString("organization_other"),
                         rs.getString("preferred_language"),
                         rs.getString("consent_language"),
                         rs.getString("change_impact"),
@@ -111,6 +114,7 @@ public class ExportQuery {
                 %1$s.comment AS r%4$d_comment, %1$s.language AS r%4$d_language,
                 %2$s.pseudonym AS r%4$d_pseudonym, %2$s.name AS r%4$d_name, %2$s.email AS r%4$d_email,
                 %2$s.anonymized_at AS r%4$d_anonymized_at, %2$s.professional_skill AS r%4$d_skill,
+                %2$s.organization AS r%4$d_organization, %2$s.organization_other AS r%4$d_organization_other,
                 %2$s.consent_decision AS r%4$d_consent_decision, %2$s.consent_language AS r%4$d_consent_language,
                 %2$s.consent_decided_at AS r%4$d_consent_decided_at, %3$s.version AS r%4$d_consent_version"""
                 .formatted(r, p, c, n);
@@ -157,6 +161,8 @@ public class ExportQuery {
                 rs.getString(prefix + "consent_language"),
                 instant(rs, prefix + "consent_decided_at"),
                 rs.getString(prefix + "skill"),
+                rs.getString(prefix + "organization"),
+                rs.getString(prefix + "organization_other"),
                 impact,
                 rs.getString(prefix + "operation"),
                 rs.getString(prefix + "comment"),

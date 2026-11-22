@@ -26,7 +26,11 @@ class OnboardingFlowTest extends ApiTestBase {
         onboarding.then().body("step", equalTo("profile")).body("eligible", equalTo(false));
 
         as(token).header("Accept-Language", locale).contentType("application/json")
-                .body(Map.of("name", "Ana Souza", "skill", "other", "skillOther", "Redator"))
+                .body(Map.of(
+                        "name", "Ana Souza",
+                        "skill", "other",
+                        "skillOther", "Redator",
+                        "organization", "ufcg"))
                 .put(href(onboarding, "skill"))
                 .then().statusCode(200);
 
@@ -57,7 +61,7 @@ class OnboardingFlowTest extends ApiTestBase {
 
         Map<String, Object> row = jdbc.sql("""
                         SELECT name, consent_decision, consent_language, professional_skill, professional_skill_other,
-                               screening_answer, eligible
+                               organization, organization_other, screening_answer, eligible
                         FROM participant WHERE email = ?""")
                 .param(normalized(email)).query().singleRow();
         assertThat(row)
@@ -66,6 +70,8 @@ class OnboardingFlowTest extends ApiTestBase {
                 .containsEntry("consent_language", locale)
                 .containsEntry("professional_skill", "other")
                 .containsEntry("professional_skill_other", "Redator")
+                .containsEntry("organization", "ufcg")
+                .containsEntry("organization_other", null)
                 .containsEntry("screening_answer", "yes_professional")
                 .containsEntry("eligible", true);
     }

@@ -10,6 +10,8 @@ public record ExportLongResponse(
         int role,
         String pseudonym,
         String professionalSkill,
+        String organization,
+        String organizationOther,
         String participantPreferredLanguage,
         String consentLanguage,
         String changeImpact,

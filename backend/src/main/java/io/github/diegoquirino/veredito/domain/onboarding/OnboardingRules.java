@@ -21,7 +21,10 @@ public final class OnboardingRules {
         if (currentFormId == null) {
             return OnboardingStep.NOT_OPEN;
         }
-        if (name == null || name.isBlank() || state.professionalSkill() == null) {
+        if (name == null
+                || name.isBlank()
+                || state.professionalSkill() == null
+                || state.organization() == null) {
             return OnboardingStep.PROFILE;
         }
         if (!state.acceptedForm(currentFormId)) {
