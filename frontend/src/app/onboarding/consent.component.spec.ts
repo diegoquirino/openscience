@@ -64,7 +64,7 @@ describe('ConsentComponent', () => {
 
     root.querySelector<HTMLButtonElement>('button.accept')!.click();
 
-    expect(recordConsent).toHaveBeenCalledWith('accepted', 'v7');
+    expect(recordConsent).toHaveBeenCalledWith('accepted', 'v7', false);
     expect(navigate).toHaveBeenCalledWith('/welcome');
   });
 
@@ -75,7 +75,7 @@ describe('ConsentComponent', () => {
 
     root.querySelector<HTMLButtonElement>('button.refuse')!.click();
 
-    expect(recordConsent).toHaveBeenCalledWith('refused', 'v1');
+    expect(recordConsent).toHaveBeenCalledWith('refused', 'v1', false);
     expect(navigate).toHaveBeenCalledWith('/consent/declined');
   });
 

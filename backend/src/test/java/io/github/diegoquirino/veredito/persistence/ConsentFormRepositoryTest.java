@@ -116,14 +116,14 @@ class ConsentFormRepositoryTest {
         assertThat(participants.findOnboardingState(id)).contains(OnboardingState.empty());
 
         long formId = forms.findCurrent(NOW).orElseThrow().id();
-        participants.recordConsent(id, formId, ConsentDecision.REFUSED, "en-US", NOW);
+        participants.recordConsent(id, formId, ConsentDecision.REFUSED, "en-US", NOW, false);
         OnboardingState refused = participants.findOnboardingState(id).orElseThrow();
         assertThat(refused.consentDecision()).isEqualTo(ConsentDecision.REFUSED);
         assertThat(refused.consentFormId()).isEqualTo(formId);
         assertThat(refused.consentLanguage()).isEqualTo("en-US");
         assertThat(refused.consentDecidedAt()).isEqualTo(NOW);
 
-        participants.recordConsent(id, formId, ConsentDecision.ACCEPTED, "es-ES", NOW.plusSeconds(60));
+        participants.recordConsent(id, formId, ConsentDecision.ACCEPTED, "es-ES", NOW.plusSeconds(60), false);
         assertThat(participants.lockOnboardingState(id).orElseThrow().consentDecision())
                 .isEqualTo(ConsentDecision.ACCEPTED);
 

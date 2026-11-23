@@ -13,6 +13,7 @@ public class ConsentDecisionModel extends RepresentationModel<ConsentDecisionMod
     private final String language;
     private final Instant decidedAt;
     private final boolean current;
+    private final boolean acknowledgmentAnonymous;
 
     public ConsentDecisionModel(ConsentView view) {
         this.decision = view.decision() == null ? null : view.decision().code();
@@ -20,6 +21,7 @@ public class ConsentDecisionModel extends RepresentationModel<ConsentDecisionMod
         this.language = view.language();
         this.decidedAt = view.decidedAt();
         this.current = view.current();
+        this.acknowledgmentAnonymous = view.acknowledgmentAnonymous();
     }
 
     @Schema(description = "accepted or refused; null when nothing was recorded.", example = "accepted")
@@ -45,5 +47,14 @@ public class ConsentDecisionModel extends RepresentationModel<ConsentDecisionMod
     @Schema(description = "True when the recorded version is the current one.", example = "true")
     public boolean isCurrent() {
         return current;
+    }
+
+    @Schema(
+            description =
+                    "True when the participant asked to stay anonymous in paper acknowledgments "
+                            + "(collective \"Rotuladores Anonimizados por pedido [N]\").",
+            example = "false")
+    public boolean isAcknowledgmentAnonymous() {
+        return acknowledgmentAnonymous;
     }
 }

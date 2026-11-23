@@ -214,7 +214,7 @@ public abstract class ApiTestBase {
 
     protected void recordConsent(long participantId, ConsentDecision decision, String language) {
         long formId = consentForms.findCurrent(clock.instant()).orElseThrow().id();
-        participants.recordConsent(participantId, formId, decision, language, clock.instant());
+        participants.recordConsent(participantId, formId, decision, language, clock.instant(), false);
     }
 
     protected void seedSkill(long participantId, String skill, String other) {

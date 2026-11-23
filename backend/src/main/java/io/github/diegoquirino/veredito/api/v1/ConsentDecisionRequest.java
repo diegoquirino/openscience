@@ -18,4 +18,12 @@ public record ConsentDecisionRequest(
                 description = "Version of the consent form the participant read; must be the current one.",
                 example = "v1",
                 requiredMode = Schema.RequiredMode.REQUIRED)
-        String consentFormVersion) {}
+        String consentFormVersion,
+        @Schema(
+                description =
+                        "When true, paper acknowledgments omit the name and count this person under "
+                                + "\"Rotuladores Anonimizados por pedido [N]\". Default false (list first+last name). "
+                                + "Ignored when decision is refused.",
+                example = "false",
+                requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+        Boolean acknowledgmentAnonymous) {}

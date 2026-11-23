@@ -121,14 +121,37 @@ public class ParticipantRepository {
                 .optional();
     }
 
-    /** Writes the four consent columns together ({@code ck_participant_consent_complete}). */
-    public void recordConsent(long id, long formId, ConsentDecision decision, String language, Instant decidedAt) {
+    /** Writes the consent columns together ({@code ck_participant_consent_complete}) plus acknowledgment preference. */
+    public void recordConsent(
+            long id,
+            long formId,
+            ConsentDecision decision,
+            String language,
+            Instant decidedAt,
+            boolean acknowledgmentAnonymous) {
         jdbc.sql("""
                         UPDATE participant
-                        SET consent_form_id = ?, consent_decision = ?, consent_language = ?, consent_decided_at = ?
+                        SET consent_form_id = ?, consent_decision = ?, consent_language = ?, consent_decided_at = ?,
+                            acknowledgment_anonymous = ?
                         WHERE id = ?""")
-                .params(formId, decision.code(), language, Timestamp.from(decidedAt), id)
+                .params(
+                        formId,
+                        decision.code(),
+                        language,
+                        Timestamp.from(decidedAt),
+                        acknowledgmentAnonymous,
+                        id)
                 .update();
+    }
+
+    /** Whether paper acknowledgments should omit this participant's name. */
+    public boolean acknowledgmentAnonymous(long id) {
+        Boolean value = jdbc.sql("SELECT acknowledgment_anonymous FROM participant WHERE id = ?")
+                .param(id)
+                .query(Boolean.class)
+                .optional()
+                .orElse(Boolean.FALSE);
+        return Boolean.TRUE.equals(value);
     }
 
     /** Stores the skill once; returns 0 when it was already answered. */

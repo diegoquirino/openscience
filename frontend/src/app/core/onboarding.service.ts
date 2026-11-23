@@ -113,8 +113,12 @@ export class OnboardingService {
     return href ? this.http.get<ConsentFormBody>(href).pipe(map(toConsentForm)) : missing('vd:consent-text');
   }
 
-  recordConsent(decision: ConsentChoice, consentFormVersion: string): Observable<void> {
-    return this.put('consent', { decision, consentFormVersion });
+  recordConsent(
+    decision: ConsentChoice,
+    consentFormVersion: string,
+    acknowledgmentAnonymous = false,
+  ): Observable<void> {
+    return this.put('consent', { decision, consentFormVersion, acknowledgmentAnonymous });
   }
 
   recordSkill(

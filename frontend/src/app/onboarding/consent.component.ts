@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../core/problem-messages';
 import { ToastService } from '../core/toast.service';
@@ -10,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 /** First step: the current consent form in the interface language, accepted or refused (spec 006, US1 and US4). */
 @Component({
   selector: 'app-consent',
-  imports: [MatButtonModule, MatProgressSpinnerModule, RouterLink],
+  imports: [MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, RouterLink],
   template: `
     <section class="consent">
       <h1 id="consent-heading" i18n="@@consent.title">Consent form</h1>
@@ -38,7 +39,15 @@ import { HttpErrorResponse } from '@angular/common/http';
           </p>
         }
         <div class="text" role="region" aria-labelledby="consent-heading" tabindex="0" [attr.lang]="current.language">{{ current.text }}</div>
-                <div class="actions">
+        <mat-checkbox
+          class="ack-anon"
+          [checked]="acknowledgmentAnonymous()"
+          (change)="acknowledgmentAnonymous.set($event.checked)"
+          i18n="@@consent.acknowledgmentAnonymous"
+        >
+          I want to remain anonymous in paper acknowledgments (listed as “Anonymized labelers by request [N]” instead of my first and last name)
+        </mat-checkbox>
+        <div class="actions">
           <button
             mat-flat-button
             color="primary"
@@ -75,11 +84,14 @@ import { HttpErrorResponse } from '@angular/common/http';
     .text {
       white-space: pre-line;
       overflow-y: auto;
-      max-height: calc(100vh - 20rem);
+      max-height: calc(100vh - 22rem);
       min-height: 8rem;
       padding: 1rem;
       border: 1px solid var(--mat-sys-outline-variant, #c4c7c5);
       border-radius: 0.5rem;
+    }
+    .ack-anon {
+      max-width: 40rem;
     }
     .translation,
     .notice {
@@ -112,6 +124,7 @@ export class ConsentComponent implements OnInit {
   readonly saving = signal(false);
   readonly form = signal<ConsentForm | null>(null);
   readonly notice = signal(false);
+  readonly acknowledgmentAnonymous = signal(false);
 
   ngOnInit(): void {
     this.load();
@@ -143,16 +156,18 @@ export class ConsentComponent implements OnInit {
       return;
     }
     this.saving.set(true);
-        this.onboarding.recordConsent(decision, form.version).subscribe({
-      next: () => {
-        this.saving.set(false);
-        void this.router.navigateByUrl(decision === 'accepted' ? '/welcome' : '/consent/declined');
-      },
-      error: (error: unknown) => {
-        this.saving.set(false);
-        this.fail(error);
-      },
-    });
+    this.onboarding
+      .recordConsent(decision, form.version, decision === 'accepted' ? this.acknowledgmentAnonymous() : false)
+      .subscribe({
+        next: () => {
+          this.saving.set(false);
+          void this.router.navigateByUrl(decision === 'accepted' ? '/welcome' : '/consent/declined');
+        },
+        error: (error: unknown) => {
+          this.saving.set(false);
+          this.fail(error);
+        },
+      });
   }
 
   private fail(error: unknown): void {

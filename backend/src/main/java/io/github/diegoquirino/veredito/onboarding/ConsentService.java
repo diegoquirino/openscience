@@ -51,6 +51,7 @@ public class ConsentService {
             String language,
             Instant decidedAt,
             boolean current,
+            boolean acknowledgmentAnonymous,
             OnboardingStep step) {}
 
     /** The current version in {@code language}; {@code 404 not-found} when the study has no current form. */
@@ -76,28 +77,22 @@ public class ConsentService {
 
     @Transactional(readOnly = true)
     public ConsentView view(long participantId) {
-        return view(onboarding.of(participantId));
-    }
-
-    private ConsentView view(Onboarding onboarding) {
-        OnboardingState state = onboarding.state();
-        if (state.consentFormId() == null) {
-            return new ConsentView(null, null, null, null, false, onboarding.step());
-        }
-        String version = forms.findById(state.consentFormId()).map(ConsentFormRow::version).orElse(null);
-        boolean current = onboarding.currentForm() != null && onboarding.currentForm().id() == state.consentFormId();
-        return new ConsentView(
-                state.consentDecision(), version, state.consentLanguage(), state.consentDecidedAt(), current,
-                onboarding.step());
+        return toView(onboarding.of(participantId), participants.acknowledgmentAnonymous(participantId));
     }
 
     /**
      * Records the decision on the current version, in the language of the text shown (the request locale).
      * Accepting twice or refusing twice is {@code 200} unchanged; a refusal can become an acceptance; an
-     * acceptance of the current version is final.
+     * acceptance of the current version is final. When accepting, {@code acknowledgmentAnonymous} controls
+     * whether paper acknowledgments list the name or count this person under the anonymous bucket.
      */
     @Transactional
-    public ConsentView record(long participantId, String decisionCode, String version, String language) {
+    public ConsentView record(
+            long participantId,
+            String decisionCode,
+            String version,
+            String language,
+            boolean acknowledgmentAnonymous) {
         Map<String, String> errors = new LinkedHashMap<>();
         ConsentDecision decision = null;
         if (decisionCode == null || decisionCode.isEmpty()) {
@@ -133,7 +128,7 @@ public class ConsentService {
 
         boolean sameForm = state.consentFormId() != null && state.consentFormId() == current.id();
         if (sameForm && state.consentDecision() == decision) {
-            return view(before);
+            return toView(before, participants.acknowledgmentAnonymous(participantId));
         }
         if (sameForm && state.consentDecision() == ConsentDecision.ACCEPTED) {
             // Refusing an accepted version is the withdrawal of spec 011, not a flip of this decision.
@@ -141,8 +136,28 @@ public class ConsentService {
         }
 
         Instant now = clock.instant().truncatedTo(ChronoUnit.MICROS);
-        participants.recordConsent(participantId, current.id(), decision, language, now);
-        return view(onboarding.of(state.withConsent(current.id(), decision, language, now), current, name));
+        boolean anonymous = decision == ConsentDecision.ACCEPTED && acknowledgmentAnonymous;
+        participants.recordConsent(participantId, current.id(), decision, language, now, anonymous);
+        return toView(
+                onboarding.of(state.withConsent(current.id(), decision, language, now), current, name), anonymous);
+    }
+
+    private ConsentView toView(Onboarding onboarding, boolean acknowledgmentAnonymous) {
+        OnboardingState state = onboarding.state();
+        if (state.consentFormId() == null) {
+            return new ConsentView(null, null, null, null, false, acknowledgmentAnonymous, onboarding.step());
+        }
+        String version = forms.findById(state.consentFormId()).map(ConsentFormRow::version).orElse(null);
+        boolean current =
+                onboarding.currentForm() != null && onboarding.currentForm().id() == state.consentFormId();
+        return new ConsentView(
+                state.consentDecision(),
+                version,
+                state.consentLanguage(),
+                state.consentDecidedAt(),
+                current,
+                acknowledgmentAnonymous,
+                onboarding.step());
     }
 
     private static ProblemException notPending(OnboardingStep step) {

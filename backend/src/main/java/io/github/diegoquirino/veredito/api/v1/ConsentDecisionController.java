@@ -130,9 +130,14 @@ public class ConsentDecisionController {
             @RequestBody(required = false) ConsentDecisionRequest body,
             Locale locale) {
         long participantId = participantId(caller);
-        ConsentDecisionRequest request = body == null ? new ConsentDecisionRequest(null, null) : body;
+        ConsentDecisionRequest request =
+                body == null ? new ConsentDecisionRequest(null, null, null) : body;
         ConsentView view = consent.record(
-                participantId, request.decision(), request.consentFormVersion(), locale.toLanguageTag());
+                participantId,
+                request.decision(),
+                request.consentFormVersion(),
+                locale.toLanguageTag(),
+                Boolean.TRUE.equals(request.acknowledgmentAnonymous()));
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_LOCATION, EntryPointController.ONBOARDING)
                 .body(model(view));
