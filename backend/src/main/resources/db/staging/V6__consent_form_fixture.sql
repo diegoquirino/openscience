@@ -62,13 +62,13 @@ Nos agradecimentos do artigo e/ou da tese de doutorado do autor, a plataforma Ve
 Em qualquer das duas opções, os dados de perfil e de rotulagem continuam sendo solicitados quando cabível, e a pessoa permanece apta a rotular se for elegível nas demais etapas.
 
 VIII) Tratamento de dados pessoais (LGPD)
-- Controlador: Universidade Federal de Campina Grande — Rua Aprígio Veloso, 882, Campina Grande–PB — CNPJ 05.055.128/0001-76.  
+- Controlador: Carlos Diego Quirino Lima — PPGCC/CEEI/UFCG — e-mail diegoquirino@gmail.com — telefone (83) 98818-1876.  
 - Dados coletados: nome; e-mail; habilidade/experiência em engenharia de software; instituição/empresa (quando solicitado); escolha sobre constar nos agradecimentos (sim/não, na plataforma); respostas de triagem e de rotulagem; data/hora técnicas de uso da plataforma. Não se coletam dados sensíveis nos termos da LGPD.  
 - Finalidades: administrar a participação; realizar a tarefa de rotulagem; analisar resultados; produzir tese/artigos (incluindo agradecimentos conforme a preferência informada); cumprir obrigações legais/institucionais; auditoria do estudo.  
 - Base legal: consentimento do titular (Art. 7º, I, da LGPD), sem prejuízo de outras bases cabíveis para pesquisa.  
 - Retenção: 5 (cinco) anos após o encerramento desta etapa da pesquisa; depois, eliminação ou anonimização, salvo obrigação legal.  
-- Direitos: confirmação, acesso, correção, informação, anonimização/bloqueio/eliminação quando cabível, portabilidade quando regulamentada, revogação do consentimento, reclamação à instituição ou à ANPD — contato: diegoquirino@gmail.com.  
-- Encarregado de proteção de dados institucional da UFCG: a definir; neste protocolo o contato operacional é o do pesquisador até indicação institucional.
+- Direitos: confirmação, acesso, correção, informação, anonimização/bloqueio/eliminação quando cabível, portabilidade quando regulamentada, revogação do consentimento, reclamação ao controlador ou à ANPD — contato: diegoquirino@gmail.com.  
+- Encarregado / contato para exercício de direitos LGPD: o próprio controlador (diegoquirino@gmail.com). Para questões de ética em pesquisa, ver também o contato do CEP na seção XIII.
 
 IX) Registro do consentimento em ambiente virtual
 O consentimento (aceite ou recusa) e a escolha sobre constar nos agradecimentos (sim/não) são registrados eletronicamente na plataforma Veredito, com carimbo de data/hora, versão e idioma do termo. Recomenda-se que você guarde uma cópia deste texto (download/impressão) para seus registros, conforme Ofício Circular nº 02/2021.
@@ -105,7 +105,7 @@ This is a translation; the Portuguese (Brazil) text is the reference version. Th
 
 Study title: Semantic Change Impact Analysis Framework for System-Level Test Case Maintenance
 Responsible researcher: Carlos Diego Quirino Lima - Doctoral student PPGCC / CEEI / UFCG (student id 0123015808-15D) - Advisors: Wilkerson de Lucena Andrade; Everton Leandro Galdino Alves - diegoquirino@gmail.com - +55 83 98818-1876
-Controller: Universidade Federal de Campina Grande - Rua Aprigio Veloso, 882, Campina Grande-PB - CNPJ 05.055.128/0001-76
+Controller (LGPD): Carlos Diego Quirino Lima - PPGCC / CEEI / UFCG - diegoquirino@gmail.com - +55 83 98818-1876. LGPD rights contact: the controller (same e-mail). Ethics committee (CEP): cep.ces.ufcg@gmail.com / (83) 3372-1835
 CEP contact: cep.ces.ufcg@gmail.com / (83) 3372-1835
 
 You are invited to take part entirely online via Veredito. You will read this form, provide profile data (name, e-mail, professional skill, organization/employer when asked), answer a screening question, and if eligible label use-case edits (change impact and maintenance operation). No audio/video recording. Participation is voluntary and may be withdrawn at any time.
@@ -124,7 +124,7 @@ Esta es una traducción; la versión de referencia es la portuguesa (Brasil). Es
 
 Título: Semantic Change Impact Analysis Framework for System-Level Test Case Maintenance
 Investigador: Carlos Diego Quirino Lima - Doctorando PPGCC / CEEI / UFCG (matrícula 0123015808-15D) - Orientadores: Wilkerson de Lucena Andrade; Everton Leandro Galdino Alves - diegoquirino@gmail.com - +55 83 98818-1876
-Responsable: Universidade Federal de Campina Grande - CNPJ 05.055.128/0001-76
+Responsable del tratamiento (LGPD): Carlos Diego Quirino Lima - PPGCC / CEEI / UFCG - diegoquirino@gmail.com - +55 83 98818-1876. Contacto para derechos LGPD: el propio responsable (mismo correo). Comité de ética (CEP): cep.ces.ufcg@gmail.com / (83) 3372-1835
 Contacto CEP: cep.ces.ufcg@gmail.com / (83) 3372-1835
 
 Se le invita a participar en línea mediante Veredito: leer este término, indicar perfil (nombre, correo, habilidad profesional, institución/empresa cuando se solicite), responder a la triaje y, si es elegible, etiquetar ediciones de casos de uso. Sin grabación de audio/vídeo. Participación voluntaria, retirable en cualquier momento.

@@ -31,7 +31,7 @@ services:
     build:
       context: .
       args:
-        VEREDITO_VERSION: ${VEREDITO_VERSION:-0.27.0+dev}
+        VEREDITO_VERSION: ${VEREDITO_VERSION:-0.28.0+dev}
     environment:
       SPRING_PROFILES_ACTIVE: staging
       DB_URL: jdbc:mysql://mysql:3306/veredito
