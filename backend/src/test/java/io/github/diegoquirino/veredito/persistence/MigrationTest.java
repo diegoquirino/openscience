@@ -118,7 +118,7 @@ class MigrationTest {
                 "access_session.ix_access_session_expires_at(expires_at)");
 
         Map<String, Object> config = jdbc.sql("SELECT admin_name FROM config").query().singleRow();
-        assertThat(config.get("admin_name")).isNull();
+        assertThat(config.get("admin_name")).isEqualTo("Carlos Diego Quirino Lima");
     }
 
     @Test
@@ -127,6 +127,7 @@ class MigrationTest {
         assertThat(config)
                 .containsEntry("id", 1)
                 .containsEntry("admin_email", "diegoquirino@gmail.com")
+                .containsEntry("admin_name", "Carlos Diego Quirino Lima")
                 .containsEntry("reservation_minutes", 20)
                 .containsEntry("block_size", 10)
                 .containsEntry("daily_email_limit", 450)
