@@ -33,6 +33,12 @@ describe('ConsentComponent', () => {
     return { fixture, navigate, root };
   }
 
+  function chooseAcknowledgment(root: HTMLElement, value: 'named' | 'anonymous'): void {
+    const input = root.querySelector<HTMLInputElement>(`mat-radio-button[value="${value}"] input`);
+    expect(input).not.toBeNull();
+    input!.click();
+  }
+
   beforeEach(() => vi.resetAllMocks());
 
   it('shows the translation note and the reference link only for a translation', () => {
@@ -57,18 +63,40 @@ describe('ConsentComponent', () => {
     expect(region.textContent).toContain('Second paragraph');
   });
 
-  it('records the acceptance of the version on screen and opens the resolver', () => {
+  it('keeps accept disabled until an acknowledgment radio is chosen', () => {
+    consentForm.mockReturnValue(of(form(true, 'v7')));
+    const { root } = create();
+    expect(root.querySelector<HTMLButtonElement>('button.accept')!.disabled).toBe(true);
+    expect(root.querySelectorAll('mat-radio-button')).toHaveLength(2);
+  });
+
+  it('records acceptance with named acknowledgments when Sim is chosen', () => {
     consentForm.mockReturnValue(of(form(true, 'v7')));
     recordConsent.mockReturnValue(of(undefined));
-    const { navigate, root } = create();
+    const { fixture, navigate, root } = create();
 
+    chooseAcknowledgment(root, 'named');
+    fixture.detectChanges();
     root.querySelector<HTMLButtonElement>('button.accept')!.click();
 
     expect(recordConsent).toHaveBeenCalledWith('accepted', 'v7', false);
     expect(navigate).toHaveBeenCalledWith('/welcome');
   });
 
-  it('records the refusal and opens the closing screen', () => {
+  it('records acceptance with acknowledgment_anonymous when Não is chosen', () => {
+    consentForm.mockReturnValue(of(form(true, 'v7')));
+    recordConsent.mockReturnValue(of(undefined));
+    const { fixture, navigate, root } = create();
+
+    chooseAcknowledgment(root, 'anonymous');
+    fixture.detectChanges();
+    root.querySelector<HTMLButtonElement>('button.accept')!.click();
+
+    expect(recordConsent).toHaveBeenCalledWith('accepted', 'v7', true);
+    expect(navigate).toHaveBeenCalledWith('/welcome');
+  });
+
+  it('records the refusal and opens the closing screen without requiring a radio', () => {
     consentForm.mockReturnValue(of(form(false)));
     recordConsent.mockReturnValue(of(undefined));
     const { navigate, root } = create();
@@ -92,6 +120,8 @@ describe('ConsentComponent', () => {
     );
     const { fixture, root } = create();
 
+    chooseAcknowledgment(root, 'named');
+    fixture.detectChanges();
     root.querySelector<HTMLButtonElement>('button.accept')!.click();
     fixture.detectChanges();
 

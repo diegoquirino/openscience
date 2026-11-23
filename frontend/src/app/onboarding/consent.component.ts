@@ -1,17 +1,20 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../core/problem-messages';
 import { ToastService } from '../core/toast.service';
 import { ConsentChoice, ConsentForm, NoConsentFormError, OnboardingService } from '../core/onboarding.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+/** Acknowledgment preference on consent: list name vs anonymous bucket (spec 027). */
+type AcknowledgmentChoice = 'named' | 'anonymous';
+
 /** First step: the current consent form in the interface language, accepted or refused (spec 006, US1 and US4). */
 @Component({
   selector: 'app-consent',
-  imports: [MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, RouterLink],
+  imports: [MatButtonModule, MatProgressSpinnerModule, MatRadioModule, RouterLink],
   template: `
     <section class="consent">
       <h1 id="consent-heading" i18n="@@consent.title">Consent form</h1>
@@ -39,21 +42,29 @@ import { HttpErrorResponse } from '@angular/common/http';
           </p>
         }
         <div class="text" role="region" aria-labelledby="consent-heading" tabindex="0" [attr.lang]="current.language">{{ current.text }}</div>
-        <mat-checkbox
-          class="ack-anon"
-          [checked]="acknowledgmentAnonymous()"
-          (change)="acknowledgmentAnonymous.set($event.checked)"
-          i18n="@@consent.acknowledgmentAnonymous"
+        <mat-radio-group
+          class="ack-choice"
+          aria-labelledby="ack-legend"
+          [value]="acknowledgmentChoice()"
+          (change)="acknowledgmentChoice.set($event.value)"
         >
-          I want to remain anonymous in paper acknowledgments (listed as “Anonymized labelers by request [N]” instead of my first and last name)
-        </mat-checkbox>
+          <span id="ack-legend" class="legend" i18n="@@consent.acknowledgmentLegend"
+            >Acknowledgments in the article and/or doctoral thesis</span
+          >
+          <mat-radio-button value="named" i18n="@@consent.acknowledgmentNamed">
+            Yes, I want my first and last names to appear in the acknowledgments of the author’s article and/or doctoral thesis.
+          </mat-radio-button>
+          <mat-radio-button value="anonymous" i18n="@@consent.acknowledgmentAnonymous">
+            No, I want to remain anonymous in the acknowledgments of the author’s article and/or doctoral thesis. In that case the system includes me in the collective mention “Anonymized labelers by request [N]” (N = number of such requests), without requiring manual anonymization by the administrator.
+          </mat-radio-button>
+        </mat-radio-group>
         <div class="actions">
           <button
             mat-flat-button
             color="primary"
             type="button"
             class="accept"
-            [disabled]="saving()"
+            [disabled]="saving() || acknowledgmentChoice() === null"
             (click)="decide('accepted')"
             i18n="@@consent.accept"
           >
@@ -90,8 +101,13 @@ import { HttpErrorResponse } from '@angular/common/http';
       border: 1px solid var(--mat-sys-outline-variant, #c4c7c5);
       border-radius: 0.5rem;
     }
-    .ack-anon {
-      max-width: 40rem;
+    .ack-choice {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 42rem;
+    }
+    .legend {
+      font-weight: 600;
     }
     .translation,
     .notice {
@@ -124,7 +140,7 @@ export class ConsentComponent implements OnInit {
   readonly saving = signal(false);
   readonly form = signal<ConsentForm | null>(null);
   readonly notice = signal(false);
-  readonly acknowledgmentAnonymous = signal(false);
+  readonly acknowledgmentChoice = signal<AcknowledgmentChoice | null>(null);
 
   ngOnInit(): void {
     this.load();
@@ -133,6 +149,7 @@ export class ConsentComponent implements OnInit {
   load(): void {
     this.loading.set(true);
     this.form.set(null);
+    this.acknowledgmentChoice.set(null);
     this.onboarding.consentForm().subscribe({
       next: (form) => {
         this.form.set(form);
@@ -155,19 +172,21 @@ export class ConsentComponent implements OnInit {
     if (!form || this.saving()) {
       return;
     }
+    if (decision === 'accepted' && this.acknowledgmentChoice() === null) {
+      return;
+    }
     this.saving.set(true);
-    this.onboarding
-      .recordConsent(decision, form.version, decision === 'accepted' ? this.acknowledgmentAnonymous() : false)
-      .subscribe({
-        next: () => {
-          this.saving.set(false);
-          void this.router.navigateByUrl(decision === 'accepted' ? '/welcome' : '/consent/declined');
-        },
-        error: (error: unknown) => {
-          this.saving.set(false);
-          this.fail(error);
-        },
-      });
+    const anonymous = decision === 'accepted' && this.acknowledgmentChoice() === 'anonymous';
+    this.onboarding.recordConsent(decision, form.version, anonymous).subscribe({
+      next: () => {
+        this.saving.set(false);
+        void this.router.navigateByUrl(decision === 'accepted' ? '/welcome' : '/consent/declined');
+      },
+      error: (error: unknown) => {
+        this.saving.set(false);
+        this.fail(error);
+      },
+    });
   }
 
   private fail(error: unknown): void {

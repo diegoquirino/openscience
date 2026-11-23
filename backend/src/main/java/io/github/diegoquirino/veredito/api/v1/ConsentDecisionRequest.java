@@ -21,8 +21,9 @@ public record ConsentDecisionRequest(
         String consentFormVersion,
         @Schema(
                 description =
-                        "When true, paper acknowledgments omit the name and count this person under "
-                                + "\"Rotuladores Anonimizados por pedido [N]\". Default false (list first+last name). "
+                        "When true (consent UI choice \"No\" / remain anonymous), paper/thesis acknowledgments "
+                                + "omit the name and count this person under \"Rotuladores Anonimizados por pedido [N]\". "
+                                + "Default false (choice \"Yes\" / list first+last name). "
                                 + "Ignored when decision is refused.",
                 example = "false",
                 requiredMode = Schema.RequiredMode.NOT_REQUIRED)
