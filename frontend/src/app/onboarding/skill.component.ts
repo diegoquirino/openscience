@@ -103,7 +103,10 @@ export const SKILL_UNSAVED_KEY = '/skill';
             [matAutocomplete]="orgAuto"
             autocomplete="off"
           />
-          <mat-autocomplete #orgAuto="matAutocomplete">
+          <mat-autocomplete
+            #orgAuto="matAutocomplete"
+            (optionSelected)="onOrganizationOtherInput($event.option.value)"
+          >
             @for (suggestion of filteredSuggestions(); track suggestion) {
               <mat-option [value]="suggestion">{{ suggestion }}</mat-option>
             }

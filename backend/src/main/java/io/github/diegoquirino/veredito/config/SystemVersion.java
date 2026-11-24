@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemVersion {
 
-    static final String FALLBACK = "0.28.0+dev";
+    static final String FALLBACK = "0.29.0+dev";
 
     private final String value;
 

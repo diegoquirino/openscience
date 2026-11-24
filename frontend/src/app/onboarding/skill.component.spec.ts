@@ -127,6 +127,24 @@ describe('SkillComponent', () => {
     expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'developer', null, 'other', 'Acme Ltd');
   });
 
+  it('enables Continue when an existing organization suggestion is selected via autocomplete', () => {
+    recordSkill.mockReturnValue(of(undefined));
+    const { fixture, root, component } = create();
+    component.name.set('Ana Souza');
+    component.choose('developer');
+    component.chooseOrganization('other');
+    fixture.detectChanges();
+    expect(proceed(root).disabled).toBe(true);
+
+    // mat-option does not fire (input); optionSelected must update the signal (spec 029).
+    component.onOrganizationOtherInput('Beta Corp');
+    fixture.detectChanges();
+    expect(component.organizationOther()).toBe('Beta Corp');
+    expect(proceed(root).disabled).toBe(false);
+    proceed(root).click();
+    expect(recordSkill).toHaveBeenCalledWith('Ana Souza', 'developer', null, 'other', 'Beta Corp');
+  });
+
   it('restores the choice kept across a language switch and registers the values to keep', () => {
     const { component } = create({
       name: 'Ana',
