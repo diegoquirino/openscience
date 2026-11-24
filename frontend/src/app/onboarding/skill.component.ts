@@ -7,6 +7,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
 import { LanguageService } from '../core/language.service';
 import {
+  filterOrganizationSuggestions,
   isOrganization,
   ORGANIZATION_OTHER_MAX,
   organizationAnswerValid,
@@ -203,14 +204,9 @@ export class SkillComponent {
       ? fieldMessage({ field: 'organizationOther', code: 'required' })
       : null,
   );
-  readonly filteredSuggestions = computed(() => {
-    const q = this.organizationOther().trim().toLowerCase();
-    const all = this.suggestions();
-    if (!q) {
-      return all.slice(0, 20);
-    }
-    return all.filter((s) => s.toLowerCase().includes(q)).slice(0, 20);
-  });
+  readonly filteredSuggestions = computed(() =>
+    filterOrganizationSuggestions(this.organizationOther(), this.suggestions()),
+  );
 
   constructor() {
     const kept = this.language.takeUnsaved(SKILL_UNSAVED_KEY);

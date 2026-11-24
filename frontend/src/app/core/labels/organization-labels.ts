@@ -4,6 +4,23 @@ export type Organization = (typeof ORGANIZATIONS)[number];
 
 export const ORGANIZATION_OTHER_MAX = 100;
 
+/** Min trimmed characters before Outros(as) autocomplete shows matches (spec 030). */
+export const ORGANIZATION_SUGGESTION_MIN_CHARS = 3;
+
+/** Filtered organization suggestions; empty until the query has enough characters. */
+export function filterOrganizationSuggestions(
+  query: string,
+  all: readonly string[],
+  limit = 20,
+): string[] {
+  const trimmed = query.trim();
+  if (trimmed.length < ORGANIZATION_SUGGESTION_MIN_CHARS) {
+    return [];
+  }
+  const needle = trimmed.toLowerCase();
+  return all.filter((s) => s.toLowerCase().includes(needle)).slice(0, limit);
+}
+
 const ORGANIZATION_LABELS: Record<Organization, () => string> = {
   tjpb: () =>
     $localize`:organization tjpb@@organization.tjpb:TJPB - Tribunal de Justiça do Estado da Paraíba`,

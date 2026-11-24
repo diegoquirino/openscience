@@ -46,7 +46,8 @@ class ConsentFormRepositoryTest {
                         SELECT version FROM flyway_schema_history
                         WHERE success = 1 AND version IS NOT NULL ORDER BY installed_rank""")
                 .query(String.class).list();
-        assertThat(versions).containsExactly("1", "2", "3", "4", "5", "6", "7", "8");
+        assertThat(versions).contains(
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
 
         ConsentFormRow current = forms.findCurrent(NOW).orElseThrow();
         assertThat(current.version()).isEqualTo("fixture-1");

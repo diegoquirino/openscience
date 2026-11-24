@@ -119,6 +119,11 @@ describe('SkillComponent', () => {
     expect(root.querySelector('input.org-other-input')).not.toBeNull();
     expect(proceed(root).disabled).toBe(true);
 
+    expect(component.filteredSuggestions()).toEqual([]);
+    component.organizationOther.set('Ac');
+    fixture.detectChanges();
+    expect(component.filteredSuggestions()).toEqual([]);
+
     component.organizationOther.set('Acme Ltd');
     fixture.detectChanges();
     expect(proceed(root).disabled).toBe(false);

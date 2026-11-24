@@ -7,6 +7,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {
+  filterOrganizationSuggestions,
   isOrganization,
   ORGANIZATION_OTHER_MAX,
   organizationAnswerValid,
@@ -229,14 +230,9 @@ export class ProfileComponent implements OnInit {
       ? fieldMessage({ field: 'organizationOther', code: 'required' })
       : null,
   );
-  readonly filteredSuggestions = computed(() => {
-    const q = this.organizationOther().trim().toLowerCase();
-    const all = this.suggestions();
-    if (!q) {
-      return all.slice(0, 20);
-    }
-    return all.filter((s) => s.toLowerCase().includes(q)).slice(0, 20);
-  });
+  readonly filteredSuggestions = computed(() =>
+    filterOrganizationSuggestions(this.organizationOther(), this.suggestions()),
+  );
 
   ngOnInit(): void {
     const current = this.session.session();
