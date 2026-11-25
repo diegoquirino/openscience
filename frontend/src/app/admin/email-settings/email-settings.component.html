@@ -29,6 +29,16 @@
             <mat-datepicker-toggle matIconSuffix [for]="collectionStartPicker" />
             <mat-datepicker #collectionStartPicker />
           </mat-form-field>
+          <button
+            type="button"
+            mat-stroked-button
+            class="today"
+            data-testid="email-settings-collection-start-today"
+            (click)="setToday('collectionStart')"
+            i18n="@@emailSettings.today"
+          >
+            Today
+          </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
             <input
@@ -54,6 +64,16 @@
             <mat-datepicker-toggle matIconSuffix [for]="reminderPicker" />
             <mat-datepicker #reminderPicker />
           </mat-form-field>
+          <button
+            type="button"
+            mat-stroked-button
+            class="today"
+            data-testid="email-settings-reminder-today"
+            (click)="setToday('reminder')"
+            i18n="@@emailSettings.today"
+          >
+            Today
+          </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
             <input
@@ -84,6 +104,16 @@
             <mat-datepicker-toggle matIconSuffix [for]="collectionEndPicker" />
             <mat-datepicker #collectionEndPicker />
           </mat-form-field>
+          <button
+            type="button"
+            mat-stroked-button
+            class="today"
+            data-testid="email-settings-collection-end-today"
+            (click)="setToday('collectionEnd')"
+            i18n="@@emailSettings.today"
+          >
+            Today
+          </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
             <input

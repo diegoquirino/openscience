@@ -150,6 +150,19 @@ export class EmailSettingsComponent implements OnInit {
     }
   }
 
+  /** Sets a date field to the current local calendar day (spec 034). */
+  protected setToday(field: 'collectionStart' | 'reminder' | 'collectionEnd'): void {
+    const today = new Date();
+    const day = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    if (field === 'collectionStart') {
+      this.collectionStartDate = day;
+    } else if (field === 'reminder') {
+      this.reminderDate = day;
+    } else {
+      this.collectionEndDate = day;
+    }
+  }
+
   private applySettings(settings: EmailSettings): void {
     this.settings.set(settings);
     this.caae = settings.caae ?? '';

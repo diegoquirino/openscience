@@ -26,7 +26,7 @@ import { Links } from '../../core/hal';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
 import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
-import { noneLabel } from '../../core/labels/item-labels';
+import { missingUsecaseLabel } from '../../core/labels/item-labels';
 import {
   OPERATION_PRECEDENCE,
   impactExplanation,
@@ -120,7 +120,7 @@ export class LabelItemComponent {
     const current = this.item();
     return current ? buildItemLayout(current) : null;
   });
-  protected readonly none = noneLabel();
+  protected readonly missingText = missingUsecaseLabel();
   protected readonly canContinue = computed(
     () =>
       this.item() !== null &&

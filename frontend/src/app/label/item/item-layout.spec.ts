@@ -1,3 +1,4 @@
+import { MISSING_USECASE_TEXT } from './usecase-text';
 import { buildItemLayout } from './item-layout';
 
 const base = {
@@ -8,10 +9,12 @@ const base = {
   targetVersion: 'v1.2',
   origin: 'alerts that user does not exist',
   target: 'alerts: user does not exist',
+  originUsecase: 'usecase "Login User" {\n  step 1 "A" <- edited\n}',
+  targetUsecase: 'usecase "Login User" {\n  step 1 "B" <- edited\n}',
 };
 
 describe('buildItemLayout', () => {
-  it('lays out MOD as two compared blocks with the labels of the header', () => {
+  it('lays out MOD with full use cases and edited highlights on both sides', () => {
     const layout = buildItemLayout({ ...base, kind: 'MOD' });
 
     expect(layout.header).toEqual({
@@ -24,58 +27,71 @@ describe('buildItemLayout', () => {
       ['origin', 'before', 'v1.1'],
       ['target', 'after', 'v1.2'],
     ]);
-    expect(layout.columns[0].segments?.some((s) => s.kind === 'removed')).toBe(true);
-    expect(layout.columns[0].segments?.some((s) => s.kind === 'added')).toBe(false);
-    expect(layout.columns[1].segments?.some((s) => s.kind === 'added')).toBe(true);
+    expect(layout.columns[0].usecase.lines.some((line) => line.edited && line.content.includes('"A"'))).toBe(true);
+    expect(layout.columns[1].usecase.lines.some((line) => line.edited && line.content.includes('"B"'))).toBe(true);
     expect(layout.identical).toBe(false);
   });
 
-  it('shows only the added text for ADD, with the first column holding just the button', () => {
-    const layout = buildItemLayout({ ...base, kind: 'ADD', origin: '', target: 'exception 3 "New"\n  step 1' });
+  it('shows full use cases for ADD and DEL on both columns', () => {
+    const add = buildItemLayout({
+      ...base,
+      kind: 'ADD',
+      origin: '',
+      target: 'exception 3 "New"',
+      originUsecase: MISSING_USECASE_TEXT,
+      targetUsecase: 'usecase "X" {\n  exception 3 "New" <- edited\n}',
+    });
+    expect(add.columns[0]).toMatchObject({ side: 'origin', heading: 'before', versionLabel: 'v1.1' });
+    expect(add.columns[0].usecase.missing).toBe(true);
+    expect(add.columns[1].heading).toBe('added');
+    expect(add.columns[1].usecase.lines.some((line) => line.edited)).toBe(true);
 
-    expect(layout.columns[0]).toMatchObject({ side: 'origin', heading: null, segments: null, versionLabel: 'v1.1' });
-    expect(layout.columns[1]).toMatchObject({ side: 'target', heading: 'added', marking: 'added', empty: false });
-    expect(layout.columns[1].segments).toEqual([{ kind: 'added', text: 'exception 3 "New"\n  step 1' }]);
-    expect(layout.identical).toBe(false);
+    const del = buildItemLayout({
+      ...base,
+      kind: 'DEL',
+      origin: 'exception 5 "Old"',
+      target: '',
+      originUsecase: 'usecase "X" {\n  exception 5 "Old" <- edited\n}',
+      targetUsecase: MISSING_USECASE_TEXT,
+    });
+    expect(del.columns[0].heading).toBe('removed');
+    expect(del.columns[1].heading).toBe('after');
+    expect(del.columns[1].usecase.missing).toBe(true);
   });
 
-  it('shows only the removed text for DEL, with the second column holding just the button', () => {
-    const layout = buildItemLayout({ ...base, kind: 'DEL', origin: 'exception 5 "Old"', target: '' });
-
-    expect(layout.columns[0]).toMatchObject({ side: 'origin', heading: 'removed', marking: 'removed', empty: false });
-    expect(layout.columns[0].segments).toEqual([{ kind: 'removed', text: 'exception 5 "Old"' }]);
-    expect(layout.columns[1]).toMatchObject({ side: 'target', heading: null, segments: null, versionLabel: 'v1.2' });
-  });
-
-  it('shows the requirements link before and after for META, with an empty side flagged', () => {
-    const layout = buildItemLayout({ ...base, kind: 'META', field: 'requirements', origin: '', target: 'REQ-07' });
-
-    expect(layout.header.fieldLabel).toBe('Requirements link');
-    expect(layout.header.kindLabel).toBe('Metadata');
-    expect(layout.columns.map((column) => column.heading)).toEqual(['metaBefore', 'metaAfter']);
-    expect(layout.columns[0]).toMatchObject({ empty: true, segments: [] });
-    expect(layout.columns[1]).toMatchObject({ empty: false });
-    expect(layout.columns[1].segments).toEqual([{ kind: 'added', text: 'REQ-07' }]);
-  });
-
-  it('flags identical texts of a compared layout', () => {
-    expect(buildItemLayout({ ...base, kind: 'META', field: 'requirements', origin: 'REQ-07', target: 'REQ-07' }).identical).toBe(true);
-    expect(buildItemLayout({ ...base, kind: 'MOD', origin: 'same', target: 'same' }).identical).toBe(true);
-  });
-
-  it('treats null texts as empty and an unknown kind like MOD with the original names', () => {
+  it('shows META headings with full use cases of each version', () => {
     const layout = buildItemLayout({
       ...base,
-      kind: 'REWRITE',
-      field: 'custom_field',
-      origin: null,
-      target: 'new',
-      originVersion: null,
+      kind: 'META',
+      field: 'requirements',
+      origin: '',
+      target: 'REQ-07',
     });
+    expect(layout.columns.map((column) => column.heading)).toEqual(['metaBefore', 'metaAfter']);
+    expect(layout.columns[0].usecase.lines.length).toBeGreaterThan(0);
+    expect(layout.columns[1].usecase.lines.length).toBeGreaterThan(0);
+  });
 
-    expect(layout.header.kindLabel).toBe('REWRITE');
-    expect(layout.header.fieldLabel).toBe('custom_field');
-    expect(layout.columns.map((column) => column.heading)).toEqual(['before', 'after']);
-    expect(layout.columns[0]).toMatchObject({ empty: true, versionLabel: '-' });
+  it('flags identical full use case texts', () => {
+    expect(
+      buildItemLayout({
+        ...base,
+        kind: 'MOD',
+        originUsecase: 'same uc',
+        targetUsecase: 'same uc',
+      }).identical,
+    ).toBe(true);
+  });
+
+  it('uses "-" when a version label is null', () => {
+    const layout = buildItemLayout({
+      ...base,
+      kind: 'MOD',
+      originVersion: null,
+      originUsecase: null,
+      targetUsecase: 'new',
+    });
+    expect(layout.columns[0].versionLabel).toBe('-');
+    expect(layout.columns[0].usecase.lines).toEqual([]);
   });
 });

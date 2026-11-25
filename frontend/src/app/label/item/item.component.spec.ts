@@ -87,74 +87,139 @@ describe('LabelItemComponent', () => {
 
   beforeEach(() => vi.resetAllMocks());
 
-  function blocks(root: HTMLElement) {
+  function columns(root: HTMLElement) {
     return Array.from(root.querySelectorAll<HTMLElement>('.column')).map((column) => ({
       side: column.dataset['side'],
       title: column.querySelector('.block-title')?.textContent?.trim() ?? null,
-      text: column.querySelector('.text')?.textContent ?? null,
-      removed: Array.from(column.querySelectorAll('del')).map((e) => e.textContent),
-      added: Array.from(column.querySelectorAll('ins')).map((e) => e.textContent),
+      lines: Array.from(column.querySelectorAll('.usecase-line')).map((line) => ({
+        text: line.textContent?.trim() ?? '',
+        edited: line.classList.contains('edited'),
+      })),
+      missing: column.querySelector('.missing-usecase')?.textContent?.trim() ?? null,
     }));
   }
 
-  it('shows the header and a MOD edit side by side with the changed words marked', async () => {
-    const fixture = create({ item: { origin: 'launches the screen\nand waits', target: 'displays the screen\nand waits' } });
+  it('shows the header and full use cases with edited highlights on both sides', async () => {
+    const fixture = create({
+      item: {
+        originUsecase: 'step 1 "old" <- edited\nstep 2',
+        targetUsecase: 'step 1 "new" <- edited\nstep 2',
+      },
+    });
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.querySelector('.location')?.textContent).toBe('Basic flow step · Modification');
     expect(root.querySelector('.system')?.textContent).toBe('minitest');
     expect(root.querySelector('.uc')?.textContent).toBe('UC01');
-    expect(blocks(root)).toEqual([
+    expect(columns(root)).toEqual([
       {
         side: 'origin',
         title: 'Before',
-        text: 'launches the screen\nand waits',
-        removed: ['launches'],
-        added: [],
+        lines: [
+          { text: 'step 1 "old"', edited: true },
+          { text: 'step 2', edited: false },
+        ],
+        missing: null,
       },
       {
         side: 'target',
         title: 'After',
-        text: 'displays the screen\nand waits',
-        removed: [],
-        added: ['displays'],
+        lines: [
+          { text: 'step 1 "new"', edited: true },
+          { text: 'step 2', edited: false },
+        ],
+        missing: null,
       },
     ]);
     expect(root.querySelector('.no-difference')).toBeNull();
   });
 
-  it('shows only the added text of an ADD and only the removed text of a DEL', async () => {
-    const add = create({ item: { kind: 'ADD', origin: '', target: 'exception 3 "New"\n  step 1' } });
+  it('shows full use cases for ADD and DEL on both columns', async () => {
+    const add = create({
+      item: {
+        kind: 'ADD',
+        origin: '',
+        target: 'new',
+        originUsecase: '(the use case does not exist in this version)',
+        targetUsecase: 'exception 3 "New" <- edited',
+      },
+    });
     await add.whenStable();
-    expect(blocks(add.nativeElement)).toEqual([
-      { side: 'origin', title: null, text: null, removed: [], added: [] },
-      { side: 'target', title: 'Added text', text: 'exception 3 "New"\n  step 1', removed: [], added: ['exception 3 "New"\n  step 1'] },
+    expect(columns(add.nativeElement)).toEqual([
+      {
+        side: 'origin',
+        title: 'Before',
+        lines: [],
+        missing: '(this use case does not exist in this version)',
+      },
+      {
+        side: 'target',
+        title: 'Added text',
+        lines: [{ text: 'exception 3 "New"', edited: true }],
+        missing: null,
+      },
     ]);
 
     TestBed.resetTestingModule();
-    const del = create({ item: { kind: 'DEL', origin: 'exception 5 "Old"', target: '' } });
+    const del = create({
+      item: {
+        kind: 'DEL',
+        origin: 'old',
+        target: '',
+        originUsecase: 'exception 5 "Old" <- edited',
+        targetUsecase: '(the use case does not exist in this version)',
+      },
+    });
     await del.whenStable();
-    expect(blocks(del.nativeElement)).toEqual([
-      { side: 'origin', title: 'Removed text', text: 'exception 5 "Old"', removed: ['exception 5 "Old"'], added: [] },
-      { side: 'target', title: null, text: null, removed: [], added: [] },
+    expect(columns(del.nativeElement)).toEqual([
+      {
+        side: 'origin',
+        title: 'Removed text',
+        lines: [{ text: 'exception 5 "Old"', edited: true }],
+        missing: null,
+      },
+      {
+        side: 'target',
+        title: 'After',
+        lines: [],
+        missing: '(this use case does not exist in this version)',
+      },
     ]);
   });
 
-  it('shows the requirements link before and after with (none) for the empty side', async () => {
-    const fixture = create({ item: { kind: 'META', field: 'requirements', origin: '', target: 'REQ-07' } });
+  it('shows META headings with the full use cases of each version', async () => {
+    const fixture = create({
+      item: {
+        kind: 'META',
+        field: 'requirements',
+        origin: '',
+        target: 'REQ-07',
+        originUsecase: 'uc before',
+        targetUsecase: 'uc after',
+      },
+    });
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.querySelector('.location')?.textContent).toBe('Requirements link · Metadata');
-    expect(blocks(root)).toEqual([
-      { side: 'origin', title: 'Requirements link: before', text: '(none)', removed: [], added: [] },
-      { side: 'target', title: 'Requirements link: after', text: 'REQ-07', removed: [], added: ['REQ-07'] },
+    expect(columns(root).map((column) => column.title)).toEqual([
+      'Requirements link: before',
+      'Requirements link: after',
     ]);
+    expect(columns(root)[0].lines[0]?.text).toBe('uc before');
+    expect(columns(root)[1].lines[0]?.text).toBe('uc after');
   });
 
-  it('warns that nothing differs when origin equals target, and shows an unknown field as is', async () => {
-    const fixture = create({ item: { kind: 'META', field: 'custom_field', origin: 'REQ-07', target: 'REQ-07' } });
+  it('warns when both full use cases are identical, and shows an unknown field as is', async () => {
+    const fixture = create({
+      item: {
+        kind: 'META',
+        field: 'custom_field',
+        originUsecase: 'same',
+        targetUsecase: 'same',
+      },
+    });
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
 
@@ -193,8 +258,8 @@ describe('LabelItemComponent', () => {
 
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('button.open-usecase'));
     expect(buttons.map((button) => button.textContent?.trim())).toEqual([
-      'View full use case (1.1)',
-      'View full use case (1.2)',
+      'Enlarge use case (1.1)',
+      'Enlarge use case (1.2)',
     ]);
 
     buttons[0].click();
@@ -216,7 +281,7 @@ describe('LabelItemComponent', () => {
     expect(fixture.componentInstance['comment']()).toBe('mine');
   });
 
-  it('opens the dialog full screen on a narrow screen and puts the button of an ADD in the first column', async () => {
+  it('opens the dialog full screen on a narrow screen for enlarge', async () => {
     const fixture = create({ item: { kind: 'ADD', origin: '', target: 'new flow' } });
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
@@ -225,7 +290,7 @@ describe('LabelItemComponent', () => {
 
     const first = root.querySelector<HTMLButtonElement>('.column[data-side=origin] button.open-usecase');
     expect(first).not.toBeNull();
-    expect(root.querySelector('.column[data-side=origin] .block')).toBeNull();
+    expect(root.querySelector('.column[data-side=origin] .block')).not.toBeNull();
     first?.click();
 
     expect(open.mock.calls[0][1]).toMatchObject({ width: '100vw', height: '100dvh', panelClass: 'usecase-dialog-full' });

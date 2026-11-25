@@ -83,37 +83,35 @@
   font: var(--mat-sys-title-small);
 }
 
-.text {
-  padding: 0.5rem 0.75rem;
+.usecase {
+  max-height: min(28rem, 55vh);
+  overflow: auto;
+  padding: 0.5rem 0.35rem 0.5rem 0;
   border: 1px solid var(--mat-sys-outline-variant);
   border-radius: 4px;
   background: var(--mat-sys-surface-container-low);
-  font: var(--mat-sys-body-medium);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.usecase-line {
+  min-height: 1.5em;
+  padding-right: 0.5rem;
+  border-left: 4px solid transparent;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  del {
-    background: color-mix(in srgb, var(--mat-sys-error) 18%, transparent);
-    color: var(--mat-sys-on-surface);
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
+  &.edited {
+    border-left-color: var(--mat-sys-tertiary);
+    background: color-mix(in srgb, var(--mat-sys-tertiary) 22%, transparent);
   }
+}
 
-  ins {
-    background: color-mix(in srgb, var(--mat-sys-tertiary) 25%, transparent);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
-  }
-
-  &[data-marking='removed'] del {
-    text-decoration: none;
-  }
-
-  .none {
-    color: var(--mat-sys-on-surface-variant);
-    font-style: italic;
-  }
+.missing-usecase {
+  margin: 0.5rem 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
 }
 
 .questions {
