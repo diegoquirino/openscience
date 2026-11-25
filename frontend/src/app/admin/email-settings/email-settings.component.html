@@ -13,16 +13,7 @@
   } @else {
     <form class="page-panel settings-form" (ngSubmit)="saveSettings()" data-testid="email-settings-form">
       <h2 i18n="@@emailSettings.momentsHeading">Send moments</h2>
-
-      <mat-form-field appearance="outline" class="field">
-        <mat-label i18n="@@emailSettings.caae">CAAE</mat-label>
-        <input matInput name="caae" [(ngModel)]="caae" data-testid="email-settings-caae" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="field">
-        <mat-label i18n="@@emailSettings.platformUrl">Platform URL</mat-label>
-        <input matInput name="platformUrl" [(ngModel)]="platformUrl" required data-testid="email-settings-url" />
-      </mat-form-field>
+      <p class="hint" i18n="@@emailSettings.timeHint">Times use the 24-hour clock (HH:mm).</p>
 
       <div class="moment" data-testid="email-settings-collection-start">
         <h3 i18n="@@emailSettings.collectionStart">Collection start (date and time)</h3>
@@ -39,8 +30,42 @@
             <mat-datepicker #collectionStartPicker />
           </mat-form-field>
           <mat-form-field appearance="outline" class="time-field">
-            <mat-label i18n="@@emailSettings.time">Time</mat-label>
-            <input matInput type="time" name="collectionStartTime" [(ngModel)]="collectionStartTime" />
+            <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
+            <input
+              matInput
+              name="collectionStartTime"
+              [(ngModel)]="collectionStartTime"
+              placeholder="13:45"
+              maxlength="5"
+              pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
+              inputmode="numeric"
+              autocomplete="off"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="moment" data-testid="email-settings-reminder">
+        <h3 i18n="@@emailSettings.reminder">Collection reminder (date and time)</h3>
+        <div class="moment-row">
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label i18n="@@emailSettings.date">Date</mat-label>
+            <input matInput [matDatepicker]="reminderPicker" [(ngModel)]="reminderDate" name="reminderDate" />
+            <mat-datepicker-toggle matIconSuffix [for]="reminderPicker" />
+            <mat-datepicker #reminderPicker />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
+            <input
+              matInput
+              name="reminderTime"
+              [(ngModel)]="reminderTime"
+              placeholder="13:45"
+              maxlength="5"
+              pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
+              inputmode="numeric"
+              autocomplete="off"
+            />
           </mat-form-field>
         </div>
       </div>
@@ -60,24 +85,17 @@
             <mat-datepicker #collectionEndPicker />
           </mat-form-field>
           <mat-form-field appearance="outline" class="time-field">
-            <mat-label i18n="@@emailSettings.time">Time</mat-label>
-            <input matInput type="time" name="collectionEndTime" [(ngModel)]="collectionEndTime" />
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="moment" data-testid="email-settings-reminder">
-        <h3 i18n="@@emailSettings.reminder">Reminder (date and time)</h3>
-        <div class="moment-row">
-          <mat-form-field appearance="outline" class="date-field">
-            <mat-label i18n="@@emailSettings.date">Date</mat-label>
-            <input matInput [matDatepicker]="reminderPicker" [(ngModel)]="reminderDate" name="reminderDate" />
-            <mat-datepicker-toggle matIconSuffix [for]="reminderPicker" />
-            <mat-datepicker #reminderPicker />
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="time-field">
-            <mat-label i18n="@@emailSettings.time">Time</mat-label>
-            <input matInput type="time" name="reminderTime" [(ngModel)]="reminderTime" />
+            <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
+            <input
+              matInput
+              name="collectionEndTime"
+              [(ngModel)]="collectionEndTime"
+              placeholder="13:45"
+              maxlength="5"
+              pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
+              inputmode="numeric"
+              autocomplete="off"
+            />
           </mat-form-field>
         </div>
       </div>

@@ -93,12 +93,16 @@ export class EmailSettingsService {
     };
   }
 
-  /** Local date + `HH:mm` ? ISO-8601 UTC instant, or null when date is missing. */
+  /** Local date + 24-hour `HH:mm` ? ISO-8601 UTC instant, or null when date is missing. */
   static fromLocalParts(date: Date | null, time: string): string | null {
     if (!date || Number.isNaN(date.getTime())) {
       return null;
     }
-    const match = /^(\d{1,2}):(\d{2})$/.exec(time.trim());
+    const normalized = EmailSettingsService.normalizeTime24h(time);
+    const match = /^([01]\d|2[0-3]):([0-5]\d)$/.exec(normalized);
+    if (time.trim() && !match) {
+      return null;
+    }
     const hours = match ? Number(match[1]) : 0;
     const minutes = match ? Number(match[2]) : 0;
     const local = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes, 0, 0);
@@ -106,5 +110,23 @@ export class EmailSettingsService {
       return null;
     }
     return local.toISOString();
+  }
+
+  /** Pads `H:mm` / `HH:mm` into a strict 24-hour `HH:mm`, or `''` when empty/invalid. */
+  static normalizeTime24h(raw: string): string {
+    const trimmed = raw.trim();
+    if (!trimmed) {
+      return '';
+    }
+    const match = /^(\d{1,2}):(\d{1,2})$/.exec(trimmed);
+    if (!match) {
+      return '';
+    }
+    const hours = Number(match[1]);
+    const minutes = Number(match[2]);
+    if (hours > 23 || minutes > 59) {
+      return '';
+    }
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   }
 }

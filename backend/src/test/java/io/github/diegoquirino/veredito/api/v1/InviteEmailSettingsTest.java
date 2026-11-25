@@ -24,12 +24,7 @@ class InviteEmailSettingsTest extends ApiTestBase {
         String admin = administratorSession();
         String href = href(as(admin).get("/api/v1"), "email-settings");
 
-        as(admin).get(href)
-                .then().statusCode(200)
-                .body("platformUrl", equalTo("https://diegoquirino.cloud"))
-                .body("collectionStartAt", equalTo("2026-12-21T03:00:00Z"))
-                .body("collectionEndAt", equalTo("2027-01-09T02:59:00Z"))
-                .body("reminderAt", equalTo("2026-12-28T15:00:00Z"));
+        as(admin).get(href).then().statusCode(200).body("platformUrl", equalTo("https://diegoquirino.cloud"));
 
         as(admin).contentType("application/json")
                 .body(Map.of(
@@ -45,6 +40,12 @@ class InviteEmailSettingsTest extends ApiTestBase {
                 .body("collectionStartAt", equalTo("2026-12-22T12:30:00Z"))
                 .body("collectionEndAt", equalTo("2027-01-10T23:45:00Z"))
                 .body("reminderAt", equalTo("2026-12-29T18:15:00Z"));
+
+        as(admin).get(href)
+                .then().statusCode(200)
+                .body("collectionStartAt", equalTo("2026-12-22T12:30:00Z"))
+                .body("reminderAt", equalTo("2026-12-29T18:15:00Z"))
+                .body("collectionEndAt", equalTo("2027-01-10T23:45:00Z"));
 
         as(admin).contentType("application/json")
                 .body(Map.of(

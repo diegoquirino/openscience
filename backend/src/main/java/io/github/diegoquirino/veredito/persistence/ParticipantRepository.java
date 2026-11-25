@@ -206,6 +206,61 @@ public class ParticipantRepository {
                 .update();
     }
 
+    /** Eligible bulk invite targets (spec 033): e-mail present, not anonymized. */
+    public record BulkInviteRecipient(long id, String name, String email) {}
+
+    public java.util.List<BulkInviteRecipient> findPendingLembrete() {
+        return findPendingBulk("invite_lembrete_sent_at");
+    }
+
+    public java.util.List<BulkInviteRecipient> findPendingAgradecimento() {
+        return findPendingBulk("invite_agradecimento_sent_at");
+    }
+
+    public boolean claimInviteLembrete(long id, Instant now) {
+        return claimInviteColumn("invite_lembrete_sent_at", id, now);
+    }
+
+    public boolean claimInviteAgradecimento(long id, Instant now) {
+        return claimInviteColumn("invite_agradecimento_sent_at", id, now);
+    }
+
+    public void clearInviteLembrete(long id) {
+        clearInviteColumn("invite_lembrete_sent_at", id);
+    }
+
+    public void clearInviteAgradecimento(long id) {
+        clearInviteColumn("invite_agradecimento_sent_at", id);
+    }
+
+    private java.util.List<BulkInviteRecipient> findPendingBulk(String sentAtColumn) {
+        // Column name is one of two fixed literals from callers above — never user input.
+        return jdbc.sql("""
+                        SELECT id, name, email FROM participant
+                        WHERE email IS NOT NULL AND TRIM(email) <> ''
+                          AND anonymized_at IS NULL
+                          AND %s IS NULL
+                        ORDER BY id""".formatted(sentAtColumn))
+                .query((rs, row) -> new BulkInviteRecipient(
+                        rs.getLong("id"), rs.getString("name"), rs.getString("email")))
+                .list();
+    }
+
+    private boolean claimInviteColumn(String column, long id, Instant now) {
+        return jdbc.sql("""
+                        UPDATE participant SET %s = ?
+                        WHERE id = ? AND %s IS NULL""".formatted(column, column))
+                .params(Timestamp.from(now), id)
+                .update()
+                == 1;
+    }
+
+    private void clearInviteColumn(String column, long id) {
+        jdbc.sql("UPDATE participant SET %s = NULL WHERE id = ?".formatted(column))
+                .param(id)
+                .update();
+    }
+
     private static Instant instant(Timestamp value) {
         return value == null ? null : value.toInstant();
     }
