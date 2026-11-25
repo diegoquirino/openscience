@@ -24,38 +24,63 @@
         <input matInput name="platformUrl" [(ngModel)]="platformUrl" required data-testid="email-settings-url" />
       </mat-form-field>
 
-      <label class="datetime" for="collection-start">
-        <span i18n="@@emailSettings.collectionStart">Collection start (date and time)</span>
-        <input
-          id="collection-start"
-          type="datetime-local"
-          name="collectionStart"
-          [(ngModel)]="collectionStartLocal"
-          data-testid="email-settings-collection-start"
-        />
-      </label>
+      <div class="moment" data-testid="email-settings-collection-start">
+        <h3 i18n="@@emailSettings.collectionStart">Collection start (date and time)</h3>
+        <div class="moment-row">
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label i18n="@@emailSettings.date">Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="collectionStartPicker"
+              [(ngModel)]="collectionStartDate"
+              name="collectionStartDate"
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="collectionStartPicker" />
+            <mat-datepicker #collectionStartPicker />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label i18n="@@emailSettings.time">Time</mat-label>
+            <input matInput type="time" name="collectionStartTime" [(ngModel)]="collectionStartTime" />
+          </mat-form-field>
+        </div>
+      </div>
 
-      <label class="datetime" for="collection-end">
-        <span i18n="@@emailSettings.collectionEnd">Collection end (date and time)</span>
-        <input
-          id="collection-end"
-          type="datetime-local"
-          name="collectionEnd"
-          [(ngModel)]="collectionEndLocal"
-          data-testid="email-settings-collection-end"
-        />
-      </label>
+      <div class="moment" data-testid="email-settings-collection-end">
+        <h3 i18n="@@emailSettings.collectionEnd">Collection end (date and time)</h3>
+        <div class="moment-row">
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label i18n="@@emailSettings.date">Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="collectionEndPicker"
+              [(ngModel)]="collectionEndDate"
+              name="collectionEndDate"
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="collectionEndPicker" />
+            <mat-datepicker #collectionEndPicker />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label i18n="@@emailSettings.time">Time</mat-label>
+            <input matInput type="time" name="collectionEndTime" [(ngModel)]="collectionEndTime" />
+          </mat-form-field>
+        </div>
+      </div>
 
-      <label class="datetime" for="reminder">
-        <span i18n="@@emailSettings.reminder">Reminder (date and time)</span>
-        <input
-          id="reminder"
-          type="datetime-local"
-          name="reminder"
-          [(ngModel)]="reminderLocal"
-          data-testid="email-settings-reminder"
-        />
-      </label>
+      <div class="moment" data-testid="email-settings-reminder">
+        <h3 i18n="@@emailSettings.reminder">Reminder (date and time)</h3>
+        <div class="moment-row">
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label i18n="@@emailSettings.date">Date</mat-label>
+            <input matInput [matDatepicker]="reminderPicker" [(ngModel)]="reminderDate" name="reminderDate" />
+            <mat-datepicker-toggle matIconSuffix [for]="reminderPicker" />
+            <mat-datepicker #reminderPicker />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label i18n="@@emailSettings.time">Time</mat-label>
+            <input matInput type="time" name="reminderTime" [(ngModel)]="reminderTime" />
+          </mat-form-field>
+        </div>
+      </div>
 
       <button
         type="submit"

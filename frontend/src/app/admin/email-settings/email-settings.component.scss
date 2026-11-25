@@ -14,21 +14,32 @@
   line-height: 1.4;
 }
 
-.datetime {
-  display: flex;
-  flex-direction: column;
+.moment {
+  display: grid;
   gap: 0.35rem;
-  font: var(--mat-sys-label-large);
 }
 
-.datetime input {
-  max-width: 20rem;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--mat-sys-outline);
-  border-radius: 0.25rem;
-  background: var(--mat-sys-surface);
+.moment h3 {
+  margin: 0;
+  font: var(--mat-sys-title-small);
   color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-large);
+}
+
+.moment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.date-field {
+  flex: 1 1 14rem;
+  min-width: 12rem;
+}
+
+.time-field {
+  flex: 0 1 10rem;
+  min-width: 8rem;
 }
 
 .status {

@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
@@ -14,10 +15,17 @@ import {
   InviteTemplateKind,
 } from './email-settings.service';
 
-/** Admin date-and-time send settings + editable invite templates (spec 031). */
+/** Admin date-and-time send settings + editable invite templates (specs 031–032). */
 @Component({
   selector: 'app-email-settings',
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, RouterLink],
+  imports: [
+    FormsModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    RouterLink,
+  ],
   templateUrl: './email-settings.component.html',
   styleUrl: './email-settings.component.scss',
 })
@@ -31,9 +39,13 @@ export class EmailSettingsComponent implements OnInit {
 
   protected caae = '';
   protected platformUrl = '';
-  protected collectionStartLocal = '';
-  protected collectionEndLocal = '';
-  protected reminderLocal = '';
+
+  protected collectionStartDate: Date | null = null;
+  protected collectionStartTime = '';
+  protected collectionEndDate: Date | null = null;
+  protected collectionEndTime = '';
+  protected reminderDate: Date | null = null;
+  protected reminderTime = '';
 
   protected readonly kinds: InviteTemplateKind[] = ['inicial', 'lembrete', 'agradecimento'];
   protected templates: Record<InviteTemplateKind, EmailTemplate | null> = {
@@ -86,9 +98,12 @@ export class EmailSettingsComponent implements OnInit {
       .saveSettings(current, {
         caae: this.caae.trim() || null,
         platformUrl: this.platformUrl.trim(),
-        collectionStartAt: EmailSettingsService.fromLocalInput(this.collectionStartLocal),
-        collectionEndAt: EmailSettingsService.fromLocalInput(this.collectionEndLocal),
-        reminderAt: EmailSettingsService.fromLocalInput(this.reminderLocal),
+        collectionStartAt: EmailSettingsService.fromLocalParts(
+          this.collectionStartDate,
+          this.collectionStartTime,
+        ),
+        collectionEndAt: EmailSettingsService.fromLocalParts(this.collectionEndDate, this.collectionEndTime),
+        reminderAt: EmailSettingsService.fromLocalParts(this.reminderDate, this.reminderTime),
       })
       .subscribe({
         next: (saved) => {
@@ -139,9 +154,15 @@ export class EmailSettingsComponent implements OnInit {
     this.settings.set(settings);
     this.caae = settings.caae ?? '';
     this.platformUrl = settings.platformUrl ?? '';
-    this.collectionStartLocal = EmailSettingsService.toLocalInput(settings.collectionStartAt);
-    this.collectionEndLocal = EmailSettingsService.toLocalInput(settings.collectionEndAt);
-    this.reminderLocal = EmailSettingsService.toLocalInput(settings.reminderAt);
+    const start = EmailSettingsService.toLocalParts(settings.collectionStartAt);
+    this.collectionStartDate = start.date;
+    this.collectionStartTime = start.time;
+    const end = EmailSettingsService.toLocalParts(settings.collectionEndAt);
+    this.collectionEndDate = end.date;
+    this.collectionEndTime = end.time;
+    const reminder = EmailSettingsService.toLocalParts(settings.reminderAt);
+    this.reminderDate = reminder.date;
+    this.reminderTime = reminder.time;
   }
 
   private fail(error: unknown): void {
