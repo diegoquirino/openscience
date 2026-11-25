@@ -111,5 +111,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./admin/participants/participants.component').then((m) => m.ParticipantsComponent),
   },
+  {
+    path: 'admin/email-settings',
+    canActivate: [administratorOnly],
+    loadComponent: () =>
+      import('./admin/email-settings/email-settings.component').then((m) => m.EmailSettingsComponent),
+  },
   { path: '**', component: NotFoundComponent },
 ];

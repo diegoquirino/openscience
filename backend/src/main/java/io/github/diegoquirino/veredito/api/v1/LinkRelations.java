@@ -118,6 +118,16 @@ public final class LinkRelations {
     public static final Relation ANONYMIZE = new Relation(
             "anonymize", "Confirm anonymization of a participant (keep or discard responses).",
             HttpMethod.POST, "/swagger-ui.html#/Administration");
+    public static final Relation EMAIL_SETTINGS = new Relation(
+            "email-settings",
+            "Invite e-mail send settings: CAAE, platform URL, collection and reminder date-times.",
+            HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
+    public static final Relation EMAIL_TEMPLATE = new Relation(
+            "email-template",
+            "One invite e-mail template (inicial, lembrete or agradecimento); PUT replaces subject and body.",
+            HttpMethod.GET,
+            "/swagger-ui.html#/Administration");
     private static final Map<String, Relation> BY_NAME = new LinkedHashMap<>();
 
     static {
@@ -126,7 +136,8 @@ public final class LinkRelations {
             NEXT_TASK, RESERVE, SAVE_RESPONSE, SUBMIT, ITEMS, REVIEW, CANCEL_RESERVATION, ONBOARDING, CONSENT_FORM,
             CONSENT_TEXT, CONSENT, SKILL, ORGANIZATION_SUGGESTIONS, SCREENING, SCREENING_EXAMPLE, EXPORTS,
             EXPORT_WIDE, EXPORT_LONG,
-            EXPORT_COMPLETO, EXPORT_RATER1, EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE
+            EXPORT_COMPLETO, EXPORT_RATER1, EXPORT_RATER2, DASHBOARD, PARTICIPANTS, ANONYMIZE, EMAIL_SETTINGS,
+            EMAIL_TEMPLATE
         }) {
             BY_NAME.put(relation.name(), relation);
         }

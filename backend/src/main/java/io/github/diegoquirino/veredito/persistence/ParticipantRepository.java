@@ -175,6 +175,41 @@ public class ParticipantRepository {
                 .update();
     }
 
+    /** Name, e-mail and inicial-invite marker for the post-profile send (spec 031). */
+    public record InviteRecipient(String name, String email, Instant inicialSentAt) {}
+
+    public Optional<InviteRecipient> findInviteRecipient(long id) {
+        return jdbc.sql("""
+                        SELECT name, email, invite_inicial_sent_at FROM participant WHERE id = ?""")
+                .param(id)
+                .query((rs, row) -> new InviteRecipient(
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        instant(rs.getTimestamp("invite_inicial_sent_at"))))
+                .optional();
+    }
+
+    /** Claims the inicial send slot; returns false when already sent or the row is missing. */
+    public boolean claimInviteInicial(long id, Instant now) {
+        return jdbc.sql("""
+                        UPDATE participant SET invite_inicial_sent_at = ?
+                        WHERE id = ? AND invite_inicial_sent_at IS NULL""")
+                .params(Timestamp.from(now), id)
+                .update()
+                == 1;
+    }
+
+    /** Clears the claim so a later profile touch can retry after SMTP failure. */
+    public void clearInviteInicial(long id) {
+        jdbc.sql("UPDATE participant SET invite_inicial_sent_at = NULL WHERE id = ?")
+                .param(id)
+                .update();
+    }
+
+    private static Instant instant(Timestamp value) {
+        return value == null ? null : value.toInstant();
+    }
+
     /**
      * Distinct {@code organization_other} values already saved by other participants with
      * {@code organization = other} (spec 025 suggestions).

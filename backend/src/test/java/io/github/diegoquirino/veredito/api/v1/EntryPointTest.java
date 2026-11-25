@@ -34,8 +34,8 @@ class EntryPointTest extends ApiTestBase {
 
     @ParameterizedTest
     @ValueSource(strings = {
-        "vd:me", "vd:batches", "vd:exports", "vd:dashboard", "vd:participants", "vd:onboarding", "vd:consent-form",
-        "vd:next-task"
+        "vd:me", "vd:batches", "vd:exports", "vd:dashboard", "vd:participants", "vd:email-settings",
+        "vd:onboarding", "vd:consent-form", "vd:next-task"
     })
     void noAdministrativeOrParticipantLinkForAVisitor(String rel) {
         entryPoint().then().body("_links", not(hasKey(rel)));
@@ -91,10 +91,11 @@ class EntryPointTest extends ApiTestBase {
                 .body("_links.keySet()", containsInAnyOrder(
                         "self", "curies", "vd:session", "vd:me", "vd:sign-out",
                         "vd:batches", "vd:request-preview", "vd:exports", "vd:dashboard", "vd:participants",
-                        "vd:study-phase"))
+                        "vd:email-settings", "vd:study-phase"))
                 .body("_links.'vd:me'.href", equalTo("/api/v1/administrator/me"))
                 .body("_links.'vd:dashboard'.href", equalTo("/api/v1/dashboard"))
                 .body("_links.'vd:participants'.href", equalTo("/api/v1/participants"))
+                .body("_links.'vd:email-settings'.href", equalTo("/api/v1/administrator/email-settings"))
                 .body("_links.'vd:batches'.href", equalTo("/api/v1/batches"))
                 .body("_links.'vd:request-preview'.href", equalTo("/api/v1/batches/previews"))
                 .body("_links.'vd:study-phase'.href", equalTo("/api/v1/administrator/study-phase"));
@@ -114,6 +115,7 @@ class EntryPointTest extends ApiTestBase {
             "sign-in", "session", "sign-out", "me", "batches", "request-preview", "study-phase", "confirm",
             "next-task", "reserve", "save-response", "submit", "items", "review", "onboarding", "consent-form",
             "consent-text", "consent", "skill", "screening", "screening-example", "exports", "export-wide", "export-long",
+            "email-settings", "email-template",
     })
     void curieDocumentsTheAccessRelations(String rel) {
         request().get("/api/v1/rels/" + rel)

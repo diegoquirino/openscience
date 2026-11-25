@@ -1,0 +1,89 @@
+<section class="email-settings admin-page">
+  <p class="back">
+    <a routerLink="/admin/dashboard" i18n="@@emailSettings.back">Back to administration</a>
+  </p>
+  <h1 i18n="@@emailSettings.title">E-mail send settings</h1>
+  <p class="page-intro intro" i18n="@@emailSettings.intro">
+    Configure CAAE, platform URL and the collection and reminder moments as date and time. Templates
+    support the placeholders nome, caae, url, coleta_inicio and coleta_fim (double curly braces).
+  </p>
+
+  @if (loading()) {
+    <p class="status" i18n="@@emailSettings.loading">Loading settings...</p>
+  } @else {
+    <form class="page-panel settings-form" (ngSubmit)="saveSettings()" data-testid="email-settings-form">
+      <h2 i18n="@@emailSettings.momentsHeading">Send moments</h2>
+
+      <mat-form-field appearance="outline" class="field">
+        <mat-label i18n="@@emailSettings.caae">CAAE</mat-label>
+        <input matInput name="caae" [(ngModel)]="caae" data-testid="email-settings-caae" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field">
+        <mat-label i18n="@@emailSettings.platformUrl">Platform URL</mat-label>
+        <input matInput name="platformUrl" [(ngModel)]="platformUrl" required data-testid="email-settings-url" />
+      </mat-form-field>
+
+      <label class="datetime" for="collection-start">
+        <span i18n="@@emailSettings.collectionStart">Collection start (date and time)</span>
+        <input
+          id="collection-start"
+          type="datetime-local"
+          name="collectionStart"
+          [(ngModel)]="collectionStartLocal"
+          data-testid="email-settings-collection-start"
+        />
+      </label>
+
+      <label class="datetime" for="collection-end">
+        <span i18n="@@emailSettings.collectionEnd">Collection end (date and time)</span>
+        <input
+          id="collection-end"
+          type="datetime-local"
+          name="collectionEnd"
+          [(ngModel)]="collectionEndLocal"
+          data-testid="email-settings-collection-end"
+        />
+      </label>
+
+      <label class="datetime" for="reminder">
+        <span i18n="@@emailSettings.reminder">Reminder (date and time)</span>
+        <input
+          id="reminder"
+          type="datetime-local"
+          name="reminder"
+          [(ngModel)]="reminderLocal"
+          data-testid="email-settings-reminder"
+        />
+      </label>
+
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="busy()"
+        data-testid="email-settings-save"
+        i18n="@@emailSettings.save"
+      >
+        Save send settings
+      </button>
+    </form>
+
+    @for (kind of kinds; track kind) {
+      <form class="page-panel template-form" (ngSubmit)="saveTemplate(kind)" [attr.data-testid]="'email-template-' + kind">
+        <h2>{{ kindLabel(kind) }}</h2>
+        <mat-form-field appearance="outline" class="field">
+          <mat-label i18n="@@emailSettings.subject">Subject</mat-label>
+          <input matInput name="subject-{{ kind }}" [(ngModel)]="subjects[kind]" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field body-field">
+          <mat-label i18n="@@emailSettings.body">Body</mat-label>
+          <textarea matInput rows="14" name="body-{{ kind }}" [(ngModel)]="bodies[kind]" required></textarea>
+        </mat-form-field>
+        <button type="submit" mat-stroked-button [disabled]="busy()" i18n="@@emailSettings.saveTemplate">
+          Save template
+        </button>
+      </form>
+    }
+  }
+</section>

@@ -38,6 +38,7 @@ public class EntryPointController {
     static final String BATCHES = "/api/v1/batches";
     static final String REQUEST_PREVIEW = "/api/v1/batches/previews";
     static final String STUDY_PHASE = "/api/v1/administrator/study-phase";
+    static final String EMAIL_SETTINGS = "/api/v1/administrator/email-settings";
     static final String EXPORTS = "/api/v1/exports";
     static final String DASHBOARD = "/api/v1/dashboard";
     static final String PARTICIPANTS = "/api/v1/participants";
@@ -83,7 +84,7 @@ public class EntryPointController {
                       eligible (current consent form accepted, skill answered, screening yes);
                     - administrator: self, curies, vd:session, vd:me (administrator profile), vd:sign-out, \
                       vd:batches, vd:request-preview, vd:exports, vd:dashboard, vd:participants, \
-                      vd:study-phase;
+                      vd:email-settings, vd:study-phase;
                     - database unavailable: self only, and available is false.
 
                     An invalid cookie never makes this operation answer 401. No administrative link is \
@@ -164,6 +165,7 @@ public class EntryPointController {
             model.add(Link.of(EXPORTS, LinkRelations.EXPORTS.curied()));
             model.add(Link.of(DASHBOARD, LinkRelations.DASHBOARD.curied()));
             model.add(Link.of(PARTICIPANTS, LinkRelations.PARTICIPANTS.curied()));
+            model.add(Link.of(EMAIL_SETTINGS, LinkRelations.EMAIL_SETTINGS.curied()));
             if (properties.environment() != Environment.STAGING) {
                 model.add(Link.of(STUDY_PHASE, LinkRelations.STUDY_PHASE.curied()));
             }

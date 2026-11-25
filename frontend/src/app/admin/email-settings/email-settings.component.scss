@@ -1,0 +1,36 @@
+.settings-form,
+.template-form {
+  display: grid;
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+
+.field {
+  width: 100%;
+}
+
+.body-field textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  line-height: 1.4;
+}
+
+.datetime {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font: var(--mat-sys-label-large);
+}
+
+.datetime input {
+  max-width: 20rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--mat-sys-outline);
+  border-radius: 0.25rem;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-large);
+}
+
+.status {
+  color: var(--mat-sys-on-surface-variant);
+}

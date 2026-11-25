@@ -27,7 +27,8 @@ class FixtureLocationTest {
                 "V1__create_schema.sql", "V2__insert_default_config.sql", "V3__access.sql",
                 "V4__import_preview.sql", "V5__task_queue_lookup.sql", "V7__withdrawal_log.sql",
                 "V8__profile_before_consent.sql", "V9__organization_affiliation.sql",
-                "V10__acknowledgment_anonymous.sql", "V11__admin_display_name.sql");
+                "V10__acknowledgment_anonymous.sql", "V11__admin_display_name.sql",
+                "V13__invite_email_settings.sql");
         assertThat(staging).containsExactly(
                 "V12__organization_other_seed.sql", "V6__consent_form_fixture.sql");
         assertThat(staging).doesNotContainAnyElementsOf(migration);

@@ -7,6 +7,7 @@ import io.github.diegoquirino.veredito.domain.onboarding.OnboardingState;
 import io.github.diegoquirino.veredito.domain.onboarding.OnboardingStep;
 import io.github.diegoquirino.veredito.domain.onboarding.OrganizationChoice;
 import io.github.diegoquirino.veredito.domain.onboarding.SkillChoice;
+import io.github.diegoquirino.veredito.invite.InviteInicialDispatcher;
 import io.github.diegoquirino.veredito.onboarding.OnboardingService.Onboarding;
 import io.github.diegoquirino.veredito.persistence.ParticipantRepository;
 import io.github.diegoquirino.veredito.persistence.ParticipantRepository.ParticipantProfile;
@@ -27,10 +28,15 @@ public class SkillService {
 
     private final ParticipantRepository participants;
     private final OnboardingService onboarding;
+    private final InviteInicialDispatcher inviteInicial;
 
-    public SkillService(ParticipantRepository participants, OnboardingService onboarding) {
+    public SkillService(
+            ParticipantRepository participants,
+            OnboardingService onboarding,
+            InviteInicialDispatcher inviteInicial) {
         this.participants = participants;
         this.onboarding = onboarding;
+        this.inviteInicial = inviteInicial;
     }
 
     /** Stored profile fields and whether the profile step is still pending. */
@@ -120,6 +126,8 @@ public class SkillService {
                     skillChoice.other(),
                     orgChoice.organization().code(),
                     orgChoice.other());
+            // Spec 031: inicial invite after a complete profile; idempotent via sent_at / retry when null.
+            inviteInicial.scheduleAfterCommit(participantId);
             OnboardingState updated = state.withProfile(
                     skillChoice.skill().code(),
                     skillChoice.other(),
