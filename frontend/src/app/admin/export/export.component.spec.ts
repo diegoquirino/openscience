@@ -38,6 +38,12 @@ class FakeSaver {
   }
 }
 
+function labelWithoutIcons(el: HTMLElement): string {
+  const clone = el.cloneNode(true) as HTMLElement;
+  clone.querySelectorAll('mat-icon').forEach((node) => node.remove());
+  return clone.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+}
+
 describe('ExportComponent', () => {
   let http: HttpTestingController;
   let saver: FakeSaver;
@@ -79,15 +85,17 @@ describe('ExportComponent', () => {
     await load(fixture);
 
     const element = fixture.nativeElement as HTMLElement;
-    expect(element.querySelector('h1')?.textContent?.trim()).toBe('Export');
-    expect(button(fixture, '[data-testid="export-wide"]').textContent?.trim()).toBe('Download wide table');
-    expect(button(fixture, '[data-testid="export-long"]').textContent?.trim()).toBe('Download long table');
+    expect(element.querySelector('h1 span')?.textContent?.trim()).toBe('Export');
+    expect(labelWithoutIcons(button(fixture, '[data-testid="export-wide"]'))).toBe('Download wide table');
+    expect(labelWithoutIcons(button(fixture, '[data-testid="export-long"]'))).toBe('Download long table');
     const groups = Array.from(element.querySelectorAll('.system'));
     expect(groups.map((group) => group.getAttribute('data-system'))).toEqual(['minitest', 'other sys']);
     expect(groups[0].querySelector('h2')?.textContent?.trim()).toBe('System minitest');
-    expect(
-      Array.from(groups[0].querySelectorAll('button')).map((item) => item.textContent?.trim()),
-    ).toEqual(['Download completo', 'Download rater 1', 'Download rater 2']);
+    expect(Array.from(groups[0].querySelectorAll('button')).map((item) => labelWithoutIcons(item))).toEqual([
+      'Download completo',
+      'Download rater 1',
+      'Download rater 2',
+    ]);
     expect(element.querySelector('.empty')).toBeNull();
   });
 

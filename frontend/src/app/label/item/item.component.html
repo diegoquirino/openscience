@@ -15,7 +15,12 @@
       <mat-accordion class="panels" multi displayMode="flat">
         <mat-expansion-panel expanded data-testid="panel-change">
           <mat-expansion-panel-header>
-            <mat-panel-title i18n="@@label.item.panel.change">Change</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+                >compare_arrows</mat-icon
+              >
+              <span i18n="@@label.item.panel.change">Change</span>
+            </mat-panel-title>
           </mat-expansion-panel-header>
 
           @if (layout(); as view) {
@@ -95,6 +100,7 @@
                       [attr.data-side]="column.side"
                       (click)="openUsecase(column.side, $event)"
                     >
+                      <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">fullscreen</mat-icon>
                       <span i18n="@@item.usecase.enlarge">Enlarge use case ({{ column.versionLabel }})</span>
                     </button>
                   </section>
@@ -106,7 +112,12 @@
 
         <mat-expansion-panel expanded data-testid="panel-impact">
           <mat-expansion-panel-header>
-            <mat-panel-title i18n="@@label.item.panel.impact">Change impact</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+                >trending_up</mat-icon
+              >
+              <span i18n="@@label.item.panel.impact">Change impact</span>
+            </mat-panel-title>
           </mat-expansion-panel-header>
           <fieldset class="question impact">
             <legend>{{ impactText }} <span class="required" aria-hidden="true">*</span></legend>
@@ -130,7 +141,10 @@
 
         <mat-expansion-panel expanded data-testid="panel-operation">
           <mat-expansion-panel-header>
-            <mat-panel-title i18n="@@label.item.panel.operation">Maintenance operation</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">build</mat-icon>
+              <span i18n="@@label.item.panel.operation">Maintenance operation</span>
+            </mat-panel-title>
           </mat-expansion-panel-header>
           <fieldset class="question operation">
             <legend>{{ operationText }} <span class="required" aria-hidden="true">*</span></legend>
@@ -158,7 +172,12 @@
 
         <mat-expansion-panel expanded data-testid="panel-comment">
           <mat-expansion-panel-header>
-            <mat-panel-title i18n="@@label.item.panel.comment">Comment</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+                >comment</mat-icon
+              >
+              <span i18n="@@label.item.panel.comment">Comment</span>
+            </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-form-field class="comment" appearance="outline">
             <mat-label i18n="@@label.item.comment">Comment (optional)</mat-label>
@@ -175,19 +194,31 @@
 
         <mat-expansion-panel expanded data-testid="panel-actions">
           <mat-expansion-panel-header>
-            <mat-panel-title i18n="@@label.item.panel.actions">Actions</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+                >play_arrow</mat-icon
+              >
+              <span i18n="@@label.item.panel.actions">Actions</span>
+            </mat-panel-title>
           </mat-expansion-panel-header>
 
           @if (blockLost()) {
-            <a mat-stroked-button class="new-block" routerLink="/label" i18n="@@label.retry">Try again</a>
+            <a mat-stroked-button class="new-block" routerLink="/label">
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+              <span i18n="@@label.retry">Try again</span>
+            </a>
           }
 
           <div class="actions">
             @if (previousPosition(); as previous) {
-              <a mat-stroked-button [routerLink]="['/label/items', previous]" i18n="@@label.item.back">Back</a>
+              <a mat-stroked-button [routerLink]="['/label/items', previous]">
+                <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_back</mat-icon>
+                <span i18n="@@label.item.back">Back</span>
+              </a>
             }
-            <button mat-flat-button type="submit" [disabled]="!canContinue()" i18n="@@label.item.continue">
-              Continue
+            <button mat-flat-button type="submit" [disabled]="!canContinue()">
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_forward</mat-icon>
+              <span i18n="@@label.item.continue">Continue</span>
             </button>
             <button
               mat-stroked-button
@@ -196,9 +227,9 @@
               data-testid="cancel-block"
               [disabled]="cancelling()"
               (click)="cancelBlock()"
-              i18n="@@label.item.cancel"
             >
-              Cancel
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">cancel</mat-icon>
+              <span i18n="@@label.item.cancel">Cancel</span>
             </button>
             @if (saving() || cancelling()) {
               <mat-spinner diameter="24"></mat-spinner>
@@ -208,6 +239,9 @@
       </mat-accordion>
     </form>
   } @else {
-    <button mat-flat-button type="button" (click)="retry()" i18n="@@label.retry">Try again</button>
+    <button mat-flat-button type="button" (click)="retry()">
+      <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+      <span i18n="@@label.retry">Try again</span>
+    </button>
   }
 </section>

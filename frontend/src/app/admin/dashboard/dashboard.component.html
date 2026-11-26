@@ -1,5 +1,8 @@
 <section class="dashboard admin-page">
-  <h1 i18n="@@dashboard.title">Dashboard</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">monitoring</mat-icon>
+    <span i18n="@@dashboard.title">Dashboard</span>
+  </h1>
   <p class="page-intro intro" i18n="@@dashboard.intro">
     Progress of the data collection. The numbers are read-only and never show a name or an e-mail; participants
     appear by pseudonym.
@@ -31,9 +34,9 @@
       data-testid="dashboard-refresh"
       [disabled]="loading()"
       (click)="refresh()"
-      i18n="@@dashboard.refresh"
     >
-      Refresh
+      <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+      <span i18n="@@dashboard.refresh">Refresh</span>
     </button>
     @if (view(); as current) {
       <span class="generated" data-testid="dashboard-generated" i18n="@@dashboard.generatedAt">
@@ -79,14 +82,20 @@
     @if (empty()) {
       <section class="empty-study page-panel" data-testid="dashboard-empty">
         <p i18n="@@dashboard.empty">No items have been imported yet, so every number below is zero.</p>
-        <a mat-flat-button routerLink="/admin/import" data-testid="dashboard-import" i18n="@@dashboard.goImport">
-          Import items
+        <a mat-flat-button routerLink="/admin/import" data-testid="dashboard-import">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+          <span i18n="@@dashboard.goImport">Import items</span>
         </a>
       </section>
     }
 
     <section class="panel page-panel" data-testid="panel-progress">
-      <h2 i18n="@@dashboard.progressHeading">Queue progress</h2>
+      <h2 class="section-title">
+        <mat-icon class="section-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+          >pending_actions</mat-icon
+        >
+        <span i18n="@@dashboard.progressHeading">Queue progress</span>
+      </h2>
       <p class="hint" data-testid="first-free">
         @if (snapshot.firstFreeQueuePosition !== null) {
           <ng-container i18n="@@dashboard.firstFree">
@@ -146,7 +155,10 @@
     </section>
 
     <section class="panel page-panel" data-testid="panel-reservations">
-      <h2 i18n="@@dashboard.reservationsHeading">Reservations</h2>
+      <h2 class="section-title">
+        <mat-icon class="section-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">timer</mat-icon>
+        <span i18n="@@dashboard.reservationsHeading">Reservations</span>
+      </h2>
       @if (snapshot.reservations.length === 0) {
         <p class="hint" i18n="@@dashboard.noReservations">No task is reserved right now.</p>
       } @else {
@@ -185,7 +197,10 @@
     </section>
 
     <section class="panel page-panel" data-testid="panel-participants">
-      <h2 i18n="@@dashboard.participantsHeading">Participants</h2>
+      <h2 class="section-title">
+        <mat-icon class="section-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">group</mat-icon>
+        <span i18n="@@dashboard.participantsHeading">Participants</span>
+      </h2>
       <dl class="figures">
         <div>
           <dt i18n="@@dashboard.eligible">Eligible</dt>
@@ -247,7 +262,10 @@
     </section>
 
     <section class="panel page-panel" data-testid="panel-languages">
-      <h2 i18n="@@dashboard.languagesHeading">Languages and e-mail quota</h2>
+      <h2 class="section-title">
+        <mat-icon class="section-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">language</mat-icon>
+        <span i18n="@@dashboard.languagesHeading">Languages and e-mail quota</span>
+      </h2>
       <div class="scroll">
         <table>
           <thead>

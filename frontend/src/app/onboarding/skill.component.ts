@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
@@ -40,10 +41,20 @@ export const SKILL_UNSAVED_KEY = '/skill';
 /** Profile step: name, skill and organization (specs 013–025). */
 @Component({
   selector: 'app-skill',
-  imports: [MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule],
+  imports: [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatRadioModule,
+  ],
   template: `
     <section class="skill">
-      <h1 i18n="@@skill.title">Your name and professional skill</h1>
+      <h1 class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">badge</mat-icon>
+        <span i18n="@@skill.title">Your name and professional skill</span>
+      </h1>
       <p i18n="@@skill.intro">Tell us your name and choose the option that best describes you.</p>
       <mat-form-field appearance="outline" class="name">
         <mat-label i18n="@@skill.name">Name</mat-label>
@@ -133,9 +144,9 @@ export const SKILL_UNSAVED_KEY = '/skill';
           class="continue"
           [disabled]="!valid() || saving()"
           (click)="submit()"
-          i18n="@@skill.continue"
         >
-          Continue
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_forward</mat-icon>
+          <span i18n="@@skill.continue">Continue</span>
         </button>
       </div>
     </section>

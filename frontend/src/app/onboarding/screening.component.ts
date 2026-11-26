@@ -1,5 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
@@ -18,10 +19,13 @@ export const SCREENING_UNSAVED_KEY = '/screening';
  */
 @Component({
   selector: 'app-screening',
-  imports: [MatButtonModule, MatProgressSpinnerModule, MatRadioModule],
+  imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule],
   template: `
     <section class="screening">
-      <h1 i18n="@@screening.title">Screening</h1>
+      <h1 class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">fact_check</mat-icon>
+        <span i18n="@@screening.title">Screening</span>
+      </h1>
       <p i18n="@@screening.intro">
         Read the example below (it is shown in English for every participant), then answer the question.
       </p>
@@ -71,13 +75,16 @@ export const SCREENING_UNSAVED_KEY = '/screening';
             class="continue"
             [disabled]="!valid() || saving()"
             (click)="submit()"
-            i18n="@@screening.continue"
           >
-            Continue
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_forward</mat-icon>
+            <span i18n="@@screening.continue">Continue</span>
           </button>
         </div>
       } @else if (failed()) {
-        <button mat-flat-button type="button" (click)="load()" i18n="@@screening.retry">Try again</button>
+        <button mat-flat-button type="button" (click)="load()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+          <span i18n="@@screening.retry">Try again</span>
+        </button>
       } @else {
         <mat-spinner diameter="40"></mat-spinner>
       }

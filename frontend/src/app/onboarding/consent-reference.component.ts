@@ -1,4 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConsentForm, OnboardingService } from '../core/onboarding.service';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../core/problem-messages';
@@ -8,10 +9,13 @@ import { switchMap } from 'rxjs';
 /** The pt-BR reference text of the consent form; the rest of the page stays in the interface language (spec 006, US4). */
 @Component({
   selector: 'app-consent-reference',
-  imports: [MatProgressSpinnerModule],
+  imports: [MatIconModule, MatProgressSpinnerModule],
   template: `
     <section class="reference">
-      <h1 id="reference-heading" i18n="@@consent.reference.title">Reference text (Portuguese, Brazil)</h1>
+      <h1 id="reference-heading" class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">menu_book</mat-icon>
+        <span i18n="@@consent.reference.title">Reference text (Portuguese, Brazil)</span>
+      </h1>
       @if (reference(); as current) {
         <div class="text" role="region" aria-labelledby="reference-heading" tabindex="0" lang="pt-BR">{{ current.text }}</div>
       } @else {

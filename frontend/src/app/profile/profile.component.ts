@@ -2,6 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterLink } from '@angular/router';
@@ -41,13 +42,17 @@ import { SessionService } from '../core/session.service';
     MatAutocompleteModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatRadioModule,
     RouterLink,
   ],
   template: `
     <section class="profile">
-      <h1 i18n="@@profile.title">Profile</h1>
+      <h1 class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">person</mat-icon>
+        <span i18n="@@profile.title">Profile</span>
+      </h1>
       <p class="page-intro" i18n="@@profile.intro">Update how your name appears. E-mail stays the same.</p>
 
       <div class="page-panel">
@@ -139,16 +144,19 @@ import { SessionService } from '../core/session.service';
       }
 
       <div class="actions">
-        <button mat-button type="button" routerLink="/" i18n="@@profile.back">Back</button>
+        <button mat-button type="button" routerLink="/">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_back</mat-icon>
+          <span i18n="@@profile.back">Back</span>
+        </button>
         <button
           mat-flat-button
           color="primary"
           type="button"
           [disabled]="!valid() || saving()"
           (click)="submit()"
-          i18n="@@profile.save"
         >
-          Save
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">save</mat-icon>
+          <span i18n="@@profile.save">Save</span>
         </button>
       </div>
       </div>

@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
 import { ToastService } from '../../core/toast.service';
@@ -9,7 +10,7 @@ import { FileSaver } from './file-saver';
 /** Administrator CSV downloads, all reached through the HAL links of `vd:exports` (spec 009). */
 @Component({
   selector: 'app-export',
-  imports: [MatButtonModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './export.component.html',
   styleUrl: './export.component.scss',
 })

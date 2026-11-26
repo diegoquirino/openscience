@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, afterNextRender, inject, viewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { missingUsecaseLabel } from '../../core/labels/item-labels';
 import { ItemClock } from './item-clock';
 import { ItemProgressComponent } from './item-progress.component';
@@ -32,7 +33,7 @@ const SCROLL_OFFSET_RATIO = 1 / 3;
  */
 @Component({
   selector: 'app-usecase-dialog',
-  imports: [MatDialogModule, MatButtonModule, ItemProgressComponent],
+  imports: [MatDialogModule, MatButtonModule, MatIconModule, ItemProgressComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './usecase-dialog.component.html',
   styleUrl: './usecase-dialog.component.scss',

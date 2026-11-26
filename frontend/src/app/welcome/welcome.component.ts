@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OnboardingService, routeOfStep } from '../core/onboarding.service';
 import { unexpectedErrorMessage } from '../core/problem-messages';
@@ -12,11 +13,14 @@ import { ToastService } from '../core/toast.service';
  */
 @Component({
   selector: 'app-welcome',
-  imports: [MatButtonModule, MatProgressSpinnerModule],
+  imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule],
   template: `
     <section class="welcome">
       @if (failed()) {
-        <button mat-flat-button type="button" (click)="resolve()" i18n="@@onboarding.retry">Try again</button>
+        <button mat-flat-button type="button" (click)="resolve()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+          <span i18n="@@onboarding.retry">Try again</span>
+        </button>
       } @else {
         <mat-spinner diameter="40"></mat-spinner>
       }

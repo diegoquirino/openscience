@@ -44,6 +44,13 @@ describe('HomeComponent', () => {
     return (fixture.nativeElement as HTMLElement).querySelector<HTMLAnchorElement>('a[mat-flat-button]')!;
   }
 
+  /** Button/link label without Material Symbols glyph text. */
+  function labelWithoutIcons(el: HTMLElement): string {
+    const clone = el.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll('mat-icon').forEach((node) => node.remove());
+    return clone.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+  }
+
   it('shows a sentence about the study', async () => {
     const fixture = await render({ 'vd:request-code': { href: '/links/codes' } });
     const intro = (fixture.nativeElement as HTMLElement).querySelector('.intro');
@@ -53,7 +60,7 @@ describe('HomeComponent', () => {
   it('leads a visitor to the participate page', async () => {
     const fixture = await render({ 'vd:request-code': { href: '/links/codes' } });
     const button = participateButton(fixture);
-    expect(button.textContent?.trim()).toBe('Participate');
+    expect(labelWithoutIcons(button)).toBe('Participate');
     button.click();
     await fixture.whenStable();
     expect(TestBed.inject(Router).url).toBe('/participate');

@@ -1,6 +1,9 @@
 <section class="participants admin-page" data-testid="participants-page">
   <p class="back"><a routerLink="/admin/dashboard" i18n="@@participants.back">Back to administration</a></p>
-  <h1 i18n="@@participants.title">Anonymization of Participants</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">person_off</mat-icon>
+    <span i18n="@@participants.title">Anonymization of Participants</span>
+  </h1>
   <p class="page-intro" i18n="@@participants.intro">
     Select a person from either panel, then anonymize keeping or discarding the responses. You may set the
     retained pseudonym on confirm.
@@ -106,9 +109,9 @@
             data-testid="keep-responses"
             [disabled]="busy()"
             (click)="askConfirm('keep_responses')"
-            i18n="@@participants.keep"
           >
-            Anonymize and keep responses
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">person_off</mat-icon>
+            <span i18n="@@participants.keep">Anonymize and keep responses</span>
           </button>
           <button
             mat-stroked-button
@@ -116,9 +119,9 @@
             data-testid="discard-responses"
             [disabled]="busy()"
             (click)="askConfirm('discard_responses')"
-            i18n="@@participants.discard"
           >
-            Anonymize and discard responses
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">delete</mat-icon>
+            <span i18n="@@participants.discard">Anonymize and discard responses</span>
           </button>
         </div>
       }
@@ -148,11 +151,13 @@
         <mat-hint i18n="@@participants.choosePseudonymHint">Leave as is to keep the current identifier.</mat-hint>
       </mat-form-field>
       <div class="actions">
-        <button mat-flat-button color="primary" type="button" [disabled]="busy()" (click)="confirm()" i18n="@@participants.confirm">
-          Confirm
+        <button mat-flat-button color="primary" type="button" [disabled]="busy()" (click)="confirm()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">check</mat-icon>
+          <span i18n="@@participants.confirm">Confirm</span>
         </button>
-        <button mat-button type="button" [disabled]="busy()" (click)="cancelConfirm()" i18n="@@participants.cancel">
-          Cancel
+        <button mat-button type="button" [disabled]="busy()" (click)="cancelConfirm()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">close</mat-icon>
+          <span i18n="@@participants.cancel">Cancel</span>
         </button>
       </div>
     </div>

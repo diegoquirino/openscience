@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ToastService } from '../core/toast.service';
 import { LabelService, TaskBody } from './label.service';
@@ -8,13 +9,16 @@ import { LabelService, TaskBody } from './label.service';
 /** Resolves the current reservation and routes to the item screen or the done screen. */
 @Component({
   selector: 'app-label-home',
-  imports: [MatButtonModule, MatProgressSpinnerModule],
+  imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule],
   template: `
     <section class="label-home">
       @if (busy()) {
         <mat-spinner diameter="40"></mat-spinner>
       } @else if (failed()) {
-        <button mat-flat-button type="button" (click)="start()" i18n="@@label.retry">Try again</button>
+        <button mat-flat-button type="button" (click)="start()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+          <span i18n="@@label.retry">Try again</span>
+        </button>
       }
     </section>
   `,

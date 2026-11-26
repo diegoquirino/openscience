@@ -2,7 +2,10 @@
   <p class="back">
     <a routerLink="/admin/dashboard" i18n="@@export.back">Back to administration</a>
   </p>
-  <h1 i18n="@@export.title">Export</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+    <span i18n="@@export.title">Export</span>
+  </h1>
   <p class="page-intro intro" i18n="@@export.intro">
     Download the final responses as CSV files. Only submitted blocks are included; the column headers and codes are
     always the English identifiers, whatever the language of this screen.
@@ -22,9 +25,9 @@
           data-testid="export-wide"
           [disabled]="busy() || !view.wideHref"
           (click)="download(view.wideHref)"
-          i18n="@@export.wide"
         >
-          Download wide table
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+          <span i18n="@@export.wide">Download wide table</span>
         </button>
         <button
           type="button"
@@ -32,9 +35,9 @@
           data-testid="export-long"
           [disabled]="busy() || !view.longHref"
           (click)="download(view.longHref)"
-          i18n="@@export.long"
         >
-          Download long table
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+          <span i18n="@@export.long">Download long table</span>
         </button>
       </div>
       <p class="hint" i18n="@@export.allHint">
@@ -53,9 +56,9 @@
             data-testid="export-completo"
             [disabled]="busy() || !system.completoHref"
             (click)="download(system.completoHref)"
-            i18n="@@export.completo"
           >
-            Download completo
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+            <span i18n="@@export.completo">Download completo</span>
           </button>
           <button
             type="button"
@@ -63,9 +66,9 @@
             data-testid="export-rater1"
             [disabled]="busy() || !system.rater1Href"
             (click)="download(system.rater1Href)"
-            i18n="@@export.rater1"
           >
-            Download rater 1
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+            <span i18n="@@export.rater1">Download rater 1</span>
           </button>
           <button
             type="button"
@@ -73,9 +76,9 @@
             data-testid="export-rater2"
             [disabled]="busy() || !system.rater2Href"
             (click)="download(system.rater2Href)"
-            i18n="@@export.rater2"
           >
-            Download rater 2
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">download</mat-icon>
+            <span i18n="@@export.rater2">Download rater 2</span>
           </button>
         </div>
       </section>

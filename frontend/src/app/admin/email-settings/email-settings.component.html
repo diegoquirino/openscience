@@ -2,7 +2,10 @@
   <p class="back">
     <a routerLink="/admin/dashboard" i18n="@@emailSettings.back">Back to administration</a>
   </p>
-  <h1 i18n="@@emailSettings.title">E-mail send settings</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">mail</mat-icon>
+    <span i18n="@@emailSettings.title">E-mail send settings</span>
+  </h1>
   <p class="page-intro intro" i18n="@@emailSettings.intro">
     Configure CAAE, platform URL and the collection and reminder moments as date and time. Templates
     support the placeholders nome, caae, url, coleta_inicio and coleta_fim (double curly braces).
@@ -12,7 +15,10 @@
     <p class="status" i18n="@@emailSettings.loading">Loading settings...</p>
   } @else {
     <form class="page-panel settings-form" (ngSubmit)="saveSettings()" data-testid="email-settings-form">
-      <h2 i18n="@@emailSettings.momentsHeading">Send moments</h2>
+      <h2 class="section-title">
+        <mat-icon class="section-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">schedule</mat-icon>
+        <span i18n="@@emailSettings.momentsHeading">Send moments</span>
+      </h2>
       <p class="hint" i18n="@@emailSettings.timeHint">Times use the 24-hour clock (HH:mm).</p>
 
       <div class="moment" data-testid="email-settings-collection-start">
@@ -35,9 +41,9 @@
             class="today"
             data-testid="email-settings-collection-start-today"
             (click)="setToday('collectionStart')"
-            i18n="@@emailSettings.today"
           >
-            Today
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">today</mat-icon>
+            <span i18n="@@emailSettings.today">Today</span>
           </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
@@ -70,9 +76,9 @@
             class="today"
             data-testid="email-settings-reminder-today"
             (click)="setToday('reminder')"
-            i18n="@@emailSettings.today"
           >
-            Today
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">today</mat-icon>
+            <span i18n="@@emailSettings.today">Today</span>
           </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
@@ -110,9 +116,9 @@
             class="today"
             data-testid="email-settings-collection-end-today"
             (click)="setToday('collectionEnd')"
-            i18n="@@emailSettings.today"
           >
-            Today
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">today</mat-icon>
+            <span i18n="@@emailSettings.today">Today</span>
           </button>
           <mat-form-field appearance="outline" class="time-field">
             <mat-label i18n="@@emailSettings.time">Time (24h)</mat-label>
@@ -136,9 +142,9 @@
         color="primary"
         [disabled]="busy()"
         data-testid="email-settings-save"
-        i18n="@@emailSettings.save"
       >
-        Save send settings
+        <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">save</mat-icon>
+        <span i18n="@@emailSettings.save">Save send settings</span>
       </button>
     </form>
 
@@ -153,8 +159,9 @@
           <mat-label i18n="@@emailSettings.body">Body</mat-label>
           <textarea matInput rows="14" name="body-{{ kind }}" [(ngModel)]="bodies[kind]" required></textarea>
         </mat-form-field>
-        <button type="submit" mat-stroked-button [disabled]="busy()" i18n="@@emailSettings.saveTemplate">
-          Save template
+        <button type="submit" mat-stroked-button [disabled]="busy()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">save</mat-icon>
+          <span i18n="@@emailSettings.saveTemplate">Save template</span>
         </button>
       </form>
     }

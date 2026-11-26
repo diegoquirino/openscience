@@ -121,7 +121,7 @@ describe('DashboardComponent', () => {
     await load(fixture);
 
     const element = fixture.nativeElement as HTMLElement;
-    expect(element.querySelector('h1')?.textContent?.trim()).toBe('Dashboard');
+    expect(element.querySelector('h1 span')?.textContent?.trim()).toBe('Dashboard');
     const rows = Array.from(element.querySelectorAll('[data-testid="panel-progress"] tbody tr'));
     expect(rows.map((row) => row.getAttribute('data-row'))).toEqual(['overall', 'system']);
     const overall = rows[0];

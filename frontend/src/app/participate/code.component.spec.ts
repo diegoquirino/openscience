@@ -83,6 +83,12 @@ describe('CodeComponent', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
+  function labelWithoutIcons(el: HTMLElement): string {
+    const clone = el.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll('mat-icon').forEach((node) => node.remove());
+    return clone.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+  }
+
   function buttons(fixture: ComponentFixture<CodeComponent>): HTMLButtonElement[] {
     return Array.from(element(fixture).querySelectorAll<HTMLButtonElement>('button'));
   }
@@ -111,7 +117,7 @@ describe('CodeComponent', () => {
     expect(text).toContain('spam');
     const resend = buttons(fixture)[1];
     expect(resend.disabled).toBe(true);
-    expect(resend.textContent!.trim()).toMatch(/^Resend in (59|60) s$/);
+    expect(labelWithoutIcons(resend)).toMatch(/^Resend in (59|60) s$/);
   });
 
   it('signs in through vd:sign-in and opens the welcome screen', async () => {
@@ -211,7 +217,7 @@ describe('CodeComponent', () => {
     const toast = TestBed.inject(ToastService) as unknown as { error: ReturnType<typeof vi.fn> };
     expect(toast.error).toHaveBeenCalledWith('This code is no longer valid');
     const sendNew = buttons(fixture)[1];
-    expect(sendNew.textContent!.trim()).toBe('Send a new code');
+    expect(labelWithoutIcons(sendNew)).toBe('Send a new code');
     expect(sendNew.disabled).toBe(false);
   });
 

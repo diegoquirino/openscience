@@ -1,6 +1,9 @@
 @if (pending(); as entry) {
   <section class="code">
-    <h1 i18n="@@code.title">Enter the code</h1>
+    <h1 class="page-title">
+      <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">pin</mat-icon>
+      <span i18n="@@code.title">Enter the code</span>
+    </h1>
     <p class="page-intro email" i18n="@@code.sentTo">We sent a 6-digit code to {{ entry.email }}.</p>
     <p class="page-intro" i18n="@@code.validity">
       The code is valid for {{ entry.validityMinutes }} minutes. If it does not arrive, check the spam folder.
@@ -16,17 +19,24 @@
 
 
       <div class="actions">
-        <button mat-flat-button type="submit" [disabled]="sending()" i18n="@@code.signIn">Sign in</button>
+        <button mat-flat-button type="submit" [disabled]="sending()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">login</mat-icon>
+          <span i18n="@@code.signIn">Sign in</span>
+        </button>
         <button mat-stroked-button type="button" (click)="resend()" [disabled]="sending() || secondsToResend() > 0">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
           @if (secondsToResend() > 0) {
-            <ng-container i18n="@@code.resendIn">Resend in {{ secondsToResend() }} s</ng-container>
+            <span i18n="@@code.resendIn">Resend in {{ secondsToResend() }} s</span>
           } @else if (codeExpired()) {
-            <ng-container i18n="@@code.sendNew">Send a new code</ng-container>
+            <span i18n="@@code.sendNew">Send a new code</span>
           } @else {
-            <ng-container i18n="@@code.resend">Resend code</ng-container>
+            <span i18n="@@code.resend">Resend code</span>
           }
         </button>
-        <button mat-button type="button" (click)="correctEmail()" i18n="@@code.correctEmail">Correct e-mail</button>
+        <button mat-button type="button" (click)="correctEmail()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">edit</mat-icon>
+          <span i18n="@@code.correctEmail">Correct e-mail</span>
+        </button>
       </div>
     </form>
     </div>

@@ -2,6 +2,7 @@ import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import {
@@ -22,7 +23,7 @@ import { clearPendingCode, PendingCode, readPendingCode, savePendingCode } from 
 /** Second step of the sign-in: the code received by e-mail (spec 004, US1). */
 @Component({
   selector: 'app-code',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   templateUrl: './code.component.html',
   styleUrl: './code.component.scss',
 })

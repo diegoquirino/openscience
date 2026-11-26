@@ -2,7 +2,10 @@
   <p class="back">
     <a routerLink="/admin/dashboard" i18n="@@import.back">Back to administration</a>
   </p>
-  <h1 i18n="@@import.title">Import</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+    <span i18n="@@import.title">Import</span>
+  </h1>
   <p class="page-intro intro" i18n="@@import.intro">
     Upload a CSV to see which rows would be included, ignored or refused before anything is stored.
   </p>
@@ -14,8 +17,9 @@
       </p>
     }
     @if (phase.switchAllowed) {
-      <button type="button" mat-stroked-button [disabled]="busy()" (click)="switchToCollection()" i18n="@@import.openCollection">
-        Open collection phase
+      <button type="button" mat-stroked-button [disabled]="busy()" (click)="switchToCollection()">
+        <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">play_arrow</mat-icon>
+        <span i18n="@@import.openCollection">Open collection phase</span>
       </button>
     }
   }
@@ -94,8 +98,9 @@
       }
 
       <div class="actions">
-        <button type="button" mat-stroked-button (click)="cancel()" [disabled]="busy()" i18n="@@import.cancel">
-          Cancel
+        <button type="button" mat-stroked-button (click)="cancel()" [disabled]="busy()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">close</mat-icon>
+          <span i18n="@@import.cancel">Cancel</span>
         </button>
         <button
           type="button"
@@ -103,9 +108,9 @@
           color="primary"
           [disabled]="busy() || view.includedCount === 0 || !view.confirmHref"
           (click)="confirm()"
-          i18n="@@import.confirm"
         >
-          Confirm import
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">check</mat-icon>
+          <span i18n="@@import.confirm">Confirm import</span>
         </button>
       </div>
     </section>
@@ -124,7 +129,10 @@
           <li i18n="@@import.confirmedQueue">Queue positions: {{ queue.from }} to {{ queue.to }}</li>
         }
       </ul>
-      <button type="button" mat-stroked-button (click)="cancel()" i18n="@@import.another">Import another file</button>
+      <button type="button" mat-stroked-button (click)="cancel()">
+        <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">upload_file</mat-icon>
+        <span i18n="@@import.another">Import another file</span>
+      </button>
     </section>
   }
 

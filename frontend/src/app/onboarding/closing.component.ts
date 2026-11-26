@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { SessionService } from '../core/session.service';
 
 /** The three ways the onboarding can end: a refusal, a "No" in the screening, a study not open yet. */
@@ -13,33 +14,46 @@ export type ClosingKind = 'declined' | 'ineligible' | 'not-open';
  */
 @Component({
   selector: 'app-closing',
-  imports: [MatButtonModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, RouterLink],
   template: `
     <section class="closing">
       @switch (kind()) {
         @case ('declined') {
-          <h1 i18n="@@consent.declined.title">Thank you for considering the study</h1>
+          <h1 class="page-title">
+            <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">info</mat-icon>
+            <span i18n="@@consent.declined.title">Thank you for considering the study</span>
+          </h1>
           <p i18n="@@consent.declined.text">
             No labeling data is recorded without your consent. You can read the consent form again if you change your mind.
           </p>
         }
         @case ('ineligible') {
-          <h1 i18n="@@screening.closed.title">Thank you for your interest</h1>
+          <h1 class="page-title">
+            <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">block</mat-icon>
+            <span i18n="@@screening.closed.title">Thank you for your interest</span>
+          </h1>
           <p i18n="@@screening.closed.text">
             This study requires experience with use cases and test cases, so your participation ends here.
           </p>
         }
         @default {
-          <h1 i18n="@@notOpen.title">The study is not open yet</h1>
+          <h1 class="page-title">
+            <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">schedule</mat-icon>
+            <span i18n="@@notOpen.title">The study is not open yet</span>
+          </h1>
           <p i18n="@@notOpen.text">Please come back later.</p>
         }
       }
       <div class="actions">
         @if (kind() === 'declined') {
-          <a mat-flat-button class="again" routerLink="/consent" i18n="@@consent.declined.again">Read the consent form again</a>
+          <a mat-flat-button class="again" routerLink="/consent">
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">contract</mat-icon>
+            <span i18n="@@consent.declined.again">Read the consent form again</span>
+          </a>
         }
-        <button mat-stroked-button type="button" class="sign-out" (click)="signOut()" i18n="@@shell.signOut">
-          Sign out
+        <button mat-stroked-button type="button" class="sign-out" (click)="signOut()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">logout</mat-icon>
+          <span i18n="@@shell.signOut">Sign out</span>
         </button>
       </div>
     </section>

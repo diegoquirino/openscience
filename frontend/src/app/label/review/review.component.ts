@@ -2,6 +2,7 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { switchMap } from 'rxjs';
 import { changeImpactLabel, maintenanceOperationLabel } from '../../core/labels/response-labels';
@@ -12,10 +13,13 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
 /** Review of the held block (spec 007, US3): every answer, edit links, and Submit. */
 @Component({
   selector: 'app-label-review',
-  imports: [MatButtonModule, MatProgressSpinnerModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
   template: `
     <section class="review">
-      <h1 i18n="@@label.review.title">Review</h1>
+      <h1 class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">rate_review</mat-icon>
+        <span i18n="@@label.review.title">Review</span>
+      </h1>
       @if (busy()) {
         <mat-spinner diameter="40"></mat-spinner>
       } @else if (task()) {
@@ -27,9 +31,10 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
               <div class="head">
                 <strong i18n="@@label.review.item">Item {{ item.position }} of {{ items().length }}</strong>
                 <span class="where">{{ item.system }} · {{ item.uc }} · {{ item.field }}</span>
-                <a mat-stroked-button class="edit" [routerLink]="['/label/items', item.position]" i18n="@@label.review.edit"
-                  >Edit</a
-                >
+                <a mat-stroked-button class="edit" [routerLink]="['/label/items', item.position]">
+                  <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">edit</mat-icon>
+                  <span i18n="@@label.review.edit">Edit</span>
+                </a>
               </div>
               @if (item.draft; as draft) {
                 <dl>
@@ -54,15 +59,22 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
         </ol>
 
         @if (expired()) {
-          <a mat-stroked-button routerLink="/label" i18n="@@label.retry">Try again</a>
+          <a mat-stroked-button routerLink="/label">
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+            <span i18n="@@label.retry">Try again</span>
+          </a>
         }
         @if (firstPending(); as pending) {
           <p class="hint" i18n="@@label.review.incomplete">Answer every item before submitting the block.</p>
           <div class="actions">
-            <a mat-stroked-button [routerLink]="['/label/items', pending]" i18n="@@label.review.firstPending"
-              >Go to the first pending item</a
-            >
-            <button mat-flat-button type="button" class="submit" disabled i18n="@@label.review.submit">Submit block</button>
+            <a mat-stroked-button [routerLink]="['/label/items', pending]">
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">arrow_forward</mat-icon>
+              <span i18n="@@label.review.firstPending">Go to the first pending item</span>
+            </a>
+            <button mat-flat-button type="button" class="submit" disabled>
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">send</mat-icon>
+              <span i18n="@@label.review.submit">Submit block</span>
+            </button>
           </div>
         } @else {
           <div class="actions">
@@ -72,9 +84,9 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
               class="submit"
               [disabled]="submitting() || expired()"
               (click)="submit()"
-              i18n="@@label.review.submit"
             >
-              Submit block
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">send</mat-icon>
+              <span i18n="@@label.review.submit">Submit block</span>
             </button>
             @if (submitting()) {
               <mat-spinner diameter="24"></mat-spinner>
@@ -82,7 +94,10 @@ import { ItemBody, LabelService, NoActiveTaskError, TaskBody } from '../label.se
           </div>
         }
       } @else {
-        <button mat-flat-button type="button" (click)="load()" i18n="@@label.retry">Try again</button>
+        <button mat-flat-button type="button" (click)="load()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+          <span i18n="@@label.retry">Try again</span>
+        </button>
       }
     </section>
   `,

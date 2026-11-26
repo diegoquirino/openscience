@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { problemMessage, problemOf, unexpectedErrorMessage } from '../../core/problem-messages';
 import { ToastService } from '../../core/toast.service';
@@ -8,7 +9,7 @@ import { ImportBatch, ImportPreview, ImportService, RowIssue, StudyPhase } from 
 /** Administrator CSV import: preview, confirm and study-phase banner (spec 005). */
 @Component({
   selector: 'app-import',
-  imports: [MatButtonModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './import.component.html',
   styleUrl: './import.component.scss',
 })

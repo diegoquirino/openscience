@@ -1,19 +1,23 @@
 import { Component, computed, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { areaOf } from '../core/guards';
 import { SessionService } from '../core/session.service';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, MatButtonModule],
+  imports: [RouterLink, MatButtonModule, MatIconModule],
   template: `
     <section class="home">
       <p class="intro" i18n="@@home.intro">
         Veredito is the data labeling platform of a doctoral study on software testing: volunteers
         label how edits to use cases affect their tests.
       </p>
-      <a mat-flat-button [routerLink]="area()" i18n="@@home.participate">Participate</a>
+      <a mat-flat-button [routerLink]="area()">
+        <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">login</mat-icon>
+        <span i18n="@@home.participate">Participate</span>
+      </a>
     </section>
   `,
   styles: `

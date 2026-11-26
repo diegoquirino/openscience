@@ -11,6 +11,12 @@ import { ItemBody, LabelService, TaskBody } from '../label.service';
 import { LabelItemComponent, unsavedKey } from './item.component';
 import { UseCaseDialogComponent } from './usecase-dialog.component';
 
+function labelWithoutIcons(el: HTMLElement): string {
+  const clone = el.cloneNode(true) as HTMLElement;
+  clone.querySelectorAll('mat-icon').forEach((node) => node.remove());
+  return clone.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+}
+
 const task: TaskBody = {
   id: 41,
   blockNumber: 1,
@@ -267,7 +273,7 @@ describe('LabelItemComponent', () => {
     vi.spyOn(TestBed.inject(BreakpointObserver), 'isMatched').mockReturnValue(false);
 
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('button.open-usecase'));
-    expect(buttons.map((button) => button.textContent?.trim())).toEqual([
+    expect(buttons.map((button) => labelWithoutIcons(button))).toEqual([
       'Enlarge use case (1.1)',
       'Enlarge use case (1.2)',
     ]);

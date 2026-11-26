@@ -1,5 +1,8 @@
 <section class="sign-in">
-  <h1 i18n="@@signIn.title">Participate</h1>
+  <h1 class="page-title">
+    <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">mail</mat-icon>
+    <span i18n="@@signIn.title">Participate</span>
+  </h1>
   <p class="page-intro" i18n="@@signIn.intro">Enter your e-mail. We will send you a 6-digit code to sign in.</p>
   <div class="page-panel">
 
@@ -11,7 +14,10 @@
     </mat-form-field>
 
 
-    <button mat-flat-button type="submit" [disabled]="sending()" i18n="@@signIn.sendCode">Send code</button>
+    <button mat-flat-button type="submit" [disabled]="sending()">
+      <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">send</mat-icon>
+      <span i18n="@@signIn.sendCode">Send code</span>
+    </button>
   </form>
   </div>
 </section>

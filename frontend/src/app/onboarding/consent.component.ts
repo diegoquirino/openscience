@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../core/problem-messages';
@@ -14,10 +15,13 @@ type AcknowledgmentChoice = 'named' | 'anonymous';
 /** First step: the current consent form in the interface language, accepted or refused (spec 006, US1 and US4). */
 @Component({
   selector: 'app-consent',
-  imports: [MatButtonModule, MatProgressSpinnerModule, MatRadioModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatRadioModule, RouterLink],
   template: `
     <section class="consent">
-      <h1 id="consent-heading" i18n="@@consent.title">Consent form</h1>
+      <h1 id="consent-heading" class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">contract</mat-icon>
+        <span i18n="@@consent.title">Consent form</span>
+      </h1>
       @if (loading()) {
         <mat-spinner diameter="40"></mat-spinner>
       } @else if (form(); as current) {
@@ -66,9 +70,9 @@ type AcknowledgmentChoice = 'named' | 'anonymous';
             class="accept"
             [disabled]="saving() || acknowledgmentChoice() === null"
             (click)="decide('accepted')"
-            i18n="@@consent.accept"
           >
-            I have read it and agree to participate
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">check</mat-icon>
+            <span i18n="@@consent.accept">I have read it and agree to participate</span>
           </button>
           <button
             mat-stroked-button
@@ -76,13 +80,16 @@ type AcknowledgmentChoice = 'named' | 'anonymous';
             class="refuse"
             [disabled]="saving()"
             (click)="decide('refused')"
-            i18n="@@consent.refuse"
           >
-            I do not agree
+            <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">close</mat-icon>
+            <span i18n="@@consent.refuse">I do not agree</span>
           </button>
         </div>
       } @else {
-        <button mat-flat-button type="button" (click)="load()" i18n="@@consent.retry">Try again</button>
+        <button mat-flat-button type="button" (click)="load()">
+          <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">refresh</mat-icon>
+          <span i18n="@@consent.retry">Try again</span>
+        </button>
       }
     </section>
   `,

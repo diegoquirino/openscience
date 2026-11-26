@@ -37,6 +37,49 @@ h2 {
   margin: 0 0 0.75rem;
 }
 
+.page-title,
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-title-icon,
+.section-title-icon {
+  color: var(--mat-sys-primary);
+  flex: 0 0 auto;
+  font-size: 1.75rem;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.section-title-icon {
+  font-size: 1.35rem;
+  height: 1.35rem;
+  width: 1.35rem;
+}
+
+.panel-title-icon {
+  margin-right: 0.35rem;
+  vertical-align: middle;
+  font-size: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+a[mat-flat-button] mat-icon,
+a[mat-stroked-button] mat-icon,
+a[mat-button] mat-icon,
+button[mat-flat-button] mat-icon,
+button[mat-stroked-button] mat-icon,
+button[mat-button] mat-icon {
+  margin-right: 0.35rem;
+  vertical-align: middle;
+  font-size: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
 h3 {
   font: var(--mat-sys-title-medium);
   font-weight: 500;

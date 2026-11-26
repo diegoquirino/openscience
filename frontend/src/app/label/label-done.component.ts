@@ -12,7 +12,10 @@ import { SessionService } from '../core/session.service';
   imports: [MatButtonModule, MatIconModule, RouterLink],
   template: `
     <section class="done">
-      <h1 i18n="@@label.done.title">Thank you</h1>
+      <h1 class="page-title">
+        <mat-icon class="page-title-icon" fontSet="material-symbols-outlined" aria-hidden="true">celebration</mat-icon>
+        <span i18n="@@label.done.title">Thank you</span>
+      </h1>
       <div class="page-panel">
         <p class="page-intro">{{ message() }}</p>
         @if (outcome() === 'cancelled') {
@@ -31,10 +34,14 @@ import { SessionService } from '../core/session.service';
         } @else {
           <div class="actions">
             @if (outcome() === 'more-available') {
-              <a mat-flat-button class="another" routerLink="/label" i18n="@@label.another">Label another block</a>
+              <a mat-flat-button class="another" routerLink="/label">
+                <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">edit_note</mat-icon>
+                <span i18n="@@label.another">Label another block</span>
+              </a>
             }
-            <button mat-stroked-button type="button" class="sign-out" (click)="signOut()" i18n="@@shell.signOut">
-              Sign out
+            <button mat-stroked-button type="button" class="sign-out" (click)="signOut()">
+              <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">logout</mat-icon>
+              <span i18n="@@shell.signOut">Sign out</span>
             </button>
           </div>
         }

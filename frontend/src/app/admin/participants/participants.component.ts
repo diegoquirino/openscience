@@ -2,6 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../core/toast.service';
@@ -13,7 +14,7 @@ import {
 
 @Component({
   selector: 'app-participants',
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, RouterLink],
+  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, RouterLink],
   templateUrl: './participants.component.html',
   styleUrl: './participants.component.scss',
 })
