@@ -75,6 +75,15 @@ describe('UseCaseDialogComponent', () => {
     expect(edited.classList.contains('highlight-before')).toBe(false);
   });
 
+  it('highlights CLARET keywords and quoted strings', () => {
+    const root = open().nativeElement as HTMLElement;
+    const keywords = Array.from(root.querySelectorAll('.claret-keyword')).map((node) => node.textContent);
+    const strings = Array.from(root.querySelectorAll('.claret-string')).map((node) => node.textContent);
+    expect(keywords).toEqual(expect.arrayContaining(['usecase', 'basic', 'step']));
+    expect(strings).toContain('"Login User"');
+    expect(strings).toContain('"launches the login screen"');
+  });
+
   it('shows the counter and the countdown in its header', () => {
     const root = open().nativeElement as HTMLElement;
     expect(root.querySelector('.counter')?.textContent?.trim()).toBe('2 of 10');

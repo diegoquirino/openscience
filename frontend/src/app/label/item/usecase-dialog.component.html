@@ -21,7 +21,10 @@
           [class.highlight-before]="line.edited && data.side === 'origin'"
           [class.highlight-after]="line.edited && data.side === 'target'"
           [style.padding-left.ch]="line.indent"
-        >{{ line.content }}</div>
+        >@for (token of line.tokens; track $index) {<span
+            [class.claret-keyword]="token.kind === 'keyword'"
+            [class.claret-string]="token.kind === 'string'"
+            >{{ token.text }}</span>}</div>
       }
     </div>
   }

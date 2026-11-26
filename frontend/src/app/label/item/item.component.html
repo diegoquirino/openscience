@@ -77,7 +77,12 @@
                               [class.highlight-after]="line.edited && column.side === 'target'"
                               [style.padding-left.ch]="line.indent"
                             >
-                              {{ line.content }}
+                              @for (token of line.tokens; track $index) {
+                                <span
+                                  [class.claret-keyword]="token.kind === 'keyword'"
+                                  [class.claret-string]="token.kind === 'string'"
+                                  >{{ token.text }}</span>
+                              }
                             </div>
                           }
                         }

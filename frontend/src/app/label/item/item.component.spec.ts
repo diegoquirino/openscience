@@ -135,6 +135,14 @@ describe('LabelItemComponent', () => {
       },
     ]);
     expect(root.querySelector('.no-difference')).toBeNull();
+    const originKeywords = Array.from(
+      root.querySelectorAll('.column[data-side=origin] .claret-keyword'),
+    ).map((node) => node.textContent);
+    const originStrings = Array.from(
+      root.querySelectorAll('.column[data-side=origin] .claret-string'),
+    ).map((node) => node.textContent);
+    expect(originKeywords).toContain('step');
+    expect(originStrings).toContain('"old"');
   });
 
   it('shows full use cases for ADD and DEL on both columns', async () => {
