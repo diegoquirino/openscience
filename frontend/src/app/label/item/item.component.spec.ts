@@ -340,6 +340,10 @@ describe('LabelItemComponent', () => {
       'Reassign',
       'Flag',
     ]);
+    expect(root.querySelectorAll('.impact .option-label')).toHaveLength(2);
+    expect(root.querySelectorAll('.operation .option-label')).toHaveLength(8);
+    expect(root.querySelector('.explanation.option-label')).toBeNull();
+    expect(root.querySelectorAll('.explanation .option-label')).toHaveLength(0);
 
     expect(root.querySelector('.precedence .intro')?.textContent).toBe(
       'If more than one applies, choose the one with the greatest consequence:',

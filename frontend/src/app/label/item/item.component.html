@@ -118,9 +118,9 @@
             >
               @for (code of impacts; track code) {
                 <div class="option">
-                  <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code">{{
-                    impactLabel(code)
-                  }}</mat-radio-button>
+                  <mat-radio-button [value]="code" [aria-describedby]="'impact-' + code"
+                    ><span class="option-label">{{ impactLabel(code) }}</span></mat-radio-button
+                  >
                   <p class="explanation" [id]="'impact-' + code">{{ impactExplanation(code) }}</p>
                 </div>
               }
@@ -142,9 +142,9 @@
             >
               @for (code of operations; track code) {
                 <div class="option">
-                  <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code">{{
-                    operationLabel(code)
-                  }}</mat-radio-button>
+                  <mat-radio-button [value]="code" [aria-describedby]="'operation-' + code"
+                    ><span class="option-label">{{ operationLabel(code) }}</span></mat-radio-button
+                  >
                   <p class="explanation" [id]="'operation-' + code">{{ operationExplanation(code) }}</p>
                 </div>
               }
