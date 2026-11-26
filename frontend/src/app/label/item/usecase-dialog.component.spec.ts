@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LabelService } from '../label.service';
 import { ItemClock } from './item-clock';
 import { UseCaseDialogComponent, UseCaseDialogData } from './usecase-dialog.component';
-import { MISSING_USECASE_TEXT } from './usecase-text';
+import { MISSING_TESTS_TEXT, MISSING_USECASE_TEXT } from './usecase-text';
 
 const TEXT = [
   'usecase "Login User" {',
@@ -13,6 +13,15 @@ const TEXT = [
   '    step 2 system "presents a form"',
   '  }',
   '}',
+].join('\n');
+
+const SUITE = [
+  'System: minitest',
+  'Test Case ID: TC1',
+  'Summary: Basic Flow',
+  'Preconditions: ready',
+  '1\tuser\topens\tSYSTEM shows   <- edited',
+  'Postconditions: done',
 ].join('\n');
 
 describe('UseCaseDialogComponent', () => {
@@ -96,6 +105,24 @@ describe('UseCaseDialogComponent', () => {
     expect(root.querySelector('.missing-usecase')?.textContent).toBe('(this use case does not exist in this version)');
     expect(root.querySelector('.usecase-line')).toBeNull();
     expect(root.textContent).not.toContain('the use case does not exist in this version)');
+  });
+
+  it('titles the suite dialog and highlights without CLARET tokens', () => {
+    const root = open({ kind: 'suite', text: SUITE }).nativeElement as HTMLElement;
+    expect(root.querySelector('.dialog-title')?.textContent?.trim()).toBe(
+      'LoginTest · test suite · version v1.1 (previous)',
+    );
+    expect(root.querySelectorAll('.claret-keyword')).toHaveLength(0);
+    const edited = root.querySelector('.usecase-line.edited') as HTMLElement;
+    expect(edited.textContent).toBe('1\tuser\topens\tSYSTEM shows');
+    expect(edited.classList.contains('highlight-before')).toBe(true);
+  });
+
+  it('shows the missing-suite message in suite mode', () => {
+    const root = open({ kind: 'suite', text: MISSING_TESTS_TEXT }).nativeElement as HTMLElement;
+    expect(root.querySelector('.missing-usecase')?.textContent).toBe(
+      '(this test suite does not exist in this version)',
+    );
   });
 
   it('scrolls the body to the first edited line when it opens and stays at the top without one', async () => {

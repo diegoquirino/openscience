@@ -41,64 +41,64 @@ Use Case: Login User
 Suite Type: GT
 Size: 3
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|1|2,LoginTest,MOD,step,presents a form with username and password fields and a submit button,"presents a form containing a username text field, a masked password field, and a submit button",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -141,64 +141,64 @@ Use Case: Login User
 Suite Type: GT
 Size: 3
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the login screen	SYSTEM presents a form with username and password fields and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|1|3,LoginTest,ADD,alt_flow_steps_block,,"alternative 1 ""Username is predicted""
 [emailUser] selects a suggested user name, types password and click on the submit button",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
@@ -277,13 +277,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+Postconditions: User successfully logged
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -345,72 +345,72 @@ Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|2|2,LoginTest,MOD,alt_flow_step,"selects a suggested user name, types password and click on the submit button","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.1,v1.2,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -464,13 +464,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+Postconditions: User successfully logged
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -499,13 +499,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+Postconditions: User successfully logged
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -583,13 +583,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	selects a suggested user name, types password and click on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Incorrect username/password combination
@@ -618,13 +618,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Incorrect username/password combination
@@ -702,13 +702,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	displays the login screen	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts that username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
@@ -737,13 +737,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|3|1,LoginTest,META,requirements,,REQ-07,v1.2,v1.3,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -902,72 +902,72 @@ Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|3|3,LoginTest,MOD,step,"presents a form containing a username text field, a masked password field, and a submit button","allows users to authenticate using their username and password through a form with username field, masked password field, and submit button",v1.2,v1.3,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -1014,72 +1014,72 @@ Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	Presents the interface through which users may provide the credentials required to initiate the authentication process and obtain access to the system	SYSTEM presents a form containing a username text field, a masked password field, and a submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|4|1,LoginTest,MOD,post,User successfully logged,User successfully authenticated with two-factor verification,v1.3,v1.4,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07""
@@ -1136,7 +1136,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
-Postconditions: User successfully logged
+Postconditions: User successfully logged   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -1144,7 +1144,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
-Postconditions: User successfully logged
+Postconditions: User successfully logged   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -1171,7 +1171,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message
-Postconditions: User successfully authenticated with two-factor verification
+Postconditions: User successfully authenticated with two-factor verification   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -1179,7 +1179,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
-Postconditions: User successfully authenticated with two-factor verification
+Postconditions: User successfully authenticated with two-factor verification   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -1254,80 +1254,80 @@ Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 5
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message
+Postconditions: User successfully authenticated with two-factor verification
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
+Postconditions: User successfully authenticated with two-factor verification
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|4|3,LoginTest,MOD,step,fills out the fields and click on the submit button,"fills out the username, password, and 2FA code fields and clicks on the submit button",v1.3,v1.4,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07""
@@ -1378,13 +1378,13 @@ Use Case: Login User
 Suite Type: GT
 Size: 4
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+Postconditions: User successfully logged
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -1394,32 +1394,32 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 5
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+Postconditions: User successfully authenticated with two-factor verification
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -1429,29 +1429,29 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
 Postconditions: User successfully authenticated with two-factor verification
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|4|4,LoginTest,MOD,alt_flow_step,"chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.3,v1.4,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07""
@@ -1510,13 +1510,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully logged
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully logged   <- edited
+Postconditions: User successfully logged
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -1545,13 +1545,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message
 Postconditions: User successfully authenticated with two-factor verification
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+Postconditions: User successfully authenticated with two-factor verification
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -1650,13 +1650,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the fields and click on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 5
@@ -1685,13 +1685,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Invalid or expired two-factor authentication code
@@ -1818,13 +1818,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|5|1,LoginTest,ADD,exc_flow_steps_block,,"exception 4 ""Password length constraint""
 [system] alerts: password contains fewer than eight characters",v1.4,v1.5,"systemName ""Email""
 usecase ""Login User"" {
@@ -1968,13 +1968,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Password length constraint   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Password length constraint
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC7
 Summary: Exception Flow 5: Password uppercase constraint
@@ -2134,13 +2134,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC7   <- edited
-Summary: Exception Flow 5: Password uppercase constraint   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC7
+Summary: Exception Flow 5: Password uppercase constraint
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains no uppercase letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|6|1,LoginTest,MOD,exc_flow_title,Password length constraint,Unified password policy (formerly separate length and uppercase checks),v1.5,v1.6,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07""
@@ -2243,13 +2243,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Password length constraint   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Password length constraint
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC7
 Summary: Exception Flow 5: Password uppercase constraint
@@ -2302,13 +2302,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters or no uppercase letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters or no uppercase letter
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|6|2,LoginTest,MOD,exc_flow_step,alerts: password contains fewer than eight characters,alerts: password contains fewer than eight characters or no uppercase letter,v1.5,v1.6,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07""
@@ -2411,13 +2411,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Password length constraint   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Password length constraint
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC7
 Summary: Exception Flow 5: Password uppercase constraint
@@ -2470,13 +2470,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters or no uppercase letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|6|3,LoginTest,DEL,exc_flow_steps_block,"exception 5 ""Password uppercase constraint""
 [system] alerts: password contains no uppercase letter",,v1.5,v1.6,"systemName ""Email""
 usecase ""Login User"" {
@@ -2588,13 +2588,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC7   <- edited
-Summary: Exception Flow 5: Password uppercase constraint   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC7
+Summary: Exception Flow 5: Password uppercase constraint
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains no uppercase letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 6
@@ -2715,7 +2715,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message
-Postconditions: User successfully authenticated with two-factor verification
+Postconditions: User successfully authenticated with two-factor verification   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -2723,7 +2723,7 @@ Preconditions: There is an active network connection.
 Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message
-Postconditions: User successfully authenticated with two-factor verification
+Postconditions: User successfully authenticated with two-factor verification   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -2768,7 +2768,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -2778,7 +2778,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -2874,21 +2874,21 @@ Use Case: Login User
 Suite Type: GT
 Size: 6
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+Postconditions: User successfully authenticated with two-factor verification
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM displays a successful message   <- edited
-Postconditions: User successfully authenticated with two-factor verification   <- edited
+Postconditions: User successfully authenticated with two-factor verification
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -2925,25 +2925,25 @@ Use Case: Login User
 Suite Type: GT
 Size: 6
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -3093,25 +3093,25 @@ Use Case: Login User
 Suite Type: GT
 Size: 6
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -3428,13 +3428,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than eight characters or no uppercase letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 6
@@ -3483,13 +3483,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|10|1,LoginTest,MOD,post,"User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log","User successfully authenticated, notified by email, and login recorded in the audit log",v1.9,v2.0,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07, REQ-08, REQ-09""
@@ -3562,7 +3562,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -3572,7 +3572,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -3617,7 +3617,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -3627,7 +3627,7 @@ Step	Actor	Action	Expected Result
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
 3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -3716,104 +3716,104 @@ Use Case: Login User
 Suite Type: GT
 Size: 6
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
-2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 5
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
+2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
 1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|10|3,LoginTest,MOD,step,"fills out the username, password, and 2FA code fields and clicks on the submit button",fills out the username and password fields and clicks on the submit button,v1.9,v2.0,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07, REQ-08, REQ-09""
@@ -3878,15 +3878,15 @@ Use Case: Login User
 Suite Type: GT
 Size: 6
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -3898,50 +3898,50 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC6   <- edited
-Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC6
+Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited","System: Email
+Postconditions: Flow interrupted due to exception / error","System: Email
 Use Case: Login User
 Suite Type: GT
 Size: 5
 
-Test Case ID: TC1   <- edited
-Summary: Basic Flow (Happy Path)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC1
+Summary: Basic Flow (Happy Path)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
 Test Case ID: TC2
 Summary: Alternative Flow 1: Username is predicted
@@ -3953,29 +3953,29 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: password contains fewer than some characters or no suitable letter   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited"
+Postconditions: Flow interrupted due to exception / error"
 minitest,LoginTest|10|4,LoginTest,MOD,alt_flow_step,"chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form","chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form",v1.9,v2.0,"systemName ""Email""
 usecase ""Login User"" {
   requirements ""REQ-07, REQ-08, REQ-09""
@@ -4050,15 +4050,15 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field and the two-factor authentication code. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated with two-factor verification, notified by email, and login recorded in the audit log
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -4105,15 +4105,15 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC2   <- edited
-Summary: Alternative Flow 1: Username is predicted   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC2
+Summary: Alternative Flow 1: Username is predicted
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	chooses one of the username alternatives recommended by the system and subsequently enters the corresponding confidential credentials into the designated masked password field. Once the required authentication information has been properly provided, the user proceeds with the login attempt by activating the control responsible for submitting the completed form	SYSTEM confirms successful authentication and grants session access   <- edited
-3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login   <- edited
-4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity   <- edited
-Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log   <- edited
+3	emailUser	continues into the authenticated session	SYSTEM notifies the user via email of the successful login
+4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
+Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
 Test Case ID: TC3
 Summary: Exception Flow 1: User does not exist in database
@@ -4230,13 +4230,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Invalid or expired two-factor authentication code
@@ -4285,13 +4285,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)
@@ -4401,13 +4401,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: username, password, and/or 2FA code are incorrect
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC5   <- edited
-Summary: Exception Flow 3: Invalid or expired two-factor authentication code   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button   <- edited
+Test Case ID: TC5
+Summary: Exception Flow 3: Invalid or expired two-factor authentication code
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username, password, and two-factor authentication code through a form with username field, masked password field, 2FA code field, and submit button
 2	emailUser	fills out the username, password, and 2FA code fields and clicks on the submit button	SYSTEM alerts: two-factor authentication code is invalid or expired   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC6
 Summary: Exception Flow 4: Unified password policy (formerly separate length and uppercase checks)
@@ -4549,13 +4549,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)
@@ -4588,13 +4588,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Unified password policy (formerly separate length and uppercase checks)
@@ -4689,13 +4689,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Incorrect username/password combination   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Incorrect username/password combination
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: username and/or password are incorrect   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)
@@ -4728,13 +4728,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Unified password policy (formerly separate length and uppercase checks)
@@ -4822,13 +4822,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: User does not exist in database   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: User does not exist in database
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: user does not exist   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Incorrect username/password combination
@@ -4962,13 +4962,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Unified password policy (formerly separate length and uppercase checks)
@@ -5001,13 +5001,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials: unknown username   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
-2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials: unknown username
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
+2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Invalid credentials: incorrect password
@@ -5102,13 +5102,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials (unknown username or incorrect password)
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Unified password policy (formerly separate length and uppercase checks)
@@ -5141,13 +5141,13 @@ Step	Actor	Action	Expected Result
 4	emailUser	opens the login notification email	SYSTEM records the login event in the audit log with timestamp and user identity
 Postconditions: User successfully authenticated, notified by email, and login recorded in the audit log
 
-Test Case ID: TC3   <- edited
-Summary: Exception Flow 1: Invalid credentials: unknown username   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC3
+Summary: Exception Flow 1: Invalid credentials: unknown username
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC4
 Summary: Exception Flow 2: Invalid credentials: incorrect password
@@ -5290,13 +5290,13 @@ Step	Actor	Action	Expected Result
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM rejects the unknown username and alerts: Invalid credentials: unknown username or incorrect password
 Postconditions: Flow interrupted due to exception / error
 
-Test Case ID: TC4   <- edited
-Summary: Exception Flow 2: Invalid credentials: incorrect password   <- edited
-Preconditions: There is an active network connection.   <- edited
-Step	Actor	Action	Expected Result   <- edited
-1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button   <- edited
+Test Case ID: TC4
+Summary: Exception Flow 2: Invalid credentials: incorrect password
+Preconditions: There is an active network connection.
+Step	Actor	Action	Expected Result
+1	emailUser	launches the authentication screen	SYSTEM allows users to authenticate using their username and password through a form with username field, masked password field, and submit button
 2	emailUser	fills out the username and password fields and clicks on the submit button	SYSTEM rejects the incorrect password and alerts: Invalid credentials: unknown username or incorrect password   <- edited
-Postconditions: Flow interrupted due to exception / error   <- edited
+Postconditions: Flow interrupted due to exception / error
 
 Test Case ID: TC5
 Summary: Exception Flow 3: Unified password policy (formerly separate length and uppercase checks)

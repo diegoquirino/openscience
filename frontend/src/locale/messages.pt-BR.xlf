@@ -225,6 +225,24 @@
         <target>Ampliar caso de uso (<ph id="0" equiv="INTERPOLATION" disp="{{ column.versionLabel }}"/>)</target>
       </segment>
     </unit>
+    <unit id="item.suite.enlarge">
+      <segment>
+        <source>Enlarge test suite (<ph id="0" equiv="INTERPOLATION" disp="{{ column.versionLabel }}"/>)</source>
+        <target>Ampliar suíte de testes (<ph id="0" equiv="INTERPOLATION" disp="{{ column.versionLabel }}"/>)</target>
+      </segment>
+    </unit>
+    <unit id="item.suite.previousTitle">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · test suite · version <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (previous)</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · suíte de testes · versão <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (anterior)</target>
+      </segment>
+    </unit>
+    <unit id="item.suite.modifiedTitle">
+      <segment>
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · test suite · version <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (modified)</source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ data.uc }}"/> · suíte de testes · versão <ph id="1" equiv="INTERPOLATION_1" disp="{{ data.version }}"/> (modificada)</target>
+      </segment>
+    </unit>
     <unit id="emailSettings.date">
       <segment>
         <source>Date</source>

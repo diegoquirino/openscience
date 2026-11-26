@@ -188,6 +188,15 @@ export class LabelItemComponent {
 
   /** Opens the full use case of one version in a modal; the choices of the item are not touched. */
   protected openUsecase(side: 'origin' | 'target', event: Event): void {
+    this.openMarkedText(side, event, 'usecase');
+  }
+
+  /** Opens the full test suite of one version in a modal (spec 041); choices stay untouched. */
+  protected openSuite(side: 'origin' | 'target', event: Event): void {
+    this.openMarkedText(side, event, 'suite');
+  }
+
+  private openMarkedText(side: 'origin' | 'target', event: Event, kind: 'usecase' | 'suite'): void {
     const current = this.item();
     if (!current) {
       return;
@@ -197,10 +206,18 @@ export class LabelItemComponent {
       side,
       uc: current.uc,
       version: (origin ? current.originVersion : current.targetVersion) ?? '-',
-      text: origin ? current.originUsecase : current.targetUsecase,
+      text:
+        kind === 'suite'
+          ? origin
+            ? current.originTests
+            : current.targetTests
+          : origin
+            ? current.originUsecase
+            : current.targetUsecase,
       position: current.position,
       size: this.size(),
       clock: this.clock,
+      kind,
     };
     const size = this.breakpoints.isMatched(NARROW_QUERY) ? FULL_SCREEN_DIALOG : WIDE_DIALOG;
     this.dialog.open(UseCaseDialogComponent, {

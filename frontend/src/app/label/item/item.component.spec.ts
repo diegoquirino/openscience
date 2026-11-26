@@ -289,11 +289,61 @@ describe('LabelItemComponent', () => {
     expect(previous[1]).toMatchObject({
       width: '960px',
       restoreFocus: buttons[0],
-      data: { side: 'origin', uc: 'UC01', version: '1.1', text: 'Line one\nLine two', position: 2, size: 3 },
+      data: {
+        side: 'origin',
+        uc: 'UC01',
+        version: '1.1',
+        text: 'Line one\nLine two',
+        position: 2,
+        size: 3,
+        kind: 'usecase',
+      },
     });
     expect(modified[1]).toMatchObject({
       restoreFocus: buttons[1],
-      data: { side: 'target', version: '1.2', text: 'Changed' },
+      data: { side: 'target', version: '1.2', text: 'Changed', kind: 'usecase' },
+    });
+    expect(fixture.componentInstance['impact']()).toBe('LOW');
+    expect(fixture.componentInstance['operation']()).toBe('KEEP');
+    expect(fixture.componentInstance['comment']()).toBe('mine');
+  });
+
+  it('opens the full test suite of each version in a dialog and leaves the choices untouched', async () => {
+    const fixture = create({
+      draft: { changeImpact: 'LOW', maintenanceOperation: 'KEEP', comment: 'mine', language: 'pt-BR' },
+    });
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const open = vi.spyOn(TestBed.inject(MatDialog), 'open').mockReturnValue(undefined as never);
+    vi.spyOn(TestBed.inject(BreakpointObserver), 'isMatched').mockReturnValue(false);
+
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('button.open-suite'));
+    expect(buttons.map((button) => labelWithoutIcons(button))).toEqual([
+      'Enlarge test suite (1.1)',
+      'Enlarge test suite (1.2)',
+    ]);
+
+    buttons[0].click();
+    buttons[1].click();
+
+    const [previous, modified] = open.mock.calls;
+    expect(previous[0]).toBe(UseCaseDialogComponent);
+    expect(previous[1]).toMatchObject({
+      width: '960px',
+      restoreFocus: buttons[0],
+      data: {
+        side: 'origin',
+        uc: 'UC01',
+        version: '1.1',
+        text: item.originTests,
+        kind: 'suite',
+        position: 2,
+        size: 3,
+      },
+    });
+    expect(modified[1]).toMatchObject({
+      restoreFocus: buttons[1],
+      data: { side: 'target', version: '1.2', text: item.targetTests, kind: 'suite' },
     });
     expect(fixture.componentInstance['impact']()).toBe('LOW');
     expect(fixture.componentInstance['operation']()).toBe('KEEP');
@@ -313,6 +363,15 @@ describe('LabelItemComponent', () => {
     first?.click();
 
     expect(open.mock.calls[0][1]).toMatchObject({ width: '100vw', height: '100dvh', panelClass: 'usecase-dialog-full' });
+
+    const suite = root.querySelector<HTMLButtonElement>('[data-testid="panel-tests"] .column[data-side=origin] button.open-suite');
+    suite?.click();
+    expect(open.mock.calls[1][1]).toMatchObject({
+      width: '100vw',
+      height: '100dvh',
+      panelClass: 'usecase-dialog-full',
+      data: { kind: 'suite' },
+    });
   });
 
   it('shows both statements with the explanation of every option and the precedence rule (T018)', async () => {

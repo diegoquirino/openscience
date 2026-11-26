@@ -204,6 +204,16 @@
                         }
                       </div>
                     </div>
+                    <button
+                      mat-stroked-button
+                      type="button"
+                      class="open-suite"
+                      [attr.data-side]="column.side"
+                      (click)="openSuite(column.side, $event)"
+                    >
+                      <mat-icon fontSet="material-symbols-outlined" aria-hidden="true">fullscreen</mat-icon>
+                      <span i18n="@@item.suite.enlarge">Enlarge test suite ({{ column.versionLabel }})</span>
+                    </button>
                   </section>
                 }
               </div>

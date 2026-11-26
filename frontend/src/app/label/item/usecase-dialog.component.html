@@ -1,6 +1,12 @@
 <header class="dialog-header">
   <h2 mat-dialog-title class="dialog-title">
-    @if (data.side === 'origin') {
+    @if (kind === 'suite') {
+      @if (data.side === 'origin') {
+        <span i18n="@@item.suite.previousTitle">{{ data.uc }} · test suite · version {{ data.version }} (previous)</span>
+      } @else {
+        <span i18n="@@item.suite.modifiedTitle">{{ data.uc }} · test suite · version {{ data.version }} (modified)</span>
+      }
+    } @else if (data.side === 'origin') {
       <span i18n="@@item.usecase.previousTitle">{{ data.uc }} · version {{ data.version }} (previous)</span>
     } @else {
       <span i18n="@@item.usecase.modifiedTitle">{{ data.uc }} · version {{ data.version }} (modified)</span>
@@ -13,7 +19,7 @@
   @if (view.missing) {
     <p class="missing-usecase">{{ missingText }}</p>
   } @else {
-    <div class="usecase">
+    <div class="usecase" [class.suite-text]="kind === 'suite'">
       @for (line of view.lines; track $index) {
         <div
           class="usecase-line"
