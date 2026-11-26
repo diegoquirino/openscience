@@ -27,21 +27,21 @@ const IMPACT_EXPLANATIONS: Record<ChangeImpact, () => string> = {
 
 const OPERATION_EXPLANATIONS: Record<MaintenanceOperation, () => string> = {
   KEEP: () =>
-    $localize`:operation explanation KEEP@@item.operation.KEEP:The test case does not exercise changed behavior, or the edit only rewords the text; it remains executable and verifiable as it is.`,
+    $localize`:operation explanation KEEP@@item.operation.KEEP:The edit does not affect exercised behavior, or it only rewords the text; verification remains possible as it is.`,
   UPDATE: () =>
-    $localize`:operation explanation UPDATE@@item.operation.UPDATE:The scenario still exists, but a step, data item, condition or expected result changed, or the expected result needs to mention a new detail.`,
+    $localize`:operation explanation UPDATE@@item.operation.UPDATE:The behavior still exists, but a step, data item, condition or expected result changed, or the expected result needs to mention a new detail.`,
   REMOVE: () =>
-    $localize`:operation explanation REMOVE@@item.operation.REMOVE:The behavior the test case verifies no longer exists (it was deleted, not moved or merged with another).`,
+    $localize`:operation explanation REMOVE@@item.operation.REMOVE:The verified behavior no longer exists (it was deleted, not moved or merged with another).`,
   CREATE: () =>
-    $localize`:operation explanation CREATE@@item.operation.CREATE:There is new behavior that no existing test case covers.`,
+    $localize`:operation explanation CREATE@@item.operation.CREATE:There is new behavior that nothing existing covers.`,
   MERGE: () =>
-    $localize`:operation explanation MERGE@@item.operation.MERGE:The behavior was merged with that of another test case into a single scenario.`,
+    $localize`:operation explanation MERGE@@item.operation.MERGE:Separate behaviors were merged into a single one.`,
   SPLIT: () =>
-    $localize`:operation explanation SPLIT@@item.operation.SPLIT:A single scenario became several independently verifiable scenarios.`,
+    $localize`:operation explanation SPLIT@@item.operation.SPLIT:What was a single behavior became several independently verifiable ones.`,
   REASSIGN: () =>
     $localize`:operation explanation REASSIGN@@item.operation.REASSIGN:The behavior is the same, but the requirements link changed.`,
   FLAG: () =>
-    $localize`:operation explanation FLAG@@item.operation.FLAG:The edit is ambiguous or leaves a step vague; there is no safe decision and the case needs human analysis.`,
+    $localize`:operation explanation FLAG@@item.operation.FLAG:The edit is ambiguous or leaves a step vague; there is no safe decision and human analysis is needed.`,
 };
 
 /** Statement of the impact question (Appendix B.1). */

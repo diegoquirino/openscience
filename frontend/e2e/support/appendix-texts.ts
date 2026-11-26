@@ -128,39 +128,37 @@ export const OPERATION_STATEMENT: Record<Locale, string> = {
 
 export const OPERATION_EXPLANATIONS: Record<Locale, Record<Operation, string>> = {
   'pt-BR': {
-    KEEP: 'O caso de teste não exercita comportamento alterado, ou a edição só reescreve o texto; ele continua executável e verificável como está.',
+    KEEP: 'A edição não afeta comportamento exercitado, ou só reescreve o texto; a verificação continua possível como está.',
     UPDATE:
-      'O cenário continua existindo, mas um passo, dado, condição ou resultado esperado mudou, ou o resultado esperado precisa citar um detalhe novo.',
-    REMOVE:
-      'O comportamento que o caso de teste verifica deixou de existir (foi apagado, não movido nem unido a outro).',
-    CREATE: 'Há comportamento novo que nenhum caso de teste existente cobre.',
-    MERGE: 'O comportamento foi unido ao de outro caso de teste num único cenário.',
-    SPLIT: 'Um único cenário virou vários cenários verificáveis de forma independente.',
+      'O comportamento continua existindo, mas um passo, dado, condição ou resultado esperado mudou, ou o resultado esperado precisa citar um detalhe novo.',
+    REMOVE: 'O comportamento verificado deixou de existir (foi apagado, não movido nem unido a outro).',
+    CREATE: 'Há comportamento novo que nada do que já existe cobre.',
+    MERGE: 'Comportamentos distintos foram unidos num único.',
+    SPLIT: 'O que era um único comportamento virou vários verificáveis de forma independente.',
     REASSIGN: 'O comportamento é o mesmo, mas o vínculo com requisitos mudou.',
-    FLAG: 'A edição é ambígua ou deixa um passo vago; não há decisão segura e o caso precisa de análise humana.',
+    FLAG: 'A edição é ambígua ou deixa um passo vago; não há decisão segura e é necessária análise humana.',
   },
   'en-US': {
-    KEEP: 'The test case does not exercise changed behavior, or the edit only rewords the text; it remains executable and verifiable as it is.',
+    KEEP: 'The edit does not affect exercised behavior, or it only rewords the text; verification remains possible as it is.',
     UPDATE:
-      'The scenario still exists, but a step, data item, condition or expected result changed, or the expected result needs to mention a new detail.',
-    REMOVE: 'The behavior the test case verifies no longer exists (it was deleted, not moved or merged with another).',
-    CREATE: 'There is new behavior that no existing test case covers.',
-    MERGE: 'The behavior was merged with that of another test case into a single scenario.',
-    SPLIT: 'A single scenario became several independently verifiable scenarios.',
+      'The behavior still exists, but a step, data item, condition or expected result changed, or the expected result needs to mention a new detail.',
+    REMOVE: 'The verified behavior no longer exists (it was deleted, not moved or merged with another).',
+    CREATE: 'There is new behavior that nothing existing covers.',
+    MERGE: 'Separate behaviors were merged into a single one.',
+    SPLIT: 'What was a single behavior became several independently verifiable ones.',
     REASSIGN: 'The behavior is the same, but the requirements link changed.',
-    FLAG: 'The edit is ambiguous or leaves a step vague; there is no safe decision and the case needs human analysis.',
+    FLAG: 'The edit is ambiguous or leaves a step vague; there is no safe decision and human analysis is needed.',
   },
   'es-ES': {
-    KEEP: 'El caso de prueba no ejercita comportamiento modificado, o la edición solo reescribe el texto; sigue siendo ejecutable y verificable tal como está.',
+    KEEP: 'La edición no afecta el comportamiento ejercitado, o solo reescribe el texto; la verificación sigue siendo posible tal como está.',
     UPDATE:
-      'El escenario sigue existiendo, pero cambió un paso, un dato, una condición o el resultado esperado, o el resultado esperado debe mencionar un detalle nuevo.',
-    REMOVE:
-      'El comportamiento que verifica el caso de prueba dejó de existir (se borró; no se movió ni se unió a otro).',
-    CREATE: 'Hay comportamiento nuevo que ningún caso de prueba existente cubre.',
-    MERGE: 'El comportamiento se unió al de otro caso de prueba en un único escenario.',
-    SPLIT: 'Un único escenario se convirtió en varios escenarios verificables de forma independiente.',
+      'El comportamiento sigue existiendo, pero cambió un paso, un dato, una condición o el resultado esperado, o el resultado esperado debe mencionar un detalle nuevo.',
+    REMOVE: 'El comportamiento verificado dejó de existir (se borró; no se movió ni se unió a otro).',
+    CREATE: 'Hay comportamiento nuevo que nada de lo existente cubre.',
+    MERGE: 'Comportamientos distintos se unieron en uno solo.',
+    SPLIT: 'Lo que era un único comportamiento se convirtió en varios verificables de forma independiente.',
     REASSIGN: 'El comportamiento es el mismo, pero cambió el vínculo con requisitos.',
-    FLAG: 'La edición es ambigua o deja un paso vago; no hay una decisión segura y el caso necesita análisis humano.',
+    FLAG: 'La edición es ambigua o deja un paso vago; no hay una decisión segura y se necesita análisis humano.',
   },
 };
 

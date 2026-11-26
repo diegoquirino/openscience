@@ -324,7 +324,7 @@ describe('LabelItemComponent', () => {
     const explanation = (id: string) => root.querySelector(`#${id}`)?.textContent;
     expect(explanation('impact-LOW')).toContain('does not change the observable behavior');
     expect(explanation('impact-HIGH')).toContain('so vague that the tester cannot decide');
-    expect(explanation('operation-FLAG')).toContain('needs human analysis');
+    expect(explanation('operation-FLAG')).toContain('human analysis is needed');
 
     // The accessible name of a radio stays its short label; the explanation is its description.
     const high = root.querySelector<HTMLInputElement>('.impact input[type=radio][value=HIGH]');
