@@ -94,12 +94,14 @@ describe('LabelItemComponent', () => {
       lines: Array.from(column.querySelectorAll('.usecase-line')).map((line) => ({
         text: line.textContent?.trim() ?? '',
         edited: line.classList.contains('edited'),
+        highlightBefore: line.classList.contains('highlight-before'),
+        highlightAfter: line.classList.contains('highlight-after'),
       })),
       missing: column.querySelector('.missing-usecase')?.textContent?.trim() ?? null,
     }));
   }
 
-  it('shows the header and full use cases with edited highlights on both sides', async () => {
+  it('shows the header and full use cases with distinct before/after edit colors', async () => {
     const fixture = create({
       item: {
         originUsecase: 'step 1 "old" <- edited\nstep 2',
@@ -117,8 +119,8 @@ describe('LabelItemComponent', () => {
         side: 'origin',
         title: 'Before',
         lines: [
-          { text: 'step 1 "old"', edited: true },
-          { text: 'step 2', edited: false },
+          { text: 'step 1 "old"', edited: true, highlightBefore: true, highlightAfter: false },
+          { text: 'step 2', edited: false, highlightBefore: false, highlightAfter: false },
         ],
         missing: null,
       },
@@ -126,8 +128,8 @@ describe('LabelItemComponent', () => {
         side: 'target',
         title: 'After',
         lines: [
-          { text: 'step 1 "new"', edited: true },
-          { text: 'step 2', edited: false },
+          { text: 'step 1 "new"', edited: true, highlightBefore: false, highlightAfter: true },
+          { text: 'step 2', edited: false, highlightBefore: false, highlightAfter: false },
         ],
         missing: null,
       },
@@ -156,7 +158,7 @@ describe('LabelItemComponent', () => {
       {
         side: 'target',
         title: 'Added text',
-        lines: [{ text: 'exception 3 "New"', edited: true }],
+        lines: [{ text: 'exception 3 "New"', edited: true, highlightBefore: false, highlightAfter: true }],
         missing: null,
       },
     ]);
@@ -176,7 +178,7 @@ describe('LabelItemComponent', () => {
       {
         side: 'origin',
         title: 'Removed text',
-        lines: [{ text: 'exception 5 "Old"', edited: true }],
+        lines: [{ text: 'exception 5 "Old"', edited: true, highlightBefore: true, highlightAfter: false }],
         missing: null,
       },
       {

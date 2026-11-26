@@ -73,6 +73,8 @@
                             <div
                               class="usecase-line"
                               [class.edited]="line.edited"
+                              [class.highlight-before]="line.edited && column.side === 'origin'"
+                              [class.highlight-after]="line.edited && column.side === 'target'"
                               [style.padding-left.ch]="line.indent"
                             >
                               {{ line.content }}

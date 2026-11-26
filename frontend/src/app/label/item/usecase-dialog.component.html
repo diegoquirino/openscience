@@ -15,7 +15,13 @@
   } @else {
     <div class="usecase">
       @for (line of view.lines; track $index) {
-        <div class="usecase-line" [class.edited]="line.edited" [style.padding-left.ch]="line.indent">{{ line.content }}</div>
+        <div
+          class="usecase-line"
+          [class.edited]="line.edited"
+          [class.highlight-before]="line.edited && data.side === 'origin'"
+          [class.highlight-after]="line.edited && data.side === 'target'"
+          [style.padding-left.ch]="line.indent"
+        >{{ line.content }}</div>
       }
     </div>
   }

@@ -26,8 +26,9 @@ const SCROLL_OFFSET_RATIO = 1 / 3;
 
 /**
  * The whole use case of one version in a modal: monospaced text with the indentation kept, the lines
- * the pipeline marked with `<- edited` highlighted (the marker is not shown) and the view scrolled to
- * the first of them. The counter and the countdown stay visible in its header (FR-007).
+ * the pipeline marked with `<- edited` highlighted (the marker is not shown; before/after colors
+ * differ per side, spec 035) and the view scrolled to the first of them. The counter and the
+ * countdown stay visible in its header (FR-007).
  */
 @Component({
   selector: 'app-usecase-dialog',
@@ -35,6 +36,7 @@ const SCROLL_OFFSET_RATIO = 1 / 3;
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './usecase-dialog.component.html',
   styleUrl: './usecase-dialog.component.scss',
+  host: { '[attr.data-side]': 'data.side' },
 })
 export class UseCaseDialogComponent {
   protected readonly data = inject<UseCaseDialogData>(MAT_DIALOG_DATA);

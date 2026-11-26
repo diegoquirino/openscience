@@ -102,7 +102,12 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  &.edited {
+  &.edited.highlight-before {
+    border-left-color: var(--mat-sys-error);
+    background: color-mix(in srgb, var(--mat-sys-error) 18%, transparent);
+  }
+
+  &.edited.highlight-after {
     border-left-color: var(--mat-sys-tertiary);
     background: color-mix(in srgb, var(--mat-sys-tertiary) 22%, transparent);
   }

@@ -60,10 +60,19 @@ describe('UseCaseDialogComponent', () => {
 
     expect(lines).toHaveLength(6);
     expect(lines.map((line) => line.classList.contains('edited'))).toEqual([false, false, true, false, false, false]);
+    expect(lines[2].classList.contains('highlight-before')).toBe(true);
+    expect(lines[2].classList.contains('highlight-after')).toBe(false);
     expect(lines[2].textContent).toBe('step 1 emailUser "launches the login screen"');
     expect(lines[2].style.paddingLeft).toBe('4ch');
     expect(lines[1].style.paddingLeft).toBe('2ch');
     expect(root.textContent).not.toContain('<- edited');
+  });
+
+  it('uses the after highlight color on the modified version', () => {
+    const root = open({ side: 'target' }).nativeElement as HTMLElement;
+    const edited = root.querySelector('.usecase-line.edited') as HTMLElement;
+    expect(edited.classList.contains('highlight-after')).toBe(true);
+    expect(edited.classList.contains('highlight-before')).toBe(false);
   });
 
   it('shows the counter and the countdown in its header', () => {
