@@ -25,7 +25,8 @@ public class ExportQuery {
             i.`system` AS i_system, i.edit_key AS i_edit_key, i.uc AS i_uc, i.kind AS i_kind, i.field AS i_field,
             i.origin AS i_origin, i.target AS i_target, i.origin_version AS i_origin_version,
             i.target_version AS i_target_version, i.origin_usecase AS i_origin_usecase,
-            i.target_usecase AS i_target_usecase""";
+            i.target_usecase AS i_target_usecase, i.origin_tests AS i_origin_tests,
+            i.target_tests AS i_target_tests""";
 
     private final JdbcClient jdbc;
 
@@ -141,7 +142,9 @@ public class ExportQuery {
                 rs.getString("i_origin_version"),
                 rs.getString("i_target_version"),
                 rs.getString("i_origin_usecase"),
-                rs.getString("i_target_usecase"));
+                rs.getString("i_target_usecase"),
+                rs.getString("i_origin_tests"),
+                rs.getString("i_target_tests"));
         return new ItemRow(item, role(rs, 1), role(rs, 2));
     }
 

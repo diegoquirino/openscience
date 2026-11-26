@@ -50,6 +50,8 @@ interface ApiItem {
   targetVersion: string;
   originUsecase: string;
   targetUsecase: string;
+  originTests: string;
+  targetTests: string;
   origin: string | null;
   target: string | null;
 }

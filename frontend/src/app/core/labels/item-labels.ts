@@ -71,3 +71,7 @@ export function noneLabel(): string {
 export function missingUsecaseLabel(): string {
   return $localize`:use case missing in a version@@item.missingUsecase:(this use case does not exist in this version)`;
 }
+
+export function missingTestsLabel(): string {
+  return $localize`:test suite missing in a version@@item.missingTests:(this test suite does not exist in this version)`;
+}

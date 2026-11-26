@@ -42,7 +42,9 @@ class ImportRulesTest {
             "origin_version, empty-origin-version",
             "target_version, empty-target-version",
             "origin_usecase, empty-origin-usecase",
-            "target_usecase, empty-target-usecase"
+            "target_usecase, empty-target-usecase",
+            "origin_tests, empty-origin-tests",
+            "target_tests, empty-target-tests"
         })
         void refusesEmptyRequiredFields(String column, String code) {
             Map<String, String> row = validMod();
@@ -211,6 +213,8 @@ class ImportRulesTest {
         row.put("target_version", "v1.1");
         row.put("origin_usecase", "origin uc");
         row.put("target_usecase", "target uc");
+        row.put("origin_tests", "origin tests");
+        row.put("target_tests", "target tests");
         return row;
     }
 }

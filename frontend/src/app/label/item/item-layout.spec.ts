@@ -11,6 +11,8 @@ const base = {
   target: 'alerts: user does not exist',
   originUsecase: 'usecase "Login User" {\n  step 1 "A" <- edited\n}',
   targetUsecase: 'usecase "Login User" {\n  step 1 "B" <- edited\n}',
+  originTests: 'Test Case ID: tc-1\nSummary: A   <- edited',
+  targetTests: 'Test Case ID: tc-1\nSummary: B   <- edited',
 };
 
 describe('buildItemLayout', () => {

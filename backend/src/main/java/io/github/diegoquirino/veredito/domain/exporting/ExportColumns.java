@@ -24,7 +24,7 @@ public final class ExportColumns {
 
     public static final List<String> COMPLETO = List.of(
             "system", "edit_key", "uc", "kind", "field", "origin", "target", "origin_version", "target_version",
-            "origin_usecase", "target_usecase",
+            "origin_usecase", "target_usecase", "origin_tests", "target_tests",
             "rater_1_pseudonym", "rater_1_change_impact", "rater_1_maintenance_operation", "rater_1_comment",
             "rater_1_response_language",
             "rater_2_pseudonym", "rater_2_change_impact", "rater_2_maintenance_operation", "rater_2_comment",

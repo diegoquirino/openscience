@@ -31,6 +31,8 @@ function item(position: number, draft: ItemBody['draft']): ItemBody {
     targetVersion: '2',
     originUsecase: null,
     targetUsecase: null,
+    originTests: null,
+    targetTests: null,
     origin: 'a',
     target: 'b',
     draft,

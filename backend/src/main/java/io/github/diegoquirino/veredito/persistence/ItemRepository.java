@@ -12,13 +12,13 @@ import java.util.Set;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
-/** Study items written on import confirm (spec 005). */
+/** Study items written on import confirm (spec 005 + 040). */
 @Repository
 public class ItemRepository {
 
     private static final String SELECT = """
             SELECT id, `system`, edit_key, uc, kind, field, origin, target, origin_version, target_version,
-                   origin_usecase, target_usecase, batch_id, block_id, position
+                   origin_usecase, target_usecase, origin_tests, target_tests, batch_id, block_id, position
             FROM item
             """;
 
@@ -41,6 +41,8 @@ public class ItemRepository {
             String targetVersion,
             String originUsecase,
             String targetUsecase,
+            String originTests,
+            String targetTests,
             long batchId,
             long blockId,
             int position) {}
@@ -64,8 +66,9 @@ public class ItemRepository {
                             INSERT INTO item (
                                 `system`, edit_key, uc, kind, field, origin, target,
                                 origin_version, target_version, origin_usecase, target_usecase,
+                                origin_tests, target_tests,
                                 batch_id, block_id, position)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""")
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""")
                     .params(
                             item.system(),
                             item.editKey(),
@@ -78,6 +81,8 @@ public class ItemRepository {
                             item.targetVersion(),
                             item.originUsecase(),
                             item.targetUsecase(),
+                            item.originTests(),
+                            item.targetTests(),
                             item.batchId(),
                             item.blockId(),
                             item.position())
@@ -129,6 +134,8 @@ public class ItemRepository {
             String targetVersion,
             String originUsecase,
             String targetUsecase,
+            String originTests,
+            String targetTests,
             long batchId,
             long blockId,
             int position) {}
@@ -151,6 +158,8 @@ public class ItemRepository {
                 rs.getString("target_version"),
                 rs.getString("origin_usecase"),
                 rs.getString("target_usecase"),
+                rs.getString("origin_tests"),
+                rs.getString("target_tests"),
                 rs.getLong("batch_id"),
                 rs.getLong("block_id"),
                 rs.getInt("position"));

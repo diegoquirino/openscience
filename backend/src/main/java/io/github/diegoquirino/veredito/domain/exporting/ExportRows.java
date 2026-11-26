@@ -69,6 +69,8 @@ public final class ExportRows {
         cells.add(item.targetVersion());
         cells.add(item.originUsecase());
         cells.add(item.targetUsecase());
+        cells.add(item.originTests());
+        cells.add(item.targetTests());
         completoRole(cells, role1);
         completoRole(cells, role2);
         return plain(cells);

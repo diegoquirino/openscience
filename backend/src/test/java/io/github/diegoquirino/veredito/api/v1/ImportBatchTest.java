@@ -70,8 +70,8 @@ class ImportBatchTest extends ApiTestBase {
         // second batch from a one-row CSV built in-memory
         String header = String.join(",",
                 "system", "edit_key", "uc", "kind", "field", "origin", "target",
-                "origin_version", "target_version", "origin_usecase", "target_usecase");
-        String row = "minitest,extra-key,UC-X,MOD,field,o,t,1,2,ou,tu";
+                "origin_version", "target_version", "origin_usecase", "target_usecase", "origin_tests", "target_tests");
+        String row = "minitest,extra-key,UC-X,MOD,field,o,t,1,2,ou,tu,ot,tt";
         Response preview = as(token)
                 .multiPart("file", "extra.csv", (header + "\n" + row + "\n").getBytes(java.nio.charset.StandardCharsets.UTF_8), "text/csv")
                 .post(EntryPointController.REQUEST_PREVIEW);

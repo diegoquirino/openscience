@@ -17,7 +17,9 @@ public final class ImportColumns {
             "origin_version",
             "target_version",
             "origin_usecase",
-            "target_usecase");
+            "target_usecase",
+            "origin_tests",
+            "target_tests");
 
     public static final Set<String> REQUIRED = Set.of(
             "system",
@@ -28,7 +30,9 @@ public final class ImportColumns {
             "origin_version",
             "target_version",
             "origin_usecase",
-            "target_usecase");
+            "target_usecase",
+            "origin_tests",
+            "target_tests");
 
     private ImportColumns() {}
 

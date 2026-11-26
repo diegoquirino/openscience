@@ -152,6 +152,8 @@ public class BatchImportService {
                         value(row, "target_version"),
                         value(row, "origin_usecase"),
                         value(row, "target_usecase"),
+                        value(row, "origin_tests"),
+                        value(row, "target_tests"),
                         batchId,
                         blockId,
                         position));

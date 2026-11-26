@@ -249,10 +249,10 @@ class MigrationTest {
             long blockId = insertBlock(batchId, 9004);
             assertRefused(() -> jdbc.sql("""
                             INSERT INTO item (`system`, edit_key, uc, kind, field, origin, target, origin_version,
-                                              target_version, origin_usecase, target_usecase, batch_id, block_id,
-                                              position)
+                                              target_version, origin_usecase, target_usecase, origin_tests, target_tests,
+                                              batch_id, block_id, position)
                             VALUES ('minitest', 'k-empty', 'UC01', 'MOD', 'field', NULL, NULL, 'v1', 'v2', 'a', 'b',
-                                    ?, ?, 1)""").params(batchId, blockId).update(),
+                                    'ot', 'tt', ?, ?, 1)""").params(batchId, blockId).update(),
                     "ck_item_origin_or_target");
         }
 
@@ -309,8 +309,8 @@ class MigrationTest {
     private long insertItem(long batchId, long blockId, int position, String system, String editKey) {
         return insert(jdbc.sql("""
                 INSERT INTO item (`system`, edit_key, uc, kind, field, origin, target, origin_version, target_version,
-                                  origin_usecase, target_usecase, batch_id, block_id, position)
-                VALUES (?, ?, 'UC01', 'MOD', 'field', 'old', 'new', 'v1', 'v2', 'a', 'b', ?, ?, ?)""")
+                                  origin_usecase, target_usecase, origin_tests, target_tests, batch_id, block_id, position)
+                VALUES (?, ?, 'UC01', 'MOD', 'field', 'old', 'new', 'v1', 'v2', 'a', 'b', 'ot', 'tt', ?, ?, ?)""")
                 .params(system, editKey, batchId, blockId, position));
     }
 

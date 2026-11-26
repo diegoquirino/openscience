@@ -110,7 +110,7 @@ class ImportPreviewTest extends ApiTestBase {
     void emptyIncludedOmitsConfirm() {
         String header = String.join(",",
                 "system", "edit_key", "uc", "kind", "field", "origin", "target",
-                "origin_version", "target_version", "origin_usecase", "target_usecase");
+                "origin_version", "target_version", "origin_usecase", "target_usecase", "origin_tests", "target_tests");
         byte[] bytes = (header + "\n").getBytes(StandardCharsets.UTF_8);
         as(administratorSession()).multiPart("file", "header-only.csv", bytes, "text/csv")
                 .post(EntryPointController.REQUEST_PREVIEW)

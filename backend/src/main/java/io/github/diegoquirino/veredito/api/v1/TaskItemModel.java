@@ -24,6 +24,8 @@ public class TaskItemModel extends RepresentationModel<TaskItemModel> {
     private final String targetVersion;
     private final String originUsecase;
     private final String targetUsecase;
+    private final String originTests;
+    private final String targetTests;
     private final String origin;
     private final String target;
     private final Draft draft;
@@ -40,6 +42,8 @@ public class TaskItemModel extends RepresentationModel<TaskItemModel> {
         this.targetVersion = item.targetVersion();
         this.originUsecase = item.originUsecase();
         this.targetUsecase = item.targetUsecase();
+        this.originTests = item.originTests();
+        this.targetTests = item.targetTests();
         this.origin = item.origin();
         this.target = item.target();
         this.draft = view.draft() == null ? null : Draft.of(view.draft());
@@ -91,6 +95,14 @@ public class TaskItemModel extends RepresentationModel<TaskItemModel> {
 
     public String getTargetUsecase() {
         return targetUsecase;
+    }
+
+    public String getOriginTests() {
+        return originTests;
+    }
+
+    public String getTargetTests() {
+        return targetTests;
     }
 
     public String getOrigin() {

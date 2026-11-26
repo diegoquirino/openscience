@@ -1,6 +1,6 @@
 import { fieldLabel, kindLabel } from '../../core/labels/item-labels';
 import { ItemBody } from '../label.service';
-import { parseUseCase, UseCaseView } from './usecase-text';
+import { parseSuiteText, parseUseCase, UseCaseView } from './usecase-text';
 
 /** Which title a column shows; the template maps each one to its localized text. */
 export type ColumnHeading = 'before' | 'after' | 'added' | 'removed' | 'metaBefore' | 'metaAfter';
@@ -41,6 +41,8 @@ type LayoutInput = Pick<
   | 'targetVersion'
   | 'originUsecase'
   | 'targetUsecase'
+  | 'originTests'
+  | 'targetTests'
 >;
 
 const NO_VERSION = '-';
@@ -50,10 +52,22 @@ const NO_VERSION = '-';
  * case of that version, with pipeline highlights — not only the field fragment.
  */
 export function buildItemLayout(item: LayoutInput): ItemLayout {
+  return buildTwoColumnLayout(item, item.originUsecase ?? '', item.targetUsecase ?? '', parseUseCase);
+}
+
+/** Before/After of the per-UC test suite TXT with edit-linked marks (spec 040). */
+export function buildSuiteLayout(item: LayoutInput): ItemLayout {
+  return buildTwoColumnLayout(item, item.originTests ?? '', item.targetTests ?? '', parseSuiteText);
+}
+
+function buildTwoColumnLayout(
+  item: LayoutInput,
+  originText: string,
+  targetText: string,
+  parse: (text: string) => UseCaseView,
+): ItemLayout {
   const originVersion = item.originVersion ?? NO_VERSION;
   const targetVersion = item.targetVersion ?? NO_VERSION;
-  const originUsecase = item.originUsecase ?? '';
-  const targetUsecase = item.targetUsecase ?? '';
   const header: ItemHeader = {
     system: item.system,
     uc: item.uc,
@@ -66,18 +80,18 @@ export function buildItemLayout(item: LayoutInput): ItemLayout {
 
   return {
     header,
-    identical: originUsecase === targetUsecase,
+    identical: originText === targetText,
     columns: [
       {
         side: 'origin',
         heading: originHeading,
-        usecase: parseUseCase(originUsecase),
+        usecase: parse(originText),
         versionLabel: originVersion,
       },
       {
         side: 'target',
         heading: targetHeading,
-        usecase: parseUseCase(targetUsecase),
+        usecase: parse(targetText),
         versionLabel: targetVersion,
       },
     ],

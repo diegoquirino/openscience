@@ -16,7 +16,7 @@ class ExportRulesTest {
 
     private static final ExportItem ITEM = new ExportItem(
             "minitest", "LoginTest|1|1", "LoginTest", "MOD", "step", "origin text", "target text",
-            "v1.0", "v1.1", "usecase A", "usecase B");
+            "v1.0", "v1.1", "usecase A", "usecase B", "tests A", "tests B");
 
     private static ExportRole role(String pseudonym, String comment) {
         return new ExportRole(
@@ -74,9 +74,10 @@ class ExportRulesTest {
                             + "rater_2_response_language");
             assertThat(String.join(",", ExportColumns.COMPLETO)).isEqualTo(
                     "system,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,"
-                            + "target_usecase,rater_1_pseudonym,rater_1_change_impact,rater_1_maintenance_operation,"
-                            + "rater_1_comment,rater_1_response_language,rater_2_pseudonym,rater_2_change_impact,"
-                            + "rater_2_maintenance_operation,rater_2_comment,rater_2_response_language");
+                            + "target_usecase,origin_tests,target_tests,rater_1_pseudonym,rater_1_change_impact,"
+                            + "rater_1_maintenance_operation,rater_1_comment,rater_1_response_language,"
+                            + "rater_2_pseudonym,rater_2_change_impact,rater_2_maintenance_operation,rater_2_comment,"
+                            + "rater_2_response_language");
         }
     }
 
@@ -133,21 +134,21 @@ class ExportRulesTest {
         @Test
         void wideAndLongNeutralizeButCompletoAndRaterKeepTheBytes() {
             ExportItem formulaItem = new ExportItem(
-                    "minitest", "k", "uc", "MOD", "step", "=origin", "-target", "v1", "v2", "=uc1", "+uc2");
+                    "minitest", "k", "uc", "MOD", "step", "=origin", "-target", "v1", "v2", "=uc1", "+uc2", "ot", "tt");
             ExportRole r = role("R-0001", "@comment");
             assertThat(ExportRows.wide(formulaItem, r, null).subList(5, 7)).containsExactly("'=origin", "'-target");
             assertThat(ExportRows.wide(formulaItem, r, null).get(15)).isEqualTo("'@comment");
             assertThat(ExportRows.longRow(longResponse("=boom")).get(12)).isEqualTo("'=boom");
-            assertThat(ExportRows.completo(formulaItem, r, null).subList(5, 11))
-                    .containsExactly("=origin", "-target", "v1", "v2", "=uc1", "+uc2");
-            assertThat(ExportRows.completo(formulaItem, r, null).get(14)).isEqualTo("@comment");
+            assertThat(ExportRows.completo(formulaItem, r, null).subList(5, 13))
+                    .containsExactly("=origin", "-target", "v1", "v2", "=uc1", "+uc2", "ot", "tt");
+            assertThat(ExportRows.completo(formulaItem, r, null).get(16)).isEqualTo("@comment");
             assertThat(ExportRows.rater(formulaItem, r).subList(4, 9))
                     .containsExactly("=origin", "-target", "HIGH", "UPDATE", "@comment");
         }
 
         @Test
         void nullOriginAndCommentExportAsEmpty() {
-            ExportItem add = new ExportItem("minitest", "k", "uc", "ADD", "step", null, "t", "v1", "v2", "a", "b");
+            ExportItem add = new ExportItem("minitest", "k", "uc", "ADD", "step", null, "t", "v1", "v2", "a", "b", "ot", "tt");
             ExportRole r = role("R-0001", null);
             assertThat(ExportRows.rater(add, r)).containsExactly("k", "uc", "ADD", "step", "", "t", "HIGH", "UPDATE", "");
         }

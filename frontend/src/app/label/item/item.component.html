@@ -139,6 +139,78 @@
           </fieldset>
         </mat-expansion-panel>
 
+        <mat-expansion-panel expanded data-testid="panel-tests">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="panel-title-icon" fontSet="material-symbols-outlined" aria-hidden="true"
+                >list_alt</mat-icon
+              >
+              <span i18n="@@label.item.panel.tests">Test suite</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          @if (suiteLayout(); as suite) {
+            <div class="edit suite-edit">
+              @if (suite.identical) {
+                <p class="no-difference" role="note" i18n="@@item.suite.noDifference">
+                  No text difference in this suite
+                </p>
+              }
+              <div class="columns">
+                @for (column of suite.columns; track column.side) {
+                  <section class="column" [attr.data-side]="column.side">
+                    <div class="block">
+                      <h3 class="block-title">
+                        @switch (column.heading) {
+                          @case ('before') {
+                            <span i18n="@@item.block.before">Before</span>
+                          }
+                          @case ('after') {
+                            <span i18n="@@item.block.after">After</span>
+                          }
+                          @case ('added') {
+                            <span i18n="@@item.block.added">Added text</span>
+                          }
+                          @case ('removed') {
+                            <span i18n="@@item.block.removed">Removed text</span>
+                          }
+                          @case ('metaBefore') {
+                            <span i18n="@@item.block.metaBefore">{{ suite.header.fieldLabel }}: before</span>
+                          }
+                          @case ('metaAfter') {
+                            <span i18n="@@item.block.metaAfter">{{ suite.header.fieldLabel }}: after</span>
+                          }
+                        }
+                      </h3>
+                      <div class="usecase suite-text" data-testid="column-tests">
+                        @if (column.usecase.missing) {
+                          <p class="missing-usecase">{{ missingTestsText }}</p>
+                        } @else if (column.usecase.lines.length === 0) {
+                          <p class="missing-usecase">{{ missingTestsText }}</p>
+                        } @else {
+                          @for (line of column.usecase.lines; track $index) {
+                            <div
+                              class="usecase-line"
+                              [class.edited]="line.edited"
+                              [class.highlight-before]="line.edited && column.side === 'origin'"
+                              [class.highlight-after]="line.edited && column.side === 'target'"
+                              [style.padding-left.ch]="line.indent"
+                            >
+                              @for (token of line.tokens; track $index) {
+                                <span>{{ token.text }}</span>
+                              }
+                            </div>
+                          }
+                        }
+                      </div>
+                    </div>
+                  </section>
+                }
+              </div>
+            </div>
+          }
+        </mat-expansion-panel>
+
         <mat-expansion-panel expanded data-testid="panel-operation">
           <mat-expansion-panel-header>
             <mat-panel-title>

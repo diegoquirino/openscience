@@ -59,7 +59,7 @@ class ExportTest extends ApiTestBase {
             + "participant_preferred_language,consent_language,change_impact,maintenance_operation,comment,"
             + "response_language,reserved_at,submitted_at";
     private static final String COMPLETO_HEADER = "system,edit_key,uc,kind,field,origin,target,origin_version,"
-            + "target_version,origin_usecase,target_usecase,rater_1_pseudonym,rater_1_change_impact,"
+            + "target_version,origin_usecase,target_usecase,origin_tests,target_tests,rater_1_pseudonym,rater_1_change_impact,"
             + "rater_1_maintenance_operation,rater_1_comment,rater_1_response_language,rater_2_pseudonym,"
             + "rater_2_change_impact,rater_2_maintenance_operation,rater_2_comment,rater_2_response_language";
     private static final String RATER_HEADER =
@@ -366,7 +366,7 @@ class ExportTest extends ApiTestBase {
                     .findFirst().orElseThrow();
             for (String column : List.of(
                     "system", "uc", "kind", "field", "origin", "target", "origin_version", "target_version",
-                    "origin_usecase", "target_usecase")) {
+                    "origin_usecase", "target_usecase", "origin_tests", "target_tests")) {
                 assertThat(row.get(column)).as("%s of %s", column, source.get("edit_key")).isEqualTo(source.get(column));
             }
             assertThat(row.get("rater_1_pseudonym")).matches("R-\\d{4}");
@@ -663,8 +663,10 @@ class ExportTest extends ApiTestBase {
         long block = blockId(number);
         jdbc.sql("""
                         INSERT INTO item (`system`, edit_key, uc, kind, field, origin, target, origin_version,
-                            target_version, origin_usecase, target_usecase, batch_id, block_id, position)
-                        VALUES (?, 'other-edit-key', 'UC', 'ADD', 'step', NULL, 'new step', 'v1', 'v2', 'a', 'b', ?, ?, 1)""")
+                            target_version, origin_usecase, target_usecase, origin_tests, target_tests,
+                            batch_id, block_id, position)
+                        VALUES (?, 'other-edit-key', 'UC', 'ADD', 'step', NULL, 'new step', 'v1', 'v2', 'a', 'b',
+                            'ot', 'tt', ?, ?, 1)""")
                 .params(system, batch, block)
                 .update();
     }

@@ -116,6 +116,8 @@ class ImportRepositoriesTest {
                             row.get("target_version"),
                             row.get("origin_usecase"),
                             row.get("target_usecase"),
+                            row.get("origin_tests"),
+                            row.get("target_tests"),
                             batchId,
                             blockId,
                             position));
@@ -161,6 +163,8 @@ class ImportRepositoriesTest {
             row.put("target_version", "2.0");
             row.put("origin_usecase", "ou " + i);
             row.put("target_usecase", "tu " + i);
+            row.put("origin_tests", "ot " + i);
+            row.put("target_tests", "tt " + i);
             rows.add(row);
         }
         return rows;

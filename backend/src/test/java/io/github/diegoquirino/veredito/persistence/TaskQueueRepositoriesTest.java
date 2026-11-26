@@ -89,6 +89,8 @@ class TaskQueueRepositoriesTest {
                     "1.1",
                     "uc before",
                     "uc after",
+                    "tests before",
+                    "tests after",
                     batchId,
                     blockId,
                     1)));

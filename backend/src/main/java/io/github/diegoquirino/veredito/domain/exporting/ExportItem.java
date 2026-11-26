@@ -12,4 +12,6 @@ public record ExportItem(
         String originVersion,
         String targetVersion,
         String originUsecase,
-        String targetUsecase) {}
+        String targetUsecase,
+        String originTests,
+        String targetTests) {}

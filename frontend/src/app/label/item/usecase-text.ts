@@ -5,6 +5,8 @@
  * are tokenized for IDE-style highlighting (spec 036).
  */
 export const MISSING_USECASE_TEXT = '(the use case does not exist in this version)';
+/** Sentinel when the UC has no derived suite in that version (spec 040). */
+export const MISSING_TESTS_TEXT = '(no test suite in this version)';
 export const EDITED_MARKER = '<- edited';
 
 /** Thesis `lstdefinestyle{CLARET}` keywords (case-sensitive). */
@@ -85,10 +87,23 @@ export function tokenizeClaret(content: string): ClaretToken[] {
 }
 
 export function parseUseCase(text: string | null | undefined): UseCaseView {
+  return parseMarkedText(text, MISSING_USECASE_TEXT, true);
+}
+
+/** Suite TXT with `<- edited` marks only — no CLARET keyword highlighting (spec 040). */
+export function parseSuiteText(text: string | null | undefined): UseCaseView {
+  return parseMarkedText(text, MISSING_TESTS_TEXT, false);
+}
+
+function parseMarkedText(
+  text: string | null | undefined,
+  missingSentinel: string,
+  claret: boolean,
+): UseCaseView {
   if (text === null || text === undefined || text.trim() === '') {
     return { missing: false, lines: [], firstEditedIndex: -1 };
   }
-  if (text.trim() === MISSING_USECASE_TEXT) {
+  if (text.trim() === missingSentinel) {
     return { missing: true, lines: [], firstEditedIndex: -1 };
   }
 
@@ -96,11 +111,11 @@ export function parseUseCase(text: string | null | undefined): UseCaseView {
   if (rows.length > 1 && rows[rows.length - 1] === '') {
     rows.pop();
   }
-  const lines = rows.map(parseLine);
+  const lines = rows.map((row) => parseLine(row, claret));
   return { missing: false, lines, firstEditedIndex: lines.findIndex((line) => line.edited) };
 }
 
-function parseLine(row: string): UseCaseLine {
+function parseLine(row: string, claret: boolean): UseCaseLine {
   const edited = MARKER.test(row);
   const visible = edited ? row.replace(MARKER, '') : row;
   const leading = /^[ \t]*/.exec(visible)?.[0] ?? '';
@@ -109,5 +124,10 @@ function parseLine(row: string): UseCaseLine {
     indent += character === '\t' ? TAB_COLUMNS : 1;
   }
   const content = visible.slice(leading.length);
-  return { indent, content, edited, tokens: tokenizeClaret(content) };
+  return {
+    indent,
+    content,
+    edited,
+    tokens: claret ? tokenizeClaret(content) : [{ kind: 'text', text: content }],
+  };
 }

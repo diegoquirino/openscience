@@ -61,6 +61,8 @@ public class TaskItemController {
                               "targetVersion": "1.2",
                               "originUsecase": "Original use case text",
                               "targetUsecase": "Changed use case text",
+                              "originTests": "Original test suite text",
+                              "targetTests": "Changed test suite text",
                               "origin": "Old step",
                               "target": "New step",
                               "draft": {

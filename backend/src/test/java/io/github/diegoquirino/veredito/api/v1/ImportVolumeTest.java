@@ -57,9 +57,9 @@ class ImportVolumeTest extends ApiTestBase {
     private static String volumeCsv() {
         String header = String.join(",",
                 "system", "edit_key", "uc", "kind", "field", "origin", "target",
-                "origin_version", "target_version", "origin_usecase", "target_usecase");
+                "origin_version", "target_version", "origin_usecase", "target_usecase", "origin_tests", "target_tests");
         String rows = IntStream.range(0, ROWS)
-                .mapToObj(i -> "minitest,vol-" + i + ",UC,MOD,field,o,t,1,2,ou,tu")
+                .mapToObj(i -> "minitest,vol-" + i + ",UC,MOD,field,o,t,1,2,ou,tu,ot,tt")
                 .collect(Collectors.joining("\n"));
         return header + "\n" + rows + "\n";
     }

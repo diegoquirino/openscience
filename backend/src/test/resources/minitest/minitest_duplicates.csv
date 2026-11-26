@@ -1,4 +1,4 @@
-system,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase
+system,edit_key,uc,kind,field,origin,target,origin_version,target_version,origin_usecase,target_usecase,origin_tests,target_tests
 minitest,LoginTest|1|1,LoginTest,MOD,step,launches the login screen,displays the login screen,v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -36,7 +36,7 @@ usecase ""Login User"" {
     step 1 system ""alerts that username and/or password are incorrect""
   }
   postCondition ""User successfully logged""
-}"
+}",(no test suite in this version),(no test suite in this version)
 minitest,LoginTest|1|2,LoginTest,MOD,step,presents a form with username and password fields and a submit button,"presents a form containing a username text field, a masked password field, and a submit button",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -74,7 +74,7 @@ usecase ""Login User"" {
     step 1 system ""alerts that username and/or password are incorrect""
   }
   postCondition ""User successfully logged""
-}"
+}",(no test suite in this version),(no test suite in this version)
 minitest,LoginTest|1|3,LoginTest,ADD,alt_flow_steps_block,,"alternative 1 ""Username is predicted""
 [emailUser] selects a suggested user name, types password and click on the submit button",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
@@ -113,7 +113,7 @@ usecase ""Login User"" {
     step 1 system ""alerts that username and/or password are incorrect""
   }
   postCondition ""User successfully logged""
-}"
+}",(no test suite in this version),(no test suite in this version)
 minitest,LoginTest|1|1,LoginTest,MOD,step,duplicate origin text,displays the login screen,v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -151,7 +151,7 @@ usecase ""Login User"" {
     step 1 system ""alerts that username and/or password are incorrect""
   }
   postCondition ""User successfully logged""
-}"
+}",(no test suite in this version),(no test suite in this version)
 minitest,LoginTest|1|2,LoginTest,,step,presents a form with username and password fields and a submit button,"presents a form containing a username text field, a masked password field, and a submit button",v1.0,v1.1,"systemName ""Email""
 usecase ""Login User"" {
   actor emailUser ""Email User""
@@ -189,4 +189,4 @@ usecase ""Login User"" {
     step 1 system ""alerts that username and/or password are incorrect""
   }
   postCondition ""User successfully logged""
-}"
+}",(no test suite in this version),(no test suite in this version)

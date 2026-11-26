@@ -42,6 +42,8 @@ export interface ItemBody extends HalResource {
   targetVersion: string | null;
   originUsecase: string | null;
   targetUsecase: string | null;
+  originTests: string | null;
+  targetTests: string | null;
   origin: string | null;
   target: string | null;
   draft: ItemDraft | null;

@@ -39,6 +39,8 @@ const item: ItemBody = {
   targetVersion: '1.2',
   originUsecase: 'Line one\nLine two',
   targetUsecase: 'Changed',
+  originTests: 'System: minitest\nTest Case ID: tc-1   <- edited\nSummary: login',
+  targetTests: 'System: minitest\nTest Case ID: tc-1   <- edited\nSummary: login updated',
   origin: 'Old step',
   target: 'New step',
   draft: null,
@@ -93,8 +95,9 @@ describe('LabelItemComponent', () => {
 
   beforeEach(() => vi.resetAllMocks());
 
-  function columns(root: HTMLElement) {
-    return Array.from(root.querySelectorAll<HTMLElement>('.column')).map((column) => ({
+  function columns(root: HTMLElement, panelTestId = 'panel-change') {
+    const scope = root.querySelector(`[data-testid="${panelTestId}"]`) ?? root;
+    return Array.from(scope.querySelectorAll<HTMLElement>('.column')).map((column) => ({
       side: column.dataset['side'],
       title: column.querySelector('.block-title')?.textContent?.trim() ?? null,
       lines: Array.from(column.querySelectorAll('.usecase-line')).map((line) => ({
@@ -453,13 +456,14 @@ describe('LabelItemComponent', () => {
     expect(navigate).toHaveBeenCalledWith(['/label/review']);
   });
 
-  it('renders five expandable panels open by default', async () => {
+  it('renders six expandable panels open by default', async () => {
     const fixture = create();
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const panels = root.querySelectorAll('mat-expansion-panel');
-    expect(panels.length).toBe(5);
+    expect(panels.length).toBe(6);
     expect(root.querySelector('[data-testid="panel-change"]')).not.toBeNull();
+    expect(root.querySelector('[data-testid="panel-tests"]')).not.toBeNull();
     expect(root.querySelector('[data-testid="panel-actions"]')).not.toBeNull();
   });
 

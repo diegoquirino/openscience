@@ -27,7 +27,7 @@ import { Links } from '../../core/hal';
 import { problemMessage, problemOf, problemSlug, unexpectedErrorMessage } from '../../core/problem-messages';
 import { ToastService } from '../../core/toast.service';
 import { ItemBody, LabelService, NoActiveTaskError } from '../label.service';
-import { missingUsecaseLabel } from '../../core/labels/item-labels';
+import { missingTestsLabel, missingUsecaseLabel } from '../../core/labels/item-labels';
 import {
   OPERATION_PRECEDENCE,
   impactExplanation,
@@ -38,7 +38,7 @@ import {
 } from '../../core/labels/question-texts';
 import { ItemClock } from './item-clock';
 import { ItemProgressComponent } from './item-progress.component';
-import { buildItemLayout } from './item-layout';
+import { buildItemLayout, buildSuiteLayout } from './item-layout';
 import { UseCaseDialogComponent, UseCaseDialogData } from './usecase-dialog.component';
 
 export const COMMENT_MAX_LENGTH = 1000;
@@ -122,7 +122,12 @@ export class LabelItemComponent {
     const current = this.item();
     return current ? buildItemLayout(current) : null;
   });
+  protected readonly suiteLayout = computed(() => {
+    const current = this.item();
+    return current ? buildSuiteLayout(current) : null;
+  });
   protected readonly missingText = missingUsecaseLabel();
+  protected readonly missingTestsText = missingTestsLabel();
   protected readonly canContinue = computed(
     () =>
       this.item() !== null &&

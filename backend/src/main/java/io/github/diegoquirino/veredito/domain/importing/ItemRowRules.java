@@ -15,6 +15,8 @@ public final class ItemRowRules {
     public static final Set<String> KINDS = Set.of("ADD", "DEL", "MOD", "META");
     public static final int MAX_TEXT = 5_000;
     public static final int MAX_USECASE = 40_000;
+    /** Same cap as use-case texts (spec 040); raise here if regenerated suites exceed it. */
+    public static final int MAX_TESTS = MAX_USECASE;
     public static final int MAX_VERSION = 20;
     public static final int MAX_SYSTEM = 100;
     public static final int MAX_EDIT_KEY = 500;
@@ -41,6 +43,8 @@ public final class ItemRowRules {
         String targetVersion = value(row, "target_version");
         String originUsecase = value(row, "origin_usecase");
         String targetUsecase = value(row, "target_usecase");
+        String originTests = value(row, "origin_tests");
+        String targetTests = value(row, "target_tests");
 
         List<String> reasons = new ArrayList<>();
         if (system.isEmpty()) {
@@ -87,6 +91,16 @@ public final class ItemRowRules {
             reasons.add("empty-target-usecase");
         } else if (targetUsecase.length() > MAX_USECASE) {
             reasons.add("usecase-too-long");
+        }
+        if (originTests.isEmpty()) {
+            reasons.add("empty-origin-tests");
+        } else if (originTests.length() > MAX_TESTS) {
+            reasons.add("tests-too-long");
+        }
+        if (targetTests.isEmpty()) {
+            reasons.add("empty-target-tests");
+        } else if (targetTests.length() > MAX_TESTS) {
+            reasons.add("tests-too-long");
         }
         if (origin.length() > MAX_TEXT) {
             reasons.add("origin-too-long");
