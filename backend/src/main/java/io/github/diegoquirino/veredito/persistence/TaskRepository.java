@@ -5,9 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
@@ -95,17 +100,30 @@ public class TaskRepository {
         return Set.copyOf(ids);
     }
 
+    /** Distinct item systems of the participant's reserved or completed tasks (spec 042). */
+    public Set<String> heldSystems(long participantId) {
+        List<String> systems = jdbc.sql("""
+                        SELECT DISTINCT i.`system`
+                        FROM task t
+                        JOIN item i ON i.block_id = t.block_id
+                        WHERE t.participant_id = ? AND t.status IN ('reserved', 'completed')""")
+                .param(participantId)
+                .query(String.class)
+                .list();
+        return Set.copyOf(systems);
+    }
+
     /** Free tasks and expired reservations, unlocked (for outcome hints). */
     public List<NextTaskChooser.Candidate> listCandidates(Instant now) {
-        return jdbc.sql("""
+        return withSystems(jdbc.sql("""
                         SELECT id, block_id, role, queue_position, status, participant_id, expires_at
                         FROM task
                         WHERE status = 'free'
                            OR (status = 'reserved' AND expires_at <= ?)
                         ORDER BY queue_position""")
                 .param(Timestamp.from(now))
-                .query(TaskRepository::mapCandidate)
-                .list();
+                .query(TaskRepository::mapCandidateRow)
+                .list());
     }
 
     /**
@@ -113,7 +131,7 @@ public class TaskRepository {
      * different rows.
      */
     public List<NextTaskChooser.Candidate> lockCandidatesForUpdateSkipLocked(Instant now) {
-        return jdbc.sql("""
+        return withSystems(jdbc.sql("""
                         SELECT id, block_id, role, queue_position, status, participant_id, expires_at
                         FROM task
                         WHERE status = 'free'
@@ -121,8 +139,8 @@ public class TaskRepository {
                         ORDER BY queue_position
                         FOR UPDATE SKIP LOCKED""")
                 .param(Timestamp.from(now))
-                .query(TaskRepository::mapCandidate)
-                .list();
+                .query(TaskRepository::mapCandidateRow)
+                .list());
     }
 
     public void reserve(long taskId, long participantId, Instant reservedAt, Instant expiresAt) {
@@ -198,7 +216,45 @@ public class TaskRepository {
                 toInstant(rs.getTimestamp("submitted_at")));
     }
 
-    private static NextTaskChooser.Candidate mapCandidate(ResultSet rs, int row) throws SQLException {
+    private List<NextTaskChooser.Candidate> withSystems(List<NextTaskChooser.Candidate> rows) {
+        if (rows.isEmpty()) {
+            return List.of();
+        }
+        Map<Long, Set<String>> byBlock = systemsByBlockIds(
+                rows.stream().map(NextTaskChooser.Candidate::blockId).collect(Collectors.toSet()));
+        return rows.stream()
+                .map(row -> new NextTaskChooser.Candidate(
+                        row.taskId(),
+                        row.blockId(),
+                        row.role(),
+                        row.queuePosition(),
+                        row.status(),
+                        row.participantId(),
+                        row.expiresAt(),
+                        byBlock.getOrDefault(row.blockId(), Set.of())))
+                .toList();
+    }
+
+    private Map<Long, Set<String>> systemsByBlockIds(Collection<Long> blockIds) {
+        if (blockIds.isEmpty()) {
+            return Map.of();
+        }
+        String placeholders = blockIds.stream().map(id -> "?").collect(Collectors.joining(","));
+        Map<Long, Set<String>> byBlock = new HashMap<>();
+        List<Object[]> pairs = jdbc.sql(
+                        "SELECT DISTINCT block_id, `system` FROM item WHERE block_id IN (" + placeholders + ")")
+                .params(blockIds.toArray())
+                .query((rs, row) -> new Object[] {rs.getLong("block_id"), rs.getString("system")})
+                .list();
+        for (Object[] pair : pairs) {
+            byBlock.computeIfAbsent((Long) pair[0], id -> new HashSet<>()).add((String) pair[1]);
+        }
+        Map<Long, Set<String>> frozen = new HashMap<>();
+        byBlock.forEach((id, systems) -> frozen.put(id, Set.copyOf(systems)));
+        return frozen;
+    }
+
+    private static NextTaskChooser.Candidate mapCandidateRow(ResultSet rs, int row) throws SQLException {
         return new NextTaskChooser.Candidate(
                 rs.getLong("id"),
                 rs.getLong("block_id"),
@@ -206,7 +262,8 @@ public class TaskRepository {
                 rs.getInt("queue_position"),
                 rs.getString("status"),
                 rs.getObject("participant_id") == null ? null : rs.getLong("participant_id"),
-                toInstant(rs.getTimestamp("expires_at")));
+                toInstant(rs.getTimestamp("expires_at")),
+                Set.of());
     }
 
     private static Instant toInstant(Timestamp value) {

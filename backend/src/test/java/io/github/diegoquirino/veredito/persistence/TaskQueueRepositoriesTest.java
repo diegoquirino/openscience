@@ -103,8 +103,8 @@ class TaskQueueRepositoriesTest {
 
             List<NextTaskChooser.Candidate> candidates = tasks.lockCandidatesForUpdateSkipLocked(now);
             assertThat(candidates).isNotEmpty();
-            Optional<NextTaskChooser.Candidate> chosen =
-                    NextTaskChooser.choose(candidates, tasks.heldBlockIds(person.id()), now);
+            Optional<NextTaskChooser.Candidate> chosen = NextTaskChooser.choose(
+                    candidates, tasks.heldBlockIds(person.id()), tasks.heldSystems(person.id()), now);
             assertThat(chosen).isPresent();
             assertThat(chosen.get().taskId()).isEqualTo(taskId);
 

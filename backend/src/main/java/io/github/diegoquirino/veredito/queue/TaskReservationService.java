@@ -73,8 +73,10 @@ public class TaskReservationService {
         config.lockForUpdate();
         int minutes = config.reservationMinutes();
         Set<Long> held = tasks.heldBlockIds(participantId);
+        Set<String> heldSystems = tasks.heldSystems(participantId);
         List<NextTaskChooser.Candidate> candidates = tasks.lockCandidatesForUpdateSkipLocked(now);
-        Optional<NextTaskChooser.Candidate> chosen = NextTaskChooser.choose(candidates, held, now);
+        Optional<NextTaskChooser.Candidate> chosen =
+                NextTaskChooser.choose(candidates, held, heldSystems, now);
         if (chosen.isEmpty()) {
             return new Result.NoTask(outcomeWhenNone());
         }
@@ -140,7 +142,8 @@ public class TaskReservationService {
 
     private QueueOutcome outcomeAfterComplete(long participantId, Instant now) {
         Set<Long> held = tasks.heldBlockIds(participantId);
-        if (NextTaskChooser.choose(tasks.listCandidates(now), held, now).isPresent()) {
+        Set<String> heldSystems = tasks.heldSystems(participantId);
+        if (NextTaskChooser.choose(tasks.listCandidates(now), held, heldSystems, now).isPresent()) {
             return QueueOutcome.MORE_AVAILABLE;
         }
         return outcomeWhenNone();

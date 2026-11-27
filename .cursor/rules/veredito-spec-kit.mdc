@@ -1,0 +1,28 @@
+---
+description: Spec Kit é obrigatório para mudanças de produto no Veredito — regra de ouro
+alwaysApply: true
+---
+
+# Spec Kit no Veredito (regra de ouro)
+
+Toda mudança de produto no Veredito (API, domínio, UI, import, fila, i18n de interface) deve ser **planejada e executada** via Spec Kit — não por atalho direto no código.
+
+## Fluxo obrigatório
+
+1. `specs/<NNN>-<short-name>/spec.md`
+2. `plan.md` e `tasks.md` (ordem das tasks)
+3. Apontar `.specify/feature.json`; linha no `specs/ROADMAP.md`
+4. Implementar as tasks; bump `0.<NNN>.0` / `0.<NNN>.0+dev`
+5. Testes + staging local limpo; ROADMAP **Complete**; push no branch `Veredito`
+
+## Restrições (constitution + 024)
+
+- Uma spec de cada vez, na ordem do ROADMAP.
+- **1.0.0** só após o comando explícito **promover a 1.0 e deploy** (CEP/LGPD).
+- Sem deploy cloud até lá; staging = Docker local.
+- Títulos de seção/capítulo da tese são outro repositório; aqui o contrato é Spec Kit.
+
+## Fora deste rito
+
+- Correções tipográficas triviais em docs já Complete, sem mudança de comportamento, podem ser patch na mesma spec — ainda documentar no commit.
+- Scripts auxiliares fora de `Veredito/` seguem as regras da raiz do monorepo.

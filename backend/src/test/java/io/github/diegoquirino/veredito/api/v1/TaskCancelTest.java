@@ -51,6 +51,19 @@ class TaskCancelTest extends ApiTestBase {
     }
 
     @Test
+    void cancelFreesTheSystemSoTheSameRaterMayReserveAgain() {
+        String a = eligibleParticipantSession();
+        Response first = reserve(a);
+        int firstId = first.path("id");
+        as(a).delete("/api/v1/tasks/" + firstId).then().statusCode(204);
+
+        Response again = reserve(a);
+        again.then().statusCode(201);
+        // Same system (minitest); may be the same task or another free role/block.
+        assertThat(again.<String>path("status")).isEqualTo("reserved");
+    }
+
+    @Test
     void foreignOrCompletedTaskCannotBeCancelled() {
         String a = eligibleParticipantSession();
         Response task = reserve(a);

@@ -153,8 +153,9 @@ test.describe('one participant labels blocks until none is left for them', () =>
     await expect(page.locator('li.item.pending')).toHaveCount(0);
     await page.getByRole('button', { name: 'Enviar bloco' }).click();
 
-    await expect(page).toHaveURL(/\/pt-BR\/label\/done\?outcome=more-available$/);
-    await expect(page.getByText('Você pode rotular outro bloco.')).toBeVisible();
+    // Spec 042: one block per system — Minitest-only queue → none left for this rater.
+    await expect(page).toHaveURL(/\/pt-BR\/label\/done\?outcome=none-available-for-you$/);
+    await expect(page.getByText('Não há mais blocos para você no momento.')).toBeVisible();
     const done = await (await page.request.get(`/api/v1/tasks/${held.id}`)).json();
     expect(done.status).toBe('completed');
     expect(done.answeredCount).toBe(held.size);
@@ -166,31 +167,9 @@ test.describe('one participant labels blocks until none is left for them', () =>
     expect(late.status()).toBe(409);
   });
 
-  test('labels one role of every block and then gets none-available-for-you (T035)', async () => {
-    test.setTimeout(180_000);
-    const remaining = [3, 4];
-    for (const [index, blockNumber] of remaining.entries()) {
-      await page.getByRole('link', { name: 'Rotular outro bloco' }).click();
-      await expect(page).toHaveURL(/\/pt-BR\/label\/items\/1$/);
-      const task = await reserveOverApi(page);
-      expect(task.blockNumber).toBe(blockNumber);
-
-      // Drafts over the API keep the test short; the review and the submit are on screen.
-      await answerAllOverApi(page, task);
-      await page.goto('/pt-BR/label');
-      await expect(page).toHaveURL(/\/pt-BR\/label\/review$/);
-      await page.getByRole('button', { name: 'Enviar bloco' }).click();
-
-      if (index < remaining.length - 1) {
-        await expect(page).toHaveURL(/\/pt-BR\/label\/done\?outcome=more-available$/);
-      }
-    }
-
-    await expect(page).toHaveURL(/\/pt-BR\/label\/done\?outcome=none-available-for-you$/);
-    await expect(page.getByText('Não há mais blocos para você no momento.')).toBeVisible();
+  test('asking again after one system block stays none-available-for-you (042)', async () => {
     await expect(page.getByRole('link', { name: 'Rotular outro bloco' })).toHaveCount(0);
 
-    // Asking again over the API and through the start of labeling agree.
     const again = await page.request.post('/api/v1/tasks/reservations');
     expect(again.status()).toBe(200);
     expect((await again.json()).outcome).toBe('none-available-for-you');

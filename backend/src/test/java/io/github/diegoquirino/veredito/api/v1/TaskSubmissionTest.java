@@ -37,11 +37,11 @@ class TaskSubmissionTest extends ApiTestBase {
                 .body("id", equalTo(task.<Integer>path("id")))
                 .body("status", equalTo("completed"))
                 .body("answeredCount", equalTo(10))
-                .body("outcome", equalTo("more-available"))
+                .body("outcome", equalTo("none-available-for-you"))
                 .body("$", not(hasKey("reservationExpiresAt")))
                 .body("_links", not(hasKey("vd:submit")))
                 .body("_links", not(hasKey("vd:save-response")))
-                .body("_links.'vd:next-task'.href", equalTo("/api/v1/tasks/reservations"));
+                .body("_links", not(hasKey("vd:next-task")));
 
         assertThat(count("SELECT COUNT(*) FROM response WHERE task_id = ? AND state = 'final'", task))
                 .isEqualTo(10);
@@ -54,7 +54,7 @@ class TaskSubmissionTest extends ApiTestBase {
         as(a).get("/api/v1/tasks/" + task.<Integer>path("id"))
                 .then().statusCode(200)
                 .body("status", equalTo("completed"))
-                .body("outcome", equalTo("more-available"));
+                .body("outcome", equalTo("none-available-for-you"));
     }
 
     @Test
@@ -98,7 +98,7 @@ class TaskSubmissionTest extends ApiTestBase {
         as(a).post(submissionUrl(task)).then().statusCode(200)
                 .body("status", equalTo("completed"))
                 .body("answeredCount", equalTo(10))
-                .body("outcome", equalTo("more-available"));
+                .body("outcome", equalTo("none-available-for-you"));
 
         assertThat(jdbc.sql("SELECT submitted_at FROM task WHERE id = ?")
                         .param(task.<Integer>path("id"))
@@ -153,24 +153,41 @@ class TaskSubmissionTest extends ApiTestBase {
     }
 
     @Test
-    void personWhoLabeledOneRoleOfEveryBlockGetsNoneAvailableForYou() {
+    void personWhoLabeledOneBlockOfASystemGetsNoneAvailableForThatSystem() {
         String a = eligibleParticipantSession();
-        // Four blocks: the person may take one role of each, never both roles of a block.
-        for (int block = 1; block <= 4; block++) {
-            Response task = reserve(a);
-            assertThat(task.<Integer>path("blockNumber")).isEqualTo(block);
-            answerAll(a, task, task.<Integer>path("size"));
-            Response submitted = as(a).post(submissionUrl(task));
-            submitted.then().statusCode(200)
-                    .body("status", equalTo("completed"))
-                    .body("outcome", equalTo(block < 4 ? "more-available" : "none-available-for-you"));
-            assertThat(submitted.<Object>path("_links.'vd:next-task'") != null).isEqualTo(block < 4);
-        }
+        Response task = reserve(a);
+        assertThat(task.<Integer>path("blockNumber")).isEqualTo(1);
+        answerAll(a, task, task.<Integer>path("size"));
+        as(a).post(submissionUrl(task)).then().statusCode(200)
+                .body("status", equalTo("completed"))
+                .body("outcome", equalTo("none-available-for-you"))
+                .body("_links", not(hasKey("vd:next-task")));
 
         as(a).post("/api/v1/tasks/reservations").then().statusCode(200)
                 .body("outcome", equalTo("none-available-for-you"));
+        // Other minitest block-roles remain free for other raters.
         assertThat(jdbc.sql("SELECT COUNT(*) FROM task WHERE status = 'free'").query(Long.class).single())
-                .isEqualTo(4);
+                .isEqualTo(7);
+    }
+
+    @Test
+    void afterOneSystemTheRaterMayTakeABlockOfAnotherSystem() {
+        String a = eligibleParticipantSession();
+        Response first = reserve(a);
+        answerAll(a, first, first.<Integer>path("size"));
+        as(a).post(submissionUrl(first)).then().statusCode(200)
+                .body("outcome", equalTo("none-available-for-you"));
+
+        // Blocks 3–4 become another system; unique (system, edit_key) still holds.
+        jdbc.sql("""
+                        UPDATE item SET `system` = 'itrust'
+                        WHERE block_id IN (SELECT id FROM block WHERE number >= 3)""")
+                .update();
+
+        Response second = reserve(a);
+        second.then().statusCode(201);
+        assertThat(second.<Integer>path("blockNumber")).isGreaterThanOrEqualTo(3);
+        as(a).get(itemUrl(second, 1)).then().statusCode(200).body("system", equalTo("itrust"));
     }
 
     @Test
@@ -230,19 +247,18 @@ class TaskSubmissionTest extends ApiTestBase {
     }
 
     @Test
-    void expiredReservationIsRefusedWhenTheCallerAlreadyHoldsAnotherBlock() {
+    void expiredReservationOfOneSystemBlocksAnotherBlockOfTheSameSystem() {
         String a = eligibleParticipantSession();
         Response first = reserve(a);
         answerAll(a, first, 10);
 
         clock.advance(Duration.ofMinutes(first.<Integer>path("reservationMinutes") + 1));
-        Response second = reserve(a);
-        assertThat(second.<Integer>path("id")).isNotEqualTo(first.<Integer>path("id"));
+        // Spec 042: reserved (even expired) still holds the system until cancel or reclaim.
+        as(a).post("/api/v1/tasks/reservations").then().statusCode(200)
+                .body("outcome", equalTo("none-available-for-you"));
 
-        as(a).post(submissionUrl(first)).then().statusCode(409)
-                .body("type", equalTo(PROBLEM + "reservation-expired"));
-        assertThat(count("SELECT COUNT(*) FROM response WHERE task_id = ? AND state = 'final'", first))
-                .isZero();
+        as(a).post(submissionUrl(first)).then().statusCode(200)
+                .body("status", equalTo("completed"));
     }
 
     @Test
